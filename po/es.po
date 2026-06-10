@@ -2533,7 +2533,7 @@ msgstr ""
 
 #: dat/epitaph.txt:341
 msgid "\"Oh, honey... I missed you!\" she said, and fired again."
-msgstr ""
+msgstr "\"Oh, cariño... ¡te echaba de menos!\" dijo ella, y disparó de nuevo."
 
 #: dat/tribute:4885
 msgid ""
@@ -6583,7 +6583,7 @@ msgstr ""
 
 #: dat/epitaph.txt:88
 msgid "(This space for sale)"
-msgstr ""
+msgstr "(Este espacio en venta)"
 
 #: dat/history:135
 msgid ""
@@ -7618,15 +7618,15 @@ msgstr ""
 
 #: dat/epitaph.txt:97
 msgid "...and they made me engrave my own headstone too!"
-msgstr ""
+msgstr "...¡y me hicieron grabar mi propia lápida también!"
 
 #: dat/epitaph.txt:98
 msgid "...but the blood has stopped pumping and I am left to decay..."
-msgstr ""
+msgstr "...pero la sangre ha dejado de bombear y me han dejado pudrirme..."
 
 #: dat/epitaph.txt:52
 msgid "...for famous men have the whole earth as their memorial"
-msgstr ""
+msgstr "...pues los hombres famosos tienen toda la tierra como su memorial"
 
 #: dat/cmdhelp:122
 msgid "/\tShow what type of thing a symbol corresponds to"
@@ -7963,7 +7963,7 @@ msgstr ""
 
 #: dat/epitaph.txt:11
 msgid "1994-1995. The Longest-Lived Hacker Ever"
-msgstr ""
+msgstr "1994-1995. El Hacker Más Longevo de la Historia"
 
 #: dat/rumors.fal:2
 msgid "1st Law of Hacking:  leaving is much more difficult than entering."
@@ -8195,7 +8195,7 @@ msgstr "<--- Ve a la derecha"
 
 #: dat/epitaph.txt:99
 msgid "<Expletive Deleted>"
-msgstr ""
+msgstr "<Improperio Eliminado>"
 
 #: dat/keyhelp:37
 msgid "<alt> or <option> key, when used as shift while typing some other"
@@ -8590,7 +8590,7 @@ msgstr ""
 
 #: dat/epitaph.txt:100
 msgid "A masochist is never satisfied."
-msgstr ""
+msgstr "Un masoquista nunca está satisfecho."
 
 #: dat/data.base:3555
 msgid "A mattock is an agricultural tool similar to a mining pick."
@@ -8929,7 +8929,7 @@ msgstr ""
 
 #: dat/epitaph.txt:101
 msgid "Ach, 'twas a wee monster in the loch"
-msgstr ""
+msgstr "Ay, era un monstruito en el lago"
 
 #: dat/rumors.tru:16
 msgid "Acid blobs should be attacked bare-handed."
@@ -8945,7 +8945,7 @@ msgstr ""
 
 #: dat/epitaph.txt:102
 msgid "Adapt.  Enjoy.  Survive."
-msgstr ""
+msgstr "Adáptate.  Disfruta.  Sobrevive."
 
 #: dat/data.base:3900
 msgid "Adder's fork and blind-worm's sting,"
@@ -8967,7 +8967,7 @@ msgstr ""
 
 #: dat/epitaph.txt:103
 msgid "Adventure, hah!  Excitement, hah!"
-msgstr ""
+msgstr "¿Aventura, ja? ¿Emoción, ja?"
 
 #: dat/data.base:6423
 msgid "Adventurer          30"
@@ -9012,7 +9012,7 @@ msgstr ""
 
 #: dat/epitaph.txt:104
 msgid "After all, what are friends for..."
-msgstr ""
+msgstr "Después de todo, ¿para qué están los amigos..."
 
 #: dat/tribute:4996
 msgid "After all, you never know.\""
@@ -9036,11 +9036,11 @@ msgstr ""
 
 #: dat/epitaph.txt:105
 msgid "After this, nothing will shock me"
-msgstr ""
+msgstr "Después de esto, nada me sorprenderá"
 
 #: dat/epitaph.txt:106
 msgid "After three days, fish and guests stink"
-msgstr ""
+msgstr "A los tres días, huelen el pescado y los invitados"
 
 #: dat/data.base:3712
 msgid "Again, thou shalt say to the children of Israel, Whosoever"
@@ -9056,11 +9056,12 @@ msgstr ""
 
 #: dat/epitaph.txt:107
 msgid "Age and treachery will always overcome youth and skill"
-msgstr ""
+msgstr "La edad y la traición siempre vencerán a la juventud y la habilidad"
 
 #: dat/epitaph.txt:108
 msgid "Ageing is not so bad.  The real killer is when you stop."
 msgstr ""
+"Envejecer no es tan malo.  Lo que realmente mata es cuando te detienes."
 
 #: dat/data.base:3559
 msgid "Ages of Europe, the mattock served as an improvised shafted"
@@ -9089,7 +9090,7 @@ msgstr ""
 
 #: dat/epitaph.txt:109
 msgid "Ain't I a stinker?"
-msgstr ""
+msgstr "¿A que soy un maula?"
 
 #: dat/data.base:783
 msgid "Airborne Interception Radar, also known as AI. ... British"
@@ -9103,6 +9104,8 @@ msgstr ""
 msgid ""
 "Alas fair Death, 'twas missed in life - some peace and quiet from my wife"
 msgstr ""
+"Ay, bella Muerte, se me echaba de menos en vida - algo de paz y silencio de "
+"mi esposa"
 
 #: dat/tribute:1032
 msgid "Alberto Malich back on its pedestal."
@@ -9126,7 +9129,7 @@ msgstr ""
 
 #: dat/epitaph.txt:110
 msgid "Algernon"
-msgstr ""
+msgstr "Algernon"
 
 #: dat/data.base:2416
 msgid "Alignment will change back when the helmet is taken off."
@@ -9138,11 +9141,11 @@ msgstr ""
 
 #: dat/epitaph.txt:111
 msgid "All else failed..."
-msgstr ""
+msgstr "Todo lo demás falló..."
 
 #: dat/epitaph.txt:112
 msgid "All hail RNG"
-msgstr ""
+msgstr "Alabado sea el RNG"
 
 #: dat/data.base:1434
 msgid "All hope abandon ye who enter here."
@@ -9162,7 +9165,7 @@ msgstr ""
 
 #: dat/epitaph.txt:113
 msgid "All right, we'll call it a draw!"
-msgstr ""
+msgstr "¡De acuerdo, lo llamamos empate!"
 
 #: dat/data.base:537
 msgid "All the heavens, seem to twinkle"
@@ -9206,7 +9209,7 @@ msgstr ""
 
 #: dat/epitaph.txt:114
 msgid "All's well that ends well"
-msgstr ""
+msgstr "All's well that ends well"
 
 #: dat/oracles.txt:38
 msgid ""
@@ -9215,7 +9218,7 @@ msgstr ""
 
 #: dat/epitaph.txt:115
 msgid "Alone at last!"
-msgstr ""
+msgstr "¡Por fin solo!"
 
 #: dat/tribute:6219
 msgid ""
@@ -9254,7 +9257,7 @@ msgstr ""
 
 #: dat/epitaph.txt:116 dat/rumors.fal:28
 msgid "Always attack a floating eye from behind!"
-msgstr ""
+msgstr "¡Ataca siempre a un ojo flotante por detrás!"
 
 #: dat/rumors.tru:20
 msgid "Always be aware of the phase of the moon!"
@@ -9275,7 +9278,7 @@ msgstr ""
 
 #: dat/epitaph.txt:117
 msgid "Am I having fun yet?"
-msgstr ""
+msgstr "¿Me estoy divirtiendo ya?"
 
 #: dat/data.base:4235
 msgid "Amid the thought of the fiery destruction that impended, the"
@@ -9382,7 +9385,7 @@ msgstr ""
 
 #: dat/epitaph.txt:118
 msgid "And I can still crawl, I'm not dead yet!"
-msgstr ""
+msgstr "Y todavía puedo arrastrarme, ¡no estoy muerto aún!"
 
 #: dat/tribute:6403
 msgid ""
@@ -9442,11 +9445,11 @@ msgstr ""
 
 #: dat/epitaph.txt:119
 msgid "And all I wanted was a free lunch"
-msgstr ""
+msgstr "Y todo lo que quería era un almuerzo gratis"
 
 #: dat/epitaph.txt:120
 msgid "And all of the signs were right there on your face"
-msgstr ""
+msgstr "Y todas las señales estaban justo en tu cara"
 
 #: dat/data.base:5882
 msgid "And all the boards did shrink;"
@@ -9487,7 +9490,7 @@ msgstr ""
 
 #: dat/epitaph.txt:121
 msgid "And don't give me that innocent look either!"
-msgstr ""
+msgstr "¡Y no me pongas esa cara de inocente tampoco!"
 
 #: dat/data.base:2077
 msgid "And either side, were painted o'er with nodes"
@@ -9495,7 +9498,7 @@ msgstr ""
 
 #: dat/epitaph.txt:122
 msgid "And everyone died.  Boo hoo hoo."
-msgstr ""
+msgstr "Y todos murieron.  Bua, bua, bua."
 
 #: dat/tribute:5058
 msgid ""
@@ -9531,7 +9534,7 @@ msgstr ""
 
 #: dat/epitaph.txt:123
 msgid "And here I go again..."
-msgstr ""
+msgstr "Y aquí voy de nuevo..."
 
 #: dat/data.base:108
 msgid "And how can man die better"
@@ -9593,7 +9596,7 @@ msgstr ""
 
 #: dat/epitaph.txt:124
 msgid "And nobody cares until somebody famous dies..."
-msgstr ""
+msgstr "Y a nadie le importa hasta que alguien famoso muere..."
 
 #: dat/data.base:2096
 msgid "And now the souls of the dead who had gone below came swarming"
@@ -9638,7 +9641,7 @@ msgstr ""
 
 #: dat/epitaph.txt:125
 msgid "And so it ends?"
-msgstr ""
+msgstr "¿Y así termina?"
 
 #: dat/tribute:485
 msgid ""
@@ -9651,7 +9654,7 @@ msgstr ""
 
 #: dat/epitaph.txt:126
 msgid "And so... it begins."
-msgstr ""
+msgstr "Y así... comienza."
 
 #: dat/data.base:3565
 msgid "And some would eat that want it;"
@@ -9659,7 +9662,7 @@ msgstr ""
 
 #: dat/epitaph.txt:127
 msgid "And sometimes the bear eats you."
-msgstr ""
+msgstr "Y a veces el oso te come a ti."
 
 #: dat/data.base:2841
 msgid "And stood awhile in thought."
@@ -9708,7 +9711,7 @@ msgstr ""
 
 #: dat/epitaph.txt:128
 msgid "And then 'e nailed me 'ead to the floor!"
-msgstr ""
+msgstr "¡Y entonces me clavó la cabeza al suelo!"
 
 #: dat/tribute:2746
 msgid "And then Desiderata grew up to become a witch.  And one of the minor"
@@ -9753,7 +9756,7 @@ msgstr ""
 
 #: dat/epitaph.txt:129
 msgid "And they said it couldn't be done!"
-msgstr ""
+msgstr "¡Y decían que no se podía hacer!"
 
 #: dat/data.base:2756
 msgid "And they shall cover the face of the earth, that one cannot"
@@ -9795,7 +9798,7 @@ msgstr ""
 
 #: dat/epitaph.txt:130
 msgid "And what do I look like?  The living?"
-msgstr ""
+msgstr "¿Y qué parezco? ¿El vivo?"
 
 #: dat/data.base:5905
 msgid "And when you are forced by your thirst to come into the pond"
@@ -9817,7 +9820,7 @@ msgstr ""
 
 #: dat/epitaph.txt:131
 msgid "And yes, it was ALL his fault!"
-msgstr ""
+msgstr "¡Y sí, fue TODO culpa suya!"
 
 #: dat/tribute:8845
 msgid "And yet it does work.  This has annoyed a number of people who feel,"
@@ -9829,7 +9832,7 @@ msgstr ""
 
 #: dat/epitaph.txt:132
 msgid "And you said it was pretty here..."
-msgstr ""
+msgstr "Y decías que era bonito aquí..."
 
 #: dat/data.base:3138
 msgid "And, after saying this, and commending himself most devoutly"
@@ -9919,7 +9922,7 @@ msgstr ""
 
 #: dat/epitaph.txt:133
 msgid "Another lost soul"
-msgstr ""
+msgstr "Otra alma perdida"
 
 #: dat/tribute:4853
 msgid ""
@@ -9941,7 +9944,7 @@ msgstr ""
 
 #: dat/epitaph.txt:134
 msgid "Any day above ground is a good day!"
-msgstr ""
+msgstr "¡Cualquier día sobre la tierra es un buen día!"
 
 #: dat/data.base:3549
 msgid "Any large, elephantlike mammal of the genera Mammut, Mastodon,"
@@ -9949,7 +9952,7 @@ msgstr ""
 
 #: dat/epitaph.txt:135
 msgid "Any more of this and I'll die of a stroke before I'm 30."
-msgstr ""
+msgstr "Un poco más de esto y moriré de un infarto antes de los 30."
 
 #: dat/rumors.fal:30
 msgid ""
@@ -9967,7 +9970,7 @@ msgstr ""
 
 #: dat/epitaph.txt:136
 msgid "Anybody seen my head?"
-msgstr ""
+msgstr "¿Alguien ha visto mi cabeza?"
 
 #: dat/tribute:7471
 msgid "Anybody.  \"I want to make that point perfectly clear!\""
@@ -9975,7 +9978,7 @@ msgstr ""
 
 #: dat/epitaph.txt:137
 msgid "Anyone for deathmatch?"
-msgstr ""
+msgstr "¿Alguien para un deathmatch?"
 
 #: dat/tribute:3725
 msgid "Anyone got the dried frog pills?\""
@@ -9987,15 +9990,15 @@ msgstr ""
 
 #: dat/epitaph.txt:138
 msgid "Anything for a change."
-msgstr ""
+msgstr "Cualquier cosa por un cambio."
 
 #: dat/epitaph.txt:139
 msgid "Anything that kills you makes you ... well, dead"
-msgstr ""
+msgstr "Cualquier cosa que te mate te deja... bueno, muerto"
 
 #: dat/epitaph.txt:140
 msgid "Anything worth doing is worth overdoing."
-msgstr ""
+msgstr "Cualquier cosa que merezca la pena hacer merece la pena pasarse."
 
 #: dat/tribute:2554
 msgid ""
@@ -10004,7 +10007,7 @@ msgstr ""
 
 #: dat/epitaph.txt:37
 msgid "Applaud, my friends, the comedy is finished."
-msgstr ""
+msgstr "Aplaudid, amigos míos, la comedia ha terminado."
 
 #: dat/data.base:6349
 msgid "Arbalester       18 to 21"
@@ -10040,11 +10043,11 @@ msgstr ""
 
 #: dat/epitaph.txt:141
 msgid "Are unicorns supposedly peaceful if you're a virgin?  Hah!"
-msgstr ""
+msgstr "¿Se supone que los unicornios son pacíficos si eres virgen?  ¡Ja!"
 
 #: dat/epitaph.txt:142
 msgid "Are we all being disintegrated, or is it just me?"
-msgstr ""
+msgstr "¿Nos están desintegrando a todos, o solo soy yo?"
 
 #: dat/data.base:2483
 msgid "Are you not he?"
@@ -10218,11 +10221,11 @@ msgstr ""
 
 #: dat/epitaph.txt:38
 msgid "At last... a nice long sleep."
-msgstr ""
+msgstr "Por fin... un buen sueño largo."
 
 #: dat/epitaph.txt:143
 msgid "At least I'm good at something"
-msgstr ""
+msgstr "Al menos soy bueno en algo"
 
 #: dat/tribute:1609
 msgid ""
@@ -10296,7 +10299,7 @@ msgstr ""
 
 #: dat/epitaph.txt:144
 msgid "Attempted suicide"
-msgstr ""
+msgstr "Intento de suicidio"
 
 #: dat/data.base:2199
 msgid "Au; at. no. 79; at. wt. 197.2.  It is the most malleable"
@@ -10304,15 +10307,15 @@ msgstr ""
 
 #: dat/epitaph.txt:39
 msgid "Audi Partem Alteram"
-msgstr ""
+msgstr "Audi Partem Alteram"
 
 #: dat/epitaph.txt:145
 msgid "Auri sacra fames"
-msgstr ""
+msgstr "Auri sacra fames"
 
 #: dat/epitaph.txt:146
 msgid "Auribus teneo lupum"
-msgstr ""
+msgstr "Auribus teneo lupum"
 
 #: dat/rumors.fal:33
 msgid "Austin Powers says: My Mojo is back!  Yeah, baby!"
@@ -10420,7 +10423,7 @@ msgstr ""
 
 #: dat/epitaph.txt:40
 msgid "Basil, assaulted by bears"
-msgstr ""
+msgstr "Basilio, atacado por osos"
 
 #: dat/data.base:4261
 msgid "Be bold,"
@@ -10436,7 +10439,7 @@ msgstr ""
 
 #: dat/epitaph.txt:23
 msgid "Be careful, or this could happen to you!"
-msgstr ""
+msgstr "Ten cuidado, ¡o esto podría pasarte a ti!"
 
 #: dat/rumors.tru:32
 msgid "Be nice to a nurse:  Put away your weapon and take off your clothes."
@@ -10448,7 +10451,7 @@ msgstr ""
 
 #: dat/epitaph.txt:147
 msgid "Be prepared"
-msgstr ""
+msgstr "Sé previsor"
 
 #: dat/data.base:1944
 msgid "Bearing but in thought, that I,"
@@ -10460,7 +10463,7 @@ msgstr ""
 
 #: dat/epitaph.txt:148
 msgid "Beauty survives"
-msgstr ""
+msgstr "La belleza sobrevive"
 
 #: dat/data.base:612
 msgid "Because it is Saint Peter's holy day."
@@ -10479,7 +10482,7 @@ msgstr ""
 
 #: dat/epitaph.txt:149
 msgid "Been Here.  Now Gone.  Had a Good Time."
-msgstr ""
+msgstr "Estuve Aquí.  Ahora Me Fui.  Lo Pasé Bien."
 
 #: dat/tribute:5985
 msgid "Been there, done that, bought the doublet..."
@@ -10487,11 +10490,11 @@ msgstr ""
 
 #: dat/epitaph.txt:150
 msgid "Been through Hell, eh?  What did you bring me?"
-msgstr ""
+msgstr "Has estado en el Infierno, ¿eh?  ¿Qué me has traído?"
 
 #: dat/epitaph.txt:18
 msgid "Beetlejuice Beetlejuice Beetlejuice"
-msgstr ""
+msgstr "Beetlejuice Beetlejuice Beetlejuice"
 
 #: dat/data.base:1432
 msgid "Before me things create were none, save things"
@@ -10499,7 +10502,7 @@ msgstr ""
 
 #: dat/epitaph.txt:151
 msgid "Beg your pardon, didn't recognize you, I've changed a lot."
-msgstr ""
+msgstr "Perdona, no te reconocí, he cambiado mucho."
 
 #: dat/oracles.txt:15
 msgid ""
@@ -10513,7 +10516,7 @@ msgstr ""
 
 #: dat/epitaph.txt:152
 msgid "Being dead builds character"
-msgstr ""
+msgstr "Estar muerto forja el carácter"
 
 #: dat/tribute:45
 msgid ""
@@ -10526,7 +10529,7 @@ msgstr ""
 
 #: dat/epitaph.txt:153
 msgid "Beloved daughter, a treasure, buried here."
-msgstr ""
+msgstr "Amada hija, un tesoro, enterrada aquí."
 
 #: dat/history:368
 msgid "Benson I. Margulies       John Rupley               Patric Mueller"
@@ -10555,7 +10558,7 @@ msgstr ""
 
 #: dat/epitaph.txt:154
 msgid "Best friends come and go....  Mine just die."
-msgstr ""
+msgstr "Los mejores amigos van y vienen....  Los míos solo mueren."
 
 #: dat/tribute:1829
 msgid "Best not to speculate."
@@ -10563,7 +10566,7 @@ msgstr ""
 
 #: dat/epitaph.txt:155
 msgid "Better be dead than a fat slave"
-msgstr ""
+msgstr "Mejor muerto que esclavo gordo"
 
 #: dat/rumors.fal:37
 msgid "Better leave the dungeon; otherwise you might get hurt badly."
@@ -10571,7 +10574,7 @@ msgstr ""
 
 #: dat/epitaph.txt:156
 msgid "Better luck next time"
-msgstr ""
+msgstr "Mejor suerte la próxima vez"
 
 #: dat/data.base:3441
 msgid "Betwixt the lowest earth and heaven's height,"
@@ -10579,11 +10582,11 @@ msgstr ""
 
 #: dat/epitaph.txt:157
 msgid "Beware of Discordians bearing answers"
-msgstr ""
+msgstr "Cuidado con los Discordianos que traen respuestas"
 
 #: dat/epitaph.txt:15
 msgid "Beware of Electric Third Rail"
-msgstr ""
+msgstr "Cuidado con el Tercer Rail Eléctrico"
 
 #: dat/rumors.fal:38
 msgid ""
@@ -10592,7 +10595,7 @@ msgstr ""
 
 #: dat/epitaph.txt:158
 msgid "Beware the ..."
-msgstr ""
+msgstr "Cuidado con el ..."
 
 #: dat/data.base:2835
 msgid "Beware the Jubjub bird, and shun"
@@ -10667,15 +10670,15 @@ msgstr ""
 
 #: dat/epitaph.txt:159
 msgid "Bloody Hell..."
-msgstr ""
+msgstr "Maldito Infierno..."
 
 #: dat/epitaph.txt:160
 msgid "Bloody barbarians!"
-msgstr ""
+msgstr "¡Malditos bárbaros!"
 
 #: dat/epitaph.txt:161
 msgid "Blown upward out of sight: He sought the leak by candlelight"
-msgstr ""
+msgstr "Voló hacia arriba fuera de vista: Buscó la fuga a la luz de una vela"
 
 #: dat/data.base:601
 msgid "Bone devils attack with weapons and with a great hooked tail"
@@ -10758,7 +10761,7 @@ msgstr ""
 
 #: dat/epitaph.txt:162
 msgid "Brains... Brains... Fresh human brains..."
-msgstr ""
+msgstr "Cerebros... Cerebros... Cerebros humanos frescos..."
 
 #: dat/data.base:4024
 msgid "Brickle called his counselors together and paid them what he"
@@ -10847,10 +10850,11 @@ msgstr ""
 #: dat/epitaph.txt:163
 msgid "Buried the cat.  Took an hour.  Damn thing kept fighting."
 msgstr ""
+"Enterré al gato.  Tardé una hora.  El maldito no dejaba de resistirse."
 
 #: dat/epitaph.txt:41
 msgid "Burninated"
-msgstr ""
+msgstr "Carbonizado"
 
 #: dat/data.base:4846
 msgid "Burns's character proved to be quite popular.  There was a"
@@ -10875,7 +10879,7 @@ msgstr ""
 
 #: dat/epitaph.txt:164
 msgid "But I disarmed the trap!"
-msgstr ""
+msgstr "¡Pero yo desactivé la trampa!"
 
 #: dat/data.base:3332
 msgid "But Snow White is a thousand times more fair.\""
@@ -11123,7 +11127,7 @@ msgstr ""
 
 #: dat/epitaph.txt:165
 msgid "CONNECT 1964 - NO CARRIER 1994"
-msgstr ""
+msgstr "CONECTADO 1964 - SIN PORTADORA 1994"
 
 #: dat/tribute:8203
 msgid "CORES, VARIOUS, or LEFTOVERS, NEED EATING UP.(1)"
@@ -11140,7 +11144,7 @@ msgstr ""
 
 #: dat/epitaph.txt:166
 msgid "Call me if you need my phone number!"
-msgstr ""
+msgstr "¡Llámame si necesitas mi número de teléfono!"
 
 #: dat/data.base:741
 msgid "Camaxtli (the Cloud Serpent), Camaxtli is the god of war.  He"
@@ -11156,35 +11160,35 @@ msgstr ""
 
 #: dat/epitaph.txt:167
 msgid "Can YOU fly?"
-msgstr ""
+msgstr "¿Puedes VOLAR?"
 
 #: dat/epitaph.txt:168
 msgid "Can you believe that thing is STILL moving?"
-msgstr ""
+msgstr "¿Puedes creer que esa cosa SIGUE moviéndose?"
 
 #: dat/epitaph.txt:169
 msgid "Can you come up with some better ending for this?"
-msgstr ""
+msgstr "¿Se te ocurre un final mejor para esto?"
 
 #: dat/epitaph.txt:170
 msgid "Can you feel anything when I do this?"
-msgstr ""
+msgstr "¿Sientes algo cuando hago esto?"
 
 #: dat/epitaph.txt:171
 msgid "Can you give me mouth to mouth, you just took my breath away."
-msgstr ""
+msgstr "¿Puedes darme el boca a boca, me has dejado sin aliento."
 
 #: dat/epitaph.txt:172
 msgid "Can't I just have a LITTLE peril?"
-msgstr ""
+msgstr "¿No puedo tener aunque sea un POCO de peligro?"
 
 #: dat/epitaph.txt:173
 msgid "Can't eat, can't sleep, had to bury the husband here."
-msgstr ""
+msgstr "No puedo comer, no puedo dormir, tuve que enterrar al marido aquí."
 
 #: dat/epitaph.txt:174
 msgid "Can't you hit me?!"
-msgstr ""
+msgstr "¿¡No puedes darme?!"
 
 #: dat/data.base:6294
 msgid "Candidate         1 to 2"
@@ -11238,7 +11242,7 @@ msgstr ""
 
 #: dat/epitaph.txt:25
 msgid "Caution! This grave contains toxic waste"
-msgstr ""
+msgstr "Precaución! Esta tumba contiene residuos tóxicos"
 
 #: dat/data.base:6220
 msgid "Caveman/Cavewoman/Cave Dweller ranks"
@@ -11262,7 +11266,7 @@ msgstr ""
 
 #: dat/epitaph.txt:175
 msgid "Chaos, panic and disorder.  My work here is done."
-msgstr ""
+msgstr "Caos, pánico y desorden.  Mi trabajo aquí está hecho."
 
 #: dat/tribute:6455
 msgid ""
@@ -11279,11 +11283,11 @@ msgstr ""
 
 #: dat/epitaph.txt:176
 msgid "Check enclosed."
-msgstr ""
+msgstr "Cheque adjunto."
 
 #: dat/epitaph.txt:177
 msgid "Check this out!  It's my brain!"
-msgstr ""
+msgstr "¡Mira esto!  ¡Es mi cerebro!"
 
 #: dat/tribute:4197
 msgid "Cheese with Chunky Pickle, I think.\""
@@ -11323,7 +11327,7 @@ msgstr ""
 
 #: dat/epitaph.txt:178
 msgid "Chivalry is only reasonably dead"
-msgstr ""
+msgstr "La caballería solo está razonablemente muerta"
 
 #: dat/history:376
 msgid "Chris Russo               Keith Simpson             Rob Menke"
@@ -11379,7 +11383,7 @@ msgstr ""
 
 #: dat/epitaph.txt:179
 msgid "Coffin for sale.  Lifetime guarantee."
-msgstr ""
+msgstr "Ataúd en venta.  Garantía de por vida."
 
 #: dat/tribute:4074
 msgid ""
@@ -11423,15 +11427,15 @@ msgstr ""
 
 #: dat/epitaph.txt:180
 msgid "Come Monday, I'll be all right."
-msgstr ""
+msgstr "El lunes que viene, estaré bien."
 
 #: dat/epitaph.txt:181
 msgid "Come and see the violence inherent in the system"
-msgstr ""
+msgstr "Ven y ve la violencia inherente al sistema"
 
 #: dat/epitaph.txt:182
 msgid "Come back here!  I'll bite your bloody knees off!"
-msgstr ""
+msgstr "¡Vuelve aquí!  ¡Te arrancaré las malditas rodillas!"
 
 #: dat/data.base:1627
 msgid "Come on!\""
@@ -11451,11 +11455,11 @@ msgstr "Comandos:"
 
 #: dat/epitaph.txt:183
 msgid "Commodore Business Machines, Inc.  Died for our sins."
-msgstr ""
+msgstr "Commodore Business Machines, Inc.  Murió por nuestros pecados."
 
 #: dat/epitaph.txt:184
 msgid "Complain to one who can help you"
-msgstr ""
+msgstr "Quéjate a alguien que pueda ayudarte"
 
 #: dat/opthelp:155
 msgid "Compound options are written as option_name:option_value."
@@ -11479,7 +11483,7 @@ msgstr ""
 
 #: dat/epitaph.txt:185
 msgid "Confess my sins to god?  Which one?"
-msgstr ""
+msgstr "¿Confesar mis pecados a dios?  ¿A cuál?"
 
 #: dat/opthelp:235
 msgid "Confirm -- when requiring \"yes\", also require \"no\" to reject;"
@@ -11487,7 +11491,7 @@ msgstr ""
 
 #: dat/epitaph.txt:42 dat/epitaph.txt:186
 msgid "Confusion will be my epitaph"
-msgstr ""
+msgstr "La confusión será mi epitafio"
 
 #: dat/data.base:6466
 msgid "Conjurer          3 to 5"
@@ -11540,7 +11544,7 @@ msgstr ""
 
 #: dat/epitaph.txt:187
 msgid "Cooties?  Ain't no cooties on me!"
-msgstr ""
+msgstr "¿Piojos?  ¡No tengo piojos!"
 
 #: dat/tribute:1691
 msgid ""
@@ -11580,27 +11584,27 @@ msgstr ""
 
 #: dat/epitaph.txt:188
 msgid "Could somebody get this noose off me?"
-msgstr ""
+msgstr "¿Podría alguien quitarme esta soga del cuello?"
 
 #: dat/epitaph.txt:189
 msgid "Could you check again?  My name MUST be there."
-msgstr ""
+msgstr "¿Podrías comprobarlo otra vez?  Mi nombre DEBE estar ahí."
 
 #: dat/epitaph.txt:190
 msgid "Could you please take a breath mint?"
-msgstr ""
+msgstr "¿Podrías tomar un mentolado para el aliento?"
 
 #: dat/epitaph.txt:191
 msgid "Couldn't I be sedated for this?"
-msgstr ""
+msgstr "¿No podría estar sedado para esto?"
 
 #: dat/epitaph.txt:192
 msgid "Courage is looking at your setbacks with serenity"
-msgstr ""
+msgstr "Coraje es mirar tus contratiempos con serenidad"
 
 #: dat/epitaph.txt:193
 msgid "Cover me, I'm going in!"
-msgstr ""
+msgstr "¡Cúbreme, que entro!"
 
 #: dat/tribute:7787
 msgid ""
@@ -11609,7 +11613,7 @@ msgstr ""
 
 #: dat/epitaph.txt:194
 msgid "Crash course in brain surgery"
-msgstr ""
+msgstr "Curso intensivo de cirugía cerebral"
 
 #: dat/tribute:5560
 msgid ""
@@ -11626,7 +11630,7 @@ msgstr ""
 
 #: dat/epitaph.txt:195
 msgid "Cross my fingers for me."
-msgstr ""
+msgstr "Cruza los dedos por mí."
 
 #: dat/tribute:3632
 msgid "Cuddy shivered."
@@ -11657,7 +11661,7 @@ msgstr ""
 
 #: dat/epitaph.txt:196
 msgid "Curse god and die"
-msgstr ""
+msgstr "Maldice a dios y muere"
 
 #: dat/data.base:1189
 msgid "Curses are longstanding ill-wishings which, in Fantasyland,"
@@ -11665,7 +11669,7 @@ msgstr ""
 
 #: dat/epitaph.txt:197
 msgid "Cut to fit"
-msgstr ""
+msgstr "Cortar a medida"
 
 #: dat/tribute:2297
 msgid ""
@@ -11847,15 +11851,15 @@ msgstr ""
 
 #: dat/epitaph.txt:198
 msgid "De'Ath"
-msgstr ""
+msgstr "De'Ath"
 
 #: dat/epitaph.txt:199
 msgid "Dead Again?  Pardon me for not getting it right the first time!"
-msgstr ""
+msgstr "¿Muerto Otra Vez?  ¡Perdón por no hacerlo bien la primera vez!"
 
 #: dat/epitaph.txt:200
 msgid "Dead and loving every moment!"
-msgstr ""
+msgstr "¡Muerto y disfrutando cada momento!"
 
 #: dat/tribute:1038
 msgid "Dead silence greeted this suggestion."
@@ -11895,6 +11899,7 @@ msgstr ""
 msgid ""
 "Dear wife of mine.  Died of a broken heart, after I took it out of her."
 msgstr ""
+"Querida esposa mía.  Murió de un corazón roto, después de que se lo sacara."
 
 #: dat/tribute:8648
 msgid ""
@@ -12179,7 +12184,7 @@ msgstr ""
 
 #: dat/epitaph.txt:43
 msgid "Do not open until Christmas"
-msgstr ""
+msgstr "No abrir hasta Navidad"
 
 #: dat/rumors.fal:54
 msgid ""
@@ -12211,7 +12216,7 @@ msgstr ""
 
 #: dat/epitaph.txt:44
 msgid "Don't be daft, they couldn't hit an elephant at this dist-"
-msgstr ""
+msgstr "No seas tonto, no podrían darle a un elefante a esta dist-"
 
 #: dat/rumors.fal:56
 msgid ""
@@ -12225,7 +12230,7 @@ msgstr ""
 
 #: dat/epitaph.txt:45
 msgid "Don't forget to stop and smell the roses"
-msgstr ""
+msgstr "No olvides detenerte a oler las rosas"
 
 #: dat/rumors.tru:44
 msgid "Don't forget!  Large dogs are MUCH harder to kill than little dogs."
@@ -12241,7 +12246,7 @@ msgstr ""
 
 #: dat/epitaph.txt:46
 msgid "Don't let this happen to you!"
-msgstr ""
+msgstr "¡No dejes que esto te pase a ti!"
 
 #: dat/rumors.tru:46
 msgid "Don't mess with shopkeepers, or you'll get the Guild after you."
@@ -12259,7 +12264,7 @@ msgstr ""
 
 #: dat/epitaph.txt:202
 msgid "Don't tread on me!"
-msgstr ""
+msgstr "¡No me pises!"
 
 #: dat/data.base:1913
 msgid "Dorothy found them all to be delicious, and she ate every bit"
@@ -12284,7 +12289,7 @@ msgstr ""
 
 #: dat/epitaph.txt:203
 msgid "Dragon? What dragon?"
-msgstr ""
+msgstr "¿Dragón?  ¿Qué dragón?"
 
 #: dat/data.base:1480
 msgid "Dragons have no masters.  The question is always the same, with"
@@ -12296,7 +12301,7 @@ msgstr ""
 
 #: dat/epitaph.txt:204
 msgid "Drawn and quartered"
-msgstr ""
+msgstr "Descuartizado"
 
 #: dat/data.base:6248
 msgid "Dresser          10 to 13"
@@ -12332,7 +12337,7 @@ msgstr "Du - soltar solo objetos no pagados (cuando estés en una tienda)."
 
 #: dat/epitaph.txt:47
 msgid "Dulce et decorum est pro patria mori"
-msgstr ""
+msgstr "Dulce et decorum est pro patria mori"
 
 #: dat/data.base:4571
 msgid "Dunedain were asleep, or were all gone into the grave?\""
@@ -12475,7 +12480,7 @@ msgstr ""
 
 #: dat/epitaph.txt:205
 msgid "Either I'm dead or my watch has stopped."
-msgstr ""
+msgstr "O estoy muerto o mi reloj se ha parado."
 
 #: dat/engrave.txt:6
 msgid "Elbereth"
@@ -12501,7 +12506,7 @@ msgstr ""
 
 #: dat/epitaph.txt:206
 msgid "Eliza -- Was I really alive, or did I just think I was?"
-msgstr ""
+msgstr "Eliza -- ¿Estaba realmente viva, o solo pensaba que lo estaba?"
 
 #: dat/data.base:5346
 msgid "Elric had heard such sounds echoing from his cousin Yyrkoon's"
@@ -12557,7 +12562,7 @@ msgstr ""
 
 #: dat/epitaph.txt:207
 msgid "Elvis"
-msgstr ""
+msgstr "Elvis"
 
 #: dat/data.base:3000
 msgid "Emanuel Frynta, and Vackav Cibula ]"
@@ -12601,7 +12606,7 @@ msgstr ""
 
 #: dat/epitaph.txt:208
 msgid "Enter not into the path of the wicked"
-msgstr ""
+msgstr "No entres en el camino de los malvados"
 
 #: dat/data.base:6489
 msgid "Equal Rites"
@@ -12641,7 +12646,7 @@ msgstr ""
 
 #: dat/epitaph.txt:209
 msgid "Eris?  I don't need Eris"
-msgstr ""
+msgstr "¿Eris?  No necesito a Eris"
 
 #: dat/data.base:1945
 msgid "Erotas, bade the Naiad fall,"
@@ -12663,11 +12668,11 @@ msgstr ""
 
 #: dat/epitaph.txt:48
 msgid "Et in Arcadia ego"
-msgstr ""
+msgstr "Et in Arcadia ego"
 
 #: dat/epitaph.txt:210
 msgid "Eternal Damnation, Come and stay a long while!"
-msgstr ""
+msgstr "Condenación Eterna, ¡Ven y quédate un buen rato!"
 
 #: dat/data.base:1746
 msgid "Eternal rulers, terrible and strong,"
@@ -12679,11 +12684,11 @@ msgstr ""
 
 #: dat/epitaph.txt:211
 msgid "Even The Dead pay taxes (and they aren't Grateful)."
-msgstr ""
+msgstr "Hasta los Muertos pagan impuestos (y no están Agradecidos)."
 
 #: dat/epitaph.txt:212
 msgid "Even a tomb stone will say good things when you're down!"
-msgstr ""
+msgstr "¡Hasta una lápida dirá cosas buenas cuando estés abajo!"
 
 #: dat/rumors.tru:59
 msgid "Even evil players have a guardian angel."
@@ -12739,7 +12744,7 @@ msgstr ""
 
 #: dat/epitaph.txt:213
 msgid "Ever notice that live is evil backwards?"
-msgstr ""
+msgstr "¿Has notado que 'live' al revés es 'evil'?"
 
 #: dat/data.base:5431
 msgid "Ever put on; a miserable crowd,"
@@ -12783,11 +12788,11 @@ msgstr ""
 
 #: dat/epitaph.txt:214
 msgid "Every day is starting to look like Monday"
-msgstr ""
+msgstr "Cada día empieza a parecerse al lunes"
 
 #: dat/epitaph.txt:215
 msgid "Every day, in every way, I am getting better and better."
-msgstr ""
+msgstr "Cada día, de todas las formas, estoy mejor y mejor."
 
 #: dat/tribute:3026
 msgid "Every month the abbot and two senior monks go into the cave where the"
@@ -12799,7 +12804,7 @@ msgstr ""
 
 #: dat/epitaph.txt:216
 msgid "Every survival kit should include a sense of humor"
-msgstr ""
+msgstr "Todo kit de supervivencia debería incluir sentido del humor"
 
 #: dat/tribute:4619
 msgid ""
@@ -12845,7 +12850,7 @@ msgstr ""
 
 #: dat/epitaph.txt:217
 msgid "Evil I did dwell;  lewd did I live"
-msgstr ""
+msgstr "Viví en el mal;  viví obscenamente"
 
 #: dat/data.base:6465
 msgid "Evoker            1 to 2"
@@ -12857,7 +12862,7 @@ msgstr ""
 
 #: dat/epitaph.txt:218
 msgid "Ex post fucto"
-msgstr ""
+msgstr "Ex post fucto"
 
 #: dat/data.base:6177
 msgid "Excavator        14 to 17"
@@ -12865,7 +12870,7 @@ msgstr ""
 
 #: dat/epitaph.txt:219
 msgid "Excellent day to have a rotten day."
-msgstr ""
+msgstr "Excelente día para tener un día pésimo."
 
 #: dat/data.base:6416
 msgid "Excursionist      6 to 9"
@@ -12873,7 +12878,7 @@ msgstr ""
 
 #: dat/epitaph.txt:220
 msgid "Excuse me for not standing up."
-msgstr ""
+msgstr "Disculpa que no me levante."
 
 #: dat/data.base:6176
 msgid "Exhumer          10 to 13"
@@ -12885,7 +12890,7 @@ msgstr ""
 
 #: dat/epitaph.txt:221
 msgid "Experience isn't everything.  First, you've got to survive."
-msgstr ""
+msgstr "La experiencia no lo es todo.  Primero, tienes que sobrevivir."
 
 #: dat/data.base:6422
 msgid "Explorer         26 to 29"
@@ -12965,6 +12970,8 @@ msgid ""
 "Fatty and skinny went to bed.  Fatty rolled over and skinny was dead.  "
 "Skinny Smith 1983-2000."
 msgstr ""
+"Gordo y flaco se fueron a la cama.  Gordo se dio la vuelta y flaco estaba "
+"muerto.  Flaco Smith 1983-2000."
 
 #: dat/data.base:606
 msgid "Faustus: Come on Mephistopheles.  What shall we do?"
@@ -13018,7 +13025,7 @@ msgstr ""
 
 #: dat/epitaph.txt:50
 msgid "Finally I am becoming stupider no more"
-msgstr ""
+msgstr "Por fin ya no me estoy volviendo más estúpido"
 
 #: dat/tribute:8301
 msgid ""
@@ -13031,7 +13038,7 @@ msgstr ""
 
 #: dat/epitaph.txt:222
 msgid "First shalt thou pull out the Holy Pin"
-msgstr ""
+msgstr "Primero sacarás el Santo Pasador"
 
 #: dat/tribute:2516
 msgid "Five exclamation marks, the sure sign of an insane mind."
@@ -13071,7 +13078,7 @@ msgstr ""
 
 #: dat/epitaph.txt:51
 msgid "Follow me to hell"
-msgstr ""
+msgstr "Sígueme al infierno"
 
 #: dat/data.base:6367
 msgid "Footpad           1 to 2"
@@ -13083,7 +13090,7 @@ msgstr ""
 
 #: dat/epitaph.txt:223
 msgid "For a Breath, I Tarry..."
-msgstr ""
+msgstr "Por un Respiro, Me Demoro..."
 
 #: dat/data.base:3902
 msgid "For a charm of powerful trouble,"
@@ -13124,15 +13131,15 @@ msgstr ""
 
 #: dat/epitaph.txt:224
 msgid "For recreational use only."
-msgstr ""
+msgstr "Solo para uso recreativo."
 
 #: dat/epitaph.txt:225
 msgid "For sale: One soul, slightly used.  Asking for 3 wishes."
-msgstr ""
+msgstr "Se vende: Un alma, ligeramente usada.  Pido 3 deseos."
 
 #: dat/epitaph.txt:226
 msgid "For some moments in life, there are no words."
-msgstr ""
+msgstr "Para algunos momentos de la vida, no hay palabras."
 
 #: dat/tribute:7725
 msgid "For some reason, he thought Ankh-Morpork would be pleased about this."
@@ -13189,11 +13196,11 @@ msgstr ""
 
 #: dat/epitaph.txt:227
 msgid "Forget Disney World, I'm going to Hell!"
-msgstr ""
+msgstr "Olvida Disney World, ¡me voy al Infierno!"
 
 #: dat/epitaph.txt:228
 msgid "Forget about the dog, Beware of my wife."
-msgstr ""
+msgstr "Olvídate del perro, Cuidado con mi esposa."
 
 #: dat/data.base:2700
 msgid "Forgive me"
@@ -13293,7 +13300,7 @@ msgstr ""
 
 #: dat/epitaph.txt:229
 msgid "Funeral - Real fun."
-msgstr ""
+msgstr "Funeral - Diversión de verdad."
 
 #: dat/data.base:1964
 msgid "Fungi, division of simple plants that lack chlorophyll, true"
@@ -13973,7 +13980,7 @@ msgstr ""
 
 #: dat/epitaph.txt:53
 msgid "Game over, man.  Game over."
-msgstr ""
+msgstr "Se acabó el juego, tío.  Se acabó."
 
 #: dat/tribute:154
 msgid "Game.  Chance had been an early casualty, running her hero into a full"
@@ -13985,7 +13992,7 @@ msgstr ""
 
 #: dat/epitaph.txt:230
 msgid "Gawd, it's depressing in here, isn't it?"
-msgstr ""
+msgstr "Dios, es deprimente aquí dentro, ¿verdad?"
 
 #: dat/oracles.txt:82
 msgid "Gehennom.  Thou needs must have the aid of three magical items.  The"
@@ -14001,11 +14008,11 @@ msgstr ""
 
 #: dat/epitaph.txt:231
 msgid "Genuine Exploding Gravestone.  (c)Acme Gravestones Inc."
-msgstr ""
+msgstr "Auténtica Lápida Explosiva.  (c)Acme Lápidas Inc."
 
 #: dat/epitaph.txt:232
 msgid "Get back here!  I'm not finished yet..."
-msgstr ""
+msgstr "¡Vuelve aquí!  Aún no he terminado..."
 
 #: dat/data.base:128
 msgid "Get thee hence, nor come again,"
@@ -14043,23 +14050,24 @@ msgstr ""
 
 #: dat/epitaph.txt:57
 msgid "Go Team Ant!"
-msgstr ""
+msgstr "¡Vamos Hormiga!"
 
 #: dat/epitaph.txt:233
 msgid "Go ahead, I dare you to!"
-msgstr ""
+msgstr "Adelante, ¡a que te atreves!"
 
 #: dat/epitaph.txt:234
 msgid "Go ahead, it's either you or him."
-msgstr ""
+msgstr "Adelante, o tú o él."
 
 #: dat/epitaph.txt:35
 msgid "Go away!"
-msgstr ""
+msgstr "¡Vete!"
 
 #: dat/epitaph.txt:54
 msgid "Go away!  I'm trying to take a nap in here!  Bloody adventurers..."
 msgstr ""
+"¡Vete!  Estoy intentando dormir la siesta aquí.  Malditos aventureros..."
 
 #: dat/engrave.txt:63
 msgid "Go left --->"
@@ -14099,27 +14107,27 @@ msgstr ""
 
 #: dat/epitaph.txt:235
 msgid "Goldilocks -- This casket is just right"
-msgstr ""
+msgstr "Goldilocks -- This casket is just right"
 
 #: dat/epitaph.txt:236
 msgid "Gone But Not Forgotten"
-msgstr ""
+msgstr "Se fue pero no olvidado"
 
 #: dat/epitaph.txt:237
 msgid "Gone Underground For Good"
-msgstr ""
+msgstr "Ido al Subsuelo para Siempre"
 
 #: dat/epitaph.txt:238
 msgid "Gone away owin' more than he could pay."
-msgstr ""
+msgstr "Se fue debiendo más de lo que podía pagar."
 
 #: dat/epitaph.txt:55
 msgid "Gone fishin'"
-msgstr ""
+msgstr "Fui a pescar"
 
 #: dat/epitaph.txt:239
 msgid "Gone, but not forgiven"
-msgstr ""
+msgstr "Se fue, pero no perdonado"
 
 #: dat/rumors.fal:78
 msgid "Good day for overcoming obstacles.  Try a steeplechase."
@@ -14128,10 +14136,11 @@ msgstr ""
 #: dat/epitaph.txt:56
 msgid "Good night, sweet prince: And flights of angels sing thee to thy rest!"
 msgstr ""
+"Buenas noches, dulce príncipe: ¡Y vuelos de ángeles te canten a tu descanso!"
 
 #: dat/epitaph.txt:240
 msgid "Got a life.  Didn't know what to do with it."
-msgstr ""
+msgstr "Conseguí una vida.  No supe qué hacer con ella."
 
 #: dat/rumors.tru:75
 msgid "Got a question?  Try rec.games.roguelike.nethack."
@@ -14184,7 +14193,7 @@ msgstr ""
 
 #: dat/epitaph.txt:241
 msgid "Grave?  But I was cremated!"
-msgstr ""
+msgstr "¿Tumba?  ¡Pero si me incineraron!"
 
 #: dat/tribute:7342
 msgid ""
@@ -14231,7 +14240,7 @@ msgstr ""
 
 #: dat/epitaph.txt:242
 msgid "Greetings from Hell - Wish you were here."
-msgstr ""
+msgstr "Saludos desde el Infierno - Ojalá estuvieras aquí."
 
 #: dat/history:396
 msgid "Greg Laskin               Michael Allison           Timo Hakulinen"
@@ -14284,7 +14293,7 @@ msgstr ""
 
 #: dat/epitaph.txt:243
 msgid "HELP! It's dark in here....  Oh, my eyes are closed - sorry"
-msgstr ""
+msgstr "¡AYUDA! Está oscuro aquí....  Ay, tengo los ojos cerrados - lo siento"
 
 #: dat/tribute:4282
 msgid "HOWEVER ... YOU UNDERSTAND THAT TO WIN ALL YOU MUST GAMBLE ALL?"
@@ -14297,7 +14306,7 @@ msgstr ""
 
 #: dat/epitaph.txt:244
 msgid "Ha! I NEVER pay income tax!"
-msgstr ""
+msgstr "¡Ja! ¡Nunca pago impuestos!"
 
 #: dat/data.base:2292
 msgid "Hachi was a dog that went with his master, a professor, to"
@@ -14404,15 +14413,15 @@ msgstr ""
 
 #: dat/epitaph.txt:245
 msgid "Have you come to raise the dead?"
-msgstr ""
+msgstr "¿Has venido a resucitar a los muertos?"
 
 #: dat/epitaph.txt:246
 msgid "Having a good time can be deadly."
-msgstr ""
+msgstr "Pasarlo bien puede ser mortal."
 
 #: dat/epitaph.txt:247
 msgid "Having a great time.  Where am I exactly??"
-msgstr ""
+msgstr "Lo estoy pasando genial.  ¿Dónde estoy exactamente??"
 
 #: dat/tribute:7720
 msgid ""
@@ -14421,7 +14430,7 @@ msgstr ""
 
 #: dat/epitaph.txt:31
 msgid "He always lied while on the earth and now he's lying in it"
-msgstr ""
+msgstr "Siempre mintió en la tierra y ahora yace en ella"
 
 #: dat/data.base:174
 msgid "He answered and said unto them, he that soweth the good seed"
@@ -14483,11 +14492,11 @@ msgstr ""
 
 #: dat/epitaph.txt:248
 msgid "He died of the flux."
-msgstr ""
+msgstr "Murió de disentería."
 
 #: dat/epitaph.txt:249
 msgid "He died today....  May we rest in peace!"
-msgstr ""
+msgstr "Murió hoy....  ¡Que descansemos en paz!"
 
 #: dat/tribute:6500
 msgid ""
@@ -14512,11 +14521,11 @@ msgstr ""
 
 #: dat/epitaph.txt:58
 msgid "He farmed his way here"
-msgstr ""
+msgstr "Granjeó su camino hasta aquí"
 
 #: dat/epitaph.txt:250
 msgid "He got the upside, I got the downside."
-msgstr ""
+msgstr "Él se quedó lo de arriba, yo me quedé lo de abajo."
 
 #: dat/tribute:5616
 msgid "He grasped the handles of the bent stovepipe and swiveled it around."
@@ -14626,11 +14635,11 @@ msgstr ""
 
 #: dat/epitaph.txt:251
 msgid "He lost his face when he was beheaded."
-msgstr ""
+msgstr "Perdió la cara cuando lo decapitaron."
 
 #: dat/epitaph.txt:252
 msgid "He missed me first."
-msgstr ""
+msgstr "Él falló primero."
 
 #: dat/tribute:5294
 msgid ""
@@ -14756,7 +14765,7 @@ msgstr ""
 
 #: dat/epitaph.txt:66
 msgid "He waited too long"
-msgstr ""
+msgstr "Esperó demasiado"
 
 #: dat/tribute:4919
 msgid "He waited.  He was not, unfortunately, disappointed."
@@ -14864,7 +14873,7 @@ msgstr ""
 
 #: dat/epitaph.txt:253
 msgid "He's not dead, he just smells that way."
-msgstr ""
+msgstr "No está muerto, solo huele así."
 
 #: dat/history:55
 msgid ""
@@ -14893,11 +14902,11 @@ msgstr "¡Hola, mundo!"
 
 #: dat/epitaph.txt:254
 msgid "Help! I've fallen and I can't get up!"
-msgstr ""
+msgstr "¡Ayuda! ¡Me he caído y no puedo levantarme!"
 
 #: dat/epitaph.txt:255
 msgid "Help, I can't wake up!"
-msgstr ""
+msgstr "¡Ayuda, no puedo despertarme!"
 
 #: dat/tribute:3426
 msgid "Her eye was drawn by some kind of horrible magic back to the room's"
@@ -14930,63 +14939,68 @@ msgstr ""
 
 #: dat/epitaph.txt:60
 msgid "Here lies Bob - decided to try an acid blob"
-msgstr ""
+msgstr "Aquí yace Bob - decidió probar un ácido"
 
 #: dat/epitaph.txt:61
 msgid "Here lies Dudley, killed by another %&#@#& newt."
-msgstr ""
+msgstr "Aquí yace Dudley, muerto por otro %&#@#& tritón."
 
 #: dat/epitaph.txt:28
 msgid "Here lies Ezekiel, age 102.  The good die young."
-msgstr ""
+msgstr "Aquí yace Ezequiel, 102 años.  Los buenos mueren jóvenes."
 
 #: dat/epitaph.txt:62
 msgid "Here lies Gregg, choked on an egg"
-msgstr ""
+msgstr "Aquí yace Gregg, atragantado con un huevo"
 
 #: dat/epitaph.txt:30
 msgid "Here lies Johnny Yeast.  Pardon me for not rising."
-msgstr ""
+msgstr "Aquí yace Juan Levadura.  Perdón por no levantarme."
 
 #: dat/epitaph.txt:63
 msgid "Here lies Lies.  It's True."
-msgstr ""
+msgstr "Aquí yace Mentiras.  Es Verdad."
 
 #: dat/epitaph.txt:256
 msgid "Here lies Pinocchio"
-msgstr ""
+msgstr "Here lies Pinocchio"
 
 #: dat/epitaph.txt:64
 msgid "Here lies The Lady's maid, died of a Vorpal Blade"
-msgstr ""
+msgstr "Aquí yace la criada de la Dama, muerta por una Hoja Vorpal"
 
 #: dat/epitaph.txt:59
 msgid "Here lies a programmer.  Killed by a fatal error."
-msgstr ""
+msgstr "Aquí yace un programador.  Muerto por un error fatal."
 
 #: dat/epitaph.txt:27
 msgid "Here lies an Atheist, all dressed up and no place to go"
-msgstr ""
+msgstr "Aquí yace un Ateo, todo vestido y sin sitio al que ir"
 
 #: dat/epitaph.txt:29
 msgid "Here lies my wife: Here let her lie! Now she's at rest and so am I."
 msgstr ""
+"Aquí yace mi esposa: ¡Aquí que yazga! Ahora ella descansa, y yo también."
 
 #: dat/epitaph.txt:257
 msgid "Here lies the body of John Round.  Lost at sea and never found."
 msgstr ""
+"Aquí yace el cuerpo de Juan Redondo.  Perdido en el mar y nunca encontrado."
 
 #: dat/epitaph.txt:34
 msgid ""
 "Here lies the body of Jonathan Blake.  Stepped on the gas instead of the "
 "brake."
 msgstr ""
+"Aquí yace el cuerpo de Juan Blanco.  Pisó el acelerador en vez del freno."
 
 #: dat/epitaph.txt:65
 msgid ""
 "Here lies the left foot of Jack, killed by a land mine.  Let us know if you "
 "find any more of him"
 msgstr ""
+"Aquí yace el pie izquierdo de Jack, muerto por una mina terrestre.  Avísanos"
+" si encuentras más de él"
 
 #: dat/data.base:3020
 msgid "Here lies the noble fearless knight,"
@@ -14994,7 +15008,7 @@ msgstr ""
 
 #: dat/epitaph.txt:258
 msgid "Here there be dragons"
-msgstr ""
+msgstr "Aquí hay dragones"
 
 #: dat/data.base:1317
 msgid "Here was a sight to beat all: a man in the prime of life rambling"
@@ -15018,7 +15032,7 @@ msgstr ""
 
 #: dat/epitaph.txt:259
 msgid "Hey, I didn't write this stuff!"
-msgstr ""
+msgstr "¡Oye, yo no escribí esto!"
 
 #: dat/tribute:3644
 msgid ""
@@ -15130,7 +15144,7 @@ msgstr ""
 
 #: dat/epitaph.txt:260
 msgid "Hodie mihi, cras tibi"
-msgstr ""
+msgstr "Hodie mihi, cras tibi"
 
 #: dat/data.base:6506
 msgid "Hogfather"
@@ -15150,7 +15164,7 @@ msgstr ""
 
 #: dat/epitaph.txt:261
 msgid "Hold my calls"
-msgstr ""
+msgstr "Retén mis llamadas"
 
 #: dat/data.base:1738
 msgid "Holy and pure, from Zeus Khthonios born"
@@ -15162,7 +15176,7 @@ msgstr ""
 
 #: dat/epitaph.txt:262
 msgid "Home Sweet Hell"
-msgstr ""
+msgstr "Hogar, dulce Infierno"
 
 #: dat/data.base:3933
 msgid "Hong Kong."
@@ -15258,7 +15272,7 @@ msgstr ""
 
 #: dat/epitaph.txt:263
 msgid "Humpty Dumpty, a Bad Egg.  He was pushed off the wall."
-msgstr ""
+msgstr "Humpty Dumpty, un Huevo Malo.  Lo empujaron del muro."
 
 #: dat/rumors.tru:82
 msgid "Hunger is a confusing experience for a dog!"
@@ -15344,7 +15358,7 @@ msgstr ""
 
 #: dat/epitaph.txt:264
 msgid "I KNEW this would happen if I lived long enough."
-msgstr ""
+msgstr "SABÍA que esto pasaría si vivía lo suficiente."
 
 #: dat/tribute:9919
 msgid "I KNOW WHEN EVERYONE'S HAD ENOUGH."
@@ -15384,7 +15398,7 @@ msgstr ""
 
 #: dat/epitaph.txt:265
 msgid "I TOLD you I was sick!"
-msgstr ""
+msgstr "¡TE DIJE que estaba enfermo!"
 
 #: dat/tribute:998
 msgid ""
@@ -15393,7 +15407,7 @@ msgstr ""
 
 #: dat/epitaph.txt:266
 msgid "I ain't broke but I am badly bent."
-msgstr ""
+msgstr "No estoy roto pero estoy muy doblado."
 
 #: dat/tribute:5887
 msgid "I ain't got time to get it done properly,\" he said, \"so don't be cheeky.\""
@@ -15401,15 +15415,15 @@ msgstr ""
 
 #: dat/epitaph.txt:267
 msgid "I ain't old.  I'm chronologically advantaged."
-msgstr ""
+msgstr "No soy viejo.  Estoy cronológicamente aventajado."
 
 #: dat/epitaph.txt:268
 msgid "I am NOT a vampire.  I just like to bite..nibble, really!"
-msgstr ""
+msgstr "NO soy un vampiro.  Solo me gusta morder... mordisquear, ¡de verdad!"
 
 #: dat/epitaph.txt:269
 msgid "I am here.  Wish you were fine."
-msgstr ""
+msgstr "Estoy aquí.  Ojalá estuvieras bien."
 
 #: dat/data.base:4437
 msgid "I am not a number!  I am a free man!"
@@ -15417,7 +15431,7 @@ msgstr ""
 
 #: dat/epitaph.txt:270
 msgid "I am not dead yet, but watch for further reports."
-msgstr ""
+msgstr "No estoy muerto aún, pero espera nuevos informes."
 
 #: dat/data.base:4894
 msgid "I am the captain of my soul."
@@ -15429,7 +15443,7 @@ msgstr ""
 
 #: dat/epitaph.txt:271
 msgid "I believe them bones are me."
-msgstr ""
+msgstr "Creo que esos huesos son míos."
 
 #: dat/data.base:4465
 msgid "I bolted. But it was no cockatrice! I felt a sudden intense"
@@ -15441,19 +15455,19 @@ msgstr ""
 
 #: dat/epitaph.txt:272
 msgid "I broke his brain."
-msgstr ""
+msgstr "Le rompí el cerebro."
 
 #: dat/epitaph.txt:273
 msgid "I can feel it.  My mind.  It's going.  I can feel it."
-msgstr ""
+msgstr "Puedo sentirlo.  Mi mente.  Se va.  Puedo sentirlo."
 
 #: dat/epitaph.txt:274
 msgid "I can't go to Hell.  They're afraid I'm gonna take over!"
-msgstr ""
+msgstr "No puedo ir al Infierno.  ¡Temen que me apodere del lugar!"
 
 #: dat/epitaph.txt:275
 msgid "I can't go to hell, they don't want me."
-msgstr ""
+msgstr "No puedo ir al infierno, no me quieren."
 
 #: dat/data.base:4904
 msgid "I caught a finger: but the downward weight"
@@ -15474,11 +15488,11 @@ msgstr ""
 
 #: dat/epitaph.txt:276
 msgid "I didn't believe in reincarnation the last time, either."
-msgstr ""
+msgstr "Tampoco creía en la reencarnación la última vez."
 
 #: dat/epitaph.txt:277
 msgid "I didn't mean it when I said 'Bite me'"
-msgstr ""
+msgstr "No lo decía en serio cuando dije 'Muérdeme'"
 
 #: dat/tribute:5003
 msgid "I didn't used to know.  It's amazing what you /do/ end up knowing, I"
@@ -15486,11 +15500,11 @@ msgstr ""
 
 #: dat/epitaph.txt:278
 msgid "I died laughing"
-msgstr ""
+msgstr "Me morí de risa"
 
 #: dat/epitaph.txt:279
 msgid "I disbelieved in reincarnation in my last life, too."
-msgstr ""
+msgstr "Tampoco creía en la reencarnación en mi vida anterior."
 
 #: dat/data.base:2902
 msgid "I do not care to share the seas"
@@ -15539,7 +15553,7 @@ msgstr ""
 
 #: dat/epitaph.txt:280
 msgid "I hacked myself to death"
-msgstr ""
+msgstr "Me hackeé hasta morir"
 
 #: dat/data.base:2967
 msgid "I had studied on the _Nautilus_ -- but the fresh, living"
@@ -15547,7 +15561,7 @@ msgstr ""
 
 #: dat/epitaph.txt:281
 msgid "I have all the time in the world"
-msgstr ""
+msgstr "Tengo todo el tiempo del mundo"
 
 #: dat/data.base:2690
 msgid "I have eaten"
@@ -15555,7 +15569,7 @@ msgstr ""
 
 #: dat/epitaph.txt:283
 msgid "I have reached Mine's End"
-msgstr ""
+msgstr "He llegado al Fin de la Mina"
 
 #: dat/data.base:1246
 msgid "I have thee not, and yet I see thee still."
@@ -15571,7 +15585,7 @@ msgstr ""
 
 #: dat/epitaph.txt:284
 msgid "I knew I'd find a use for this gravestone!"
-msgstr ""
+msgstr "¡Sabía que encontraría un uso para esta lápida!"
 
 #: dat/data.base:5575
 msgid "I knew my Erik too well to feel at all comfortable on jumping"
@@ -15579,27 +15593,27 @@ msgstr ""
 
 #: dat/epitaph.txt:285
 msgid "I know my mind.  And it's around here someplace."
-msgstr ""
+msgstr "Conozco mi mente.  Y está por aquí en algún sitio."
 
 #: dat/epitaph.txt:286
 msgid "I lied!  I'll never be alright!"
-msgstr ""
+msgstr "¡Mentí!  ¡Nunca estaré bien!"
 
 #: dat/epitaph.txt:287
 msgid "I like it better in the dark."
-msgstr ""
+msgstr "Prefiero la oscuridad."
 
 #: dat/epitaph.txt:288
 msgid "I like to be here when I can."
-msgstr ""
+msgstr "Me gusta estar aquí cuando puedo."
 
 #: dat/epitaph.txt:32
 msgid "I made an ash of myself"
-msgstr ""
+msgstr "Hice cenizas de mí mismo"
 
 #: dat/epitaph.txt:289
 msgid "I may rise but I refuse to shine."
-msgstr ""
+msgstr "Puedo levantarme pero me niego a brillar."
 
 #: dat/data.base:1693
 msgid "I must enquire.'"
@@ -15607,7 +15621,7 @@ msgstr ""
 
 #: dat/epitaph.txt:290
 msgid "I never get any either."
-msgstr ""
+msgstr "Yo tampoco recibo ninguno."
 
 #: dat/data.base:2957
 msgid "I noticed that all the plants were attached to the soil by"
@@ -15635,7 +15649,7 @@ msgstr ""
 
 #: dat/epitaph.txt:291
 msgid "I said hit HIM with the fireball, not me!"
-msgstr ""
+msgstr "¡Dije que le lanzaras la bola de fuego a ÉL, no a mí!"
 
 #: dat/data.base:1226
 msgid "I said to him, in a tone as sweet as honey:"
@@ -15691,11 +15705,11 @@ msgstr ""
 
 #: dat/epitaph.txt:292
 msgid "I told you I would never say goodbye."
-msgstr ""
+msgstr "Te dije que nunca me despediría."
 
 #: dat/epitaph.txt:70
 msgid "I took both pills!"
-msgstr ""
+msgstr "¡Me tomé las dos pastillas!"
 
 #: dat/tribute:1708
 msgid "I trust I do not have to spell it out for you.  I mean, it was a bit"
@@ -15707,11 +15721,12 @@ msgstr ""
 
 #: dat/epitaph.txt:293
 msgid "I used to be amusing.  Now I'm just disgusting."
-msgstr ""
+msgstr "Antes era divertido.  Ahora solo doy asco."
 
 #: dat/epitaph.txt:294
 msgid "I used up all my sick days, so now I'm calling in dead."
 msgstr ""
+"Gasté todos mis días de enfermedad, así que ahora aviso que estoy muerto."
 
 #: dat/data.base:994
 msgid "I wandered lonely as a cloud"
@@ -15723,11 +15738,11 @@ msgstr ""
 
 #: dat/epitaph.txt:295
 msgid "I was killed by <illegible scrawl>"
-msgstr ""
+msgstr "Fui asesinado por <garabato ilegible>"
 
 #: dat/epitaph.txt:296
 msgid "I was somebody.  Who, is no business of yours."
-msgstr ""
+msgstr "Fui alguien.  Quién, no es asunto tuyo."
 
 #: dat/tribute:6401
 msgid "I was waiting, it occurred to me that seeking perplexity might be more"
@@ -15739,11 +15754,11 @@ msgstr ""
 
 #: dat/epitaph.txt:297
 msgid "I will not go quietly."
-msgstr ""
+msgstr "No me iré tranquilamente."
 
 #: dat/epitaph.txt:71
 msgid "I will survive!"
-msgstr ""
+msgstr "¡Sobreviviré!"
 
 #: dat/rumors.tru:85
 msgid "I wish I never wished a wand of wishing.  (Wishful thinking.)"
@@ -15767,7 +15782,7 @@ msgstr ""
 
 #: dat/epitaph.txt:298
 msgid "I'd give you a piece of my mind... but I can't find it."
-msgstr ""
+msgstr "Te daría un pedazo de mi mente... pero no lo encuentro."
 
 #: dat/data.base:593
 msgid "I'd planned how to prevent the lock from sealing behind me; it"
@@ -15775,19 +15790,19 @@ msgstr ""
 
 #: dat/epitaph.txt:299
 msgid "I'd rather be breathing"
-msgstr ""
+msgstr "Prefiero estar respirando"
 
 #: dat/epitaph.txt:67
 msgid "I'd rather be sailing"
-msgstr ""
+msgstr "Prefiero estar navegando"
 
 #: dat/epitaph.txt:300
 msgid "I'll be back!"
-msgstr ""
+msgstr "I'll be back!"
 
 #: dat/epitaph.txt:301
 msgid "I'll be mellow when I'm dead.  For now, let's PARTY!"
-msgstr ""
+msgstr "Seré tranquilo cuando esté muerto.  Por ahora, ¡a FIESTAR!"
 
 #: dat/tribute:7989
 msgid "I'll just kill him and join you for the pudding...\""
@@ -15803,25 +15818,25 @@ msgstr ""
 
 #: dat/epitaph.txt:302
 msgid "I'm doing this only for tax purposes."
-msgstr ""
+msgstr "Hago esto solo por razones fiscales."
 
 #: dat/epitaph.txt:69
 msgid "I'm gonna make it!"
-msgstr ""
+msgstr "¡Voy a lograrlo!"
 
 #: dat/epitaph.txt:303
 msgid "I'm not afraid of Death!  What's he gonna do? Kill me?"
-msgstr ""
+msgstr "¡No le tengo miedo a la Muerte!  ¿Qué va a hacer? ¿Matarme?"
 
 #: dat/epitaph.txt:304
 msgid ""
 "I'm not getting enough money, so I'm not going to engrave anything useful "
 "here."
-msgstr ""
+msgstr "No me pagan lo suficiente, así que no voy a grabar nada útil aquí."
 
 #: dat/epitaph.txt:305
 msgid "I'm not saying anything."
-msgstr ""
+msgstr "No voy a decir nada."
 
 #: dat/tribute:8177
 msgid "I'm probably a spoon.  Well I'm going to be Vimes, and Vimes reads"
@@ -15837,7 +15852,7 @@ msgstr ""
 
 #: dat/epitaph.txt:306
 msgid "I'm weeth stupeed --->"
-msgstr ""
+msgstr "Estoy como tonto --->"
 
 #: dat/tribute:5115
 msgid ""
@@ -15935,6 +15950,8 @@ msgstr ""
 #: dat/epitaph.txt:68
 msgid "If a man's deeds do not outlive him, of what value is a mark in stone?"
 msgstr ""
+"Si los hechos de un hombre no le sobreviven, ¿qué valor tiene una marca en "
+"piedra?"
 
 #: dat/tribute:4797
 msgid ""
@@ -16067,7 +16084,7 @@ msgstr ""
 
 #: dat/epitaph.txt:307
 msgid "If you thought you had problems..."
-msgstr ""
+msgstr "Si creías que tenías problemas..."
 
 #: dat/rumors.fal:90
 msgid ""
@@ -16112,11 +16129,11 @@ msgstr ""
 
 #: dat/epitaph.txt:308
 msgid "Ignorance kills daily."
-msgstr ""
+msgstr "La ignorancia mata a diario."
 
 #: dat/epitaph.txt:309
 msgid "Ignore me... I'm just here for my looks!"
-msgstr ""
+msgstr "Ignórame... ¡Solo estoy aquí por mi buena planta!"
 
 #: dat/tribute:6527
 msgid ""
@@ -16146,7 +16163,7 @@ msgstr ""
 
 #: dat/epitaph.txt:310
 msgid "Ilene Toofar -- Fell off a cliff"
-msgstr ""
+msgstr "Elena Lejos -- Se cayó de un acantilado"
 
 #: dat/data.base:793
 msgid "Imagine a sealed container, so perfectly constructed that no"
@@ -16410,11 +16427,11 @@ msgstr ""
 
 #: dat/epitaph.txt:311
 msgid "Is that all?"
-msgstr ""
+msgstr "¿Eso es todo?"
 
 #: dat/epitaph.txt:312
 msgid "Is there life before Death?"
-msgstr ""
+msgstr "¿Hay vida antes de la Muerte?"
 
 #: dat/data.base:1244
 msgid "Is this a dagger which I see before me,"
@@ -16422,7 +16439,7 @@ msgstr ""
 
 #: dat/epitaph.txt:313
 msgid "Is this a joke, or a grave matter?"
-msgstr ""
+msgstr "¿Esto es una broma, o es un asunto grave?"
 
 #: dat/data.base:2790
 msgid "Ishtar (the star of heaven) is the Mesopotamian goddess of"
@@ -16470,7 +16487,7 @@ msgstr ""
 
 #: dat/epitaph.txt:314
 msgid "It happens sometimes.  People just explode."
-msgstr ""
+msgstr "A veces pasa.  La gente simplemente explota."
 
 #: dat/tribute:21
 msgid ""
@@ -16623,7 +16640,7 @@ msgstr ""
 
 #: dat/epitaph.txt:315
 msgid "It must be Thursday.  I never could get the hang of Thursdays."
-msgstr ""
+msgstr "Debe ser jueves.  Nunca le pillé el truco a los jueves."
 
 #: dat/data.base:2235
 msgid "It raged through the dark streets, smashing everything in its"
@@ -16802,11 +16819,11 @@ msgstr ""
 
 #: dat/epitaph.txt:316
 msgid "It wasn't a fair fight"
-msgstr ""
+msgstr "No fue una lucha justa"
 
 #: dat/epitaph.txt:317
 msgid "It wasn't so easy."
-msgstr ""
+msgstr "No fue tan fácil."
 
 #: dat/tribute:4354
 msgid "It wasn't so much the personality, it was the \"but\" people always added"
@@ -16842,7 +16859,7 @@ msgstr ""
 
 #: dat/epitaph.txt:318
 msgid "It's Loot, Pillage and THEN Burn..."
-msgstr ""
+msgstr "Primero Saquear, Pillar y LUEGO Quemar..."
 
 #: dat/rumors.tru:105
 msgid "It's a 'd' eats 'd' world."
@@ -17041,7 +17058,7 @@ msgstr ""
 
 #: dat/epitaph.txt:319
 msgid "Just doing my job here"
-msgstr ""
+msgstr "Solo haciendo mi trabajo aquí"
 
 #: dat/data.base:1429
 msgid "Justice the founder of my fabric mov'd:"
@@ -17155,11 +17172,11 @@ msgstr ""
 
 #: dat/epitaph.txt:72
 msgid "Killed by a black dragon -- This grave is empty"
-msgstr ""
+msgstr "Muerto por un dragón negro -- Esta tumba está vacía"
 
 #: dat/epitaph.txt:320
 msgid "Killed by diarrhea of mouth and constipation of brain."
-msgstr ""
+msgstr "Muerto por diarrea de boca y estreñimiento de cerebro."
 
 #: dat/rumors.fal:101
 msgid "Killer bees keep appearing till you kill their queen."
@@ -17338,7 +17355,7 @@ msgstr ""
 
 #: dat/epitaph.txt:321
 msgid "Let her RIP"
-msgstr ""
+msgstr "Dejadla en paz"
 
 #: dat/data.base:1943
 msgid "Let him drink, and onward hie,"
@@ -17350,11 +17367,11 @@ msgstr ""
 
 #: dat/epitaph.txt:322
 msgid "Let it be; I am dead."
-msgstr ""
+msgstr "Déjalo estar; estoy muerto."
 
 #: dat/epitaph.txt:73
 msgid "Let me out of here!"
-msgstr ""
+msgstr "¡Sácame de aquí!"
 
 #: dat/rumors.fal:106
 msgid "Let your fingers do the walking on the yulkjhnb keys."
@@ -17370,7 +17387,7 @@ msgstr ""
 
 #: dat/epitaph.txt:323
 msgid "Let's play Hide the Corpse"
-msgstr ""
+msgstr "Juguemos al Escondite del Cadáver"
 
 #: dat/tribute:2864
 msgid ""
@@ -17383,7 +17400,7 @@ msgstr ""
 
 #: dat/epitaph.txt:324
 msgid "Life is NOT a dream"
-msgstr ""
+msgstr "La vida NO es un sueño"
 
 #: dat/tribute:2522
 msgid ""
@@ -17470,11 +17487,11 @@ msgstr ""
 
 #: dat/epitaph.txt:19
 msgid "Look out below!"
-msgstr ""
+msgstr "¡Cuidado abajo!"
 
 #: dat/epitaph.txt:74
 msgid "Lookin' good, Medusa."
-msgstr ""
+msgstr "Se ve bien, Medusa."
 
 #: dat/data.base:6344
 msgid "Lookout           3 to 5"
@@ -17857,11 +17874,11 @@ msgstr ""
 
 #: dat/epitaph.txt:16
 msgid "Made in Taiwan"
-msgstr ""
+msgstr "Hecho en Taiwán"
 
 #: dat/epitaph.txt:325
 msgid "Madge Ination -- It wasn't all in my head"
-msgstr ""
+msgstr "Imagi Nación -- No estaba todo en mi cabeza"
 
 #: dat/data.base:6475
 msgid "Mage                30"
@@ -18012,6 +18029,8 @@ msgid ""
 "Mary had a little lamb/Its fleece was white as snow/When Mary was in "
 "trouble/The lamb was first to go"
 msgstr ""
+"María tenía un corderito/Su lana era blanca como la nieve/Cuando María "
+"estaba en problemas/El cordero fue el primero en irse"
 
 #: dat/data.base:6504
 msgid "Maskerade"
@@ -18060,7 +18079,7 @@ msgstr ""
 
 #: dat/epitaph.txt:326
 msgid "Meet me in Heaven"
-msgstr ""
+msgstr "Encuéntrame en el Cielo"
 
 #: dat/rumors.fal:111
 msgid "Meeting your own ghost decreases your luck considerably!"
@@ -18390,7 +18409,7 @@ msgstr ""
 
 #: dat/epitaph.txt:327
 msgid "Move on, there's nothing to see here."
-msgstr ""
+msgstr "Sigan, no hay nada que ver aquí."
 
 #: dat/data.base:6496
 msgid "Moving Pictures"
@@ -18398,7 +18417,7 @@ msgstr ""
 
 #: dat/epitaph.txt:328
 msgid "Mr. Flintstone -- Yabba-dabba-done"
-msgstr ""
+msgstr "Sr. Flintstone -- Yabba-dabba-hecho"
 
 #: dat/data.base:1062
 msgid "Mr. Moon:  Squabble?  They're all dead."
@@ -18435,6 +18454,8 @@ msgid ""
 "Mrs. Smith, choked on an apple.  She left behind grieving husband, daughter,"
 " and granddaughter."
 msgstr ""
+"Sra. Smith, atragantada con una manzana.  Dejó atrás a su esposo, hija y "
+"nieta afligidos."
 
 #: dat/data.base:2244
 msgid "Much I talk, more I walk;"
@@ -18471,7 +18492,7 @@ msgstr ""
 
 #: dat/epitaph.txt:329
 msgid "My heart is not in this"
-msgstr ""
+msgstr "Mi corazón no está en esto"
 
 #: dat/data.base:1230
 msgid "My name is Nobody.  All call me thus:"
@@ -18837,7 +18858,7 @@ msgstr ""
 
 #: dat/epitaph.txt:330
 msgid "No one ever died from it"
-msgstr ""
+msgstr "Nadie ha muerto nunca por eso"
 
 #: dat/tribute:3250
 msgid "No one ever said elves are nice."
@@ -18849,7 +18870,7 @@ msgstr ""
 
 #: dat/epitaph.txt:77
 msgid "No!  I don't want to see my damn conduct!"
-msgstr ""
+msgstr "¡No!  ¡No quiero ver mi maldita conducta!"
 
 #: dat/tribute:2235
 msgid ""
@@ -18862,7 +18883,7 @@ msgstr ""
 
 #: dat/epitaph.txt:331
 msgid "No, you want room 12A, next door."
-msgstr ""
+msgstr "No, querrás la habitación 12A, la de al lado."
 
 #: dat/tribute:1309
 msgid ""
@@ -18880,7 +18901,7 @@ msgstr ""
 
 #: dat/epitaph.txt:76
 msgid "Nobody believed her when she said her feet were killing her"
-msgstr ""
+msgstr "Nadie le creyó cuando dijo que los pies la estaban matando"
 
 #: dat/data.base:6228
 msgid "Nomad            22 to 25"
@@ -18892,7 +18913,7 @@ msgstr ""
 
 #: dat/epitaph.txt:332
 msgid "Nope.  No trap on that chest.  I swear."
-msgstr ""
+msgstr "No.  No hay trampa en ese cofre.  Lo juro."
 
 #: dat/data.base:2079
 msgid "Nor Turks nor Tartars e'er on cloth of state"
@@ -18945,7 +18966,7 @@ msgstr ""
 
 #: dat/epitaph.txt:333
 msgid "Not again!"
-msgstr ""
+msgstr "¡Otra vez no!"
 
 #: dat/rumors.tru:121
 msgid "Not all boots were made for walking."
@@ -18962,7 +18983,7 @@ msgstr ""
 
 #: dat/epitaph.txt:334
 msgid "Not every soil can bear all things"
-msgstr ""
+msgstr "No toda tierra puede soportar todas las cosas"
 
 #: dat/data.base:3518
 msgid "Not for payment, that is,\" he added after a pause."
@@ -19005,7 +19026,7 @@ msgstr ""
 
 #: dat/epitaph.txt:10
 msgid "Note -- there are NO valuable items in this grave"
-msgstr ""
+msgstr "Nota -- NO hay objetos de valor en esta tumba"
 
 #: dat/data.base:4592
 msgid "Nothing further then he uttered -- not a feather then he fluttered--"
@@ -19021,11 +19042,11 @@ msgstr ""
 
 #: dat/epitaph.txt:335
 msgid "Now I have a life"
-msgstr ""
+msgstr "Ahora tengo una vida"
 
 #: dat/epitaph.txt:336
 msgid "Now I lay thee down to sleep... wanna join me?"
-msgstr ""
+msgstr "Ahora te acuesto a dormir... ¿quieres acompañarme?"
 
 #: dat/data.base:2798
 msgid "Now Issek of the Jug, whom Fafhrd chose to serve, was once"
@@ -19119,7 +19140,7 @@ msgstr ""
 
 #: dat/epitaph.txt:337
 msgid "OK, here is a question: Where ARE your tanlines?"
-msgstr ""
+msgstr "Vale, una pregunta: ¿Dónde están tus marcas de bronceado?"
 
 #: dat/tribute:4180
 msgid ""
@@ -19149,7 +19170,7 @@ msgstr ""
 
 #: dat/epitaph.txt:338
 msgid "Obesa Cantavit"
-msgstr ""
+msgstr "Obesa Cantavit"
 
 #: dat/tribute:8643
 msgid ""
@@ -19188,7 +19209,7 @@ msgstr ""
 
 #: dat/epitaph.txt:17
 msgid "Og friend. Og good dude. Og died. Og now food."
-msgstr ""
+msgstr "Og amigo. Og buen tío. Og murió. Og ahora comida."
 
 #: dat/tribute:8473
 msgid ""
@@ -19205,11 +19226,11 @@ msgstr ""
 
 #: dat/epitaph.txt:339
 msgid "Oh! An untimely death."
-msgstr ""
+msgstr "¡Oh! Una muerte prematura."
 
 #: dat/epitaph.txt:340
 msgid "Oh, by the way, how was my funeral?"
-msgstr ""
+msgstr "Ah, por cierto, ¿cómo fue mi funeral?"
 
 #: dat/data.base:4871
 msgid "Oh, how handsome, how noble was the Vizier Ali Tebelin,"
@@ -19222,7 +19243,7 @@ msgstr ""
 
 #: dat/epitaph.txt:342
 msgid "Ok, so the light does go off.  Now let me out of here."
-msgstr ""
+msgstr "Vale, así que la luz se apaga.  Ahora sácame de aquí."
 
 #: dat/history:42
 msgid ""
@@ -19286,7 +19307,7 @@ msgstr ""
 
 #: dat/epitaph.txt:79
 msgid "On the whole, I'd rather be in Minetown"
-msgstr ""
+msgstr "En general, prefiero estar en Minetown"
 
 #: dat/data.base:559
 msgid "On this particular day Blind Io, by dint of constant vigilance"
@@ -19304,7 +19325,7 @@ msgstr ""
 
 #: dat/epitaph.txt:80
 msgid "On vacation"
-msgstr ""
+msgstr "De vacaciones"
 
 #: dat/data.base:653
 msgid "On waking, he found himself on the green knoll whence he had"
@@ -19358,7 +19379,7 @@ msgstr ""
 
 #: dat/epitaph.txt:78
 msgid "One corpse, sans head"
-msgstr ""
+msgstr "Un cadáver, sin cabeza"
 
 #: dat/tribute:6301
 msgid ""
@@ -19424,7 +19445,7 @@ msgstr ""
 
 #: dat/epitaph.txt:343
 msgid "One stone brain"
-msgstr ""
+msgstr "Un cerebro de piedra"
 
 #: dat/data.base:5799
 msgid "One was his skilled handling of the Ottoman Turks, which kept"
@@ -19473,15 +19494,15 @@ msgstr ""
 
 #: dat/epitaph.txt:344
 msgid "Ooh! Somebody STOP me!"
-msgstr ""
+msgstr "¡Ooh! ¡Que alguien me PARE!"
 
 #: dat/epitaph.txt:345
 msgid "Oops!"
-msgstr ""
+msgstr "¡Vaya!"
 
 #: dat/epitaph.txt:81
 msgid "Oops."
-msgstr ""
+msgstr "Vaya."
 
 #: dat/rumors.tru:127
 msgid ""
@@ -19571,7 +19592,7 @@ msgstr ""
 
 #: dat/epitaph.txt:346
 msgid "Out for the night.  Leave a message."
-msgstr ""
+msgstr "Fuera por la noche.  Deja un mensaje."
 
 #: dat/data.base:3076
 msgid "Out from the water a long sinuous tentacle had crawled; it"
@@ -19579,7 +19600,7 @@ msgstr ""
 
 #: dat/epitaph.txt:82
 msgid "Out to Lunch"
-msgstr ""
+msgstr "Fuera a comer"
 
 #: dat/tribute:2588
 msgid ""
@@ -19588,7 +19609,7 @@ msgstr ""
 
 #: dat/epitaph.txt:347
 msgid "Ow!  Do that again!"
-msgstr ""
+msgstr "¡Ay!  ¡Haz eso otra vez!"
 
 #: dat/data.base:4146
 msgid "Owlbears are probably the crossbreed creation of a demented"
@@ -19673,7 +19694,7 @@ msgstr ""
 
 #: dat/epitaph.txt:348
 msgid "Pardon my dust."
-msgstr ""
+msgstr "Perdonen mi polvo."
 
 #: dat/data.base:4475
 msgid "Parnassus."
@@ -19681,7 +19702,7 @@ msgstr ""
 
 #: dat/epitaph.txt:349
 msgid "Part of me still works."
-msgstr ""
+msgstr "Parte de mí todavía funciona."
 
 #: dat/data.base:4909
 msgid "Parted its dripping leaves with eager care."
@@ -19854,6 +19875,8 @@ msgstr ""
 #: dat/epitaph.txt:20
 msgid "Please don't dig me up.  I'm perfectly happy down here. -- Resident"
 msgstr ""
+"Por favor, no me desentierres.  Estoy perfectamente feliz aquí abajo. -- El "
+"Residente"
 
 #: dat/engrave.txt:36
 msgid "Please don't feed the animals."
@@ -19861,7 +19884,7 @@ msgstr "Por favor, no alimentes a los animales."
 
 #: dat/epitaph.txt:350
 msgid "Please, not in front of those orcs!"
-msgstr ""
+msgstr "Por favor, ¡no delante de esos orcos!"
 
 #: dat/data.base:5439
 msgid "Pleasing remembrance of a thought foregone;"
@@ -19954,6 +19977,8 @@ msgid ""
 "Postman, please note forwarding address: Gehennom, Asmodeus's Fortress, "
 "fifth lemure on the left"
 msgstr ""
+"Cartero, por favor nota la dirección de reenvío: Gehennom, Fortaleza de "
+"Asmodeo, quinto lémmur a la izquierda"
 
 #: dat/tribute:8722
 msgid "Postmortem Communications.\""
@@ -19991,7 +20016,7 @@ msgstr ""
 
 #: dat/epitaph.txt:351
 msgid "Prepare to meet me in Heaven"
-msgstr ""
+msgstr "Prepárate para encontrarme en el Cielo"
 
 #: dat/data.base:1700
 msgid "Presently we reached a place where the beach narrowed; the sea"
@@ -20099,11 +20124,11 @@ msgstr ""
 
 #: dat/epitaph.txt:8
 msgid "R.I.P."
-msgstr ""
+msgstr "D.E.P."
 
 #: dat/epitaph.txt:352
 msgid "R2D2 -- Rest, Tin Piece"
-msgstr ""
+msgstr "R2D2 -- Rest, Tin Piece"
 
 #: dat/tribute:1072
 msgid "RARE, said Death.  [...]"
@@ -20234,7 +20259,7 @@ msgstr ""
 
 #: dat/epitaph.txt:353
 msgid "Relax.  Nothing ever happens on the first level."
-msgstr ""
+msgstr "Relájate.  Nunca pasa nada en el primer nivel."
 
 #: dat/opthelp:251
 msgid "Remove  -- always pick from inventory for 'R' and 'T' even when"
@@ -20242,7 +20267,7 @@ msgstr ""
 
 #: dat/epitaph.txt:354
 msgid "Res omnia mea culpa est"
-msgstr ""
+msgstr "Res omnia mea culpa est"
 
 #: dat/tribute:3391
 msgid "Resonator here, I hoped you noticed.\""
@@ -20250,11 +20275,11 @@ msgstr ""
 
 #: dat/epitaph.txt:9 dat/epitaph.txt:355
 msgid "Rest In Pieces"
-msgstr ""
+msgstr "Descansa en Pedazos"
 
 #: dat/epitaph.txt:7
 msgid "Rest in peace"
-msgstr ""
+msgstr "Descansa en paz"
 
 #: dat/tribute:5439
 msgid "Rest of Your Life.\""
@@ -20270,7 +20295,7 @@ msgstr ""
 
 #: dat/epitaph.txt:356
 msgid "Rest, rest, perturbed spirit."
-msgstr ""
+msgstr "Descansa, descansa, espíritu perturbado."
 
 #: dat/symbols:613 dat/symbols:691 dat/symbols:828 dat/symbols:925
 msgid "Restrictions: primary"
@@ -20402,7 +20427,7 @@ msgstr ""
 
 #: dat/epitaph.txt:357
 msgid "Rip Torn"
-msgstr ""
+msgstr "Desgarrado"
 
 #: dat/data.base:5556
 msgid "River Moth; wet it for use in hand-to-hand combat; wrap it"
@@ -20591,7 +20616,7 @@ msgstr ""
 
 #: dat/epitaph.txt:83
 msgid "SOLD"
-msgstr ""
+msgstr "VENDIDO"
 
 #: dat/tribute:5041
 msgid ""
@@ -22915,7 +22940,7 @@ msgstr ""
 
 #: dat/epitaph.txt:358
 msgid "She always said her feet were killing her but nobody believed her."
-msgstr ""
+msgstr "Siempre decía que los pies la estaban matando pero nadie le creía."
 
 #: dat/data.base:340
 msgid "She arched her brows. \"You should know better, dear godchild."
@@ -22927,7 +22952,7 @@ msgstr ""
 
 #: dat/epitaph.txt:359
 msgid "She died of a chest cold."
-msgstr ""
+msgstr "Murió de un resfriado de pecho."
 
 #: dat/tribute:7985
 msgid "She froze, staring over his shoulder.  He saw her right hand scrabble"
@@ -23191,7 +23216,7 @@ msgstr ""
 
 #: dat/epitaph.txt:360
 msgid "So let it be written, so let it be done!"
-msgstr ""
+msgstr "Que así sea escrito, que así sea hecho!"
 
 #: dat/data.base:2086
 msgid "So on the rim, that fenc'd the sand with rock,"
@@ -23216,7 +23241,7 @@ msgstr ""
 
 #: dat/epitaph.txt:361
 msgid "So then I says, How do I know you're the real angel of death?"
-msgstr ""
+msgstr "Entonces le digo, ¿cómo sé que eres el verdadero ángel de la muerte?"
 
 #: dat/data.base:5217
 msgid "So they stood, each in his place, neither moving a finger's"
@@ -23271,11 +23296,11 @@ msgstr ""
 
 #: dat/epitaph.txt:362
 msgid "Some patients insist on dying."
-msgstr ""
+msgstr "Algunos pacientes insisten en morirse."
 
 #: dat/epitaph.txt:363
 msgid "Some people have it dead easy, don't they?"
-msgstr ""
+msgstr "Algunos lo tienen muerto fácil, ¿verdad?"
 
 #: dat/tribute:8416
 msgid ""
@@ -23330,7 +23355,7 @@ msgstr ""
 
 #: dat/epitaph.txt:364
 msgid "Some things are better left buried."
-msgstr ""
+msgstr "Algunas cosas es mejor dejarlas enterradas."
 
 #: dat/tribute:7444
 msgid ""
@@ -23347,7 +23372,7 @@ msgstr ""
 
 #: dat/epitaph.txt:84
 msgid "Someone set us up the bomb!"
-msgstr ""
+msgstr "¡Alguien nos puso la bomba!"
 
 #: dat/tribute:6988
 msgid "Someone tapped his feet to it."
@@ -23407,11 +23432,11 @@ msgstr ""
 
 #: dat/epitaph.txt:33
 msgid "Soon ripe.  Soon rotten.  Soon gone.  But not forgotten."
-msgstr ""
+msgstr "Pronto maduro.  Pronto podrido.  Pronto ido.  Pero no olvidado."
 
 #: dat/epitaph.txt:24
 msgid "Soon you'll join this fellow in hell! -- the Wizard of Yendor"
-msgstr ""
+msgstr "¡Pronto te unirás a este tipo en el infierno! -- El Mago de Yendor"
 
 #: dat/data.base:6471
 msgid "Sorcerer,"
@@ -23457,7 +23482,7 @@ msgstr ""
 
 #: dat/epitaph.txt:14
 msgid "Sparky -- he was a very good dog"
-msgstr ""
+msgstr "Sparky -- fue un perro muy bueno"
 
 #: dat/data.base:6179
 msgid "Speleologist     22 to 25"
@@ -23564,7 +23589,7 @@ msgstr ""
 
 #: dat/epitaph.txt:26
 msgid "Sum quod eris"
-msgstr ""
+msgstr "Sum quod eris"
 
 #: dat/data.base:4023
 msgid "Summer passed all too quickly.  On the last day of camp, Mr."
@@ -23586,7 +23611,7 @@ msgstr ""
 
 #: dat/epitaph.txt:365
 msgid "Sure, trust me, I'm a lawyer..."
-msgstr ""
+msgstr "Claro, confía en mí, soy abogado..."
 
 #: dat/rumors.tru:161
 msgid ""
@@ -23721,7 +23746,7 @@ msgstr ""
 
 #: dat/epitaph.txt:85
 msgid "Take my stuff, I don't need it anymore"
-msgstr ""
+msgstr "Coge mis cosas, ya no las necesito"
 
 #: dat/data.base:6020
 msgid "Take these rags and wrap them round you!"
@@ -23733,7 +23758,7 @@ msgstr ""
 
 #: dat/epitaph.txt:86
 msgid "Taking a year dead for tax reasons"
-msgstr ""
+msgstr "Pasando un año muerto por razones fiscales"
 
 #: dat/rumors.fal:165
 msgid "Taming a mail daemon may cause a system security violation."
@@ -23812,6 +23837,8 @@ msgstr ""
 #: dat/epitaph.txt:366
 msgid "Thank God I wore my corset, because I think my sides have split."
 msgstr ""
+"Gracias a Dios que llevaba corsé, porque creo que me han partido los "
+"costados."
 
 #: dat/data.base:138
 msgid "That I never can hope to pay;"
@@ -23840,7 +23867,7 @@ msgstr ""
 
 #: dat/epitaph.txt:367
 msgid "That is all"
-msgstr ""
+msgstr "Eso es todo"
 
 #: dat/data.base:295
 msgid "That it can follow the flight of song?"
@@ -24046,11 +24073,11 @@ msgstr ""
 
 #: dat/epitaph.txt:368
 msgid "The Gods DO have a sense of humor: I'm living proof!"
-msgstr ""
+msgstr "Los Dioses SÍ tienen sentido del humor: ¡soy la prueba viviente!"
 
 #: dat/epitaph.txt:12
 msgid "The Grave of the Unknown Hacker"
-msgstr ""
+msgstr "La Tumba del Hacker Desconocido"
 
 #: dat/data.base:4086
 msgid "The Great Goblin gave a truly awful howl of rage when he"
@@ -24569,7 +24596,7 @@ msgstr ""
 
 #: dat/epitaph.txt:369
 msgid "The frog's dead.  He Kermitted suicide."
-msgstr ""
+msgstr "La rana está muerta.  Se raneicidió."
 
 #: dat/data.base:2836
 msgid "The frumious Bandersnatch!\""
@@ -24986,7 +25013,7 @@ msgstr ""
 
 #: dat/epitaph.txt:87
 msgid "The reports of my demise are completely accurate"
-msgstr ""
+msgstr "Los informes de mi fallecimiento son completamente precisos"
 
 #: dat/data.base:2075
 msgid "The rest was serpent all: two shaggy claws"
@@ -27595,7 +27622,7 @@ msgstr ""
 
 #: dat/epitaph.txt:370
 msgid "This dungeon is a pushover"
-msgstr ""
+msgstr "Esta mazmorra es un paseo"
 
 #: dat/data.base:1632
 msgid "This eel is known for its electrical organ which enables it"
@@ -27603,7 +27630,7 @@ msgstr ""
 
 #: dat/epitaph.txt:371
 msgid "This elevator doesn't go to Heaven"
-msgstr ""
+msgstr "Este ascensor no va al Cielo"
 
 #: dat/data.base:499
 msgid "This giant variety of its useful normal cousin normally"
@@ -27615,11 +27642,11 @@ msgstr ""
 
 #: dat/epitaph.txt:372
 msgid "This gravestone is shareware.  To register, please send me 10 zorkmids"
-msgstr ""
+msgstr "Esta lápida es shareware.  Para registrarla, envíame 10 zorkmids"
 
 #: dat/epitaph.txt:373
 msgid "This gravestone provided by The Yendorian Grave Services Inc."
-msgstr ""
+msgstr "Esta lápida proporcionada por Yendorian Servicios Funerarios Inc."
 
 #: dat/tribute:6120
 msgid "This had worked well.  [...]"
@@ -27651,7 +27678,7 @@ msgstr ""
 
 #: dat/epitaph.txt:374
 msgid "This is not an important part of my life."
-msgstr ""
+msgstr "Esta no es una parte importante de mi vida."
 
 #: dat/engrave.txt:72
 msgid "This is not the dungeon you are looking for."
@@ -27683,7 +27710,7 @@ msgstr ""
 
 #: dat/epitaph.txt:375
 msgid "This one's on me."
-msgstr ""
+msgstr "Esta va por mi cuenta."
 
 #: dat/tribute:3445
 msgid "This one, somehow, reached out to her."
@@ -27705,7 +27732,7 @@ msgstr ""
 
 #: dat/epitaph.txt:376
 msgid "This side up"
-msgstr ""
+msgstr "Este lado hacia arriba"
 
 #: dat/data.base:3531
 msgid "This skeleton key was fashioned in ages past and imbued with"
@@ -27737,6 +27764,8 @@ msgstr ""
 msgid ""
 "This was actually just a pit, but since there was a corpse, we filled it"
 msgstr ""
+"Esto era en realidad solo una fosa, pero como había un cadáver, la "
+"rellenamos"
 
 #: dat/data.base:633
 msgid "This was one of the big, heavy, gently curved sort that didn't"
@@ -27753,7 +27782,7 @@ msgstr ""
 
 #: dat/epitaph.txt:90
 msgid "This way to the crypt"
-msgstr ""
+msgstr "Por aquí a la cripta"
 
 #: dat/data.base:3688
 msgid "Thor's hand; and it could be made to shrink in size until it"
@@ -27907,7 +27936,7 @@ msgstr ""
 
 #: dat/epitaph.txt:377
 msgid "Tim Burr -- Smashed by a tree"
-msgstr ""
+msgstr "Tronco Gómez -- Aplastado por un árbol"
 
 #: dat/data.base:2245
 msgid "Time I were buried,\" said the old, old man."
@@ -28020,7 +28049,7 @@ msgstr ""
 
 #: dat/epitaph.txt:378
 msgid "Tone it down a bit, I'm trying to get some rest here."
-msgstr ""
+msgstr "Baja el tono un poco, estoy intentando descansar aquí."
 
 #: dat/tribute:9422
 msgid ""
@@ -28135,7 +28164,7 @@ msgstr ""
 
 #: dat/epitaph.txt:91
 msgid "Tu quoque, Brute?"
-msgstr ""
+msgstr "Tu quoque, Brute?"
 
 #: dat/data.base:1893
 msgid "Turn bachelors old to lovers gay."
@@ -28309,7 +28338,7 @@ msgstr ""
 
 #: dat/epitaph.txt:92
 msgid "VACANCY"
-msgstr ""
+msgstr "VACANTE"
 
 #: dat/data.base:6225
 msgid "Vagrant          10 to 13"
@@ -28531,7 +28560,7 @@ msgstr ""
 
 #: dat/epitaph.txt:379
 msgid "Virtually Alive"
-msgstr ""
+msgstr "Virtualmente Vivo"
 
 #: dat/tribute:7975
 msgid ""
@@ -28712,7 +28741,7 @@ msgstr ""
 
 #: dat/epitaph.txt:380
 msgid "We Will Meet Again."
-msgstr ""
+msgstr "Nos Volveremos a Encontrar."
 
 #: dat/engrave.txt:28
 msgid "We apologize for the inconvenience."
@@ -28742,6 +28771,7 @@ msgstr ""
 #: dat/epitaph.txt:13
 msgid "We weren't sure who this was, but we buried him here anyway"
 msgstr ""
+"No estábamos seguros de quién era, pero lo enterramos aquí de todas formas"
 
 #: dat/tribute:1196
 msgid "We'll all look around and say 'Pardon me, did you hear something?'?\""
@@ -28770,11 +28800,11 @@ msgstr ""
 
 #: dat/epitaph.txt:381
 msgid "Weep not, he is at rest"
-msgstr ""
+msgstr "No llores, él descansa"
 
 #: dat/epitaph.txt:382
 msgid "Welcome to Dante's.  What level please?"
-msgstr ""
+msgstr "Bienvenido al Infierno de Dante.  ¿Qué nivel?"
 
 #: dat/help:1
 msgid "Welcome to NetHack!                ( description of version 3.6 )"
@@ -28783,7 +28813,7 @@ msgstr ""
 
 #: dat/epitaph.txt:93
 msgid "Welcome!"
-msgstr ""
+msgstr "¡Bienvenido!"
 
 #: dat/engrave.txt:25
 msgid "Well Come"
@@ -28795,7 +28825,7 @@ msgstr ""
 
 #: dat/epitaph.txt:383
 msgid "Well, at least they listened to my sermon..."
-msgstr ""
+msgstr "Bueno, al menos escucharon mi sermón..."
 
 #: dat/tribute:6474
 msgid ""
@@ -28821,7 +28851,7 @@ msgstr ""
 
 #: dat/epitaph.txt:384
 msgid "Went to be an angel."
-msgstr ""
+msgstr "Se fue para ser un ángel."
 
 #: dat/opthelp:243
 msgid "Were-change -- yes vs y to confirm changing form due to"
@@ -28856,15 +28886,15 @@ msgstr ""
 
 #: dat/epitaph.txt:385
 msgid "What are you doing over there?"
-msgstr ""
+msgstr "¿Qué haces ahí?"
 
 #: dat/epitaph.txt:386
 msgid "What are you smiling at?"
-msgstr ""
+msgstr "¿De qué te ríes?"
 
 #: dat/epitaph.txt:387
 msgid "What can you say, Death's got appeal...!"
-msgstr ""
+msgstr "¿Qué quieres que te diga? La Muerte tiene su atractivo...!"
 
 #: dat/data.base:4426
 msgid "What do you want?"
@@ -28880,7 +28910,7 @@ msgstr ""
 
 #: dat/epitaph.txt:388
 msgid "What health care?"
-msgstr ""
+msgstr "¿Qué sanidad?"
 
 #: dat/data.base:5462
 msgid "What immortal hand or eye"
@@ -28908,7 +28938,7 @@ msgstr ""
 
 #: dat/epitaph.txt:389
 msgid "What pit?"
-msgstr ""
+msgstr "¿Qué fosa?"
 
 #: dat/data.base:3433
 msgid "What time King Ryence reigned, and dealed right)"
@@ -29056,7 +29086,7 @@ msgstr ""
 
 #: dat/epitaph.txt:390
 msgid "When the gods want to punish you, they answer your prayers."
-msgstr ""
+msgstr "Cuando los dioses quieren castigarte, responden tus oraciones."
 
 #: dat/tribute:3858
 msgid "When they asked him what it was, he said:  \"It sounds like One, Two.\""
@@ -29079,6 +29109,7 @@ msgstr ""
 msgid ""
 "Where e'er you be let your wind go free.  Keeping it in was the death of me!"
 msgstr ""
+"Dondequiera que estés deja libre tu viento.  ¡Retenerlo fue mi muerte!"
 
 #: dat/data.base:844
 msgid "Where in his sanded cave he dwelt alone;"
@@ -29094,7 +29125,7 @@ msgstr ""
 
 #: dat/epitaph.txt:392
 msgid "Where's my refund?"
-msgstr ""
+msgstr "¿Dónde está mi reembolso?"
 
 #: dat/tribute:2305
 msgid ""
@@ -29244,7 +29275,7 @@ msgstr ""
 
 #: dat/epitaph.txt:393
 msgid "Will let you know for sure in a day or two..."
-msgstr ""
+msgstr "Te lo confirmaré en uno o dos días..."
 
 #: dat/data.base:4689
 msgid "William Shakespeare ]"
@@ -29287,7 +29318,7 @@ msgstr ""
 
 #: dat/epitaph.txt:94
 msgid "Wish you were here!"
-msgstr ""
+msgstr "¡Ojalá estuvieras aquí!"
 
 #: dat/rumors.tru:376
 msgid "Wishing too much may bring you too little."
@@ -29405,7 +29436,7 @@ msgstr ""
 
 #: dat/epitaph.txt:394
 msgid "Wizards are wimps"
-msgstr ""
+msgstr "Los magos son gallinas"
 
 #: dat/tribute:2549
 msgid ""
@@ -29452,15 +29483,15 @@ msgstr ""
 
 #: dat/epitaph.txt:395
 msgid "Worms at work, do not disturb!"
-msgstr ""
+msgstr "Gusanos trabajando, ¡no molestar!"
 
 #: dat/epitaph.txt:396
 msgid "Would you mind moving a bit?  I'm short of breath down here."
-msgstr ""
+msgstr "¿Te importaría moverte un poco?  Me falta el aire aquí abajo."
 
 #: dat/epitaph.txt:397
 msgid "Would you quit being evil over my shoulder?"
-msgstr ""
+msgstr "¿Quieres dejar de ser malvado sobre mi hombro?"
 
 #: dat/rumors.fal:382
 msgid "Wow!  You could've had a potion of fruit juice!"
@@ -29584,7 +29615,7 @@ msgstr ""
 
 #: dat/epitaph.txt:398
 msgid "Ya really had me going baby, but now I'm gone."
-msgstr ""
+msgstr "De verdad que me tenías enganchado nena, pero ahora me fui."
 
 #: dat/data.base:4216
 msgid "Ye Piercer doth look like unto a stalactyte, and hangeth"
@@ -29597,7 +29628,7 @@ msgstr ""
 
 #: dat/epitaph.txt:95
 msgid "Yea, it got me too"
-msgstr ""
+msgstr "Sí, a mí también me atrapó"
 
 #: dat/tribute:8243
 msgid "Yeah, that was it.  What had really happened, eh?  A few signs?  Well,"
@@ -29609,7 +29640,7 @@ msgstr ""
 
 #: dat/epitaph.txt:399
 msgid "Yes Dear, just a few more minutes..."
-msgstr ""
+msgstr "Sí Cariño, solo unos minutos más..."
 
 #: dat/rumors.fal:383
 msgid "Yet Another Silly Message (YASM)."
@@ -29796,11 +29827,11 @@ msgstr ""
 
 #: dat/epitaph.txt:400
 msgid "You said it wasn't poisonous!"
-msgstr ""
+msgstr "¡Dijiste que no era venenoso!"
 
 #: dat/epitaph.txt:401
 msgid "You set my heart aflame.  You gave me heartburn."
-msgstr ""
+msgstr "Prendiste fuego a mi corazón.  Me diste acidez de estómago."
 
 #: dat/rumors.tru:384
 msgid "You should certainly learn about quantum mechanics."
@@ -29808,7 +29839,7 @@ msgstr ""
 
 #: dat/epitaph.txt:96
 msgid "You should see the other guy"
-msgstr ""
+msgstr "Deberías ver al otro tipo"
 
 #: dat/rumors.fal:396
 msgid "You want to regain strength?  Two levels ahead is a guesthouse!"
