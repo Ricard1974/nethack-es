@@ -82063,3 +82063,229 @@ msgstr ""
 #, c-format
 msgid "No such command '%s', char code %d (0%03o or 0x%02x)."
 msgstr ""
+
+#: sys/msdos/vidvesa.c:2102 sys/msdos/vidvga.c:1220
+#, c-format
+msgid "Would have put bar using %d - %d."
+msgstr ""
+
+#: sys/msdos/pctiles.c:119
+#, c-format
+msgid "%d overview tiles read into ram."
+msgstr ""
+
+#: sys/msdos/pctiles.c:138
+#, c-format
+msgid "%d tiles read into ram."
+msgstr ""
+
+#: sys/msdos/msdos.c:299
+#, c-format
+msgid "Scan code: %d 0x%03X"
+msgstr ""
+
+#: sys/amiga/winamenu.c:1047
+msgid "Count: 0"
+msgstr ""
+
+#: sys/amiga/winreq.c:186
+msgid "can't find NetHack.cnf"
+msgstr ""
+
+#: sys/amiga/winreq.c:211
+msgid "can't write to New_NetHack.cnf"
+msgstr ""
+
+#: sys/amiga/amidos.c:203
+msgid "If save file is on a SAVE disk, put that disk in now."
+msgstr ""
+
+#: sys/amiga/winami.c:393
+msgid "#"
+msgstr ""
+
+#: sys/amiga/winami.c:396 sys/amiga/winami.c:507
+msgid "# "
+msgstr ""
+
+#: sys/vms/vmsunix.c:456 sys/unix/unixunix.c:352
+msgid "Unavailable command '!'."
+msgstr ""
+
+#: sys/vms/vmsunix.c:524
+#, c-format
+msgid "  Spawn failed.  (%%x%08lX) "
+msgstr ""
+
+#: sys/vms/vmsunix.c:545
+msgid ""
+"  No parent process.  Use '!' to Spawn, 'S' to Save, or '#quit' to Quit. "
+msgstr ""
+
+#: sys/vms/vmsunix.c:559
+#, c-format
+msgid "  Unable to attach to parent.  (%%x%08lX) "
+msgstr ""
+
+#: sys/vms/vmsmain.c:209 sys/libnh/libnhmain.c:287 sys/share/pcmain.c:459
+#: sys/windows/windmain.c:438 sys/unix/unixmain.c:276
+msgid "Restoring save file..."
+msgstr ""
+
+#: sys/vms/vmsmain.c:492
+#, c-format
+msgid "Only user \"%s\" may access debug (wizard) mode."
+msgstr ""
+
+#: sys/vms/vmsmain.c:494 sys/libnh/libnhmain.c:633 sys/unix/unixmain.c:683
+msgid "Entering explore/discovery mode instead."
+msgstr ""
+
+#: sys/vms/vmsmain.c:497 sys/libnh/libnhmain.c:638 sys/unix/unixmain.c:688
+msgid "are in non-scoring explore/discovery mode."
+msgstr ""
+
+#: sys/libnh/libnhmain.c:625 sys/unix/unixmain.c:675
+#, c-format
+msgid "Only user%s %s may access debug (wizard) mode."
+msgstr ""
+
+#: sys/libnh/libnhmain.c:629 sys/unix/unixmain.c:679
+msgid "cannot access debug (wizard) mode."
+msgstr ""
+
+#: sys/share/ioctl.c:167
+msgid "Suspend command not available."
+msgstr ""
+
+#: sys/share/ioctl.c:194
+msgid "I don't think your shell has job control."
+msgstr ""
+
+#: sys/share/ioctl.c:197
+msgid "Sorry, it seems we have no SIGTSTP here.  Try ! or S."
+msgstr ""
+
+#: sys/share/pcsys.c:121
+#, c-format
+msgid "Can't find %s."
+msgstr ""
+
+#: sys/share/pcmain.c:344
+#, c-format
+msgid ""
+"%s\n"
+"%s\n"
+"%s\n"
+"%s\n"
+"\n"
+"NetHack was unable to open the required file \"%s\".%s"
+msgstr ""
+
+#: sys/share/pcmain.c:465 sys/share/pcmain.c:496 sys/windows/windmain.c:443
+#: sys/windows/windmain.c:474
+msgid "are in non-scoring discovery mode."
+msgstr ""
+
+#: sys/share/pcunix.c:104
+msgid "There is already a game in progress under your name."
+msgstr ""
+
+#: sys/share/pcunix.c:105
+#, c-format
+msgid "You may be able to use \"recover %s\" to get it back.\n"
+msgstr ""
+
+#: sys/windows/windmain.c:322
+#, c-format
+msgid ""
+"%s\n"
+"%s\n"
+"%s\n"
+"%s\n"
+"\n"
+msgstr ""
+
+#: sys/windows/windmain.c:325
+#, c-format
+msgid "NetHack was unable to open the required file \"%s\""
+msgstr ""
+
+#: sys/windows/windmain.c:327
+msgid ""
+"\n"
+"Are you perhaps trying to run NetHack within a zip utility?"
+msgstr ""
+
+#: sys/unix/unixunix.c:269
+msgid "There is no regular save file but there is a panic one."
+msgstr "No hay un archivo de guardado normal pero hay uno de pánico."
+
+#: sys/unix/unixunix.c:270
+msgid "It might be recoverable with demi-divine intervention."
+msgstr "Podría ser recuperable con intervención semi-divina."
+
+#: sys/unix/unixunix.c:394
+msgid "Fork failed.  Try again."
+msgstr ""
+
+#: win/win32/mswproc.c:1834 win/curses/cursdial.c:526
+#, c-format
+msgid "%s%s: unknown extended command."
+msgstr ""
+
+#: win/X11/winX.c:2062
+#, c-format
+msgid "%.*s %.*s"
+msgstr ""
+
+#: win/X11/winX.c:2089
+#, c-format
+msgid "Cannot open %s.  Sorry."
+msgstr ""
+
+#: win/curses/cursmisc.c:697
+#, c-format
+msgid "Cannot open \"%s\" for reading!"
+msgstr ""
+
+#: win/tty/getline.c:320
+#, c-format
+msgid "%s%.60s: unknown extended command."
+msgstr ""
+
+#: win/tty/wintty.c:2439
+#, c-format
+msgid "Cannot open %s."
+msgstr ""
+
+#: win/tty/wintty.c:2480
+#, c-format
+msgid "Cannot open \"%s\"."
+msgstr ""
+
+#: win/tty/wintty.c:2961
+#, c-format
+msgid ""
+"tty perm_invent needs a terminal that is at least %dx%d, yours is %dx%d."
+msgstr ""
+
+#: src/manual:0
+msgid "Start a new game instead?"
+msgstr "¿Empezar una nueva partida?"
+
+#: src/manual:0
+msgid "Yes; start game"
+msgstr "Sí; empezar partida"
+
+#: src/manual:0
+msgid "No; choose role again"
+msgstr "No; elegir rol de nuevo"
+
+#: src/manual:0
+msgid "Random"
+msgstr "Aleatorio"
+
+#: src/manual:0
+msgid "Do you want your possessions identified?"
+msgstr "¿Quieres que identifiquen tus pertenencias?"
