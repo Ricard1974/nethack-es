@@ -466,6 +466,23 @@ dlb_fopen(const char *name, const char *mode)
         return (dlb *) 0;
 
     dp = (dlb *) alloc(sizeof(dlb));
+    /* NetHack-es: try localized version (.es suffix) first */
+    {
+        char es_name[BUFSZ];
+        int nlen = (int) strlen(name);
+        if (nlen + 4 < BUFSZ) {
+            Strcpy(es_name, name);
+            Strcat(es_name, ".es");
+            if (do_dlb_fopen(dp, es_name, mode))
+                dp->fp = (FILE *) 0;
+            else if ((fp = fopen_datafile(es_name, mode, DATAPREFIX)) != 0)
+                dp->fp = fp;
+            else
+                dp->fp = (FILE *) 0;
+            if (dp->fp || dp->lib)
+                return dp;
+        }
+    }
     if (do_dlb_fopen(dp, name, mode))
         dp->fp = (FILE *) 0;
     else if ((fp = fopen_datafile(name, mode, DATAPREFIX)) != 0)

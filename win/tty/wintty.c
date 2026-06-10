@@ -2467,21 +2467,7 @@ tty_display_file(
         char *cr;
 
         tty_clear_nhwindow(WIN_MESSAGE);
-        /* NetHack-es: try localized version (.es suffix) if LANG starts with "es" */
-        {
-            char localized_fname[BUFSZ];
-            const char *lang = nh_getenv("LANG");
-            if (lang && !strncmp(lang, "es", 2)) {
-                int flen = (int) strlen(fname);
-                if (flen + 4 < BUFSZ) {
-                    Strcpy(localized_fname, fname);
-                    Strcat(localized_fname, ".es");
-                    f = dlb_fopen(localized_fname, "r");
-                }
-            }
-            if (!f)
-                f = dlb_fopen(fname, "r");
-        }
+        f = dlb_fopen(fname, "r");
         if (!f) {
             if (complain) {
                 home();
