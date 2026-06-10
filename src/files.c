@@ -440,8 +440,23 @@ FILE *
 fopen_datafile(const char *filename, const char *mode, int prefix)
 {
     FILE *fp;
+    char localized_name[BUFSZ];
+    const char *lang;
+    int len;
 
     filename = fqname(filename, prefix, prefix == TROUBLEPREFIX ? 3 : 0);
+    /* NetHack-es: try localized version (.es suffix) if LANG starts with "es" */
+    lang = nh_getenv("LANG");
+    if (lang && !strncmp(lang, "es", 2)) {
+        len = (int) strlen(filename);
+        if (len + 4 < BUFSZ) {   /* room for ".es\0" */
+            Strcpy(localized_name, filename);
+            Strcat(localized_name, ".es");
+            fp = fopen(localized_name, mode);
+            if (fp)
+                return fp;
+        }
+    }
     fp = fopen(filename, mode);
     return fp;
 }
