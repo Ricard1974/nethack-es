@@ -741,4 +741,19 @@ typedef unsigned char uchar;
 #endif /* DUMPLOG_MSG_COUNT */
 #endif
 
+/*
+ * Section 99:   Internationalization (i18n) support via gettext.
+ *              NetHack-es: Traducción al español.
+ */
+#ifdef ENABLE_NLS
+#include <libintl.h>
+#define _(String) gettext(String)
+#define N_(String) (String)     /* marker for future translation */
+#else
+#define _(String) (String)
+#define N_(String) (String)
+#endif
+#define gettext_noop(String) (String)
+#define TEXTDOMAIN "nethack"
+
 #endif /* CONFIG_H */

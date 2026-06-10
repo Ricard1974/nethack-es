@@ -98,3 +98,10 @@ util/*.lib
 util/*.exp
 submodules/CHKSUMS.tmp
 sys/amiga/regex/
+
+# NetHack-es: playground (build output)
+playground/
+
+# NetHack-es: translation build artifacts
+po/*.mo
+build-aux/__pycache__/
