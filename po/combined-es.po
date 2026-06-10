@@ -82289,3 +82289,47 @@ msgstr "Aleatorio"
 #: src/manual:0
 msgid "Do you want your possessions identified?"
 msgstr "¿Quieres que identifiquen tus pertenencias?"
+
+#: src/prompts:0
+msgid "Shall I pick a character for you? [ynaq] "
+msgstr "¿Quieres que elija un personaje por ti? [ynaq] "
+
+#: src/prompts:0
+msgid "Shall I pick a character for you? [ynaq]"
+msgstr "¿Quieres que elija un personaje por ti? [ynaq]"
+
+#: src/prompts:0
+msgid ""
+"Shall I pick character's race, role, gender and alignment for you? [ynaq] "
+msgstr "¿Quieres que elija raza, rol, género y alineamiento por ti? [ynaq] "
+
+#: src/prompts:0
+msgid "Shall I pick "
+msgstr "¿Quieres que elija "
+
+#: src/prompts:0
+msgid "Start a new game instead? [yn] "
+msgstr "¿Empezar una nueva partida? [yn] "
+
+#: src/prompts:0
+msgid "Is this ok? [ynq] "
+msgstr "¿Está bien? [ynq] "
+
+#: src/prompts:0
+msgid "Is this ok? [ynq]"
+msgstr "¿Está bien? [ynq]"
+
+#: src/role.c:0
+msgid ""
+"Shall I pick character's race, role, gender and alignment for you? [ynaq]"
+msgstr "¿Quieres que elija tu raza, rol, género y alineamiento? [ynaq]"
+
+#: src/role.c:0
+msgid ""
+"Shall I pick character's role, race, gender and alignment for you? [ynaq]"
+msgstr "¿Quieres que elija tu rol, raza, género y alineamiento? [ynaq]"
+
+#: src/role.c:0
+msgid ""
+"Shall I pick character's race, role, gender, and alignment for you? [ynaq]"
+msgstr "¿Quieres que elija tu raza, rol, género y alineamiento? [ynaq]"

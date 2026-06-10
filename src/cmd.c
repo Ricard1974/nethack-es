@@ -5476,6 +5476,11 @@ yn_function(
 {
     char res = '\033', qbuf[QBUFSZ];
     struct _cmd_queue cq, *cmdq;
+
+    /* NetHack-es: translate prompt string */
+    if (query)
+        query = _(query);
+
 #ifdef DUMPLOG_CORE
     unsigned idx = gs.saved_pline_index;
     /* buffer to hold query+space+formatted_single_char_response */
