@@ -159,6 +159,10 @@ vpline(const char *line, va_list the_args)
     boolean no_repeat;
     coord a11y_mesgxy;
 
+    /* NetHack-es: translate the format string via gettext */
+    if (line)
+        line = _(line);
+
     a11y_mesgxy = a11y.msg_loc; /* save a11y.msg_loc before reseting it */
     /* always reset a11y.msg_loc whether we end up using it or not */
     a11y.msg_loc.x = a11y.msg_loc.y = 0;

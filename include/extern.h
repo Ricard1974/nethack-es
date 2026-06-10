@@ -2482,6 +2482,8 @@ extern boolean u_safe_from_fatal_corpse(struct obj *obj, int) NONNULLARG1;
 extern void dumplogmsg(const char *);
 extern void dumplogfreemessages(void);
 #endif
+extern void nh_load_mo(const char *);
+extern const char *nh_gettext(const char *);
 extern void pline(const char *, ...) PRINTF_F(1, 2);
 extern void pline_dir(int, const char *, ...) PRINTF_F(2, 3);
 extern void pline_xy(coordxy, coordxy, const char *, ...) PRINTF_F(3, 4);

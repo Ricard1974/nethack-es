@@ -745,9 +745,10 @@ typedef unsigned char uchar;
  * Section 99:   Internationalization (i18n) support via gettext.
  *              NetHack-es: Traducción al español.
  */
+#define ENABLE_NLS 1
 #ifdef ENABLE_NLS
-#include <libintl.h>
-#define _(String) gettext(String)
+extern const char *nh_gettext(const char *msgid);
+#define _(String) nh_gettext(String)
 #define N_(String) (String)     /* marker for future translation */
 #else
 #define _(String) (String)

@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 #include <signal.h>
 #include <pwd.h>
+#include <locale.h>
 #ifndef O_RDONLY
 #include <fcntl.h>
 #endif
@@ -64,6 +65,20 @@ main(int argc, char *argv[])
     boolean plsel_once = FALSE;
 
     early_init(argc, argv);
+
+    /* NetHack-es: load our custom translation file */
+    {
+        char mo_path[BUFSZ];
+        const char *locale_dir = nh_getenv("NETHACK_LOCALE_DIR");
+        if (locale_dir) {
+            Snprintf(mo_path, sizeof mo_path,
+                     "%s/es/LC_MESSAGES/nethack.mo", locale_dir);
+        } else {
+            /* Use the compiled-in HACKDIR (data directory) */
+            Strcpy(mo_path, HACKDIR "/locale/es/LC_MESSAGES/nethack.mo");
+        }
+        nh_load_mo(mo_path);
+    }
 
 #if defined(__APPLE__)
     {
