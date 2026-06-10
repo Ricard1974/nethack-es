@@ -17,11 +17,11 @@ msgstr ""
 
 #: dat/cmdhelp:125
 msgid "!\tDo a shell escape; 'exit' shell to come back"
-msgstr ""
+msgstr "!\tSalir al shell; 'exit' para volver"
 
 #: dat/cmdhelp:127
 msgid "!\tunavailable command: shell"
-msgstr ""
+msgstr "!\tcomando no disponible: shell"
 
 #: dat/help:31
 msgid "!        A potion."
@@ -42,7 +42,7 @@ msgstr ""
 
 #: dat/cmdhelp:143
 msgid "\"\tShow the amulet currently worn"
-msgstr ""
+msgstr "\"\tMostrar el amuleto que llevas puesto"
 
 #: dat/help:38
 msgid "\"        An amulet, or a spider web."
@@ -4661,7 +4661,7 @@ msgstr ""
 
 #: dat/cmdhelp:146
 msgid "$\tCount your gold"
-msgstr ""
+msgstr "$\tContar tu oro"
 
 #: dat/help:33
 msgid "$        A pile of gold."
@@ -5274,7 +5274,7 @@ msgstr ""
 
 #: dat/cmdhelp:2
 msgid "&\tTell what command a keystroke invokes"
-msgstr ""
+msgstr "&\tDecir qué comando invoca una tecla"
 
 #: dat/help:84
 msgid "&       Tell what a command does."
@@ -5286,40 +5286,42 @@ msgstr ""
 
 #: dat/cmdhelp:152
 msgid "&#   0 = numpad off (default)"
-msgstr ""
+msgstr "&#   0 = numpad off (por defecto)"
 
 #: dat/cmdhelp:153
 msgid "&#   1 = numpad on, normal keypad layout, '5'->'g'"
-msgstr ""
+msgstr "&#   1 = numpad on, teclado normal, '5'->'g'"
 
 #: dat/cmdhelp:154
 msgid "&#   2 = numpad on, normal keypad layout, '5'->'G'"
-msgstr ""
+msgstr "&#   2 = numpad on, teclado normal, '5'->'G'"
 
 #: dat/cmdhelp:155
 msgid "&#   3 = numpad on, phone keypad layout, '5'->'g'"
-msgstr ""
+msgstr "&#   3 = numpad on, teclado de teléfono, '5'->'g'"
 
 #: dat/cmdhelp:156
 msgid "&#   4 = numpad on, phone keypad layout, '5'->'G'"
-msgstr ""
+msgstr "&#   4 = numpad on, teclado de teléfono, '5'->'G'"
 
 #: dat/cmdhelp:151
 msgid ""
 "&#  -1 = numpad off, swap y with z (including Y with Z, ^Y with ^Z, M-y &c)"
 msgstr ""
+"&#  -1 = numpad off, intercambia y con z (incluye Y con Z, ^Y con ^Z, M-y, "
+"etc.)"
 
 #: dat/cmdhelp:1
 msgid "&# cmdhelp - became obsolete when 'BINDINGS=key:command' got added"
-msgstr ""
+msgstr "&# cmdhelp - quedó obsoleto cuando se añadió 'BINDINGS=tecla:comando'"
 
 #: dat/cmdhelp:150
 msgid "&# number_pad:"
-msgstr ""
+msgstr "&# number_pad:"
 
 #: dat/cmdhelp:37
 msgid "&# y,Y handled below"
-msgstr ""
+msgstr "&# y,Y gestionados más abajo"
 
 #: dat/cmdhelp:99 dat/cmdhelp:107 dat/cmdhelp:115 dat/cmdhelp:128
 #: dat/cmdhelp:135
@@ -6123,7 +6125,7 @@ msgstr ""
 
 #: dat/cmdhelp:144
 msgid "(\tShow the tools currently in use"
-msgstr ""
+msgstr "(\tMostrar las herramientas que estás usando"
 
 #: dat/help:32
 msgid "(        Some other useful object (pick-axe, key, lamp...)"
@@ -6695,7 +6697,7 @@ msgstr ""
 
 #: dat/cmdhelp:140
 msgid ")\tShow the weapon(s) currently wielded or readied"
-msgstr ""
+msgstr ")\tMostrar las armas equipadas o preparadas"
 
 #: dat/help:25
 msgid ")        A weapon of some sort."
@@ -6711,7 +6713,7 @@ msgstr ""
 
 #: dat/cmdhelp:145
 msgid "*\tShow all equipment in use (combination of the ),[,=,\",( commands)"
-msgstr ""
+msgstr "*\tMostrar todo el equipo en uso (combinación de los comandos ),[,=,\",()"
 
 #: dat/hh:98
 msgid "*               show combination of ),[,=,\",( all at once"
@@ -7357,7 +7359,7 @@ msgstr ""
 
 #: dat/cmdhelp:147
 msgid "+\tList known spells"
-msgstr ""
+msgstr "+\tListar hechizos conocidos"
 
 #: dat/help:35
 msgid "+        A closed door, or a spellbook containing a spell"
@@ -7444,7 +7446,7 @@ msgstr ""
 
 #: dat/cmdhelp:138
 msgid ",\tPick up things at the current location"
-msgstr ""
+msgstr ",\tRecoger objetos en la ubicación actual"
 
 #: dat/help:165
 msgid ",       Pick up some things."
@@ -7456,7 +7458,7 @@ msgstr ""
 
 #: dat/cmdhelp:161
 msgid "-\t'F' prefix; force fight"
-msgstr ""
+msgstr "-\tPrefijo 'F'; forzar lucha"
 
 #: dat/help:18
 msgid "- and |  The walls of a room, possibly also open doors or a grave."
@@ -7550,7 +7552,7 @@ msgstr ""
 
 #: dat/cmdhelp:132
 msgid ".\tRest one move while doing nothing"
-msgstr ""
+msgstr ".\tDescansar un turno sin hacer nada"
 
 #: dat/help:19
 msgid ".        The floor of a room or a doorway."
@@ -7626,7 +7628,7 @@ msgstr ""
 
 #: dat/cmdhelp:122
 msgid "/\tShow what type of thing a symbol corresponds to"
-msgstr ""
+msgstr "/\tMostrar a qué tipo de cosa corresponde un símbolo"
 
 #: dat/help:28
 msgid "/        A wand."
@@ -7883,11 +7885,11 @@ msgstr "/|\\     /|\\                        chocar con una pared u obstáculo"
 
 #: dat/cmdhelp:163
 msgid "0\tContinue a count"
-msgstr ""
+msgstr "0\tContinuar una cuenta"
 
 #: dat/cmdhelp:158
 msgid "0\tShow inventory"
-msgstr ""
+msgstr "0\tMostrar inventario"
 
 #: dat/help:39
 msgid "0        An iron ball."
@@ -7903,15 +7905,15 @@ msgstr ""
 
 #: dat/cmdhelp:175
 msgid "1\tMove northwest"
-msgstr ""
+msgstr "1\tAvanzar noroeste"
 
 #: dat/cmdhelp:171
 msgid "1\tMove southwest"
-msgstr ""
+msgstr "1\tAvanzar suroeste"
 
 #: dat/cmdhelp:182
 msgid "1\tStart or continue a count"
-msgstr ""
+msgstr "1\tIniciar o continuar una cuenta"
 
 #: dat/opthelp:200
 msgid "1 - headers -- append object class symbol to menu header lines;"
@@ -7967,15 +7969,15 @@ msgstr ""
 
 #: dat/cmdhelp:176
 msgid "2\tMove north"
-msgstr ""
+msgstr "2\tAvanzar norte"
 
 #: dat/cmdhelp:172
 msgid "2\tMove south"
-msgstr ""
+msgstr "2\tAvanzar sur"
 
 #: dat/cmdhelp:183
 msgid "2\tStart or continue a count"
-msgstr ""
+msgstr "2\tIniciar o continuar una cuenta"
 
 #: dat/opthelp:201
 msgid "2 - entries -- show object glyphs (same as class symbol"
@@ -8000,15 +8002,15 @@ msgstr ""
 
 #: dat/cmdhelp:177
 msgid "3\tMove northeast"
-msgstr ""
+msgstr "3\tAvanzar noreste"
 
 #: dat/cmdhelp:173
 msgid "3\tMove southeast"
-msgstr ""
+msgstr "3\tAvanzar sureste"
 
 #: dat/cmdhelp:184
 msgid "3\tStart or continue a count"
-msgstr ""
+msgstr "3\tIniciar o continuar una cuenta"
 
 #: dat/opthelp:203
 msgid "3 - both    -- 1 and 2 combined;"
@@ -8043,11 +8045,11 @@ msgstr ""
 
 #: dat/cmdhelp:159
 msgid "4\tMove west"
-msgstr ""
+msgstr "4\tAvanzar oeste"
 
 #: dat/cmdhelp:164
 msgid "4\tStart or continue a count"
-msgstr ""
+msgstr "4\tIniciar o continuar una cuenta"
 
 #: dat/opthelp:204
 msgid "4 - conditional  -- as 2 but only if no headers are present;"
@@ -8067,15 +8069,15 @@ msgstr ""
 
 #: dat/cmdhelp:193
 msgid "5\t'G' movement prefix"
-msgstr ""
+msgstr "5\tPrefijo de movimiento 'G'"
 
 #: dat/cmdhelp:190
 msgid "5\t'g' movement prefix"
-msgstr ""
+msgstr "5\tPrefijo de movimiento 'g'"
 
 #: dat/cmdhelp:197
 msgid "5\tStart or continue a count"
-msgstr ""
+msgstr "5\tIniciar o continuar una cuenta"
 
 #: dat/opthelp:205
 msgid "5 - one-or-other -- 1 and 4 combined;"
@@ -8083,23 +8085,23 @@ msgstr ""
 
 #: dat/cmdhelp:160
 msgid "6\tMove east"
-msgstr ""
+msgstr "6\tAvanzar este"
 
 #: dat/cmdhelp:165
 msgid "6\tStart or continue a count"
-msgstr ""
+msgstr "6\tIniciar o continuar una cuenta"
 
 #: dat/cmdhelp:168
 msgid "7\tMove northwest"
-msgstr ""
+msgstr "7\tAvanzar noroeste"
 
 #: dat/cmdhelp:178
 msgid "7\tMove southwest"
-msgstr ""
+msgstr "7\tAvanzar suroeste"
 
 #: dat/cmdhelp:185
 msgid "7\tStart or continue a count"
-msgstr ""
+msgstr "7\tIniciar o continuar una cuenta"
 
 #: dat/tribute:5404
 msgid ""
@@ -8108,15 +8110,15 @@ msgstr ""
 
 #: dat/cmdhelp:169
 msgid "8\tMove north"
-msgstr ""
+msgstr "8\tAvanzar norte"
 
 #: dat/cmdhelp:179
 msgid "8\tMove south"
-msgstr ""
+msgstr "8\tAvanzar sur"
 
 #: dat/cmdhelp:186
 msgid "8\tStart or continue a count"
-msgstr ""
+msgstr "8\tIniciar o continuar una cuenta"
 
 #: dat/data.base:5891
 msgid "80,000 monkeys, \"This pond is possessed by a water demon.  Do"
@@ -8124,19 +8126,19 @@ msgstr ""
 
 #: dat/cmdhelp:170
 msgid "9\tMove northeast"
-msgstr ""
+msgstr "9\tAvanzar noreste"
 
 #: dat/cmdhelp:180
 msgid "9\tMove southeast"
-msgstr ""
+msgstr "9\tAvanzar sureste"
 
 #: dat/cmdhelp:187
 msgid "9\tStart or continue a count"
-msgstr ""
+msgstr "9\tIniciar o continuar una cuenta"
 
 #: dat/cmdhelp:136
 msgid ":\tLook at what is on the floor"
-msgstr ""
+msgstr ":\tMirar lo que hay en el suelo"
 
 #: dat/help:163
 msgid ":       Look at what is here."
@@ -8148,7 +8150,7 @@ msgstr ""
 
 #: dat/cmdhelp:137
 msgid ";\tShow what type of thing a map symbol on the level corresponds to"
-msgstr ""
+msgstr ";\tMostrar a qué corresponde un símbolo del mapa en el nivel"
 
 #: dat/help:164
 msgid ";       Look at what is somewhere else."
@@ -8161,7 +8163,7 @@ msgstr ""
 
 #: dat/cmdhelp:120
 msgid "<\tGo up a staircase"
-msgstr ""
+msgstr "<\tSubir una escalera"
 
 #: dat/help:23
 msgid "<        Stairs up: a way to the previous level."
@@ -8203,7 +8205,7 @@ msgstr ""
 
 #: dat/cmdhelp:142
 msgid "=\tShow the ring(s) currently worn"
-msgstr ""
+msgstr "=\tMostrar los anillos que llevas puestos"
 
 #: dat/help:29
 msgid "=        A ring."
@@ -8227,7 +8229,7 @@ msgstr ""
 
 #: dat/cmdhelp:121
 msgid ">\tGo down a staircase"
-msgstr ""
+msgstr ">\tBajar una escalera"
 
 #: dat/help:22
 msgid ">        Stairs down: a way to the next level."
@@ -8260,7 +8262,7 @@ msgstr ""
 
 #: dat/cmdhelp:123
 msgid "?\tGive a help message"
-msgstr ""
+msgstr "?\tDar un mensaje de ayuda"
 
 #: dat/help:30
 msgid "?        A scroll."
@@ -8280,7 +8282,7 @@ msgstr ""
 
 #: dat/cmdhelp:139
 msgid "@\tToggle the pickup option on/off"
-msgstr ""
+msgstr "@\tActivar/desactivar la opción de recogida"
 
 #: dat/hh:106
 msgid "@               toggle \"pickup\" (auto pickup) option on and off"
@@ -8296,7 +8298,7 @@ msgstr "@       Activar/desactivar la opción de recogida."
 
 #: dat/cmdhelp:48
 msgid "A\tRemove all armor and/or all accessories and/or unwield weapons"
-msgstr ""
+msgstr "A\tQuitar toda la armadura y/o accesorios y/o desequipar armas"
 
 #: dat/help:90
 msgid "A       Remove all armor."
@@ -10320,7 +10322,7 @@ msgstr ""
 
 #: dat/cmdhelp:24
 msgid "B\tGo southwest until you are on top of something"
-msgstr ""
+msgstr "B\tAvanzar suroeste hasta llegar a algo"
 
 #: dat/engrave.txt:50
 msgid "BAD WOLF"
@@ -11093,6 +11095,7 @@ msgstr ""
 #: dat/cmdhelp:52
 msgid "C\tCall (name) a monster, an individual object, or a type of object"
 msgstr ""
+"C\tLlamar (nombrar) un monstruo, un objeto individual o un tipo de objeto"
 
 #: dat/help:93
 msgid "C       Call (name) monster, individual object, or type of object."
@@ -11682,7 +11685,7 @@ msgstr ""
 
 #: dat/cmdhelp:55
 msgid "D\tDrop specific item types"
-msgstr ""
+msgstr "D\tSoltar tipos específicos de objetos"
 
 #: dat/help:95
 msgid "D       Drop multiple items.  This command is implemented in two"
@@ -11982,7 +11985,7 @@ msgstr ""
 
 #: dat/cmdhelp:148
 msgid "Del\tDisplay map without monsters or objects obstructing the view."
-msgstr ""
+msgstr "Del\tMostrar mapa sin monstruos ni objetos que obstruyan la vista."
 
 #: dat/history:382
 msgid "Del Lamb                  Kevin Darcy               Ronnen Miller"
@@ -12373,7 +12376,7 @@ msgstr ""
 
 #: dat/cmdhelp:58
 msgid "E\tEngrave writing on the floor"
-msgstr ""
+msgstr "E\tGrabar escritura en el suelo"
 
 #: dat/help:113
 msgid "E       Engrave a message on the floor."
@@ -12904,6 +12907,8 @@ msgstr ""
 #: dat/cmdhelp:60
 msgid "F\tFollowed by direction, fight a monster (even if you don't sense it)"
 msgstr ""
+"F\tSeguido de dirección, luchar contra un monstruo (incluso si no lo "
+"percibes)"
 
 #: dat/help:116
 msgid "F       Followed by direction, fight a monster (even if you don't"
@@ -13296,7 +13301,7 @@ msgstr ""
 
 #: dat/cmdhelp:62
 msgid "G\tFollowed by direction, same as control-direction"
-msgstr ""
+msgstr "G\tSeguido de dirección, igual que control-dirección"
 
 #: dat/history:394
 msgid "G. Branden Robinson       Matthew Day               Teemu Suikki"
@@ -14258,7 +14263,7 @@ msgstr ""
 
 #: dat/cmdhelp:26
 msgid "H\tGo west until you are on top of something"
-msgstr ""
+msgstr "H\tAvanzar oeste hasta llegar a algo"
 
 #: dat/tribute:8130
 msgid ""
@@ -15271,7 +15276,7 @@ msgstr ""
 
 #: dat/cmdhelp:65
 msgid "I\tInventory specific item types"
-msgstr ""
+msgstr "I\tInventario de tipos específicos de objetos"
 
 #: dat/help:46
 msgid "I        Invisible or unseen monster's last known location"
@@ -16905,7 +16910,7 @@ msgstr ""
 
 #: dat/cmdhelp:28
 msgid "J\tGo south until you are on top of something"
-msgstr ""
+msgstr "J\tAvanzar sur hasta llegar a algo"
 
 #: dat/tribute:9931
 msgid "JUST BECAUSE SOMETHING IS A METAPHOR DOESN'T MEAN IT CAN'T BE REAL."
@@ -17037,7 +17042,7 @@ msgstr ""
 
 #: dat/cmdhelp:30
 msgid "K\tGo north until you are on top of something"
-msgstr ""
+msgstr "K\tAvanzar norte hasta llegar a algo"
 
 #: dat/tribute:843
 msgid ""
@@ -17211,7 +17216,7 @@ msgstr ""
 
 #: dat/cmdhelp:32
 msgid "L\tGo east until you are on top of something"
-msgstr ""
+msgstr "L\tAvanzar este hasta llegar a algo"
 
 #: dat/tribute:8164
 msgid "LAST PAGE AND THE ANSWER IS THERE.  WHAT, THEREFORE, IS THE POINT OF"
@@ -17519,15 +17524,15 @@ msgstr ""
 
 #: dat/cmdhelp:70
 msgid "M\tFollowed by direction, move a distance without picking anything up"
-msgstr ""
+msgstr "M\tSeguido de dirección, moverse una distancia sin recoger nada"
 
 #: dat/cmdhelp:195
 msgid "M-0\tInventory specific item types"
-msgstr ""
+msgstr "M-0\tInventario de tipos específicos de objetos"
 
 #: dat/cmdhelp:198
 msgid "M-2\tToggle two-weapon combat"
-msgstr ""
+msgstr "M-2\tActivar/desactivar combate con dos armas"
 
 #: dat/hh:119
 msgid ""
@@ -17536,15 +17541,15 @@ msgstr ""
 
 #: dat/cmdhelp:191
 msgid "M-5\t'G' movement prefix"
-msgstr ""
+msgstr "M-5\tPrefijo de movimiento 'G'"
 
 #: dat/cmdhelp:194
 msgid "M-5\t'g' movement prefix"
-msgstr ""
+msgstr "M-5\tPrefijo de movimiento 'g'"
 
 #: dat/cmdhelp:200
 msgid "M-?\tDisplay extended command help (if the platform allows this)"
-msgstr ""
+msgstr "M-?\tMostrar ayuda de comandos extendidos (si la plataforma lo permite)"
 
 #: dat/hh:118
 msgid ""
@@ -17553,7 +17558,7 @@ msgstr ""
 
 #: dat/cmdhelp:202
 msgid "M-A\tAnnotate: supply a name for the current dungeon level"
-msgstr ""
+msgstr "M-A\tAnotar: dar un nombre al nivel actual de la mazmorra"
 
 #: dat/hh:121
 msgid ""
@@ -17562,7 +17567,7 @@ msgstr ""
 
 #: dat/cmdhelp:204
 msgid "M-C\tConduct: list voluntary challenges you have maintained"
-msgstr ""
+msgstr "M-C\tConducta: listar desafíos voluntarios que has mantenido"
 
 #: dat/hh:123
 msgid "M-C   conduct   view optional challenges"
@@ -17570,7 +17575,7 @@ msgstr ""
 
 #: dat/cmdhelp:213
 msgid "M-N\tName a monster, an individual object, or a type of object"
-msgstr ""
+msgstr "M-N\tNombrar un monstruo, un objeto individual o un tipo de objeto"
 
 #: dat/hh:133
 msgid "M-N   name      synonym for M-n  (both are the same as C)"
@@ -17578,7 +17583,7 @@ msgstr ""
 
 #: dat/cmdhelp:215
 msgid "M-O\tOverview: show a summary of the explored dungeon"
-msgstr ""
+msgstr "M-O\tVista general: mostrar un resumen de la mazmorra explorada"
 
 #: dat/hh:135
 msgid ""
@@ -17587,7 +17592,7 @@ msgstr ""
 
 #: dat/cmdhelp:219
 msgid "M-R\tRide: mount or dismount a saddled steed"
-msgstr ""
+msgstr "M-R\tMontar: subir o bajar de una montura ensillada"
 
 #: dat/hh:139
 msgid "M-R   ride      mount or dismount saddled steed"
@@ -17595,7 +17600,7 @@ msgstr ""
 
 #: dat/cmdhelp:222
 msgid "M-T\tTip: empty a container"
-msgstr ""
+msgstr "M-T\tVaciar: vaciar un contenedor"
 
 #: dat/hh:142
 msgid "M-T   tip       upend a container to dump out its contents"
@@ -17607,7 +17612,7 @@ msgstr ""
 
 #: dat/cmdhelp:226
 msgid "M-X\tSwitch from normal play to explore mode"
-msgstr ""
+msgstr "M-X\tCambiar de modo normal a modo exploración"
 
 #: dat/hh:147
 msgid "M-X   explore   switch from regular play to non-scoring explore mode"
@@ -17615,7 +17620,7 @@ msgstr ""
 
 #: dat/cmdhelp:201
 msgid "M-a\tAdjust inventory letters"
-msgstr ""
+msgstr "M-a\tAjustar letras del inventario"
 
 #: dat/hh:120
 msgid "M-a   adjust    adjust inventory letters"
@@ -17623,7 +17628,7 @@ msgstr ""
 
 #: dat/cmdhelp:203
 msgid "M-c\tChat: talk to an adjacent creature"
-msgstr ""
+msgstr "M-c\tCharlar: hablar con una criatura adyacente"
 
 #: dat/hh:122
 msgid "M-c   chat      talk to someone"
@@ -17631,7 +17636,7 @@ msgstr ""
 
 #: dat/cmdhelp:205
 msgid "M-d\tDip an object into something"
-msgstr ""
+msgstr "M-d\tMojar un objeto en algo"
 
 #: dat/hh:124
 msgid "M-d   dip       dip an object into something"
@@ -17639,7 +17644,7 @@ msgstr ""
 
 #: dat/cmdhelp:206
 msgid "M-e\tEnhance: check weapons skills, advance them if eligible"
-msgstr ""
+msgstr "M-e\tMejorar: revisar habilidades de armas, mejorarlas si es posible"
 
 #: dat/hh:125
 msgid ""
@@ -17648,7 +17653,7 @@ msgstr ""
 
 #: dat/cmdhelp:207
 msgid "M-f\tForce a lock"
-msgstr ""
+msgstr "M-f\tForzar una cerradura"
 
 #: dat/hh:126
 msgid "M-f   force     force a lock"
@@ -17660,7 +17665,7 @@ msgstr ""
 
 #: dat/cmdhelp:208
 msgid "M-i\tInvoke an object's special powers"
-msgstr ""
+msgstr "M-i\tInvocar los poderes especiales de un objeto"
 
 #: dat/hh:128
 msgid "M-i   invoke    invoke an object's special powers"
@@ -17668,7 +17673,7 @@ msgstr ""
 
 #: dat/cmdhelp:209
 msgid "M-j\tJump to a nearby location"
-msgstr ""
+msgstr "M-j\tSaltar a una ubicación cercana"
 
 #: dat/hh:129
 msgid "M-j   jump      jump to another location"
@@ -17676,7 +17681,7 @@ msgstr ""
 
 #: dat/cmdhelp:210
 msgid "M-l\tLoot a box on the floor"
-msgstr ""
+msgstr "M-l\tSaquear una caja en el suelo"
 
 #: dat/hh:130
 msgid "M-l   loot      loot a box on the floor"
@@ -17684,7 +17689,7 @@ msgstr ""
 
 #: dat/cmdhelp:211
 msgid "M-m\tWhen polymorphed, use a monster's special ability"
-msgstr ""
+msgstr "M-m\tCuando estés polimorfado, usar la habilidad especial del monstruo"
 
 #: dat/hh:131
 msgid "M-m   monster   when polymorphed, use monster's special ability"
@@ -17692,7 +17697,7 @@ msgstr ""
 
 #: dat/cmdhelp:212
 msgid "M-n\tName a monster, an individual object, or a type of object"
-msgstr ""
+msgstr "M-n\tNombrar un monstruo, un objeto individual o un tipo de objeto"
 
 #: dat/hh:132
 msgid ""
@@ -17701,7 +17706,7 @@ msgstr ""
 
 #: dat/cmdhelp:214
 msgid "M-o\tOffer a sacrifice to the gods"
-msgstr ""
+msgstr "M-o\tOfrecer un sacrificio a los dioses"
 
 #: dat/hh:134
 msgid "M-o   offer     offer a sacrifice to the gods"
@@ -17709,7 +17714,7 @@ msgstr ""
 
 #: dat/cmdhelp:216
 msgid "M-p\tPray to the gods for help"
-msgstr ""
+msgstr "M-p\tRezar a los dioses pidiendo ayuda"
 
 #: dat/hh:136
 msgid "M-p   pray      pray to the gods for help"
@@ -17717,7 +17722,7 @@ msgstr ""
 
 #: dat/cmdhelp:217
 msgid "M-q\tQuit (exit without saving)"
-msgstr ""
+msgstr "M-q\tSalir (salir sin guardar)"
 
 #: dat/hh:137
 msgid ""
@@ -17726,7 +17731,7 @@ msgstr ""
 
 #: dat/cmdhelp:218
 msgid "M-r\tRub a lamp or a touchstone"
-msgstr ""
+msgstr "M-r\tFrotar una lámpara o una piedra de toque"
 
 #: dat/hh:138
 msgid "M-r   rub       rub a lamp or a stone"
@@ -17734,7 +17739,7 @@ msgstr ""
 
 #: dat/cmdhelp:220
 msgid "M-s\tSit down"
-msgstr ""
+msgstr "M-s\tSentarse"
 
 #: dat/hh:140
 msgid "M-s   sit       sit down"
@@ -17742,7 +17747,7 @@ msgstr ""
 
 #: dat/cmdhelp:221
 msgid "M-t\tTurn undead"
-msgstr ""
+msgstr "M-t\tAhuyentar no muertos"
 
 #: dat/hh:141
 msgid "M-t   turn      turn undead if role allows that"
@@ -17750,7 +17755,7 @@ msgstr ""
 
 #: dat/cmdhelp:223
 msgid "M-u\tUntrap something (trap, door, or chest)"
-msgstr ""
+msgstr "M-u\tDesactivar trampa (trampa, puerta o cofre)"
 
 #: dat/hh:143
 msgid "M-u   untrap    untrap something"
@@ -17758,7 +17763,7 @@ msgstr ""
 
 #: dat/cmdhelp:224
 msgid "M-v\tPrint compile time options for this version of NetHack"
-msgstr ""
+msgstr "M-v\tMostrar opciones de compilación de esta versión de NetHack"
 
 #: dat/hh:145
 msgid "M-v   version   print compile time options for this version"
@@ -17766,7 +17771,7 @@ msgstr ""
 
 #: dat/cmdhelp:225
 msgid "M-w\tWipe off your face"
-msgstr ""
+msgstr "M-w\tLimpiarse la cara"
 
 #: dat/hh:146
 msgid "M-w   wipe      wipe off your face"
@@ -18471,11 +18476,11 @@ msgstr ""
 
 #: dat/cmdhelp:34
 msgid "N\tGo southeast until you are on something"
-msgstr ""
+msgstr "N\tAvanzar sureste hasta llegar a algo"
 
 #: dat/cmdhelp:44
 msgid "N\tName: shortcut for '#name'"
-msgstr ""
+msgstr "N\tNombrar: acceso directo a '#name'"
 
 #: dat/help:198
 msgid "N       Name a monster, an individual object, or a type of object."
@@ -19064,7 +19069,7 @@ msgstr ""
 
 #: dat/cmdhelp:73
 msgid "O\tShow option settings, possibly change them"
-msgstr ""
+msgstr "O\tMostrar ajustes de opciones, posiblemente cambiarlos"
 
 #: dat/help:125
 msgid "O       Review current options and possibly change them."
@@ -19584,6 +19589,8 @@ msgstr ""
 #: dat/cmdhelp:75
 msgid "P\tPut on an accessory (ring, amulet, etc; will work for armor too)"
 msgstr ""
+"P\tPonerse un accesorio (anillo, amuleto, etc; también funciona con "
+"armadura)"
 
 #: dat/help:133
 msgid "P       Put on an accessory (ring, amulet, etc)."
@@ -20024,7 +20031,7 @@ msgstr ""
 
 #: dat/cmdhelp:78
 msgid "Q\tSelect ammunition for quiver (use '#quit' to quit)"
-msgstr ""
+msgstr "Q\tSeleccionar munición para el carcaj (usa '#quit' para salir)"
 
 #: dat/help:137
 msgid "Q       Select ammunition for quiver."
@@ -20061,6 +20068,8 @@ msgstr ""
 #: dat/cmdhelp:80
 msgid "R\tRemove an accessory (ring, amulet, etc; will work for armor too)"
 msgstr ""
+"R\tQuitarse un accesorio (anillo, amuleto, etc; también funciona con "
+"armadura)"
 
 #: dat/help:140
 msgid "R       Remove an accessory (ring, amulet, etc)."
@@ -20241,7 +20250,7 @@ msgstr ""
 
 #: dat/cmdhelp:134
 msgid "Rest one move while doing nothing"
-msgstr ""
+msgstr "Descansar un turno sin hacer nada"
 
 #: dat/data.base:1933
 msgid "Rest! This little Fountain runs"
@@ -20542,7 +20551,7 @@ msgstr ""
 
 #: dat/cmdhelp:83
 msgid "S\tSave the game (and exit; there is no \"save and keep going\")"
-msgstr ""
+msgstr "S\tGuardar la partida (y salir; no existe \"guardar y seguir jugando\")"
 
 #: dat/help:143
 msgid "S       Save the game.  Also exits the program."
@@ -23605,7 +23614,7 @@ msgstr ""
 
 #: dat/cmdhelp:85
 msgid "T\tTake off one piece of armor (will work for accessories too)"
-msgstr ""
+msgstr "T\tQuitarse una pieza de armadura (también funciona con accesorios)"
 
 #: dat/help:147
 msgid "T       Take off armor."
@@ -28158,7 +28167,7 @@ msgstr ""
 
 #: dat/cmdhelp:36
 msgid "U\tGo northeast until you are on top of something"
-msgstr ""
+msgstr "U\tAvanzar noreste hasta llegar a algo"
 
 #: dat/history:232
 msgid "UNIX flavors and maintained the X11 interface."
@@ -28270,7 +28279,7 @@ msgstr ""
 
 #: dat/cmdhelp:89
 msgid "V\tShow history of game's development"
-msgstr ""
+msgstr "V\tMostrar historia del desarrollo del juego"
 
 #: dat/help:150
 msgid "V       Display a longer identification of the version, including the"
@@ -28546,7 +28555,7 @@ msgstr ""
 
 #: dat/cmdhelp:91
 msgid "W\tWear a piece of armor (will work for accessories too)"
-msgstr ""
+msgstr "W\tPonerse una pieza de armadura (también funciona con accesorios)"
 
 #: dat/help:153
 msgid "W       Wear armor."
@@ -29453,7 +29462,7 @@ msgstr ""
 
 #: dat/cmdhelp:93
 msgid "X\tToggle two-weapon combat"
-msgstr ""
+msgstr "X\tActivar/desactivar combate con dos armas"
 
 #: dat/help:155
 msgid "X       Toggle two-weapon combat."
@@ -29511,11 +29520,11 @@ msgstr ""
 
 #: dat/cmdhelp:98
 msgid "Y\tGo northwest until you are on top of something"
-msgstr ""
+msgstr "Y\tAvanzar noroeste hasta llegar a algo"
 
 #: dat/cmdhelp:110
 msgid "Y\tZap (cast) a spell"
-msgstr ""
+msgstr "Y\tLanzar un hechizo"
 
 #: dat/bogusmon.txt:46
 msgid "Y2K bug"
@@ -29849,11 +29858,11 @@ msgstr ""
 
 #: dat/cmdhelp:117
 msgid "Z\tGo northwest until you are on top of something"
-msgstr ""
+msgstr "Z\tAvanzar noroeste hasta llegar a algo"
 
 #: dat/cmdhelp:102
 msgid "Z\tZap (cast) a spell"
-msgstr ""
+msgstr "Z\tLanzar un hechizo"
 
 #: dat/help:160
 msgid "Z       Cast a spell.  (Use Y instead of Z if number_pad is -1.)"
@@ -29886,7 +29895,7 @@ msgstr ""
 
 #: dat/cmdhelp:141
 msgid "[\tShow the armor currently worn"
-msgstr ""
+msgstr "[\tMostrar la armadura que llevas puesta"
 
 #: dat/help:26
 msgid "[        A suit or piece of armor."
@@ -31644,7 +31653,7 @@ msgstr ""
 
 #: dat/cmdhelp:129
 msgid "\\\tShow what object types have been discovered"
-msgstr ""
+msgstr "\\\tMostrar qué tipos de objetos se han descubierto"
 
 #: dat/help:43
 msgid "\\        An opulent throne."
@@ -31665,7 +31674,7 @@ msgstr ""
 
 #: dat/cmdhelp:3
 msgid "^\tShow the type of an adjacent trap"
-msgstr ""
+msgstr "^\tMostrar el tipo de una trampa adyacente"
 
 #: dat/help:37
 msgid "^        A trap (once you detect it)."
@@ -31693,7 +31702,7 @@ msgstr ""
 
 #: dat/cmdhelp:49
 msgid "^A\tRedo the previous command"
-msgstr ""
+msgstr "^A\tRehacer el comando anterior"
 
 #: dat/help:91
 msgid "^A      Redo the previous command."
@@ -31705,15 +31714,15 @@ msgstr ""
 
 #: dat/cmdhelp:50
 msgid "^B\tGo southwest until you are near something"
-msgstr ""
+msgstr "^B\tAvanzar suroeste hasta estar cerca de algo"
 
 #: dat/cmdhelp:53
 msgid "^C\tInterrupt: quit the game"
-msgstr ""
+msgstr "^C\tInterrumpir: salir del juego"
 
 #: dat/cmdhelp:56
 msgid "^D\tKick something (usually a door, chest, or box)"
-msgstr ""
+msgstr "^D\tPatear algo (normalmente una puerta, cofre o caja)"
 
 #: dat/help:111
 msgid "^D      Kick (for doors, usually)."
@@ -31725,11 +31734,11 @@ msgstr ""
 
 #: dat/cmdhelp:6
 msgid "^E\tSearch for nearby traps, secret doors, and unseen monsters"
-msgstr ""
+msgstr "^E\tBuscar trampas cercanas, puertas secretas y monstruos invisibles"
 
 #: dat/cmdhelp:14
 msgid "^E\tunavailable debugging command"
-msgstr ""
+msgstr "^E\tcomando de depuración no disponible"
 
 #: dat/wizhelp:3
 msgid "^E  ==  detect secret doors and traps nearby"
@@ -31738,10 +31747,12 @@ msgstr ""
 #: dat/cmdhelp:7
 msgid "^F\tMap level; reveals traps and secret corridors but not secret doors"
 msgstr ""
+"^F\tMapa del nivel; revela trampas y pasillos secretos pero no puertas "
+"secretas"
 
 #: dat/cmdhelp:15
 msgid "^F\tunavailable debugging command"
-msgstr ""
+msgstr "^F\tcomando de depuración no disponible"
 
 #: dat/wizhelp:4
 msgid ""
@@ -31750,11 +31761,11 @@ msgstr ""
 
 #: dat/cmdhelp:8
 msgid "^G\tCreate a monster by name or class"
-msgstr ""
+msgstr "^G\tCrear un monstruo por nombre o clase"
 
 #: dat/cmdhelp:16
 msgid "^G\tunavailable debugging command"
-msgstr ""
+msgstr "^G\tcomando de depuración no disponible"
 
 #: dat/wizhelp:5
 msgid "^G  ==  create monster by name or class"
@@ -31762,15 +31773,15 @@ msgstr ""
 
 #: dat/cmdhelp:63
 msgid "^H\tGo west until you are near something"
-msgstr ""
+msgstr "^H\tAvanzar oeste hasta estar cerca de algo"
 
 #: dat/cmdhelp:9
 msgid "^I\tView inventory with all items identified"
-msgstr ""
+msgstr "^I\tVer inventario con todos los objetos identificados"
 
 #: dat/cmdhelp:17
 msgid "^I\tunavailable debugging command"
-msgstr ""
+msgstr "^I\tcomando de depuración no disponible"
 
 #: dat/wizhelp:6
 msgid "^I  ==  identify items in pack"
@@ -31778,15 +31789,15 @@ msgstr ""
 
 #: dat/cmdhelp:66
 msgid "^J\tGo south until you are near something"
-msgstr ""
+msgstr "^J\tAvanzar sur hasta estar cerca de algo"
 
 #: dat/cmdhelp:67
 msgid "^K\tGo north until you are near something"
-msgstr ""
+msgstr "^K\tAvanzar norte hasta estar cerca de algo"
 
 #: dat/cmdhelp:68
 msgid "^L\tGo east until you are near something"
-msgstr ""
+msgstr "^L\tAvanzar este hasta estar cerca de algo"
 
 #: dat/keyhelp:11
 msgid "^M or <return> or <enter> is likely to be transformed into ^J or"
@@ -31794,19 +31805,19 @@ msgstr ""
 
 #: dat/cmdhelp:71
 msgid "^N\tGo southeast until you are near something"
-msgstr ""
+msgstr "^N\tAvanzar sureste hasta estar cerca de algo"
 
 #: dat/cmdhelp:10
 msgid "^O\tList special level locations"
-msgstr ""
+msgstr "^O\tListar ubicaciones especiales del nivel"
 
 #: dat/cmdhelp:18
 msgid "^O\tShortcut for '#overview': list interesting levels you have visited"
-msgstr ""
+msgstr "^O\tAcceso directo a '#overview': listar niveles interesantes visitados"
 
 #: dat/cmdhelp:76
 msgid "^P\tToggle through previously displayed game messages"
-msgstr ""
+msgstr "^P\tAlternar entre mensajes del juego mostrados anteriormente"
 
 #: dat/help:134
 msgid "^P      Repeat last message (subsequent ^P's repeat earlier messages)."
@@ -31822,7 +31833,7 @@ msgstr ""
 
 #: dat/cmdhelp:81
 msgid "^R\tRedraw screen"
-msgstr ""
+msgstr "^R\tRedibujar pantalla"
 
 #: dat/help:141
 msgid "^R      Redraw the screen."
@@ -31834,7 +31845,7 @@ msgstr ""
 
 #: dat/cmdhelp:86
 msgid "^T\tTeleport around level"
-msgstr ""
+msgstr "^T\tTeletransportarse por el nivel"
 
 #: dat/help:148
 msgid "^T      Teleport, if you are able."
@@ -31850,15 +31861,15 @@ msgstr ""
 
 #: dat/cmdhelp:87
 msgid "^U\tGo northeast until you are near something"
-msgstr ""
+msgstr "^U\tAvanzar noreste hasta estar cerca de algo"
 
 #: dat/cmdhelp:11
 msgid "^V\tTeleport between levels"
-msgstr ""
+msgstr "^V\tTeletransportarse entre niveles"
 
 #: dat/cmdhelp:19
 msgid "^V\tunavailable debugging command"
-msgstr ""
+msgstr "^V\tcomando de depuración no disponible"
 
 #: dat/wizhelp:8
 msgid ""
@@ -31867,11 +31878,11 @@ msgstr ""
 
 #: dat/cmdhelp:12
 msgid "^W\tWish for something"
-msgstr ""
+msgstr "^W\tPedir un deseo"
 
 #: dat/cmdhelp:20
 msgid "^W\tunavailable debugging command"
-msgstr ""
+msgstr "^W\tcomando de depuración no disponible"
 
 #: dat/wizhelp:9
 msgid ""
@@ -31880,7 +31891,7 @@ msgstr ""
 
 #: dat/cmdhelp:94
 msgid "^X\tShow your attributes (shows more in debug or explore mode)"
-msgstr ""
+msgstr "^X\tMostrar tus atributos (muestra más en modo debug o exploración)"
 
 #: dat/help:156
 msgid "^X      Show your attributes."
@@ -31898,27 +31909,27 @@ msgstr ""
 
 #: dat/cmdhelp:100
 msgid "^Y\tGo northwest until you are near something"
-msgstr ""
+msgstr "^Y\tAvanzar noroeste hasta estar cerca de algo"
 
 #: dat/cmdhelp:112
 msgid "^Y\tSuspend game; 'fg' (foreground) to resume"
-msgstr ""
+msgstr "^Y\tSuspender partida; 'fg' (foreground) para reanudar"
 
 #: dat/cmdhelp:114
 msgid "^Y\tunavailable command: suspend"
-msgstr ""
+msgstr "^Y\tcomando no disponible: suspender"
 
 #: dat/cmdhelp:118
 msgid "^Z\tGo northwest until you are near something"
-msgstr ""
+msgstr "^Z\tAvanzar noroeste hasta estar cerca de algo"
 
 #: dat/cmdhelp:104
 msgid "^Z\tSuspend game; 'fg' (foreground) to resume"
-msgstr ""
+msgstr "^Z\tSuspender partida; 'fg' (foreground) para reanudar"
 
 #: dat/cmdhelp:106
 msgid "^Z\tunavailable command: suspend"
-msgstr ""
+msgstr "^Z\tcomando no disponible: suspender"
 
 #: dat/help:161
 msgid "^Z      Suspend the game.  (^Y instead of ^Z if number_pad is -1.)"
@@ -31932,7 +31943,7 @@ msgstr ""
 
 #: dat/cmdhelp:4
 msgid "^[\tCancel command (same as ESCape key)"
-msgstr ""
+msgstr "^[\tCancelar comando (igual que la tecla ESC)"
 
 #: dat/hh:103
 msgid ""
@@ -31941,7 +31952,7 @@ msgstr ""
 
 #: dat/cmdhelp:131
 msgid "_\tTravel via a shortest-path algorithm to a point on the map"
-msgstr ""
+msgstr "_\tViajar mediante algoritmo de ruta más corta a un punto del mapa"
 
 #: dat/help:40
 msgid "_        An altar, or an iron chain."
@@ -32003,7 +32014,7 @@ msgstr ""
 
 #: dat/cmdhelp:130
 msgid "`\tShow discovered types for one class of objects"
-msgstr ""
+msgstr "`\tMostrar tipos descubiertos para una clase de objetos"
 
 #: dat/help:44
 msgid "`        A boulder or statue."
@@ -32023,7 +32034,7 @@ msgstr ""
 
 #: dat/cmdhelp:47
 msgid "a\tApply (use) a tool or break a wand"
-msgstr ""
+msgstr "a\tAplicar (usar) una herramienta o romper una varita"
 
 #: dat/help:89
 msgid "a       Apply (use) a tool (pick-axe, key, lamp...)."
@@ -35484,7 +35495,7 @@ msgstr ""
 
 #: dat/cmdhelp:23
 msgid "b\tGo southwest 1 space"
-msgstr ""
+msgstr "b\tAvanzar suroeste 1 espacio"
 
 #: dat/help:58 dat/hh:5
 msgid ""
@@ -37168,7 +37179,7 @@ msgstr ""
 
 #: dat/cmdhelp:51
 msgid "c\tClose a door"
-msgstr ""
+msgstr "c\tCerrar una puerta"
 
 #: dat/help:92
 msgid "c       Close a door."
@@ -38739,7 +38750,7 @@ msgstr ""
 
 #: dat/cmdhelp:54
 msgid "d\tDrop an item"
-msgstr ""
+msgstr "d\tSoltar un objeto"
 
 #: dat/help:94
 msgid "d       Drop something.  d7a:  drop seven items of object a."
@@ -39795,7 +39806,7 @@ msgstr ""
 
 #: dat/cmdhelp:57
 msgid "e\tEat something"
-msgstr ""
+msgstr "e\tComer algo"
 
 #: dat/help:112
 msgid "e       Eat food."
@@ -40605,7 +40616,7 @@ msgstr ""
 
 #: dat/cmdhelp:59
 msgid "f\tFire ammunition from quiver"
-msgstr ""
+msgstr "f\tDisparar munición del carcaj"
 
 #: dat/help:115
 msgid "f       Fire ammunition from quiver."
@@ -41928,7 +41939,7 @@ msgstr ""
 
 #: dat/cmdhelp:61
 msgid "g\tFollowed by direction, move until you are near something"
-msgstr ""
+msgstr "g\tSeguido de dirección, moverse hasta estar cerca de algo"
 
 #: dat/tribute:7591
 msgid "gained a little height and flapped onwards."
@@ -42772,11 +42783,11 @@ msgstr ""
 
 #: dat/cmdhelp:25
 msgid "h\tGo west 1 space"
-msgstr ""
+msgstr "h\tAvanzar oeste 1 espacio"
 
 #: dat/cmdhelp:39
 msgid "h\tHelp: synonym for '?'"
-msgstr ""
+msgstr "h\tAyuda: sinónimo de '?'"
 
 #: dat/help:193
 msgid "h       displays the help menu, like '?'"
@@ -44260,7 +44271,7 @@ msgstr ""
 
 #: dat/cmdhelp:64
 msgid "i\tShow your inventory"
-msgstr ""
+msgstr "i\tMostrar tu inventario"
 
 #: dat/help:118
 msgid "i       Display your inventory."
@@ -45601,11 +45612,11 @@ msgstr ""
 
 #: dat/cmdhelp:27
 msgid "j\tGo south 1 space"
-msgstr ""
+msgstr "j\tAvanzar sur 1 espacio"
 
 #: dat/cmdhelp:40
 msgid "j\tJump: shortcut for '#jump'"
-msgstr ""
+msgstr "j\tSaltar: acceso directo a '#jump'"
 
 #: dat/help:194
 msgid "j       Jump to another location."
@@ -45810,11 +45821,11 @@ msgstr ""
 
 #: dat/cmdhelp:29
 msgid "k\tGo north 1 space"
-msgstr ""
+msgstr "k\tAvanzar norte 1 espacio"
 
 #: dat/cmdhelp:41
 msgid "k\tKick: synonym for '^D'"
-msgstr ""
+msgstr "k\tPatear: sinónimo de '^D'"
 
 #: dat/help:195
 msgid "k       Kick (for doors, usually)."
@@ -46117,11 +46128,11 @@ msgstr ""
 
 #: dat/cmdhelp:31
 msgid "l\tGo east 1 space"
-msgstr ""
+msgstr "l\tAvanzar este 1 espacio"
 
 #: dat/cmdhelp:42
 msgid "l\tLoot: shortcut for '#loot'"
-msgstr ""
+msgstr "l\tSaquear: acceso directo a '#loot'"
 
 #: dat/help:196
 msgid "l       Loot a box on the floor."
@@ -47037,7 +47048,7 @@ msgstr ""
 
 #: dat/cmdhelp:69
 msgid "m\tFollowed by direction, move without picking anything up or fighting"
-msgstr ""
+msgstr "m\tSeguido de dirección, moverse sin recoger objetos ni luchar"
 
 #: dat/data.base:3456
 msgid "ma*annan*"
@@ -48359,11 +48370,11 @@ msgstr ""
 
 #: dat/cmdhelp:33
 msgid "n\tGo southeast 1 space"
-msgstr ""
+msgstr "n\tAvanzar sureste 1 espacio"
 
 #: dat/cmdhelp:43
 msgid "n\tStart a count; continue with digit(s)"
-msgstr ""
+msgstr "n\tIniciar una cuenta; continuar con dígitos"
 
 #: dat/hh:152
 msgid "n               followed by number of times to repeat the next command"
@@ -49089,7 +49100,7 @@ msgstr ""
 
 #: dat/cmdhelp:72
 msgid "o\tOpen a door"
-msgstr ""
+msgstr "o\tAbrir una puerta"
 
 #: dat/help:124
 msgid "o       Open a door."
@@ -50795,7 +50806,7 @@ msgstr ""
 
 #: dat/cmdhelp:74
 msgid "p\tPay your shopping bill"
-msgstr ""
+msgstr "p\tPagar la cuenta de la tienda"
 
 #: dat/help:132
 msgid "p       Pay your shopping bill."
@@ -52239,7 +52250,7 @@ msgstr ""
 
 #: dat/cmdhelp:77
 msgid "q\tQuaff (drink) something (potion, water, etc)"
-msgstr ""
+msgstr "q\tBeber algo (poción, agua, etc)"
 
 #: dat/help:136
 msgid "q       Drink (quaff) something (potion, water, etc)."
@@ -52384,7 +52395,7 @@ msgstr ""
 
 #: dat/cmdhelp:79
 msgid "r\tRead a scroll or spellbook"
-msgstr ""
+msgstr "r\tLeer un pergamino o libro de hechizos"
 
 #: dat/help:139
 msgid "r       Read a scroll or spellbook."
@@ -53326,7 +53337,7 @@ msgstr ""
 
 #: dat/cmdhelp:82
 msgid "s\tSearch all immediately adjacent locations for traps and secret doors"
-msgstr ""
+msgstr "s\tBuscar en ubicaciones adyacentes trampas y puertas secretas"
 
 #: dat/help:142
 msgid "s       Search for secret doors and traps around you."
@@ -56093,7 +56104,7 @@ msgstr ""
 
 #: dat/cmdhelp:84
 msgid "t\tThrow something (choose an item, then a direction--not a target)"
-msgstr ""
+msgstr "t\tLanzar algo (elige un objeto, luego una dirección, no un objetivo)"
 
 #: dat/help:146
 msgid "t       Throw an object or shoot a projectile."
@@ -60073,11 +60084,11 @@ msgstr ""
 
 #: dat/cmdhelp:35
 msgid "u\tGo northeast 1 space"
-msgstr ""
+msgstr "u\tAvanzar noreste 1 espacio"
 
 #: dat/cmdhelp:45
 msgid "u\tUntrap: shortcut for '#untrap'"
-msgstr ""
+msgstr "u\tDesactivar trampa: acceso directo a '#untrap'"
 
 #: dat/help:199
 msgid "u       Untrap a trapped object or door."
@@ -60531,7 +60542,7 @@ msgstr ""
 
 #: dat/cmdhelp:88
 msgid "v\tShow version ('#version' shows more information)"
-msgstr ""
+msgstr "v\tMostrar versión ('#version' muestra más información)"
 
 #: dat/help:149
 msgid "v       Displays the version number."
@@ -60880,6 +60891,7 @@ msgstr ""
 msgid ""
 "w\tWield a weapon (for dual weapons: 'w' secondary, 'x', 'w' primary, 'X')"
 msgstr ""
+"w\tEquipar un arma (para dos armas: 'w' secundaria, 'x', 'w' principal, 'X')"
 
 #: dat/help:152
 msgid "w       Wield weapon.  w- means wield nothing, use bare hands."
@@ -62977,7 +62989,7 @@ msgstr ""
 
 #: dat/cmdhelp:92
 msgid "x\tSwap wielded and secondary weapons"
-msgstr ""
+msgstr "x\tIntercambiar armas equipada y secundaria"
 
 #: dat/help:154
 msgid "x       Swap wielded and secondary weapons."
@@ -63001,11 +63013,11 @@ msgstr ""
 
 #: dat/cmdhelp:97
 msgid "y\tGo northwest 1 space"
-msgstr ""
+msgstr "y\tAvanzar noroeste 1 espacio"
 
 #: dat/cmdhelp:109
 msgid "y\tZap a wand"
-msgstr ""
+msgstr "y\tDisparar una varita"
 
 #: dat/help:54 dat/hh:1
 msgid "y k u   7 8 9   Move commands:"
@@ -63337,11 +63349,11 @@ msgstr ""
 
 #: dat/cmdhelp:116
 msgid "z\tGo northwest 1 space"
-msgstr ""
+msgstr "z\tAvanzar noroeste 1 espacio"
 
 #: dat/cmdhelp:101
 msgid "z\tZap a wand"
-msgstr ""
+msgstr "z\tDisparar una varita"
 
 #: dat/help:159
 msgid "z       Zap a wand.  (Use y instead of z if number_pad is -1.)"
