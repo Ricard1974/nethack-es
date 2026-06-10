@@ -6122,6 +6122,7 @@ msgstr ""
 #: dat/keyhelp:20
 msgid "'whatdoes'.  Unlike ^M, this transformation is performed within"
 msgstr ""
+"'whatdoes'.  A diferencia de ^M, esta transformación se realiza dentro de"
 
 #: dat/cmdhelp:144
 msgid "(\tShow the tools currently in use"
@@ -6574,6 +6575,7 @@ msgstr ""
 #: dat/keyhelp:45
 msgid "(It will then be treated as if you typed ESC rather than M-ESC.)"
 msgstr ""
+"(Entonces se tratará como si hubieras tecleado ESC en lugar de M-ESC.)"
 
 #: dat/opthelp:276
 msgid "(This only affects screen display, not actual movement.)"
@@ -8197,11 +8199,11 @@ msgstr ""
 
 #: dat/keyhelp:37
 msgid "<alt> or <option> key, when used as shift while typing some other"
-msgstr ""
+msgstr "tecla <alt> o <option>, al usarse como shift mientras tecleas otra"
 
 #: dat/keyhelp:12
 msgid "<linefeed> or 'newline' before being passed to NetHack for handling."
-msgstr ""
+msgstr "<linefeed> o 'newline' antes de pasarse a NetHack."
 
 #: dat/cmdhelp:142
 msgid "=\tShow the ring(s) currently worn"
@@ -8343,7 +8345,7 @@ msgstr ""
 
 #: dat/keyhelp:17
 msgid "A NUL character, which is typed as ^<space> on some keyboards,"
-msgstr ""
+msgstr "Un carácter NUL, que se teclea como ^<espacio> en algunos teclados,"
 
 #: dat/tribute:8142
 msgid "A VERY ACCURATE ONE.  YOU SEE, YOU ARE HAVING A NEAR-DEATH EXPERIENCE,"
@@ -11529,6 +11531,7 @@ msgstr "Control <dir> puede o no funcionar cuando number_pad está activado,"
 #: dat/keyhelp:54
 msgid "Control characters are all implicitly uppercase, but you don't"
 msgstr ""
+"Los caracteres de control son todos implícitamente mayúsculas, pero no"
 
 #: dat/hh:45
 msgid ""
@@ -12031,6 +12034,7 @@ msgstr "Dependiendo de la plataforma, Mayús+número (en el teclado numérico),"
 #: dat/keyhelp:1
 msgid "Depending upon hardware or operating system or NetHack's interface,"
 msgstr ""
+"Dependiendo del hardware, del sistema operativo o de la interfaz de NetHack,"
 
 #: dat/history:383
 msgid "Derek S. Ray              Kevin Hugo                Ross Brown"
@@ -12393,7 +12397,7 @@ msgstr "E- - escribir en el polvo con los dedos."
 
 #: dat/keyhelp:24
 msgid "ESC itself is a synonym for ^[, and is another source of oddity."
-msgstr ""
+msgstr "El propio ESC es un sinónimo de ^[, y es otra fuente de rarezas."
 
 #: dat/tribute:882
 msgid "EVEN ONE INDIVIDUAL COULD DESTROY THE WHOLE WORLD.  DO YOU UNDERSTAND?"
@@ -13104,7 +13108,7 @@ msgstr ""
 
 #: dat/keyhelp:4
 msgid "For example, ^S and ^Q are often used for XON/XOFF flow-control,"
-msgstr ""
+msgstr "Por ejemplo, ^S y ^Q se usan a menudo para control de flujo XON/XOFF,"
 
 #: dat/tribute:3815
 msgid "For example, the big volume open in front of him contained some of the"
@@ -16027,6 +16031,7 @@ msgstr ""
 #: dat/keyhelp:36
 msgid "If you have NetHack's 'altmeta' option enabled, meaning that the"
 msgstr ""
+"Si tienes activada la opción 'altmeta' de NetHack, lo que significa que la"
 
 #: dat/rumors.tru:90
 msgid "If you kill the Wizard, you get promoted to demi-god."
@@ -18685,7 +18690,7 @@ msgstr "NetHack conoce los siguientes comandos:"
 
 #: dat/keyhelp:42
 msgid "NetHack sees ESC, it needs to wait for another character before"
-msgstr ""
+msgstr "NetHack ve ESC, necesita esperar otro carácter antes de"
 
 #: dat/history:123
 msgid "NetHack to use the Qt interface."
@@ -18703,6 +18708,7 @@ msgstr ""
 #: dat/keyhelp:21
 msgid "NetHack.  But like ^M, if you type NUL and get feedback about ESC,"
 msgstr ""
+"NetHack.  Pero como con ^M, si tecleas NUL y recibes respuesta sobre ESC,"
 
 #: dat/rumors.fal:120
 msgid "Never ask a shopkeeper for a price list."
@@ -19254,7 +19260,7 @@ msgstr ""
 
 #: dat/keyhelp:47
 msgid "On some systems, typing ^\\ will send a QUIT signal to the current"
-msgstr ""
+msgstr "En algunos sistemas, teclear ^\\ enviará una señal QUIT al"
 
 #: dat/tribute:6765
 msgid ""
@@ -19378,6 +19384,8 @@ msgstr ""
 #: dat/keyhelp:52
 msgid "One last note:  characters shown as ^x mean that you should hold"
 msgstr ""
+"Una última nota: los caracteres que se muestran como ^x significan que debes"
+" mantener"
 
 #: dat/rumors.fal:139
 msgid "One level further down somebody is getting killed, right now."
@@ -23171,6 +23179,7 @@ msgstr ""
 #: dat/keyhelp:13
 msgid "So it isn't used as a command, and 'whatdoes' might seem as if it"
 msgstr ""
+"Por lo tanto, no se usa como comando, y 'whatdoes' puede parecer como si"
 
 #: dat/data.base:2074
 msgid "So kind and gracious was its outward cheer;"
@@ -28344,6 +28353,7 @@ msgstr ""
 #: dat/keyhelp:25
 msgid "Various function keys, including cursor arrow keys, may transmit"
 msgstr ""
+"Varias teclas de función, incluyendo las teclas de cursor, pueden transmitir"
 
 #: dat/rumors.tru:365
 msgid "Vault guards never disturb their Lords."
@@ -31698,7 +31708,7 @@ msgstr ""
 
 #: dat/keyhelp:18
 msgid "^@ on others, and maybe not typeable at all on yet others, is not"
-msgstr ""
+msgstr "^@ en otros, y quizás ni siquiera se pueda teclear en otros, no se"
 
 #: dat/cmdhelp:49
 msgid "^A\tRedo the previous command"
@@ -31801,7 +31811,7 @@ msgstr "^L\tAvanzar este hasta estar cerca de algo"
 
 #: dat/keyhelp:11
 msgid "^M or <return> or <enter> is likely to be transformed into ^J or"
-msgstr ""
+msgstr "^M o <return> o <enter> probablemente se transformarán en ^J o"
 
 #: dat/cmdhelp:71
 msgid "^N\tGo southeast until you are near something"
@@ -32293,7 +32303,7 @@ msgstr ""
 
 #: dat/keyhelp:30
 msgid "a menu of the armor your hero is wearing appears, what happened"
-msgstr ""
+msgstr "aparece un menú con la armadura que lleva tu héroe, lo que ocurrió"
 
 #: dat/tribute:8850
 msgid ""
@@ -33390,6 +33400,7 @@ msgstr ""
 #: dat/keyhelp:26
 msgid "an \"escape sequence\" of ESC + [ + other stuff, confusing NetHack"
 msgstr ""
+"una \"secuencia de escape\" de ESC + [ + otras cosas, confundiendo a NetHack"
 
 #: dat/data.base:32
 msgid "an Abbot or something of that kind.  Born in 1226, he had from"
@@ -34288,7 +34299,7 @@ msgstr ""
 
 #: dat/keyhelp:28
 msgid "and then whatever follows will seem to NetHack like--and be used"
-msgstr ""
+msgstr "y luego lo que siga parecerá a NetHack como--y se usará"
 
 #: dat/tribute:5995
 msgid "and therefore a rare bloom in Ankh-Morpork."
@@ -34547,6 +34558,8 @@ msgstr ""
 #: dat/keyhelp:32
 msgid "any pending key operation, its '[' was then treated as a command"
 msgstr ""
+"cualquier operación de tecla pendiente, su '[' se trató entonces como un "
+"comando"
 
 #: dat/data.base:1784
 msgid "any spell damage to the person who carries it by half, and"
@@ -34852,6 +34865,7 @@ msgstr ""
 #: dat/keyhelp:8
 msgid "aren't used as commands, but 'whatdoes' might not be able to tell"
 msgstr ""
+"se usan como comandos, pero 'whatdoes' puede no ser capaz de indicarte"
 
 #: dat/tribute:364
 msgid ""
@@ -35135,7 +35149,7 @@ msgstr ""
 
 #: dat/keyhelp:27
 msgid "as to what command was intended since the ESC will be processed"
-msgstr ""
+msgstr "sobre qué comando se pretendía ya que el ESC se procesará"
 
 #: dat/tribute:2579
 msgid ""
@@ -35162,6 +35176,7 @@ msgstr ""
 #: dat/keyhelp:29
 msgid "as--something typed by the user.  (If you press a function key and"
 msgstr ""
+"como--algo tecleado por el usuario.  (Si pulsas una tecla de función y"
 
 #: dat/opthelp:131
 msgid "ascii_map      show map as text, forces tiles_map Off; Qt, X11"
@@ -37605,7 +37620,7 @@ msgstr ""
 
 #: dat/keyhelp:38
 msgid "character, transmits ESC and then the other character so NetHack"
-msgstr ""
+msgstr "tecla, transmite ESC y luego el otro carácter para que NetHack"
 
 #: dat/data.base:2933
 msgid "characterized by a prominent beaked front which jutted out over"
@@ -38274,6 +38289,8 @@ msgstr ""
 #: dat/keyhelp:49
 msgid "core dump.  It is not used for any NetHack command, so don't type"
 msgstr ""
+"volcado de memoria.  No se usa para ningún comando de NetHack, así que no "
+"teclees"
 
 #: dat/data.base:4533
 msgid "corn were as long as men are tall, and caused bolls of colored"
@@ -39333,6 +39350,7 @@ msgstr ""
 #: dat/keyhelp:34
 msgid "discarded as invalid choices while you dismissed the menu.)"
 msgstr ""
+"silenciosamente como opciones inválidas mientras descartabas el menú.)"
 
 #: dat/opthelp:175
 msgid ""
@@ -39631,6 +39649,7 @@ msgstr ""
 #: dat/keyhelp:53
 msgid "down the <control> or <ctrl> key as a shift and then type 'x'."
 msgstr ""
+"pulsada la tecla <control> o <ctrl> como modificador y luego teclear 'x'."
 
 #: dat/data.base:6098
 msgid "down the dark road to the Underworld.  Entering the house of"
@@ -45229,7 +45248,7 @@ msgstr ""
 
 #: dat/keyhelp:14
 msgid "is reporting the wrong character but will be operating correctly if"
-msgstr ""
+msgstr "notificara el carácter incorrecto pero funcionará correctamente si"
 
 #: dat/data.base:2299
 msgid "is said to bring you luck if you touch his statue."
@@ -45317,11 +45336,11 @@ msgstr ""
 
 #: dat/keyhelp:43
 msgid "it can decide what to do.  So if you type ESC manually, you'll"
-msgstr ""
+msgstr "poder decidir qué hacer.  Así que si tecleas ESC manualmente, tendrás"
 
 #: dat/keyhelp:15
 msgid "it describes ^J when you type ^M."
-msgstr ""
+msgstr "describe ^J cuando tecleas ^M."
 
 #: dat/tribute:9635
 msgid "it did exist and, besides, Lord Vetinari always had his eye on him."
@@ -46412,7 +46431,7 @@ msgstr ""
 
 #: dat/keyhelp:58
 msgid "letter meta-character."
-msgstr ""
+msgstr "en mayúsculas."
 
 #: dat/help:188
 msgid "letter of the command.  An alt key may have a similar effect."
@@ -47551,7 +47570,7 @@ msgstr ""
 
 #: dat/keyhelp:5
 msgid "meaning that ^S suspends output and subsequent ^Q resumes suspended"
-msgstr ""
+msgstr "lo que significa que ^S suspende la salida y ^Q reanuda la salida"
 
 #: dat/tribute:1280
 msgid "means, but this was perfectly allowable and death by assassination was"
@@ -48517,11 +48536,11 @@ msgstr ""
 
 #: dat/keyhelp:55
 msgid "need to press the shift key while typing them.  The opposite is"
-msgstr ""
+msgstr "necesitas pulsar shift mientras los tecleas.  Lo contrario ocurre"
 
 #: dat/keyhelp:44
 msgid "need to type it a second time or NetHack will sit there waiting."
-msgstr ""
+msgstr "que teclearlo una segunda vez o NetHack se quedará esperando."
 
 #: dat/tribute:321
 msgid "need.  And, then again, sometimes she didn't.  She was like that.  She"
@@ -49362,6 +49381,7 @@ msgstr ""
 #: dat/keyhelp:41
 msgid "of a two character sequence ESC + something is the fact that when"
 msgstr ""
+"de una secuencia de dos caracteres ESC + algo está el hecho de que cuando"
 
 #: dat/tribute:131
 msgid ""
@@ -50715,7 +50735,7 @@ msgstr ""
 
 #: dat/keyhelp:6
 msgid "output.  When that is the case, neither of those characters will"
-msgstr ""
+msgstr "suspendida.  Cuando esto ocurre, ninguno de esos caracteres"
 
 #: dat/data.base:2381
 msgid "outward as if from some irresistible pressure applied from"
@@ -52054,6 +52074,8 @@ msgstr ""
 #: dat/keyhelp:48
 msgid "process, probably killing it and possibly causing it to save a"
 msgstr ""
+"proceso actual, probablemente terminándolo y posiblemente haciendo que "
+"guarde un"
 
 #: dat/history:62
 msgid "produced NetHack 3.1.  Version 3.1.0 was released in January of 1993."
@@ -52546,6 +52568,8 @@ msgstr ""
 #: dat/keyhelp:7
 msgid "reach NetHack when it is waiting for a command keystroke.  So they"
 msgstr ""
+"llegará a NetHack cuando esté esperando una tecla de comando.  Por lo tanto,"
+" no"
 
 #: dat/data.base:3885
 msgid "reachable by magical means, where she teaches her apprentices"
@@ -54250,7 +54274,7 @@ msgstr ""
 
 #: dat/keyhelp:39
 msgid "should treat that other character as a meta-character, then ESC"
-msgstr ""
+msgstr "trate ese otro carácter como un meta-carácter, entonces ESC"
 
 #: dat/tribute:6808
 msgid "shouldn't be so long as to make you miss mealtimes."
@@ -54919,7 +54943,7 @@ msgstr ""
 
 #: dat/keyhelp:2
 msgid "some keystrokes may be off-limits."
-msgstr ""
+msgstr "algunas combinaciones de teclas pueden no estar disponibles."
 
 #: dat/data.base:480
 msgid "some kind of a home."
@@ -56165,7 +56189,7 @@ msgstr ""
 
 #: dat/keyhelp:40
 msgid "takes on added potential for confusion.  Implicit in the handling"
-msgstr ""
+msgstr "adquiere un potencial adicional de confusión.  Implícito en el manejo"
 
 #: dat/data.base:797
 msgid "takes place, then the device smashes a phial containing cyanide and"
@@ -56493,7 +56517,7 @@ msgstr ""
 
 #: dat/keyhelp:50
 msgid "that character."
-msgstr ""
+msgstr "ese carácter."
 
 #: dat/tribute:3581
 msgid "that coffee.\""
@@ -57810,7 +57834,7 @@ msgstr ""
 
 #: dat/keyhelp:22
 msgid "the situation is expected."
-msgstr ""
+msgstr "la situación es la esperada."
 
 #: dat/data.base:3229
 msgid "the size of the wild ass, with the legs of a Stag, the neck,"
@@ -59393,6 +59417,8 @@ msgstr ""
 #: dat/keyhelp:33
 msgid "to show worn armor, and the \"other stuff\" probably got silently"
 msgstr ""
+"para mostrar la armadura puesta, y el \"otro material\" probablemente se "
+"ignoró"
 
 #: dat/tribute:9136
 msgid ""
@@ -59509,7 +59535,7 @@ msgstr ""
 
 #: dat/keyhelp:57
 msgid "to use shift as well as <meta> or <alt> to generate an uppercase"
-msgstr ""
+msgstr "usar shift además de <meta> o <alt> para generar un meta-carácter"
 
 #: dat/data.base:549
 msgid "to wear anything in particular made their dresses tightly round"
@@ -59904,6 +59930,8 @@ msgstr ""
 #: dat/keyhelp:56
 msgid "true for meta-characters:  they can be either case, so you need"
 msgstr ""
+"con los meta-caracteres: pueden ser en mayúsculas o minúsculas, así que "
+"necesitas"
 
 #: dat/tribute:8417
 msgid ""
@@ -60467,7 +60495,7 @@ msgstr ""
 
 #: dat/keyhelp:19
 msgid "used as a command, and will be converted into ESC before reaching"
-msgstr ""
+msgstr "usa como comando, y se convertirá en ESC antes de llegar a"
 
 #: dat/help:75 dat/hh:22
 msgid "used but 'y' and 'z' are swapped."
@@ -61267,7 +61295,7 @@ msgstr ""
 
 #: dat/keyhelp:31
 msgid "was that an escape sequence was sent to NetHack, its ESC aborted"
-msgstr ""
+msgstr "fue que se envió una secuencia de escape a NetHack, su ESC canceló"
 
 #: dat/data.base:702
 msgid "was the Celtic (continental European and Irish) fertility"
@@ -63227,7 +63255,7 @@ msgstr ""
 
 #: dat/keyhelp:9
 msgid "you that if they don't get passed through to NetHack."
-msgstr ""
+msgstr "que no llegan a NetHack."
 
 #: dat/tribute:1528
 msgid "you thought you had it nailed down it walked away with the hammer."
