@@ -8187,11 +8187,11 @@ msgstr ""
 
 #: dat/engrave.txt:19
 msgid "<- A.S."
-msgstr ""
+msgstr "<- A.S."
 
 #: dat/engrave.txt:64
 msgid "<--- Go right"
-msgstr ""
+msgstr "<--- Ve a la derecha"
 
 #: dat/epitaph.txt:99
 msgid "<Expletive Deleted>"
@@ -8890,7 +8890,7 @@ msgstr ""
 
 #: dat/engrave.txt:18
 msgid "A.S. ->"
-msgstr ""
+msgstr "A.S. ->"
 
 #: dat/tribute:4192
 msgid "ABOUT THAT."
@@ -10064,7 +10064,7 @@ msgstr ""
 
 #: dat/engrave.txt:53
 msgid "Arooo!  Werewolves of Yendor!"
-msgstr ""
+msgstr "¡Aúúú! ¡Hombres lobo de Yendor!"
 
 #: dat/data.base:1247
 msgid "Art thou not, fatal vision, sensible"
@@ -10140,7 +10140,7 @@ msgstr ""
 
 #: dat/engrave.txt:48
 msgid "As if!"
-msgstr ""
+msgstr "¡Cómo si!"
 
 #: dat/data.base:136
 msgid "As long as my life endures"
@@ -10328,7 +10328,7 @@ msgstr "B\tAvanzar suroeste hasta llegar a algo"
 
 #: dat/engrave.txt:50
 msgid "BAD WOLF"
-msgstr ""
+msgstr "MAL LOBO"
 
 #: dat/tribute:9696
 msgid "BALANCE AND YOU HAVE LEFT THE WORLD MUCH BETTER THAN YOU FOUND IT, AND"
@@ -12136,7 +12136,7 @@ msgstr ""
 
 #: dat/engrave.txt:56
 msgid "Dig for Victory here"
-msgstr ""
+msgstr "Cava hacia la Victoria aquí"
 
 #: dat/data.base:6173
 msgid "Digger            1 to 2"
@@ -12233,7 +12233,7 @@ msgstr ""
 
 #: dat/engrave.txt:62
 msgid "Don't go this way"
-msgstr ""
+msgstr "No vayas por aquí"
 
 #: dat/rumors.tru:45
 msgid "Don't lash out at people while blinded."
@@ -12479,7 +12479,7 @@ msgstr ""
 
 #: dat/engrave.txt:6
 msgid "Elbereth"
-msgstr ""
+msgstr "Elbereth"
 
 #: dat/rumors.tru:55
 msgid "Elbereth has quite a reputation around these parts."
@@ -13091,7 +13091,7 @@ msgstr ""
 
 #: dat/engrave.txt:34
 msgid "For a good time call 8?7-5309"
-msgstr ""
+msgstr "Para un buen rato llama al 8?7-5309"
 
 #: dat/rumors.tru:68
 msgid "For a good time engrave `Elbereth'."
@@ -13235,7 +13235,7 @@ msgstr ""
 
 #: dat/engrave.txt:15
 msgid "Frodo lives"
-msgstr ""
+msgstr "Frodo vive"
 
 #: dat/tribute:1372
 msgid ""
@@ -13957,11 +13957,11 @@ msgstr ""
 
 #: dat/engrave.txt:59
 msgid "Gaius Julius Primigenius was here.  Why are you late?"
-msgstr ""
+msgstr "Gaius Julius Primigenius estuvo aquí.  ¿Por qué llegas tarde?"
 
 #: dat/engrave.txt:13
 msgid "Galadriel"
-msgstr ""
+msgstr "Galadriel"
 
 #: dat/data.base:6270
 msgid "Gallant           1 to 2"
@@ -14063,7 +14063,7 @@ msgstr ""
 
 #: dat/engrave.txt:63
 msgid "Go left --->"
-msgstr ""
+msgstr "Ve a la izquierda --->"
 
 #: dat/data.base:308
 msgid "Go-Daigo eventually escaped and established another"
@@ -14314,7 +14314,7 @@ msgstr ""
 
 #: dat/engrave.txt:79
 msgid "Haermund Hardaxe carved these runes"
-msgstr ""
+msgstr "Haermund Hacha Dura grabó estas runas"
 
 #: dat/history:71
 msgid ""
@@ -14889,7 +14889,7 @@ msgstr ""
 
 #: dat/engrave.txt:42
 msgid "Hello, World!"
-msgstr ""
+msgstr "¡Hola, mundo!"
 
 #: dat/epitaph.txt:254
 msgid "Help! I've fallen and I can't get up!"
@@ -14922,7 +14922,7 @@ msgstr ""
 
 #: dat/engrave.txt:67
 msgid "Here be dragons"
-msgstr ""
+msgstr "Aquí hay dragones"
 
 #: dat/opthelp:341
 msgid "Here is a list of all commands with their default keystroke"
@@ -16023,6 +16023,8 @@ msgstr ""
 msgid ""
 "If you can read these words then you are not only a nerd but probably dead."
 msgstr ""
+"Si puedes leer estas palabras, no solo eres un friki sino que probablemente "
+"estás muerto."
 
 #: dat/rumors.fal:88
 msgid "If you can't learn to do it well, learn to enjoy doing it badly."
@@ -17169,7 +17171,7 @@ msgstr ""
 
 #: dat/engrave.txt:14
 msgid "Kilroy was here"
-msgstr ""
+msgstr "Kilroy estuvo aquí"
 
 #: dat/data.base:2577
 msgid "King Richard III: A horse! a horse! my kingdom for a horse!"
@@ -17270,7 +17272,7 @@ msgstr ""
 
 #: dat/engrave.txt:23
 msgid "Lasciate ogni speranza o voi ch'entrate."
-msgstr ""
+msgstr "Lasciate ogni speranza o voi ch'entrate."
 
 #: dat/data.base:305
 msgid "Later when Go-Daigo attempted to reduce the powers of the"
@@ -17847,7 +17849,7 @@ msgstr ""
 
 #: dat/engrave.txt:38
 msgid "Madam, in Eden, I'm Adam."
-msgstr ""
+msgstr "Señora, en el Edén, soy Adán."
 
 #: dat/data.base:3634
 msgid "Made by Dwarfs.  The Rule here is that the Mine is either long"
@@ -18589,6 +18591,8 @@ msgstr ""
 msgid ""
 "Need a light?  Come visit the Minetown branch of Izchak's Lighting Store!"
 msgstr ""
+"¿Necesitas luz?  ¡Visita la sucursal de Minetown de la Tienda de Iluminación"
+" de Izchak!"
 
 #: dat/data.base:3884
 msgid "Neferet the Green holds office in her hidden tower, only"
@@ -19592,7 +19596,7 @@ msgstr ""
 
 #: dat/engrave.txt:12
 msgid "Owlbreath"
-msgstr ""
+msgstr "Owlbreath"
 
 #: dat/cmdhelp:75
 msgid "P\tPut on an accessory (ring, amulet, etc; will work for armor too)"
@@ -19853,7 +19857,7 @@ msgstr ""
 
 #: dat/engrave.txt:36
 msgid "Please don't feed the animals."
-msgstr ""
+msgstr "Por favor, no alimentes a los animales."
 
 #: dat/epitaph.txt:350
 msgid "Please, not in front of those orcs!"
@@ -22807,7 +22811,7 @@ msgstr ""
 
 #: dat/engrave.txt:68
 msgid "Save now, and do your homework!"
-msgstr ""
+msgstr "¡Guarda ahora, y haz los deberes!"
 
 #: dat/data.base:5071
 msgid "Science fiction did not invent the slime molds, but it has"
@@ -22835,7 +22839,7 @@ msgstr ""
 
 #: dat/engrave.txt:30
 msgid "See you next Wednesday"
-msgstr ""
+msgstr "Nos vemos el próximo miércoles"
 
 #: dat/rumors.fal:153
 msgid "Seepage?  Leaky pipes?  Rising damp?  Summon the plumber!"
@@ -23141,7 +23145,7 @@ msgstr ""
 
 #: dat/engrave.txt:83
 msgid "Snakes on the Astral Plane - Soon in a dungeon near you"
-msgstr ""
+msgstr "Serpientes en el Plano Astral - Pronto en una mazmorra cerca de ti"
 
 #: dat/data.base:6525
 msgid "Snuff"
@@ -24228,7 +24232,7 @@ msgstr ""
 
 #: dat/engrave.txt:70
 msgid "The Vibrating Square"
-msgstr ""
+msgstr "La Casilla Vibrante"
 
 #: dat/tribute:8534
 msgid "The Watch armor he'd lifted from the bank's locker room fitted like a"
@@ -24358,7 +24362,7 @@ msgstr ""
 
 #: dat/engrave.txt:93
 msgid "The cake is a lie"
-msgstr ""
+msgstr "La tarta es un engaño"
 
 #: dat/data.base:4849
 msgid "The celebration which had been dormant for years was revived"
@@ -25599,7 +25603,7 @@ msgstr ""
 
 #: dat/engrave.txt:69
 msgid "There was a hole here.  It's gone now."
-msgstr ""
+msgstr "Aquí había un agujero.  Ya no está."
 
 #: dat/tribute:7379
 msgid ""
@@ -27631,7 +27635,7 @@ msgstr ""
 
 #: dat/engrave.txt:71
 msgid "This is a pit!"
-msgstr ""
+msgstr "¡Esto es una fosa!"
 
 #: dat/data.base:1781
 msgid "This is a powerful amulet of ESP.  In addition to its standard"
@@ -27651,7 +27655,7 @@ msgstr ""
 
 #: dat/engrave.txt:72
 msgid "This is not the dungeon you are looking for."
-msgstr ""
+msgstr "Esta no es la mazmorra que buscas."
 
 #: dat/tribute:2195
 msgid "This is space.  It's sometimes called the final frontier."
@@ -27709,7 +27713,7 @@ msgstr ""
 
 #: dat/engrave.txt:76
 msgid "This square deliberately left blank."
-msgstr ""
+msgstr "Esta casilla se ha dejado intencionadamente en blanco."
 
 #: dat/data.base:5236
 msgid "This staff is considered sacred to all healers, as it truly"
@@ -28147,7 +28151,7 @@ msgstr ""
 
 #: dat/engrave.txt:40
 msgid "Two thumbs up!"
-msgstr ""
+msgstr "¡Dos pulgares arriba!"
 
 #: dat/rumors.tru:361
 msgid "Two wrongs don't make a right, but three lefts do."
@@ -28544,7 +28548,7 @@ msgstr ""
 
 #: dat/engrave.txt:8
 msgid "Vlad was here"
-msgstr ""
+msgstr "Vlad estuvo aquí"
 
 #: dat/data.base:3069
 msgid "Vlana's feet.  I swear that, witness me, Kos the god of"
@@ -28649,7 +28653,7 @@ msgstr ""
 
 #: dat/engrave.txt:87
 msgid "Warning, Exploding runes!"
-msgstr ""
+msgstr "¡Aviso, runas explosivas!"
 
 #: dat/history:125
 msgid ""
@@ -28680,7 +28684,7 @@ msgstr ""
 
 #: dat/engrave.txt:73
 msgid "Watch out, there's a gnome with a wand of death behind that door!"
-msgstr ""
+msgstr "¡Cuidado, hay un gnomo con una varita de muerte detrás de esa puerta!"
 
 #: dat/tribute:3610
 msgid "Watch.(1)  Running away from the Watch was downright suspicious."
@@ -28712,7 +28716,7 @@ msgstr ""
 
 #: dat/engrave.txt:28
 msgid "We apologize for the inconvenience."
-msgstr ""
+msgstr "Disculpen las molestias."
 
 #: dat/rumors.fal:372
 msgid "We have new ways of detecting treachery..."
@@ -28783,7 +28787,7 @@ msgstr ""
 
 #: dat/engrave.txt:25
 msgid "Well Come"
-msgstr ""
+msgstr "Bienvenido"
 
 #: dat/data.base:61
 msgid "Well, a sense of compassion came over me.  I insisted we swap"
@@ -29484,11 +29488,11 @@ msgstr ""
 
 #: dat/engrave.txt:66
 msgid "X <--- You are here."
-msgstr ""
+msgstr "X <--- Tú estás aquí."
 
 #: dat/engrave.txt:65
 msgid "X marks the spot"
-msgstr ""
+msgstr "X marca el lugar"
 
 #: dat/opthelp:24
 msgid "X11: menu has all commands (T) or traditional subset (F)"
@@ -29636,6 +29640,8 @@ msgid ""
 "You are the one millionth visitor to this place!  Please wait 200 turns for "
 "your wand of wishing."
 msgstr ""
+"¡Eres el visitante un millón de este lugar!  Espera 200 turnos para tu "
+"varita de deseos."
 
 #: dat/data.base:4270
 msgid "You better pay attention, or this world we love so much"
@@ -29826,7 +29832,7 @@ msgstr ""
 
 #: dat/engrave.txt:21
 msgid "You won't get it up the steps"
-msgstr ""
+msgstr "No lo subirás por las escaleras"
 
 #: dat/data.base:4431
 msgid "You won't get it."
@@ -29838,7 +29844,7 @@ msgstr ""
 
 #: dat/engrave.txt:45
 msgid "You've got mail!"
-msgstr ""
+msgstr "¡Tienes correo!"
 
 #: dat/tribute:8323
 msgid ""
@@ -31700,11 +31706,11 @@ msgstr ""
 
 #: dat/engrave.txt:46
 msgid "^."
-msgstr ""
+msgstr "^."
 
 #: dat/engrave.txt:43
 msgid "^?MAIL"
-msgstr ""
+msgstr "^?CORREO"
 
 #: dat/keyhelp:18
 msgid "^@ on others, and maybe not typeable at all on yet others, is not"
@@ -32823,7 +32829,7 @@ msgstr ""
 
 #: dat/engrave.txt:9
 msgid "ad aerarium"
-msgstr ""
+msgstr "ad aerarium"
 
 #: dat/data.base:4746
 msgid "adamantine luster. ... The chief corundum gems are the ruby"
@@ -48982,7 +48988,7 @@ msgstr ""
 
 #: dat/engrave.txt:32
 msgid "notary sojak"
-msgstr ""
+msgstr "notario sojak"
 
 #: dat/history:20
 msgid ""
