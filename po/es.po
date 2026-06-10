@@ -37991,7 +37991,7 @@ msgstr ""
 #: dat/help:182
 msgid "commands you can use depends upon what options the game was"
 msgstr ""
-"extendidos que puedes usar dependen de las opciones con las que se compiló"
+"extendidos disponibles dependen de las opciones con las que se compiló"
 
 #: dat/tribute:9112
 msgid ""
@@ -38028,7 +38028,7 @@ msgstr ""
 
 #: dat/help:183
 msgid "compiled with, along with your class and what type of monster"
-msgstr "el juego, junto con tu clase y qué tipo de monstruo"
+msgstr "el juego, de tu clase y del tipo de monstruo"
 
 #: dat/data.base:5022
 msgid "completely and utterly wrong."
@@ -38973,8 +38973,7 @@ msgstr ""
 
 #: dat/help:158
 msgid "deleting the save file during restore can both be overridden."
-msgstr ""
-"borrar el fichero guardado durante la restauración pueden ser anulados."
+msgstr "borrar el fichero guardado durante la restauración no tendrán efecto."
 
 #: dat/data.base:926
 msgid "delicately wrought in the manner of that period when art made"
@@ -43067,7 +43066,7 @@ msgstr ""
 
 #: dat/help:185
 msgid "has a meta key (which, when pressed in combination with another"
-msgstr "tiene una tecla meta (que, al pulsarse en combinación con otra"
+msgstr "tiene tecla Alt, puedes invocar los comandos extendidos"
 
 #: dat/tribute:8265
 msgid "has anyone checked lately?"
@@ -45885,7 +45884,7 @@ msgstr ""
 
 #: dat/help:186
 msgid "key, modifies it by setting the 'meta' (8th, or 'high') bit),"
-msgstr "tecla, la modifica activando el bit 'meta' (8º, o 'alto')),"
+msgstr "pulsando Alt + la primera letra del comando."
 
 #: dat/data.base:2970
 msgid "ki-rin"
@@ -46406,7 +46405,7 @@ msgstr ""
 
 #: dat/help:188
 msgid "letter of the command.  An alt key may have a similar effect."
-msgstr "letra del comando.  La tecla Alt puede tener un efecto similar."
+msgstr "Modificador o la tecla de Windows.]"
 
 #: dat/tribute:3645
 msgid "letters after their name, so they know what they're talking about."
@@ -58408,8 +58407,7 @@ msgstr ""
 
 #: dat/help:187
 msgid "these extended commands can be invoked by meta-ing the first"
-msgstr ""
-"estos comandos extendidos pueden invocarse pulsando meta con la primera"
+msgstr "[Si tu teclado no tiene Alt, prueba con la tecla"
 
 #: dat/tribute:6007
 msgid "these men were called \"women.\""
@@ -62334,7 +62332,7 @@ msgstr ""
 
 #: dat/help:102
 msgid "with \"+\", deselect all items with \"=\".  The <SPACEBAR> moves"
-msgstr "con \"+\", desselecciona todos con \"=\".  La <BARRA ESPACIADORA> pasa"
+msgstr "con \"+\", deselecciona todos con \"=\".  La <BARRA ESPACIADORA> pasa"
 
 #: dat/history:53
 msgid "with 3.1.0."
@@ -63187,7 +63185,7 @@ msgstr ""
 
 #: dat/help:184
 msgid "you most closely resemble at a given moment.  If your keyboard"
-msgstr "más te pareces en un momento dado.  Si tu teclado"
+msgstr "al que más te pareces en cada momento.  Si tu teclado"
 
 #: dat/data.base:5035
 msgid "you never know what they're trying to do to you until it hits."
