@@ -466,6 +466,7 @@ dlb_fopen(const char *name, const char *mode)
         return (dlb *) 0;
 
     dp = (dlb *) alloc(sizeof(dlb));
+    (void) memset((genericptr_t) dp, 0, sizeof(dlb));
     /* NetHack-es: try localized version (.es suffix) first */
     {
         char es_name[BUFSZ];
