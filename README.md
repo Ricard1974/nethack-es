@@ -1,64 +1,65 @@
-# NetHack-es — NetHack in Spanish
+# NetHack-es — NetHack en Español
 
-Spanish translation of **NetHack 5.0** (13,416 strings translated, 71%).
+Traducción al español de **NetHack 5.0** (13.416 cadenas traducidas, 71%).
 
-## 🎮 How to Play
+## 🎮 Cómo jugar
 
 ```bash
-# 1. Go to the project directory
+# 1. Ir al directorio del proyecto (donde lo hayas descargado)
 cd nethack-es
 
-# 2. Run
+# 2. Ejecutar
 ./playground/nethack
-# Or using the launcher
+
+# O usando el lanzador
 ./nethack-es
 ```
 
-## ⌨️ Basic Controls
+## ⌨️ Teclas básicas
 
-| Key             | Action                       |
-| --------------- | ---------------------------- |
-| `h` `j` `k` `l` | Move (left, down, up, right) |
-| `y` `u` `b` `n` | Diagonal                     |
-| `?`             | Help (in Spanish)            |
-| `,`             | Pick up items                |
-| `d`             | Drop items                   |
-| `>`             | Go down stairs               |
-| `<`             | Go up stairs                 |
-| `i`             | View inventory               |
-| `q`             | Quaff (drink)                |
-| `e`             | Eat                          |
-| `r`             | Read                         |
-| `w`             | Wield weapon                 |
-| `W`             | Wear armor                   |
-| `S`             | Save game                    |
-| `Q`             | Quit                         |
-| Space           | Continue after `--More--`    |
+| Tecla           | Acción                          |
+| --------------- | ------------------------------- |
+| `h` `j` `k` `l` | Mover (izq, abajo, arriba, der) |
+| `y` `u` `b` `n` | Diagonal                        |
+| `?`             | Ayuda (en español)              |
+| `,`             | Recoger objetos                 |
+| `d`             | Soltar objetos                  |
+| `>`             | Bajar escaleras                 |
+| `<`             | Subir escaleras                 |
+| `i`             | Ver inventario                  |
+| `q`             | Beber                           |
+| `e`             | Comer                           |
+| `r`             | Leer                            |
+| `w`             | Equipar arma                    |
+| `W`             | Ponerse armadura                |
+| `S`             | Guardar partida                 |
+| `Q`             | Salir                           |
+| Espacio         | Continuar tras `--More--`       |
 
-## ✅ Translated to Spanish
+## ✅ Traducido al español
 
-- Welcome screen and help
-- Command list
-- Tomb epitaphs
-- Floor engravings
-- Rumors (true and false)
-- Oracles
-- Monster and object descriptions
-- Configuration options
-- Character creation prompts
-- Combat, item, and status messages
-- All C code messages
+- Pantalla de bienvenida y ayuda
+- Lista de comandos
+- Epitafios de tumbas
+- Grabados en el suelo
+- Rumores (verdaderos y falsos)
+- Oráculos
+- Descripciones de monstruos y objetos
+- Opciones de configuración
+- Prompts de creación de personaje
+- Mensajes de combate, objetos y estado
+- Todos los mensajes del código C
 
-## ⏳ Not Translated
+## ⏳ No traducido
 
-- **dat/tribute**: Terry Pratchett quotes (homage, kept in original English)
+- **dat/tribute**: citas de Terry Pratchett (homenaje, se mantienen en inglés)
 
-## 📦 Requirements
+## 📦 Requisitos
 
-- Linux (tested on Ubuntu/Debian)
-- Compatible terminal (xterm, gnome-terminal, etc.)
+- Linux (probado en Ubuntu/Debian)
+- Terminal compatible (xterm, gnome-terminal, etc.)
 
-## 🔧 Compile from Source
+## 🔧 Compilar desde cero
 
 ```bash
 git clone https://github.com/Ricard1974/nethack-es.git
@@ -69,23 +70,23 @@ make
 make install
 ```
 
-## 📜 License
+## 📜 Licencia
 
-NetHack-es is under the **NetHack General Public License (NGPL)**.
+NetHack-es está bajo la **NetHack General Public License (NGPL)**.
 
-- ✅ You may modify and distribute the code
-- ✅ You must keep the same license
-- ✅ You must include the source code
-- ❌ You may not charge for it or restrict its use
+- ✅ Puedes modificar y distribuir el código
+- ✅ Debes mantener la misma licencia
+- ✅ Debes incluir el código fuente
+- ❌ No puedes cobrar por él ni restringir su uso
 
-Original NetHack code © 1985-2026 Stichting Mathematisch Centrum and M. Stephenson.
+El código original de NetHack es © 1985-2026 Stichting Mathematisch Centrum y M. Stephenson.
 
-## 🙏 Credits
+## 🙏 Créditos
 
-- **Original NetHack**: Stichting Mathematisch Centrum and M. Stephenson
-- **Spanish translation**: NetHack-es Project
-- **Approach**: Custom translation system (`nh_gettext`) with no external dependencies
+- **NetHack original**: Stichting Mathematisch Centrum y M. Stephenson
+- **Traducción al español**: Proyecto NetHack-es
+- **Enfoque**: Sistema propio de traducción (`nh_gettext`) sin dependencias externas
 
-## 📁 Repository
+## 📁 Repositorio
 
 `https://github.com/Ricard1974/nethack-es`
