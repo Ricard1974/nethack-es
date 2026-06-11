@@ -2,6 +2,10 @@
 # Copyright (C) 2026 NetHack-es
 # This file is distributed under the same license as the NetHack-es package.
 # Automatically generated, 2026.
+#
+# NOTA: dat/tribute contiene citas literales de Terry Pratchett (Mundodisco).
+# Se mantienen en inglés como homenaje póstumo al autor (†2015).
+# Traducirlas requeriría usar traducciones oficiales con derechos de autor.
 msgid ""
 msgstr ""
 "Project-Id-Version: NetHack-es\n"
@@ -82118,15 +82122,16 @@ msgstr ""
 
 #: sys/amiga/winreq.c:186
 msgid "can't find NetHack.cnf"
-msgstr ""
+msgstr "no se encuentra NetHack.cnf"
 
 #: sys/amiga/winreq.c:211
 msgid "can't write to New_NetHack.cnf"
-msgstr ""
+msgstr "no se puede escribir en New_NetHack.cnf"
 
 #: sys/amiga/amidos.c:203
 msgid "If save file is on a SAVE disk, put that disk in now."
 msgstr ""
+"Si el archivo de guardado está en un disco SAVE, inserta ese disco ahora."
 
 #: sys/amiga/winami.c:393
 msgid "#"
@@ -82138,7 +82143,7 @@ msgstr ""
 
 #: sys/vms/vmsunix.c:456 sys/unix/unixunix.c:352
 msgid "Unavailable command '!'."
-msgstr ""
+msgstr "Comando '!' no disponible."
 
 #: sys/vms/vmsunix.c:524
 #, c-format
@@ -82158,46 +82163,46 @@ msgstr ""
 #: sys/vms/vmsmain.c:209 sys/libnh/libnhmain.c:287 sys/share/pcmain.c:459
 #: sys/windows/windmain.c:438 sys/unix/unixmain.c:276
 msgid "Restoring save file..."
-msgstr ""
+msgstr "Restaurando archivo de guardado..."
 
 #: sys/vms/vmsmain.c:492
 #, c-format
 msgid "Only user \"%s\" may access debug (wizard) mode."
-msgstr ""
+msgstr "Solo el usuario \"%s\" puede acceder al modo debug (mago)."
 
 #: sys/vms/vmsmain.c:494 sys/libnh/libnhmain.c:633 sys/unix/unixmain.c:683
 msgid "Entering explore/discovery mode instead."
-msgstr ""
+msgstr "Entrando en modo exploración/descubrimiento."
 
 #: sys/vms/vmsmain.c:497 sys/libnh/libnhmain.c:638 sys/unix/unixmain.c:688
 msgid "are in non-scoring explore/discovery mode."
-msgstr ""
+msgstr "estás en modo exploración/descubrimiento sin puntuación."
 
 #: sys/libnh/libnhmain.c:625 sys/unix/unixmain.c:675
 #, c-format
 msgid "Only user%s %s may access debug (wizard) mode."
-msgstr ""
+msgstr "Solo el usuario%s %s puede acceder al modo debug (mago)."
 
 #: sys/libnh/libnhmain.c:629 sys/unix/unixmain.c:679
 msgid "cannot access debug (wizard) mode."
-msgstr ""
+msgstr "no puedes acceder al modo debug (mago)."
 
 #: sys/share/ioctl.c:167
 msgid "Suspend command not available."
-msgstr ""
+msgstr "Comando de suspensión no disponible."
 
 #: sys/share/ioctl.c:194
 msgid "I don't think your shell has job control."
-msgstr ""
+msgstr "Tu shell no parece tener control de trabajos."
 
 #: sys/share/ioctl.c:197
 msgid "Sorry, it seems we have no SIGTSTP here.  Try ! or S."
-msgstr ""
+msgstr "Lo siento, no parece haber SIGTSTP aquí.  Prueba ! o S."
 
 #: sys/share/pcsys.c:121
 #, c-format
 msgid "Can't find %s."
-msgstr ""
+msgstr "No se encuentra %s."
 
 #: sys/share/pcmain.c:344
 #, c-format
@@ -82217,7 +82222,7 @@ msgstr ""
 
 #: sys/share/pcunix.c:104
 msgid "There is already a game in progress under your name."
-msgstr ""
+msgstr "Ya hay una partida en curso con tu nombre."
 
 #: sys/share/pcunix.c:105
 #, c-format
@@ -82237,7 +82242,7 @@ msgstr ""
 #: sys/windows/windmain.c:325
 #, c-format
 msgid "NetHack was unable to open the required file \"%s\""
-msgstr ""
+msgstr "NetHack no pudo abrir el archivo requerido \"%s\""
 
 #: sys/windows/windmain.c:327
 msgid ""
@@ -82255,7 +82260,7 @@ msgstr "Podría ser recuperable con intervención semi-divina."
 
 #: sys/unix/unixunix.c:394
 msgid "Fork failed.  Try again."
-msgstr ""
+msgstr "Fork falló.  Inténtalo de nuevo."
 
 #: win/win32/mswproc.c:1834 win/curses/cursdial.c:526
 #, c-format
