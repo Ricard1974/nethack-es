@@ -2,6 +2,13 @@
 
 Traducción al español de **NetHack 5.0** (13.416 cadenas traducidas, 71%).
 
+> El **29% restante** no está traducido principalmente por dos motivos:
+>
+> 1. **`dat/tribute`** (~6.800 citas): homenaje a Terry Pratchett, se mantienen en su inglés original
+> 2. **Mensajes de plataformas obsoletas** (~200): depuración de Amiga, VMS, MSDOS, etc.
+>
+> El 100% del código C, ayuda, descripciones y mensajes de juego está traducido.
+
 ## 🎮 Cómo jugar
 
 ```bash
