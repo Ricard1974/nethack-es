@@ -2,6 +2,20 @@
 
 Traducción al español de **NetHack 5.0** (13.416 cadenas traducidas, 71%).
 
+## 🚀 Instalación en un clic
+
+```bash
+bash <(curl -sL https://raw.githubusercontent.com/Ricard1974/nethack-es/NetHack-5.0-es/install.sh)
+```
+
+O si ya descargaste el repositorio:
+
+```bash
+bash install.sh
+```
+
+Esto instala todo automáticamente: dependencias, compilación, traducciones y acceso directo en el menú de aplicaciones.
+
 > El **29% restante** no está traducido principalmente por dos motivos:
 >
 > 1. **`dat/tribute`** (~6.800 citas): homenaje a Terry Pratchett, se mantienen en su inglés original
