@@ -81,6 +81,24 @@ cp po/combined-es.mo playground/locale/es/LC_MESSAGES/nethack.mo
 make install
 ```
 
+## 📦 Usar solo las traducciones (sin compilar)
+
+Si ya tienes NetHack 5.0 instalado, puedes descargar solo el archivo de traducción desde
+**[GitHub Releases](https://github.com/Ricard1974/nethack-es/releases)**:
+
+```bash
+# 1. Descargar nethack-es.mo de GitHub Releases
+# 2. Colocarlo en el directorio de tu NetHack:
+mkdir -p /ruta/a/tu/nethack/locale/es/LC_MESSAGES
+cp nethack-es.mo /ruta/a/tu/nethack/locale/es/LC_MESSAGES/nethack.mo
+
+# 3. Ejecutar NetHack con la variable NETHACK_LOCALE_DIR:
+NETHACK_LOCALE_DIR=/ruta/a/tu/nethack/locale nethack
+```
+
+El juego cargará automáticamente las traducciones al arrancar.
+No necesita ninguna dependencia adicional. El sistema de traducción (`nh_gettext`) está integrado en el binario.
+
 ## 📜 Licencia
 
 NetHack-es está bajo la **NetHack General Public License (NGPL)**.
