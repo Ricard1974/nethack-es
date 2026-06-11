@@ -5,8 +5,8 @@ Traducción al español de **NetHack 5.0** (13.416 cadenas traducidas, 71%).
 ## 🎮 Cómo jugar
 
 ```bash
-# 1. Ir al directorio
-cd /home/ricard/proyectos/juego/nethack-es
+# 1. Ir al directorio del proyecto (donde lo hayas descargado)
+cd nethack-es
 
 # 2. Ejecutar
 ./playground/nethack
