@@ -84,7 +84,7 @@ El código original de NetHack es © 1985-2026 Stichting Mathematisch Centrum y 
 ## 🙏 Créditos
 
 - **NetHack original**: Stichting Mathematisch Centrum y M. Stephenson
-- **Traducción al español**: Proyecto NetHack-es
+- **Traducción al español**: Ricard1974 (NetHack-es)
 - **Enfoque**: Sistema propio de traducción (`nh_gettext`) sin dependencias externas
 
 ## 📁 Repositorio
