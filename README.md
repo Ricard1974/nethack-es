@@ -72,6 +72,7 @@ cd nethack-es
 git clone https://github.com/Ricard1974/nethack-es.git
 cd nethack-es
 sudo apt install build-essential libncurses-dev flex bison gettext
+cd sys/unix && sh setup.sh hints/linux.500 && cd ../..
 make fetch-lua
 make
 make install
