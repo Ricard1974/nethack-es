@@ -76,7 +76,8 @@ cd sys/unix && sh setup.sh hints/linux.500 && cd ../..
 make fetch-lua
 make
 msgfmt po/combined-es.po -o po/combined-es.mo
-cp po/combined-es.mo playground/locale/es/LC_MESSAGES/nethack.mo 2>/dev/null || mkdir -p playground/locale/es/LC_MESSAGES && cp po/combined-es.mo $_
+mkdir -p playground/locale/es/LC_MESSAGES
+cp po/combined-es.mo playground/locale/es/LC_MESSAGES/nethack.mo
 make install
 ```
 
