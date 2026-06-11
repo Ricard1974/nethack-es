@@ -12,9 +12,11 @@ import os
 import subprocess
 import sys
 
-PO_FILE = "/home/ricard/proyectos/juego/nethack-es/po/combined-es.po"
-MO_FILE = "/home/ricard/proyectos/juego/nethack-es/po/combined-es.mo"
-PLAYGROUND_MO = "/home/ricard/proyectos/juego/nethack-es/playground/locale/es/LC_MESSAGES/nethack.mo"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
+PO_FILE = os.path.join(PROJECT_DIR, "po/combined-es.po")
+MO_FILE = os.path.join(PROJECT_DIR, "po/combined-es.mo")
+PLAYGROUND_MO = os.path.join(PROJECT_DIR, "playground/locale/es/LC_MESSAGES/nethack.mo")
 
 # =====================================================================
 # Cargar diccionario directo desde TSV

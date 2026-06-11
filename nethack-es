@@ -1,5 +1,6 @@
 #!/bin/bash
 # NetHack-es: Lanzador con traducción al español
-cd /home/ricard/proyectos/juego/nethack-es
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR"
 echo "=== NetHack-es v5.0.0 (ES) ==="
 exec ./playground/nethack "$@"

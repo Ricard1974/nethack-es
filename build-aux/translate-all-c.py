@@ -17,7 +17,8 @@ import sys
 import os
 from collections import OrderedDict
 
-PO_FILE = "/home/ricard/proyectos/juego/nethack-es/po/combined-es.po"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PO_FILE = os.path.join(SCRIPT_DIR, "../po/combined-es.po")
 
 # =======================================================================
 # 1) DICCIONARIO DIRECTO (exacto)
