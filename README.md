@@ -2,6 +2,8 @@
 
 Traducción al español de **NetHack 5.0** (13.416 cadenas traducidas, 71%).
 
+---
+
 ## 🚀 Instalación en un clic
 
 ```bash
@@ -14,26 +16,23 @@ O si ya descargaste el repositorio:
 bash install.sh
 ```
 
-Esto instala todo automáticamente: dependencias, compilación, traducciones y acceso directo en el menú de aplicaciones.
+Esto instala todo automáticamente: dependencias, compilación, traducciones
+y acceso directo en el menú de aplicaciones.
 
-> El **29% restante** no está traducido principalmente por dos motivos:
->
-> 1. **`dat/tribute`** (~6.800 citas): homenaje a Terry Pratchett, se mantienen en su inglés original
-> 2. **Mensajes de plataformas obsoletas** (~200): depuración de Amiga, VMS, MSDOS, etc.
->
-> El 100% del código C, ayuda, descripciones y mensajes de juego está traducido.
+---
 
 ## 🎮 Cómo jugar
 
+Después de instalar:
+
 ```bash
-# 1. Ir al directorio del proyecto (donde lo hayas descargado)
-cd nethack-es
+nethack-es
+```
 
-# 2. Ejecutar
+O si estás en el directorio del proyecto:
+
+```bash
 ./playground/nethack
-
-# O usando el lanzador
-./nethack-es
 ```
 
 ## ⌨️ Teclas básicas
@@ -57,6 +56,8 @@ cd nethack-es
 | `Q`             | Salir                           |
 | Espacio         | Continuar tras `--More--`       |
 
+---
+
 ## ✅ Traducido al español
 
 - Pantalla de bienvenida y ayuda
@@ -69,16 +70,27 @@ cd nethack-es
 - Opciones de configuración
 - Prompts de creación de personaje
 - Mensajes de combate, objetos y estado
-- Todos los mensajes del código C
+- **100% del código C**
 
 ## ⏳ No traducido
 
-- **dat/tribute**: citas de Terry Pratchett (homenaje, se mantienen en inglés)
+- **`dat/tribute`** (~6.800 citas): homenaje a Terry Pratchett, se mantienen en su inglés original
+- **Mensajes de plataformas obsoletas** (~200): depuración de Amiga, VMS, MSDOS, etc.
 
-## 📦 Requisitos
+---
 
-- Linux (probado en Ubuntu/Debian)
-- Terminal compatible (xterm, gnome-terminal, etc.)
+## 📦 Usar solo las traducciones (sin compilar)
+
+Si ya tienes NetHack 5.0 compilado con `nh_gettext`, puedes descargar el archivo de traducción desde
+**[GitHub Releases](https://github.com/Ricard1974/nethack-es/releases)**:
+
+```bash
+mkdir -p /ruta/a/tu/nethack/locale/es/LC_MESSAGES
+cp nethack-es.mo /ruta/a/tu/nethack/locale/es/LC_MESSAGES/nethack.mo
+NETHACK_LOCALE_DIR=/ruta/a/tu/nethack/locale nethack
+```
+
+No necesita dependencias adicionales.
 
 ## 🔧 Compilar desde cero
 
@@ -95,23 +107,12 @@ cp po/combined-es.mo playground/locale/es/LC_MESSAGES/nethack.mo
 make install
 ```
 
-## 📦 Usar solo las traducciones (sin compilar)
+## 📋 Requisitos
 
-Si ya tienes NetHack 5.0 instalado, puedes descargar solo el archivo de traducción desde
-**[GitHub Releases](https://github.com/Ricard1974/nethack-es/releases)**:
+- Linux (probado en Ubuntu/Debian, Fedora, Arch)
+- Terminal compatible (xterm, gnome-terminal, etc.)
 
-```bash
-# 1. Descargar nethack-es.mo de GitHub Releases
-# 2. Colocarlo en el directorio de tu NetHack:
-mkdir -p /ruta/a/tu/nethack/locale/es/LC_MESSAGES
-cp nethack-es.mo /ruta/a/tu/nethack/locale/es/LC_MESSAGES/nethack.mo
-
-# 3. Ejecutar NetHack con la variable NETHACK_LOCALE_DIR:
-NETHACK_LOCALE_DIR=/ruta/a/tu/nethack/locale nethack
-```
-
-El juego cargará automáticamente las traducciones al arrancar.
-No necesita ninguna dependencia adicional. El sistema de traducción (`nh_gettext`) está integrado en el binario.
+---
 
 ## 📜 Licencia
 
@@ -128,7 +129,7 @@ El código original de NetHack es © 1985-2026 Stichting Mathematisch Centrum y 
 
 - **NetHack original**: Stichting Mathematisch Centrum y M. Stephenson
 - **Traducción al español**: Ricard1974 (NetHack-es)
-- **Enfoque**: Sistema propio de traducción (`nh_gettext`) sin dependencias externas
+- **Sistema de traducción**: `nh_gettext` propio, sin dependencias externas
 
 ## 📁 Repositorio
 
