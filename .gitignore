@@ -104,4 +104,10 @@ playground/
 
 # NetHack-es: translation build artifacts
 po/*.mo
+po/*.pot
 build-aux/__pycache__/
+
+# Build outputs
+messages.mo
+src/nethack
+dat/nhdat
