@@ -70,6 +70,23 @@ make
 make install
 ```
 
-## 📁 Repositorio privado
+## 📜 Licencia
+
+NetHack-es está bajo la **NetHack General Public License (NGPL)**.
+
+- ✅ Puedes modificar y distribuir el código
+- ✅ Debes mantener la misma licencia
+- ✅ Debes incluir el código fuente
+- ❌ No puedes cobrar por él ni restringir su uso
+
+El código original de NetHack es © 1985-2026 Stichting Mathematisch Centrum y M. Stephenson.
+
+## 🙏 Créditos
+
+- **NetHack original**: Stichting Mathematisch Centrum y M. Stephenson
+- **Traducción al español**: Proyecto NetHack-es
+- **Enfoque**: Sistema propio de traducción (`nh_gettext`) sin dependencias externas
+
+## 📁 Repositorio
 
 `https://github.com/Ricard1974/nethack-es`
