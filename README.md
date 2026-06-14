@@ -1,6 +1,6 @@
 # NetHack-es — NetHack en Español
 
-Traducción al español de **NetHack 5.0** (13.489 cadenas traducidas, 72%).
+Traducción al español de **NetHack 5.0** (13.505 cadenas traducidas, 72%).
 
 ---
 
@@ -73,7 +73,7 @@ O si estás en el directorio del proyecto:
 - Categorías del inventario (Armas, Armadura, Pociones...)
 - Prompts de confirmación (guardar, soltar, comer...)
 - Diálogo de nombrar monstruos/objetos
-- Prefijos gramaticales: "You can't" → "No puedes", "You" → "", "There" → ""
+- Sistema híbrido: mensajes completos en .po (puerta, combate, movimiento) con fallback a truncamiento de prefijos
 - **100% del código C**
 
 ## ⏳ No traducido

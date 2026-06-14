@@ -359,22 +359,8 @@ free_youbuf(void)
     gy.you_buf_siz = 0;
 }
 
-/* `prefix' must be a string literal, not a pointer */
-#define YouPrefix(pointer, prefix, text) \
-    Strcpy((pointer = You_buf((int) (strlen(text) + sizeof prefix))), prefix)
-
-#define YouMessage(pointer, prefix, text) \
-    strcat((YouPrefix(pointer, prefix, text), pointer), text)
-
-/* Translate prefix and base separately, combine into buffer.
-   Prefix lookups: English -> Spanish for common message patterns.
-   "You "      -> ""        (Spanish drops the pronoun)
-   "Your "     -> "Tu "
-   "You can't "-> "No puedes "
-   "You feel " -> "Sientes "
-   "There "    -> ""        ("There is" = "Hay" handled in base)
-   "The "      -> ""        (gender agreement too complex for lookup)
-   Others fall back to _() lookup. */
+/* Translate prefix and base separately, Spanish-friendly.
+   Hardcoded lookups for Spanish pronoun-dropping patterns. */
 static const char *
 tr_prefix(const char *prefix)
 {
@@ -395,16 +381,26 @@ tr_prefix(const char *prefix)
     return _(prefix);
 }
 
-static char *
-build_msg(const char *prefix, const char *base)
+/* Build full prefixed string: first try .po lookup on "prefix+base",
+   fall back to tr_prefix(prefix) + _(base). */
+static const char *
+try_tr(const char *prefix, const char *base)
 {
+    int full_len = (int) (strlen(prefix) + strlen(base) + 1);
+    char *full_buf = You_buf(full_len);
+    Strcpy(full_buf, prefix);
+    Strcat(full_buf, base);
+    const char *full = _(full_buf);
+    if (full != full_buf)
+        return full; /* full-string translation found */
+
+    /* Fall back to prefix truncation + base translation */
     const char *p = tr_prefix(prefix);
-    const char *b = base ? _(base) : "";
+    const char *b = _(base);
     int len = (int) (strlen(p) + strlen(b) + 1);
     char *buf = You_buf(len);
     Strcpy(buf, p);
     Strcat(buf, b);
-    /* capitalize first letter if prefix is empty */
     if (!*p && *buf >= 'a' && *buf <= 'z')
         *buf += 'A' - 'a';
     return buf;
@@ -416,7 +412,7 @@ You(const char *line, ...)
     va_list the_args;
 
     va_start(the_args, line);
-    vpline(build_msg("You ", line), the_args);
+    vpline(try_tr("You ", line), the_args);
     va_end(the_args);
 }
 
@@ -426,7 +422,7 @@ Your(const char *line, ...)
     va_list the_args;
 
     va_start(the_args, line);
-    vpline(build_msg("Your ", line), the_args);
+    vpline(try_tr("Your ", line), the_args);
     va_end(the_args);
 }
 
@@ -437,9 +433,9 @@ You_feel(const char *line, ...)
 
     va_start(the_args, line);
     if (Unaware)
-        vpline(build_msg("You dream that you feel ", line), the_args);
+        vpline(try_tr("You dream that you feel ", line), the_args);
     else
-        vpline(build_msg("You feel ", line), the_args);
+        vpline(try_tr("You feel ", line), the_args);
     va_end(the_args);
 }
 
@@ -449,7 +445,7 @@ You_cant(const char *line, ...)
     va_list the_args;
 
     va_start(the_args, line);
-    vpline(build_msg("You can't ", line), the_args);
+    vpline(try_tr("You can't ", line), the_args);
     va_end(the_args);
 }
 
@@ -459,7 +455,7 @@ pline_The(const char *line, ...)
     va_list the_args;
 
     va_start(the_args, line);
-    vpline(build_msg("The ", line), the_args);
+    vpline(try_tr("The ", line), the_args);
     va_end(the_args);
 }
 
@@ -469,7 +465,7 @@ There(const char *line, ...)
     va_list the_args;
 
     va_start(the_args, line);
-    vpline(build_msg("There ", line), the_args);
+    vpline(try_tr("There ", line), the_args);
     va_end(the_args);
 }
 
@@ -482,11 +478,11 @@ You_hear(const char *line, ...)
         return;
     va_start(the_args, line);
     if (Underwater)
-        vpline(build_msg("You barely hear ", line), the_args);
+        vpline(try_tr("You barely hear ", line), the_args);
     else if (Unaware)
-        vpline(build_msg("You dream that you hear ", line), the_args);
+        vpline(try_tr("You dream that you hear ", line), the_args);
     else
-        vpline(build_msg("You hear ", line), the_args);
+        vpline(try_tr("You hear ", line), the_args);
     va_end(the_args);
 }
 
@@ -497,11 +493,11 @@ You_see(const char *line, ...)
 
     va_start(the_args, line);
     if (Unaware)
-        vpline(build_msg("You dream that you see ", line), the_args);
-    else if (Blind)
-        vpline(build_msg("You sense ", line), the_args);
+        vpline(try_tr("You dream that you see ", line), the_args);
+    else if (Blind) /* caller should have caught this... */
+        vpline(try_tr("You sense ", line), the_args);
     else
-        vpline(build_msg("You see ", line), the_args);
+        vpline(try_tr("You see ", line), the_args);
     va_end(the_args);
 }
 
