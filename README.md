@@ -2,38 +2,6 @@
 
 Traducción al español de **NetHack 5.0** (13.505 cadenas traducidas, 72%).
 
----
-
-## 🚀 Instalación en un clic
-
-```bash
-bash <(curl -sL https://raw.githubusercontent.com/Ricard1974/nethack-es/NetHack-5.0-es/install.sh)
-```
-
-O si ya descargaste el repositorio:
-
-```bash
-bash install.sh
-```
-
-Esto instala todo automáticamente: dependencias, compilación, traducciones
-y acceso directo en el menú de aplicaciones.
-
----
-
-## 🎮 Cómo jugar
-
-Después de instalar:
-
-```bash
-nethack-es
-```
-
-O si estás en el directorio del proyecto:
-
-```bash
-./jugar.sh
-```
 
 ## ⌨️ Teclas básicas
 
