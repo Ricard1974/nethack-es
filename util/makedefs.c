@@ -137,6 +137,10 @@ static char filename[MAXFNAMELEN];
 char *file_prefix = "";
 #endif
 
+/* language suffix for localized data files;
+ * set via MAKEDEFS_LANG environment variable (e.g. "es") */
+static const char *lang_suffix = "";
+
 #ifdef MACsansMPWTOOL
 int main(void);
 #else
@@ -283,6 +287,14 @@ main(int argc, char *argv[])
         argv++;
     }
 #endif
+    {
+        static char lang_buf[16];
+        const char *lang_env = getenv("MAKEDEFS_LANG");
+        if (lang_env && lang_env[0]) {
+            Sprintf(lang_buf, ".%s", lang_env);
+            lang_suffix = lang_buf;
+        }
+    }
 
     if (argv[1][0] == '-' && argv[1][1] == '-') {
         do_ext_makedefs(argc, argv);
@@ -1046,6 +1058,7 @@ read_rumors_file(
 
     Sprintf(infile, DATA_IN_TEMPLATE, RUMOR_FILE);
     Strcat(infile, file_ext);
+    Strcat(infile, lang_suffix);
     if (!(ifp = fopen(infile, RDTMODE))) {
         perror(infile);
         return 0L;
@@ -1090,6 +1103,7 @@ do_rnd_access_file(
     Sprintf(greptmp, "grep-%.3s.tmp", basefname);
     Sprintf(filename, DATA_IN_TEMPLATE, fname);
     Strcat(filename, ".txt");
+    Strcat(filename, lang_suffix);
     if (!(ifp = fopen(filename, RDTMODE))) {
         perror(filename);
         makedefs_exit(EXIT_FAILURE);
@@ -1100,6 +1114,7 @@ do_rnd_access_file(
     Strcat(filename, file_prefix);
 #endif
     Sprintf(eos(filename), DATA_TEMPLATE, fname);
+    Strcat(filename, lang_suffix);
     if (!(ofp = fopen(filename, WRTMODE))) {
         perror(filename);
         makedefs_exit(EXIT_FAILURE);
@@ -1159,6 +1174,7 @@ do_rumors(void)
     Strcat(filename, file_prefix);
 #endif
     Sprintf(eos(filename), DATA_TEMPLATE, RUMOR_FILE);
+    Strcat(filename, lang_suffix);
     if (!(ofp = fopen(filename, WRTMODE))) {
         perror(filename);
         makedefs_exit(EXIT_FAILURE);
@@ -1436,8 +1452,10 @@ do_oracles(void)
     Strcat(filename, file_prefix);
 #endif
     Sprintf(eos(filename), DATA_TEMPLATE, ORACLE_FILE);
+    Strcat(filename, lang_suffix);
     Sprintf(infile, DATA_IN_TEMPLATE, ORACLE_FILE);
     Strcat(infile, ".txt");
+    Strcat(infile, lang_suffix);
     if (!(ifp = fopen(infile, RDTMODE))) {
         perror(infile);
         makedefs_exit(EXIT_FAILURE);

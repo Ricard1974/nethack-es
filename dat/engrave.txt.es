@@ -40,7 +40,7 @@ Señora, en el Edén, soy Adán.
 ¡Dos pulgares arriba!
 # The First C Program
 ¡Hola, mundo!
-^?CORREO
+^?MAIL
 # AOL
 ¡Tienes correo!
 ^.
