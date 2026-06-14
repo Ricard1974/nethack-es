@@ -366,14 +366,57 @@ free_youbuf(void)
 #define YouMessage(pointer, prefix, text) \
     strcat((YouPrefix(pointer, prefix, text), pointer), text)
 
+/* Translate prefix and base separately, combine into buffer.
+   Prefix lookups: English -> Spanish for common message patterns.
+   "You "      -> ""        (Spanish drops the pronoun)
+   "Your "     -> "Tu "
+   "You can't "-> "No puedes "
+   "You feel " -> "Sientes "
+   "There "    -> ""        ("There is" = "Hay" handled in base)
+   "The "      -> ""        (gender agreement too complex for lookup)
+   Others fall back to _() lookup. */
+static const char *
+tr_prefix(const char *prefix)
+{
+    if (!prefix || !*prefix) return "";
+    if (!strcmp(prefix, "You "))   return "";
+    if (!strcmp(prefix, "Your "))  return "Tu ";
+    if (!strcmp(prefix, "You can't ")) return "No puedes ";
+    if (!strcmp(prefix, "You feel "))   return "Sientes ";
+    if (!strcmp(prefix, "You hear "))   return "Oyes ";
+    if (!strcmp(prefix, "You see "))    return "Ves ";
+    if (!strcmp(prefix, "You dream that you feel ")) return "Sueñas que sientes ";
+    if (!strcmp(prefix, "You dream that you hear ")) return "Sueñas que oyes ";
+    if (!strcmp(prefix, "You dream that you see "))  return "Sueñas que ves ";
+    if (!strcmp(prefix, "You barely hear ")) return "Apenas oyes ";
+    if (!strcmp(prefix, "You sense "))    return "Sientes ";
+    if (!strcmp(prefix, "There "))  return "";
+    if (!strcmp(prefix, "The "))    return "";
+    return _(prefix);
+}
+
+static char *
+build_msg(const char *prefix, const char *base)
+{
+    const char *p = tr_prefix(prefix);
+    const char *b = base ? _(base) : "";
+    int len = (int) (strlen(p) + strlen(b) + 1);
+    char *buf = You_buf(len);
+    Strcpy(buf, p);
+    Strcat(buf, b);
+    /* capitalize first letter if prefix is empty */
+    if (!*p && *buf >= 'a' && *buf <= 'z')
+        *buf += 'A' - 'a';
+    return buf;
+}
+
 void
 You(const char *line, ...)
 {
     va_list the_args;
-    char *tmp;
 
     va_start(the_args, line);
-    vpline(YouMessage(tmp, "You ", line), the_args);
+    vpline(build_msg("You ", line), the_args);
     va_end(the_args);
 }
 
@@ -381,10 +424,9 @@ void
 Your(const char *line, ...)
 {
     va_list the_args;
-    char *tmp;
 
     va_start(the_args, line);
-    vpline(YouMessage(tmp, "Your ", line), the_args);
+    vpline(build_msg("Your ", line), the_args);
     va_end(the_args);
 }
 
@@ -392,14 +434,12 @@ void
 You_feel(const char *line, ...)
 {
     va_list the_args;
-    char *tmp;
 
     va_start(the_args, line);
     if (Unaware)
-        YouPrefix(tmp, "You dream that you feel ", line);
+        vpline(build_msg("You dream that you feel ", line), the_args);
     else
-        YouPrefix(tmp, "You feel ", line);
-    vpline(strcat(tmp, line), the_args);
+        vpline(build_msg("You feel ", line), the_args);
     va_end(the_args);
 }
 
@@ -407,10 +447,9 @@ void
 You_cant(const char *line, ...)
 {
     va_list the_args;
-    char *tmp;
 
     va_start(the_args, line);
-    vpline(YouMessage(tmp, "You can't ", line), the_args);
+    vpline(build_msg("You can't ", line), the_args);
     va_end(the_args);
 }
 
@@ -418,10 +457,9 @@ void
 pline_The(const char *line, ...)
 {
     va_list the_args;
-    char *tmp;
 
     va_start(the_args, line);
-    vpline(YouMessage(tmp, "The ", line), the_args);
+    vpline(build_msg("The ", line), the_args);
     va_end(the_args);
 }
 
@@ -429,10 +467,9 @@ void
 There(const char *line, ...)
 {
     va_list the_args;
-    char *tmp;
 
     va_start(the_args, line);
-    vpline(YouMessage(tmp, "There ", line), the_args);
+    vpline(build_msg("There ", line), the_args);
     va_end(the_args);
 }
 
@@ -440,18 +477,16 @@ void
 You_hear(const char *line, ...)
 {
     va_list the_args;
-    char *tmp;
 
     if ((Deaf && !Unaware) || !flags.acoustics)
         return;
     va_start(the_args, line);
     if (Underwater)
-        YouPrefix(tmp, "You barely hear ", line);
+        vpline(build_msg("You barely hear ", line), the_args);
     else if (Unaware)
-        YouPrefix(tmp, "You dream that you hear ", line);
+        vpline(build_msg("You dream that you hear ", line), the_args);
     else
-        YouPrefix(tmp, "You hear ", line);  /* Deaf-aware */
-    vpline(strcat(tmp, line), the_args);
+        vpline(build_msg("You hear ", line), the_args);
     va_end(the_args);
 }
 
@@ -459,34 +494,31 @@ void
 You_see(const char *line, ...)
 {
     va_list the_args;
-    char *tmp;
 
     va_start(the_args, line);
     if (Unaware)
-        YouPrefix(tmp, "You dream that you see ", line);
-    else if (Blind) /* caller should have caught this... */
-        YouPrefix(tmp, "You sense ", line);
+        vpline(build_msg("You dream that you see ", line), the_args);
+    else if (Blind)
+        vpline(build_msg("You sense ", line), the_args);
     else
-        YouPrefix(tmp, "You see ", line);
-    vpline(strcat(tmp, line), the_args);
+        vpline(build_msg("You see ", line), the_args);
     va_end(the_args);
 }
 
-/* Print a message inside double-quotes.
- * The caller is responsible for checking deafness.
- * Gods can speak directly to you in spite of deafness.
- */
+/* Print a message inside double-quotes. */
 void
 verbalize(const char *line, ...)
 {
     va_list the_args;
     char *tmp;
+    const char *translated;
 
     va_start(the_args, line);
     gp.pline_flags |= PLINE_VERBALIZE;
-    tmp = You_buf((int) strlen(line) + sizeof "\"\"");
+    translated = _(line);
+    tmp = You_buf((int) strlen(translated) + sizeof "\"\"");
     Strcpy(tmp, "\"");
-    Strcat(tmp, line);
+    Strcat(tmp, translated);
     Strcat(tmp, "\"");
     vpline(tmp, the_args);
     gp.pline_flags &= ~PLINE_VERBALIZE;

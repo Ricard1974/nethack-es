@@ -2235,6 +2235,10 @@ tty_putstr(winid window, int attr, const char *str)
     long j;
 #endif
 
+    /* NetHack-es: translate text for menus, help, and messages */
+    if (str && window != WIN_STATUS && window != WIN_INVEN)
+        str = _(str);
+
     HUPSKIP();
     /* Assume there's a real problem if the window is missing --
      * probably a panic message
@@ -2579,6 +2583,9 @@ tty_add_menu(
     HUPSKIP();
     if (str == (const char *) 0)
         return;
+
+    /* NetHack-es: translate menu item text */
+    str = _(str);
 
     if (window == WIN_ERR
         || (cw = wins[window]) == (struct WinDesc *) 0

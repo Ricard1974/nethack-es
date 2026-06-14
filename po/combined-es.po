@@ -75731,7 +75731,7 @@ msgstr "Mover el altar sería una muy mala idea."
 
 #: src/hack.c:3845
 msgid "is nothing here to pick up."
-msgstr "está nothing here to pick up."
+msgstr "no hay nada que recoger aquí."
 
 #: src/hack.c:3853
 msgid "cannot reach the bottom of the pit."
@@ -82366,3 +82366,232 @@ msgstr "¿Quieres que elija tu rol, raza, género y alineamiento? [ynaq]"
 msgid ""
 "Shall I pick character's race, role, gender, and alignment for you? [ynaq]"
 msgstr "¿Quieres que elija tu raza, rol, género y alineamiento? [ynaq]"
+
+#: src/options.c:466
+msgid "Do you want a tutorial?"
+msgstr "¿Quieres un tutorial?"
+
+#: src/options.c:455
+msgid "Yes, do a tutorial"
+msgstr "Sí, haz el tutorial"
+
+#: src/options.c:459
+msgid "No, just start play"
+msgstr "No, solo jugar"
+
+#: src/options.c:
+msgid "Wat iz Teewtorial?"
+msgstr "¿Qué e'un tutorial?"
+
+#: src/decl.c:48
+msgid "Never mind."
+msgstr "No importa."
+
+#: src/save.c:46
+msgid "Really save?"
+msgstr "¿Guardar realmente?"
+
+#: src/cmd.c:3988
+msgid "In what direction?"
+msgstr "¿En qué dirección?"
+
+#: src/invent.c:4785
+msgid "Weapons"
+msgstr "Armas"
+
+#: src/invent.c:4785
+msgid "Armor"
+msgstr "Armadura"
+
+#: src/invent.c:4785
+msgid "Rings"
+msgstr "Anillos"
+
+#: src/invent.c:4785
+msgid "Amulets"
+msgstr "Amuletos"
+
+#: src/invent.c:4785
+msgid "Tools"
+msgstr "Herramientas"
+
+#: src/invent.c:4786
+msgid "Comestibles"
+msgstr "Comestibles"
+
+#: src/invent.c:4786
+msgid "Potions"
+msgstr "Pociones"
+
+#: src/invent.c:4786
+msgid "Scrolls"
+msgstr "Pergaminos"
+
+#: src/invent.c:4786
+msgid "Spellbooks"
+msgstr "Libros de conjuros"
+
+#: src/invent.c:4786
+msgid "Wands"
+msgstr "Varitas"
+
+#: src/invent.c:4786
+msgid "Coins"
+msgstr "Monedas"
+
+#: src/invent.c:4787
+msgid "Gems/Stones"
+msgstr "Gemas/Piedras"
+
+#: src/invent.c:4787
+msgid "Boulders/Statues"
+msgstr "Rocas/Estatuas"
+
+#: src/invent.c:4787
+msgid "Iron balls"
+msgstr "Bolas de hierro"
+
+#: src/invent.c:4787
+msgid "Chains"
+msgstr "Cadenas"
+
+#: src/invent.c:4787
+msgid "Venoms"
+msgstr "Venenos"
+
+#: src/invent.c:4790
+msgid "Bagged/Boxed items"
+msgstr "Objetos embolsados/empaquetados"
+
+#: src/lock.c:906
+msgid "door opens."
+msgstr "la puerta se abre."
+
+#: src/lock.c:1040
+msgid "door closes."
+msgstr "la puerta se cierra."
+
+#: src/do.c:1235
+msgid "go down here%s."
+msgstr "bajar aquí%s."
+
+#: src/do.c:1314
+msgid "go up here."
+msgstr "subir aquí."
+
+#: src/role.c:2124
+msgid "Salutations"
+msgstr "Saludos"
+
+#: src/role.c:2127
+msgid "Irasshaimase"
+msgstr "Irasshaimase"
+
+#: src/role.c:2128
+msgid "Konnichi wa"
+msgstr "Konnichi wa"
+
+#: src/role.c:2130 src/role.c:2151
+msgid "Aloha"
+msgstr "Aloha"
+
+#: src/role.c:2134
+msgid "Hallo"
+msgstr "Hallo"
+
+#: src/role.c:2136
+msgid "Velkommen"
+msgstr "Velkommen"
+
+#: src/role.c:2138
+msgid "Hello"
+msgstr "Hola"
+
+#: src/role.c:2147
+msgid "Fare thee well"
+msgstr "Que te vaya bien"
+
+#: src/role.c:2149
+msgid "Sayonara"
+msgstr "Sayonara"
+
+#: src/role.c:2153
+msgid "Farvel"
+msgstr "Farvel"
+
+#: src/role.c:2155
+msgid "Goodbye"
+msgstr "Adiós"
+
+#: src/invent.c:1919
+msgid "What do you want to %s?"
+msgstr "¿Qué quieres %s?"
+
+#: src/do.c:1071
+msgid "What would you like to drop?"
+msgstr "¿Qué te gustaría tirar?"
+
+#: src/dig.c:1151
+msgid "In what direction do you want to %s? [%s]"
+msgstr "¿En qué dirección quieres %s? [%s]"
+
+#: src/role.c:2323
+msgid "Pick a role or profession"
+msgstr "Elige un rol o profesión"
+
+#: src/role.c:2417
+msgid "Pick a race or species"
+msgstr "Elige una raza o especie"
+
+#: src/role.c:2505
+msgid "Pick a gender or sex"
+msgstr "Elige un género o sexo"
+
+#: src/role.c:2591
+msgid "Pick an alignment or creed"
+msgstr "Elige una alineación o credo"
+
+#: src/invent.c:0
+msgid "Illegal objects"
+msgstr "Objetos ilegales"
+
+# messages below are prefix lookups for pline.c translation system
+# (only entries with non-empty msgstr are included; empty ones are in C code)
+msgid "You can't "
+msgstr "No puedes "
+msgid "You feel "
+msgstr "Sientes "
+msgid "Your "
+msgstr "Tu "
+
+# common base strings for dynamic messages (only add if not already present)
+msgid "drop %s"
+msgstr "tiras %s"
+msgid "pick up %s."
+msgstr "recoges %s."
+msgid "pick up %s"
+msgstr "recoges %s"
+msgid "eat %s."
+msgstr "comes %s."
+msgid "read %s."
+msgstr "lees %s."
+msgid "wear %s."
+msgstr "te pones %s."
+msgid "take off %s."
+msgstr "te quitas %s."
+msgid "wield %s."
+msgstr "empuñas %s."
+msgid "zap %s."
+msgstr "disparas %s."
+msgid "throw %s."
+msgstr "lanzas %s."
+msgid "open %s."
+msgstr "abres %s."
+msgid "close %s."
+msgstr "cierras %s."
+msgid "go down here."
+msgstr "bajar aquí."
+msgid "go down here yet"
+msgstr "bajar aquí todavía"
+msgid "is nothing here."
+msgstr "no hay nada aquí."
