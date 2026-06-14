@@ -1274,11 +1274,14 @@ do_data(void)
     Strcat(filename, file_prefix);
 #endif
     Sprintf(eos(filename), DATA_TEMPLATE, DATA_FILE);
+    Strcat(filename, lang_suffix);
     Sprintf(infile, DATA_IN_TEMPLATE, DATA_FILE);
 #ifdef SHORT_FILENAMES
     Strcat(infile, ".bas");
+    Strcat(infile, lang_suffix);
 #else
     Strcat(infile, ".base");
+    Strcat(infile, lang_suffix);
 #endif
     if (!(ifp = fopen(infile, RDTMODE))) { /* data.base */
         perror(infile);
