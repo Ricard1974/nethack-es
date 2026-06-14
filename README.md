@@ -53,9 +53,6 @@ Traducción al español de **NetHack 5.0** (13.505 cadenas traducidas, 72%).
 
 ## 📦 Usar solo las traducciones (sin compilar)
 
-Si ya tienes NetHack 5.0 compilado con `nh_gettext`, puedes descargar el archivo de traducción desde
-**[GitHub Releases](https://github.com/Ricard1974/nethack-es/releases)**:
-
 ```bash
 mkdir -p /ruta/a/tu/nethack/locale/es/LC_MESSAGES
 cp nethack-es.mo /ruta/a/tu/nethack/locale/es/LC_MESSAGES/nethack.mo
