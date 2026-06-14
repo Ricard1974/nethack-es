@@ -65867,7 +65867,7 @@ msgstr "¡Eso es una botella de poción, no una botella de Klein!"
 #: src/potion.c:2453
 #, c-format
 msgid "can't fit your %s into the mouth of the bottle!"
-msgstr "no puedes fit your %s into the mouth of the bottle!"
+msgstr "¡no cabe tu %s en la boca de la botella!"
 
 #: src/potion.c:2534
 #, c-format
@@ -66198,7 +66198,7 @@ msgstr "Luego pasa."
 
 #: src/fountain.c:345
 msgid "an image of someone stalking you."
-msgstr "un image of someone stalking you."
+msgstr "una imagen de alguien acechándote."
 
 #: src/fountain.c:346
 msgid "But it disappears."
@@ -66698,7 +66698,7 @@ msgstr "un ruido de rotura."
 #: src/do.c:380
 #, c-format
 msgid "is %s flash as %s %s the altar."
-msgstr "está %s flash as %s %s the altar."
+msgstr "%s destella como %s %s en el altar."
 
 #: src/do.c:386
 #, c-format
@@ -66744,11 +66744,11 @@ msgstr "Varias moscas zumban alrededor del fregadero."
 
 #: src/do.c:602
 msgid "don't see anything happen to the sink."
-msgstr "no see anything happen to the sink."
+msgstr "no ves que pase nada al fregadero."
 
 #: src/do.c:605
 msgid "the ring slide right down the drain!"
-msgstr "el ring slide right down the drain!"
+msgstr "¡el anillo se desliza por el desagüe!"
 
 #: src/do.c:608
 #, c-format
@@ -66757,7 +66757,7 @@ msgstr "algo de %s en el fregadero."
 
 #: src/do.c:647
 msgid "the ring bouncing down the drainpipe."
-msgstr "el ring bouncing down the drainpipe."
+msgstr "el anillo rebota por el desagüe."
 
 #: src/do.c:669 src/pickup.c:2577
 #, c-format
@@ -66796,7 +66796,7 @@ msgstr "¡%s digerido al instante!"
 
 #: src/do.c:929
 msgid "have nothing to drop."
-msgstr "tienes nothing to drop."
+msgstr "no tienes nada que soltar."
 
 #: src/do.c:1114
 #, c-format
@@ -66930,7 +66930,7 @@ msgstr "%s humo..."
 
 #: src/do.c:2031
 msgid "are out of the cold."
-msgstr "estás out of the cold."
+msgstr "estas fuera del frio."
 
 #: src/do.c:2178
 #, c-format
@@ -67052,7 +67052,7 @@ msgstr "Una imagen se forma en tu mente."
 #: src/sit.c:176
 #, c-format
 msgid "have a very strange feeling in your %s."
-msgstr "tienes a very strange feeling in your %s."
+msgstr "tienes una sensacion muy extrana en tu %s."
 
 #: src/sit.c:195
 msgid "are granted an insight!"
@@ -67111,7 +67111,7 @@ msgstr "estás already sitting on %s."
 
 #: src/sit.c:416
 msgid "are no seats in here!"
-msgstr "estás no seats in here!"
+msgstr "¡no hay asientos aqui!"
 
 #: src/sit.c:418 src/hack.c:2347
 msgid "tumble in place."
@@ -67256,7 +67256,7 @@ msgstr "movimiento de cadena erroneo"
 #: src/ball.c:777
 #, c-format
 msgid "cannot %sdrag the heavy iron ball."
-msgstr "no puedes %sdrag the heavy iron ball."
+msgstr "no puedes %sarrastrar la pesada bola de hierro."
 
 #: src/ball.c:797
 msgid "are jerked back by the iron ball!"
@@ -67363,11 +67363,11 @@ msgstr "no podías ride %s, let alone its tail."
 #: src/steed.c:274
 #, c-format
 msgid "are unable to swing your %s over."
-msgstr "estás unable to swing your %s over."
+msgstr "no puedes balancear tu %s."
 
 #: src/steed.c:276
 msgid "are stuck here for now."
-msgstr "estás stuck here for now."
+msgstr "estas atascado aqui por ahora."
 
 #: src/steed.c:283
 #, c-format
@@ -67441,7 +67441,7 @@ msgstr "puedes no longer ride %s."
 #: src/steed.c:635
 #, c-format
 msgid "can't.  The saddle %s cursed."
-msgstr "no puedes.  The saddle %s cursed."
+msgstr "no puedes.  La montura %s esta maldita."
 
 #: src/steed.c:641
 msgid "can't.  There isn't anywhere for you to stand."
@@ -67986,7 +67986,7 @@ msgstr "¡%s te saca una foto con %s!"
 
 #: src/muse.c:1948
 msgid "are blinded by the flash of light!"
-msgstr "estás blinded by the flash of light!"
+msgstr "¡el destello de luz te ciega!"
 
 #: src/muse.c:1963 src/muse.c:3154
 msgid "Oh, what a pretty fire!"
@@ -68284,7 +68284,7 @@ msgstr "está a%s message on this scroll."
 #: src/mail.c:646
 #, c-format
 msgid "The voice of %s booms through the caverns:"
-msgstr "El voice of %s booms through the caverns:"
+msgstr "La voz de %s retumba en las cavernas:"
 
 #: src/mail.c:649
 #, c-format
@@ -69295,7 +69295,7 @@ msgstr "%s esta %s."
 
 #: src/wizcmds.c:334
 msgid "is no monster there."
-msgstr "está no monster there."
+msgstr "no hay ningun monstruo alli."
 
 #: src/wizcmds.c:465
 msgid "are already that experienced."
@@ -69303,11 +69303,11 @@ msgstr "estás already that experienced."
 
 #: src/wizcmds.c:468
 msgid "are already as inexperienced as you can get."
-msgstr "estás already as inexperienced as you can get."
+msgstr "ya eres tan inexperto como se puede ser."
 
 #: src/wizcmds.c:477
 msgid "are already as experienced as you can get."
-msgstr "estás already as experienced as you can get."
+msgstr "ya eres tan experto como se puede ser."
 
 #: src/wizcmds.c:503
 msgid "Pick a monster to hurtle."
@@ -69315,7 +69315,7 @@ msgstr "Elige un monstruo al que lanzar."
 
 #: src/wizcmds.c:552
 msgid "The fuzz tester will make NetHack execute random keypresses."
-msgstr "El fuzz tester will make NetHack execute random keypresses."
+msgstr "El fuzz tester hara que NetHack ejecute teclas aleatorias."
 
 #: src/wizcmds.c:553
 msgid "is no conventional way out of this mode."
@@ -69323,11 +69323,11 @@ msgstr "está no conventional way out of this mode."
 
 #: src/wizcmds.c:896
 msgid "are incapable of detecting odors in your present form."
-msgstr "estás incapable of detecting odors in your present form."
+msgstr "no puedes detectar olores en tu forma actual."
 
 #: src/wizcmds.c:900
 msgid "can move the cursor to a monster that you want to smell."
-msgstr "puedes move the cursor to a monster that you want to smell."
+msgstr "puedes mover el cursor a un monstruo que quieras oler."
 
 #: src/wizcmds.c:902
 msgid "Pick a monster to smell."
@@ -69345,7 +69345,7 @@ msgstr "%s a no desprender ningun olor."
 
 #: src/wizcmds.c:933
 msgid "don't smell any monster there."
-msgstr "no smell any monster there."
+msgstr "no hueles ningun monstruo alli."
 
 #: src/wizcmds.c:1076
 #, c-format
@@ -69499,7 +69499,7 @@ msgstr "Desafortunadamente, %s"
 #: src/timeout.c:659
 #, c-format
 msgid "The %s haze around you %s."
-msgstr "El %s haze around you %s."
+msgstr "La niebla de %s a tu alrededor %s."
 
 #: src/timeout.c:666
 #, c-format
@@ -69508,7 +69508,7 @@ msgstr "%s deja de galopar."
 
 #: src/timeout.c:697
 msgid "have recovered from your illness."
-msgstr "tienes recovered from your illness."
+msgstr "te has recuperado de tu enfermedad."
 
 #: src/timeout.c:703
 msgid "You die from your illness."
@@ -70220,7 +70220,7 @@ msgstr "un ruido de tecleo débil."
 #: src/apply.c:401
 #, c-format
 msgid "is %s hidden there."
-msgstr "está %s hidden there."
+msgstr "hay un %s escondido alli."
 
 #: src/apply.c:435
 #, c-format
@@ -70238,7 +70238,7 @@ msgstr "no oyes nada especial."
 
 #: src/apply.c:479 src/apply.c:498
 msgid "are incapable of using the whistle."
-msgstr "estás incapable of using the whistle."
+msgstr "no puedes usar el silbato."
 
 #: src/apply.c:481
 #, c-format
@@ -70260,7 +70260,7 @@ msgstr "¿Encorararte a ti mismo?  Muy gracioso..."
 
 #: src/apply.c:811
 msgid "is no creature there."
-msgstr "está no creature there."
+msgstr "no hay ninguna criatura alli."
 
 #: src/apply.c:826
 #, c-format
@@ -70651,11 +70651,11 @@ msgstr "¡Demasiado lejos!"
 
 #: src/apply.c:1908
 msgid "cannot jump there!"
-msgstr "no puedes jump there!"
+msgstr "¡no puedes saltar alli!"
 
 #: src/apply.c:1912
 msgid "cannot see where to land!"
-msgstr "no puedes see where to land!"
+msgstr "¡no puedes ver donde aterrizar!"
 
 #: src/apply.c:1951
 msgid "is an obstacle preventing that jump."
@@ -70761,7 +70761,7 @@ msgstr "parece que no quedan latas."
 #: src/apply.c:2192
 #, c-format
 msgid "cannot tin %s which is partly eaten."
-msgstr "no puedes tin %s which is partly eaten."
+msgstr "no puedes enlatar %s que esta parcialmente comido."
 
 #: src/apply.c:2201
 #, c-format
@@ -70826,11 +70826,11 @@ msgstr "¿donde cobro vida la figurilla? (%d)"
 
 #: src/apply.c:2517
 msgid "don't have enough room in here."
-msgstr "no tienes enough room in here."
+msgstr "no tienes suficiente espacio aqui."
 
 #: src/apply.c:2524
 msgid "cannot put the figurine there."
-msgstr "no puedes put the figurine there."
+msgstr "no puedes poner la figurilla alli."
 
 #: src/apply.c:2530
 #, c-format
@@ -70891,7 +70891,7 @@ msgstr "%s algo mas pulido ahora."
 
 #: src/apply.c:2769
 msgid "must think this is a wetstone, do you?"
-msgstr "debes think this is a wetstone, do you?"
+msgstr "debes pensar que esto es una piedra de afilar, verdad?"
 
 #: src/apply.c:2771
 #, c-format
@@ -70939,11 +70939,11 @@ msgstr "fallas."
 
 #: src/apply.c:3006
 msgid "is not enough room to flick your bullwhip."
-msgstr "está not enough room to flick your bullwhip."
+msgstr "no hay suficiente espacio para chasquear el latigo."
 
 #: src/apply.c:3009
 msgid "is too much resistance to flick your bullwhip."
-msgstr "está too much resistance to flick your bullwhip."
+msgstr "hay demasiada resistencia para chasquear el latigo."
 
 #: src/apply.c:3012
 #, c-format
@@ -71093,7 +71093,7 @@ msgstr "¡te enganchas!"
 #: src/apply.c:3931
 #, c-format
 msgid "don't have the strength to break %s!"
-msgstr "no tienes the strength to break %s!"
+msgstr "¡no tienes fuerza para romper %s!"
 
 #: src/apply.c:3939
 #, c-format
@@ -71106,7 +71106,7 @@ msgstr "¡Una pared de fuerza se desploma a tu alrededor!"
 
 #: src/apply.c:4220
 msgid "aren't able to use or apply tools in your current form."
-msgstr "no estás able to use or apply tools in your current form."
+msgstr "no puedes usar herramientas en tu forma actual."
 
 #: src/apply.c:4252 src/wield.c:182
 #, c-format
@@ -71119,7 +71119,7 @@ msgstr "¡Suena! ... Pero nadie contesta."
 
 #: src/apply.c:4476
 msgid "don't want to get the pages even more soggy, do you?"
-msgstr "no want to get the pages even more soggy, do you?"
+msgstr "no querra s mojar aun mas las paginas, verdad?"
 
 #: src/apply.c:4480
 #, c-format
@@ -71200,7 +71200,7 @@ msgstr "¡Crash!  ¡El techo se derrumba a tu alrededor!"
 #: src/dig.c:100
 #, c-format
 msgid "A mysterious force %s cave around you!"
-msgstr "Un mysterious force %s cave around you!"
+msgstr "¡Una fuerza misteriosa %s cueva a tu alrededor!"
 
 #: src/dig.c:266
 #, c-format
@@ -71324,7 +71324,7 @@ msgstr "¡molestas a los muertos honrados!"
 
 #: src/dig.c:1054
 msgid "have violated the sanctity of this grave!"
-msgstr "tienes violated the sanctity of this grave!"
+msgstr "¡has violado la santidad de esta tumba!"
 
 #: src/dig.c:1062
 msgid "unearth a corpse."
@@ -71355,7 +71355,7 @@ msgstr "¡Chasquido!"
 
 #: src/dig.c:1213
 msgid "is a spider web there!"
-msgstr "está a spider web there!"
+msgstr "¡hay una telarana alli!"
 
 #: src/dig.c:1215
 #, c-format
@@ -71674,7 +71674,7 @@ msgstr "%s, %s."
 
 #: src/detect.c:1362
 msgid "the Wizard of Yendor gazing out at you."
-msgstr "el Wizard of Yendor gazing out at you."
+msgstr "el Mago de Yendor mirandote."
 
 #: src/detect.c:1555
 msgid "sense your surroundings."
@@ -71882,7 +71882,7 @@ msgstr "¡(De hecho, estas en la nube 9!)"
 
 #: src/teleport.c:1345
 msgid "are now high above the clouds..."
-msgstr "estás now high above the clouds..."
+msgstr "ahora estas muy por encima de las nubes..."
 
 #: src/teleport.c:1354
 msgid "Unfortunately, you don't know how to fly."
@@ -71998,7 +71998,7 @@ msgstr "tienes no ammunition readied."
 
 #: src/dothrow.c:538
 msgid "have nothing appropriate for your quiver."
-msgstr "tienes nothing appropriate for your quiver."
+msgstr "no tienes nada apropiado para tu carcaj."
 
 #: src/dothrow.c:594
 #, c-format
@@ -72128,7 +72128,7 @@ msgstr "¡%s al lanzarlo!"
 #: src/dothrow.c:1557
 #, c-format
 msgid "have so little stamina, %s drops from your grasp."
-msgstr "tienes so little stamina, %s drops from your grasp."
+msgstr "tienes tan poca energia que %s se te cae."
 
 #: src/dothrow.c:1587
 #, c-format
@@ -72143,7 +72143,7 @@ msgstr "No estás empuñando %s, así que lanzas tu %s %s."
 #: src/dothrow.c:1692 src/dothrow.c:1712 src/dothrow.c:1812
 #, c-format
 msgid "The tether comes off your %s."
-msgstr "El tether comes off your %s."
+msgstr "La correa se suelta de tu %s."
 
 #: src/dothrow.c:1732
 #, c-format
@@ -72331,7 +72331,7 @@ msgstr "%s brillando."
 
 #: src/do_wear.c:990
 msgid "are no longer bothered by the poison gas."
-msgstr "estás no longer bothered by the poison gas."
+msgstr "ya no te molesta el gas venenoso."
 
 #: src/do_wear.c:1020 src/eat.c:2373
 #, c-format
@@ -72439,12 +72439,12 @@ msgstr "estás already wearing %s%c"
 
 #: src/do_wear.c:2039
 msgid "can't wear any armor in your current form."
-msgstr "no puedes wear any armor in your current form."
+msgstr "no puedes llevar armadura en tu forma actual."
 
 #: src/do_wear.c:2065
 #, c-format
 msgid "cannot do that while holding your %s."
-msgstr "no puedes do that while holding your %s."
+msgstr "no puedes hacer eso mientras sostienes tu %s."
 
 #: src/do_wear.c:2091
 #, c-format
@@ -72467,7 +72467,7 @@ msgstr "tienes too many hooves to wear %s."
 #: src/do_wear.c:2145
 #, c-format
 msgid "cannot wear gloves over your %s."
-msgstr "no puedes wear gloves over your %s."
+msgstr "no puedes llevar guantes sobre tu %s."
 
 #: src/do_wear.c:2181
 #, c-format
@@ -72480,7 +72480,7 @@ msgstr "evitas por poco perder toda oportunidad de tu objetivo."
 
 #: src/do_wear.c:2233
 msgid "are suddenly overcome with shame and change your mind."
-msgstr "estás suddenly overcome with shame and change your mind."
+msgstr "de repente te averguenzas y cambias de opinion."
 
 #: src/do_wear.c:2255
 msgid "cannot make the ring stick to your body."
