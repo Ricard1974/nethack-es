@@ -1,6 +1,6 @@
 # NetHack-es — NetHack en Español
 
-Traducción al español de **NetHack 5.0** (13.416 cadenas traducidas, 71%).
+Traducción al español de **NetHack 5.0** (13.488 cadenas traducidas, 72%).
 
 ---
 
@@ -32,7 +32,7 @@ nethack-es
 O si estás en el directorio del proyecto:
 
 ```bash
-./playground/nethack
+./jugar.sh
 ```
 
 ## ⌨️ Teclas básicas
@@ -70,6 +70,9 @@ O si estás en el directorio del proyecto:
 - Opciones de configuración
 - Prompts de creación de personaje
 - Mensajes de combate, objetos y estado
+- Categorías del inventario (Armas, Armadura, Pociones...)
+- Prompts de confirmación (guardar, soltar, comer...)
+- Prefijos gramaticales: "You can't" → "No puedes", "You" → "", "There" → ""
 - **100% del código C**
 
 ## ⏳ No traducido
@@ -99,12 +102,10 @@ git clone https://github.com/Ricard1974/nethack-es.git
 cd nethack-es
 sudo apt install build-essential libncurses-dev flex bison gettext
 cd sys/unix && sh setup.sh hints/linux.500 && cd ../..
-make fetch-lua
-make
+make fetch-lua && make
 msgfmt po/combined-es.po -o po/combined-es.mo
-mkdir -p playground/locale/es/LC_MESSAGES
-cp po/combined-es.mo playground/locale/es/LC_MESSAGES/nethack.mo
 make install
+./jugar.sh
 ```
 
 ## 📋 Requisitos
@@ -129,7 +130,7 @@ El código original de NetHack es © 1985-2026 Stichting Mathematisch Centrum y 
 
 - **NetHack original**: Stichting Mathematisch Centrum y M. Stephenson
 - **Traducción al español**: Ricard1974 (NetHack-es)
-- **Sistema de traducción**: `nh_gettext` propio, sin dependencias externas
+- **Sistema de traducción**: `nh_gettext` propio + `build_msg` con prefijos gramaticales, sin dependencias externas
 
 ## 📁 Repositorio
 
