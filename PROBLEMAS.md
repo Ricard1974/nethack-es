@@ -263,3 +263,22 @@ nethack-es --version
 echo "NETHACKDIR=$NETHACKDIR"
 echo "NETHACK_LOCALE_DIR=$NETHACK_LOCALE_DIR"
 ```
+
+---
+
+## Problema 11: Segfault por implicit declaration de nh_getenv
+
+**Síntoma:** `Segmentation fault (core dumped)` al ejecutar `nethack-es`, incluso con `--version`.
+
+**Causa:** El archivo `src/lang.c` incluía `"config.h"` en lugar de `"hack.h"`. `nh_getenv()` está declarado en `include/extern.h` que se incluye a través de `hack.h`. Sin la declaración, el compilador C asume que la función devuelve `int` (32 bits), truncando el puntero de 64 bits a 32 bits.
+
+**Solución:** Usar `#include "hack.h"` en lugar de `#include "config.h"` en cualquier archivo que llame a `nh_getenv()`.
+
+**Archivos afectados:**
+- `src/lang.c` — cambiar `#include "config.h"` por `#include "hack.h"`
+
+**Verificación:**
+```bash
+nethack-es --version
+# Debe mostrar la versión sin crash
+```
