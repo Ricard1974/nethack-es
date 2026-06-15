@@ -83,8 +83,10 @@ mkdir -p "$BIN_DIR"
 cat > "$BIN_DIR/nethack-es" << LUAEOF
 #!/bin/bash
 # NetHack-es lanzador con traducción al español
+# NETHACKDIR overridea el HACKDIR compilado en el binario
+export NETHACKDIR="$INSTALL_DIR"
 export NETHACK_LOCALE_DIR="$INSTALL_DIR/locale"
-cd "$INSTALL_DIR"
+cd "\$NETHACKDIR"
 exec ./nethack "\$@"
 LUAEOF
 chmod +x "$BIN_DIR/nethack-es"
