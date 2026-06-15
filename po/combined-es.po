@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack-es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 17:19+0200\n"
+"POT-Creation-Date: 2026-06-15 17:22+0200\n"
 "PO-Revision-Date: 2026-06-10 21:50\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2874,143 +2874,64 @@ msgid "This game is void."
 msgstr "Esta partida es inválida."
 
 #: src/role.c:31
-#, fuzzy
 msgid "Archeologist"
 msgstr "Arqueólogo"
 
-#: src/role.c:32
-#, fuzzy
-msgid "Digger"
-msgstr "*daga"
-
 #: src/role.c:72
-#, fuzzy
 msgid "Barbarian"
 msgstr "Bárbaro"
 
 #: src/role.c:113
-#, fuzzy
 msgid "Caveman"
 msgstr "Cavernícola"
 
 #: src/role.c:113
-#, fuzzy
 msgid "Cavewoman"
 msgstr "Cavernícola"
 
-#: src/role.c:114
-#, fuzzy
-msgid "Troglodyte"
-msgstr "troglodyte"
-
 #: src/role.c:154
-#, fuzzy
 msgid "Healer"
 msgstr "Sanador"
 
-#: src/role.c:155
-#, fuzzy
-msgid "Rhizotomist"
-msgstr "rhizotomist"
-
 #: src/role.c:194 src/role.c:199
-#, fuzzy
 msgid "Knight"
 msgstr "Caballero"
-
-#: src/role.c:195
-#, fuzzy
-msgid "Gallant"
-msgstr "galante"
 
 #: src/role.c:234
 msgid "Monk"
 msgstr "Monje"
 
-#: src/role.c:235
-#, fuzzy
-msgid "Candidate"
-msgstr "candidato"
-
 #: src/role.c:275 src/role.c:279
-#, fuzzy
 msgid "Priest"
 msgstr "Sacerdote"
 
 #: src/role.c:275 src/role.c:279
-#, fuzzy
 msgid "Priestess"
 msgstr "Sacerdote"
 
-#: src/role.c:276
-#, fuzzy
-msgid "Aspirant"
-msgstr "aspirante"
-
-#: src/role.c:284
-#, fuzzy
-msgid "High Priest"
-msgstr "Alto Sacerdote,"
-
-#: src/role.c:284
-#, fuzzy
-msgid "High Priestess"
-msgstr "Alto Sacerdote,"
-
-#: src/role.c:318
-#, fuzzy
+#: src/role.c:318 src/role.c:321
 msgid "Rogue"
 msgstr "Pícaro"
 
-#: src/role.c:319
-#, fuzzy
-msgid "Footpad"
-msgstr "salteador"
-
 #: src/role.c:358
-#, fuzzy
 msgid "Ranger"
 msgstr "Explorador"
 
 #: src/role.c:413
-#, fuzzy
 msgid "Samurai"
 msgstr "Samurái"
 
-#: src/role.c:414
-#, fuzzy
-msgid "Hatamoto"
-msgstr "hatamoto"
-
 #: src/role.c:453
-#, fuzzy
 msgid "Tourist"
 msgstr "Turista"
 
-#: src/role.c:454
-#, fuzzy
-msgid "Rambler"
-msgstr "paseante"
-
 #: src/role.c:493
-#, fuzzy
 msgid "Valkyrie"
 msgstr "Valquiria"
 
-#: src/role.c:494
-#, fuzzy
-msgid "Stripling"
-msgstr "mozalbete"
-
-#: src/role.c:533
-#, fuzzy
+#: src/role.c:533 src/role.c:541
 msgid "Wizard"
 msgstr "Mago"
-
-#: src/role.c:534
-#, fuzzy
-msgid "Evoker"
-msgstr "evocador"
 
 #: src/role.c:1587
 msgid "Shall I pick a character for you? [ynaq] "
@@ -4286,6 +4207,58 @@ msgstr "puedes wish for an object."
 #: src/zap.c:6362
 msgid "Nothing fitting that description exists in the game."
 msgstr "No existe nada que encaje con esa descripción en el juego."
+
+#, fuzzy
+#~ msgid "Digger"
+#~ msgstr "*daga"
+
+#, fuzzy
+#~ msgid "Troglodyte"
+#~ msgstr "troglodyte"
+
+#, fuzzy
+#~ msgid "Rhizotomist"
+#~ msgstr "rhizotomist"
+
+#, fuzzy
+#~ msgid "Gallant"
+#~ msgstr "galante"
+
+#, fuzzy
+#~ msgid "Candidate"
+#~ msgstr "candidato"
+
+#, fuzzy
+#~ msgid "Aspirant"
+#~ msgstr "aspirante"
+
+#, fuzzy
+#~ msgid "High Priest"
+#~ msgstr "Alto Sacerdote,"
+
+#, fuzzy
+#~ msgid "High Priestess"
+#~ msgstr "Alto Sacerdote,"
+
+#, fuzzy
+#~ msgid "Footpad"
+#~ msgstr "salteador"
+
+#, fuzzy
+#~ msgid "Hatamoto"
+#~ msgstr "hatamoto"
+
+#, fuzzy
+#~ msgid "Rambler"
+#~ msgstr "paseante"
+
+#, fuzzy
+#~ msgid "Stripling"
+#~ msgstr "mozalbete"
+
+#, fuzzy
+#~ msgid "Evoker"
+#~ msgstr "evocador"
 
 #~ msgid "The Dungeons of Doom"
 #~ msgstr "Mazmorras de Perdición"
