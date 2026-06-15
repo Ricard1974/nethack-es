@@ -1920,7 +1920,7 @@ goto_level(
             record_achievement(ACH_BGRM);
         }
         /* main dungeon message from your quest leader */
-        if (!In_quest(&u.uz0) && at_dgn_entrance("The Quest")
+        if (!In_quest(&u.uz0) && at_dgn_entrance(_("The Quest"))
             && !(u.uevent.qcompleted || u.uevent.qexpelled
                  || svq.quest_status.leader_is_dead)) {
             /* [TODO: copy of same TODO below; if an achievement for

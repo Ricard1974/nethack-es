@@ -5,7 +5,7 @@
 -- The dungeon description file.
 dungeon = {
    {
-      name = "The Dungeons of Doom",
+      name = "Mazmorras de Perdición",
       bonetag = "D",
       base = 25,
       range = 5,
@@ -13,7 +13,7 @@ dungeon = {
       themerooms = "themerms.lua",
       branches = {
          {
-            name = "The Gnomish Mines",
+            name = "Minas de los Gnomos",
             base = 2,
             range = 3
          },
@@ -24,14 +24,14 @@ dungeon = {
             direction = "up"
          },
          {
-            name = "The Quest",
+            name = "La Misión",
             chainlevel = "oracle",
             base = 6,
             range = 2,
             branchtype = "portal"
          },
          {
-            name = "Fort Ludios",
+            name = "Fortaleza Ludios",
             base = 18,
             range = 4,
             branchtype = "portal"
@@ -43,7 +43,7 @@ dungeon = {
             branchtype = "no_down"
          },
          {
-            name = "The Elemental Planes",
+            name = "Planos Elementales",
             base = 1,
             branchtype = "no_down",
             direction = "up"
@@ -95,7 +95,7 @@ dungeon = {
       alignment = "noalign",
       branches = {
          {
-            name = "Vlad's Tower",
+            name = "Torre de Vlad",
             base = 9,
             range = 5,
             direction = "up"
@@ -167,7 +167,7 @@ dungeon = {
       }
    },
    {
-      name = "The Gnomish Mines",
+      name = "Minas de los Gnomos",
       bonetag = "M",
       base = 8,
       range = 2,
@@ -193,7 +193,7 @@ dungeon = {
       }
    },
    {
-      name = "The Quest",
+      name = "La Misión",
       bonetag = "Q",
       base = 5,
       range = 2,
@@ -245,7 +245,7 @@ dungeon = {
       }
    },
    {
-      name = "Fort Ludios",
+      name = "Fortaleza Ludios",
       base = 1,
       bonetag = "K",
       flags = { "mazelike" },
@@ -259,7 +259,7 @@ dungeon = {
       }
    },
    {
-      name = "Vlad's Tower",
+      name = "Torre de Vlad",
       base = 3,
       bonetag = "T",
       protofile = "tower",
@@ -282,7 +282,7 @@ dungeon = {
       }
    },
    {
-      name = "The Elemental Planes",
+      name = "Planos Elementales",
       bonetag = "E",
       base = 6,
       alignment = "unaligned",
@@ -316,7 +316,7 @@ dungeon = {
       }
    },
    {
-      name = "The Tutorial",
+      name = "El Tutorial",
       base = 2,
       flags = { "mazelike", "unconnected" },
       levels = {

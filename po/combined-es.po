@@ -45973,3 +45973,25 @@ msgstr "¿Quieres que elija "
 #~ msgstr "Solo llevas oro"
 
 #: win/tty/wintty.c:182 win/tty/wintty.c:3644
+
+#: src/dungeon.c dungeon branch names (wrapped in _())
+msgid "The Quest"
+msgstr "La Misión"
+
+msgid "The Gnomish Mines"
+msgstr "Minas de los Gnomos"
+
+msgid "Vlad's Tower"
+msgstr "Torre de Vlad"
+
+msgid "The Tutorial"
+msgstr "El Tutorial"
+
+msgid "Fort Ludios"
+msgstr "Fortaleza Ludios"
+
+msgid "The Dungeons of Doom"
+msgstr "Mazmorras de Perdición"
+
+msgid "The Elemental Planes"
+msgstr "Planos Elementales"
