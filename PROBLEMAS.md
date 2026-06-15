@@ -8,10 +8,10 @@ Este documento recopila los problemas recurrentes encontrados durante el desarro
 
 **Síntoma:** Las traducciones no aparecen aunque estén en el `.po`.
 
-**Causa:** Después de editar `po/combined-es.po`, el `.mo` no se regenera solo. Hay que ejecutar manualmente:
+**Causa:** Después de editar `po/es.po`, el `.mo` no se regenera solo. Hay que ejecutar manualmente:
 
 ```bash
-msgfmt po/combined-es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
+msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
 cp playground/locale/es/LC_MESSAGES/nethack.mo ~/.local/games/nethack-es/locale/es/LC_MESSAGES/
 ```
 
@@ -228,9 +228,9 @@ chmod 0660 "$INSTALL_DIR"/logfile "$INSTALL_DIR"/xlogfile "$INSTALL_DIR"/livelog
 
 Después de cualquier cambio, verificar en orden:
 
-- [ ] **.po**: ¿Tiene las traducciones nuevas? (`grep "msgid" po/combined-es.po | wc -l`)
-- [ ] **.po**: ¿Es válido? (`msgfmt --check po/combined-es.po`)
-- [ ] **.mo**: ¿Está regenerado? (`msgfmt po/combined-es.po -o playground/locale/.../nethack.mo`)
+- [ ] **.po**: ¿Tiene las traducciones nuevas? (`grep "msgid" po/es.po | wc -l`)
+- [ ] **.po**: ¿Es válido? (`msgfmt --check po/es.po`)
+- [ ] **.mo**: ¿Está regenerado? (`msgfmt po/es.po -o playground/locale/.../nethack.mo`)
 - [ ] **.mo**: ¿Está copiado a la instalación? (`cp ... ~/.local/games/nethack-es/locale/.../`)
 - [ ] **Binario**: ¿Está recompilado? (`make -C src`)
 - [ ] **Binario**: ¿Está copiado a la instalación? (`cp playground/nethack ~/.local/games/nethack-es/`)
@@ -247,7 +247,7 @@ Después de cualquier cambio, verificar en orden:
 
 ```bash
 # Regenerar .mo y copiar
-msgfmt po/combined-es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
+msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
 cp playground/locale/es/LC_MESSAGES/nethack.mo ~/.local/games/nethack-es/locale/es/LC_MESSAGES/
 
 # Recompilar binario

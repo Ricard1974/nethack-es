@@ -66,18 +66,26 @@ main(int argc, char *argv[])
 
     early_init(argc, argv);
 
-    /* NetHack-es: load our custom translation file */
+    /* NetHack-es: detect language and load translation */
+    init_lang();
     {
         char mo_path[BUFSZ];
         const char *locale_dir = nh_getenv("NETHACK_LOCALE_DIR");
-        if (locale_dir) {
+        const char *lang = get_lang();
+        if (locale_dir && strcmp(lang, "en") != 0) {
             Snprintf(mo_path, sizeof mo_path,
-                     "%s/es/LC_MESSAGES/nethack.mo", locale_dir);
-        } else {
+                     "%s/%s/LC_MESSAGES/nethack.mo", locale_dir, lang);
+        } else if (strcmp(lang, "en") != 0) {
             /* Use the compiled-in HACKDIR (data directory) */
-            Strcpy(mo_path, HACKDIR "/locale/es/LC_MESSAGES/nethack.mo");
+            Strcpy(mo_path, HACKDIR "/locale/");
+            Strcat(mo_path, lang);
+            Strcat(mo_path, "/LC_MESSAGES/nethack.mo");
+        } else {
+            /* English: no translation needed */
+            mo_path[0] = '\0';
         }
-        nh_load_mo(mo_path);
+        if (mo_path[0])
+            nh_load_mo(mo_path);
     }
 
 #if defined(__APPLE__)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 translate_libretranslate.py
-Traduce strings sin traducir en po/combined-es.po usando LibreTranslate local
+Traduce strings sin traducir en po/es.po usando LibreTranslate local
 También corrige Spanglish básico en traducciones existentes (opcional)
 """
 
@@ -67,14 +67,14 @@ def post_editar(traduccion):
 
 def main():
     # 1. Leer el archivo .po
-    with open("po/combined-es.po", "r", encoding="utf-8") as f:
+    with open("po/es.po", "r", encoding="utf-8") as f:
         lines = f.readlines()
 
     # 2. Identificar strings sin traducir o fuzzy
     stats = {"traducidos": 0, "fuzzy": 0, "vacios": 0, "errores": 0}
     cambios = 0
 
-    print("🔍 Analizando archivo po/combined-es.po...")
+    print("🔍 Analizando archivo po/es.po...")
 
     i = 0
     while i < len(lines):
@@ -166,7 +166,7 @@ def main():
         i += 1
 
     # 3. Guardar archivo actualizado
-    with open("po/combined-es.po", "w", encoding="utf-8") as f:
+    with open("po/es.po", "w", encoding="utf-8") as f:
         f.writelines(lines)
 
     # 4. Resumen
@@ -179,7 +179,7 @@ def main():
     print(f"{'=' * 50}")
 
     if cambios > 0:
-        print(f"\n✅ {cambios} cambios realizados en po/combined-es.po")
+        print(f"\n✅ {cambios} cambios realizados en po/es.po")
     else:
         print("\n⚠️  No se hicieron cambios")
 

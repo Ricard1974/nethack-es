@@ -57,7 +57,7 @@ make
 # ── 4. Generar archivo de traducción .mo ──
 echo -e "${AZUL}🌐 Generando traducción...${NC}"
 mkdir -p playground/locale/es/LC_MESSAGES
-msgfmt po/combined-es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
+msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
 
 # ── 5. Instalar ──
 echo -e "${AZUL}📂 Instalando en $INSTALL_DIR...${NC}"

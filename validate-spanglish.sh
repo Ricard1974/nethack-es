@@ -1,10 +1,10 @@
 #!/bin/bash
-# validate-spanglish.sh - Busca Spanglish en po/combined-es.po
+# validate-spanglish.sh - Busca Spanglish en po/es.po
 
 cd "$(dirname "$0")"
 
 echo "=== 🔍 VALIDACIÓN DE SPANGLISH ==="
-echo "Revisando po/combined-es.po..."
+echo "Revisando po/es.po..."
 echo ""
 
 # Lista de palabras inglesas sospechosas en traducciones al español
@@ -32,7 +32,7 @@ found_any=0
 
 for word in "${ENGLISH_WORDS[@]}"; do
     # Buscar en msgstr (traducciones al español)
-    matches=$(grep -n "^msgstr.*$word" po/combined-es.po 2>/dev/null | head -10)
+    matches=$(grep -n "^msgstr.*$word" po/es.po 2>/dev/null | head -10)
     if [ -n "$matches" ]; then
         if [ $found_any -eq 0 ]; then
             echo "⚠️  Palabras inglesas encontradas en traducciones (msgstr):"

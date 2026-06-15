@@ -4,10 +4,8 @@
 
 #include "config.h"
 #include "dlb.h"
-
-#ifdef __DJGPP__
 #include <string.h>
-#endif
+#include <ctype.h>
 
 #define DATAPREFIX 4        /* see decl.h */
 
@@ -467,21 +465,29 @@ dlb_fopen(const char *name, const char *mode)
 
     dp = (dlb *) alloc(sizeof(dlb));
     (void) memset((genericptr_t) dp, 0, sizeof(dlb));
-    /* NetHack-es: try localized version (.es suffix) first */
+    /* NetHack-es: try localized version (e.g., .es suffix) first */
     {
         char es_name[BUFSZ];
+        const char *lang = getenv("LANG");
         int nlen = (int) strlen(name);
-        if (nlen + 4 < BUFSZ) {
-            Strcpy(es_name, name);
-            Strcat(es_name, ".es");
-            if (do_dlb_fopen(dp, es_name, mode))
-                dp->fp = (FILE *) 0;
-            else if ((fp = fopen_datafile(es_name, mode, DATAPREFIX)) != 0)
-                dp->fp = fp;
-            else
-                dp->fp = (FILE *) 0;
-            if (dp->fp || dp->lib)
-                return dp;
+        if (lang && strlen(lang) >= 2 && nlen + 4 < BUFSZ) {
+            char lang_code[3];
+            lang_code[0] = tolower((unsigned char)lang[0]);
+            lang_code[1] = tolower((unsigned char)lang[1]);
+            lang_code[2] = '\0';
+            if (strcmp(lang_code, "en") != 0) {
+                Strcpy(es_name, name);
+                Strcat(es_name, ".");
+                Strcat(es_name, lang_code);
+                if (do_dlb_fopen(dp, es_name, mode))
+                    dp->fp = (FILE *) 0;
+                else if ((fp = fopen_datafile(es_name, mode, DATAPREFIX)) != 0)
+                    dp->fp = fp;
+                else
+                    dp->fp = (FILE *) 0;
+                if (dp->fp || dp->lib)
+                    return dp;
+            }
         }
     }
     if (do_dlb_fopen(dp, name, mode))

@@ -19,7 +19,7 @@ fi
 
 # 2. Merge con .po existente
 echo "2/5 🔀 Merge .pot con .po existente..."
-if msgmerge -U po/combined-es.po po/nethack.pot 2>/dev/null; then
+if msgmerge -U po/es.po po/nethack.pot 2>/dev/null; then
     echo "   ✅ Merge completado"
 else
     echo "   ⚠️  No se pudo hacer merge"
@@ -36,19 +36,19 @@ fi
 
 # 4. Validar
 echo "4/5 🔍 Validando integridad..."
-if msgfmt po/combined-es.po --check 2>/dev/null; then
+if msgfmt po/es.po --check 2>/dev/null; then
     echo "   ✅ Sintaxis válida"
 else
     echo "   ❌ Error de sintaxis en .po"
     exit 1
 fi
 
-stats=$(msgfmt po/combined-es.po --statistics 2>&1)
+stats=$(msgfmt po/es.po --statistics 2>&1)
 echo "   📊 $stats"
 
 # 5. Compilar
 echo "5/5 ✅ Compilando a .mo..."
-if msgfmt po/combined-es.po -o ~/.local/games/nethack-es/locale/es/LC_MESSAGES/nethack.mo; then
+if msgfmt po/es.po -o ~/.local/games/nethack-es/locale/es/LC_MESSAGES/nethack.mo; then
     echo "   ✅ .mo compilado"
 else
     echo "   ❌ Error compilando .mo"
