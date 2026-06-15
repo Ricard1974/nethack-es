@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack-es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 17:15+0200\n"
+"POT-Creation-Date: 2026-06-15 17:19+0200\n"
 "PO-Revision-Date: 2026-06-10 21:50\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2873,6 +2873,145 @@ msgstr "Alguien está intentando alguna trampa aquí..."
 msgid "This game is void."
 msgstr "Esta partida es inválida."
 
+#: src/role.c:31
+#, fuzzy
+msgid "Archeologist"
+msgstr "Arqueólogo"
+
+#: src/role.c:32
+#, fuzzy
+msgid "Digger"
+msgstr "*daga"
+
+#: src/role.c:72
+#, fuzzy
+msgid "Barbarian"
+msgstr "Bárbaro"
+
+#: src/role.c:113
+#, fuzzy
+msgid "Caveman"
+msgstr "Cavernícola"
+
+#: src/role.c:113
+#, fuzzy
+msgid "Cavewoman"
+msgstr "Cavernícola"
+
+#: src/role.c:114
+#, fuzzy
+msgid "Troglodyte"
+msgstr "troglodyte"
+
+#: src/role.c:154
+#, fuzzy
+msgid "Healer"
+msgstr "Sanador"
+
+#: src/role.c:155
+#, fuzzy
+msgid "Rhizotomist"
+msgstr "rhizotomist"
+
+#: src/role.c:194 src/role.c:199
+#, fuzzy
+msgid "Knight"
+msgstr "Caballero"
+
+#: src/role.c:195
+#, fuzzy
+msgid "Gallant"
+msgstr "galante"
+
+#: src/role.c:234
+msgid "Monk"
+msgstr "Monje"
+
+#: src/role.c:235
+#, fuzzy
+msgid "Candidate"
+msgstr "candidato"
+
+#: src/role.c:275 src/role.c:279
+#, fuzzy
+msgid "Priest"
+msgstr "Sacerdote"
+
+#: src/role.c:275 src/role.c:279
+#, fuzzy
+msgid "Priestess"
+msgstr "Sacerdote"
+
+#: src/role.c:276
+#, fuzzy
+msgid "Aspirant"
+msgstr "aspirante"
+
+#: src/role.c:284
+#, fuzzy
+msgid "High Priest"
+msgstr "Alto Sacerdote,"
+
+#: src/role.c:284
+#, fuzzy
+msgid "High Priestess"
+msgstr "Alto Sacerdote,"
+
+#: src/role.c:318
+#, fuzzy
+msgid "Rogue"
+msgstr "Pícaro"
+
+#: src/role.c:319
+#, fuzzy
+msgid "Footpad"
+msgstr "salteador"
+
+#: src/role.c:358
+#, fuzzy
+msgid "Ranger"
+msgstr "Explorador"
+
+#: src/role.c:413
+#, fuzzy
+msgid "Samurai"
+msgstr "Samurái"
+
+#: src/role.c:414
+#, fuzzy
+msgid "Hatamoto"
+msgstr "hatamoto"
+
+#: src/role.c:453
+#, fuzzy
+msgid "Tourist"
+msgstr "Turista"
+
+#: src/role.c:454
+#, fuzzy
+msgid "Rambler"
+msgstr "paseante"
+
+#: src/role.c:493
+#, fuzzy
+msgid "Valkyrie"
+msgstr "Valquiria"
+
+#: src/role.c:494
+#, fuzzy
+msgid "Stripling"
+msgstr "mozalbete"
+
+#: src/role.c:533
+#, fuzzy
+msgid "Wizard"
+msgstr "Mago"
+
+#: src/role.c:534
+#, fuzzy
+msgid "Evoker"
+msgstr "evocador"
+
 #: src/role.c:1587
 msgid "Shall I pick a character for you? [ynaq] "
 msgstr "¿Quieres que elija un personaje por ti? [ynaq] "
@@ -3284,8 +3423,9 @@ msgstr "Este libro de hechizos es demasiado tenue para leerse mas."
 
 #: src/spell.c:420
 msgid "This spellbook is too faint to read even once."
-msgstr "Este libro de hechizos es demasiado débil para leer incluso una vez."
-"Este libro de hechizos es demasiado tenue para leerse ni siquiera una vez."
+msgstr ""
+"Este libro de hechizos es demasiado débil para leer incluso una vez.Este "
+"libro de hechizos es demasiado tenue para leerse ni siquiera una vez."
 
 #: src/spell.c:507
 msgid "This spellbook is all blank."
@@ -5272,9 +5412,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "*crocodile"
 #~ msgstr "*cocodrilo"
-
-#~ msgid "*dagger"
-#~ msgstr "*daga"
 
 #~ msgid "*dog"
 #~ msgstr "*perro"
@@ -10090,9 +10227,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "Hey, I didn't write this stuff!"
 #~ msgstr "¡Oye, yo no escribí esto!"
 
-#~ msgid "High Priest,"
-#~ msgstr "Alto Sacerdote,"
-
 #~ msgid "High Priestess     30"
 #~ msgstr "Alto Priestess     30"
 
@@ -12990,9 +13124,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "Presently we reached a place where the beach narrowed; the sea"
 #~ msgstr "Presently we reached un lugar donde el playa narrowed; el mar"
-
-#~ msgid "Priest,"
-#~ msgstr "Sacerdote,"
 
 #~ msgid "Priest/Priestess/Cleric ranks"
 #~ msgstr "Sacerdote/Priestess/Clérigo ranks"
@@ -21757,9 +21888,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "archeolog*"
 #~ msgstr "arqueól*"
 
-#~ msgid "archeologist"
-#~ msgstr "arqueólogo"
-
 #~ msgid "archer"
 #~ msgstr "arquero"
 
@@ -22017,9 +22145,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "asmodeus"
 #~ msgstr "Asmodeo"
-
-#~ msgid "aspirant"
-#~ msgstr "aspirante"
 
 #~ msgid "assault and combat operations.  It was noted for compactness"
 #~ msgstr "assault y combat operations.  It era noted para compactness"
@@ -22298,9 +22423,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "banshee"
 #~ msgstr "banshee"
-
-#~ msgid "barbarian"
-#~ msgstr "bárbaro"
 
 #~ msgid "barbarian of a thousand generations of barbarians.  They had"
 #~ msgstr "bárbaro de un thousand generations de bárbaros.  They tenía"
@@ -23109,9 +23231,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "candelabrum*"
 #~ msgstr "candelabro*"
 
-#~ msgid "candidate"
-#~ msgstr "candidato"
-
 #~ msgid "candy bar"
 #~ msgstr "candy bar"
 
@@ -23187,15 +23306,9 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "cave*man"
 #~ msgstr "cueva*hombre"
 
-#~ msgid "caveman"
-#~ msgstr "cavernícola"
-
 #~ msgid "cavern where she dwelt might be seen the stony figures of men"
 #~ msgstr ""
 #~ "caverna donde she dwelt podría ser visto el pedregoso figures de hombres"
-
-#~ msgid "cavewoman"
-#~ msgstr "cavernícola"
 
 #~ msgid "cavity.  \"Here,\" he said.  He stepped forward and handed Mrs. Hall"
 #~ msgstr "cavity.  \"Aquí,\" he dijo.  He stepped forward y handed Mrs. Salón"
@@ -24728,9 +24841,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "evil.  They are beings at peace with themselves and their"
 #~ msgstr "malvado.  They son beings en paz con themselves y su"
 
-#~ msgid "evoker"
-#~ msgstr "evocador"
-
 #~ msgid "evolved somewhere in the multiverse a race whose single talent"
 #~ msgstr "evolved en algún lugar en el multiverse un race cuyo single talent"
 
@@ -24781,7 +24891,7 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgstr "explanation para el sudden increase en bombers siendo shot abajo."
 
 #~ msgid "explorer"
-#~ msgstr "explorador"
+#~ msgstr "Explorador"
 
 #~ msgid "exposure to the element the vortex is composed of."
 #~ msgstr "exposure al element el vórtice es composed de."
@@ -25196,9 +25306,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "footman's, which might be up to six feet long.  It came into"
 #~ msgstr "footman's, que podría ser arriba a seis pies largo.  It vino en"
 
-#~ msgid "footpad"
-#~ msgstr "salteador"
-
 #~ msgid "for \"yes\", it won't necessary find anything even when a"
 #~ msgstr "para \"si\", no necesariamente encontrara nada aunque haya"
 
@@ -25520,9 +25627,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "galactic empire or, as they put it, Emporium, and the more"
 #~ msgstr "galactic imperio o, como they poner it, Emporium, y el más"
-
-#~ msgid "gallant"
-#~ msgstr "galante"
 
 #~ msgid "gambol and jump prodigiously; ..."
 #~ msgstr "gambol y saltar prodigiously; ..."
@@ -26122,9 +26226,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "hast done?  And the woman said, The serpent beguiled me, and I"
 #~ msgstr "hast hecho?  Y el mujer dijo, El serpent beguiled me, y I"
 
-#~ msgid "hatamoto"
-#~ msgstr "hatamoto"
-
 #~ msgid "hatch.  When it hatches, out comes a creature called basilisk,"
 #~ msgstr "hatch.  Cuando it hatches, fuera viene un criatura llamó basilisco,"
 
@@ -26259,9 +26360,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "headed mace-scimitar embellished with lion heads, frequently"
 #~ msgstr "headed mace-scimitar embellished con león heads, frequently"
-
-#~ msgid "healer"
-#~ msgstr "sanador"
 
 #~ msgid "heard men cry so when his salvation and his nemesis, his"
 #~ msgstr "oyó hombres gritar así que cuando su salvation y su nemesis, su"
@@ -27603,9 +27701,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "knife"
 #~ msgstr "knife"
 
-#~ msgid "knight"
-#~ msgstr "caballero"
-
 #~ msgid "know that in the day ye eat thereof, then your eyes shall be"
 #~ msgstr "saber que en el día ye eat thereof, entonces tu ojos deberá ser"
 
@@ -27941,9 +28036,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "living in the darkest of caverns and venturing forth only"
 #~ msgstr "vivo en el darkest de cavernas y venturing forth sólo"
-
-#~ msgid "lizard"
-#~ msgstr "lagarto"
 
 #~ msgid "loan shark"
 #~ msgstr "tiburón prestamista"
@@ -30888,9 +30980,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "raise their Curses.  Your best source is to hide the Sword"
 #~ msgstr "levantar su Curses.  Tu best source es a piel el Espada"
 
-#~ msgid "rambler"
-#~ msgstr "paseante"
-
 #~ msgid "ran on all fours in the forest and fields and devoured little"
 #~ msgstr "corrió sobre todo fours en el bosque y campos y devoured pequeño"
 
@@ -30902,9 +30991,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "randomly triggered clairvoyance takes place"
 #~ msgstr "cuando se active clarividencia aleatoria"
-
-#~ msgid "ranger"
-#~ msgstr "explorador"
 
 #~ msgid "rank of the clergy.  Copes are made in all liturgical colours,"
 #~ msgstr "rank de el clergy.  Copes son hecho en todo liturgical colours,"
@@ -31161,9 +31247,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "rhinovirus"
 #~ msgstr "rinovirus"
 
-#~ msgid "rhizotomist"
-#~ msgstr "rhizotomist"
-
 #~ msgid "ridden and tumbledown."
 #~ msgstr "ridden y tumbledown."
 
@@ -31241,9 +31324,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "rodent*"
 #~ msgstr "rodent*"
-
-#~ msgid "rogue"
-#~ msgstr "pícaro"
 
 #~ msgid "rogue piercer"
 #~ msgstr "perforador pícaro"
@@ -31445,9 +31525,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "same footing as my own brothers, and to teach them this art, if"
 #~ msgstr "mismo footing como mi own brothers, y a teach them este art, si"
 
-#~ msgid "samurai"
-#~ msgstr "samurái"
-
 #~ msgid "samurai clans he rebelled against him.  He defeated Go-"
 #~ msgstr "samurái clans he rebelled contra him.  He defeated Go-"
 
@@ -31543,7 +31620,7 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgstr "scorpius"
 
 #~ msgid "scout"
-#~ msgstr "explorador"
+#~ msgstr "Explorador"
 
 #~ msgid "scrag"
 #~ msgstr "scrag"
@@ -31879,7 +31956,7 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgstr "side es un profundo gorge, filled con un bizarro chaos de tortured"
 
 #~ msgid "sightseer"
-#~ msgstr "turista"
+#~ msgstr "Turista"
 
 #~ msgid "sign of stopping, Taran rose and moved through the shimmering"
 #~ msgstr ""
@@ -32610,9 +32687,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "stripes.  2.  Figurative: _a paper tiger_, something that is"
 #~ msgstr "stripes.  2.  Figurative: _un papel tigre_, something que es"
-
-#~ msgid "stripling"
-#~ msgstr "mozalbete"
 
 #~ msgid "stroke.  But the snake was not looking at him.  It was glaring"
 #~ msgstr ""
@@ -34362,9 +34436,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "tougher and more protective than any human smiths could"
 #~ msgstr "tougher y más protective que algún humano smiths podía"
 
-#~ msgid "tourist"
-#~ msgstr "turista"
-
 #~ msgid "towel"
 #~ msgstr "toalla"
 
@@ -34490,9 +34561,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "tripe ration"
 #~ msgstr "callos ración"
-
-#~ msgid "troglodyte"
-#~ msgstr "troglodyte"
 
 #~ msgid "true for meta-characters:  they can be either case, so you need"
 #~ msgstr ""
@@ -34834,9 +34902,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "vagrant"
 #~ msgstr "vago"
-
-#~ msgid "valkyrie"
-#~ msgstr "valquiria"
 
 #~ msgid "valley came to be regarded as a place of abomination because"
 #~ msgstr "valle vino a ser consideró como un lugar de abomination porque"

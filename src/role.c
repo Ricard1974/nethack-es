@@ -28,7 +28,7 @@
 /* NUM_ROLES is defined in hack.h */
 
 const struct Role roles[NUM_ROLES+1] = {
-    { { "Archeologist", 0 },
+    { { N_("Archeologist"), 0 },
       { { "Digger", 0 },
         { "Field Worker", 0 },
         { "Investigator", 0 },
@@ -69,7 +69,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_INT,
       SPE_MAGIC_MAPPING,
       -4 },
-    { { "Barbarian", 0 },
+    { { N_("Barbarian"), 0 },
       { { "Plunderer", "Plunderess" },
         { "Pillager", 0 },
         { "Bandit", 0 },
@@ -110,7 +110,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_INT,
       SPE_HASTE_SELF,
       -4 },
-    { { "Caveman", "Cavewoman" },
+    { { N_("Caveman"), N_("Cavewoman") },
       { { "Troglodyte", 0 },
         { "Aborigine", 0 },
         { "Wanderer", 0 },
@@ -151,7 +151,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_INT,
       SPE_DIG,
       -4 },
-    { { "Healer", 0 },
+    { { N_("Healer"), 0 },
       { { "Rhizotomist", 0 },
         { "Empiric", 0 },
         { "Embalmer", 0 },
@@ -191,12 +191,12 @@ const struct Role roles[NUM_ROLES+1] = {
       A_WIS,
       SPE_CURE_SICKNESS,
       -4 },
-    { { "Knight", 0 },
+    { { N_("Knight"), 0 },
       { { "Gallant", 0 },
         { "Esquire", 0 },
         { "Bachelor", 0 },
         { "Sergeant", 0 },
-        { "Knight", 0 },
+        { N_("Knight"), 0 },
         { "Banneret", 0 },
         { "Chevalier", "Chevaliere" },
         { "Seignieur", "Dame" },
@@ -231,7 +231,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_WIS,
       SPE_TURN_UNDEAD,
       -4 },
-    { { "Monk", 0 },
+    { { N_("Monk"), 0 },
       { { "Candidate", 0 },
         { "Novice", 0 },
         { "Initiate", 0 },
@@ -272,11 +272,11 @@ const struct Role roles[NUM_ROLES+1] = {
       A_WIS,
       SPE_RESTORE_ABILITY,
       -4 },
-    { { "Priest", "Priestess" },
+    { { N_("Priest"), N_("Priestess") },
       { { "Aspirant", 0 },
         { "Acolyte", 0 },
         { "Adept", 0 },
-        { "Priest", "Priestess" },
+        { N_("Priest"), N_("Priestess") },
         { "Curate", 0 },
         { "Canon", "Canoness" },
         { "Lama", 0 },
@@ -315,10 +315,10 @@ const struct Role roles[NUM_ROLES+1] = {
       -4 },
     /* Note:  Rogue precedes Ranger so that use of `-R' on the command line
        retains its traditional meaning. */
-    { { "Rogue", 0 },
+    { { N_("Rogue"), 0 },
       { { "Footpad", 0 },
         { "Cutpurse", 0 },
-        { "Rogue", 0 },
+        { N_("Rogue"), 0 },
         { "Pilferer", 0 },
         { "Robber", 0 },
         { "Burglar", 0 },
@@ -355,7 +355,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_INT,
       SPE_DETECT_TREASURE,
       -4 },
-    { { "Ranger", 0 },
+    { { N_("Ranger"), 0 },
       {
 #if 0 /* OBSOLETE */
         {"Edhel",   "Elleth"},
@@ -410,7 +410,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_INT,
       SPE_INVISIBILITY,
       -4 },
-    { { "Samurai", 0 },
+    { { N_("Samurai"), 0 },
       { { "Hatamoto", 0 },       /* Banner Knight */
         { "Ronin", 0 },          /* no allegiance */
         { "Ninja", "Kunoichi" }, /* secret society */
@@ -450,7 +450,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_INT,
       SPE_CLAIRVOYANCE,
       -4 },
-    { { "Tourist", 0 },
+    { { N_("Tourist"), 0 },
       { { "Rambler", 0 },
         { "Sightseer", 0 },
         { "Excursionist", 0 },
@@ -490,7 +490,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_INT,
       SPE_CHARM_MONSTER,
       -4 },
-    { { "Valkyrie", 0 },
+    { { N_("Valkyrie"), 0 },
       { { "Stripling", 0 },
         { "Skirmisher", 0 },
         { "Fighter", 0 },
@@ -530,7 +530,7 @@ const struct Role roles[NUM_ROLES+1] = {
       A_WIS,
       SPE_CONE_OF_COLD,
       -4 },
-    { { "Wizard", 0 },
+    { { N_("Wizard"), 0 },
       { { "Evoker", 0 },
         { "Conjurer", 0 },
         { "Thaumaturge", 0 },
@@ -538,7 +538,7 @@ const struct Role roles[NUM_ROLES+1] = {
         { "Enchanter", "Enchantress" },
         { "Sorcerer", "Sorceress" },
         { "Necromancer", 0 },
-        { "Wizard", 0 },
+        { N_("Wizard"), 0 },
         { "Mage", 0 } },
       "Ptah", "Thoth", "Anhur", /* Egyptian */
       "Wiz",
@@ -2879,12 +2879,12 @@ setup_rolemenu(
         thisch = lowc(*roles[i].name.m);
         if (thisch == lastch)
             thisch = highc(thisch);
-        Strcpy(rolenamebuf, roles[i].name.m);
+        Strcpy(rolenamebuf, _(roles[i].name.m));
         if (roles[i].name.f) {
             /* role has distinct name for female (C,P) */
             if (gend == 1) {
                 /* female already chosen; replace male name */
-                Strcpy(rolenamebuf, roles[i].name.f);
+                Strcpy(rolenamebuf, _(roles[i].name.f));
             } else if (gend < 0) {
                 /* not chosen yet; append slash+female name */
                 Strcat(rolenamebuf, "/");
@@ -2894,7 +2894,7 @@ setup_rolemenu(
         /* !filtering implies reset_role_filtering() where we want to
            mark this role as preselected if current filter excludes it */
         add_menu(win, &nul_glyphinfo, &any, thisch, 0,
-                 ATR_NONE, clr, an(rolenamebuf),
+                 ATR_NONE, clr, rolenamebuf,
                  (!filtering && !role_ok)
                     ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
         lastch = thisch;

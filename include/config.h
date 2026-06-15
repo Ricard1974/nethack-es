@@ -749,7 +749,7 @@ typedef unsigned char uchar;
 #ifdef ENABLE_NLS
 extern const char *nh_gettext(const char *msgid);
 #define _(String) nh_gettext(String)
-#define N_(String) (String)     /* marker for future translation */
+#define N_(String) String     /* marker for future translation */
 #else
 #define _(String) (String)
 #define N_(String) (String)
