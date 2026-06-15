@@ -5,7 +5,7 @@
 -- The dungeon description file.
 dungeon = {
    {
-      name = "Las Mazmorras de la Perdición",
+      name = "Mazmorras de la Perdición",
       bonetag = "D",
       base = 25,
       range = 5,
