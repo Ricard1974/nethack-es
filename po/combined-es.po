@@ -45683,8 +45683,8 @@ msgstr "Adiós"
 #~ msgid "Do you want your possessions identified?"
 #~ msgstr "¿Quieres que identifiquen tus pertenencias?"
 
-#~ msgid "Shall I pick a character for you? [ynaq] "
-#~ msgstr "¿Quieres que elija un personaje por ti? [ynaq] "
+msgid "Shall I pick a character for you? [ynaq] "
+msgstr "¿Quieres que elija un personaje por ti? [ynaq] "
 
 #~ msgid "Shall I pick a character for you? [ynaq]"
 #~ msgstr "¿Quieres que elija un personaje por ti? [ynaq]"
@@ -45693,8 +45693,8 @@ msgstr "Adiós"
 #~ "Shall I pick character's race, role, gender and alignment for you? [ynaq] "
 #~ msgstr "¿Quieres que elija raza, rol, género y alineamiento por ti? [ynaq] "
 
-#~ msgid "Shall I pick "
-#~ msgstr "¿Quieres que elija "
+msgid "Shall I pick "
+msgstr "¿Quieres que elija "
 
 #~ msgid "Start a new game instead? [yn] "
 #~ msgstr "¿Empezar una nueva partida? [yn] "
@@ -45973,5 +45973,3 @@ msgstr "Adiós"
 #~ msgstr "Solo llevas oro"
 
 #: win/tty/wintty.c:182 win/tty/wintty.c:3644
-msgid "--More--"
-msgstr "--Más--"
