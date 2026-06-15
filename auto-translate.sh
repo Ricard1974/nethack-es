@@ -1,60 +1,71 @@
 #!/bin/bash
-# auto-translate.sh - Pipeline completo de traducción
+# auto-translate.sh - Pipeline de traducción multi-idioma
+# Uso: ./auto-translate.sh [codigo_idioma]
+#   Si no se especifica idioma, usa ${LANG:0:2} o "es" por defecto
 
 set -e
 
 cd "$(dirname "$0")"
-echo "🎯 Pipeline de Traducción NetHack-es"
+LANG_CODE="${1:-${LANG:0:2}}"
+LANG_CODE="${LANG_CODE:-es}"  # fallback: español
+INSTALL_DIR="${NETHACKDIR:-$HOME/.local/games/nethack-es}"
+
+echo "🎯 Pipeline de Traducción - Idioma: $LANG_CODE"
 echo "=================================="
 echo ""
 
 # 1. Generar .pot actualizado
 echo "1/5 🔄 Generando archivo .pot desde código fuente..."
 if xgettext --keyword=_ --keyword=N_ --keyword=pgettext:1c,2 \
-  --from-code=UTF-8 -o po/nethack.pot src/**/*.c include/**/*.h 2>/dev/null; then
+  --from-code=UTF-8 -o po/nethack.pot src/*.c include/*.h 2>/dev/null; then
     echo "   ✅ .pot generado"
 else
-    echo "   ⚠️  No se pudo generar .pot (puede que no haya nuevos strings)"
+    echo "   ⚠️  No se pudo generar .pot"
 fi
 
-# 2. Merge con .po existente
-echo "2/5 🔀 Merge .pot con .po existente..."
-if msgmerge -U po/es.po po/nethack.pot 2>/dev/null; then
+# 2. Merge con .po del idioma
+PO_FILE="po/${LANG_CODE}.po"
+if [ ! -f "$PO_FILE" ]; then
+    echo "   ⚠️  ${PO_FILE} no existe. Creando desde plantilla..."
+    msginit -l "$LANG_CODE" -o "$PO_FILE" -i po/nethack.pot --no-translator 2>/dev/null || true
+fi
+
+echo "2/5 🔀 Merge .pot con ${PO_FILE}..."
+if msgmerge -U "$PO_FILE" po/nethack.pot 2>/dev/null; then
     echo "   ✅ Merge completado"
-else
-    echo "   ⚠️  No se pudo hacer merge"
 fi
 
-# 3. Traducir con LibreTranslate
-echo "3/5 🤖 Traduciendo strings vacíos con LibreTranslate..."
-if python3 translate_libretranslate.py; then
-    echo "   ✅ Traducción completada"
-else
-    echo "   ❌ Error en traducción"
-    exit 1
-fi
-
-# 4. Validar
-echo "4/5 🔍 Validando integridad..."
-if msgfmt po/es.po --check 2>/dev/null; then
+# 3. Validar
+echo "3/5 🔍 Validando integridad..."
+if msgfmt --check "$PO_FILE" 2>/dev/null; then
     echo "   ✅ Sintaxis válida"
 else
     echo "   ❌ Error de sintaxis en .po"
     exit 1
 fi
 
-stats=$(msgfmt po/es.po --statistics 2>&1)
+stats=$(msgfmt --statistics "$PO_FILE" 2>&1)
 echo "   📊 $stats"
 
-# 5. Compilar
-echo "5/5 ✅ Compilando a .mo..."
-if msgfmt po/es.po -o ~/.local/games/nethack-es/locale/es/LC_MESSAGES/nethack.mo; then
-    echo "   ✅ .mo compilado"
+# 4. Compilar .mo
+echo "4/5 ✅ Compilando a .mo..."
+mkdir -p "playground/locale/${LANG_CODE}/LC_MESSAGES"
+if msgfmt "$PO_FILE" -o "playground/locale/${LANG_CODE}/LC_MESSAGES/nethack.mo"; then
+    echo "   ✅ .mo compilado en playground/locale/${LANG_CODE}/LC_MESSAGES/"
 else
     echo "   ❌ Error compilando .mo"
     exit 1
 fi
 
+# 5. Copiar a instalación
+echo "5/5 📂 Copiando a instalación..."
+if [ -d "$INSTALL_DIR" ]; then
+    mkdir -p "$INSTALL_DIR/locale/${LANG_CODE}/LC_MESSAGES"
+    cp "playground/locale/${LANG_CODE}/LC_MESSAGES/nethack.mo" \
+       "$INSTALL_DIR/locale/${LANG_CODE}/LC_MESSAGES/"
+    echo "   ✅ .mo copiado a $INSTALL_DIR/locale/${LANG_CODE}/LC_MESSAGES/"
+fi
+
 echo ""
-echo "🎉 Pipeline completado!"
-echo "Para jugar: nethack-es"
+echo "🎉 Pipeline completado para idioma '${LANG_CODE}'!"
+echo "Para jugar: LANG=${LANG_CODE}_ES.UTF-8 nethack-es"
