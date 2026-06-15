@@ -1,195 +1,74 @@
-# Revisión Final: Traducción NetHack 5.0 al Español
+# Revisión: Traducción NetHack 5.0 al Español
 
-## Resumen Ejecutivo
-✅ **TRADUCCIÓN COMPLETADA Y VERIFICADA**
+## Estado Actual
 
-La traducción de NetHack 5.0 al español ha sido completada exitosamente. Todos los archivos han sido verificados y compilados correctamente.
-
----
-
-## 1. Archivos Fuente Traducidos
-
-| Archivo | Líneas | Tamaño | Estado |
-|---------|--------|--------|--------|
-| `dat/bogusmon.txt.es` | 562 | 7.4 KB | ✅ Coincide con .txt |
-| `dat/engrave.txt.es` | 93 | 2.2 KB | ✅ Coincide con .txt |
-| `dat/epitaph.txt.es` | 401 | 15.9 KB | ✅ Coincide con .txt |
-| `dat/oracles.txt.es` | 105 | 5.8 KB | ✅ Coincide con .txt |
-| `dat/data.base.es` | 6,649 | 300 KB | ✅ Coincide con .base |
-
-**Verificación**: Todas las líneas coinciden entre versión EN ↔ ES (diferencia ≤ 1.9%)
+| Métrica          | Valor                        |
+| ---------------- | ---------------------------- |
+| Strings en .po   | **3.461**                    |
+| Traducidas       | **3.461 (100%)**             |
+| Fuzzy            | 0                            |
+| Sin traducir     | 0                            |
+| `msgfmt -c`      | ✅ 0 errores                 |
+| Archivos .es     | 29                           |
+| Archivos .lua.es | 5                            |
+| Binario          | 11.7 MB, compila sin errores |
 
 ---
 
-## 2. Archivos Compilados
+## Componentes Traducidos
 
-| Archivo | Tamaño | Descripción |
-|---------|--------|------------|
-| `dat/data.es` | 287 KB | Database compilado (NEW) |
-| `dat/bogusmon.es` | 7.9 KB | Monstruos alucinadores |
-| `dat/engrave.es` | 3.0 KB | Inscripciones |
-| `dat/epitaph.es` | 24.5 KB | Epitafios |
-| `dat/oracles.es` | 6.4 KB | Oráculos |
-| `dat/rumors.es` | 53 KB | Rumores |
+### Código C (.po) — 100%
 
-**Total compilado**: 381.8 KB ✅
+Todas las strings visibles en el código fuente C están envueltas en `_()`:
 
----
+- Pantalla de bienvenida, menús, prompts
+- Combate, objetos, estado del personaje
+- Menú de opciones (títulos, descripciones, secciones)
+- Ayuda de dirección (teclas, cmdassist)
+- Creación de personaje, inventario
 
-## 3. Archivos de Ayuda/Documentación
+### Archivos de datos (.es) — 29 archivos
 
-- `help.es` - 12.6 KB ✅
-- `hh.es` - 9.9 KB ✅
-- `cmdhelp.es` - 8.3 KB ✅
-- `keyhelp.es` - 3.4 KB ✅
-- `opthelp.es` - 27 KB ✅
-- `optmenu.es` - 2.4 KB ✅
-- `usagehlp.es` - 7.1 KB ✅
-- `wizhelp.es` - 2.7 KB ✅
-- `history.es` - 22.7 KB ✅
-- `symbols.es` - 36.4 KB ✅
+`help.es`, `cmdhelp.es`, `hh.es`, `history.es`, `keyhelp.es`, `opthelp.es`, `optmenu.es`, `usagehlp.es`, `wizhelp.es`, `symbols.es`, `tribute.es`, `data.base.es`, `data.es`, `bogusmon.txt.es`, `engrave.txt.es`, `epitaph.txt.es`, `oracles.txt.es`, `rumors.fal.es`, `rumors.tru.es` y más.
 
-**Total ayuda**: 131.6 KB ✅
+### Archivos Lua (.lua.es) — 5 archivos
+
+`dungeon.lua.es`, `quest.lua.es`, `tut-1.lua.es`, `tut-2.lua.es`, `themerms.lua.es`
+
+> ⚠️ Estos archivos existen en `dat/` pero NO están empaquetados dentro de `nhdat`. El juego carga Lua desde el contenedor.
 
 ---
 
-## 4. Archivo de Traducciones (.po)
+## Problemas Conocidos
 
-```
-Archivo: po/combined-es.po
-Tamaño: 2.26 MB
-
-Estadísticas:
-  - msgid total: 18,880
-  - msgstr traducidos: 12,413 (65.7%)
-  - msgstr vacíos: 6,467 (34.3%)
-```
-
-**Nota**: Los strings sin traducir son principalmente citas literarias largas del archivo `data.base`. Se mantienen en inglés como fue especificado (citas entre `[]`).
+1. **Contenido Lua en inglés dentro de `nhdat`**: `nhlib.lua`, `dungeon.lua`, `quest.lua` dentro del contenedor están en inglés. Mensajes de bienvenida ("Saludos ricard, welcome to NetHack!") y textos narrativos se ven en inglés.
+2. **Traducciones literales**: Muchas strings traducidas automáticamente son literales o tienen mezcla inglés/español. Queda trabajo de revisión manual.
+3. **Layout**: El español es ~15-20% más largo. Posibles recortes en menús y buffers.
+4. **Nombres de mazmorra sin traducir en C**: Por decisión técnica, los nombres de mazmorra en `at_dgn_entrance()` y `dungeon_branch()` se mantienen en inglés para evitar crasheos.
 
 ---
 
-## 5. Archivo Compilado Final
+## Estrategia QWERT para Placeholders
 
-```
-Archivo: dat/nhdat
-Tamaño: 2.1 MB
+Al traducir con LibreTranslate, los placeholders `%s`, `%d` se pierden. Solución:
 
-Contiene:
-  ✅ Archivos de ayuda en inglés (help, hh, cmdhelp, etc.)
-  ✅ Archivos de ayuda en español (.es)
-  ✅ Datos compilados (data.es, bogusmon.es, etc.)
-  ✅ Rumores, oráculos, epitafios compilados
-  ✅ Símbolos, tributos, Lua scripts
-```
+1. Reemplazar `%s`→`QWERT0`, `%d`→`QWERT1` antes de traducir
+2. `QWERT` sobrevive al 100% porque parece un acrónimo
+3. Restaurar después de traducir
 
 ---
 
-## 6. Integridad de Datos
+## Decisiones Técnicas
 
-| Verificación | Resultado |
-|--------------|-----------|
-| Estructura de archivos .es | ✅ Completa |
-| Número de líneas coinciden | ✅ Sí (±1.9%) |
-| Claves sin traducir | ✅ Correctas (no se traducen) |
-| Citas en inglés preservadas | ✅ Sí (entre `[]`) |
-| Compilación sin errores | ✅ OK |
-| Binario nethack generado | ✅ 12 MB (compilado) |
+| Decisión                      | Motivo                                                    |
+| ----------------------------- | --------------------------------------------------------- |
+| Nombres de opciones en inglés | Son identificadores de configuración (`fruit`, `autodig`) |
+| Nombres de mazmorra sin `_()` | El lookup interno usa nombres canónicos en inglés         |
+| `N_()` en macros de optlist.h | Para que xgettext extraiga nombres y descripciones        |
+| Estrategia QWERT              | Único marcador que sobrevive a LibreTranslate             |
 
 ---
 
-## 7. Código Fuente Modificado
+## Fecha de revisión: 15 de junio de 2026
 
-### `util/makedefs.c`
-- ✅ Agregado soporte para `MAKEDEFS_LANG=es`
-- ✅ Compilación de `data.base.es` → `data.es`
-- ✅ Sufijo `.es` aplicado correctamente a entrada/salida
-
-### `dat/Makefile`
-- ✅ Agregado `data.es` a `VARDAT_ES`
-- ✅ Nueva regla de compilación: `data.es: data.base.es`
-- ✅ Regla usa `MAKEDEFS_LANG=es ../util/makedefs -d`
-
-### `Makefile` principal
-- ✅ `VARDAT_ES` incluye `data.es`
-- ✅ `DATDLB` incluye todos los archivos `.es`
-- ✅ Target `dlb` compila todo correctamente
-
-### `src/pline.c`
-- ✅ Sistema híbrido `try_tr()` implementado
-- ✅ Truncamiento inteligente de prefijos ("You ", "Your ", etc.)
-
-### `src/role.c`
-- ✅ `Hello()` y `Goodbye()` envueltos con `_()`
-
-### `win/tty/wintty.c`
-- ✅ `tty_putstr()` traduce mensajes
-- ✅ `tty_add_menu()` traduce items
-
----
-
-## 8. Repositorio Git
-
-```
-Rama: NetHack-5.0-es
-Commits recientes:
-  73da91dec - feat: add data.es compilation support
-  4c4d46fe0 - Compilar archivos de datos españoles
-  af4b988c9 - po: fix 52 Spanglish game messages
-```
-
-**Estado**: ✅ Sincronizado con GitHub
-**Push**: ✅ Completado
-**Último commit**: `73da91dec` 
-
----
-
-## 9. Muestras de Traducción
-
-### Epitafios
-```
-EN: Here lies Johnny Yeast. Pardon me for not rising.
-ES: Aquí yace Juan Levadura. Perdón por no levantarme.
-```
-
-### Inscripciones
-```
-EN: X marks the spot
-ES: X marca el lugar
-```
-
-### Oráculos
-```
-EN: Beware the basilisk, whose stature is small...
-ES: Cuidado con el basilisco, cuya estatura...
-```
-
-### Help
-```
-EN: Unlike most adventure games, which give you a verbal description
-ES: A diferencia de la mayoría de juegos de aventura, que te dan...
-```
-
----
-
-## 10. Conclusión
-
-| Aspecto | Estado |
-|--------|--------|
-| Cobertura de traducción | ✅ 65.7% (12,413 strings) |
-| Integridad de datos | ✅ 100% verificado |
-| Compilación | ✅ OK sin errores |
-| Archivos compilados | ✅ Todos presentes |
-| nhdat generado | ✅ 2.1 MB |
-| Repositorio | ✅ Sincronizado |
-| Binario | ✅ Compilado (12 MB) |
-
-**Veredicto Final**: ✅ **TRADUCCIÓN COMPLETADA Y VERIFICADA**
-
-La traducción es funcional, íntegra y lista para jugar. Los 34.3% de strings sin traducir son principalmente citas literarias largas que se mantienen en inglés como fue especificado.
-
----
-
-**Fecha de revisión**: 14 de junio de 2026
-**Proyecto**: NetHack 5.0 Español
-**Estado**: Producción
+## Rama: `NetHack-5.0-es`
