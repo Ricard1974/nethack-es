@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 12:19+0200\n"
+"POT-Creation-Date: 2026-06-15 17:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,30 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/allmain.c:55
+msgid "are lucky!  Full moon tonight."
+msgstr ""
+
+#: src/allmain.c:58
+msgid "Be careful!  New moon tonight."
+msgstr ""
+
+#: src/allmain.c:62
+msgid "Watch out!  Bad things can happen on Friday the 13th."
+msgstr ""
+
+#: src/allmain.c:251
+msgid "The dungeon capitulates."
+msgstr ""
+
+#: src/allmain.c:445
+msgid "The Amulet is bestowing a wish upon you!"
+msgstr ""
+
+#: src/allmain.c:908
+msgid "NetHack is filmed in front of an undead studio audience."
+msgstr ""
 
 #: src/apply.c:3788
 #, c-format
@@ -35,8 +59,461 @@ msgstr ""
 msgid "Aim for what?"
 msgstr ""
 
+#: src/artifact.c:1333
+msgid "lose magical energy!"
+msgstr ""
+
+#: src/artifact.c:1348
+msgid "absorb magical energy!"
+msgstr ""
+
+#: src/artifact.c:1621
+msgid "Good job Henry, but that wasn't Anne."
+msgstr ""
+
+#: src/artifact.c:1925
+msgid "are surrounded by a shimmering sphere!"
+msgstr ""
+
+#: src/artifact.c:2226
+msgid "body seems to unfade..."
+msgstr ""
+
+#: src/attrib.c:131
+msgid "cap constricts briefly, then relaxes again."
+msgstr ""
+
+#: src/ball.c:27
+msgid "Startled, you drop the iron ball."
+msgstr ""
+
+#: src/ball.c:59 src/dothrow.c:1387 src/read.c:2320
+msgid "Fortunately, you are wearing a hard helmet."
+msgstr ""
+
+#: src/ball.c:797
+msgid "are jerked back by the iron ball!"
+msgstr ""
+
+#: src/ball.c:1002
+msgid "lose your grip on the iron ball."
+msgstr ""
+
+#: src/bones.c:425
+msgid "Cannot unlink old bones."
+msgstr ""
+
+#: src/bones.c:666
+msgid "Discarding unusable bones; no need to panic..."
+msgstr ""
+
+#: src/botl.c:3937 src/spell.c:761
+msgid "That's enough tries."
+msgstr ""
+
+#: src/botl.c:3987
+msgid "Not expecting a percentage."
+msgstr ""
+
+#: src/botl.c:3997
+msgid "Is that an invisible number?"
+msgstr ""
+
+#: src/cfgfiles.c:179
+msgid "Strange, could not figure out config file name."
+msgstr ""
+
+#: src/cfgfiles.c:183
+msgid "Warning: saveoptions is highly experimental!"
+msgstr ""
+
+#: src/cfgfiles.c:185
+msgid "Some settings are not saved!"
+msgstr ""
+
+#: src/cmd.c:927
+msgid "is no fountain here."
+msgstr ""
+
+#: src/cmd.c:933
+msgid "shriek."
+msgstr ""
+
+#: src/cmd.c:935
+msgid "Unfortunately sound does not carry well through rock."
+msgstr ""
+
+#: src/cmd.c:944
+msgid "Any special ability you may have is purely reflexive."
+msgstr ""
+
+#: src/cmd.c:946
+msgid "don't have a special ability in your normal form!"
+msgstr ""
+
+#: src/cmd.c:955
+msgid "are already in explore mode."
+msgstr ""
+
+#: src/cmd.c:961
+msgid "cannot access explore mode."
+msgstr ""
+
+#: src/cmd.c:976
+msgid "are now in non-scoring explore mode."
+msgstr ""
+
+#: src/cmd.c:1381
+msgid "Use #optionsfull to set any option instead."
+msgstr ""
+
+#: src/cmd.c:1593
+msgid "Double rush prefix, canceled."
+msgstr ""
+
+#: src/cmd.c:1609
+msgid "Double run prefix, canceled."
+msgstr ""
+
+#: src/cmd.c:1625
+msgid "Double fight prefix, canceled."
+msgstr ""
+
+#: src/cmd.c:1646
+msgid "There is no command available to repeat."
+msgstr ""
+
+#: src/cmd.c:2304 src/cmd.c:2384
+msgid "Bind which key? "
+msgstr ""
+
+#: src/cmd.c:2402
+msgid "Key binding failed?!"
+msgstr ""
+
+#: src/cmd.c:4109
+msgid "What a strange direction!"
+msgstr ""
+
+#: src/cmd.c:5333
+msgid "Where do you want to travel to?"
+msgstr ""
+
+#: src/cmd.c:5352
+msgid "No travel destination set."
+msgstr ""
+
+#: src/cmd.c:5357
+msgid "are already here."
+msgstr ""
+
+#: src/dbridge.c:621 src/dbridge.c:1002
+msgid "a crushing sound."
+msgstr ""
+
+#: src/dbridge.c:707
+msgid "tumble towards the closed portcullis!"
+msgstr ""
+
+#: src/dbridge.c:709
+msgid "pass through it!"
+msgstr ""
+
+#: src/dbridge.c:728
+msgid "a splash."
+msgstr ""
+
+#: src/dbridge.c:795
+msgid "chains rattling and gears turning."
+msgstr ""
+
+#: src/dbridge.c:818
+msgid "smashing and crushing."
+msgstr ""
+
+#: src/dbridge.c:857
+msgid "gears turning and chains rattling."
+msgstr ""
+
+#: src/dbridge.c:916 src/dbridge.c:922
+msgid "a loud *SPLASH*!"
+msgstr ""
+
+#: src/dbridge.c:936
+msgid "a loud *CRASH*!"
+msgstr ""
+
+#: src/detect.c:844
+msgid "sense the presence of monsters."
+msgstr ""
+
+#: src/detect.c:846
+msgid "Monsters sense the presence of you."
+msgstr ""
+
+#: src/detect.c:1119
+msgid "seems to be nothing of interest on this level."
+msgstr ""
+
+#: src/detect.c:1123
+msgid "map already shows all relevant locations."
+msgstr ""
+
+#: src/detect.c:1237
+msgid "are unaffected!"
+msgstr ""
+
+#: src/detect.c:1271
+msgid "grok some groovy globs of incandescent lava."
+msgstr ""
+
+#: src/detect.c:1289
+msgid "Oh wow... like a kaleidoscope!"
+msgstr ""
+
+#: src/detect.c:1299
+msgid "may look for an object, monster, or special map symbol."
+msgstr ""
+
+#: src/detect.c:1555
+msgid "sense your surroundings."
+msgstr ""
+
+#: src/detect.c:1888
+msgid "don't find anything."
+msgstr ""
+
+#: src/detect.c:1910
+msgid "Its mouth opens!"
+msgstr ""
+
+#: src/detect.c:2024
+msgid "What are you looking for?  The exit?"
+msgstr ""
+
+#: src/detect.c:2051
+msgid "find a hidden door."
+msgstr ""
+
+#: src/detect.c:2061
+msgid "find a hidden passage."
+msgstr ""
+
+#: src/detect.c:2363
+msgid "are too disoriented for this."
+msgstr ""
+
+#: src/dig.c:98
+msgid "Crash!  The ceiling collapses around you!"
+msgstr ""
+
+#: src/dig.c:326
+msgid "This tree seems to be petrified."
+msgstr ""
+
+#: src/dig.c:359
+msgid "swing misses its mark."
+msgstr ""
+
+#: src/dig.c:763
+msgid "are jerked back by your pet!"
+msgstr ""
+
+#: src/dig.c:785
+msgid "fall through..."
+msgstr ""
+
+#: src/dig.c:954
+msgid "KADOOM!  The boulder falls in!"
+msgstr ""
+
+#: src/dig.c:1050
+msgid "disturb the honorable dead!"
+msgstr ""
+
+#: src/dig.c:1054
+msgid "have violated the sanctity of this grave!"
+msgstr ""
+
+#: src/dig.c:1062
+msgid "unearth a corpse."
+msgstr ""
+
+#: src/dig.c:1177
+msgid "don't have enough leverage."
+msgstr ""
+
+#: src/dig.c:1198
+msgid "Clash!"
+msgstr ""
+
+#: src/dig.c:1213
+msgid "is a spider web there!"
+msgstr ""
+
+#: src/dig.c:1222
+msgid "Clang!"
+msgstr ""
+
+#: src/dig.c:1225 src/dig.c:1227 src/do.c:279 src/dothrow.c:2706
+msgid "Splash!"
+msgstr ""
+
+#: src/dig.c:1230
+msgid "need an axe to cut down a tree."
+msgstr ""
+
+#: src/dig.c:1232
+msgid "need a pick to dig rock."
+msgstr ""
+
+#: src/dig.c:1266
+msgid "clear some debris from between the pits."
+msgstr ""
+
+#: src/dig.c:1470
+msgid "crashing rock."
+msgstr ""
+
+#: src/dig.c:2246
+msgid "attempt a teleport spell."
+msgstr ""
+
+#: src/dig.c:2309
+msgid "No objects here or adjacent to bury."
+msgstr ""
+
+#: src/dig.c:2314
+msgid "No objects buried."
+msgstr ""
+
+#: src/display.c:3390
+msgid "set_wall_type: wall mode problems with: "
+msgstr ""
+
+#: src/do.c:106
+msgid "Now you can cross it!"
+msgstr ""
+
+#: src/do.c:131
+msgid "find yourself on dry land again!"
+msgstr ""
+
+#: src/do.c:143
+msgid "It sinks without a trace!"
+msgstr ""
+
+#: src/do.c:242
+msgid "a CRASH! beneath you."
+msgstr ""
+
+#: src/do.c:281
+msgid "Plop!"
+msgstr ""
+
+#: src/do.c:350
+msgid "a shattering noise."
+msgstr ""
+
+#: src/do.c:528
+msgid "Static electricity surrounds the sink."
+msgstr ""
+
+#: src/do.c:532
+msgid "loud noises coming from the drain."
+msgstr ""
+
+#: src/do.c:573
+msgid "Several flies buzz around the sink."
+msgstr ""
+
+#: src/do.c:602
+msgid "don't see anything happen to the sink."
+msgstr ""
+
+#: src/do.c:647
+msgid "the ring bouncing down the drainpipe."
+msgstr ""
+
+#: src/do.c:929
+msgid "have nothing to drop."
+msgstr ""
+
 #: src/do.c:994
 msgid "Drop what type of items?"
+msgstr ""
+
+#: src/do.c:1172
+msgid "latent levitation ceases."
+msgstr ""
+
+#: src/do.c:1207
+msgid "fly out of hiding."
+msgstr ""
+
+#: src/do.c:1243
+msgid "are standing at the gate to Gehennom."
+msgstr ""
+
+#: src/do.c:1244
+msgid "Unspeakable cruelty and harm lurk down there."
+msgstr ""
+
+#: src/do.c:1247
+msgid "So be it."
+msgstr ""
+
+#: src/do.c:1252 src/do.c:1337
+msgid "are held back by your pet!"
+msgstr ""
+
+#: src/do.c:1445
+msgid "(monster in hero's way)"
+msgstr ""
+
+#: src/do.c:1563
+msgid "A mysterious force momentarily surrounds you..."
+msgstr ""
+
+#: src/do.c:1584
+msgid "A mysterious force prevents you from descending."
+msgstr ""
+
+#: src/do.c:1868
+msgid "arrive at the Valley of the Dead..."
+msgstr ""
+
+#: src/do.c:1874
+msgid "groans and moans everywhere."
+msgstr ""
+
+#: src/do.c:1901
+msgid "have penetrated a high security area!"
+msgstr ""
+
+#: src/do.c:1903 src/shk.c:520
+msgid "An alarm sounds!"
+msgstr ""
+
+#: src/do.c:1918
+msgid "enter what seems to be an older, more primitive world."
+msgstr ""
+
+#: src/do.c:1923 src/dungeon.c:1175 src/dungeon.c:2435 src/dungeon.c:3137
+#: src/quest.c:193 src/trap.c:4406
+msgid "The Quest"
+msgstr ""
+
+#: src/do.c:2031
+msgid "are out of the cold."
+msgstr ""
+
+#: src/do.c:2236
+msgid "scratching noises."
+msgstr ""
+
+#: src/do.c:2379
+msgid "You've got the glop off."
 msgstr ""
 
 #: src/do_name.c:250 src/dungeon.c:2554
@@ -73,9 +550,889 @@ msgstr ""
 msgid "is nothing else you can remove or unwield."
 msgstr ""
 
+#: src/dog.c:121
+msgid "... into a pile of dust."
+msgstr ""
+
+#: src/dog.c:132
+msgid "seems to be nothing available for a familiar."
+msgstr ""
+
+#: src/dog.c:194
+msgid "get a bad feeling about this."
+msgstr ""
+
+#: src/dogmove.c:351 src/dogmove.c:1528 src/teleport.c:803
+msgid "leash goes slack."
+msgstr ""
+
+#: src/dogmove.c:1059 src/monmove.c:369
+msgid "get released!"
+msgstr ""
+
+#: src/dokick.c:156
+msgid "Floating in the air, you miss wildly!"
+msgstr ""
+
+#: src/dokick.c:240
+msgid "clumsy kick does no damage."
+msgstr ""
+
+#: src/dokick.c:538
+msgid "clumsy kick missed."
+msgstr ""
+
+#: src/dokick.c:619
+msgid "It doesn't come loose."
+msgstr ""
+
+#: src/dokick.c:627
+msgid "It comes loose."
+msgstr ""
+
+#: src/dokick.c:654
+msgid "THUD!"
+msgstr ""
+
+#: src/dokick.c:658
+msgid "break open the lock!"
+msgstr ""
+
+#: src/dokick.c:688 src/dokick.c:711
+msgid "Thump!"
+msgstr ""
+
+#: src/dokick.c:868
+msgid "kick at empty space."
+msgstr ""
+
+#: src/dokick.c:872
+msgid "Dumb move!  You strain a muscle."
+msgstr ""
+
+#: src/dokick.c:886
+msgid "Ouch!  That hurts!"
+msgstr ""
+
+#: src/dokick.c:936
+msgid "kick the door."
+msgstr ""
+
+#: src/dokick.c:942
+msgid "As you kick the door, it shatters to pieces!"
+msgstr ""
+
+#: src/dokick.c:947
+msgid "As you kick the door, it crashes open!"
+msgstr ""
+
+#: src/dokick.c:1005
+msgid "Crash!  You kick open a secret passage!"
+msgstr ""
+
+#: src/dokick.c:1028
+msgid "CRASH!  You destroy it."
+msgstr ""
+
+#: src/dokick.c:1030
+msgid "CRASH!  You destroy the throne."
+msgstr ""
+
+#: src/dokick.c:1047
+msgid "kick loose some ornamental coins and gems!"
+msgstr ""
+
+#: src/dokick.c:1092
+msgid "boots get wet."
+msgstr ""
+
+#: src/dokick.c:1143 src/sounds.c:71
+msgid "a low buzzing."
+msgstr ""
+
+#: src/dokick.c:1187
+msgid "You've attracted the tree's former occupants!"
+msgstr ""
+
+#: src/dokick.c:1189
+msgid "smell stale honey."
+msgstr ""
+
+#: src/dokick.c:1206
+msgid "Klunk!  The pipes vibrate noisily."
+msgstr ""
+
+#: src/dokick.c:1208 src/lock.c:1065
+msgid "Klunk!"
+msgstr ""
+
+#: src/dokick.c:1216
+msgid "a gushing sound."
+msgstr ""
+
+#: src/dokick.c:1268
+msgid "have no legs to kick with."
+msgstr ""
+
+#: src/dokick.c:1271
+msgid "are too small to do any kicking."
+msgstr ""
+
+#: src/dokick.c:1285
+msgid "load is too heavy to balance yourself for a kick."
+msgstr ""
+
+#: src/dokick.c:1288
+msgid "legs cannot kick effectively."
+msgstr ""
+
+#: src/dokick.c:1291
+msgid "slow motion kick doesn't hit anything."
+msgstr ""
+
+#: src/dokick.c:1298
+msgid "There's not enough room to kick down here."
+msgstr ""
+
+#: src/dokick.c:1310
+msgid "There's not enough room to kick in here."
+msgstr ""
+
+#: src/dokick.c:1348
+msgid "feeble kick has no effect."
+msgstr ""
+
+#: src/dokick.c:1354
+msgid "kick at the side of the pit."
+msgstr ""
+
+#: src/dokick.c:1369
+msgid "have nothing to brace yourself against."
+msgstr ""
+
+#: src/dothrow.c:129
+msgid "It's too heavy."
+msgstr ""
+
+#: src/dothrow.c:134
+msgid "cannot throw an object at yourself."
+msgstr ""
+
+#: src/dothrow.c:303
+msgid "are physically incapable of throwing or shooting anything."
+msgstr ""
+
+#: src/dothrow.c:306
+msgid "throw or shoot without hands."
+msgstr ""
+
+#: src/dothrow.c:527
+msgid "have no ammunition readied."
+msgstr ""
+
+#: src/dothrow.c:538
+msgid "have nothing appropriate for your quiver."
+msgstr ""
+
+#: src/dothrow.c:810
+msgid "hit the door frame!"
+msgstr ""
+
+#: src/dothrow.c:811 src/region.c:993
+msgid "Ouch!"
+msgstr ""
+
+#: src/dothrow.c:814
+msgid "crash into some iron bars.  Ouch!"
+msgstr ""
+
+#: src/dothrow.c:821
+msgid "smack into something!"
+msgstr ""
+
+#: src/dothrow.c:890
+msgid "come to an abrupt halt!"
+msgstr ""
+
+#: src/dothrow.c:934
+msgid "You move over some lava."
+msgstr ""
+
+#: src/dothrow.c:951
+msgid "The ground vibrates as you pass it."
+msgstr ""
+
+#: src/dothrow.c:1322
+msgid "It blinds you!"
+msgstr ""
+
+#: src/dothrow.c:1338
+msgid "It doesn't hurt."
+msgstr ""
+
+#: src/dothrow.c:1408 src/eat.c:805
+msgid "turn to stone."
+msgstr ""
+
+#: src/dothrow.c:2564
+msgid "smell a peculiar odor..."
+msgstr ""
+
+#: src/dothrow.c:2698 src/uhitm.c:1251
+msgid "Splat!"
+msgstr ""
+
+#: src/dothrow.c:2702
+msgid "What a mess!"
+msgstr ""
+
+#: src/dothrow.c:2718
+msgid "cannot throw gold at yourself."
+msgstr ""
+
+#: src/dungeon.c:1176
+msgid "Sokoban"
+msgstr ""
+
+#: src/dungeon.c:1177
+msgid "The Gnomish Mines"
+msgstr ""
+
+#: src/dungeon.c:1178
+msgid "Vlad's Tower"
+msgstr ""
+
+#: src/dungeon.c:1179
+msgid "The Tutorial"
+msgstr ""
+
+#: src/eat.c:261
+msgid "choke, but recover your composure."
+msgstr ""
+
+#: src/eat.c:264
+msgid "stuff yourself and then vomit voluminously."
+msgstr ""
+
+#: src/eat.c:282
+msgid "choke over it."
+msgstr ""
+
+#: src/eat.c:285
+msgid "die..."
+msgstr ""
+
+#: src/eat.c:627
+msgid "brain is eaten!"
+msgstr ""
+
+#: src/eat.c:653
+msgid "have a sad thought for a moment, then it passes."
+msgstr ""
+
+#: src/eat.c:669
+msgid "Ingesting that is fatal."
+msgstr ""
+
+#: src/eat.c:706
+msgid "Unfortunately your brain is still gone."
+msgstr ""
+
+#: src/eat.c:711
+msgid "last thought fades away."
+msgstr ""
+
+#: src/eat.c:780
+msgid "have a bad feeling deep inside."
+msgstr ""
+
+#: src/eat.c:781
+msgid "cannibal!  You will regret this!"
+msgstr ""
+
+#: src/eat.c:834
+msgid "Eating that is instantly fatal."
+msgstr ""
+
+#: src/eat.c:853 src/uhitm.c:3569
+msgid "don't feel very well."
+msgstr ""
+
+#: src/eat.c:1045
+msgid "health currently feels amplified!"
+msgstr ""
+
+#: src/eat.c:1228
+msgid "velocity suddenly seems very uncertain!"
+msgstr ""
+
+#: src/eat.c:1231
+msgid "seem slower."
+msgstr ""
+
+#: src/eat.c:1234
+msgid "seem faster."
+msgstr ""
+
+#: src/eat.c:1285
+msgid "Yum!  That was real brain food!"
+msgstr ""
+
+#: src/eat.c:1290
+msgid "For some reason, that tasted bland."
+msgstr ""
+
+#: src/eat.c:1305
+msgid "Oh wow!  Great stuff!"
+msgstr ""
+
+#: src/eat.c:1554
+msgid "It turns out to be empty."
+msgstr ""
+
+#: src/eat.c:1587 src/eat.c:1659
+msgid "discard the open tin."
+msgstr ""
+
+#: src/eat.c:1652
+msgid "It contains spinach."
+msgstr ""
+
+#: src/eat.c:1711
+msgid "give up your attempt to open the tin."
+msgstr ""
+
+#: src/eat.c:1732
+msgid "cannot handle the tin properly to open it."
+msgstr ""
+
+#: src/eat.c:1772
+msgid "It is not so easy to open this tin."
+msgstr ""
+
+#: src/eat.c:1824
+msgid "Everything suddenly goes dark."
+msgstr ""
+
+#: src/eat.c:1905
+msgid "It doesn't seem at all sickening, though..."
+msgstr ""
+
+#: src/eat.c:1916
+msgid "(It must have died too long ago to be safe to eat.)"
+msgstr ""
+
+#: src/eat.c:1925
+msgid "have a very bad case of stomach acid."
+msgstr ""
+
+#: src/eat.c:1930 src/eat.c:2796
+msgid "Ecch - that must have been poisonous!"
+msgstr ""
+
+#: src/eat.c:1936 src/eat.c:2800
+msgid "seem unaffected by the poison."
+msgstr ""
+
+#: src/eat.c:1973
+msgid "This tastes just like chicken!"
+msgstr ""
+
+#: src/eat.c:1975
+msgid "peck the eyeball with delight."
+msgstr ""
+
+#: src/eat.c:2111
+msgid "Ugh.  Rotten egg."
+msgstr ""
+
+#: src/eat.c:2133
+msgid "This tripe ration is surprisingly good!"
+msgstr ""
+
+#: src/eat.c:2138
+msgid "Yak - dog food!"
+msgstr ""
+
+#: src/eat.c:2153
+msgid "A little goes a long way."
+msgstr ""
+
+#: src/eat.c:2184
+msgid "Delicious!  Must be a Macintosh!"
+msgstr ""
+
+#: src/eat.c:2190
+msgid "Core dumped."
+msgstr ""
+
+#: src/eat.c:2298
+msgid "Suddenly you can see yourself."
+msgstr ""
+
+#: src/eat.c:2436
+msgid "This junk mail is less than satisfying."
+msgstr ""
+
+#: src/eat.c:2447
+msgid "Needs salt..."
+msgstr ""
+
+#: src/eat.c:2467
+msgid "Yabba-dabba delicious!"
+msgstr ""
+
+#: src/eat.c:2590 src/timeout.c:788
+msgid "fall asleep."
+msgstr ""
+
+#: src/eat.c:2593
+msgid "sinister laughter as you fall asleep..."
+msgstr ""
+
+#: src/eat.c:2826
+msgid "If you can't breathe air, how can you consume solids?"
+msgstr ""
+
+#: src/eat.c:2855
+msgid "pause to swallow."
+msgstr ""
+
+#: src/eat.c:2865
+msgid "cannot eat that!"
+msgstr ""
+
+#: src/eat.c:2913
+msgid "This ring is indigestible!"
+msgstr ""
+
+#: src/eat.c:3104
+msgid "have no tin to open."
+msgstr ""
+
+#: src/eat.c:3314
+msgid "You're having a hard time getting all of it down."
+msgstr ""
+
+#: src/eat.c:3422
+msgid "faint from lack of food."
+msgstr ""
+
+#: src/eat.c:3441
+msgid "die from starvation."
+msgstr ""
+
+#: src/eat.c:3506
+msgid "die from hunger and exhaustion."
+msgstr ""
+
+#: src/eat.c:3743
+msgid "jaw gapes convulsively."
+msgstr ""
+
+#: src/eat.c:3771
+msgid "breathe acid on yourself..."
+msgstr ""
+
+#: src/end.c:1033
+msgid "are a very tricky wizard, it seems."
+msgstr ""
+
+#: src/end.c:1085 src/mon.c:2855
+msgid "But wait..."
+msgstr ""
+
+#: src/end.c:1090
+msgid "vomit ..."
+msgstr ""
+
+#: src/end.c:1099
+msgid "Unfortunately you are still genocided..."
+msgstr ""
+
 #: src/engrave.c:1209
 #, c-format
 msgid "What do you want to %s the %s here?"
+msgstr ""
+
+#: src/explode.c:446
+msgid "a blast."
+msgstr ""
+
+#: src/explode.c:452
+msgid "Boom!"
+msgstr ""
+
+#: src/explode.c:610
+msgid "are unharmed!"
+msgstr ""
+
+#: src/explode.c:670
+msgid "It is fatal."
+msgstr ""
+
+#: src/explode.c:781
+msgid "stone breaking."
+msgstr ""
+
+#: src/explode.c:799
+msgid "stone crumbling."
+msgstr ""
+
+#: src/files.c:1878 src/files.c:1937
+msgid "zlib failed to allocate memory"
+msgstr ""
+
+#: src/files.c:1894
+msgid "Failure reading uncompressed file"
+msgstr ""
+
+#: src/files.c:1909
+msgid "Failure writing compressed file"
+msgstr ""
+
+#: src/files.c:1962
+msgid "Failure reading compressed file"
+msgstr ""
+
+#: src/files.c:1977
+msgid "Failure writing uncompressed file"
+msgstr ""
+
+#: src/files.c:3689
+msgid "Cannot open live log file!"
+msgstr ""
+
+#: src/fountain.c:104
+msgid "a seductive voice."
+msgstr ""
+
+#: src/fountain.c:111
+msgid "A large bubble rises to the surface and pops."
+msgstr ""
+
+#: src/fountain.c:114
+msgid "a loud pop."
+msgstr ""
+
+#: src/fountain.c:127
+msgid "thirst is quenched."
+msgstr ""
+
+#: src/fountain.c:129
+msgid "Water sprays all over you."
+msgstr ""
+
+#: src/fountain.c:148
+msgid "Water gushes forth from the overflowing fountain!"
+msgstr ""
+
+#: src/fountain.c:168
+msgid "spot a gem in the sparkling waters!"
+msgstr ""
+
+#: src/fountain.c:257
+msgid "Wow!  This makes you feel great!"
+msgstr ""
+
+#: src/fountain.c:273
+msgid "A wisp of vapor escapes the fountain..."
+msgstr ""
+
+#: src/fountain.c:321
+msgid "This water's no good!"
+msgstr ""
+
+#: src/fountain.c:339
+msgid "feel transparent."
+msgstr ""
+
+#: src/fountain.c:341
+msgid "feel very self-conscious."
+msgstr ""
+
+#: src/fountain.c:342
+msgid "Then it passes."
+msgstr ""
+
+#: src/fountain.c:346
+msgid "But it disappears."
+msgstr ""
+
+#: src/fountain.c:430
+msgid "As the hand retreats, the fountain disappears!"
+msgstr ""
+
+#: src/fountain.c:473
+msgid "A feeling of loss comes over you."
+msgstr ""
+
+#: src/fountain.c:502
+msgid "An urge to take a bath overwhelms you."
+msgstr ""
+
+#: src/fountain.c:524
+msgid "lost some of your gold in the fountain!"
+msgstr ""
+
+#: src/fountain.c:614
+msgid "It seems quite tasty."
+msgstr ""
+
+#: src/fountain.c:653
+msgid "find a ring in the sink!"
+msgstr ""
+
+#: src/fountain.c:668
+msgid "But it quiets down."
+msgstr ""
+
+#: src/fountain.c:676
+msgid "Gaggg... this tastes like sewage!  You vomit."
+msgstr ""
+
+#: src/fountain.c:683
+msgid "undergo a freakish metamorphosis!"
+msgstr ""
+
+#: src/fountain.c:690
+msgid "clanking from the pipes..."
+msgstr ""
+
+#: src/fountain.c:694
+msgid "snatches of song from among the sewers..."
+msgstr ""
+
+#: src/fountain.c:697
+msgid "Ew, what a stench!"
+msgstr ""
+
+#: src/fountain.c:702
+msgid "From the murky drain, a hand reaches up... --oops--"
+msgstr ""
+
+#: src/fountain.c:749
+msgid "It leaves an oily film on the basin."
+msgstr ""
+
+#: src/fountain.c:761
+msgid "a sucking sound."
+msgstr ""
+
+#: src/fountain.c:773
+msgid "sense a ring lost down the drain."
+msgstr ""
+
+#: src/fountain.c:792
+msgid "A wisp of vapor rises up..."
+msgstr ""
+
+#: src/getpos.c:1136
+msgid "Done."
+msgstr ""
+
+#: src/hack.c:359
+msgid "That feels like a boulder."
+msgstr ""
+
+#: src/hack.c:406
+msgid "is a boulder in your way."
+msgstr ""
+
+#: src/hack.c:672
+msgid "are too full to eat the bars."
+msgstr ""
+
+#: src/hack.c:734
+msgid "eat the boulder."
+msgstr ""
+
+#: src/hack.c:862
+msgid "crash to the floor!"
+msgstr ""
+
+#: src/hack.c:1022
+msgid "is an obstacle there."
+msgstr ""
+
+#: src/hack.c:1034
+msgid "cannot pass through the bars."
+msgstr ""
+
+#: src/hack.c:1051
+msgid "That drawbridge is up!"
+msgstr ""
+
+#: src/hack.c:1082
+msgid "ooze under the door."
+msgstr ""
+
+#: src/hack.c:1085
+msgid "There is an obstacle there."
+msgstr ""
+
+#: src/hack.c:1119
+msgid "Ouch!  You bump into a door."
+msgstr ""
+
+#: src/hack.c:1132
+msgid "That door is closed."
+msgstr ""
+
+#: src/hack.c:1159
+msgid "cannot pass that way."
+msgstr ""
+
+#: src/hack.c:1163
+msgid "are carrying too much to get through."
+msgstr ""
+
+#: src/hack.c:1411
+msgid "stop, unsure which way to go."
+msgstr ""
+
+#: src/hack.c:1591
+msgid "Sting cuts through the web!"
+msgstr ""
+
+#: src/hack.c:1606
+msgid "disentangle yourself."
+msgstr ""
+
+#: src/hack.c:1647
+msgid "You move within the chain's reach."
+msgstr ""
+
+#: src/hack.c:1862
+msgid "(Tip: use the #enhance command to advance them.)"
+msgstr ""
+
+#: src/hack.c:1869
+msgid "(Tip: perhaps #untrap would help?)"
+msgstr ""
+
+#: src/hack.c:2347 src/sit.c:418
+msgid "tumble in place."
+msgstr ""
+
+#: src/hack.c:2354
+msgid "It's hard to walk in thin air."
+msgstr ""
+
+#: src/hack.c:2387
+msgid "are carrying too much to climb out of the water."
+msgstr ""
+
+#: src/hack.c:2626
+msgid "don't have enough stamina to move."
+msgstr ""
+
+#: src/hack.c:2629
+msgid "collapse under your load."
+msgstr ""
+
+#: src/hack.c:3043
+msgid "pass out from exertion!"
+msgstr ""
+
+#: src/hack.c:3210
+msgid "start flying."
+msgstr ""
+
+#: src/hack.c:3242
+msgid "pop into an air bubble."
+msgstr ""
+
+#: src/hack.c:3256
+msgid "slowly rise above the surface."
+msgstr ""
+
+#: src/hack.c:3671
+msgid "Welcome to David's treasure zoo!"
+msgstr ""
+
+#: src/hack.c:3683
+msgid "enter a leprechaun hall!"
+msgstr ""
+
+#: src/hack.c:3691
+msgid "have an uncanny feeling..."
+msgstr ""
+
+#: src/hack.c:3694
+msgid "enter a giant beehive!"
+msgstr ""
+
+#: src/hack.c:3697
+msgid "enter a disgusting nest!"
+msgstr ""
+
+#: src/hack.c:3700
+msgid "enter an anthole!"
+msgstr ""
+
+#: src/hack.c:3707
+msgid "enter a military barracks!"
+msgstr ""
+
+#: src/hack.c:3709
+msgid "enter an abandoned barracks."
+msgstr ""
+
+#: src/hack.c:3797
+msgid "But it's kind of slimy, so you drop it."
+msgstr ""
+
+#: src/hack.c:3823
+msgid "would burn to a crisp trying to pick things up."
+msgstr ""
+
+#: src/hack.c:3835
+msgid "don't need a gravestone.  Yet."
+msgstr ""
+
+#: src/hack.c:3839
+msgid "It won't come off the hinges."
+msgstr ""
+
+#: src/hack.c:3841
+msgid "Moving the altar would be a very bad idea."
+msgstr ""
+
+#: src/hack.c:3845
+msgid "is nothing here to pick up."
+msgstr ""
+
+#: src/hack.c:3853
+msgid "cannot reach the bottom of the pit."
+msgstr ""
+
+#: src/hack.c:3857
+msgid "cannot reach anything here."
+msgstr ""
+
+#: src/hack.c:3908
+msgid "cannot move diagonally."
+msgstr ""
+
+#: src/hack.c:3970
+msgid "stop in front of the door."
+msgstr ""
+
+#: src/hack.c:4287
+msgid "You die..."
+msgstr ""
+
+#: src/insight.c:2538
+msgid "No chronicled events."
+msgstr ""
+
+#: src/insight.c:2541
+msgid "Chronicle was turned off during compile-time."
+msgstr ""
+
+#: src/insight.c:2943
+msgid "No creatures have been vanquished."
 msgstr ""
 
 #: src/invent.c:1913
@@ -151,8 +1508,964 @@ msgstr ""
 msgid "Inventory letters used:"
 msgstr ""
 
+#: src/lock.c:81 src/lock.c:596 src/lock.c:1021
+msgid "This doorway has no door."
+msgstr ""
+
+#: src/lock.c:84 src/lock.c:599
+msgid "cannot lock an open door."
+msgstr ""
+
+#: src/lock.c:87 src/lock.c:602 src/lock.c:1026
+msgid "This door is broken."
+msgstr ""
+
+#: src/lock.c:110
+msgid "find a trap!"
+msgstr ""
+
+#: src/lock.c:222 src/lock.c:237
+msgid "give up your attempt to force the lock."
+msgstr ""
+
+#: src/lock.c:247
+msgid "succeed in forcing the lock."
+msgstr ""
+
+#: src/lock.c:543
+msgid "doesn't seem to be any sort of lock here."
+msgstr ""
+
+#: src/lock.c:552 src/lock.c:816 src/lock.c:970
+msgid "reach over the edge of the pit."
+msgstr ""
+
+#: src/lock.c:616
+msgid "lock a door with a credit card."
+msgstr ""
+
+#: src/lock.c:688
+msgid "force anything from inside here."
+msgstr ""
+
+#: src/lock.c:709
+msgid "resume your attempt to force the lock."
+msgstr ""
+
+#: src/lock.c:754
+msgid "decide not to force the issue."
+msgstr ""
+
+#: src/lock.c:789
+msgid "open anything -- you have no hands!"
+msgstr ""
+
+#: src/lock.c:844
+msgid "is no obvious way to open the drawbridge."
+msgstr ""
+
+#: src/lock.c:899
+msgid "You're too small to pull the door open."
+msgstr ""
+
+#: src/lock.c:965
+msgid "close anything -- you have no hands!"
+msgstr ""
+
+#: src/lock.c:980
+msgid "are in the way!"
+msgstr ""
+
+#: src/lock.c:1012
+msgid "is no obvious way to close the drawbridge."
+msgstr ""
+
+#: src/lock.c:1029
+msgid "This door is already closed."
+msgstr ""
+
+#: src/lock.c:1035
+msgid "You're too small to push the door closed."
+msgstr ""
+
+#: src/lock.c:1079
+msgid "Klick!"
+msgstr ""
+
+#: src/lock.c:1123
+msgid "A door appears in the wall!"
+msgstr ""
+
+#: src/lock.c:1146
+msgid "a swoosh."
+msgstr ""
+
+#: src/lock.c:1223
+msgid "KABOOM!!  You see a door explode."
+msgstr ""
+
+#: src/lock.c:1244
+msgid "a crashing sound."
+msgstr ""
+
+#: src/mail.c:534
+msgid "Unfortunately you cannot see what it says."
+msgstr ""
+
+#: src/mail.c:650 src/read.c:412 src/read.c:471 src/read.c:509 src/rumors.c:570
+msgid "It reads:"
+msgstr ""
+
+#: src/mail.c:679
+msgid "It appears to be all gibberish."
+msgstr ""
+
+#: src/mcastu.c:83
+msgid "You hear a mumbled curse."
+msgstr ""
+
+#: src/mcastu.c:254
+msgid "You're enveloped in flames."
+msgstr ""
+
+#: src/mcastu.c:257 src/mcastu.c:271
+msgid "But you resist the effects."
+msgstr ""
+
+#: src/mcastu.c:268
+msgid "You're covered in frost."
+msgstr ""
+
+#: src/mcastu.c:283
+msgid "are hit by a shower of missiles!"
+msgstr ""
+
+#: src/mcastu.c:393
+msgid "seem no deader than before."
+msgstr ""
+
+#: src/mcastu.c:396
+msgid "have an out of body experience."
+msgstr ""
+
+#: src/mcastu.c:406 src/uhitm.c:3880
+msgid "Lucky for you, it didn't work!"
+msgstr ""
+
+#: src/mcastu.c:414
+msgid "Double Trouble..."
+msgstr ""
+
+#: src/mcastu.c:455
+msgid "A field of force surrounds you!"
+msgstr ""
+
+#: src/mcastu.c:457
+msgid "skin itches."
+msgstr ""
+
+#: src/mcastu.c:475
+msgid "suddenly feel weaker!"
+msgstr ""
+
+#: src/mcastu.c:528
+msgid "A sudden geyser slams into you from nowhere!"
+msgstr ""
+
+#: src/mcastu.c:544
+msgid "A pillar of fire strikes all around you!"
+msgstr ""
+
+#: src/mcastu.c:572
+msgid "A bolt of lightning strikes down at you from above!"
+msgstr ""
+
+#: src/mcastu.c:615
+msgid "brain is on fire!"
+msgstr ""
+
+#: src/mcastu.c:634
+msgid "skin itches badly for a moment."
+msgstr ""
+
+#: src/mcastu.c:636
+msgid "Wounds appear on your body!"
+msgstr ""
+
+#: src/mcastu.c:638
+msgid "Severe wounds appear on your body!"
+msgstr ""
+
+#: src/mcastu.c:640
+msgid "body is covered with painful wounds!"
+msgstr ""
+
+#: src/mcastu.c:754
+msgid "stiffen briefly."
+msgstr ""
+
+#: src/mcastu.c:758
+msgid "are frozen in place!"
+msgstr ""
+
+#: src/mhitm.c:762
+msgid "but nothing happens."
+msgstr ""
+
+#: src/mhitm.c:1004
+msgid "leash falls slack."
+msgstr ""
+
+#: src/mhitm.c:1135
+msgid "are subjected to a freakish metamorphosis."
+msgstr ""
+
+#: src/mhitu.c:167
+msgid "slow down."
+msgstr ""
+
+#: src/mhitu.c:169
+msgid "quickness feels less natural."
+msgstr ""
+
+#: src/mhitu.c:272
+msgid "get regurgitated!"
+msgstr ""
+
+#: src/mhitu.c:304
+msgid "Brrooaa...  You land hard at some distance."
+msgstr ""
+
+#: src/mhitu.c:617
+msgid "It tries to move where you are hiding."
+msgstr ""
+
+#: src/mhitu.c:670
+msgid "It gets stuck on you."
+msgstr ""
+
+#: src/mhitu.c:1002
+msgid "But none comes."
+msgstr ""
+
+#: src/mhitu.c:1457
+msgid "are covered with a seemingly harmless goo."
+msgstr ""
+
+#: src/mhitu.c:1464
+msgid "Ouch!  You've been slimed!"
+msgstr ""
+
+#: src/mhitu.c:1466
+msgid "are covered in slime!  It burns!"
+msgstr ""
+
+#: src/mhitu.c:1477
+msgid "see in here!"
+msgstr ""
+
+#: src/mhitu.c:1492
+msgid "seem unhurt."
+msgstr ""
+
+#: src/mhitu.c:1511
+msgid "are freezing to death!"
+msgstr ""
+
+#: src/mhitu.c:1526
+msgid "are burning to a crisp!"
+msgstr ""
+
+#: src/mhitu.c:1628
+msgid "are blinded by a blast of light!"
+msgstr ""
+
+#: src/mhitu.c:1633
+msgid "get the impression it was not terribly bright."
+msgstr ""
+
+#: src/mhitu.c:1643
+msgid "are caught in a blast of kaleidoscopic light!"
+msgstr ""
+
+#: src/mhitu.c:1657
+msgid "seem unaffected by it."
+msgstr ""
+
+#: src/mhitu.c:1713
+msgid "Someone seems overdue for a serpent cut."
+msgstr ""
+
+#: src/mhitu.c:1753 src/polyself.c:1761
+msgid "You turn to stone..."
+msgstr ""
+
+#: src/mhitu.c:1772
+msgid "are getting more and more confused."
+msgstr ""
+
+#: src/mhitu.c:2006
+msgid "Someone caresses you..."
+msgstr ""
+
+#: src/mhitu.c:2074
+msgid "and puts it on your finger."
+msgstr ""
+
+#: src/mhitu.c:2192
+msgid "are down in the dumps."
+msgstr ""
+
+#: src/mhitu.c:2198
+msgid "senses are dulled."
+msgstr ""
+
+#: src/mhitu.c:2208
+msgid "have a curious feeling..."
+msgstr ""
+
+#: src/mhitu.c:2248
+msgid "That was a very educational experience."
+msgstr ""
+
+#: src/mhitu.c:2291
+msgid "No charge."
+msgstr ""
+
+#: src/mhitu.c:2527 src/uhitm.c:5765
+msgid "explode!"
+msgstr ""
+
+#: src/minion.c:377
+msgid "refuse."
+msgstr ""
+
+#: src/minion.c:508
+msgid "A voice booms:"
+msgstr ""
+
+#: src/minion.c:517
+msgid "A voice whispers:"
+msgstr ""
+
+#: src/minion.c:543
+msgid "An angel appears near you."
+msgstr ""
+
+#: src/mklev.c:2634
+msgid "Fort Ludios"
+msgstr ""
+
+#: src/mkmaze.c:1719
+msgid "Water turbulence affects your movements."
+msgstr ""
+
+#: src/mkobj.c:3831
+msgid "pack reaches out and grabs something!"
+msgstr ""
+
+#: src/mkobj.c:3847
+msgid "a faint sloshing sound."
+msgstr ""
+
+#: src/mon.c:1518
+msgid "a crunching sound."
+msgstr ""
+
+#: src/mon.c:1632
+msgid "a slurping sound."
+msgstr ""
+
+#: src/mon.c:1711
+msgid "a masticating sound."
+msgstr ""
+
+#: src/mon.c:3106 src/mon.c:3569
+msgid "have a sad feeling for a moment, then it passes."
+msgstr ""
+
+#: src/mon.c:3224
+msgid "an explosion."
+msgstr ""
+
+#: src/mon.c:3564
+msgid "Maybe not..."
+msgstr ""
+
+#: src/mon.c:3665
+msgid "murderer!"
+msgstr ""
+
+#: src/mon.c:3698
+msgid "That was probably a bad idea..."
+msgstr ""
+
+#: src/mon.c:3700
+msgid "Whoopsie-daisy!"
+msgstr ""
+
+#: src/mon.c:3713
+msgid "the rumble of distant thunder..."
+msgstr ""
+
+#: src/mon.c:3716
+msgid "the studio audience applaud!"
+msgstr ""
+
+#: src/mon.c:3764
+msgid "... and returns to normal."
+msgstr ""
+
+#: src/mon.c:4257
+msgid "And then starts to flee."
+msgstr ""
+
+#: src/mon.c:4288
+msgid "The engraving beneath you fades."
+msgstr ""
+
+#: src/mon.c:5141
+msgid "It can't become that."
+msgstr ""
+
+#: src/mon.c:5814
+msgid "notice a bovine smell."
+msgstr ""
+
+#: src/mon.c:5820
+msgid "smell body odor."
+msgstr ""
+
+#: src/mon.c:5843
+msgid "detect an odor reminiscent of an animal's den."
+msgstr ""
+
+#: src/mon.c:5851
+msgid "smell steam."
+msgstr ""
+
+#: src/mon.c:5860
+msgid "smell mushrooms."
+msgstr ""
+
+#: src/mon.c:5878
+msgid "notice a dog smell."
+msgstr ""
+
+#: src/mon.c:5882
+msgid "smell a dragon!"
+msgstr ""
+
+#: src/mon.c:5895
+msgid "smell rotting flesh."
+msgstr ""
+
+#: src/mon.c:5899
+msgid "smell fish."
+msgstr ""
+
+#: src/mon.c:5904
+msgid "notice an attractive smell."
+msgstr ""
+
+#: src/mon.c:5906
+msgid "A foul stench makes you feel a little nauseated."
+msgstr ""
+
+#: src/monmove.c:124
+msgid "someone yell:"
+msgstr ""
+
+#: src/monmove.c:590
+msgid "sense a faint wave of psychic energy."
+msgstr ""
+
+#: src/monmove.c:593
+msgid "A wave of psychic energy pours over you!"
+msgstr ""
+
+#: src/monmove.c:596
+msgid "It feels quite soothing."
+msgstr ""
+
+#: src/monmove.c:1572
+msgid "a door unlock and open."
+msgstr ""
+
+#: src/monmove.c:1589
+msgid "a door open."
+msgstr ""
+
+#: src/monmove.c:1614
+msgid "a door crash open."
+msgstr ""
+
+#: src/mthrowu.c:109
+msgid "It misses."
+msgstr ""
+
+#: src/mthrowu.c:124
+msgid "It doesn't seem to hurt you."
+msgstr ""
+
+#: src/mthrowu.c:147
+msgid "It burns!"
+msgstr ""
+
+#: src/mthrowu.c:355
+msgid "It is missed."
+msgstr ""
+
+#: src/mthrowu.c:441
+msgid "It is burned!"
+msgstr ""
+
+#: src/mthrowu.c:763
+msgid "Yecch!  You've been creamed."
+msgstr ""
+
+#: src/mthrowu.c:930
+msgid "a loud snap!"
+msgstr ""
+
+#: src/mthrowu.c:1027
+msgid "a dry rattle nearby."
+msgstr ""
+
+#: src/mthrowu.c:1105
+msgid "a cough."
+msgstr ""
+
+#: src/mthrowu.c:1486
+msgid "break the bars apart!"
+msgstr ""
+
+#: src/muse.c:300
+msgid "a chugging sound."
+msgstr ""
+
+#: src/muse.c:845
+msgid "a bugle playing reveille!"
+msgstr ""
+
+#: src/muse.c:1616 src/muse.c:1635 src/zap.c:200 src/zap.c:2717
+msgid "Boing!"
+msgstr ""
+
+#: src/muse.c:1948
+msgid "are blinded by the flash of light!"
+msgstr ""
+
+#: src/muse.c:1963 src/muse.c:3154
+msgid "Oh, what a pretty fire!"
+msgstr ""
+
+#: src/muse.c:1978
+msgid "are not harmed."
+msgstr ""
+
+#: src/music.c:269
+msgid "a scream!"
+msgstr ""
+
+#: src/music.c:279
+msgid "It is destroyed!"
+msgstr ""
+
+#: src/music.c:301
+msgid "chain breaks!"
+msgstr ""
+
+#: src/music.c:306
+msgid "A chasm opens up under you!"
+msgstr ""
+
+#: src/music.c:307
+msgid "don't fall in!"
+msgstr ""
+
+#: src/music.c:312
+msgid "fall into a chasm!"
+msgstr ""
+
+#: src/music.c:323
+msgid "are jostled around violently!"
+msgstr ""
+
+#: src/music.c:379
+msgid "a thump."
+msgstr ""
+
+#: src/music.c:445
+msgid "A secret corridor is revealed."
+msgstr ""
+
+#: src/music.c:455
+msgid "A secret door is revealed."
+msgstr ""
+
+#: src/music.c:558
+msgid "radiate an obnoxious droning sound."
+msgstr ""
+
+#: src/music.c:564
+msgid "generate a raucous noise."
+msgstr ""
+
+#: src/music.c:569
+msgid "disseminate a kaleidoscopic display of floating butterflies."
+msgstr ""
+
+#: src/music.c:578
+msgid "What you perform is quite far from music..."
+msgstr ""
+
+#: src/music.c:644
+msgid "blow into the horn."
+msgstr ""
+
+#: src/music.c:654
+msgid "blow into the bugle."
+msgstr ""
+
+#: src/music.c:695
+msgid "produce a heavy, thunderous rolling!"
+msgstr ""
+
+#: src/music.c:711
+msgid "pound on the drum."
+msgstr ""
+
+#: src/music.c:767
+msgid "play music underwater!"
+msgstr ""
+
+#: src/o_init.c:857 src/o_init.c:1181
+msgid "haven't discovered anything yet..."
+msgstr ""
+
+#: src/o_init.c:1183
+msgid "None of your discoveries can be assigned names..."
+msgstr ""
+
+#: src/objnam.c:3601
+msgid "A throne."
+msgstr ""
+
+#: src/objnam.c:3608
+msgid "A sink."
+msgstr ""
+
+#: src/objnam.c:3715
+msgid "Can't place a grave here."
+msgstr ""
+
+#: src/objnam.c:3722
+msgid "A tree."
+msgstr ""
+
+#: src/objnam.c:3732
+msgid "Iron bars."
+msgstr ""
+
+#: src/objnam.c:3737
+msgid "A cloud."
+msgstr ""
+
+#: src/objnam.c:3835
+msgid "A wall."
+msgstr ""
+
+#: src/objnam.c:3840
+msgid "Secret corridor."
+msgstr ""
+
+#: src/objnam.c:3843
+msgid "Secret corridor requires corridor location."
+msgstr ""
+
+#: src/objnam.c:3855
+msgid "Room floor."
+msgstr ""
+
+#: src/objnam.c:3867
+msgid "Room|floor|ground not allowed here."
+msgstr ""
+
+#: src/options.c:6443
+msgid "Error adding the menu color."
+msgstr ""
+
+#: src/options.c:6524
+msgid "Error adding the message type."
+msgstr ""
+
+#: src/options.c:7586
+msgid "disable new feature alerts for future versions."
+msgstr ""
+
+#: src/options.c:8102
+msgid "out of menu map space."
+msgstr ""
+
 #: src/pager.c:1803
 msgid "What do you want to look at:"
+msgstr ""
+
+#: src/pickup.c:730
+msgid "are physically incapable of picking anything up."
+msgstr ""
+
+#: src/pickup.c:1182
+msgid "pick yourself up!"
+msgstr ""
+
+#: src/pickup.c:1501
+msgid "No relevant items selected."
+msgstr ""
+
+#: src/pickup.c:1985
+msgid "movements are slowed slightly because of your load."
+msgstr ""
+
+#: src/pickup.c:1988
+msgid "rebalance your load.  Movement is difficult."
+msgstr ""
+
+#: src/pickup.c:2003
+msgid "movements are now unencumbered."
+msgstr ""
+
+#: src/pickup.c:2006
+msgid "movements are only slowed slightly by your load."
+msgstr ""
+
+#: src/pickup.c:2009
+msgid "rebalance your load.  Movement is still difficult."
+msgstr ""
+
+#: src/pickup.c:2154
+msgid "It develops a huge set of teeth and bites you!"
+msgstr ""
+
+#: src/pickup.c:2199 src/pickup.c:2949
+msgid "have no hands!"
+msgstr ""
+
+#: src/pickup.c:2206
+msgid "Being confused, you find nothing to loot."
+msgstr ""
+
+#: src/pickup.c:2292
+msgid "need to dig up the grave to effectively loot it..."
+msgstr ""
+
+#: src/pickup.c:2335
+msgid "have to be at a container to loot it."
+msgstr ""
+
+#: src/pickup.c:2390
+msgid "Ok, now there is loot here."
+msgstr ""
+
+#: src/pickup.c:2420
+msgid "The exchequer accepts your contribution."
+msgstr ""
+
+#: src/pickup.c:2453
+msgid "do that without limbs."
+msgstr ""
+
+#: src/pickup.c:2571
+msgid "must be kidding."
+msgstr ""
+
+#: src/pickup.c:2574
+msgid "That would be an interesting topological exercise."
+msgstr ""
+
+#: src/pickup.c:3002
+msgid "must put it down to unlock."
+msgstr ""
+
+#: src/pickup.c:3694
+msgid "Nothing interesting happens."
+msgstr ""
+
+#: src/pickup.c:3913
+msgid "Tipping contents to floor only..."
+msgstr ""
+
+#: src/polyself.c:191
+msgid "are no longer being strangled."
+msgstr ""
+
+#: src/polyself.c:455
+msgid "body transforms, but there is still slime on you."
+msgstr ""
+
+#: src/polyself.c:484
+msgid "fail to transform!"
+msgstr ""
+
+#: src/polyself.c:567 src/read.c:3392
+msgid "I've never heard of such monsters."
+msgstr ""
+
+#: src/polyself.c:569
+msgid "polymorph into any of those."
+msgstr ""
+
+#: src/polyself.c:639
+msgid "merge with your scaly armor."
+msgstr ""
+
+#: src/polyself.c:840
+msgid "no longer feel sick."
+msgstr ""
+
+#: src/polyself.c:993
+msgid "slip out of the iron chain."
+msgstr ""
+
+#: src/polyself.c:996
+msgid "slip free of the buried ball and chain."
+msgstr ""
+
+#: src/polyself.c:1011
+msgid "orient yourself on the web."
+msgstr ""
+
+#: src/polyself.c:1171
+msgid "break out of your armor!"
+msgstr ""
+
+#: src/polyself.c:1195
+msgid "shirt rips to shreds!"
+msgstr ""
+
+#: src/polyself.c:1202
+msgid "armor falls around you!"
+msgstr ""
+
+#: src/polyself.c:1222
+msgid "seep right through your shirt!"
+msgstr ""
+
+#: src/polyself.c:1224
+msgid "become much too small for your shirt!"
+msgstr ""
+
+#: src/polyself.c:1260
+msgid "can no longer hold your shield!"
+msgstr ""
+
+#: src/polyself.c:1279
+msgid "boots fall away!"
+msgstr ""
+
+#: src/polyself.c:1400
+msgid "old form was not healthy enough to survive."
+msgstr ""
+
+#: src/polyself.c:1426
+msgid "breathe.  Sorry."
+msgstr ""
+
+#: src/polyself.c:1430
+msgid "don't have enough energy to breathe!"
+msgstr ""
+
+#: src/polyself.c:1489
+msgid "are not chained to anything!"
+msgstr ""
+
+#: src/polyself.c:1549
+msgid "cannot spin webs while stuck in a trap."
+msgstr ""
+
+#: src/polyself.c:1557
+msgid "spin a web, covering up the pit."
+msgstr ""
+
+#: src/polyself.c:1571
+msgid "webbing vanishes!"
+msgstr ""
+
+#: src/polyself.c:1574
+msgid "make the web thicker."
+msgstr ""
+
+#: src/polyself.c:1584
+msgid "spin a web, jamming the trigger."
+msgstr ""
+
+#: src/polyself.c:1599
+msgid "have triggered a trap!"
+msgstr ""
+
+#: src/polyself.c:1614
+msgid "spin a web."
+msgstr ""
+
+#: src/polyself.c:1628
+msgid "lack the energy to send forth a call for help!"
+msgstr ""
+
+#: src/polyself.c:1634
+msgid "call upon your brethren for help!"
+msgstr ""
+
+#: src/polyself.c:1637
+msgid "But none arrive."
+msgstr ""
+
+#: src/polyself.c:1662
+msgid "see anything to gaze at."
+msgstr ""
+
+#: src/polyself.c:1665
+msgid "gaze at anything you can see."
+msgstr ""
+
+#: src/polyself.c:1669
+msgid "lack the energy to use your special gaze!"
+msgstr ""
+
+#: src/polyself.c:1771
+msgid "gaze at no place in particular."
+msgstr ""
+
+#: src/polyself.c:1814
+msgid "is nothing to hide under here."
+msgstr ""
+
+#: src/polyself.c:1846
+msgid "is nowhere to hide above you."
+msgstr ""
+
+#: src/polyself.c:1852
+msgid "is nowhere to hide beneath you."
+msgstr ""
+
+#: src/polyself.c:1900
+msgid "concentrate but lack the energy to maintain doing so."
+msgstr ""
+
+#: src/polyself.c:1906
+msgid "concentrate."
+msgstr ""
+
+#: src/polyself.c:1907
+msgid "A wave of psychic energy pours out."
+msgstr ""
+
+#: src/polyself.c:1960
+msgid "skin returns to its original form."
+msgstr ""
+
+#: src/polyself.c:2185
+msgid "Strangely, you feel better than before."
 msgstr ""
 
 #: src/potion.c:2317
@@ -161,6 +2474,370 @@ msgstr ""
 
 #: src/potion.c:2329
 msgid "into the sink?"
+msgstr ""
+
+#: src/pray.c:390 src/timeout.c:898
+msgid "amulet vanishes!"
+msgstr ""
+
+#: src/pray.c:393
+msgid "can breathe again."
+msgstr ""
+
+#: src/pray.c:464
+msgid "surroundings change."
+msgstr ""
+
+#: src/pray.c:499
+msgid "shape becomes uncertain."
+msgstr ""
+
+#: src/pray.c:520
+msgid "chain disappears."
+msgstr ""
+
+#: src/pray.c:544
+msgid "There's a tiger in your tank."
+msgstr ""
+
+#: src/pray.c:588
+msgid "Looks like you are back in Kansas."
+msgstr ""
+
+#: src/pray.c:627
+msgid "Suddenly, a bolt of lightning strikes you!"
+msgstr ""
+
+#: src/pray.c:631
+msgid "For some reason you're unaffected."
+msgstr ""
+
+#: src/pray.c:637
+msgid "It seems not to affect you."
+msgstr ""
+
+#: src/pray.c:656
+msgid "A wide-angle disintegration beam hits you!"
+msgstr ""
+
+#: src/pray.c:906
+msgid "sword shines brightly for a moment."
+msgstr ""
+
+#: src/pray.c:1237
+msgid "a divine music..."
+msgstr ""
+
+#: src/pray.c:1451
+msgid "sacrifice sprouts wings and a propeller and roars away!"
+msgstr ""
+
+#: src/pray.c:1454
+msgid "sacrifice puffs up, swelling bigger and bigger, and pops!"
+msgstr ""
+
+#: src/pray.c:1462
+msgid "sacrifice disappears!"
+msgstr ""
+
+#: src/pray.c:1548
+msgid "An invisible choir chants, and you are bathed in darkness..."
+msgstr ""
+
+#: src/pray.c:1551
+msgid "then mercilessly snuffs out your life."
+msgstr ""
+
+#: src/pray.c:1577
+msgid "An invisible choir sings, and you are bathed in radiance..."
+msgstr ""
+
+#: src/pray.c:1612
+msgid "a nearby thunderclap."
+msgstr ""
+
+#: src/pray.c:1621
+msgid "Oh, no."
+msgstr ""
+
+#: src/pray.c:1706
+msgid "find the idea very satisfying."
+msgstr ""
+
+#: src/pray.c:1709
+msgid "You'll regret this infamous offense!"
+msgstr ""
+
+#: src/pray.c:1757
+msgid "are terrified, and unable to move."
+msgstr ""
+
+#: src/pray.c:1865
+msgid "are too impaired to perform the rite."
+msgstr ""
+
+#: src/pray.c:2002
+msgid "So this is how you repay loyalty?"
+msgstr ""
+
+#: src/pray.c:2056
+msgid "have a feeling of inadequacy."
+msgstr ""
+
+#: src/pray.c:2074
+msgid "realize that the gods are not like you and I."
+msgstr ""
+
+#: src/pray.c:2076
+msgid "have a hopeful feeling."
+msgstr ""
+
+#: src/pray.c:2081
+msgid "Overall, there is a smell of fried onions."
+msgstr ""
+
+#: src/pray.c:2083
+msgid "have a feeling of reconciliation."
+msgstr ""
+
+#: src/pray.c:2268
+msgid "are surrounded by a shimmering light."
+msgstr ""
+
+#: src/pray.c:2290
+msgid "Nothing else happens."
+msgstr ""
+
+#: src/pray.c:2362
+msgid "Unfortunately, your voice falters."
+msgstr ""
+
+#: src/pray.c:2423
+msgid "don't know how to turn undead!"
+msgstr ""
+
+#: src/priest.c:506
+msgid "have an eerie feeling..."
+msgstr ""
+
+#: src/priest.c:528
+msgid "sense a presence close by!"
+msgstr ""
+
+#: src/priest.c:532
+msgid "are frightened to death, and unable to move."
+msgstr ""
+
+#: src/read.c:367
+msgid "break up the cookie and throw away the pieces."
+msgstr ""
+
+#: src/read.c:468
+msgid "feel the embossed numbers:"
+msgstr ""
+
+#: src/read.c:520
+msgid "feel the embossed words:"
+msgstr ""
+
+#: src/read.c:522
+msgid "read:"
+msgstr ""
+
+#: src/read.c:531
+msgid "feel the engraved signature:"
+msgstr ""
+
+#: src/read.c:533
+msgid "It is signed:"
+msgstr ""
+
+#: src/read.c:548
+msgid "The candy bar's wrapper is blank."
+msgstr ""
+
+#: src/read.c:629
+msgid "Being so trippy, you screw up..."
+msgstr ""
+
+#: src/read.c:863
+msgid "marker seems permanently dried out."
+msgstr ""
+
+#: src/read.c:1003
+msgid "have a feeling of loss."
+msgstr ""
+
+#: src/read.c:1646
+msgid "weapon feels warm for a moment."
+msgstr ""
+
+#: src/read.c:1732
+msgid "have found a scroll of genocide!"
+msgstr ""
+
+#: src/read.c:1760
+msgid "Tiny lights sparkle in the air momentarily."
+msgstr ""
+
+#: src/read.c:1780
+msgid "Lights appear all around you!"
+msgstr ""
+
+#: src/read.c:1816
+msgid "This is a charging scroll."
+msgstr ""
+
+#: src/read.c:1838
+msgid "mind releases itself from mundane concerns."
+msgstr ""
+
+#: src/read.c:1843
+msgid "Who was that Maud person anyway?"
+msgstr ""
+
+#: src/read.c:1845
+msgid "Thinking of Maud you forget everything else."
+msgstr ""
+
+#: src/read.c:1895
+msgid "This is a scroll of fire!"
+msgstr ""
+
+#: src/read.c:1897
+msgid "Where do you want to center the explosion?"
+msgstr ""
+
+#: src/read.c:1934
+msgid "rumbling."
+msgstr ""
+
+#: src/read.c:1971
+msgid "But nothing else happens."
+msgstr ""
+
+#: src/read.c:1999
+msgid "have found a scroll of stinking cloud!"
+msgstr ""
+
+#: src/read.c:2008
+msgid "don't remember there being any magic words on this scroll."
+msgstr ""
+
+#: src/read.c:2010
+msgid "This scroll seems to be blank."
+msgstr ""
+
+#: src/read.c:2075
+msgid "identify this as an identify scroll."
+msgstr ""
+
+#: src/read.c:2077
+msgid "This is an identify scroll."
+msgstr ""
+
+#: src/read.c:2113
+msgid "mind is filled with crazy lines!"
+msgstr ""
+
+#: src/read.c:2115
+msgid "Wow!  Modern art."
+msgstr ""
+
+#: src/read.c:2142
+msgid "A map coalesces in your mind!"
+msgstr ""
+
+#: src/read.c:2151
+msgid "Unfortunately, you can't grasp the details."
+msgstr ""
+
+#: src/read.c:2184
+msgid "That was a scroll of mail?"
+msgstr ""
+
+#: src/read.c:2376
+msgid "a clanging sound."
+msgstr ""
+
+#: src/read.c:2538
+msgid "It seems even darker in here than before."
+msgstr ""
+
+#: src/read.c:2540
+msgid "are surrounded by darkness!"
+msgstr ""
+
+#: src/read.c:2702
+msgid "All such monsters are already nonexistent."
+msgstr ""
+
+#: src/read.c:2704
+msgid "aren't permitted to genocide such monsters."
+msgstr ""
+
+#: src/read.c:2760 src/read.c:2777 src/zap.c:2899
+msgid "You die."
+msgstr ""
+
+#: src/read.c:3030
+msgid "are being punished for your misbehavior!"
+msgstr ""
+
+#: src/read.c:3032
+msgid "iron ball gets heavier."
+msgstr ""
+
+#: src/read.c:3039
+msgid "A ball and chain appears, then falls away."
+msgstr ""
+
+#: src/read.c:3096
+msgid "Ugh... someone cut the cheese."
+msgstr ""
+
+#: src/read.c:3394
+msgid "Try again (type * for random, ESC to cancel)."
+msgstr ""
+
+#: src/region.c:1120
+msgid "cough and spit blood!"
+msgstr ""
+
+#: src/region.c:1129
+msgid "cough!"
+msgstr ""
+
+#: src/restore.c:548
+msgid "Saved game was not yours."
+msgstr ""
+
+#: src/restore.c:634
+msgid "were not healthy enough to survive restoration."
+msgstr ""
+
+#: src/restore.c:1054
+msgid "Strange, this map is not as I remember it."
+msgstr ""
+
+#: src/restore.c:1055
+msgid "Somebody is trying some trickery here..."
+msgstr ""
+
+#: src/restore.c:1056
+msgid "This game is void."
+msgstr ""
+
+#: src/role.c:1587
+msgid "Shall I pick a character for you? [ynaq] "
+msgstr ""
+
+#: src/role.c:1594
+msgid "Shall I pick "
+msgstr ""
+
+#: src/role.c:1950
+msgid "Random"
 msgstr ""
 
 #: src/role.c:2124
@@ -205,4 +2882,1200 @@ msgstr ""
 
 #: src/role.c:2155
 msgid "Goodbye"
+msgstr ""
+
+#: src/role.c:2323
+msgid "Pick a role or profession"
+msgstr ""
+
+#: src/rumors.c:281
+msgid "rumors not accessible."
+msgstr ""
+
+#: src/rumors.c:546
+msgid "What a pity that you cannot read it!"
+msgstr ""
+
+#: src/rumors.c:707
+msgid "is no one here to consult."
+msgstr ""
+
+#: src/rumors.c:713
+msgid "have no gold."
+msgstr ""
+
+#: src/rumors.c:725
+msgid "don't even have enough gold for that!"
+msgstr ""
+
+#: src/save.c:52
+msgid "Saving..."
+msgstr ""
+
+#: src/save.c:117
+msgid "seems to be an old save file."
+msgstr ""
+
+#: src/save.c:130
+msgid "Cannot open save file."
+msgstr ""
+
+#: src/save.c:348
+msgid "Probably someone removed it."
+msgstr ""
+
+#: src/shk.c:206
+msgid "have no room for the gold!"
+msgstr ""
+
+#: src/shk.c:529
+msgid "But no one seems to respond to it."
+msgstr ""
+
+#: src/shk.c:700
+msgid "escaped the shop without paying!"
+msgstr ""
+
+#: src/shk.c:1012
+msgid "have no credit or debt in here."
+msgstr ""
+
+#: src/shk.c:1029
+msgid "have no credit in here."
+msgstr ""
+
+#: src/shk.c:1033
+msgid "don't owe any gold here."
+msgstr ""
+
+#: src/shk.c:1798
+msgid "appears to be no shopkeeper here to receive your payment."
+msgstr ""
+
+#: src/shk.c:1803
+msgid "see..."
+msgstr ""
+
+#: src/shk.c:1831
+msgid "Pay whom?"
+msgstr ""
+
+#: src/shk.c:1839
+msgid "Try again..."
+msgstr ""
+
+#: src/shk.c:1843
+msgid "are generous to yourself."
+msgstr ""
+
+#: src/shk.c:1852
+msgid "is no one there to receive your payment."
+msgstr ""
+
+#: src/shk.c:1891
+msgid "But you have some gold stashed away."
+msgstr ""
+
+#: src/shk.c:1902
+msgid "But you have hidden gold!"
+msgstr ""
+
+#: src/shk.c:1995
+msgid "debt is covered by your credit."
+msgstr ""
+
+#: src/shk.c:2000
+msgid "pay that debt."
+msgstr ""
+
+#: src/shk.c:2008
+msgid "That debt is partially offset by your credit."
+msgstr ""
+
+#: src/shk.c:2009
+msgid "pay the remainder."
+msgstr ""
+
+#: src/shk.c:2093
+msgid "Maybe you have some gold stashed away?"
+msgstr ""
+
+#: src/shk.c:3346 src/shk.c:3524
+msgid "got that for free!"
+msgstr ""
+
+#: src/shk.c:3855
+msgid "have no credit remaining."
+msgstr ""
+
+#: src/shk.c:3915 src/shk.c:6073
+msgid "debt is paid off."
+msgstr ""
+
+#: src/shk.c:4586
+msgid "someone muttering an incantation."
+msgstr ""
+
+#: src/shk.c:4840
+msgid "Suddenly, a section of the wall closes up!"
+msgstr ""
+
+#: src/shk.c:4842
+msgid "Suddenly, the shop door reappears!"
+msgstr ""
+
+#: src/shk.c:4849
+msgid "The dungeon acoustics noticeably change."
+msgstr ""
+
+#: src/shk.c:5292
+msgid "an angry voice:"
+msgstr ""
+
+#: src/shk.c:5784 src/shk.c:5791
+msgid "credit is erased."
+msgstr ""
+
+#: src/sit.c:30
+msgid "notice you have no gold!"
+msgstr ""
+
+#: src/sit.c:117 src/sit.c:127 src/sit.c:135
+msgid "A voice echoes:"
+msgstr ""
+
+#: src/sit.c:148
+msgid "A terrible drone fills your head!"
+msgstr ""
+
+#: src/sit.c:152
+msgid "An image forms in your mind."
+msgstr ""
+
+#: src/sit.c:158
+msgid "vision becomes clear."
+msgstr ""
+
+#: src/sit.c:195
+msgid "are granted an insight!"
+msgstr ""
+
+#: src/sit.c:202
+msgid "mind turns into a pretzel!"
+msgstr ""
+
+#: src/sit.c:259
+msgid "Sitting on the throne was a terrible experience."
+msgstr ""
+
+#: src/sit.c:273
+msgid "A greasy liquid sprays all over you!"
+msgstr ""
+
+#: src/sit.c:331
+msgid "This throne was not meant for those such as you!"
+msgstr ""
+
+#: src/sit.c:338
+msgid "The throne is covered in acid!"
+msgstr ""
+
+#: src/sit.c:347
+msgid "As you sit on the throne, your body and mind start to warp."
+msgstr ""
+
+#: src/sit.c:369
+msgid "don't have enough energy to lay an egg."
+msgstr ""
+
+#: src/sit.c:373
+msgid "A splash tetra you are not."
+msgstr ""
+
+#: src/sit.c:379
+msgid "yearn for the Sargasso Sea."
+msgstr ""
+
+#: src/sit.c:416
+msgid "are no seats in here!"
+msgstr ""
+
+#: src/sit.c:420
+msgid "are sitting on air."
+msgstr ""
+
+#: src/sit.c:448
+msgid "It's probably not a good time for a picnic..."
+msgstr ""
+
+#: src/sit.c:455
+msgid "It's squishy..."
+msgstr ""
+
+#: src/sit.c:459
+msgid "Squelch!"
+msgstr ""
+
+#: src/sit.c:464
+msgid "It's not very comfortable..."
+msgstr ""
+
+#: src/sit.c:475
+msgid "sit down on a spike.  Ouch!"
+msgstr ""
+
+#: src/sit.c:480
+msgid "sit down in the pit."
+msgstr ""
+
+#: src/sit.c:483
+msgid "sit in the spider web and get entangled further!"
+msgstr ""
+
+#: src/sit.c:495
+msgid "maneuver to sit!"
+msgstr ""
+
+#: src/sit.c:508
+msgid "are no cushions floating nearby."
+msgstr ""
+
+#: src/sit.c:510
+msgid "sit down on the muddy bottom."
+msgstr ""
+
+#: src/sit.c:681
+msgid "senses fail!"
+msgstr ""
+
+#: src/sounds.c:75
+msgid "an angry drone."
+msgstr ""
+
+#: src/sounds.c:98
+msgid "suddenly realize it is unnaturally quiet."
+msgstr ""
+
+#: src/sounds.c:261
+msgid "someone searching."
+msgstr ""
+
+#: src/sounds.c:270
+msgid "the footsteps of a guard on patrol."
+msgstr ""
+
+#: src/sounds.c:273
+msgid "Ebenezer Scrooge!"
+msgstr ""
+
+#: src/sounds.c:971
+msgid "freeze for a moment."
+msgstr ""
+
+#: src/sounds.c:1269
+msgid "speak.  You're choking!"
+msgstr ""
+
+#: src/sounds.c:1273
+msgid "They won't hear you out there."
+msgstr ""
+
+#: src/sounds.c:1277
+msgid "speech is unintelligible underwater."
+msgstr ""
+
+#: src/sounds.c:1321
+msgid "Talking to yourself is a bad habit for a dungeoneer."
+msgstr ""
+
+#: src/sounds.c:1352
+msgid "It's like talking to a wall."
+msgstr ""
+
+#: src/spell.c:152
+msgid "These runes were just too much to comprehend."
+msgstr ""
+
+#: src/spell.c:198
+msgid "accidentally tear the spellbook to pieces."
+msgstr ""
+
+#: src/spell.c:236
+msgid "turn the pages of the Book of the Dead..."
+msgstr ""
+
+#: src/spell.c:257
+msgid "a faint chime..."
+msgstr ""
+
+#: src/spell.c:260
+msgid "Vlad's doppelganger is amused."
+msgstr ""
+
+#: src/spell.c:285
+msgid "At least one of your relics is cursed..."
+msgstr ""
+
+#: src/spell.c:309
+msgid "raised the dead!"
+msgstr ""
+
+#: src/spell.c:329
+msgid "ancestors are annoyed with you!"
+msgstr ""
+
+#: src/spell.c:335
+msgid "Oh my!  Your name appears in the book!"
+msgstr ""
+
+#: src/spell.c:402
+msgid "This spellbook is too faint to be read any more."
+msgstr ""
+
+#: src/spell.c:420
+msgid "This spellbook is too faint to read even once."
+msgstr ""
+
+#: src/spell.c:507
+msgid "This spellbook is all blank."
+msgstr ""
+
+#: src/spell.c:691
+msgid "are too impaired to cast a spell."
+msgstr ""
+
+#: src/spell.c:694
+msgid "are unable to chant the incantation."
+msgstr ""
+
+#: src/spell.c:704
+msgid "arms are not free to cast!"
+msgstr ""
+
+#: src/spell.c:723 src/spell.c:2028
+msgid "don't know any spells right now."
+msgstr ""
+
+#: src/spell.c:774
+msgid "don't know that spell."
+msgstr ""
+
+#: src/spell.c:1175
+msgid "skin feels warm for a moment."
+msgstr ""
+
+#: src/spell.c:1252
+msgid "knowledge of this spell is twisted."
+msgstr ""
+
+#: src/spell.c:1253
+msgid "It invokes nightmarish images in your mind..."
+msgstr ""
+
+#: src/spell.c:1262
+msgid "strain to recall the spell."
+msgstr ""
+
+#: src/spell.c:1264
+msgid "have difficulty remembering the spell."
+msgstr ""
+
+#: src/spell.c:1266
+msgid "knowledge of this spell is growing faint."
+msgstr ""
+
+#: src/spell.c:1268
+msgid "recall of this spell is gradually fading."
+msgstr ""
+
+#: src/spell.c:1272
+msgid "are too hungry to cast that spell."
+msgstr ""
+
+#: src/spell.c:1276
+msgid "lack the strength to cast spells."
+msgstr ""
+
+#: src/spell.c:1373
+msgid "fail to cast the spell correctly."
+msgstr ""
+
+#: src/spell.c:1661
+msgid "You're joking!  In this weather?"
+msgstr ""
+
+#: src/spell.c:1664
+msgid "had better wait for the sun to come out."
+msgstr ""
+
+#: src/spell.c:1668
+msgid "Where do you want to cast the spell?"
+msgstr ""
+
+#: src/spell.c:1690
+msgid "mind fails to lock onto that location!"
+msgstr ""
+
+#: src/spell.c:2063
+msgid "You didn't know any spells."
+msgstr ""
+
+#: src/spell.c:2066
+msgid "Spells:"
+msgstr ""
+
+#: src/steal.c:110
+msgid "purse feels lighter."
+msgstr ""
+
+#: src/steal.c:392
+msgid "Somebody tries to rob you, but finds nothing to steal."
+msgstr ""
+
+#: src/steed.c:51
+msgid "Saddle yourself?  Very funny..."
+msgstr ""
+
+#: src/steed.c:56 src/steed.c:257
+msgid "I see nobody there."
+msgstr ""
+
+#: src/steed.c:78
+msgid "Shame on you!"
+msgstr ""
+
+#: src/steed.c:88
+msgid "saddle such a creature."
+msgstr ""
+
+#: src/steed.c:213
+msgid "Maybe you should find a designated driver."
+msgstr ""
+
+#: src/steed.c:245
+msgid "won't fit on a saddle."
+msgstr ""
+
+#: src/steed.c:249
+msgid "do that while carrying so much stuff."
+msgstr ""
+
+#: src/steed.c:276
+msgid "are stuck here for now."
+msgstr ""
+
+#: src/steed.c:323
+msgid "ride such a creature."
+msgstr ""
+
+#: src/steed.c:377
+msgid "aren't stealthy anymore."
+msgstr ""
+
+#: src/steed.c:641
+msgid "can't.  There isn't anywhere for you to stand."
+msgstr ""
+
+#: src/steed.c:648
+msgid "It felt good to get out of the rain."
+msgstr ""
+
+#: src/steed.c:665
+msgid "seem less noisy now."
+msgstr ""
+
+#: src/teleport.c:855
+msgid "A mysterious force prevents you from teleporting!"
+msgstr ""
+
+#: src/teleport.c:875
+msgid "Being unconscious, you cannot control your teleport."
+msgstr ""
+
+#: src/teleport.c:903 src/teleport.c:1408
+msgid "Sorry..."
+msgstr ""
+
+#: src/teleport.c:1057
+msgid "This is a vault teleport, usable once only."
+msgstr ""
+
+#: src/teleport.c:1216
+msgid "Oops..."
+msgstr ""
+
+#: src/teleport.c:1262
+msgid "cease to exist."
+msgstr ""
+
+#: src/teleport.c:1269
+msgid "An energized cloud of dust begins to coalesce."
+msgstr ""
+
+#: src/teleport.c:1335
+msgid "arrive in heaven."
+msgstr ""
+
+#: src/teleport.c:1342
+msgid "(In fact, you're on Cloud 9!)"
+msgstr ""
+
+#: src/teleport.c:1345
+msgid "are now high above the clouds..."
+msgstr ""
+
+#: src/teleport.c:1354
+msgid "Unfortunately, you don't know how to fly."
+msgstr ""
+
+#: src/teleport.c:1355
+msgid "plummet a few thousand feet to your death."
+msgstr ""
+
+#: src/teleport.c:1463
+msgid "activated a magic portal!"
+msgstr ""
+
+#: src/timeout.c:273
+msgid "yawn."
+msgstr ""
+
+#: src/timeout.c:697
+msgid "have recovered from your illness."
+msgstr ""
+
+#: src/timeout.c:703
+msgid "You die from your illness."
+msgstr ""
+
+#: src/timeout.c:809
+msgid "land."
+msgstr ""
+
+#: src/timeout.c:823
+msgid "no longer feel safe from acid."
+msgstr ""
+
+#: src/timeout.c:836
+msgid "no longer feel secure from petrification."
+msgstr ""
+
+#: src/timeout.c:851
+msgid "temporary ability to survive burning has ended."
+msgstr ""
+
+#: src/timeout.c:856
+msgid "temporary ability to walk on liquid has ended."
+msgstr ""
+
+#: src/timeout.c:916
+msgid "make a lot of noise!"
+msgstr ""
+
+#: src/timeout.c:1285
+msgid "lose your balance."
+msgstr ""
+
+#: src/timeout.c:1312
+msgid "flounder."
+msgstr ""
+
+#: src/timeout.c:1315
+msgid "stumble."
+msgstr ""
+
+#: src/timeout.c:1329
+msgid "let go of the reins."
+msgstr ""
+
+#: src/timeout.c:1332
+msgid "bang into the saddle-horn."
+msgstr ""
+
+#: src/timeout.c:1335
+msgid "slide to one side of the saddle."
+msgstr ""
+
+#: src/timeout.c:1365
+msgid "lantern is getting dim."
+msgstr ""
+
+#: src/timeout.c:1367
+msgid "Batteries have not been invented yet."
+msgstr ""
+
+#: src/timeout.c:1881
+msgid "Kaboom!!!  Boom!!  Boom!!"
+msgstr ""
+
+#: src/timeout.c:1891
+msgid "a rumbling noise."
+msgstr ""
+
+#: src/uhitm.c:92
+msgid "avoid harm."
+msgstr ""
+
+#: src/uhitm.c:290
+msgid "Wait!  There's a hidden monster there!"
+msgstr ""
+
+#: src/uhitm.c:340
+msgid "caitiff!"
+msgstr ""
+
+#: src/uhitm.c:344
+msgid "dishonorably attack the innocent!"
+msgstr ""
+
+#: src/uhitm.c:526
+msgid "have no way to attack monsters physically."
+msgstr ""
+
+#: src/uhitm.c:561
+msgid "miss wildly and stumble forwards."
+msgstr ""
+
+#: src/uhitm.c:606
+msgid "bloodthirsty blade attacks!"
+msgstr ""
+
+#: src/uhitm.c:1520
+msgid "dishonorably use a poisoned weapon!"
+msgstr ""
+
+#: src/uhitm.c:1649
+msgid "hit it."
+msgstr ""
+
+#: src/uhitm.c:2139
+msgid "Some hell-p has arrived!"
+msgstr ""
+
+#: src/uhitm.c:2306
+msgid "rust!"
+msgstr ""
+
+#: src/uhitm.c:2567
+msgid "go up in flames!"
+msgstr ""
+
+#: src/uhitm.c:2652
+msgid "You're covered in frost!"
+msgstr ""
+
+#: src/uhitm.c:2710
+msgid "get zapped!"
+msgstr ""
+
+#: src/uhitm.c:2806
+msgid "purse feels heavier."
+msgstr ""
+
+#: src/uhitm.c:2890
+msgid "are not affected."
+msgstr ""
+
+#: src/uhitm.c:3033
+msgid "chuckle."
+msgstr ""
+
+#: src/uhitm.c:3046 src/uhitm.c:3090
+msgid "laughter."
+msgstr ""
+
+#: src/uhitm.c:3052
+msgid "Some writing vanishes from your head!"
+msgstr ""
+
+#: src/uhitm.c:3137
+msgid "poison was deadly..."
+msgstr ""
+
+#: src/uhitm.c:3198
+msgid "suck in some slime and don't feel very well."
+msgstr ""
+
+#: src/uhitm.c:3226
+msgid "don't seem harmed."
+msgstr ""
+
+#: src/uhitm.c:3327
+msgid "The barbs stick to you!"
+msgstr ""
+
+#: src/uhitm.c:3403
+msgid "are being crushed."
+msgstr ""
+
+#: src/uhitm.c:3449 src/uhitm.c:6055
+msgid "momentarily stiffen."
+msgstr ""
+
+#: src/uhitm.c:3452
+msgid "are frozen!"
+msgstr ""
+
+#: src/uhitm.c:3504
+msgid "are put to sleep!"
+msgstr ""
+
+#: src/uhitm.c:3558
+msgid "escape harm."
+msgstr ""
+
+#: src/uhitm.c:3566
+msgid "are unaffected."
+msgstr ""
+
+#: src/uhitm.c:3574
+msgid "Yuck!"
+msgstr ""
+
+#: src/uhitm.c:3707
+msgid "are getting even more confused."
+msgstr ""
+
+#: src/uhitm.c:3709
+msgid "are getting confused."
+msgstr ""
+
+#: src/uhitm.c:3757
+msgid "aren't transformed."
+msgstr ""
+
+#: src/uhitm.c:3855
+msgid "Was that the touch of death?"
+msgstr ""
+
+#: src/uhitm.c:4222
+msgid "hissing."
+msgstr ""
+
+#: src/uhitm.c:4282
+msgid "You feel feverish."
+msgstr ""
+
+#: src/uhitm.c:4874
+msgid "destroy it!"
+msgstr ""
+
+#: src/uhitm.c:5038
+msgid "Unfortunately, digesting any of it is fatal."
+msgstr ""
+
+#: src/uhitm.c:5204
+msgid "armor is rather cumbersome..."
+msgstr ""
+
+#: src/uhitm.c:5211
+msgid "miss it."
+msgstr ""
+
+#: src/uhitm.c:5909
+msgid "are splashed!"
+msgstr ""
+
+#: src/uhitm.c:5985
+msgid "A hail of magic missiles narrowly misses you!"
+msgstr ""
+
+#: src/uhitm.c:5987
+msgid "are hit by magic missiles appearing from thin air!"
+msgstr ""
+
+#: src/uhitm.c:6076
+msgid "are suddenly very cold!"
+msgstr ""
+
+#: src/uhitm.c:6099
+msgid "are suddenly very hot!"
+msgstr ""
+
+#: src/uhitm.c:6112
+msgid "are jolted with electricity!"
+msgstr ""
+
+#: src/vault.c:114
+msgid "are encased in rock."
+msgstr ""
+
+#: src/vault.c:449
+msgid "Someone else has entered the Vault."
+msgstr ""
+
+#: src/vault.c:725
+msgid "a distant chant."
+msgstr ""
+
+#: src/vault.c:727
+msgid "A mysterious force moves the gold into the vault."
+msgstr ""
+
+#: src/weapon.c:1311
+msgid "Skills:"
+msgstr ""
+
+#: src/wield.c:225
+msgid "secure the tether."
+msgstr ""
+
+#: src/wield.c:256
+msgid "have an uneasy feeling about wielding cold iron."
+msgstr ""
+
+#: src/wield.c:364 src/wield.c:469
+msgid "Don't be ridiculous!"
+msgstr ""
+
+#: src/wield.c:378
+msgid "are already wielding that!"
+msgstr ""
+
+#: src/wield.c:444
+msgid "cannot wield that!"
+msgstr ""
+
+#: src/wield.c:494
+msgid "have no secondary weapon readied."
+msgstr ""
+
+#: src/wield.c:525
+msgid "have nothing to ready for firing."
+msgstr ""
+
+#: src/wield.c:540
+msgid "now have no ammunition readied."
+msgstr ""
+
+#: src/wield.c:544
+msgid "already have no ammunition readied!"
+msgstr ""
+
+#: src/wield.c:556
+msgid "can't ready only part of your gold."
+msgstr ""
+
+#: src/wield.c:563
+msgid "That ammunition is already readied!"
+msgstr ""
+
+#: src/wield.c:715
+msgid "do that."
+msgstr ""
+
+#: src/wield.c:767
+msgid "use two weapons in your current form."
+msgstr ""
+
+#: src/wield.c:790
+msgid "use two weapons while wearing a shield."
+msgstr ""
+
+#: src/wield.c:849
+msgid "switch to your primary weapon."
+msgstr ""
+
+#: src/wield.c:858
+msgid "begin two-weapon combat."
+msgstr ""
+
+#: src/wizard.c:775
+msgid "A voice booms out..."
+msgstr ""
+
+#: src/wizcmds.c:334
+msgid "is no monster there."
+msgstr ""
+
+#: src/wizcmds.c:465
+msgid "are already that experienced."
+msgstr ""
+
+#: src/wizcmds.c:468
+msgid "are already as inexperienced as you can get."
+msgstr ""
+
+#: src/wizcmds.c:477
+msgid "are already as experienced as you can get."
+msgstr ""
+
+#: src/wizcmds.c:503
+msgid "Pick a monster to hurtle."
+msgstr ""
+
+#: src/wizcmds.c:552
+msgid "The fuzz tester will make NetHack execute random keypresses."
+msgstr ""
+
+#: src/wizcmds.c:553
+msgid "is no conventional way out of this mode."
+msgstr ""
+
+#: src/wizcmds.c:896
+msgid "are incapable of detecting odors in your present form."
+msgstr ""
+
+#: src/wizcmds.c:900
+msgid "can move the cursor to a monster that you want to smell."
+msgstr ""
+
+#: src/wizcmds.c:902
+msgid "Pick a monster to smell."
+msgstr ""
+
+#: src/wizcmds.c:933
+msgid "don't smell any monster there."
+msgstr ""
+
+#: src/wizcmds.c:1527
+msgid "No monsters currently migrating."
+msgstr ""
+
+#: src/wizcmds.c:1606
+msgid "None."
+msgstr ""
+
+#: src/wizcmds.c:1900
+msgid "Can't get there from here."
+msgstr ""
+
+#: src/worn.c:1199
+msgid "a cracking sound."
+msgstr ""
+
+#: src/worn.c:1217 src/worn.c:1226
+msgid "a ripping sound."
+msgstr ""
+
+#: src/worn.c:1239
+msgid "a thud."
+msgstr ""
+
+#: src/worn.c:1283 src/worn.c:1295
+msgid "a clank."
+msgstr ""
+
+#: src/write.c:88
+msgid "need hands to be able to write!"
+msgstr ""
+
+#: src/write.c:212
+msgid "write that!"
+msgstr ""
+
+#: src/write.c:213
+msgid "It's obscene!"
+msgstr ""
+
+#: src/write.c:228
+msgid "give up on the idea."
+msgstr ""
+
+#: src/write.c:230
+msgid "tear it up."
+msgstr ""
+
+#: src/write.c:235
+msgid "No mere dungeon adventurer could write that."
+msgstr ""
+
+#: src/write.c:240
+msgid "Unfortunately you don't have enough information to go on."
+msgstr ""
+
+#: src/write.c:258
+msgid "marker is too dry to write that!"
+msgstr ""
+
+#: src/write.c:271
+msgid "marker dries out!"
+msgstr ""
+
+#: src/write.c:348
+msgid "fail to write the scroll correctly and it disappears."
+msgstr ""
+
+#: src/zap.c:228
+msgid "A huge hole opens up..."
+msgstr ""
+
+#: src/zap.c:1053
+msgid "A corpse is resuscitated."
+msgstr ""
+
+#: src/zap.c:1233
+msgid "shudder in dread."
+msgstr ""
+
+#: src/zap.c:2106
+msgid "You smell the odor of meat."
+msgstr ""
+
+#: src/zap.c:2108
+msgid "You smell a delicious smell."
+msgstr ""
+
+#: src/zap.c:2285 src/zap.c:2295
+msgid "a crumbling sound."
+msgstr ""
+
+#: src/zap.c:2379
+msgid "a defibrillator."
+msgstr ""
+
+#: src/zap.c:2519
+msgid "wrest one last charge from the worn-out wand."
+msgstr ""
+
+#: src/zap.c:2577
+msgid "Unfortunately, nothing happens."
+msgstr ""
+
+#: src/zap.c:2633
+msgid "aren't able to zap anything in your current form."
+msgstr ""
+
+#: src/zap.c:2721
+msgid "bash yourself!"
+msgstr ""
+
+#: src/zap.c:2734
+msgid "shock yourself!"
+msgstr ""
+
+#: src/zap.c:2740
+msgid "zap yourself, but seem unharmed."
+msgstr ""
+
+#: src/zap.c:2749
+msgid "explode a fireball on top of yourself!"
+msgstr ""
+
+#: src/zap.c:2762
+msgid "You've set yourself afire!"
+msgstr ""
+
+#: src/zap.c:2783
+msgid "imitate a popsicle!"
+msgstr ""
+
+#: src/zap.c:2799
+msgid "Idiot!  You've shot yourself!"
+msgstr ""
+
+#: src/zap.c:2856
+msgid "don't feel sleepy!"
+msgstr ""
+
+#: src/zap.c:2862
+msgid "fall asleep!"
+msgstr ""
+
+#: src/zap.c:2898
+msgid "You irradiate yourself with pure energy!"
+msgstr ""
+
+#: src/zap.c:3192
+msgid "amulet grows hot for a moment, then cools."
+msgstr ""
+
+#: src/zap.c:3261
+msgid "probe reveals nothing."
+msgstr ""
+
+#: src/zap.c:3329
+msgid "There's a trapdoor beneath you; it shatters."
+msgstr ""
+
+#: src/zap.c:3331
+msgid "The trapdoor beneath you shatters."
+msgstr ""
+
+#: src/zap.c:3348
+msgid "A trapdoor appears beneath you."
+msgstr ""
+
+#: src/zap.c:3743
+msgid "Probing reveals a secret door."
+msgstr ""
+
+#: src/zap.c:3756
+msgid "Probing exposes a secret corridor."
+msgstr ""
+
+#: src/zap.c:4213
+msgid "skillfully catch the boomerang."
+msgstr ""
+
+#: src/zap.c:4222
+msgid "Klonk!"
+msgstr ""
+
+#: src/zap.c:4425
+msgid "don't feel hot!"
+msgstr ""
+
+#: src/zap.c:4444
+msgid "don't feel cold."
+msgstr ""
+
+#: src/zap.c:4457
+msgid "don't feel sleepy."
+msgstr ""
+
+#: src/zap.c:4469
+msgid "are not disintegrated."
+msgstr ""
+
+#: src/zap.c:4495
+msgid "seem unaffected."
+msgstr ""
+
+#: src/zap.c:4500 src/zap.c:4514
+msgid "aren't affected."
+msgstr ""
+
+#: src/zap.c:4908
+msgid "It seems even stronger than before."
+msgstr ""
+
+#: src/zap.c:4971
+msgid "For some reason you are not affected."
+msgstr ""
+
+#: src/zap.c:5168
+msgid "A web bursts into flames!"
+msgstr ""
+
+#: src/zap.c:5232
+msgid "Steam billows from the fountain."
+msgstr ""
+
+#: src/zap.c:5251
+msgid "a soft crackling."
+msgstr ""
+
+#: src/zap.c:5291
+msgid "a crackling sound."
+msgstr ""
+
+#: src/zap.c:5302
+msgid "pass through the now-solid rock."
+msgstr ""
+
+#: src/zap.c:5306
+msgid "are firmly stuck in the cooling rock."
+msgstr ""
+
+#: src/zap.c:5940
+msgid "aren't hurt!"
+msgstr ""
+
+#: src/zap.c:6327
+msgid "may wish for an object."
+msgstr ""
+
+#: src/zap.c:6362
+msgid "Nothing fitting that description exists in the game."
 msgstr ""
