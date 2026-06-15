@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 17:29+0200\n"
+"POT-Creation-Date: 2026-06-15 17:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2957,8 +2957,21 @@ msgstr ""
 msgid "%s forces %s"
 msgstr ""
 
+#: src/role.c:1936
+#, c-format
+msgid "Pick%s %s first"
+msgstr ""
+
+#: src/role.c:1936
+msgid " another"
+msgstr ""
+
 #: src/role.c:1950
 msgid "Random"
+msgstr ""
+
+#: src/role.c:1955 src/role.c:2672
+msgid "Quit"
 msgstr ""
 
 #: src/role.c:2124
@@ -3019,6 +3032,14 @@ msgstr ""
 
 #: src/role.c:2591
 msgid "Pick an alignment or creed"
+msgstr ""
+
+#: src/role.c:2660
+msgid "Yes; start game"
+msgstr ""
+
+#: src/role.c:2663
+msgid "No; choose role again"
 msgstr ""
 
 #: src/rumors.c:281

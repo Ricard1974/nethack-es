@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack-es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 17:29+0200\n"
+"POT-Creation-Date: 2026-06-15 17:36+0200\n"
 "PO-Revision-Date: 2026-06-10 21:50\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3002,9 +3002,23 @@ msgstr "¿Quieres que elija "
 msgid "%s forces %s"
 msgstr "%s obliga a %s"
 
+#: src/role.c:1936
+#, fuzzy, c-format
+msgid "Pick%s %s first"
+msgstr "Elige otro %s primero"
+
+#: src/role.c:1936
+#, fuzzy
+msgid " another"
+msgstr "uno otro."
+
 #: src/role.c:1950
 msgid "Random"
 msgstr "Aleatorio"
+
+#: src/role.c:1955 src/role.c:2672
+msgid "Quit"
+msgstr ""
 
 #: src/role.c:2124
 msgid "Salutations"
@@ -3065,6 +3079,14 @@ msgstr "Elige un género o sexo"
 #: src/role.c:2591
 msgid "Pick an alignment or creed"
 msgstr "Elige una alineación o credo"
+
+#: src/role.c:2660
+msgid "Yes; start game"
+msgstr "Sí; empezar partida"
+
+#: src/role.c:2663
+msgid "No; choose role again"
+msgstr "No; elegir rol de nuevo"
 
 #: src/rumors.c:281
 msgid "rumors not accessible."
@@ -29902,9 +29924,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "once.  It had killed hundreds of goblins in its time, when"
 #~ msgstr "una vez.  It tenía mató hundreds de goblins en su tiempo, cuando"
 
-#~ msgid "one another."
-#~ msgstr "uno otro."
-
 #~ msgid "one attempt to promote himself to the rank of greatest thief"
 #~ msgstr "uno attempt a promote himself al rank de greatest ladrón"
 
@@ -46974,12 +46993,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "Start a new game instead?"
 #~ msgstr "¿Empezar una nueva partida?"
 
-#~ msgid "Yes; start game"
-#~ msgstr "Sí; empezar partida"
-
-#~ msgid "No; choose role again"
-#~ msgstr "No; elegir rol de nuevo"
-
 #~ msgid "Do you want your possessions identified?"
 #~ msgstr "¿Quieres que identifiquen tus pertenencias?"
 
@@ -47247,6 +47260,3 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "Not using any items"
 #~ msgstr "No estás usando ningún objeto"
-
-#~ msgid "Pick another %s first"
-#~ msgstr "Elige otro %s primero"
