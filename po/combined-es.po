@@ -45677,8 +45677,8 @@ msgstr "Adiós"
 #~ msgid "No; choose role again"
 #~ msgstr "No; elegir rol de nuevo"
 
-#~ msgid "Random"
-#~ msgstr "Aleatorio"
+msgid "Random"
+msgstr "Aleatorio"
 
 #~ msgid "Do you want your possessions identified?"
 #~ msgstr "¿Quieres que identifiquen tus pertenencias?"
@@ -45807,8 +45807,8 @@ msgstr "¿Quieres que elija "
 #~ msgid "In what direction do you want to %s? [%s]"
 #~ msgstr "¿En qué dirección quieres %s? [%s]"
 
-#~ msgid "Pick a role or profession"
-#~ msgstr "Elige un rol o profesión"
+msgid "Pick a role or profession"
+msgstr "Elige un rol o profesión"
 
 #~ msgid "Pick a race or species"
 #~ msgstr "Elige una raza o especie"
@@ -45995,3 +45995,7 @@ msgstr "Mazmorras de Perdición"
 
 msgid "The Elemental Planes"
 msgstr "Planos Elementales"
+
+#: win/tty/wintty.c:3644
+msgid "--More--"
+msgstr "--Más--"
