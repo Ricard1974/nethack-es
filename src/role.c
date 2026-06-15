@@ -580,8 +580,8 @@ const struct Role roles[NUM_ROLES+1] = {
 /* NUM_RACES is defined in hack.h */
 const struct Race races[NUM_RACES + 1] = {
     {
-        "human",
-        "human",
+        N_("human"),
+        N_("human"),
         "humanity",
         "Hum",
         { "man", "woman" },
@@ -601,7 +601,7 @@ const struct Race races[NUM_RACES + 1] = {
         { 1, 0, 2, 0, 2, 0 }  /* Energy */
     },
     {
-        "elf",
+        N_("elf"),
         "elven",
         "elvenkind",
         "Elf",
@@ -621,7 +621,7 @@ const struct Race races[NUM_RACES + 1] = {
         { 2, 0, 3, 0, 3, 0 }  /* Energy */
     },
     {
-        "dwarf",
+        N_("dwarf"),
         "dwarven",
         "dwarvenkind",
         "Dwa",
@@ -641,7 +641,7 @@ const struct Race races[NUM_RACES + 1] = {
         { 0, 0, 0, 0, 0, 0 }  /* Energy */
     },
     {
-        "gnome",
+        N_("gnome"),
         "gnomish",
         "gnomehood",
         "Gno",
@@ -661,7 +661,7 @@ const struct Race races[NUM_RACES + 1] = {
         { 2, 0, 2, 0, 2, 0 }  /* Energy */
     },
     {
-        "orc",
+        N_("orc"),
         "orcish",
         "orcdom",
         "Orc",
@@ -2414,7 +2414,7 @@ genl_player_setup(int screenheight)
                         role_menu_extra(RS_ALGNMNT, win, FALSE);
                         role_menu_extra(RS_filter, win, FALSE);
                         role_menu_extra(ROLE_NONE, win, FALSE); /* quit */
-                        Strcpy(pbuf, "Pick a race or species");
+                        Strcpy(pbuf, _("Pick a race or species"));
                         end_menu(win, pbuf);
                         n = select_menu(win, PICK_ONE, &selected);
                         if (n > 0) {
@@ -2933,7 +2933,7 @@ setup_racemenu(
         add_menu(win, &nul_glyphinfo, &any,
                  filtering ? this_ch : highc(this_ch),
                  filtering ? highc(this_ch) : 0,
-                 ATR_NONE, clr, races[i].noun,
+                 ATR_NONE, clr, _(races[i].noun),
                  (!filtering && !race_ok)
                     ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     }

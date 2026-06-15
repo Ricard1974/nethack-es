@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack-es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 17:22+0200\n"
+"POT-Creation-Date: 2026-06-15 17:25+0200\n"
 "PO-Revision-Date: 2026-06-10 21:50\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2933,6 +2933,26 @@ msgstr "Valquiria"
 msgid "Wizard"
 msgstr "Mago"
 
+#: src/role.c:583 src/role.c:584
+msgid "human"
+msgstr "humano"
+
+#: src/role.c:604
+msgid "elf"
+msgstr "*elfo*"
+
+#: src/role.c:624
+msgid "dwarf"
+msgstr "enano*"
+
+#: src/role.c:644
+msgid "gnome"
+msgstr "gnomo*"
+
+#: src/role.c:664
+msgid "orc"
+msgstr "orco*"
+
 #: src/role.c:1587
 msgid "Shall I pick a character for you? [ynaq] "
 msgstr "¿Quieres que elija un personaje por ti? [ynaq] "
@@ -2992,6 +3012,10 @@ msgstr "Adiós"
 #: src/role.c:2323
 msgid "Pick a role or profession"
 msgstr "Elige un rol o profesión"
+
+#: src/role.c:2417
+msgid "Pick a race or species"
+msgstr "Elige una raza o especie"
 
 #: src/rumors.c:281
 msgid "rumors not accessible."
@@ -5403,9 +5427,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "*elemental"
 #~ msgstr "*elemental"
-
-#~ msgid "*elf*"
-#~ msgstr "*elfo*"
 
 #~ msgid "*epidaurus"
 #~ msgstr "*Epidauro"
@@ -24506,9 +24527,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "dwar* cloak"
 #~ msgstr "dwar* capa"
 
-#~ msgid "dwarf*"
-#~ msgstr "enano*"
-
 #~ msgid "dwarven root"
 #~ msgstr "dwarven raíz"
 
@@ -25809,9 +25827,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "gnome laureate"
 #~ msgstr "gnomo laureado"
 
-#~ msgid "gnome*"
-#~ msgstr "gnomo*"
-
 #~ msgid "gnomish mines"
 #~ msgstr "gnomish minas"
 
@@ -26713,9 +26728,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "huge chunk of meat"
 #~ msgstr "enorme chunk de carne"
-
-#~ msgid "human"
-#~ msgstr "humano"
 
 #~ msgid "human apart from his horns and tail.  He can freeze flesh"
 #~ msgstr "humano apart de su cuernos y tail.  He puede freeze carne"
@@ -30000,9 +30012,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "orange"
 #~ msgstr "naranja"
-
-#~ msgid "orc*"
-#~ msgstr "orco*"
 
 #~ msgid "orcrist"
 #~ msgstr "orcrist"
@@ -47045,9 +47054,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "In what direction do you want to %s? [%s]"
 #~ msgstr "¿En qué dirección quieres %s? [%s]"
-
-#~ msgid "Pick a race or species"
-#~ msgstr "Elige una raza o especie"
 
 #~ msgid "Pick a gender or sex"
 #~ msgstr "Elige un género o sexo"
