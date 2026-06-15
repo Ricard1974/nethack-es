@@ -2939,19 +2939,19 @@ msgstr "humano"
 
 #: src/role.c:604
 msgid "elf"
-msgstr "*elfo*"
+msgstr "elfo"
 
 #: src/role.c:624
 msgid "dwarf"
-msgstr "enano*"
+msgstr "enano"
 
 #: src/role.c:644
 msgid "gnome"
-msgstr "gnomo*"
+msgstr "gnomo"
 
 #: src/role.c:664
 msgid "orc"
-msgstr "orco*"
+msgstr "orco"
 
 #: src/role.c:1587
 msgid "Shall I pick a character for you? [ynaq] "
