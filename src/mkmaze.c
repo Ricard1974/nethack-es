@@ -1716,7 +1716,7 @@ water_friction(void)
         eff = TRUE;
     }
     if (eff)
-        pline("Water turbulence affects your movements.");
+        pline("%s", _("Water turbulence affects your movements."));
 }
 
 void

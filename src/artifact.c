@@ -1330,7 +1330,7 @@ Mb_hit(struct monst *magr, /* attacker */
                     if (u.uen > 0)
                         u.uen--;
                     disp.botl = TRUE;
-                    You("lose magical energy!");
+                    You(_("lose magical energy!"));
                 }
             } else {
                 /* canceled shapeshifter/vamp may have changed forms, so
@@ -1345,7 +1345,7 @@ Mb_hit(struct monst *magr, /* attacker */
                         u.uenpeak = u.uenmax;
                     u.uen++;
                     disp.botl = TRUE;
-                    You("absorb magical energy!");
+                    You(_("absorb magical energy!"));
                 }
             }
         }
@@ -1618,7 +1618,7 @@ artifact_hit(
                 pline(ROLL_FROM(behead_msg), wepdesc,
                       mon_nam(mdef));
                 if (Hallucination && !flags.female)
-                    pline("Good job Henry, but that wasn't Anne.");
+                    pline("%s", _("Good job Henry, but that wasn't Anne."));
                 observe_object(otmp);
                 return TRUE;
             } else {
@@ -1922,7 +1922,7 @@ invoke_create_portal(struct obj *obj)
         You_feel("very disoriented for a moment.");
     } else {
         if (!Blind)
-            You("are surrounded by a shimmering sphere!");
+            You(_("are surrounded by a shimmering sphere!"));
         else
             You_feel("weightless for a moment.");
         goto_level(&newlev, FALSE, FALSE, FALSE);
@@ -2223,7 +2223,7 @@ arti_invoke(struct obj *obj)
                 Your("body takes on a %s transparency...",
                      Hallucination ? "normal" : "strange");
             else
-                Your("body seems to unfade...");
+                Your(_("body seems to unfade..."));
             break;
         }
     }

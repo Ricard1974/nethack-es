@@ -727,7 +727,7 @@ pickup(int what) /* should be a long */
             check_here(FALSE);
             if (notake(gy.youmonst.data) && OBJ_AT(u.ux, u.uy)
                 && (autopickup || flags.pickup))
-                You("are physically incapable of picking anything up.");
+                You(_("are physically incapable of picking anything up."));
             return 0;
         }
 
@@ -1179,7 +1179,7 @@ query_objlist(const char *qstr,        /* query string */
                 /* this isn't actually possible; fake item representing
                    hero is only included for look here (':'), not pickup,
                    and that's PICK_NONE so we can't get here from there */
-                You_cant("pick yourself up!");
+                You_cant(_("pick yourself up!"));
                 continue;
             }
             if (engulfer_minvent && curr->owornmask != 0L) {
@@ -1498,7 +1498,7 @@ query_category(
         free((genericptr_t) *pick_list), *pick_list = 0;
         /* the menu entry description is "Auto-select every relevant item"
            [not sure whether issuing a message here is a good idea...] */
-        pline("No relevant items selected.");
+        pline("%s", _("No relevant items selected."));
     }
  query_done:
     destroy_nhwindow(win);
@@ -1982,10 +1982,10 @@ encumber_msg(void)
     if (go.oldcap < newcap) {
         switch (newcap) {
         case 1:
-            Your("movements are slowed slightly because of your load.");
+            Your(_("movements are slowed slightly because of your load."));
             break;
         case 2:
-            You("rebalance your load.  Movement is difficult.");
+            You(_("rebalance your load.  Movement is difficult."));
             break;
         case 3:
             You("%s under your heavy load.  Movement is very hard.",
@@ -2000,13 +2000,13 @@ encumber_msg(void)
     } else if (go.oldcap > newcap) {
         switch (newcap) {
         case 0:
-            Your("movements are now unencumbered.");
+            Your(_("movements are now unencumbered."));
             break;
         case 1:
-            Your("movements are only slowed slightly by your load.");
+            Your(_("movements are only slowed slightly by your load."));
             break;
         case 2:
-            You("rebalance your load.  Movement is still difficult.");
+            You(_("rebalance your load.  Movement is still difficult."));
             break;
         case 3:
             You("%s under your load.  Movement is still very hard.",
@@ -2151,7 +2151,7 @@ do_loot_cont(
         int tmp;
 
         You("carefully open %s...", the(xname(cobj)));
-        pline("It develops a huge set of teeth and bites you!");
+        pline("%s", _("It develops a huge set of teeth and bites you!"));
         tmp = rnd(10);
         losehp(Maybe_Half_Phys(tmp), "carnivorous bag", KILLED_BY_AN);
         makeknown(BAG_OF_TRICKS);
@@ -2196,14 +2196,14 @@ doloot_core(void)
         return ECMD_OK;
     }
     if (nohands(gy.youmonst.data)) {
-        You("have no hands!"); /* not `body_part(HAND)' */
+        You(_("have no hands!")); /* not `body_part(HAND)' */
         return ECMD_OK;
     }
     if (Confusion) {
         if (rn2(6) && reverse_loot())
             return ECMD_TIME;
         if (rn2(2)) {
-            pline("Being confused, you find nothing to loot.");
+            pline("%s", _("Being confused, you find nothing to loot."));
             return ECMD_TIME; /* costs a turn */
         }             /* else fallthrough to normal looting */
     }
@@ -2289,7 +2289,7 @@ doloot_core(void)
                 c = 'y';
         }
     } else if (IS_GRAVE(levl[cc.x][cc.y].typ)) {
-        You("need to dig up the grave to effectively loot it...");
+        You(_("need to dig up the grave to effectively loot it..."));
     }
 
     /*
@@ -2332,7 +2332,7 @@ doloot_core(void)
                              prev_inquiry ? "else " : "", mon_nam(mtmp));
                     return (timepassed ? ECMD_TIME : ECMD_OK);
                 } else {
-                    You("have to be at a container to loot it.");
+                    You(_("have to be at a container to loot it."));
                 }
             } else {
                 You("%s %s%shere to loot.", dont_find_anything,
@@ -2387,7 +2387,7 @@ reverse_loot(void)
         dropx(goldob);
         /* the dropped gold might have fallen to lower level */
         if (g_at(x, y))
-            pline("Ok, now there is loot here.");
+            pline("%s", _("Ok, now there is loot here."));
     } else {
         /* find original coffers chest if present, otherwise use nearest */
         otmp = 0;
@@ -2417,7 +2417,7 @@ reverse_loot(void)
                    && (mon = makemon(courtmon(), x, y, NO_MM_FLAGS)) != 0) {
             freeinv(goldob);
             add_to_minv(mon, goldob);
-            pline("The exchequer accepts your contribution.");
+            pline("%s", _("The exchequer accepts your contribution."));
             if (!rn2(10))
                 levl[x][y].looted = T_LOOTED;
         } else {
@@ -2450,7 +2450,7 @@ loot_mon(struct monst *mtmp, int *passed_info, boolean *prev_loot)
                          SUPPRESS_SADDLE, FALSE));
         if ((c = yn_function(qbuf, ynqchars, 'n', TRUE)) == 'y') {
             if (nolimbs(gy.youmonst.data)) {
-                You_cant("do that without limbs."); /* not body_part(HAND) */
+                You_cant(_("do that without limbs.")); /* not body_part(HAND) */
                 return 0;
             }
             if (otmp->cursed) {
@@ -2568,10 +2568,10 @@ in_container(struct obj *obj)
         impossible("<in> no gc.current_container?");
         return 0;
     } else if (obj == uball || obj == uchain) {
-        You("must be kidding.");
+        You(_("must be kidding."));
         return 0;
     } else if (obj == gc.current_container) {
-        pline("That would be an interesting topological exercise.");
+        pline("%s", _("That would be an interesting topological exercise."));
         return 0;
     } else if (obj->owornmask & (W_ARMOR | W_ACCESSORY)) {
         Norep("You cannot %s %s you are wearing.",
@@ -2946,7 +2946,7 @@ boolean
 u_handsy(void)
 {
     if (nohands(gy.youmonst.data)) {
-        You("have no hands!"); /* not `body_part(HAND)' */
+        You(_("have no hands!")); /* not `body_part(HAND)' */
         return FALSE;
     } else if (!freehand()) {
         You("have no free %s.", body_part(HAND));
@@ -2999,7 +2999,7 @@ use_container(
     if (obj->olocked) {
         pline("%s locked.", Tobjnam(obj, "are"));
         if (held)
-            You("must put it down to unlock.");
+            You(_("must put it down to unlock."));
         return ECMD_OK;
     } else if (obj->otrapped) {
         if (held)
@@ -3691,7 +3691,7 @@ dotip(void)
     else if (uarmh && cobj == uarmh)
         return tiphat() ? ECMD_TIME : ECMD_OK;
     else if (cobj->otyp == STATUE)
-        pline("Nothing interesting happens.");
+        pline("%s", _("Nothing interesting happens."));
     else
         pline1(nothing_happens);
     return ECMD_OK;
@@ -3910,7 +3910,7 @@ tipcontainer_gettarget(
 
     if (n_conts < 1 || !u_handsy()) {
         if (n_conts >= 1)
-            pline("Tipping contents to floor only...");
+            pline("%s", _("Tipping contents to floor only..."));
         *cancelled = FALSE;
         return (struct obj *) 0;
     }

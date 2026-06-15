@@ -422,7 +422,7 @@ savebones(int how, time_t when, struct obj *corpse)
                 if (delete_bonesfile(&u.uz))
                     goto make_bones;
                 else
-                    pline("Cannot unlink old bones.");
+                    pline("%s", _("Cannot unlink old bones."));
             }
         }
         /* compression can change the file's name, so must
@@ -663,7 +663,7 @@ getbones(void)
     program_state.reading_bonesfile = 1;
     if (validate(nhfp, gb.bones, FALSE, 0) != SF_UPTODATE) {
         if (!wizard)
-            pline("Discarding unusable bones; no need to panic...");
+            pline("%s", _("Discarding unusable bones; no need to panic..."));
         ok = FALSE;
         program_state.reading_bonesfile = 0;
     } else {
@@ -750,7 +750,7 @@ getbones(void)
          * So no point in a mysterious message for a normal event
          * -- just generate a new level for those N-1 games.
          */
-        /* pline("Cannot unlink bones."); */
+        /* pline("%s", _("Cannot unlink bones.")); */
         return 0;
     }
     return ok;

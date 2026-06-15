@@ -24,7 +24,7 @@ ballrelease(boolean showmsg)
 {
     if (carried(uball) && !welded(uball)) {
         if (showmsg)
-            pline("Startled, you drop the iron ball.");
+            pline("%s", _("Startled, you drop the iron ball."));
         if (uwep == uball)
             setuwep((struct obj *) 0);
         if (uswapwep == uball)
@@ -56,7 +56,7 @@ ballfall(void)
         pline_The("iron ball falls on your %s.", body_part(HEAD));
         if (uarmh) {
             if (hard_helmet(uarmh)) {
-                pline("Fortunately, you are wearing a hard helmet.");
+                pline("%s", _("Fortunately, you are wearing a hard helmet."));
                 dmg = 3;
             } else if (flags.verbose)
                 pline("%s does not protect you.", Yname2(uarmh));
@@ -794,7 +794,7 @@ drag_ball(coordxy x, coordxy y, int *bc_control,
         } else {
             struct monst *victim;
 
-            You("are jerked back by the iron ball!");
+            You(_("are jerked back by the iron ball!"));
             if ((victim = m_at(uchain->ox, uchain->oy)) != 0) {
                 int tmp;
                 int dieroll = rnd(20);
@@ -999,7 +999,7 @@ drag_down(void)
     forward = carried(uball) && (uwep == uball || !uwep || !rn2(3));
 
     if (carried(uball) && !welded(uball))
-        You("lose your grip on the iron ball.");
+        You(_("lose your grip on the iron ball."));
 
     cls();  /* previous level is still displayed although you
                went down the stairs. Avoids bug C343-20 */

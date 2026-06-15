@@ -772,7 +772,7 @@ resurrect(void)
         mtmp->mtame = 0, mtmp->mpeaceful = 0; /* paranoia */
         set_malign(mtmp);
         if (!Deaf) {
-            pline("A voice booms out...");
+            pline("%s", _("A voice booms out..."));
             SetVoice(mtmp, 0, 80, 0);
             verbalize("So thou thought thou couldst %s me, fool.", verb);
         }

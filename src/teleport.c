@@ -800,7 +800,7 @@ teleport_pet(struct monst *mtmp, boolean force_it)
             yelp(mtmp);
             return FALSE;
         } else {
-            Your("leash goes slack.");
+            Your(_("leash goes slack."));
  release_it:
             m_unleash(mtmp, FALSE);
             return TRUE;
@@ -852,7 +852,7 @@ scrolltele(struct obj *scroll)
 
     /* Disable teleportation in stronghold && Vlad's Tower */
     if (noteleport_level(&gy.youmonst) && !wizard) {
-        pline("A mysterious force prevents you from teleporting!");
+        pline("%s", _("A mysterious force prevents you from teleporting!"));
         if (scroll)
             learnscroll(scroll); /* this is obviously a teleport scroll */
         return;
@@ -872,7 +872,7 @@ scrolltele(struct obj *scroll)
     if (((Teleport_control || (scroll && scroll->blessed)) && !Stunned)
         || wizard) {
         if (unconscious()) {
-            pline("Being unconscious, you cannot control your teleport.");
+            pline("%s", _("Being unconscious, you cannot control your teleport."));
         } else {
             char whobuf[BUFSZ];
 
@@ -900,7 +900,7 @@ scrolltele(struct obj *scroll)
                     iflags.travelcc.x = iflags.travelcc.y = 0;
                 return;
             }
-            pline("Sorry...");
+            pline("%s", _("Sorry..."));
         }
     }
 
@@ -1054,7 +1054,7 @@ dotele(
         } else if (trap->ttyp == TELEP_TRAP) {
             trap_once = trap->once; /* trap may get deleted, save this */
             if (trap->once) {
-                pline("This is a vault teleport, usable once only.");
+                pline("%s", _("This is a vault teleport, usable once only."));
                 if (y_n("Jump in?") == 'n') {
                     trap = 0;
                 } else {
@@ -1213,7 +1213,7 @@ level_tele(void)
             if (!strcmp(buf, "*")) {
                 goto random_levtport;
             } else if (Confusion && rnl(5)) {
-                pline("Oops...");
+                pline("%s", _("Oops..."));
                 goto random_levtport;
             } else if (!strcmp(buf, "\033")) { /* cancelled */
                 return;
@@ -1259,14 +1259,14 @@ level_tele(void)
             You("%s in agony as your body begins to warp...",
                 is_silent(gy.youmonst.data) ? "writhe" : "scream");
             display_nhwindow(WIN_MESSAGE, FALSE);
-            You("cease to exist.");
+            You(_("cease to exist."));
             if (gi.invent)
                 Your("possessions land on the %s with a thud.",
                      surface(u.ux, u.uy));
             svk.killer.format = NO_KILLER_PREFIX;
             Strcpy(svk.killer.name, "committed suicide");
             done(DIED);
-            pline("An energized cloud of dust begins to coalesce.");
+            pline("%s", _("An energized cloud of dust begins to coalesce."));
             Your("body rematerializes%s.",
                  gi.invent ? ", and you gather up all your possessions" : "");
             return;
@@ -1332,17 +1332,17 @@ level_tele(void)
             gi.in_mklev = FALSE;
         }
         if (newlev <= -10) {
-            You("arrive in heaven.");
+            You(_("arrive in heaven."));
             SetVoice((struct monst *) 0, 0, 80, voice_deity);
             verbalize("Thou art early, but we'll admit thee.");
             svk.killer.format = NO_KILLER_PREFIX;
             Strcpy(svk.killer.name, "went to heaven prematurely");
         } else if (newlev == -9) {
             You_feel("deliriously happy.");
-            pline("(In fact, you're on Cloud 9!)");
+            pline("%s", _("(In fact, you're on Cloud 9!)"));
             display_nhwindow(WIN_MESSAGE, FALSE);
         } else
-            You("are now high above the clouds...");
+            You(_("are now high above the clouds..."));
 
         if (svk.killer.name[0]) {
             ; /* arrival in heaven is pending */
@@ -1351,8 +1351,8 @@ level_tele(void)
         } else if (Flying) {
             escape_by_flying = "fly down to the ground";
         } else {
-            pline("Unfortunately, you don't know how to fly.");
-            You("plummet a few thousand feet to your death.");
+            pline("%s", _("Unfortunately, you don't know how to fly."));
+            You(_("plummet a few thousand feet to your death."));
             Sprintf(svk.killer.name,
                     "teleported out of the dungeon and fell to %s death",
                     uhis());
@@ -1405,7 +1405,7 @@ level_tele(void)
          */
         if (!wizard && Inhell && !u.uevent.invoked && newlev >= deepest) {
             newlev = deepest - 1;
-            pline("Sorry...");
+            pline("%s", _("Sorry..."));
         }
         /* no teleporting out of quest dungeon */
         if (In_quest(&u.uz) && newlev < depth(&qstart_level))
@@ -1460,7 +1460,7 @@ domagicportal(struct trap *ttmp)
     if (!on_level(&u.uz, &u.uz0))
         return;
 
-    You("activated a magic portal!");
+    You(_("activated a magic portal!"));
 
     /* prevent the poor shnook, whose amulet was stolen while in
      * the endgame, from accidently triggering the portal to the

@@ -3598,14 +3598,14 @@ wizterrainwish(struct _readobjnam_data *d)
     } else if (!BSTRCMPI(bp, p - 6, "throne")) {
         lev->typ = THRONE;
         lev->looted = d->looted ? T_LOOTED : 0; /* overlays 'flags' */
-        pline("A throne.");
+        pline("%s", _("A throne."));
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 4, "sink")) {
         lev->typ = SINK;
         if (oldtyp != SINK)
             svl.level.flags.nsinks++;
         lev->looted = d->looted ? (S_LPUDDING | S_LDWASHER | S_LRING) : 0;
-        pline("A sink.");
+        pline("%s", _("A sink."));
         madeterrain = TRUE;
 
     /* ("water" matches "potion of water" rather than terrain) */
@@ -3712,14 +3712,14 @@ wizterrainwish(struct _readobjnam_data *d)
             pline("A %sgrave.", lev->disturbed ? "disturbed " : "");
             madeterrain = TRUE;
         } else {
-            pline("Can't place a grave here.");
+            pline("%s", _("Can't place a grave here."));
             badterrain = TRUE;
         }
     } else if (!BSTRCMPI(bp, p - 4, "tree")) {
         lev->typ = TREE;
         lev->looted = d->looted ? (TREE_LOOTED | TREE_SWARM) : 0;
         set_wallprop_from_str(bp);
-        pline("A tree.");
+        pline("%s", _("A tree."));
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 4, "bars")) {
         lev->typ = IRONBARS;
@@ -3729,12 +3729,12 @@ wizterrainwish(struct _readobjnam_data *d)
             is already set up, that should be calculated for this spot.
             Unfortunately, it can be tricky; placing one in open space
             and then another adjacent might need to recalculate first one.] */
-        pline("Iron bars.");
+        pline("%s", _("Iron bars."));
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 5, "cloud")) {
         lev->typ = CLOUD;
         lev->flags = 0;
-        pline("A cloud.");
+        pline("%s", _("A cloud."));
         del_engr_at(x, y);
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 4, "door")
@@ -3832,15 +3832,15 @@ wizterrainwish(struct _readobjnam_data *d)
         set_wallprop_from_str(bp);
         fix_wall_spines(max(0,u.ux-1), max(0,u.uy-1),
                         min(COLNO,u.ux+1), min(ROWNO,u.uy+1));
-        pline("A wall.");
+        pline("%s", _("A wall."));
     } else if (!BSTRCMPI(bp, p - 15, "secret corridor")) {
         if (lev->typ == CORR) {
             lev->typ = SCORR;
             /* neither CORR nor SCORR uses 'flags' or 'horizontal' */
-            pline("Secret corridor.");
+            pline("%s", _("Secret corridor."));
             madeterrain = TRUE;
         } else {
-            pline("Secret corridor requires corridor location.");
+            pline("%s", _("Secret corridor requires corridor location."));
             badterrain = TRUE;
         }
     } else if (!BSTRCMPI(bp, p - 4, "room")
@@ -3852,7 +3852,7 @@ wizterrainwish(struct _readobjnam_data *d)
             struct trap *t;
 
             lev->typ = ROOM;
-            pline("Room floor.");
+            pline("%s", _("Room floor."));
             if (IS_FURNITURE(oldtyp))
                 count_level_features();
             if ((t = t_at(x, y)) != 0 && t->ttyp != MAGIC_PORTAL)
@@ -3864,7 +3864,7 @@ wizterrainwish(struct _readobjnam_data *d)
             dbterrainmesg("Floor", x, y);
             madeterrain = TRUE;
         } else {
-            pline("Room|floor|ground not allowed here.");
+            pline("%s", _("Room|floor|ground not allowed here."));
             badterrain = TRUE;
         }
     }

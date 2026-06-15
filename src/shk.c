@@ -203,7 +203,7 @@ money2u(struct monst *mon, long amount)
 
     if (!merge_choice(gi.invent, mongold)
             && inv_cnt(FALSE) >= invlet_basic) {
-        You("have no room for the gold!");
+        You(_("have no room for the gold!"));
         dropy(mongold);
     } else {
         addinv(mongold);
@@ -517,7 +517,7 @@ call_kops(struct monst *shkp, boolean nearshop)
 
     Soundeffect(se_alarm, 80);
     if (!Deaf)
-        pline("An alarm sounds!");
+        pline("%s", _("An alarm sounds!"));
 
     nokops = ((svm.mvitals[PM_KEYSTONE_KOP].mvflags & G_GONE)
               && (svm.mvitals[PM_KOP_SERGEANT].mvflags & G_GONE)
@@ -526,7 +526,7 @@ call_kops(struct monst *shkp, boolean nearshop)
 
     if (!angry_guards(!!Deaf) && nokops) {
         if (flags.verbose && !Deaf)
-            pline("But no one seems to respond to it.");
+            pline("%s", _("But no one seems to respond to it."));
         return;
     }
 
@@ -697,7 +697,7 @@ rob_shop(struct monst *shkp)
              eshkp->credit, currency(eshkp->credit));
         total = 0L; /* credit gets cleared by setpaid() */
     } else {
-        You("escaped the shop without paying!");
+        You(_("escaped the shop without paying!"));
         total -= eshkp->credit;
     }
     setpaid(shkp);
@@ -1009,7 +1009,7 @@ shopper_financial_report(void)
 
     eshkp = this_shkp ? ESHK(this_shkp) : 0;
     if (eshkp && !(eshkp->credit || shop_debt(eshkp))) {
-        You("have no credit or debt in here.");
+        You(_("have no credit or debt in here."));
         this_shkp = 0; /* skip first pass */
     }
 
@@ -1026,11 +1026,11 @@ shopper_financial_report(void)
                     s_suffix(shkname(shkp)),
                     shtypes[eshkp->shoptype - SHOPBASE].name);
             else if (shkp == this_shkp)
-                You("have no credit in here.");
+                You(_("have no credit in here."));
             if ((amt = shop_debt(eshkp)) != 0)
                 You("owe %s %ld %s.", shkname(shkp), amt, currency(amt));
             else if (shkp == this_shkp)
-                You("don't owe any gold here.");
+                You(_("don't owe any gold here."));
         }
 }
 
@@ -1795,12 +1795,12 @@ dopay(void)
     }
 
     if ((!sk && (!Blind || Blind_telepat)) || (!Blind && !seensk)) {
-        There("appears to be no shopkeeper here to receive your payment.");
+        There(_("appears to be no shopkeeper here to receive your payment."));
         return ECMD_OK;
     }
 
     if (!seensk) {
-        You_cant("see...");
+        You_cant(_("see..."));
         return ECMD_OK;
     }
 
@@ -1828,7 +1828,7 @@ dopay(void)
         coord cc;
         int cx, cy;
 
-        pline("Pay whom?");
+        pline("%s", _("Pay whom?"));
         cc.x = u.ux;
         cc.y = u.uy;
         if (getpos(&cc, TRUE, "the creature you want to pay") < 0)
@@ -1836,11 +1836,11 @@ dopay(void)
         cx = cc.x;
         cy = cc.y;
         if (cx < 0) {
-            pline("Try again...");
+            pline("%s", _("Try again..."));
             return ECMD_OK;
         }
         if (u_at(cx, cy)) {
-            You("are generous to yourself.");
+            You(_("are generous to yourself."));
             return ECMD_OK;
         }
         mtmp = m_at(cx, cy);
@@ -1849,7 +1849,7 @@ dopay(void)
             return ECMD_OK;
         }
         if (!mtmp) {
-            There("is no one there to receive your payment.");
+            There(_("is no one there to receive your payment."));
             return ECMD_OK;
         }
         if (!mtmp->isshk) {
@@ -1888,7 +1888,7 @@ dopay(void)
         } else if (!umoney) {
             You("%shave no gold.", stashed_gold ? "seem to " : "");
             if (stashed_gold)
-                pline("But you have some gold stashed away.");
+                pline("%s", _("But you have some gold stashed away."));
         } else {
             if (umoney > ltmp) {
                 You("give %s the %ld gold piece%s %s asked for.",
@@ -1899,7 +1899,7 @@ dopay(void)
                     stashed_gold ? " openly kept" : "");
                 pay(umoney, shkp);
                 if (stashed_gold)
-                    pline("But you have hidden gold!");
+                    pline("%s", _("But you have hidden gold!"));
             }
             if ((umoney < ltmp / 2L) || (umoney < ltmp && stashed_gold))
                 pline("Unfortunately, %s doesn't look satisfied.",
@@ -1992,12 +1992,12 @@ dopay(void)
                 eshkp->credit -= dtmp;
                 eshkp->debit = 0L;
                 eshkp->loan = 0L;
-                Your("debt is covered by your credit.");
+                Your(_("debt is covered by your credit."));
             } else if (!eshkp->credit) {
                 money2mon(shkp, dtmp);
                 eshkp->debit = 0L;
                 eshkp->loan = 0L;
-                You("pay that debt.");
+                You(_("pay that debt."));
                 disp.botl = TRUE;
             } else {
                 dtmp -= eshkp->credit;
@@ -2005,8 +2005,8 @@ dopay(void)
                 money2mon(shkp, dtmp);
                 eshkp->debit = 0L;
                 eshkp->loan = 0L;
-                pline("That debt is partially offset by your credit.");
-                You("pay the remainder.");
+                pline("%s", _("That debt is partially offset by your credit."));
+                You(_("pay the remainder."));
                 disp.botl = TRUE;
             }
             paid = TRUE;
@@ -2090,7 +2090,7 @@ pay_billed_items(
             more_than_one ? " any of" : "", plur(more_than_one ? 2 : 1),
             (ebillct > 1) ? "you've picked" : "on your bill");
         if (stashed_gold)
-            pline("Maybe you have some gold stashed away?");
+            pline("%s", _("Maybe you have some gold stashed away?"));
         return TRUE;
     }
 
@@ -3343,7 +3343,7 @@ add_one_tobill(
         unbilled = TRUE;
     } else if (eshkp->billct == BILLSZ) {
         /* shk's bill is completely full */
-        You("got that for free!");
+        You(_("got that for free!"));
         unbilled = TRUE;
     }
     /* if not on any list (probably from bill_dummy_object() which creates
@@ -3521,7 +3521,7 @@ addtobill(
         return;
     } else if (ESHK(shkp)->billct == BILLSZ) {
         if (!silent)
-            You("got that for free!");
+            You(_("got that for free!"));
         return;
     }
 
@@ -3852,7 +3852,7 @@ stolen_value(
                         currency(ESHK(shkp)->credit));
                     return value;
                 } else if (!value) {
-                    You("have no credit remaining.");
+                    You(_("have no credit remaining."));
                     return 0;
                 }
                 still = "still ";
@@ -3912,7 +3912,7 @@ donate_gold(
         if (eshkp->debit) {
             eshkp->debit = 0L;
             eshkp->loan = 0L;
-            Your("debt is paid off.");
+            Your(_("debt is paid off."));
         }
         if (eshkp->credit == delta)
             You("have %sestablished %ld %s credit.",
@@ -4583,7 +4583,7 @@ shk_fixes_damage(struct monst *shkp)
               shk_closeby ? "an incantation" : "something");
     } else if (!Deaf && shk_closeby) {
         Soundeffect(se_mutter_incantation, 100);
-        You_hear("someone muttering an incantation.");
+        You_hear(_("someone muttering an incantation."));
     }
 
     (void) repair_damage(shkp, dam, FALSE);
@@ -4837,16 +4837,16 @@ repair_damage(
         if (IS_WALL(tmp_dam->typ)) {
             /* player sees actual repair process, so KNOWS it's a wall */
             levl[x][y].seenv = SVALL;
-            pline("Suddenly, a section of the wall closes up!");
+            pline("%s", _("Suddenly, a section of the wall closes up!"));
         } else if (IS_DOOR(tmp_dam->typ)) {
-            pline("Suddenly, the shop door reappears!");
+            pline("%s", _("Suddenly, the shop door reappears!"));
         }
         newsym(x, y);
     } else if (IS_WALL(tmp_dam->typ)) {
         if (inside_shop(u.ux, u.uy) == ESHK(shkp)->shoproom)
             You_feel("more claustrophobic than before.");
         else if (!Deaf && !rn2(10))
-            Norep("The dungeon acoustics noticeably change.");
+            Norep(_("The dungeon acoustics noticeably change."));
     }
 
     if (stop_picking)
@@ -5289,7 +5289,7 @@ pay_for_damage(const char *dmgstr, boolean cant_mollify)
             if (!animal) {
                 if (!Deaf && !muteshk(shkp)) {
                     /* Soundeffect(se_angry_voice, 75); */
-                    You_hear("an angry voice:");
+                    You_hear(_("an angry voice:"));
                     SetVoice(shkp, 0, 80, 0);
                     verbalize("Out of my way, scum!");
                 }
@@ -5781,14 +5781,14 @@ costly_gold(
             if (eshkp->credit > amount)
                 Your("credit is reduced by %ld %s.", amount, currency(amount));
             else
-                Your("credit is erased.");
+                Your(_("credit is erased."));
         }
         eshkp->credit -= amount;
     } else {
         delta = amount - eshkp->credit;
         if (!silent) {
             if (eshkp->credit)
-                Your("credit is erased.");
+                Your(_("credit is erased."));
             if (eshkp->debit)
                 Your("debt increases by %ld %s.", delta, currency(delta));
             else
@@ -6070,7 +6070,7 @@ globby_bill_fixup(struct obj *obj_absorber, struct obj *obj_absorbed)
                 if (eshkp->debit) {
                     eshkp->debit = 0L;
                     eshkp->loan = 0L;
-                    Your("debt is paid off.");
+                    Your(_("debt is paid off."));
                 }
                 if (eshkp->credit == delta)
                     pline_The("%s established %ld %s credit.",

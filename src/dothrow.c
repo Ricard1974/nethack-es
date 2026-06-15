@@ -126,12 +126,12 @@ throw_obj(struct obj *obj, int shotlimit)
     }
     if ((is_art(obj, ART_MJOLLNIR) && ACURR(A_STR) < STR19(25))
         || (obj->otyp == BOULDER && !throws_rocks(gy.youmonst.data))) {
-        pline("It's too heavy.");
+        pline("%s", _("It's too heavy."));
         res = ECMD_TIME;
         goto unsplit_stack;
     }
     if (!u.dx && !u.dy && !u.dz) {
-        You("cannot throw an object at yourself.");
+        You(_("cannot throw an object at yourself."));
         res = ECMD_OK;
         goto unsplit_stack;
     }
@@ -300,10 +300,10 @@ ok_to_throw(int *shotlimit_p) /* (see dothrow()) */
     gm.multi = 0; /* reset; it's been used up */
 
     if (notake(gy.youmonst.data)) {
-        You("are physically incapable of throwing or shooting anything.");
+        You(_("are physically incapable of throwing or shooting anything."));
         return FALSE;
     } else if (nohands(gy.youmonst.data)) {
-        You_cant("throw or shoot without hands."); /* not body_part(HAND) */
+        You_cant(_("throw or shoot without hands.")); /* not body_part(HAND) */
         return FALSE;
         /*[what about !freehand(), aside from cursed missile launcher?]*/
     }
@@ -524,7 +524,7 @@ dofire(void)
                 cmdq_add_ec(CQ_CANNED, dofire);
                 return ECMD_OK; /* haven't taken any time yet */
             } else {
-                You("have no ammunition readied.");
+                You(_("have no ammunition readied."));
             }
         } else {
             autoquiver();
@@ -535,7 +535,7 @@ dofire(void)
                 prinv("You ready:", obj, 0L);
                 uquiver->owornmask |= W_QUIVER;
             } else {
-                You("have nothing appropriate for your quiver.");
+                You(_("have nothing appropriate for your quiver."));
             }
         }
     }
@@ -807,18 +807,18 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
                     : odoor_diag ? "bumping into a door frame"
                       : "bumping into a closed door";
             if (odoor_diag)
-                You("hit the door frame!");
-            pline("Ouch!");
+                You(_("hit the door frame!"));
+            pline("%s", _("Ouch!"));
         } else if (ltyp == IRONBARS) {
             why = "crashing into iron bars";
-            You("crash into some iron bars.  Ouch!");
+            You(_("crash into some iron bars.  Ouch!"));
         } else if ((obj = sobj_at(BOULDER, x, y)) != 0) {
             why = "bumping into a boulder";
             You("bump into a %s.  Ouch!", xname(obj));
         }  else if (!may_pass) {
             /* did we hit a no-dig non-wall position? */
             why = "touching the edge of the universe";
-            You("smack into something!");
+            You(_("smack into something!"));
         } else if (diagonal
                    && bad_rock(gy.youmonst.data, u.ux, y)
                    && bad_rock(gy.youmonst.data, x, u.uy)) {
@@ -887,7 +887,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
         && bad_rock(gy.youmonst.data, x, u.uy)) {
         /* Move at a diagonal. */
         if (Sokoban) {
-            You("come to an abrupt halt!");
+            You(_("come to an abrupt halt!"));
             return FALSE;
         }
     }
@@ -931,7 +931,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
             Norep("You move over %s.", an(is_moat(x, y) ? "moat" : "pool"));
         }
     } else if (is_lava(x, y) && !stopping_short) {
-        Norep("You move over some lava.");
+        Norep(_("You move over some lava."));
     }
 
     /* FIXME:
@@ -948,7 +948,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
             dotrap(ttmp, NO_TRAP_FLAGS);
             return FALSE;
         } else if (ttmp->ttyp == VIBRATING_SQUARE) {
-            pline("The ground vibrates as you pass it.");
+            pline("%s", _("The ground vibrates as you pass it."));
             dotrap(ttmp, NO_TRAP_FLAGS); /* doesn't print messages */
         } else if (ttmp->ttyp == FIRE_TRAP) {
             dotrap(ttmp, NO_TRAP_FLAGS);
@@ -1319,7 +1319,7 @@ toss_up(struct obj *obj, boolean hitsroof)
             pline("You've got it all over your %s!", body_part(FACE));
             if (blindinc) {
                 if (otyp == BLINDING_VENOM && !Blind)
-                    pline("It blinds you!");
+                    pline("%s", _("It blinds you!"));
                 u.ucreamed += blindinc;
                 make_blinded(BlindedTimeout + (long) blindinc, FALSE);
                 if (!Blind)
@@ -1335,7 +1335,7 @@ toss_up(struct obj *obj, boolean hitsroof)
         hitfloor(obj, FALSE);
         gt.thrownobj = 0;
     } else if (harmless_missile(obj)) {
-        pline("It doesn't hurt.");
+        pline("%s", _("It doesn't hurt."));
         hitfloor(obj, FALSE);
         gt.thrownobj = 0;
     } else { /* neither potion nor other breaking object */
@@ -1384,7 +1384,7 @@ toss_up(struct obj *obj, boolean hitsroof)
             if ((less_damage && dmg < (Upolyd ? u.mh : u.uhp)) || harmless) {
                 if (!artimsg) {
                     if (!harmless) /* !harmless => less_damage here */
-                        pline("Fortunately, you are wearing a hard helmet.");
+                        pline("%s", _("Fortunately, you are wearing a hard helmet."));
                     else
                         pline("Unfortunately, you are wearing %s.",
                               an(helm_simple_name(uarmh))); /* helm or hat */
@@ -1405,7 +1405,7 @@ toss_up(struct obj *obj, boolean hitsroof)
             svk.killer.format = KILLED_BY;
             /* what goes up... */
             Strcpy(svk.killer.name, "elementary physics");
-            You("turn to stone.");
+            You(_("turn to stone."));
             if (obj)
                 dropy(obj); /* bypass most of hitfloor() */
             gt.thrownobj = 0;  /* now either gone or on floor */
@@ -2561,7 +2561,7 @@ breakobj(
                 if (obj->otyp != POT_WATER && !Half_gas_damage) {
                     if (!breathless(gy.youmonst.data)) {
                         /* [what about "familiar odor" when known?] */
-                        You("smell a peculiar odor...");
+                        You(_("smell a peculiar odor..."));
                     } else {
                         const char *eyes = body_part(EYE);
 
@@ -2695,15 +2695,15 @@ breakmsg(struct obj *obj, boolean in_view)
         break;
     case EGG:
     case MELON:
-        pline("Splat!");
+        pline("%s", _("Splat!"));
         break;
     case CREAM_PIE:
         if (in_view)
-            pline("What a mess!");
+            pline("%s", _("What a mess!"));
         break;
     case ACID_VENOM:
     case BLINDING_VENOM:
-        pline("Splash!");
+        pline("%s", _("Splash!"));
         break;
     }
 }
@@ -2715,7 +2715,7 @@ throw_gold(struct obj *obj)
     struct monst *mon;
 
     if (!u.dx && !u.dy && !u.dz) {
-        You("cannot throw gold at yourself.");
+        You(_("cannot throw gold at yourself."));
         /* If we tried to throw part of a stack, force it to merge back
            together (same as in throw_obj).  Essential for gold. */
         if (obj->o_id == svc.context.objsplit.parent_oid

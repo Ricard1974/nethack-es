@@ -618,7 +618,7 @@ do_entity(struct entity *etmp)
                           E_phrase(etmp, "are"));
                 } else if (!Deaf) {
                     Soundeffect(se_crushing_sound, 100);
-                    You_hear("a crushing sound.");
+                    You_hear(_("a crushing sound."));
                 }
                 e_died(etmp,
                        XKILL_NOCORPSE | (e_inview ? XKILL_GIVEMSG
@@ -704,9 +704,9 @@ do_entity(struct entity *etmp)
 #endif
         if (e_inview) {
             if (is_u(etmp)) {
-                You("tumble towards the closed portcullis!");
+                You(_("tumble towards the closed portcullis!"));
                 if (automiss(etmp))
-                    You("pass through it!");
+                    You(_("pass through it!"));
                 else
                     pline_The("drawbridge closes in...");
             } else
@@ -725,7 +725,7 @@ do_entity(struct entity *etmp)
         if (is_pool(etmp->ex, etmp->ey) && !e_inview)
             if (!Deaf) {
                 Soundeffect(se_splash, 100);
-                You_hear("a splash.");
+                You_hear(_("a splash."));
             }
         if (e_survives_at(etmp, etmp->ex, etmp->ey)) {
             if (e_inview && !is_flyer(etmp->edata)
@@ -792,7 +792,7 @@ close_drawbridge(coordxy x, coordxy y)
                     : "going");
     } else { /* "5 gears turn" for castle drawbridge tune */
         Soundeffect(se_chains_rattling_gears_turning, 75);
-        You_hear("chains rattling and gears turning.");
+        You_hear(_("chains rattling and gears turning."));
     }
     lev1->typ = DRAWBRIDGE_UP;
     lev2 = &levl[x2][y2];
@@ -815,7 +815,7 @@ close_drawbridge(coordxy x, coordxy y)
     do_entity(&(go.occupants[1]));
     if (OBJ_AT(x, y) && !Deaf) {
         Soundeffect(se_smashing_and_crushing, 75);
-        You_hear("smashing and crushing.");
+        You_hear(_("smashing and crushing."));
     }
     (void) revive_nasty(x, y, (char *) 0);
     (void) revive_nasty(x2, y2, (char *) 0);
@@ -854,7 +854,7 @@ open_drawbridge(coordxy x, coordxy y)
                 (distu(x2, y2) < distu(x, y)) ? "going" : "coming");
     } else { /* "5 gears turn" for castle drawbridge tune */
         Soundeffect(se_gears_turning_chains_rattling, 100);
-        You_hear("gears turning and chains rattling.");
+        You_hear(_("gears turning and chains rattling."));
     }
     lev1->typ = DRAWBRIDGE_DOWN;
     lev2 = &levl[x2][y2];
@@ -913,13 +913,13 @@ destroy_drawbridge(coordxy x, coordxy y)
                 pline_The("portcullis of the drawbridge falls into the %s!",
                           lava ? hliquid("lava") : "moat");
             else
-                You_hear("a loud *SPLASH*!");  /* Deaf-aware */
+                You_hear(_("a loud *SPLASH*!"));  /* Deaf-aware */
         } else {
             if (cansee(x, y) || u_at(x, y))
                 pline_The("drawbridge collapses into the %s!",
                           lava ? hliquid("lava") : "moat");
             else
-                You_hear("a loud *SPLASH*!");  /* Deaf-aware */
+                You_hear(_("a loud *SPLASH*!"));  /* Deaf-aware */
         }
         lev1->typ = lava ? LAVAPOOL : MOAT;
         lev1->drawbridgemask = 0;
@@ -933,7 +933,7 @@ destroy_drawbridge(coordxy x, coordxy y)
         if (cansee(x, y) || u_at(x, y))
             pline_The("drawbridge disintegrates!");
         else
-            You_hear("a loud *CRASH*!");  /* Deaf-aware */
+            You_hear(_("a loud *CRASH*!"));  /* Deaf-aware */
         lev1->typ = ((lev1->drawbridgemask & DB_ICE) ? ICE : ROOM);
         lev1->icedpool = ((lev1->drawbridgemask & DB_ICE) ? ICED_MOAT : 0);
     }
@@ -999,7 +999,7 @@ destroy_drawbridge(coordxy x, coordxy y)
             } else {
                 if (!Deaf && !is_u(etmp1) && !is_pool(x, y)) {
                     Soundeffect(se_crushing_sound, 75);
-                    You_hear("a crushing sound.");
+                    You_hear(_("a crushing sound."));
                 } else {
                     debugpline1("%s from shrapnel", E_phrase(etmp1, "die"));
                 }

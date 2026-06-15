@@ -841,9 +841,9 @@ monster_detect(struct obj *otmp, /* detecting object (if any) */
         }
         if (!swallowed)
             display_self();
-        You("sense the presence of monsters.");
+        You(_("sense the presence of monsters."));
         if (woken)
-            pline("Monsters sense the presence of you.");
+            pline("%s", _("Monsters sense the presence of you."));
 
         if ((otmp && otmp->blessed) && !unconstrained) {
             /* persistent detection--just show updated map */
@@ -1116,11 +1116,11 @@ furniture_detect(void)
         }
 
     if (!found)
-        There("seems to be nothing of interest on this level.");
+        There(_("seems to be nothing of interest on this level."));
     else if (!revealed)
         /* [what about clipped map with points of interest outside of the
             currently shown area?] */
-        Your("map already shows all relevant locations.");
+        Your(_("map already shows all relevant locations."));
 
     if (!revealed)
         display_nhwindow(WIN_MAP, TRUE);
@@ -1234,7 +1234,7 @@ use_crystal_ball(struct obj **optr)
                     Your1(vision_clears);
             } else {
                 pline("%s your vision.", Tobjnam(obj, "assault"));
-                You("are unaffected!");
+                You(_("are unaffected!"));
             }
             break;
         case 4:
@@ -1268,7 +1268,7 @@ use_crystal_ball(struct obj **optr)
         } else {
             switch (rnd(6)) {
             case 1:
-                You("grok some groovy globs of incandescent lava.");
+                You(_("grok some groovy globs of incandescent lava."));
                 break;
             case 2:
                 pline("Whoa!  Psychedelic colors, %s!",
@@ -1286,7 +1286,7 @@ use_crystal_ball(struct obj **optr)
                     "tiny snowflakes spinning around a miniature farmhouse.");
                 break;
             default:
-                pline("Oh wow... like a kaleidoscope!");
+                pline("%s", _("Oh wow... like a kaleidoscope!"));
                 break;
             }
             consume_obj_charge(obj, TRUE);
@@ -1296,7 +1296,7 @@ use_crystal_ball(struct obj **optr)
 
     /* read a single character */
     if (flags.verbose)
-        You("may look for an object, monster, or special map symbol.");
+        You(_("may look for an object, monster, or special map symbol."));
     ch = yn_function("What do you look for?", (char *) 0, '\0', TRUE);
     /* Don't filter out ' ' here; it has a use */
     if ((ch != def_monsyms[S_GHOST].sym) && strchr(quitchars, ch)) {
@@ -1552,7 +1552,7 @@ do_vicinity_map(
         /* the getpos() prompt from browse_map() is only shown when
            flags.verbose is set, but make this unconditional so that
            not-verbose users become aware of the prompting situation */
-        You("sense your surroundings.");
+        You(_("sense your surroundings."));
         if (extended || glyph_is_monster(glyph_at(u.ux, u.uy)))
             ter_typ |= TER_MON;
         browse_map(ter_typ, "anything of interest");
@@ -1885,7 +1885,7 @@ findit(void)
     /* note: num_kept_invis is not included in the final result */
 
     if (!num)
-        You("don't find anything.");
+        You(_("don't find anything."));
 #if FOUND_FLASH_COUNT == 0
     else if (tmp_num) {
         flush_screen(1);
@@ -1907,7 +1907,7 @@ openit(void)
         if (digests(u.ustuck->data)) {
             /* purple worm */
             if (Blind)
-                pline("Its mouth opens!");
+                pline("%s", _("Its mouth opens!"));
             else
                 pline("%s opens its mouth!", Monnam(u.ustuck));
 #if 0   /* expels() will take care of this */
@@ -2021,7 +2021,7 @@ dosearch0(int aflag) /* intrinsic autosearch vs explicit searching */
 
     if (u.uswallow) {
         if (!aflag)
-            Norep("What are you looking for?  The exit?");
+            Norep(_("What are you looking for?  The exit?"));
     } else {
         int fund = (uwep && uwep->oartifact
                     && spec_ability(uwep, SPFX_SEARCH)) ? uwep->spe : 0;
@@ -2048,7 +2048,7 @@ dosearch0(int aflag) /* intrinsic autosearch vs explicit searching */
                     nomul(0);
                     feel_location(x, y); /* make sure it shows up */
                     set_msg_xy(x, y);
-                    You("find a hidden door.");
+                    You(_("find a hidden door."));
                 } else if (levl[x][y].typ == SCORR) {
                     if (rnl(7 - fund))
                         continue;
@@ -2058,7 +2058,7 @@ dosearch0(int aflag) /* intrinsic autosearch vs explicit searching */
                     nomul(0);
                     feel_newsym(x, y); /* make sure it shows up */
                     set_msg_xy(x, y);
-                    You("find a hidden passage.");
+                    You(_("find a hidden passage."));
                 } else {
                     /* Be careful not to find anything in an SCORR or SDOOR */
                     if ((mtmp = m_at(x, y)) != 0 && !aflag) {
@@ -2360,7 +2360,7 @@ reveal_terrain(
     boolean full = (which_subset & TER_FULL) != 0; /* show whole map */
 
     if ((Hallucination || Stunned || Confusion) && !full) {
-        You("are too disoriented for this.");
+        You(_("are too disoriented for this."));
     } else {
         coordxy x, y;
         int glyph, default_glyph;

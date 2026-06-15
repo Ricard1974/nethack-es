@@ -348,7 +348,7 @@ staticfn void
 dog_starve(struct monst *mtmp)
 {
     if (mtmp->mleashed && mtmp != u.usteed)
-        Your("leash goes slack.");
+        Your(_("leash goes slack."));
     else if (cansee(mtmp->mx, mtmp->my))
         pline_mon(mtmp, "%s starves.", Monnam(mtmp));
     else
@@ -1056,7 +1056,7 @@ dog_move(
     if (!Conflict && !mtmp->mconf
         && mtmp == u.ustuck && !sticks(gy.youmonst.data)) {
         unstuck(mtmp); /* swallowed case handled above */
-        You("get released!");
+        You(_("get released!"));
     }
 #endif
     allowflags = mon_allowflags(mtmp);
@@ -1525,7 +1525,7 @@ quickmimic(struct monst *mtmp)
         if (was_leashed
             && (M_AP_TYPE(mtmp) != M_AP_MONSTER
                 || !mnum_leashable(mtmp->mappearance))) {
-            Your("leash goes slack.");
+            Your(_("leash goes slack."));
             m_unleash(mtmp, FALSE);
         }
         if (glyph_at(mtmp->mx, mtmp->my) != prev_glyph)

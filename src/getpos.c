@@ -1133,7 +1133,7 @@ getpos(coord *ccp, boolean force, const char *goal)
             }     /* !quitchars */
             if (force)
                 goto nxtc;
-            pline("Done.");
+            pline("%s", _("Done."));
             msg_given = FALSE; /* suppress clear */
             cx = -1;
             cy = 0;

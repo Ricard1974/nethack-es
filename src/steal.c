@@ -107,7 +107,7 @@ stealgold(struct monst *mtmp)
             setnotworn(ygold);
         freeinv(ygold);
         add_to_minv(mtmp, ygold);
-        Your("purse feels lighter.");
+        Your(_("purse feels lighter."));
         if (!tele_restrict(mtmp))
             (void) rloc(mtmp, RLOC_MSG);
         monflee(mtmp, 0, FALSE, FALSE);
@@ -389,7 +389,7 @@ steal(struct monst *mtmp, char *objnambuf)
             pline("%s takes off your unseen chain.", Monnambuf);
             (void) openholdingtrap(&gy.youmonst, &dummy);
         } else if (Blind) {
-            pline("Somebody tries to rob you, but finds nothing to steal.");
+            pline("%s", _("Somebody tries to rob you, but finds nothing to steal."));
         } else if (inv_cnt(TRUE) > inv_cnt(FALSE)) {
             pline("%s tries to rob you, but isn't interested in gold.",
                   Monnambuf);

@@ -85,7 +85,7 @@ dowrite(struct obj *pen)
     int spell_knowledge;
 
     if (nohands(gy.youmonst.data)) {
-        You("need hands to be able to write!");
+        You(_("need hands to be able to write!"));
         return ECMD_OK;
     } else if (Glib) {
         pline("%s from your %s.", Tobjnam(pen, "slip"),
@@ -209,8 +209,8 @@ dowrite(struct obj *pen)
  found:
 
     if (i == SCR_BLANK_PAPER || i == SPE_BLANK_PAPER) {
-        You_cant("write that!");
-        pline("It's obscene!");
+        You_cant(_("write that!"));
+        pline("%s", _("It's obscene!"));
         return ECMD_TIME;
     } else if (i == SPE_NOVEL) {
         boolean fanfic = !rn2(3), tearup = !rn2(3);
@@ -225,19 +225,19 @@ dowrite(struct obj *pen)
                 !Hallucination ? "lame" : "awesome");
         }
         if (!tearup) {
-            You("give up on the idea.");
+            You(_("give up on the idea."));
         } else {
-            You("tear it up.");
+            You(_("tear it up."));
             useup(paper);
         }
         return ECMD_TIME;
     } else if (i == SPE_BOOK_OF_THE_DEAD) {
-        pline("No mere dungeon adventurer could write that.");
+        pline("%s", _("No mere dungeon adventurer could write that."));
         return ECMD_TIME;
     } else if (by_descr && paper->oclass == SPBOOK_CLASS
                && !objects[i].oc_name_known) {
         /* can't write unknown spellbooks by description */
-        pline("Unfortunately you don't have enough information to go on.");
+        pline("%s", _("Unfortunately you don't have enough information to go on."));
         return ECMD_TIME;
     }
 
@@ -255,7 +255,7 @@ dowrite(struct obj *pen)
     /* see if there's enough ink */
     basecost = cost(new_obj);
     if (pen->spe < basecost / 2) {
-        Your("marker is too dry to write that!");
+        Your(_("marker is too dry to write that!"));
         obfree(new_obj, (struct obj *) 0);
         return ECMD_TIME;
     }
@@ -268,7 +268,7 @@ dowrite(struct obj *pen)
     /* dry out marker */
     if (pen->spe < actualcost) {
         pen->spe = 0;
-        Your("marker dries out!");
+        Your(_("marker dries out!"));
         /* scrolls disappear, spellbooks don't */
         if (paper->oclass == SPBOOK_CLASS) {
             pline_The("spellbook is left unfinished and your writing fades.");
@@ -345,7 +345,7 @@ dowrite(struct obj *pen)
            have passed the write-an-unknown scroll test
            above we can still fail this one, so it's doubly
            hard to write an unknown scroll while blind */
-        You("fail to write the scroll correctly and it disappears.");
+        You(_("fail to write the scroll correctly and it disappears."));
         useup(paper);
         obfree(new_obj, (struct obj *) 0);
         return ECMD_TIME;

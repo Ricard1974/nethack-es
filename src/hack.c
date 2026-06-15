@@ -356,7 +356,7 @@ moverock_core(coordxy sx, coordxy sy)
     while ((otmp = sobj_at(BOULDER, sx, sy)) != 0) {
 
         if (Blind && glyph_to_obj(glyph_at(sx, sy)) != BOULDER) {
-            pline("That feels like a boulder.");
+            pline("%s", _("That feels like a boulder."));
             map_object(otmp, TRUE);
             nomul(0);
             return -1;
@@ -403,7 +403,7 @@ moverock_core(coordxy sx, coordxy sy)
                 sokoban_guilt();
                 res = 0; /* move to <sx,sy> */
             } else {
-                There("is a boulder in your way.");
+                There(_("is a boulder in your way."));
                 /* use a move if hero learns something; see test_move() for
                    how/why 'context.door_opened' is being dragged into this */
                 if (glyph_at(sx, sy) != oldglyph)
@@ -669,7 +669,7 @@ still_chewing(coordxy x, coordxy y)
     } else if (lev->typ == IRONBARS
                && metallivorous(gy.youmonst.data) && u.uhunger > 1500) {
         /* finishing eating via 'morehungry()' doesn't handle choking */
-        You("are too full to eat the bars.");
+        You(_("are too full to eat the bars."));
         nomul(0);
         return 1;
     } else if (!svc.context.digging.chew
@@ -731,7 +731,7 @@ still_chewing(coordxy x, coordxy y)
 
     if (boulder) {
         delobj(boulder);         /* boulder goes bye-bye */
-        You("eat the boulder."); /* yum */
+        You(_("eat the boulder.")); /* yum */
 
         /*
          *  The location could still block because of
@@ -859,7 +859,7 @@ dosinkfall(void)
            be fatal; fortunately the fact that rings and boots
            are really still worn has no effect on bones data */
         ELevitation = HLevitation = 0L;
-        You("crash to the floor!");
+        You(_("crash to the floor!"));
         dmg = rn1(8, 25 - (int) ACURR(A_CON));
         losehp(Maybe_Half_Phys(dmg), fell_on_sink, NO_KILLER_PREFIX);
         exercise(A_DEX, FALSE);
@@ -1019,7 +1019,7 @@ test_move(
                so we won't get here, hence don't need to worry about
                "there" being somewhere the player isn't sure of */
             if (mode == DO_MOVE)
-                There("is an obstacle there.");
+                There(_("is an obstacle there."));
             return FALSE;
         } else if (tmpr->typ == IRONBARS) {
             if (mode == DO_MOVE
@@ -1031,7 +1031,7 @@ test_move(
             }
             if (!(Passes_walls || passes_bars(gy.youmonst.data))) {
                 if (mode == DO_MOVE && flags.mention_walls)
-                    You("cannot pass through the bars.");
+                    You(_("cannot pass through the bars."));
                 return FALSE;
             }
         } else if (tunnels(gy.youmonst.data)
@@ -1048,7 +1048,7 @@ test_move(
         } else {
             if (mode == DO_MOVE) {
                 if (is_db_wall(x, y)) {
-                    pline("That drawbridge is up!");
+                    pline("%s", _("That drawbridge is up!"));
                 } else if (Passes_walls && !may_passwall(x, y)
                            && In_sokoban(&u.uz)) {
                     /* soko restriction stays even after puzzle is solved */
@@ -1079,10 +1079,10 @@ test_move(
                 ; /* do nothing */
             } else if (can_ooze(&gy.youmonst)) {
                 if (mode == DO_MOVE)
-                    You("ooze under the door.");
+                    You(_("ooze under the door."));
             } else if (Underwater) {
                 if (mode == DO_MOVE)
-                    pline("There is an obstacle there.");
+                    pline("%s", _("There is an obstacle there."));
                 return FALSE;
             } else if (tunnels(gy.youmonst.data)
                        && !needspick(gy.youmonst.data)) {
@@ -1116,7 +1116,7 @@ test_move(
                                 You_cant("lead %s through that closed door.",
                                          y_monnam(u.usteed));
                             } else {
-                                pline("Ouch!  You bump into a door.");
+                                pline("%s", _("Ouch!  You bump into a door."));
                                 exercise(A_DEX, FALSE);
                             }
                             /* use current move; needed for the "ouch" case
@@ -1129,7 +1129,7 @@ test_move(
                                moving, we need to manually stop running */
                             nomul(0);
                         } else
-                            pline("That door is closed.");
+                            pline("%s", _("That door is closed."));
                     }
                 } else if (mode == TEST_TRAV || mode == TEST_TRAP)
                     goto testdiag;
@@ -1156,11 +1156,11 @@ test_move(
         switch (cant_squeeze_thru(&gy.youmonst)) {
         case 3:
             if (mode == DO_MOVE)
-                You("cannot pass that way.");
+                You(_("cannot pass that way."));
             return FALSE;
         case 2:
             if (mode == DO_MOVE)
-                You("are carrying too much to get through.");
+                You(_("are carrying too much to get through."));
             return FALSE;
         case 1:
             if (mode == DO_MOVE)
@@ -1408,7 +1408,7 @@ findtravelpath(int mode)
                                     /* reset run so domove run checks work */
                                     svc.context.run = 8;
                                     if (visited)
-                                        You("stop, unsure which way to go.");
+                                        You(_("stop, unsure which way to go."));
                                     else
                                         iflags.travelcc.x
                                         = iflags.travelcc.y = 0;
@@ -1588,7 +1588,7 @@ trapmove(
         if (u_wield_art(ART_STING)) {
             /* escape trap but don't move and don't destroy it */
             u.utrap = 0; /* caller will call reset_utrap() */
-            pline("Sting cuts through the web!");
+            pline("%s", _("Sting cuts through the web!"));
             break;
         }
         if (--u.utrap) {
@@ -1603,7 +1603,7 @@ trapmove(
             if (u.usteed)
                 pline("%s breaks out of the web.", upstart(steedname));
             else
-                You("disentangle yourself.");
+                You(_("disentangle yourself."));
         }
         break;
     case TT_LAVA:
@@ -1644,7 +1644,7 @@ trapmove(
                    after this successful move would have its
                    can't-do-that message suppressed by Norep */
                 if (flags.verbose)
-                    Norep("You move within the chain's reach.");
+                    Norep(_("You move within the chain's reach."));
                 return TRUE;
             }
         }
@@ -1859,14 +1859,14 @@ handle_tip(int tip)
         /* the "Tip:" prefix is a hint to use of OPTIONS=!tips to suppress */
         switch (tip) {
         case TIP_ENHANCE:
-            pline("(Tip: use the #enhance command to advance them.)");
+            pline("%s", _("(Tip: use the #enhance command to advance them.)"));
             break;
         case TIP_SWIM:
             pline("(Tip: use '%s' prefix to step in if you really want to.)",
                   visctrl(cmd_from_func(do_reqmenu)));
             break;
         case TIP_UNTRAP_MON:
-            pline("(Tip: perhaps #untrap would help?)");
+            pline("%s", _("(Tip: perhaps #untrap would help?)"));
             break;
         case TIP_GETPOS:
             l_nhcore_call(NHCORE_GETPOS_TIP);
@@ -2344,14 +2344,14 @@ air_turbulence(void)
     if (Is_airlevel(&u.uz) && rn2(4) && !Levitation && !Flying) {
         switch (rn2(3)) {
         case 0:
-            You("tumble in place.");
+            You(_("tumble in place."));
             exercise(A_DEX, FALSE);
             break;
         case 1:
             You_cant("control your movements very well.");
             break;
         case 2:
-            pline("It's hard to walk in thin air.");
+            pline("%s", _("It's hard to walk in thin air."));
             exercise(A_DEX, TRUE);
             break;
         }
@@ -2384,7 +2384,7 @@ water_turbulence(coordxy *x, coordxy *y)
                doing so while encumbered is feasible; if in an aquatic
                form, stressed or less is allowed; otherwise (magical
                breathing), only burdened is allowed */
-            You("are carrying too much to climb out of the water.");
+            You(_("are carrying too much to climb out of the water."));
             nomul(0);
             return TRUE;
         }
@@ -2623,10 +2623,10 @@ carrying_too_much(void)
                         : (u.uhp < 10 && u.uhp != u.uhpmax))))
         && !Is_airlevel(&u.uz)) {
         if (wtcap < OVERLOADED) {
-            You("don't have enough stamina to move.");
+            You(_("don't have enough stamina to move."));
             exercise(A_CON, FALSE);
         } else
-            You("collapse under your load.");
+            You(_("collapse under your load."));
         nomul(0);
         return TRUE;
     }
@@ -3040,7 +3040,7 @@ overexert_hp(void)
         *hp -= 1;
         disp.botl = TRUE;
     } else {
-        You("pass out from exertion!");
+        You(_("pass out from exertion!"));
         exercise(A_CON, FALSE);
         fall_asleep(-10, FALSE);
     }
@@ -3207,7 +3207,7 @@ switch_terrain(void)
            resuming it; that could be tracked so that this message could
            be adjusted to "resume flying", but isn't worth the effort...] */
         if (Flying)
-            You("start flying.");
+            You(_("start flying."));
     }
     if ((!!Levitation ^ was_levitating) || (!!Flying ^ was_flying))
         disp.botl = TRUE; /* update Lev/Fly status condition */
@@ -3239,7 +3239,7 @@ pooleffects(
 
         if (!is_pool(u.ux, u.uy)) {
             if (Is_waterlevel(&u.uz)) {
-                You("pop into an air bubble.");
+                You(_("pop into an air bubble."));
                 iflags.last_msg = PLNMSG_BACK_ON_GROUND;
             } else if (is_lava(u.ux, u.uy)) {
                 You("leave the %s...", hliquid("water")); /* oops! */
@@ -3253,7 +3253,7 @@ pooleffects(
         } else if (Flying) {
             You("fly out of the %s.", hliquid("water"));
         } else if (Wwalking) {
-            You("slowly rise above the surface.");
+            You(_("slowly rise above the surface."));
         } else {
             still_inwater = TRUE;
         }
@@ -3668,7 +3668,7 @@ check_special_room(boolean newlev)
          * but everything else gives a message only the first time */
         switch (rt) {
         case ZOO:
-            pline("Welcome to David's treasure zoo!");
+            pline("%s", _("Welcome to David's treasure zoo!"));
             break;
         case SWAMP:
             pline("It %s rather %s down here.", Blind ? "feels" : "looks",
@@ -3680,7 +3680,7 @@ check_special_room(boolean newlev)
                 !furniture_present(THRONE, roomno) ? "" : " throne");
             break;
         case LEPREHALL:
-            You("enter a leprechaun hall!");
+            You(_("enter a leprechaun hall!"));
             break;
         case MORGUE:
             if (midnight()) {
@@ -3688,25 +3688,25 @@ check_special_room(boolean newlev)
 
                 pline("%s away!  %s away!", run, run);
             } else
-                You("have an uncanny feeling...");
+                You(_("have an uncanny feeling..."));
             break;
         case BEEHIVE:
-            You("enter a giant beehive!");
+            You(_("enter a giant beehive!"));
             break;
         case COCKNEST:
-            You("enter a disgusting nest!");
+            You(_("enter a disgusting nest!"));
             break;
         case ANTHOLE:
-            You("enter an anthole!");
+            You(_("enter an anthole!"));
             break;
         case BARRACKS:
             if (monstinroom(&mons[PM_SOLDIER], roomno)
                 || monstinroom(&mons[PM_SERGEANT], roomno)
                 || monstinroom(&mons[PM_LIEUTENANT], roomno)
                 || monstinroom(&mons[PM_CAPTAIN], roomno))
-                You("enter a military barracks!");
+                You(_("enter a military barracks!"));
             else
-                You("enter an abandoned barracks.");
+                You(_("enter an abandoned barracks."));
             break;
         case DELPHI: {
             struct monst *oracle = monstinroom(&mons[PM_ORACLE], roomno);
@@ -3794,7 +3794,7 @@ pickup_checks(void)
         if (!u.ustuck->minvent) {
             if (digests(u.ustuck->data)) {
                 You("pick up %s tongue.", s_suffix(mon_nam(u.ustuck)));
-                pline("But it's kind of slimy, so you drop it.");
+                pline("%s", _("But it's kind of slimy, so you drop it."));
             } else
                 You("don't %s anything in here to pick up.",
                     Blind ? "feel" : "see");
@@ -3820,7 +3820,7 @@ pickup_checks(void)
             You_cant("reach the bottom to pick things up.");
             return 0;
         } else if (!likes_lava(gy.youmonst.data)) {
-            You("would burn to a crisp trying to pick things up.");
+            You(_("would burn to a crisp trying to pick things up."));
             return 0;
         }
     }
@@ -3832,17 +3832,17 @@ pickup_checks(void)
         else if (IS_SINK(lev->typ))
             pline_The("plumbing connects it to the floor.");
         else if (IS_GRAVE(lev->typ))
-            You("don't need a gravestone.  Yet.");
+            You(_("don't need a gravestone.  Yet."));
         else if (IS_FOUNTAIN(lev->typ))
             You("could drink the %s...", hliquid("water"));
         else if (IS_DOOR(lev->typ) && (lev->doormask & D_ISOPEN))
-            pline("It won't come off the hinges.");
+            pline("%s", _("It won't come off the hinges."));
         else if (IS_ALTAR(lev->typ))
-            pline("Moving the altar would be a very bad idea.");
+            pline("%s", _("Moving the altar would be a very bad idea."));
         else if (lev->typ == STAIRS)
             pline_The("stairs are solidly affixed.");
         else
-            There("is nothing here to pick up.");
+            There(_("is nothing here to pick up."));
         return 0;
     }
     traphere = t_at(u.ux, u.uy);
@@ -3850,11 +3850,11 @@ pickup_checks(void)
         /* if there's a hole here, any objects here clearly aren't at
            the bottom so only check for pits */
         if (traphere && uteetering_at_seen_pit(traphere)) {
-            You("cannot reach the bottom of the pit.");
+            You(_("cannot reach the bottom of the pit."));
         } else if (u.usteed && P_SKILL(P_RIDING) < P_BASIC) {
             rider_cant_reach();
         } else if (Blind) {
-            You("cannot reach anything here.");
+            You(_("cannot reach anything here."));
         } else {
             const char *surf = surface(u.ux, u.uy);
 
@@ -3905,7 +3905,7 @@ lookaround(void)
     /* Grid bugs stop if trying to move diagonal, even if blind.  Maybe */
     /* they polymorphed while in the middle of a long move. */
     if (NODIAG(u.umonnum) && u.dx && u.dy) {
-        You("cannot move diagonally.");
+        You(_("cannot move diagonally."));
         nomul(0);
         return;
     }
@@ -3967,7 +3967,7 @@ lookaround(void)
                 if (svc.context.run != 1 && !svc.context.travel) {
                     if (flags.mention_walls) {
                         set_msg_xy(x, y);
-                        You("stop in front of the door.");
+                        You(_("stop in front of the door."));
                     }
                     goto stop;
                 }
@@ -4284,7 +4284,7 @@ losehp(int n, const char *knam, schar k_format)
         svk.killer.format = k_format;
         if (svk.killer.name != knam) /* the thing that killed you */
             Strcpy(svk.killer.name, knam ? knam : "");
-        urgent_pline("You die...");
+        urgent_pline("%s", _("You die..."));
         done(DIED);
     } else if (n > 0 && u.uhp * 10 < u.uhpmax) {
         maybe_wail();

@@ -1515,7 +1515,7 @@ meatmetal(struct monst *mtmp)
                 } else {
                     if (flags.verbose) {
                         Soundeffect(se_crunching_sound, 50);
-                        You_hear("a crunching sound.");
+                        You_hear(_("a crunching sound."));
                     }
                 }
                 mtmp->meating = otmp->owt / 2 + 1;
@@ -1629,7 +1629,7 @@ meatobj(struct monst *mtmp) /* for gelatinous cubes */
             } else {
                 Soundeffect(se_slurping_sound, 30);
                 if (flags.verbose)
-                    You_hear("a slurping sound.");
+                    You_hear(_("a slurping sound."));
             }
             m_consume_obj(mtmp, otmp);
             /* in case it polymorphed or died */
@@ -1708,7 +1708,7 @@ meatcorpse(
         } else {
             Soundeffect(se_masticating_sound, 50);
             if (flags.verbose)
-                You_hear("a masticating sound.");
+                You_hear(_("a masticating sound."));
         }
 
         m_consume_obj(mtmp, otmp);
@@ -2852,7 +2852,7 @@ lifesaved_monster(struct monst *mtmp)
          * Nor do you check invisibility, because glowing and
          * disintegrating amulets are always visible. */
         if (cansee(mtmp->mx, mtmp->my)) {
-            pline("But wait...");
+            pline("%s", _("But wait..."));
             pline("%s medallion begins to glow!", s_suffix(Monnam(mtmp)));
             makeknown(AMULET_OF_LIFE_SAVING);
             /* amulet is visible, but monster might not be */
@@ -3103,7 +3103,7 @@ mondead(struct monst *mtmp)
         return;
 
     if (be_sad)
-        You("have a sad feeling for a moment, then it passes.");
+        You(_("have a sad feeling for a moment, then it passes."));
 
     if (mtmp->data == &mons[PM_STEAM_VORTEX])
         create_gas_cloud(mtmp->mx, mtmp->my, rn2(10) + 5, 0); /* harmless */
@@ -3221,7 +3221,7 @@ corpse_chance(
                     losehp(Maybe_Half_Phys(tmp), svk.killer.name,
                            KILLED_BY_AN);
                 } else {
-                    You_hear("an explosion.");
+                    You_hear(_("an explosion."));
                     magr->mhp -= tmp;
                     if (DEADMONSTER(magr))
                         mondied(magr);
@@ -3561,12 +3561,12 @@ xkilled(
          */
         gs.stoned = FALSE;
         if (!cansee(x, y) && !gv.vamp_rise_msg)
-            pline("Maybe not...");
+            pline("%s", _("Maybe not..."));
         return;
     }
 
     if (be_sad)
-        You("have a sad feeling for a moment, then it passes.");
+        You(_("have a sad feeling for a moment, then it passes."));
 
     mdat = mtmp->data; /* note: mondead can change mtmp->data */
     mndx = monsndx(mdat);
@@ -3662,7 +3662,7 @@ xkilled(
         && u.ualign.type != A_CHAOTIC) {
         HTelepat &= ~INTRINSIC;
         change_luck(-2);
-        You("murderer!");
+        You(_("murderer!"));
         if (Blind && !Blind_telepat)
             see_monsters(); /* Can't sense monsters any more. */
     }
@@ -3695,9 +3695,9 @@ xkilled(
         u.ugangr++;
         change_luck(-4);
         if (!Hallucination)
-            pline("That was probably a bad idea...");
+            pline("%s", _("That was probably a bad idea..."));
         else
-            pline("Whoopsie-daisy!");
+            pline("%s", _("Whoopsie-daisy!"));
     } else if (mtmp->ispriest) {
         adjalign((p_coaligned(mtmp)) ? -2 : 2);
         /* cancel divine protection for killing your priest */
@@ -3710,10 +3710,10 @@ xkilled(
         /* your god is mighty displeased... */
         if (!Hallucination) {
             Soundeffect(se_distant_thunder, 40);
-            You_hear("the rumble of distant thunder...");
+            You_hear(_("the rumble of distant thunder..."));
         } else {
             Soundeffect(se_applause, 40);
-            You_hear("the studio audience applaud!");
+            You_hear(_("the studio audience applaud!"));
         }
         if (!unique_corpstat(mdat)) {
             boolean mname = has_mgivenname(mtmp);
@@ -3761,7 +3761,7 @@ mon_to_stone(struct monst *mtmp)
                 pline("Now it's %s.", an(pmname(mtmp->data, Mgender(mtmp))));
         } else {
             if (canseemon(mtmp))
-                pline("... and returns to normal.");
+                pline("%s", _("... and returns to normal."));
         }
     } else
         impossible("Can't polystone %s!", a_monnam(mtmp));
@@ -4254,7 +4254,7 @@ peacefuls_respond(struct monst *mtmp)
                     if (exclaimed && !alreadyfleeing)
                         /* word like a separate sentence so that we
                            don't have to poke around inside growl() */
-                        pline("And then starts to flee.");
+                        pline("%s", _("And then starts to flee."));
                 }
             }
         }
@@ -4285,7 +4285,7 @@ setmangry(struct monst *mtmp, boolean via_attack)
         adjalign((u.ualign.record > 5) ? -5 : -rnd(5));
 
         if (!Blind)
-            pline("The engraving beneath you fades.");
+            pline("%s", _("The engraving beneath you fades."));
         del_engr_at(u.ux, u.uy);
     }
 
@@ -5138,7 +5138,7 @@ wiz_force_cham_form(struct monst *mon)
             mndx = NON_PM;
         }
 
-        pline("It can't become that.");
+        pline("%s", _("It can't become that."));
 #ifdef EDIT_GETLIN
         /* EDIT_GETLIN preloads the input buffer with the previous
            response but we shouldn't just keep repeating that if player
@@ -5811,13 +5811,13 @@ usmellmon(struct permonst *mdat)
         switch (mndx) {
         case PM_ROTHE:
         case PM_MINOTAUR:
-            You("notice a bovine smell.");
+            You(_("notice a bovine smell."));
             msg_given = TRUE;
             break;
         case PM_CAVE_DWELLER:
         case PM_BARBARIAN:
         case PM_NEANDERTHAL:
-            You("smell body odor.");
+            You(_("smell body odor."));
             msg_given = TRUE;
             break;
         /*
@@ -5840,7 +5840,7 @@ usmellmon(struct permonst *mdat)
         case PM_WERERAT:
         case PM_WEREWOLF:
         case PM_OWLBEAR:
-            You("detect an odor reminiscent of an animal's den.");
+            You(_("detect an odor reminiscent of an animal's den."));
             msg_given = TRUE;
             break;
         /*
@@ -5848,7 +5848,7 @@ usmellmon(struct permonst *mdat)
             break;
         */
         case PM_STEAM_VORTEX:
-            You("smell steam.");
+            You(_("smell steam."));
             msg_given = TRUE;
             break;
         case PM_GREEN_SLIME:
@@ -5857,7 +5857,7 @@ usmellmon(struct permonst *mdat)
             break;
         case PM_VIOLET_FUNGUS:
         case PM_SHRIEKER:
-            You("smell mushrooms.");
+            You(_("smell mushrooms."));
             msg_given = TRUE;
             break;
         /* These are here to avoid triggering the
@@ -5875,11 +5875,11 @@ usmellmon(struct permonst *mdat)
         if (nonspecific)
             switch (mdat->mlet) {
             case S_DOG:
-                You("notice a dog smell.");
+                You(_("notice a dog smell."));
                 msg_given = TRUE;
                 break;
             case S_DRAGON:
-                You("smell a dragon!");
+                You(_("smell a dragon!"));
                 msg_given = TRUE;
                 break;
             case S_FUNGUS:
@@ -5892,18 +5892,18 @@ usmellmon(struct permonst *mdat)
                 msg_given = TRUE;
                 break;
             case S_ZOMBIE:
-                You("smell rotting flesh.");
+                You(_("smell rotting flesh."));
                 msg_given = TRUE;
                 break;
             case S_EEL:
-                You("smell fish.");
+                You(_("smell fish."));
                 msg_given = TRUE;
                 break;
             case S_ORC:
                 if (maybe_polyd(is_orc(gy.youmonst.data), Race_if(PM_ORC)))
-                    You("notice an attractive smell.");
+                    You(_("notice an attractive smell."));
                 else
-                    pline("A foul stench makes you feel a little nauseated.");
+                    pline("%s", _("A foul stench makes you feel a little nauseated."));
                 msg_given = TRUE;
                 break;
             default:

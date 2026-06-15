@@ -2535,10 +2535,10 @@ do_gamelog(void)
     if (gg.gamelog) {
         show_gamelog(ENL_GAMEINPROGRESS);
     } else {
-        pline("No chronicled events.");
+        pline("%s", _("No chronicled events."));
     }
 #else
-    pline("Chronicle was turned off during compile-time.");
+    pline("%s", _("Chronicle was turned off during compile-time."));
 #endif /* !CHRONICLE */
     return ECMD_OK;
 }
@@ -2940,7 +2940,7 @@ list_vanquished(char defquery, boolean ask)
      */
     } else if (!program_state.gameover) {
         /* #vanquished rather than final disclosure, so pline() is ok */
-        pline("No creatures have been vanquished.");
+        pline("%s", _("No creatures have been vanquished."));
 #ifdef DUMPLOG
     } else if (dumping) {
         putstr(0, 0, "No creatures were vanquished."); /* not pline() */

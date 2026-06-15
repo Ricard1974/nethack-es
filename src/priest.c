@@ -503,7 +503,7 @@ intemple(int roomno)
 
         switch (rn2(4)) {
         case 0:
-            You("have an eerie feeling...");
+            You(_("have an eerie feeling..."));
             break;
         case 1:
             You_feel("like you are being watched.");
@@ -525,11 +525,11 @@ intemple(int roomno)
                       ngen < 5 ? "n enormous" : "",
                       ngen < 10 ? '!' : '.');
             else
-                You("sense a presence close by!");
+                You(_("sense a presence close by!"));
             mtmp->mpeaceful = 0;
             set_malign(mtmp);
             if (flags.verbose)
-                You("are frightened to death, and unable to move.");
+                You(_("are frightened to death, and unable to move."));
             nomul(-3);
             gm.multi_reason = "being terrified of a ghost";
             gn.nomovemsg = "You regain your composure.";

@@ -1875,7 +1875,7 @@ docompress_file(const char *filename, boolean uncomp)
         compressedfile = gzopen(cfn, "wb");
         if (compressedfile == NULL) {
             if (errno == 0) {
-                pline("zlib failed to allocate memory");
+                pline("%s", _("zlib failed to allocate memory"));
             } else {
                 panic("Error in docompress_file %d", errno);
             }
@@ -1891,7 +1891,7 @@ docompress_file(const char *filename, boolean uncomp)
         while (1) {
             len = fread(buf, 1, sizeof(buf), uncompressedfile);
             if (ferror(uncompressedfile)) {
-                pline("Failure reading uncompressed file");
+                pline("%s", _("Failure reading uncompressed file"));
                 pline("Can't compress %s.", filename);
                 fclose(uncompressedfile);
                 gzclose(compressedfile);
@@ -1906,7 +1906,7 @@ docompress_file(const char *filename, boolean uncomp)
 
             len2 = gzwrite(compressedfile, buf, len);
             if (len2 == 0) {
-                pline("Failure writing compressed file");
+                pline("%s", _("Failure writing compressed file"));
                 pline("Can't compress %s.", filename);
                 fclose(uncompressedfile);
                 gzclose(compressedfile);
@@ -1934,7 +1934,7 @@ docompress_file(const char *filename, boolean uncomp)
         compressedfile = gzopen(cfn, "rb");
         if (compressedfile == NULL) {
             if (errno == 0) {
-                pline("zlib failed to allocate memory");
+                pline("%s", _("zlib failed to allocate memory"));
             } else if (errno != ENOENT) {
                 panic("Error in zlib docompress_file %s, %d", filename,
                       errno);
@@ -1959,7 +1959,7 @@ docompress_file(const char *filename, boolean uncomp)
         while (1) {
             len = gzread(compressedfile, buf, sizeof(buf));
             if (len == (unsigned) -1) {
-                pline("Failure reading compressed file");
+                pline("%s", _("Failure reading compressed file"));
                 pline("Can't uncompress %s.", filename);
                 fclose(uncompressedfile);
                 gzclose(compressedfile);
@@ -1974,7 +1974,7 @@ docompress_file(const char *filename, boolean uncomp)
 
             fwrite(buf, 1, len, uncompressedfile);
             if (ferror(uncompressedfile)) {
-                pline("Failure writing uncompressed file");
+                pline("%s", _("Failure writing uncompressed file"));
                 pline("Can't uncompress %s.", filename);
                 fclose(uncompressedfile);
                 gzclose(compressedfile);
@@ -3686,7 +3686,7 @@ livelog_add(long ll_type, const char *str)
 
     if (lock_file(LIVELOGFILE, SCOREPREFIX, 10)) {
         if (!(livelogfile = fopen_datafile(LIVELOGFILE, "a", SCOREPREFIX))) {
-            pline("Cannot open live log file!");
+            pline("%s", _("Cannot open live log file!"));
             unlock_file(LIVELOGFILE);
             return;
         }

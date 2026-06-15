@@ -628,7 +628,7 @@ nhl_impossible(lua_State *L)
     return 0;
 }
 
-/* pline("It hits!") */
+/* pline("%s", _("It hits!")) */
 /* pline("It hits!", true) */
 staticfn int
 nhl_pline(lua_State *L)

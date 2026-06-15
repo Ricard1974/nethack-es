@@ -111,7 +111,7 @@ clear_fcorr(struct monst *grd, boolean forceshow)
        died: no message, quit: message) */
     if (IS_OBSTRUCTED(levl[u.ux][u.uy].typ) && (Upolyd ? u.mh : u.uhp) > 0
         && !silently)
-        You("are encased in rock.");
+        You(_("are encased in rock."));
     return TRUE;
 }
 
@@ -446,7 +446,7 @@ invault(void)
                   makeplural(pmname(guard->data, Mgender(guard))));
             newsym(guard->mx, guard->my);
         } else {
-            pline("Someone else has entered the Vault.");
+            pline("%s", _("Someone else has entered the Vault."));
             /* make sure that hero who can't see the guard knows where the
                wall is breeched, otherwise we couldn't follow the guard out;
                the breech isn't necessarily adjacent to the hero */
@@ -722,9 +722,9 @@ wallify_vault(struct monst *grd)
         if (in_fcorridor(grd, grd->mx, grd->my) || cansee(grd->mx, grd->my))
             pline("%s whispers an incantation.", noit_Monnam(grd));
         else
-            You_hear("a distant chant.");
+            You_hear(_("a distant chant."));
         if (movedgold)
-            pline("A mysterious force moves the gold into the vault.");
+            pline("%s", _("A mysterious force moves the gold into the vault."));
         if (fixed)
             pline_The("damaged vault's walls are magically restored!");
     }

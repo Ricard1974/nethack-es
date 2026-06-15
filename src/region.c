@@ -990,7 +990,7 @@ enter_force_field(genericptr_t p1, genericptr_t p2)
                 Hallucination ? "an invisible tree"
                               : "some kind of invisible wall");
         else
-            pline("Ouch!");
+            pline("%s", _("Ouch!"));
     } else {
         mtmp = (struct monst *) p2;
         if (canseemon(mtmp))
@@ -1117,7 +1117,7 @@ inside_gas_cloud(genericptr_t p1, genericptr_t p2)
         if (!Poison_resistance) {
             pline("%s is burning your %s!", Something,
                   makeplural(body_part(LUNG)));
-            You("cough and spit blood!");
+            You(_("cough and spit blood!"));
             wake_nearto(u.ux, u.uy, 2);
             dam = Maybe_Half_Phys(rnd(dam) + 5);
             if (Half_gas_damage) /* worn towel */
@@ -1126,7 +1126,7 @@ inside_gas_cloud(genericptr_t p1, genericptr_t p2)
             monstunseesu(M_SEEN_POISON);
             return FALSE;
         } else {
-            You("cough!");
+            You(_("cough!"));
             wake_nearto(u.ux, u.uy, 2);
             monstseesu(M_SEEN_POISON);
             return FALSE;

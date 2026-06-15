@@ -759,7 +759,7 @@ gazemm(struct monst *magr, struct monst *mdef, struct attack *mattk)
         || (archon ? resists_blnd(mdef) : !magr->mcansee)
         || (magr->minvis && !perceives(mdef->data)) || mdef->msleeping) {
         if (gv.vis && canspotmon(mdef))
-            pline("but nothing happens.");
+            pline("%s", _("but nothing happens."));
         return M_ATTK_MISS;
     }
     /* call mon_reflects 2x, first test, then, if visible, print message */
@@ -1001,7 +1001,7 @@ explmm(struct monst *magr, struct monst *mdef, struct attack *mattk)
         /* mondead() -> m_detach() -> m_unleash() always suppresses
            the m_unleash() slack message, so deliver it here instead */
         if (was_leashed)
-            Your("leash falls slack.");
+            Your(_("leash falls slack."));
     }
     if (magr->mtame) /* give this one even if it was visible */
         You(brief_feeling, "melancholy");
@@ -1132,7 +1132,7 @@ mon_poly(struct monst *magr, struct monst *mdef, int dmg)
         } else {
             /* system shock might take place in polyself() */
             if (u.ulycn == NON_PM) {
-                You("are subjected to a freakish metamorphosis.");
+                You(_("are subjected to a freakish metamorphosis."));
                 polyself(POLY_NOFLAGS);
             } else if (u.umonnum != u.ulycn) {
                 You_feel("an unnatural urge coming on.");

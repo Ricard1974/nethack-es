@@ -128,7 +128,7 @@ adjattrib(
 
     if ((ndx == A_INT || ndx == A_WIS) && uarmh && uarmh->otyp == DUNCE_CAP) {
         if (msgflg == 0)
-            Your("cap constricts briefly, then relaxes again.");
+            Your(_("cap constricts briefly, then relaxes again."));
         return FALSE;
     }
 

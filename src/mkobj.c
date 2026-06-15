@@ -3828,7 +3828,7 @@ pudding_merge_message(struct obj *otmp, struct obj *otmp2)
             if (onfloor) {
                 You_see("parts of the floor melting!");
             } else if (inpack) {
-                Your("pack reaches out and grabs something!");
+                Your(_("pack reaches out and grabs something!"));
             }
             /* even though we can see where they should be,
              * they'll be out of our view (minvent or container)
@@ -3844,7 +3844,7 @@ pudding_merge_message(struct obj *otmp, struct obj *otmp2)
         }
     } else {
         Soundeffect(se_faint_sloshing, 25);
-        You_hear("a faint sloshing sound.");
+        You_hear(_("a faint sloshing sound."));
     }
 }
 

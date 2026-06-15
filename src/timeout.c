@@ -270,7 +270,7 @@ sleep_dialogue(void)
     long i = (HSleepy & TIMEOUT);
 
     if (i == 4)
-        You("yawn.");
+        You(_("yawn."));
 }
 
 DISABLE_WARNING_FORMAT_NONLITERAL   /* RESTORE is after slime_dialogue */
@@ -694,13 +694,13 @@ nh_timeout(void)
                    but not other forms of illness */
                 if ((u.usick_type & SICK_NONVOMITABLE) == 0
                     && rn2(100) < ACURR(A_CON)) {
-                    You("have recovered from your illness.");
+                    You(_("have recovered from your illness."));
                     make_sick(0, NULL, FALSE, SICK_ALL);
                     exercise(A_CON, FALSE);
                     adjattrib(A_CON, -1, 1);
                     break;
                 }
-                urgent_pline("You die from your illness.");
+                urgent_pline("%s", _("You die from your illness."));
                 if (kptr && kptr->name[0]) {
                     svk.killer.format = kptr->format;
                     Strcpy(svk.killer.name, kptr->name);
@@ -785,7 +785,7 @@ nh_timeout(void)
                 if (unconscious() || Sleep_resistance) {
                     incr_itimeout(&HSleepy, rnd(100));
                 } else if (Sleepy) {
-                    You("fall asleep.");
+                    You(_("fall asleep."));
                     sleeptime = rnd(20);
                     fall_asleep(-sleeptime, TRUE);
                     incr_itimeout(&HSleepy, sleeptime + rnd(100));
@@ -806,7 +806,7 @@ nh_timeout(void)
                 /* timed Flying is via #wizintrinsic only */
                 if (was_flying && !Flying) {
                     disp.botl = TRUE;
-                    You("land.");
+                    You(_("land."));
                     spoteffects(TRUE);
                 }
                 break;
@@ -820,7 +820,7 @@ nh_timeout(void)
                         break;
                     }
                     if (!Unaware)
-                        You("no longer feel safe from acid.");
+                        You(_("no longer feel safe from acid."));
                 }
                 break;
             case STONE_RES:
@@ -833,7 +833,7 @@ nh_timeout(void)
                         break;
                     }
                     if (!Unaware)
-                        You("no longer feel secure from petrification.");
+                        You(_("no longer feel secure from petrification."));
                     /* no-op if not wielding a cockatrice corpse;
                        uswapwep case is always a no-op because two-weapon
                        combat is only possible with two one-handed weapons
@@ -848,12 +848,12 @@ nh_timeout(void)
                    attempts fail to relocate hero; skip timeout message
                    if hero has acquired fire resistance in the meantime */
                 if (!Fire_resistance)
-                    Your("temporary ability to survive burning has ended.");
+                    Your(_("temporary ability to survive burning has ended."));
                 break;
             case WWALKING:
                 /* [see fire resistance] */
                 if (!Wwalking)
-                    Your("temporary ability to walk on liquid has ended.");
+                    Your(_("temporary ability to walk on liquid has ended."));
                 break;
             case DISPLACED:
                 if (!Displaced) /* give a message */
@@ -895,7 +895,7 @@ nh_timeout(void)
                 /* must be declining to die in explore|wizard mode;
                    treat like being cured of strangulation by prayer */
                 if (uamul && uamul->otyp == AMULET_OF_STRANGULATION) {
-                    Your("amulet vanishes!");
+                    Your(_("amulet vanishes!"));
                     useup(uamul);
                 }
                 break;
@@ -913,7 +913,7 @@ nh_timeout(void)
                      */
                     if ((inv_weight() > (WT_NOISY_INV * -1))) {
                         if (!Deaf)
-                            You("make a lot of noise!");
+                            You(_("make a lot of noise!"));
                         wake_nearby(FALSE);
                     }
                 }
@@ -1282,7 +1282,7 @@ slip_or_trip(void)
             && ((saddle = which_armor(u.usteed, W_SADDLE)) == 0
                 || !saddle->cursed)
             && (!ice_only || !rn2(3))) {
-            You("lose your balance.");
+            You(_("lose your balance."));
             dismount_steed(DISMOUNT_FELL);
         } else if (!rn2(10 + ACURR(A_DEX))) {
             /* Maybe slip in a random direction.  This takes place after
@@ -1309,10 +1309,10 @@ slip_or_trip(void)
                     Hallucination ? "on a banana peel" : "and nearly fall");
                 break;
             case 3:
-                You("flounder.");
+                You(_("flounder."));
                 break;
             default:
-                You("stumble.");
+                You(_("stumble."));
                 break;
             }
 
@@ -1326,13 +1326,13 @@ slip_or_trip(void)
                      makeplural(body_part(FOOT)));
                 break;
             case 2:
-                You("let go of the reins.");
+                You(_("let go of the reins."));
                 break;
             case 3:
-                You("bang into the saddle-horn.");
+                You(_("bang into the saddle-horn."));
                 break;
             default:
-                You("slide to one side of the saddle.");
+                You(_("slide to one side of the saddle."));
                 break;
             }
             dismount_steed(DISMOUNT_FELL);
@@ -1362,9 +1362,9 @@ lantern_message(struct obj *obj)
     /* from adventure */
     switch (obj->where) {
     case OBJ_INVENT:
-        Your("lantern is getting dim.");
+        Your(_("lantern is getting dim."));
         if (Hallucination)
-            pline("Batteries have not been invented yet.");
+            pline("%s", _("Batteries have not been invented yet."));
         break;
     case OBJ_FLOOR:
         You_see("a lantern getting dim.");
@@ -1878,7 +1878,7 @@ do_storms(void)
         /* Inside a cloud during a thunderstorm is deafening. */
         /* Even if already deaf, we sense the thunder's vibrations. */
         Soundeffect(se_kaboom_boom_boom, 80);
-        pline("Kaboom!!!  Boom!!  Boom!!");
+        pline("%s", _("Kaboom!!!  Boom!!  Boom!!"));
         incr_itimeout(&HDeaf, rn1(20, 30));
         disp.botl = TRUE;
         if (!u.uinvulnerable) {
@@ -1888,7 +1888,7 @@ do_storms(void)
             gn.nomovemsg = 0;
         }
     } else
-        You_hear("a rumbling noise.");
+        You_hear(_("a rumbling noise."));
 }
 
 /* -------------------------------------------------------------------------

@@ -235,7 +235,7 @@ cmdq_print(int q)
             pline("(dir:%i,%i,%i)", cq->dirx, cq->diry, cq->dirz);
             break;
         case CMDQ_USER_INPUT:
-            pline("(userinput)");
+            pline("%s", _("(userinput)"));
             break;
         case CMDQ_INT:
             pline("(int:%i)", cq->intval);
@@ -924,15 +924,15 @@ domonability(void)
                magical breathing */
             (void) split_mon(&gy.youmonst, (struct monst *) 0);
         } else {
-            There("is no fountain here.");
+            There(_("is no fountain here."));
         }
     } else if (is_unicorn(uptr)) {
         use_unicorn_horn((struct obj **) 0);
         return ECMD_TIME;
     } else if (uptr->msound == MS_SHRIEK) {
-        You("shriek.");
+        You(_("shriek."));
         if (u.uburied)
-            pline("Unfortunately sound does not carry well through rock.");
+            pline("%s", _("Unfortunately sound does not carry well through rock."));
         else
             aggravate();
     } else if (is_vampire(uptr) || is_vampshifter(&gy.youmonst)) {
@@ -941,9 +941,9 @@ domonability(void)
         (void) pet_ranged_attk(u.usteed, TRUE);
         return ECMD_TIME;
     } else if (Upolyd) {
-        pline("Any special ability you may have is purely reflexive.");
+        pline("%s", _("Any special ability you may have is purely reflexive."));
     } else {
-        You("don't have a special ability in your normal form!");
+        You(_("don't have a special ability in your normal form!"));
     }
     return ECMD_OK;
 }
@@ -952,13 +952,13 @@ int
 enter_explore_mode(void)
 {
     if (discover) {
-        You("are already in explore mode.");
+        You(_("are already in explore mode."));
     } else {
         const char *oldmode = !wizard ? "normal game" : "debug mode";
 
         if (!authorize_explore_mode()) {
             if (!wizard) {
-                You("cannot access explore mode.");
+                You(_("cannot access explore mode."));
                 return ECMD_OK;
             } else {
                 pline(
@@ -973,7 +973,7 @@ enter_explore_mode(void)
             discover = TRUE;
             wizard = FALSE;
             clear_nhwindow(WIN_MESSAGE);
-            You("are now in non-scoring explore mode.");
+            You(_("are now in non-scoring explore mode."));
         } else {
             clear_nhwindow(WIN_MESSAGE);
             pline("Continuing with %s.", oldmode);
@@ -1378,7 +1378,7 @@ dotoggleoption(void)
     if (gc.cmd_bind && gc.cmd_bind->param) {
         return toggle_bool_option(gc.cmd_bind->param);
     } else {
-        pline("Use #optionsfull to set any option instead.");
+        pline("%s", _("Use #optionsfull to set any option instead."));
         return ECMD_OK;
     }
 }
@@ -1590,7 +1590,7 @@ int
 do_rush(void)
 {
     if ((gd.domove_attempting & DOMOVE_RUSH)) {
-        Norep("Double rush prefix, canceled.");
+        Norep(_("Double rush prefix, canceled."));
         svc.context.run = 0;
         gd.domove_attempting = 0;
         return ECMD_CANCEL;
@@ -1606,7 +1606,7 @@ int
 do_run(void)
 {
     if ((gd.domove_attempting & DOMOVE_RUSH)) {
-        Norep("Double run prefix, canceled.");
+        Norep(_("Double run prefix, canceled."));
         svc.context.run = 0;
         gd.domove_attempting = 0;
         return ECMD_CANCEL;
@@ -1622,7 +1622,7 @@ int
 do_fight(void)
 {
     if (svc.context.forcefight) {
-        Norep("Double fight prefix, canceled.");
+        Norep(_("Double fight prefix, canceled."));
         svc.context.forcefight = 0;
         gd.domove_attempting = 0;
         return ECMD_CANCEL;
@@ -1643,7 +1643,7 @@ do_repeat(void)
         struct _cmd_queue *repeat_copy;
 
         if (!cmdq_peek(CQ_REPEAT)) {
-            Norep("There is no command available to repeat.");
+            Norep(_("There is no command available to repeat."));
             return ECMD_FAIL;
         }
         repeat_copy = cmdq_copy(CQ_REPEAT);
@@ -2301,7 +2301,7 @@ handler_rebind_keys_add(boolean keyfirst)
     int clr = NO_COLOR;
 
     if (keyfirst) {
-        pline("Bind which key? ");
+        pline("%s", _("Bind which key? "));
         key = pgetchar();
 
         if (!key || key == '\033')
@@ -2381,7 +2381,7 @@ handler_rebind_keys_add(boolean keyfirst)
         }
  bindit:
         if (!key) {
-            pline("Bind which key? ");
+            pline("%s", _("Bind which key? "));
             key = pgetchar();
 
             if (!key || key == '\033')
@@ -2399,7 +2399,7 @@ handler_rebind_keys_add(boolean keyfirst)
                       key2txt(key, buf2), cmdstr);
             }
         } else {
-            pline("Key binding failed?!");
+            pline("%s", _("Key binding failed?!"));
         }
     }
 }
@@ -4106,7 +4106,7 @@ getdir(const char *s)
                     goto retry;
             }
             if (!did_help)
-                pline("What a strange direction!");
+                pline("%s", _("What a strange direction!"));
         }
         return 0;
     } else if (is_mov && !dxdy_moveok()) {
@@ -5330,7 +5330,7 @@ dotravel(void)
         }
         iflags.getloc_filter = gfilt;
     } else {
-        pline("Where do you want to travel to?");
+        pline("%s", _("Where do you want to travel to?"));
         if (getpos(&cc, TRUE, "the desired destination") < 0) {
             /* user pressed ESC */
             iflags.getloc_travelmode = FALSE;
@@ -5349,12 +5349,12 @@ dotravel_target(void)
 {
     if (!isok(iflags.travelcc.x, iflags.travelcc.y)) {
         /* assume <0,0>, the value assigned when travel reaches destination */
-        pline("No travel destination set.");
+        pline("%s", _("No travel destination set."));
         return ECMD_OK;
     } else if (u_at(iflags.travelcc.x, iflags.travelcc.y)) {
         /* maybe interrupted while traveling then just walked rest of way
            so destination hasn't been reset yet */
-        You("are already here.");
+        You(_("are already here."));
         iflags.travelcc.x = iflags.travelcc.y = 0;
         return ECMD_OK;
     }

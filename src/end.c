@@ -1030,7 +1030,7 @@ done(int how)
             svk.killer.name[0] = '\0';
         }
         if (wizard) {
-            You("are a very tricky wizard, it seems.");
+            You(_("are a very tricky wizard, it seems."));
             svk.killer.format = KILLED_BY_AN; /* reset to 0 */
             return;
         }
@@ -1082,12 +1082,12 @@ done(int how)
         }
     }
     if (Lifesaved && (how <= GENOCIDED)) {
-        pline("But wait...");
+        pline("%s", _("But wait..."));
         /* assumes that only one type of item confers LifeSaved property */
         makeknown(AMULET_OF_LIFE_SAVING);
         Your("medallion %s!", !Blind ? "begins to glow" : "feels warm");
         if (how == CHOKING)
-            You("vomit ...");
+            You(_("vomit ..."));
         You_feel("much better!");
         pline_The("medallion crumbles to dust!");
         if (uamul)
@@ -1096,7 +1096,7 @@ done(int how)
         (void) adjattrib(A_CON, -1, TRUE);
         savelife(how);
         if (how == GENOCIDED) {
-            pline("Unfortunately you are still genocided...");
+            pline("%s", _("Unfortunately you are still genocided..."));
         } else {
             char killbuf[BUFSZ];
             formatkiller(killbuf, BUFSZ, how, FALSE);

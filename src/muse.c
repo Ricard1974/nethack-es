@@ -297,7 +297,7 @@ mquaffmsg(struct monst *mtmp, struct obj *otmp)
         pline_mon(mtmp, "%s drinks %s!", Monnam(mtmp), singular(otmp, doname));
     } else if (!Deaf) {
         Soundeffect(se_mon_chugging_potion, 25);
-        You_hear("a chugging sound.");
+        You_hear(_("a chugging sound."));
     }
 }
 
@@ -842,7 +842,7 @@ use_defensive(struct monst *mtmp)
             pline_mon(mtmp, "%s plays %s!", Monnam(mtmp), doname(otmp));
         } else if (!Deaf) {
             Soundeffect(se_bugle_playing_reveille, 100);
-            You_hear("a bugle playing reveille!");
+            You_hear(_("a bugle playing reveille!"));
         }
         awaken_soldiers(mtmp);
         return 2;
@@ -1613,7 +1613,7 @@ mbhitm(struct monst *mtmp, struct obj *otmp)
                 monstseesu(M_SEEN_MAGR); /* monsters notice hero resisting */
                 shieldeff(u.ux, u.uy);
                 Soundeffect(se_boing, 40);
-                pline("Boing!");
+                pline("%s", _("Boing!"));
                 learnit = TRUE;
             } else if (rnd(20) < 10 + u.uac &&
                        !(gb.buzzer && !gb.buzzer->mwandexp)) {
@@ -1632,7 +1632,7 @@ mbhitm(struct monst *mtmp, struct obj *otmp)
         } else if (resists_magm(mtmp)) {
             shieldeff(mtmp->mx, mtmp->my);
             Soundeffect(se_boing, 40);
-            pline("Boing!");
+            pline("%s", _("Boing!"));
             learnit = TRUE;
         } else if (rnd(20) < 10 + find_mac(mtmp)) {
             tmp = d(2, 12);
@@ -1945,7 +1945,7 @@ use_offensive(struct monst *mtmp)
         }
         gm.m_using = TRUE;
         if (!Blind && !resists_blnd(&gy.youmonst)) {
-            You("are blinded by the flash of light!");
+            You(_("are blinded by the flash of light!"));
             make_blinded(BlindedTimeout + (long) rnd(1 + 50), FALSE);
         }
         lightdamage(otmp, TRUE, 5);
@@ -1960,7 +1960,7 @@ use_offensive(struct monst *mtmp)
         mreadmsg(mtmp, otmp);
         if (mtmp->mconf) {
             if (vis)
-                pline("Oh, what a pretty fire!");
+                pline("%s", _("Oh, what a pretty fire!"));
         } else {
             struct monst *mtmp2;
             int num;
@@ -1975,7 +1975,7 @@ use_offensive(struct monst *mtmp)
             ignite_items(mtmp->minvent);
             num = (2 * (rn1(3, 3) + 2 * bcsign(otmp)) + 1) / 3;
             if (Fire_resistance)
-                You("are not harmed.");
+                You(_("are not harmed."));
             burn_away_slime();
             if (Half_spell_damage)
                 num = (num + 1) / 2;
@@ -3151,7 +3151,7 @@ muse_unslime(
         mreadmsg(mon, obj);
         if (mon->mconf) {
             if (cansee(mon->mx, mon->my))
-                pline("Oh, what a pretty fire!");
+                pline("%s", _("Oh, what a pretty fire!"));
             if (vis)
                 trycall(obj);
             m_useup(mon, obj); /* after trycall() */

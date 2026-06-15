@@ -531,7 +531,7 @@ readmail(struct obj *otmp UNUSED)
         }
     }
     if (Blind) {
-        pline("Unfortunately you cannot see what it says.");
+        pline("%s", _("Unfortunately you cannot see what it says."));
     } else {
         if (delivery == subst_delivery)
             pline(junk_templates[i], it_reads, recipient, "\"");
@@ -647,7 +647,7 @@ read_simplemail(const char *mbox, boolean adminmsg)
                          curline);
         } else {
             pline("This message is from '%s'.", curline);
-            pline("It reads:");
+            pline("%s", _("It reads:"));
         }
         pline("\"%s\"%s", msg, endpunct);
 
@@ -676,7 +676,7 @@ read_simplemail(const char *mbox, boolean adminmsg)
  bail:
     /* bail out _professionally_ */
     if (!adminmsg)
-        pline("It appears to be all gibberish.");
+        pline("%s", _("It appears to be all gibberish."));
 }
 
 #endif /* SIMPLE_MAIL */

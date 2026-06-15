@@ -106,7 +106,7 @@ thitu(
     if (u.uac + tlev <= (dieroll = rnd(20))) {
         ++gm.mesg_given;
         if (Blind || !flags.verbose) {
-            pline("It misses.");
+            pline("%s", _("It misses."));
         } else if (u.uac + tlev <= dieroll - 2) {
             if (onm != onmbuf)
                 Strcpy(onmbuf, onm); /* [modifiable buffer for upstart()] */
@@ -121,7 +121,7 @@ thitu(
             You("are hit by %s%s", onm, exclam(dam));
 
         if (is_acid && Acid_resistance) {
-            pline("It doesn't seem to hurt you.");
+            pline("%s", _("It doesn't seem to hurt you."));
             monstseesu(M_SEEN_ACID);
         } else if (obj && stone_missile(obj)
                    && passes_rocks(gy.youmonst.data)) {
@@ -144,7 +144,7 @@ thitu(
                 exercise(A_CON, FALSE);
             }
             if (is_acid) {
-                pline("It burns!");
+                pline("%s", _("It burns!"));
                 monstunseesu(M_SEEN_ACID);
             }
             losehp(dam, knm, kprefix); /* acid damage */
@@ -352,7 +352,7 @@ ohitmon(
             if (vis)
                 miss(distant_name(otmp, mshot_xname), mtmp);
             else if (verbose && !gm.mtarget)
-                pline("It is missed.");
+                pline("%s", _("It is missed."));
         }
         if (!range) { /* Last position; object drops */
             (void) drop_throw(otmp, 0, mtmp->mx, mtmp->my);
@@ -438,7 +438,7 @@ ohitmon(
                 if (vis)
                     pline_The("%s burns %s!", hliquid("acid"), mon_nam(mtmp));
                 else if (verbose && !gm.mtarget)
-                    pline("It is burned!");
+                    pline("%s", _("It is burned!"));
             }
         }
         if (otmp->otyp == EGG && touch_petrifies(&mons[otmp->corpsenm])) {
@@ -760,7 +760,7 @@ m_throw(
                 blindinc = rnd(25);
                 if (singleobj->otyp == CREAM_PIE) {
                     if (!Blind)
-                        pline("Yecch!  You've been creamed.");
+                        pline("%s", _("Yecch!  You've been creamed."));
                     else
                         pline("There's %s sticky all over your %s.",
                               something, body_part(FACE));
@@ -927,7 +927,7 @@ return_from_mtoss(
         /* it didn't make it back to thrower's location */
         if (tethered_weapon)
             tmp_at(DISP_END, 0);
-        You_hear("a loud snap!");
+        You_hear(_("a loud snap!"));
         notcaught = TRUE;
     }
     if (otmp) {
@@ -1024,7 +1024,7 @@ spitmm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
                       s_suffix(mon_nam(mtmp)));
             } else {
                 Soundeffect(se_dry_throat_rattle, 50);
-                You_hear("a dry rattle nearby.");
+                You_hear(_("a dry rattle nearby."));
             }
         }
         return M_ATTK_MISS;
@@ -1102,7 +1102,7 @@ breamm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
                     pline("%s coughs.", Monnam(mtmp));
                 } else {
                     Soundeffect(se_cough, 100);
-                    You_hear("a cough.");
+                    You_hear(_("a cough."));
                 }
             }
             return M_ATTK_MISS;
@@ -1483,7 +1483,7 @@ hit_bars(
             int chance = (melee_attk ? 40 : 60) - acurrstr() - spe;
 
             if (!rn2(max(2, chance))) {
-                You("break the bars apart!");
+                You(_("break the bars apart!"));
                 dissolve_bars(barsx, barsy);
                 noise = noise * 2;
             }

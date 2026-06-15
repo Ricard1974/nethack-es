@@ -48,12 +48,12 @@ use_saddle(struct obj *otmp)
         return ECMD_CANCEL;
     }
     if (!u.dx && !u.dy) {
-        pline("Saddle yourself?  Very funny...");
+        pline("%s", _("Saddle yourself?  Very funny..."));
         return ECMD_OK;
     }
     if (!isok(u.ux + u.dx, u.uy + u.dy)
         || !(mtmp = m_at(u.ux + u.dx, u.uy + u.dy)) || !canspotmon(mtmp)) {
-        pline("I see nobody there.");
+        pline("%s", _("I see nobody there."));
         return ECMD_TIME;
     }
 
@@ -75,7 +75,7 @@ use_saddle(struct obj *otmp)
         }
     }
     if (ptr == &mons[PM_AMOROUS_DEMON]) {
-        pline("Shame on you!");
+        pline("%s", _("Shame on you!"));
         exercise(A_WIS, FALSE);
         return ECMD_TIME;
     }
@@ -85,7 +85,7 @@ use_saddle(struct obj *otmp)
         return ECMD_TIME;
     }
     if (!can_saddle(mtmp)) {
-        You_cant("saddle such a creature.");
+        You_cant(_("saddle such a creature."));
         return ECMD_TIME;
     }
 
@@ -210,7 +210,7 @@ mount_steed(
 
     /* Is the player in the right form? */
     if (Hallucination && !force) {
-        pline("Maybe you should find a designated driver.");
+        pline("%s", _("Maybe you should find a designated driver."));
         return (FALSE);
     }
     /* While riding, Wounded_legs refers to the steed's
@@ -242,11 +242,11 @@ mount_steed(
                    || verysmall(gy.youmonst.data)
                    || bigmonst(gy.youmonst.data)
                    || slithy(gy.youmonst.data))) {
-        You("won't fit on a saddle.");
+        You(_("won't fit on a saddle."));
         return (FALSE);
     }
     if (!force && (near_capacity() > SLT_ENCUMBER)) {
-        You_cant("do that while carrying so much stuff.");
+        You_cant(_("do that while carrying so much stuff."));
         return (FALSE);
     }
 
@@ -254,7 +254,7 @@ mount_steed(
     if (!mtmp || (!force && ((Blind && !Blind_telepat) || mtmp->mundetected
                              || M_AP_TYPE(mtmp) == M_AP_FURNITURE
                              || M_AP_TYPE(mtmp) == M_AP_OBJECT))) {
-        pline("I see nobody there.");
+        pline("%s", _("I see nobody there."));
         return (FALSE);
     }
     if (mtmp->data == &mons[PM_LONG_WORM]
@@ -273,7 +273,7 @@ mount_steed(
         if (Punished || !(u.uswallow || u.ustuck || u.utrap))
             You("are unable to swing your %s over.", body_part(LEG));
         else
-            You("are stuck here for now.");
+            You(_("are stuck here for now."));
         return (FALSE);
     }
 
@@ -320,7 +320,7 @@ mount_steed(
         return (FALSE);
     }
     if (!can_saddle(mtmp) || !can_ride(mtmp)) {
-        You_cant("ride such a creature.");
+        You_cant(_("ride such a creature."));
         return FALSE;
     }
 
@@ -374,7 +374,7 @@ mount_steed(
 
         steed_vs_stealth();
         if (was_stealthy && !Stealth)
-            You("aren't stealthy anymore.");
+            You(_("aren't stealthy anymore."));
     }
     remove_monster(mtmp->mx, mtmp->my);
     teleds(mtmp->mx, mtmp->my, TELEDS_ALLOW_DRAG);
@@ -638,14 +638,14 @@ dismount_steed(
             return;
         }
         if (!have_spot) {
-            You("can't.  There isn't anywhere for you to stand.");
+            You(_("can't.  There isn't anywhere for you to stand."));
             return;
         }
         if (!has_mgivenname(mtmp)) {
             pline("You've been through the dungeon on %s with no name.",
                   an(pmname(mtmp->data, Mgender(mtmp))));
             if (Hallucination)
-                pline("It felt good to get out of the rain.");
+                pline("%s", _("It felt good to get out of the rain."));
         } else
             You("dismount %s.", mon_nam(mtmp));
     }
@@ -662,7 +662,7 @@ dismount_steed(
 
         steed_vs_stealth();
         if (Stealth && !was_stealthy)
-            You("seem less noisy now.");
+            You(_("seem less noisy now."));
     }
 
     if (u.utraptype == TT_BEARTRAP

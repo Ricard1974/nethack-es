@@ -153,7 +153,7 @@ kick_monster(struct monst *mon, coordxy x, coordxy y)
 
     if (Levitation && !rn2(3) && verysmall(mon->data)
         && !is_flyer(mon->data)) {
-        pline("Floating in the air, you miss wildly!");
+        pline("%s", _("Floating in the air, you miss wildly!"));
         exercise(A_DEX, FALSE);
         (void) passive(mon, uarmf, FALSE, 1, AT_KICK, FALSE);
         return;
@@ -237,7 +237,7 @@ kick_monster(struct monst *mon, coordxy x, coordxy y)
         if (!rn2((i < j / 10) ? 2 : (i < j / 5) ? 3 : 4)) {
             if (martial())
                 goto doit;
-            Your("clumsy kick does no damage.");
+            Your(_("clumsy kick does no damage."));
             (void) passive(mon, uarmf, FALSE, 1, AT_KICK, FALSE);
             return;
         }
@@ -535,7 +535,7 @@ really_kick_object(coordxy x, coordxy y)
     }
 
     if (Fumbling && !rn2(3)) {
-        Your("clumsy kick missed.");
+        Your(_("clumsy kick missed."));
         return 1;
     }
 
@@ -616,7 +616,7 @@ really_kick_object(coordxy x, coordxy y)
         if ((!martial() && rn2(20) > ACURR(A_DEX))
             || IS_OBSTRUCTED(levl[u.ux][u.uy].typ) || closed_door(u.ux, u.uy)) {
             if (Blind)
-                pline("It doesn't come loose.");
+                pline("%s", _("It doesn't come loose."));
             else
                 pline("%s %sn't come loose.",
                       The(distant_name(gk.kickedobj, xname)),
@@ -624,7 +624,7 @@ really_kick_object(coordxy x, coordxy y)
             return (!rn2(3) || martial());
         }
         if (Blind)
-            pline("It comes loose.");
+            pline("%s", _("It comes loose."));
         else
             pline("%s %s loose.", The(distant_name(gk.kickedobj, xname)),
                   otense(gk.kickedobj, "come"));
@@ -651,11 +651,11 @@ really_kick_object(coordxy x, coordxy y)
         boolean otrp = gk.kickedobj->otrapped;
 
         if (range < 2)
-            pline("THUD!");
+            pline("%s", _("THUD!"));
         container_impact_dmg(gk.kickedobj, x, y);
         if (gk.kickedobj->olocked) {
             if (!rn2(5) || (martial() && !rn2(2))) {
-                You("break open the lock!");
+                You(_("break open the lock!"));
                 breakchestlock(gk.kickedobj, FALSE);
                 if (otrp)
                     (void) chest_trap(gk.kickedobj, LEG, FALSE);
@@ -685,7 +685,7 @@ really_kick_object(coordxy x, coordxy y)
      */
     if (range < 2) {
         if (!Is_box(gk.kickedobj))
-            pline("Thump!");
+            pline("%s", _("Thump!"));
         return (!rn2(3) || martial());
     }
 
@@ -708,7 +708,7 @@ really_kick_object(coordxy x, coordxy y)
                 return 1;
             }
             if (gk.kickedobj->quan > 300L) {
-                pline("Thump!");
+                pline("%s", _("Thump!"));
                 return (!rn2(3) || martial());
             }
         }
@@ -865,11 +865,11 @@ kick_dumb(coordxy x, coordxy y)
 {
     exercise(A_DEX, FALSE);
     if (martial() || ACURR(A_DEX) >= 16 || rn2(3)) {
-        You("kick at empty space.");
+        You(_("kick at empty space."));
         if (Blind)
             feel_location(x, y);
     } else {
-        pline("Dumb move!  You strain a muscle.");
+        pline("%s", _("Dumb move!  You strain a muscle."));
         exercise(A_STR, FALSE);
         set_wounded_legs(RIGHT_SIDE, 5 + rnd(5));
     }
@@ -883,7 +883,7 @@ kick_ouch(coordxy x, coordxy y, const char *kickobjnam)
     int dmg;
     char buf[BUFSZ];
 
-    pline("Ouch!  That hurts!");
+    pline("%s", _("Ouch!  That hurts!"));
     exercise(A_DEX, FALSE);
     exercise(A_STR, FALSE);
     if (isok(x, y)) {
@@ -933,18 +933,18 @@ kick_door(coordxy x, coordxy y, int avrg_attrib)
         /* break the door */
         if (gm.maploc->doormask & D_TRAPPED) {
             if (flags.verbose)
-                You("kick the door.");
+                You(_("kick the door."));
             exercise(A_STR, FALSE);
             gm.maploc->doormask = D_NODOOR;
             b_trapped("door", FOOT);
         } else if (ACURR(A_STR) > 18 && !rn2(5) && !shopdoor) {
             Soundeffect(se_kick_door_it_shatters, 50);
-            pline("As you kick the door, it shatters to pieces!");
+            pline("%s", _("As you kick the door, it shatters to pieces!"));
             exercise(A_STR, TRUE);
             gm.maploc->doormask = D_NODOOR;
         } else {
             Soundeffect(se_kick_door_it_crashes_open, 50);
-            pline("As you kick the door, it crashes open!");
+            pline("%s", _("As you kick the door, it crashes open!"));
             exercise(A_STR, TRUE);
             gm.maploc->doormask = D_BROKEN;
         }
@@ -1002,7 +1002,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
     if (gm.maploc->typ == SCORR) {
         if (!Levitation && rn2(30) < avrg_attrib) {
             Soundeffect(se_crash_door, 40);
-            pline("Crash!  You kick open a secret passage!");
+            pline("%s", _("Crash!  You kick open a secret passage!"));
             exercise(A_DEX, TRUE);
             gm.maploc->typ = CORR;
             feel_newsym(x, y); /* we know it's gone */
@@ -1025,9 +1025,9 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
             (void) mkgold((long) rnd(200), x, y);
             Soundeffect(se_crash_throne_destroyed, 60);
             if (Blind)
-                pline("CRASH!  You destroy it.");
+                pline("%s", _("CRASH!  You destroy it."));
             else {
-                pline("CRASH!  You destroy the throne.");
+                pline("%s", _("CRASH!  You destroy the throne."));
                 newsym(x, y);
             }
             exercise(A_DEX, TRUE);
@@ -1044,7 +1044,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
             if (Blind)
                 You("kick %s loose!", something);
             else {
-                You("kick loose some ornamental coins and gems!");
+                You(_("kick loose some ornamental coins and gems!"));
                 newsym(x, y);
             }
             /* prevent endless milking */
@@ -1089,7 +1089,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
         /* make metal boots rust */
         if (uarmf && rn2(3))
             if (water_damage(uarmf, "metal boots", TRUE) == ER_NOTHING) {
-                Your("boots get wet.");
+                Your(_("boots get wet."));
                 /* could cause short-lived fumbling here */
             }
         exercise(A_DEX, TRUE);
@@ -1140,7 +1140,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
             if (!rn2(6)
                 && !(svm.mvitals[PM_KILLER_BEE].mvflags & G_GONE)
                 && !(gm.maploc->looted & TREE_SWARM))
-                You_hear("a low buzzing."); /* a warning */
+                You_hear(_("a low buzzing.")); /* a warning */
             kick_ouch(x, y, "");
             return ECMD_TIME;
         }
@@ -1184,9 +1184,9 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
                     made++;
             }
             if (made)
-                pline("You've attracted the tree's former occupants!");
+                pline("%s", _("You've attracted the tree's former occupants!"));
             else
-                You("smell stale honey.");
+                You(_("smell stale honey."));
             gm.maploc->looted |= TREE_SWARM;
             return ECMD_TIME;
         }
@@ -1203,9 +1203,9 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
         if (rn2(5)) {
             Soundeffect(se_klunk_pipe, 60);
             if (!Deaf)
-                pline("Klunk!  The pipes vibrate noisily.");
+                pline("%s", _("Klunk!  The pipes vibrate noisily."));
             else
-                pline("Klunk!");
+                pline("%s", _("Klunk!"));
             exercise(A_DEX, TRUE);
             return ECMD_TIME;
         } else if (!(gm.maploc->looted & S_LPUDDING) && !rn2(3)
@@ -1213,7 +1213,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
             Soundeffect(se_gushing_sound, 100);
             if (Blind) {
                 if (!Deaf)
-                    You_hear("a gushing sound.");
+                    You_hear(_("a gushing sound."));
             } else {
                 pline("A %s ooze gushes up from the drain!",
                       hcolor(NH_BLACK));
@@ -1265,10 +1265,10 @@ dokick(void)
     boolean no_kick = FALSE;
 
     if (nolimbs(gy.youmonst.data) || slithy(gy.youmonst.data)) {
-        You("have no legs to kick with.");
+        You(_("have no legs to kick with."));
         no_kick = TRUE;
     } else if (verysmall(gy.youmonst.data)) {
-        You("are too small to do any kicking.");
+        You(_("are too small to do any kicking."));
         no_kick = TRUE;
     } else if (u.usteed) {
         if (yn_function("Kick your steed?", ynchars, 'y', TRUE) == 'y') {
@@ -1282,20 +1282,20 @@ dokick(void)
         legs_in_no_shape("kicking", FALSE);
         no_kick = TRUE;
     } else if (near_capacity() > SLT_ENCUMBER) {
-        Your("load is too heavy to balance yourself for a kick.");
+        Your(_("load is too heavy to balance yourself for a kick."));
         no_kick = TRUE;
     } else if (gy.youmonst.data->mlet == S_LIZARD) {
-        Your("legs cannot kick effectively.");
+        Your(_("legs cannot kick effectively."));
         no_kick = TRUE;
     } else if (u.uinwater && !rn2(2)) {
-        Your("slow motion kick doesn't hit anything.");
+        Your(_("slow motion kick doesn't hit anything."));
         no_kick = TRUE;
     } else if (u.utrap) {
         no_kick = TRUE;
         switch (u.utraptype) {
         case TT_PIT:
             if (!Passes_walls)
-                pline("There's not enough room to kick down here.");
+                pline("%s", _("There's not enough room to kick down here."));
             else
                 no_kick = FALSE;
             break;
@@ -1307,7 +1307,7 @@ dokick(void)
             break;
         }
     } else if (sobj_at(BOULDER, u.ux, u.uy) && !Passes_walls) {
-        pline("There's not enough room to kick in here.");
+        pline("%s", _("There's not enough room to kick in here."));
         no_kick = TRUE;
     }
 
@@ -1345,13 +1345,13 @@ dokick(void)
             FALLTHROUGH;
             /*FALLTHRU*/
         default:
-            Your("feeble kick has no effect.");
+            Your(_("feeble kick has no effect."));
             break;
         }
         return ECMD_TIME;
     } else if (u.utrap && u.utraptype == TT_PIT) {
         /* must be Passes_walls */
-        You("kick at the side of the pit.");
+        You(_("kick at the side of the pit."));
         return ECMD_TIME;
     }
     if (Levitation) {
@@ -1366,7 +1366,7 @@ dokick(void)
         if (isok(xx, yy) && !IS_OBSTRUCTED(levl[xx][yy].typ)
             && !IS_DOOR(levl[xx][yy].typ)
             && (!Is_airlevel(&u.uz) || !OBJ_AT(xx, yy))) {
-            You("have nothing to brace yourself against.");
+            You(_("have nothing to brace yourself against."));
             return ECMD_OK;
         }
     }

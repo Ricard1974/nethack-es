@@ -176,13 +176,13 @@ do_write_config_file(void)
     char tmp[BUFSZ];
 
     if (!configfile[0]) {
-        pline("Strange, could not figure out config file name.");
+        pline("%s", _("Strange, could not figure out config file name."));
         return ECMD_OK;
     }
     if (flags.suppress_alert < FEATURE_NOTICE_VER(3,7,0)) {
-        pline("Warning: saveoptions is highly experimental!");
+        pline("%s", _("Warning: saveoptions is highly experimental!"));
         wait_synch();
-        pline("Some settings are not saved!");
+        pline("%s", _("Some settings are not saved!"));
         wait_synch();
         pline("All manual customization and comments are removed"
               " from the file!");

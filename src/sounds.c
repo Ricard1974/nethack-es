@@ -68,11 +68,11 @@ beehive_mon_sound(struct monst *mtmp)
         switch (rn2(2) + hallu) {
         case 0:
             Soundeffect(se_low_buzzing, 30);
-            You_hear("a low buzzing.");
+            You_hear(_("a low buzzing."));
             break;
         case 1:
             Soundeffect(se_angry_drone, 100);
-            You_hear("an angry drone.");
+            You_hear(_("an angry drone."));
             break;
         case 2:
             Soundeffect(se_bees, 100);
@@ -95,7 +95,7 @@ morgue_mon_sound(struct monst *mtmp)
 
         switch (rn2(2) + hallu) {
         case 0:
-            You("suddenly realize it is unnaturally quiet.");
+            You(_("suddenly realize it is unnaturally quiet."));
             break;
         case 1:
             pline_The("%s on the back of your %s %s up.", hair,
@@ -258,7 +258,7 @@ dosounds(void)
                                      : "the quarterback calling the play.");
                     } else {
                         Soundeffect(se_someone_searching, 30);
-                        You_hear("someone searching.");
+                        You_hear(_("someone searching."));
                     }
                     break;
                 }
@@ -267,10 +267,10 @@ dosounds(void)
                 /*FALLTHRU*/
             case 0:
                 Soundeffect(se_guards_footsteps, 30);
-                You_hear("the footsteps of a guard on patrol.");
+                You_hear(_("the footsteps of a guard on patrol."));
                 break;
             case 2:
-                You_hear("Ebenezer Scrooge!");
+                You_hear(_("Ebenezer Scrooge!"));
                 break;
             }
         return;
@@ -968,7 +968,7 @@ domonnoise(struct monst *mtmp)
     case MS_BONES:
         Soundeffect(se_bone_rattle, 60);
         pline("%s rattles noisily.", Monnam(mtmp));
-        You("freeze for a moment.");
+        You(_("freeze for a moment."));
         nomul(-2);
         gm.multi_reason = "scared by rattling";
         gn.nomovemsg = 0;
@@ -1266,15 +1266,15 @@ dochat(void)
         return ECMD_OK;
     }
     if (Strangled) {
-        You_cant("speak.  You're choking!");
+        You_cant(_("speak.  You're choking!"));
         return ECMD_OK;
     }
     if (u.uswallow) {
-        pline("They won't hear you out there.");
+        pline("%s", _("They won't hear you out there."));
         return ECMD_OK;
     }
     if (Underwater) {
-        Your("speech is unintelligible underwater.");
+        Your(_("speech is unintelligible underwater."));
         return ECMD_OK;
     }
     if (!Deaf && !Blind && (otmp = shop_object(u.ux, u.uy)) != 0) {
@@ -1314,11 +1314,11 @@ dochat(void)
          * 2 helmets, 2 amulets, 3 pairs of gloves or 6 rings as a marilith,
          * etc...  --KAA
         if (u.umonnum == PM_ETTIN) {
-            You("discover that your other head makes boring conversation.");
+            You(_("discover that your other head makes boring conversation."));
             return 1;
         }
          */
-        pline("Talking to yourself is a bad habit for a dungeoneer.");
+        pline("%s", _("Talking to yourself is a bad habit for a dungeoneer."));
         return ECMD_OK;
     }
 
@@ -1349,7 +1349,7 @@ dochat(void)
                    already been mapped as a wall */
                 ;
             } else if (!Hallucination) {
-                pline("It's like talking to a wall.");
+                pline("%s", _("It's like talking to a wall."));
             } else {
                 static const char *const walltalk[] = {
                     "gripes about its job.",

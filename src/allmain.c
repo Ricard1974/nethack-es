@@ -52,14 +52,14 @@ moveloop_preamble(boolean resuming)
     /* side-effects from the real world */
     flags.moonphase = phase_of_the_moon();
     if (flags.moonphase == FULL_MOON) {
-        You("are lucky!  Full moon tonight.");
+        You(_("are lucky!  Full moon tonight."));
         change_luck(1);
     } else if (flags.moonphase == NEW_MOON) {
-        pline("Be careful!  New moon tonight.");
+        pline("%s", _("Be careful!  New moon tonight."));
     }
     flags.friday13 = friday_13th();
     if (flags.friday13) {
-        pline("Watch out!  Bad things can happen on Friday the 13th.");
+        pline("%s", _("Watch out!  Bad things can happen on Friday the 13th."));
         change_luck(-1);
     }
 
@@ -248,7 +248,7 @@ moveloop_core(void)
                  */
                 if (svm.moves >= 1000000000L) {
                     display_nhwindow(WIN_MESSAGE, TRUE);
-                    urgent_pline("The dungeon capitulates.");
+                    urgent_pline("%s", _("The dungeon capitulates."));
                     done(ESCAPED);
                 }
                 /* 'moves' is misnamed; it represents turns; hero_seq is
@@ -442,7 +442,7 @@ moveloop_core(void)
     if (u.uhave.amulet && !u.uevent.amulet_wish) {
         u.uevent.amulet_wish = 1;
         display_nhwindow(WIN_MESSAGE, TRUE);
-        urgent_pline("The Amulet is bestowing a wish upon you!");
+        urgent_pline("%s", _("The Amulet is bestowing a wish upon you!"));
         makewish();
     }
 
@@ -905,7 +905,7 @@ welcome(boolean new_game) /* false => restoring an old game */
     }
 
     if (Hallucination)
-        pline("NetHack is filmed in front of an undead studio audience.");
+        pline("%s", _("NetHack is filmed in front of an undead studio audience."));
 
     /*
      * The "welcome back" message always describes your innate form

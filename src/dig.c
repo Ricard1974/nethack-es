@@ -95,7 +95,7 @@ mkcavearea(boolean rockit)
 
     if (rockit) {
         Soundeffect(se_crashing_rock, 100);
-        pline("Crash!  The ceiling collapses around you!");
+        pline("%s", _("Crash!  The ceiling collapses around you!"));
     } else {
         pline("A mysterious force %s cave around you!",
               (levl[u.ux][u.uy].typ == CORR) ? "creates a" : "extends the");
@@ -323,7 +323,7 @@ dig(void)
     } else { /* !svc.context.digging.down */
         if (IS_TREE(lev->typ) && !may_dig(dpx, dpy)
             && dig_typ(uwep, dpx, dpy) == DIGTYP_TREE) {
-            pline("This tree seems to be petrified.");
+            pline("%s", _("This tree seems to be petrified."));
             return 0;
         }
         if (IS_OBSTRUCTED(lev->typ) && !may_dig(dpx, dpy)
@@ -356,7 +356,7 @@ dig(void)
             wake_nearby(FALSE);
             break;
         default:
-            Your("swing misses its mark.");
+            Your(_("swing misses its mark."));
             break;
         }
         return 0;
@@ -760,7 +760,7 @@ digactualhole(coordxy x, coordxy y, struct monst *madeby, int ttyp)
 
             /* check for leashed pet that can't fall right now */
             if (!u.ustuck && !wont_fall && !next_to_u()) {
-                You("are jerked back by your pet!");
+                You(_("are jerked back by your pet!"));
                 wont_fall = TRUE;
             }
 
@@ -782,7 +782,7 @@ digactualhole(coordxy x, coordxy y, struct monst *madeby, int ttyp)
                     shopdig(1); /* shk might snatch pack */
                 else /* handle any earlier hero-caused damage */
                     pay_for_damage("dig into", TRUE);
-                You("fall through...");
+                You(_("fall through..."));
                 /* Earlier checks must ensure that the destination
                  * level exists and is in the present dungeon.
                  */
@@ -951,7 +951,7 @@ dighole(boolean pit_only, boolean by_magic, coord *cc)
              * fills it.  Final outcome:  no hole, no boulder.
              */
             Soundeffect(se_kadoom_boulder_falls_in, 60);
-            pline("KADOOM!  The boulder falls in!");
+            pline("%s", _("KADOOM!  The boulder falls in!"));
             wake_nearby(FALSE);
             (void) delfloortrap(ttmp);
         }
@@ -1047,11 +1047,11 @@ dig_up_grave(coord *cc)
         You_feel("like a despicable grave-robber!");
     } else if (Role_if(PM_SAMURAI)) {
         adjalign(-sgn(u.ualign.type));
-        You("disturb the honorable dead!");
+        You(_("disturb the honorable dead!"));
     } else if (u.ualign.type == A_LAWFUL) {
         if (u.ualign.record > -10)
             adjalign(-1);
-        You("have violated the sanctity of this grave!");
+        You(_("have violated the sanctity of this grave!"));
     }
 
     /* -1: force default case for empty grave */
@@ -1059,7 +1059,7 @@ dig_up_grave(coord *cc)
     switch (what_happens) {
     case 0:
     case 1:
-        You("unearth a corpse.");
+        You(_("unearth a corpse."));
         if ((otmp = mk_tt_object(CORPSE, dig_x, dig_y)) != 0)
             otmp->age -= (TAINT_AGE + 1); /* this is an *OLD* corpse */
         break;
@@ -1174,7 +1174,7 @@ use_pick_axe2(struct obj *obj)
         pline("Turbulence torpedoes your %s attempts.", verbing);
     } else if (u.dz < 0) {
         if (Levitation)
-            You("don't have enough leverage.");
+            You(_("don't have enough leverage."));
         else
             You_cant("reach the %s.", ceiling(u.ux, u.uy));
     } else if (!u.dx && !u.dy && !u.dz) {
@@ -1195,7 +1195,7 @@ use_pick_axe2(struct obj *obj)
         ry = u.uy + u.dy;
         if (!isok(rx, ry)) {
             Soundeffect(se_clash, 40);
-            pline("Clash!");
+            pline("%s", _("Clash!"));
             return ECMD_TIME;
         }
         lev = &levl[rx][ry];
@@ -1210,7 +1210,7 @@ use_pick_axe2(struct obj *obj)
             if (trap && trap->ttyp == WEB) {
                 if (!trap->tseen) {
                     seetrap(trap);
-                    There("is a spider web there!");
+                    There(_("is a spider web there!"));
                 }
                 pline("%s entangled in the web.", Yobjnam2(obj, "become"));
                 /* you ought to be able to let go; tough luck */
@@ -1219,17 +1219,17 @@ use_pick_axe2(struct obj *obj)
                 gm.multi_reason = "stuck in a spider web";
                 gn.nomovemsg = "You pull free.";
             } else if (lev->typ == IRONBARS) {
-                pline("Clang!");
+                pline("%s", _("Clang!"));
                 wake_nearby(FALSE);
             } else if (IS_WATERWALL(lev->typ)) {
-                pline("Splash!");
+                pline("%s", _("Splash!"));
             } else if (lev->typ == LAVAWALL) {
-                pline("Splash!");
+                pline("%s", _("Splash!"));
                 (void) fire_damage(uwep, FALSE, rx, ry);
             } else if (IS_TREE(lev->typ)) {
-                You("need an axe to cut down a tree.");
+                You(_("need an axe to cut down a tree."));
             } else if (IS_OBSTRUCTED(lev->typ)) {
-                You("need a pick to dig rock.");
+                You(_("need a pick to dig rock."));
             } else if ((boulder = sobj_at(BOULDER, rx, ry)) != 0
                        || sobj_at(STATUE, rx, ry)) {
                 /* if both boulders and statues are present, the topmost
@@ -1263,7 +1263,7 @@ use_pick_axe2(struct obj *obj)
 
                     trap_with_u->conjoined |= (1 << idx);
                     trap->conjoined |= (1 << adjidx);
-                    You("clear some debris from between the pits.");
+                    You(_("clear some debris from between the pits."));
                 }
             } else if (u.utrap && u.utraptype == TT_PIT
                        && (trap_with_u = t_at(u.ux, u.uy)) != 0) {
@@ -1467,7 +1467,7 @@ mdig_tunnel(struct monst *mtmp)
         /* KMH -- Okay on arboreal levels (room walls are still stone) */
         if (flags.verbose && !rn2(5)) {
             Soundeffect(se_crashing_rock, 75);
-            You_hear("crashing rock.");
+            You_hear(_("crashing rock."));
         }
         if (*in_rooms(mtmp->mx, mtmp->my, SHOPBASE))
             add_damage(mtmp->mx, mtmp->my, 0L);
@@ -2243,7 +2243,7 @@ escape_tomb(void)
     debugpline0("escape_tomb");
     if ((Teleportation || can_teleport(gy.youmonst.data))
         && (Teleport_control || rn2(3) < Luck+2)) {
-        You("attempt a teleport spell.");
+        You(_("attempt a teleport spell."));
         (void) dotele(FALSE);        /* calls unearth_you() */
     } else if (u.uburied) { /* still buried after 'port attempt */
         boolean good;
@@ -2306,12 +2306,12 @@ wiz_debug_cmd_bury(void)
     diff = before - after;
     if (before == 0)
         /* there was nothing here */
-        pline("No objects here or adjacent to bury.");
+        pline("%s", _("No objects here or adjacent to bury."));
     else if (diff == 0)
         /* before and after will be the same if only unburiable objects are
            present (The Amulet, invocation items, Rider corpses, uchain when
            uball doesn't get buried: carried or floor beyond burial range) */
-        pline("No objects buried.");
+        pline("%s", _("No objects buried."));
     else
         /* usual case; if uball got buried, uchain went away and won't be
            counted as buried */

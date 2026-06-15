@@ -188,7 +188,7 @@ check_strangling(boolean on)
         if (Strangled && !can_be_strangled(&gy.youmonst)) {
             Strangled = 0L;
             disp.botl = TRUE;
-            You("are no longer being strangled.");
+            You(_("are no longer being strangled."));
         }
     }
 }
@@ -452,7 +452,7 @@ newman(void)
         livelog_newform(TRUE, oldgend, newgend);
 
     if (Slimed) {
-        Your("body transforms, but there is still slime on you.");
+        Your(_("body transforms, but there is still slime on you."));
         make_slimed(10L, (const char *) 0);
     }
 
@@ -481,7 +481,7 @@ polyself(int psflags)
             controllable_poly = Polymorph_control && !(Stunned || Unaware);
 
     if (Unchanging) {
-        You("fail to transform!");
+        You(_("fail to transform!"));
         return;
     }
     /* being Stunned|Unaware doesn't negate this aspect of Poly_control */
@@ -564,9 +564,9 @@ polyself(int psflags)
 
             if (mntmp < LOW_PM) {
                 if (!class)
-                    pline("I've never heard of such monsters.");
+                    pline("%s", _("I've never heard of such monsters."));
                 else
-                    You_cant("polymorph into any of those.");
+                    You_cant(_("polymorph into any of those."));
             } else if (wizard && Upolyd
                        && (mntmp == u.umonster
                            /* "priest" and "priestess" match the monster
@@ -636,7 +636,7 @@ polyself(int psflags)
                 /* allow G_EXTINCT */
                 if (Is_dragon_scales(uarm)) {
                     /* dragon scales remain intact as uskin */
-                    You("merge with your scaly armor.");
+                    You(_("merge with your scaly armor."));
                 } else { /* dragon scale mail reverts to scales */
                     /* similar to noarmor(invent.c),
                        shorten to "<color> scale mail" */
@@ -837,7 +837,7 @@ polymon(int mntmp)
     }
     if (Sick_resistance && Sick) {
         make_sick(0L, (char *) 0, FALSE, SICK_ALL);
-        You("no longer feel sick.");
+        You(_("no longer feel sick."));
     }
     if (Slimed) {
         if (flaming(gy.youmonst.data)) {
@@ -990,10 +990,10 @@ polymon(int mntmp)
     if (amorphous(gy.youmonst.data) || is_whirly(gy.youmonst.data)
         || unsolid(gy.youmonst.data)) {
         if (Punished) {
-            You("slip out of the iron chain.");
+            You(_("slip out of the iron chain."));
             unpunish();
         } else if (u.utrap && u.utraptype == TT_BURIEDBALL) {
-            You("slip free of the buried ball and chain.");
+            You(_("slip free of the buried ball and chain."));
             buried_ball_to_freedom();
         }
     }
@@ -1008,7 +1008,7 @@ polymon(int mntmp)
         reset_utrap(TRUE);
     }
     if (webmaker(gy.youmonst.data) && u.utrap && u.utraptype == TT_WEB) {
-        You("orient yourself on the web.");
+        You(_("orient yourself on the web."));
         reset_utrap(TRUE);
     }
     check_strangling(TRUE); /* maybe start strangling */
@@ -1168,7 +1168,7 @@ break_armor(void)
             if (otmp->lamplit)
                 end_burn(otmp, FALSE);
 
-            You("break out of your armor!");
+            You(_("break out of your armor!"));
             exercise(A_STR, FALSE);
             (void) Armor_gone();
             useup(otmp);
@@ -1192,14 +1192,14 @@ break_armor(void)
             }
         }
         if (uarmu) {
-            Your("shirt rips to shreds!");
+            Your(_("shirt rips to shreds!"));
             useup(uarmu);
         }
     } else if (sliparm(uptr)) {
         if ((otmp = uarm) != 0 && racial_exception(&gy.youmonst, otmp) < 1) {
             if (donning(otmp))
                 cancel_don();
-            Your("armor falls around you!");
+            Your(_("armor falls around you!"));
             /* [note: _gone() instead of _off() dates to when life-saving
                could force fire resisting armor back on if hero burned in
                hell (3.0, predating Gehennom); the armor isn't actually
@@ -1219,9 +1219,9 @@ break_armor(void)
         }
         if ((otmp = uarmu) != 0) {
             if (is_whirly(uptr))
-                You("seep right through your shirt!");
+                You(_("seep right through your shirt!"));
             else
-                You("become much too small for your shirt!");
+                You(_("become much too small for your shirt!"));
             setworn((struct obj *) 0, otmp->owornmask & W_ARMU);
             dropp(otmp);
         }
@@ -1257,7 +1257,7 @@ break_armor(void)
             dropp(otmp);
         }
         if ((otmp = uarms) != 0) {
-            You("can no longer hold your shield!");
+            You(_("can no longer hold your shield!"));
             (void) Shield_off();
             dropp(otmp);
         }
@@ -1276,7 +1276,7 @@ break_armor(void)
             if (donning(otmp))
                 cancel_don();
             if (is_whirly(uptr))
-                Your("boots fall away!");
+                Your(_("boots fall away!"));
             else
                 Your("boots %s off your feet!",
                      verysmall(uptr) ? "slide" : "are pushed");
@@ -1397,7 +1397,7 @@ rehumanize(void)
     if (u.uhp < 1) {
         /* can only happen if some bit of code reduces u.uhp
            instead of u.mh while poly'd */
-        Your("old form was not healthy enough to survive.");
+        Your(_("old form was not healthy enough to survive."));
         Sprintf(svk.killer.name, "reverting to unhealthy %s form",
                 gu.urace.adj);
         svk.killer.format = KILLED_BY;
@@ -1423,11 +1423,11 @@ dobreathe(void)
     struct attack *mattk;
 
     if (Strangled) {
-        You_cant("breathe.  Sorry.");
+        You_cant(_("breathe.  Sorry."));
         return ECMD_OK;
     }
     if (u.uen < 15) {
-        You("don't have enough energy to breathe!");
+        You(_("don't have enough energy to breathe!"));
         return ECMD_OK;
     }
     u.uen -= 15;
@@ -1486,7 +1486,7 @@ doremove(void)
                       surface(u.ux, u.uy));
             return ECMD_OK;
         }
-        You("are not chained to anything!");
+        You(_("are not chained to anything!"));
         return ECMD_OK;
     }
     unpunish();
@@ -1546,7 +1546,7 @@ dospinweb(void)
         return ECMD_OK;
     }
     if (u.utrap) {
-        You("cannot spin webs while stuck in a trap.");
+        You(_("cannot spin webs while stuck in a trap."));
         return ECMD_OK;
     }
     exercise(A_DEX, TRUE);
@@ -1554,7 +1554,7 @@ dospinweb(void)
         switch (ttmp->ttyp) {
         case PIT:
         case SPIKED_PIT:
-            You("spin a web, covering up the pit.");
+            You(_("spin a web, covering up the pit."));
             deltrap(ttmp);
             bury_objs(x, y);
             newsym(x, y);
@@ -1568,10 +1568,10 @@ dospinweb(void)
         case LEVEL_TELEP:
         case MAGIC_PORTAL:
         case VIBRATING_SQUARE:
-            Your("webbing vanishes!");
+            Your(_("webbing vanishes!"));
             return ECMD_OK;
         case WEB:
-            You("make the web thicker.");
+            You(_("make the web thicker."));
             return ECMD_TIME;
         case HOLE:
         case TRAPDOOR:
@@ -1581,7 +1581,7 @@ dospinweb(void)
             newsym(x, y);
             return ECMD_TIME;
         case ROLLING_BOULDER_TRAP:
-            You("spin a web, jamming the trigger.");
+            You(_("spin a web, jamming the trigger."));
             deltrap(ttmp);
             newsym(x, y);
             return ECMD_TIME;
@@ -1596,7 +1596,7 @@ dospinweb(void)
         case MAGIC_TRAP:
         case ANTI_MAGIC:
         case POLY_TRAP:
-            You("have triggered a trap!");
+            You(_("have triggered a trap!"));
             dotrap(ttmp, NO_TRAP_FLAGS);
             return ECMD_TIME;
         default:
@@ -1611,7 +1611,7 @@ dospinweb(void)
     }
     ttmp = maketrap(x, y, WEB);
     if (ttmp) {
-        You("spin a web.");
+        You(_("spin a web."));
         ttmp->madeby_u = 1;
         feeltrap(ttmp);
         if (*in_rooms(x, y, SHOPBASE))
@@ -1625,16 +1625,16 @@ dosummon(void)
 {
     int placeholder;
     if (u.uen < 10) {
-        You("lack the energy to send forth a call for help!");
+        You(_("lack the energy to send forth a call for help!"));
         return ECMD_OK;
     }
     u.uen -= 10;
     disp.botl = TRUE;
 
-    You("call upon your brethren for help!");
+    You(_("call upon your brethren for help!"));
     exercise(A_WIS, TRUE);
     if (!were_summon(gy.youmonst.data, TRUE, &placeholder, (char *) 0))
-        pline("But none arrive.");
+        pline("%s", _("But none arrive."));
     return ECMD_TIME;
 }
 
@@ -1659,14 +1659,14 @@ dogaze(void)
     }
 
     if (Blind) {
-        You_cant("see anything to gaze at.");
+        You_cant(_("see anything to gaze at."));
         return ECMD_OK;
     } else if (Hallucination) {
-        You_cant("gaze at anything you can see.");
+        You_cant(_("gaze at anything you can see."));
         return ECMD_OK;
     }
     if (u.uen < 15) {
-        You("lack the energy to use your special gaze!");
+        You(_("lack the energy to use your special gaze!"));
         return ECMD_OK;
     }
     u.uen -= 15;
@@ -1758,7 +1758,7 @@ dogaze(void)
                     pline("Gazing at the awake %s is not a very good idea.",
                           l_monnam(mtmp));
                     /* as if gazing at a sleeping anything is fruitful... */
-                    urgent_pline("You turn to stone...");
+                    urgent_pline("%s", _("You turn to stone..."));
                     svk.killer.format = KILLED_BY;
                     Strcpy(svk.killer.name,
                            "deliberately meeting Medusa's gaze");
@@ -1768,7 +1768,7 @@ dogaze(void)
         }
     }
     if (!looked)
-        You("gaze at no place in particular.");
+        You(_("gaze at no place in particular."));
     return ECMD_TIME;
 }
 
@@ -1811,7 +1811,7 @@ dohide(void)
         struct obj *otmp, *otop = svl.level.objects[u.ux][u.uy];
 
         if (!otop) {
-            There("is nothing to hide under here.");
+            There(_("is nothing to hide under here."));
             u.uundetected = 0;
             return ECMD_OK;
         }
@@ -1843,13 +1843,13 @@ dohide(void)
     }
     /* Planes of Air and Water */
     if (on_ceiling && !has_ceiling(&u.uz)) {
-        There("is nowhere to hide above you.");
+        There(_("is nowhere to hide above you."));
         u.uundetected = 0;
         return ECMD_OK;
     }
     if ((is_hider(gy.youmonst.data) && !Flying) /* floor hider */
         && (Is_airlevel(&u.uz) || Is_waterlevel(&u.uz))) {
-        There("is nowhere to hide beneath you.");
+        There(_("is nowhere to hide beneath you."));
         u.uundetected = 0;
         return ECMD_OK;
     }
@@ -1897,14 +1897,14 @@ domindblast(void)
     int dmg;
 
     if (u.uen < 10) {
-        You("concentrate but lack the energy to maintain doing so.");
+        You(_("concentrate but lack the energy to maintain doing so."));
         return ECMD_OK;
     }
     u.uen -= 10;
     disp.botl = TRUE;
 
-    You("concentrate.");
-    pline("A wave of psychic energy pours out.");
+    You(_("concentrate."));
+    pline("%s", _("A wave of psychic energy pours out."));
     for (mtmp = fmon; mtmp; mtmp = nmon) {
         int u_sen;
 
@@ -1957,7 +1957,7 @@ skinback(boolean silently)
         int old_light = arti_light_radius(uskin);
 
         if (!silently)
-            Your("skin returns to its original form.");
+            Your(_("skin returns to its original form."));
         uarm = uskin;
         uskin = (struct obj *) 0;
         /* undo save/restore hack */
@@ -2182,7 +2182,7 @@ ugolemeffects(int damtype, int dam)
         if (u.mh > u.mhmax)
             u.mh = u.mhmax;
         disp.botl = TRUE;
-        pline("Strangely, you feel better than before.");
+        pline("%s", _("Strangely, you feel better than before."));
         exercise(A_STR, TRUE);
     }
 }

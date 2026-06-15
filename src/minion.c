@@ -374,7 +374,7 @@ bribe(struct monst *mtmp, const char *prompt)
         You("try to shortchange %s, but fumble.", mon_nam(mtmp));
         return 0L;
     } else if (offer == 0L) {
-        You("refuse.");
+        You(_("refuse."));
         return 0L;
     } else if (offer >= umoney) {
         You("give %s all your gold.", mon_nam(mtmp));
@@ -505,7 +505,7 @@ gain_guardian_angel(void)
                      message will be heard even if that fails) */
     if (Conflict) {
        if (!Deaf)
-            pline("A voice booms:");
+            pline("%s", _("A voice booms:"));
         else
             You_feel("a booming voice:");
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
@@ -514,7 +514,7 @@ gain_guardian_angel(void)
         lose_guardian_angel((struct monst *) 0);
     } else if (u.ualign.record > 8) { /* fervent */
         if (!Deaf)
-            pline("A voice whispers:");
+            pline("%s", _("A voice whispers:"));
         else
             You_feel("a soft voice:");
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
@@ -540,7 +540,7 @@ gain_guardian_angel(void)
             /* for 'hilite_pet'; after making tame, before next message */
             newsym(mtmp->mx, mtmp->my);
             if (!Blind)
-                pline("An angel appears near you.");
+                pline("%s", _("An angel appears near you."));
             else
                 You_feel("the presence of a friendly angel near you.");
             /* make him strong enough vs. endgame foes */

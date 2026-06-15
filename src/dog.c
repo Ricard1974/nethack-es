@@ -118,7 +118,7 @@ pick_familiar_pm(struct obj *otmp, boolean quietly)
             if (!quietly)
                 /* have just been given "You <do something with>
                    the figurine and it transforms." message */
-                pline("... into a pile of dust.");
+                pline("%s", _("... into a pile of dust."));
             return (struct permonst *) 0;
         }
     } else if (!rn2(3)) {
@@ -129,7 +129,7 @@ pick_familiar_pm(struct obj *otmp, boolean quietly)
 
         pm = rndmonst_adj(0, max);
         if (!pm && !quietly)
-            There("seems to be nothing available for a familiar.");
+            There(_("seems to be nothing available for a familiar."));
     }
     return pm;
 }
@@ -191,7 +191,7 @@ make_familiar(struct obj *otmp, coordxy x, coordxy y, boolean quietly)
             reallytame = FALSE; /* not tame after all */
             if (chance == 2) {  /* hostile (cursed figurine) */
                 if (!quietly)
-                    You("get a bad feeling about this.");
+                    You(_("get a bad feeling about this."));
                 mtmp->mpeaceful = 0;
                 set_malign(mtmp);
             }

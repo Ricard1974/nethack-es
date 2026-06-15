@@ -101,17 +101,17 @@ dowaternymph(void)
         if (!Blind)
             You("attract %s!", a_monnam(mtmp));
         else
-            You_hear("a seductive voice.");
+            You_hear(_("a seductive voice."));
         mtmp->msleeping = 0;
         if (t_at(mtmp->mx, mtmp->my))
             (void) mintrap(mtmp, NO_TRAP_FLAGS);
     } else if (!Blind) {
         Soundeffect(se_bubble_rising, 50);
         Soundeffect(se_loud_pop, 50);
-        pline("A large bubble rises to the surface and pops.");
+        pline("%s", _("A large bubble rises to the surface and pops."));
     } else {
         Soundeffect(se_loud_pop, 50);
-        You_hear("a loud pop.");
+        You_hear(_("a loud pop."));
     }
 }
 
@@ -124,9 +124,9 @@ dogushforth(int drinking)
     do_clear_area(u.ux, u.uy, 7, gush, (genericptr_t) &madepool);
     if (!madepool) {
         if (drinking)
-            Your("thirst is quenched.");
+            Your(_("thirst is quenched."));
         else
-            pline("Water sprays all over you.");
+            pline("%s", _("Water sprays all over you."));
     }
 }
 
@@ -145,7 +145,7 @@ gush(coordxy x, coordxy y, genericptr_t poolcnt)
         return;
 
     if (!((*(int *) poolcnt)++))
-        pline("Water gushes forth from the overflowing fountain!");
+        pline("%s", _("Water gushes forth from the overflowing fountain!"));
 
     /* Put a pool at x, y */
     set_levltyp(x, y, POOL);
@@ -165,7 +165,7 @@ staticfn void
 dofindgem(void)
 {
     if (!Blind)
-        You("spot a gem in the sparkling waters!");
+        You(_("spot a gem in the sparkling waters!"));
     else
         You_feel("a gem here!");
     (void) mksobj_at(rnd_class(DILITHIUM_CRYSTAL, LUCKSTONE - 1), u.ux, u.uy,
@@ -254,7 +254,7 @@ drinkfountain(void)
     if (mgkftn && u.uluck >= 0 && fate >= 10) {
         int i, ii, littleluck = (u.uluck < 4);
 
-        pline("Wow!  This makes you feel great!");
+        pline("%s", _("Wow!  This makes you feel great!"));
         /* blessed restore ability */
         for (ii = 0; ii < A_MAX; ii++)
             if (ABASE(ii) < AMAX(ii)) {
@@ -270,7 +270,7 @@ drinkfountain(void)
                 i = 0;
         }
         display_nhwindow(WIN_MESSAGE, FALSE);
-        pline("A wisp of vapor escapes the fountain...");
+        pline("%s", _("A wisp of vapor escapes the fountain..."));
         exercise(A_WIS, TRUE);
         levl[u.ux][u.uy].blessedftn = 0;
         return;
@@ -318,7 +318,7 @@ drinkfountain(void)
             struct obj *obj, *nextobj;
             int buc_changed = 0;
 
-            pline("This water's no good!");
+            pline("%s", _("This water's no good!"));
             morehungry(rn1(20, 11));
             exercise(A_CON, FALSE);
             /* this is more severe than rndcurse() */
@@ -336,14 +336,14 @@ drinkfountain(void)
         case 25: /* See invisible */
             if (Blind) {
                 if (Invisible) {
-                    You("feel transparent.");
+                    You(_("feel transparent."));
                 } else {
-                    You("feel very self-conscious.");
-                    pline("Then it passes.");
+                    You(_("feel very self-conscious."));
+                    pline("%s", _("Then it passes."));
                 }
             } else {
                 You_see("an image of someone stalking you.");
-                pline("But it disappears.");
+                pline("%s", _("But it disappears."));
             }
             HSee_invisible |= FROMOUTSIDE;
             newsym(u.ux, u.uy);
@@ -427,7 +427,7 @@ dipfountain(struct obj *obj)
             /* Be *REAL* nice */
             pline(
               "From the murky depths, a hand reaches up to bless the sword.");
-            pline("As the hand retreats, the fountain disappears!");
+            pline("%s", _("As the hand retreats, the fountain disappears!"));
             obj = oname(obj, artiname(ART_EXCALIBUR),
                         ONAME_VIA_DIP | ONAME_KNOW_ARTI);
             discover_artifact(ART_EXCALIBUR);
@@ -470,7 +470,7 @@ dipfountain(struct obj *obj)
                 pline_The("%s glows for a moment.", hliquid("water"));
             uncurse(obj);
         } else {
-            pline("A feeling of loss comes over you.");
+            pline("%s", _("A feeling of loss comes over you."));
         }
         break;
     case 21: /* Water Demon */
@@ -499,7 +499,7 @@ dipfountain(struct obj *obj)
         You_feel("a sudden chill.");
         break;
     case 28: /* Strange feeling */
-        pline("An urge to take a bath overwhelms you.");
+        pline("%s", _("An urge to take a bath overwhelms you."));
         {
             long money = money_cnt(gi.invent);
             struct obj *otmp, *nextobj;
@@ -521,7 +521,7 @@ dipfountain(struct obj *obj)
                             delobj(otmp);
                     }
                 }
-                You("lost some of your gold in the fountain!");
+                You(_("lost some of your gold in the fountain!"));
                 CLEAR_FOUNTAIN_LOOTED(u.ux, u.uy);
                 exercise(A_WIS, FALSE);
             }
@@ -611,7 +611,7 @@ drinksink(void)
     case 2:
         You("take a sip of scalding hot %s.", hliquid("water"));
         if (Fire_resistance) {
-            pline("It seems quite tasty.");
+            pline("%s", _("It seems quite tasty."));
             monstseesu(M_SEEN_FIRE);
         } else {
             losehp(rnd(6), "sipping boiling water", KILLED_BY);
@@ -650,7 +650,7 @@ drinksink(void)
         break;
     case 5:
         if (!(levl[u.ux][u.uy].looted & S_LRING)) {
-            You("find a ring in the sink!");
+            You(_("find a ring in the sink!"));
             (void) mkobj_at(RING_CLASS, u.ux, u.uy, TRUE);
             levl[u.ux][u.uy].looted |= S_LRING;
             exercise(A_WIS, TRUE);
@@ -665,7 +665,7 @@ drinksink(void)
         pline_The("%s moves as though of its own will!", hliquid("water"));
         if ((svm.mvitals[PM_WATER_ELEMENTAL].mvflags & G_GONE)
             || !makemon(&mons[PM_WATER_ELEMENTAL], u.ux, u.uy, MM_NOMSG))
-            pline("But it quiets down.");
+            pline("%s", _("But it quiets down."));
         break;
     case 8:
         pline("Yuk, this %s tastes awful.", hliquid("water"));
@@ -673,33 +673,33 @@ drinksink(void)
         newexplevel();
         break;
     case 9:
-        pline("Gaggg... this tastes like sewage!  You vomit.");
+        pline("%s", _("Gaggg... this tastes like sewage!  You vomit."));
         morehungry(rn1(30 - ACURR(A_CON), 11));
         vomit();
         break;
     case 10:
         pline("This %s contains toxic wastes!", hliquid("water"));
         if (!Unchanging) {
-            You("undergo a freakish metamorphosis!");
+            You(_("undergo a freakish metamorphosis!"));
             polyself(POLY_NOFLAGS);
         }
         break;
     /* more odd messages --JJB */
     case 11:
         Soundeffect(se_clanking_pipe, 50);
-        You_hear("clanking from the pipes...");
+        You_hear(_("clanking from the pipes..."));
         break;
     case 12:
         Soundeffect(se_sewer_song, 100);
-        You_hear("snatches of song from among the sewers...");
+        You_hear(_("snatches of song from among the sewers..."));
         break;
     case 13:
-        pline("Ew, what a stench!");
+        pline("%s", _("Ew, what a stench!"));
         create_gas_cloud(u.ux, u.uy, 1, 4);
         break;
     case 19:
         if (Hallucination) {
-            pline("From the murky drain, a hand reaches up... --oops--");
+            pline("%s", _("From the murky drain, a hand reaches up... --oops--"));
             break;
         }
         FALLTHROUGH;
@@ -746,7 +746,7 @@ dipsink(struct obj *obj)
         break;
     case POT_OIL:
         if (!Blind) {
-            pline("It leaves an oily film on the basin.");
+            pline("%s", _("It leaves an oily film on the basin."));
             try_call = TRUE;
         } else {
             pline1(nothing_seems_to_happen);
@@ -758,7 +758,7 @@ dipsink(struct obj *obj)
         if (!Blind) {
             pline_The("drain seems less clogged.");
         } else if (!Deaf) {
-            You_hear("a sucking sound.");
+            You_hear(_("a sucking sound."));
         } else {
             pline1(nothing_seems_to_happen);
             try_call = FALSE;
@@ -770,7 +770,7 @@ dipsink(struct obj *obj)
         break;
     case POT_OBJECT_DETECTION:
         if (!(levl[u.ux][u.uy].looted & S_LRING)) {
-            You("sense a ring lost down the drain.");
+            You(_("sense a ring lost down the drain."));
             try_call = TRUE;
             break;
         }
@@ -789,7 +789,7 @@ dipsink(struct obj *obj)
     default:
         /* hero can feel the vapor on her skin, so no need to check Blind or
            breathless for this message */
-        pline("A wisp of vapor rises up...");
+        pline("%s", _("A wisp of vapor rises up..."));
         /* NB: potionbreathe calls trycall or makeknown as appropriate */
         if (!breathless(gy.youmonst.data) || haseyes(gy.youmonst.data))
             potionbreathe(obj);

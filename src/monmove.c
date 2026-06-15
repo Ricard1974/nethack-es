@@ -121,7 +121,7 @@ mon_yells(struct monst *mon, const char *shout)
             pline_mon(mon, "%s yells:", Amonnam(mon));
         } else {
             /* Soundeffect(se_someone_yells, 75); */
-            You_hear("someone yell:");
+            You_hear(_("someone yell:"));
         }
         SetVoice(mon, 0, 80, 0);
         verbalize1(shout);
@@ -366,7 +366,7 @@ release_hero(struct monst *mon)
             expels(mon, mon->data, TRUE);
         } else if (!sticks(gy.youmonst.data)) {
             unstuck(mon); /* let go */
-            You("get released!");
+            You(_("get released!"));
         }
     }
 }
@@ -587,13 +587,13 @@ mind_blast(struct monst *mtmp)
     if (canseemon(mtmp))
         pline_mon(mtmp, "%s concentrates.", Monnam(mtmp));
     if (mdistu(mtmp) > BOLT_LIM * BOLT_LIM) {
-        You("sense a faint wave of psychic energy.");
+        You(_("sense a faint wave of psychic energy."));
         return;
     }
-    pline("A wave of psychic energy pours over you!");
+    pline("%s", _("A wave of psychic energy pours over you!"));
     if (mtmp->mpeaceful
         && (!Conflict || resist_conflict(mtmp))) {
-        pline("It feels quite soothing.");
+        pline("%s", _("It feels quite soothing."));
     } else if (!u.uinvulnerable) {
         int dmg;
         boolean m_sen = sensemon(mtmp);
@@ -1569,7 +1569,7 @@ postmov(
                         } else if (canseeit) {
                             You_see("a door unlock and open.");
                         } else if (!Deaf) {
-                            You_hear("a door unlock and open.");
+                            You_hear(_("a door unlock and open."));
                         }
                     }
                 }
@@ -1586,7 +1586,7 @@ postmov(
                         } else if (canseeit) {
                             You_see("a door open.");
                         } else if (!Deaf) {
-                            You_hear("a door open.");
+                            You_hear(_("a door open."));
                         }
                     }
                 }
@@ -1611,7 +1611,7 @@ postmov(
                         } else if (canseeit) {
                             You_see("a door crash open.");
                         } else if (!Deaf) {
-                            You_hear("a door crash open.");
+                            You_hear(_("a door crash open."));
                         }
                     }
                 }

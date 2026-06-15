@@ -103,7 +103,7 @@ boulder_hits_pool(
                 pline("%s %s %s into the %s.", upstart(whobuf),
                       vtense(whobuf, "push"), the(xname(otmp)), what);
                 if (flags.verbose && !Blind)
-                    pline("Now you can cross it!");
+                    pline("%s", _("Now you can cross it!"));
                 /* no splashing in this case */
             }
         }
@@ -128,7 +128,7 @@ boulder_hits_pool(
                 set_uinwater(0); /* u.uinwater = 0 */
                 docrt();
                 gv.vision_full_recalc = 1;
-                You("find yourself on dry land again!");
+                You(_("find yourself on dry land again!"));
             } else if (lava && next2u(rx, ry)) {
                 int dmg;
 
@@ -140,7 +140,7 @@ boulder_hits_pool(
                        "molten lava", KILLED_BY);
             } else if (!fills_up && flags.verbose
                        && (pushing ? !Blind : cansee(rx, ry))) {
-                pline("It sinks without a trace!");
+                pline("%s", _("It sinks without a trace!"));
             }
         }
 
@@ -239,7 +239,7 @@ flooreffects(
         if (*verb) {
             if (Blind && u_at(x, y)) {
                 Soundeffect(se_crashing_boulder, 100);
-                You_hear("a CRASH! beneath you.");
+                You_hear(_("a CRASH! beneath you."));
             } else if (!Blind && cansee(x, y)) {
                 pline_The("boulder %s%s.",
                           (ttyp == TRAPDOOR && !tseen) ? "triggers and " : "",
@@ -276,9 +276,9 @@ flooreffects(
         if ((Blind || (Levitation || Flying)) && !Deaf && u_at(x, y)) {
             if (!Underwater) {
                 if (weight(obj) > WT_SPLASH_THRESHOLD) {
-                    pline("Splash!");
+                    pline("%s", _("Splash!"));
                 } else if (Levitation || Flying) {
-                    pline("Plop!");
+                    pline("%s", _("Plop!"));
                 }
             }
             map_background(x, y, 0);
@@ -347,7 +347,7 @@ flooreffects(
                 pline("%s from the heat!",
                       is_plural(obj) ? "They shatter" : "It shatters");
             } else {
-                You_hear("a shattering noise.");
+                You_hear(_("a shattering noise."));
             }
             breakobj(obj, x, y, FALSE, FALSE);
             res = TRUE;
@@ -525,11 +525,11 @@ dosinkring(struct obj *obj)
               Hallucination ? makeplural(rndmonnam(NULL)) : "flies");
         break;
     case RIN_SHOCK_RESISTANCE:
-        pline("Static electricity surrounds the sink.");
+        pline("%s", _("Static electricity surrounds the sink."));
         break;
     case RIN_CONFLICT:
         Soundeffect(se_drain_noises, 50);
-        You_hear("loud noises coming from the drain.");
+        You_hear(_("loud noises coming from the drain."));
         break;
     case RIN_SUSTAIN_ABILITY: /* KMH */
         pline_The("%s flow seems fixed.", hliquid("water"));
@@ -570,7 +570,7 @@ dosinkring(struct obj *obj)
         break;
     case MEAT_RING:
         /* Not the same as aggravate monster; besides, it's obvious. */
-        pline("Several flies buzz around the sink.");
+        pline("%s", _("Several flies buzz around the sink."));
         break;
     case RIN_TELEPORTATION:
         nosink = teleport_sink();
@@ -599,7 +599,7 @@ dosinkring(struct obj *obj)
             pline_The("sink looks as good as new.");
             break;
         case RIN_INVISIBILITY:
-            You("don't see anything happen to the sink.");
+            You(_("don't see anything happen to the sink."));
             break;
         case RIN_FREE_ACTION:
             You_see("the ring slide right down the drain!");
@@ -644,7 +644,7 @@ dosinkring(struct obj *obj)
         trycall(obj);
     } else if (!nosink) {
         Soundeffect(se_ring_in_drain, 50);
-        You_hear("the ring bouncing down the drainpipe.");
+        You_hear(_("the ring bouncing down the drainpipe."));
     }
     if (!rn2(20) && !nosink) {
         pline_The("sink backs up, leaving %s.", doname(obj));
@@ -926,7 +926,7 @@ doddrop(void)
     int result = ECMD_OK;
 
     if (!gi.invent) {
-        You("have nothing to drop.");
+        You(_("have nothing to drop."));
         return ECMD_OK;
     }
     add_valid_menu_class(0); /* clear any classes already there */
@@ -1169,7 +1169,7 @@ dodown(void)
             if (float_down(I_SPECIAL | TIMEOUT, W_ARTI)) {
                 return ECMD_TIME; /* came down, so moved */
             } else if (!HLevitation && !ELevitation) {
-                Your("latent levitation ceases.");
+                Your(_("latent levitation ceases."));
                 return ECMD_TIME; /* did something, effectively moved */
             }
         }
@@ -1204,7 +1204,7 @@ dodown(void)
     if (Upolyd && ceiling_hider(&mons[u.umonnum]) && u.uundetected) {
         u.uundetected = 0;
         if (Flying) { /* lurker above */
-            You("fly out of hiding.");
+            You(_("fly out of hiding."));
         } else { /* piercer */
             You("drop to the %s.", surface(u.ux, u.uy));
             if (is_pool_or_lava(u.ux, u.uy)) {
@@ -1240,16 +1240,16 @@ dodown(void)
         }
     }
     if (on_level(&valley_level, &u.uz) && !u.uevent.gehennom_entered) {
-        You("are standing at the gate to Gehennom.");
-        pline("Unspeakable cruelty and harm lurk down there.");
+        You(_("are standing at the gate to Gehennom."));
+        pline("%s", _("Unspeakable cruelty and harm lurk down there."));
         if (y_n("Are you sure you want to enter?") != 'y')
             return ECMD_OK;
-        pline("So be it.");
+        pline("%s", _("So be it."));
         u.uevent.gehennom_entered = 1; /* don't ask again */
     }
 
     if (!next_to_u()) {
-        You("are held back by your pet!");
+        You(_("are held back by your pet!"));
         return ECMD_OK;
     }
 
@@ -1334,7 +1334,7 @@ doup(void)
             return ECMD_OK;
     }
     if (!next_to_u()) {
-        You("are held back by your pet!");
+        You(_("are held back by your pet!"));
         return ECMD_OK;
     }
     ga.at_ladder = (boolean) (levl[u.ux][u.uy].typ == LADDER);
@@ -1442,7 +1442,7 @@ u_collide_m(struct monst *mtmp)
            here, but it's not impossible and we're prepared to cope
            with the situation, so only say something when debugging */
         if (wizard)
-            pline("(monster in hero's way)");
+            pline("%s", _("(monster in hero's way)"));
         if (!rloc(mtmp, RLOC_NOMSG) || (mtmp = m_at(u.ux, u.uy)) != 0)
             /* no room to move it; send it away, to return later */
             m_into_limbo(mtmp);
@@ -1560,7 +1560,7 @@ goto_level(
             if (diff == 0)
                 assign_level(newlevel, &u.uz);
 
-            pline("A mysterious force momentarily surrounds you...");
+            pline("%s", _("A mysterious force momentarily surrounds you..."));
             /* each time it kicks in, the chance of doing so again may drop;
                that drops faster, on average, when being sent down farther so
                while the impact is reduced for everybody compared to earlier
@@ -1581,7 +1581,7 @@ goto_level(
      * (s)he has been given the go-ahead by the leader.
      */
     if (on_level(&u.uz, &qstart_level) && !newdungeon && !ok_to_quest()) {
-        pline("A mysterious force prevents you from descending.");
+        pline("%s", _("A mysterious force prevents you from descending."));
         return;
     }
 
@@ -1865,13 +1865,13 @@ goto_level(
     /* Check whether we just entered Gehennom. */
     if (!In_hell(&u.uz0) && Inhell) {
         if (Is_valley(&u.uz)) {
-            You("arrive at the Valley of the Dead...");
+            You(_("arrive at the Valley of the Dead..."));
             pline_The("odor of burnt flesh and decay pervades the air.");
 #ifdef MICRO
             display_nhwindow(WIN_MESSAGE, FALSE);
 #endif
             Soundeffect(se_groans_and_moans, 25);
-            You_hear("groans and moans everywhere.");
+            You_hear(_("groans and moans everywhere."));
         }
 
         record_achievement(ACH_HELL); /* reached Gehennom */
@@ -1898,9 +1898,9 @@ goto_level(
     } else if (Is_knox(&u.uz)) {
         /* alarm stops working once Croesus has died */
         if (new || !svm.mvitals[PM_CROESUS].died) {
-            You("have penetrated a high security area!");
+            You(_("have penetrated a high security area!"));
             Soundeffect(se_alarm, 100);
-            pline("An alarm sounds!");
+            pline("%s", _("An alarm sounds!"));
             for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
                 if (DEADMONSTER(mtmp))
                     continue;
@@ -1915,7 +1915,7 @@ goto_level(
             record_achievement(ACH_SOKO);
     } else {
         if (new && Is_rogue_level(&u.uz)) {
-            You("enter what seems to be an older, more primitive world.");
+            You(_("enter what seems to be an older, more primitive world."));
         } else if (new && Is_bigroom(&u.uz)) {
             record_achievement(ACH_BGRM);
         }
@@ -2028,7 +2028,7 @@ temperature_change_msg(schar prev_temperature)
                       In_hell(&u.uz0)
                       ? "and smoke are" : "is");
         else if (prev_temperature < 0)
-            You("are out of the cold.");
+            You(_("are out of the cold."));
     }
 }
 
@@ -2233,7 +2233,7 @@ revive_corpse(struct obj *corpse)
                     newsym(mtmp->mx, mtmp->my);
                 } else if (mdistu(mtmp) < 5*5) {
                     Soundeffect(se_scratching, 50);
-                    You_hear("scratching noises.");
+                    You_hear(_("scratching noises."));
                 }
                 fill_pit(mtmp->mx, mtmp->my);
                 break;
@@ -2376,7 +2376,7 @@ wipeoff(void)
     incr_itimeout(&HBlinded, -ldelta); /*HBlinded -= min(BlindedTimeout,4L);*/
 
     if (!HBlinded) {
-        pline("You've got the glop off.");
+        pline("%s", _("You've got the glop off."));
         u.ucreamed = 0;
         if (!gulp_blnd_check()) {
             set_itimeout(&HBlinded, 1L);

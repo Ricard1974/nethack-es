@@ -27,7 +27,7 @@ take_gold(void)
     if (!lost_money) {
         You_feel("a strange sensation.");
     } else {
-        You("notice you have no gold!");
+        You(_("notice you have no gold!"));
         disp.botl = TRUE;
     }
 }
@@ -114,7 +114,7 @@ throne_sit_effect(void)
                 int cnt = rnd(10);
 
                 /* Magical voice not affected by deafness */
-                pline("A voice echoes:");
+                pline("%s", _("A voice echoes:"));
                 SetVoice((struct monst *) 0, 0, 80, voice_throne);
                 verbalize("Thine audience hath been summoned, %s!",
                           flags.female ? "Dame" : "Sire");
@@ -124,7 +124,7 @@ throne_sit_effect(void)
             }
         case 8:
             /* Magical voice not affected by deafness */
-            pline("A voice echoes:");
+            pline("%s", _("A voice echoes:"));
             SetVoice((struct monst *) 0, 0, 80, voice_throne);
             verbalize("By thine Imperious order, %s...",
                       flags.female ? "Dame" : "Sire");
@@ -132,7 +132,7 @@ throne_sit_effect(void)
             break;
         case 9:
             /* Magical voice not affected by deafness */
-            pline("A voice echoes:");
+            pline("%s", _("A voice echoes:"));
             SetVoice((struct monst *) 0, 0, 80, voice_throne);
             verbalize(
                  "A curse upon thee for sitting upon this most holy throne!");
@@ -145,17 +145,17 @@ throne_sit_effect(void)
         case 10:
             if (Luck < 0 || (HSee_invisible & INTRINSIC)) {
                 if (svl.level.flags.nommap) {
-                    pline("A terrible drone fills your head!");
+                    pline("%s", _("A terrible drone fills your head!"));
                     make_confused((HConfusion & TIMEOUT) + (long) rnd(30),
                                   FALSE);
                 } else {
-                    pline("An image forms in your mind.");
+                    pline("%s", _("An image forms in your mind."));
                     do_mapping();
                 }
             } else {
                 /* avoid "vision clears" if hero can't see */
                 if (!Blind) {
-                    Your("vision becomes clear.");
+                    Your(_("vision becomes clear."));
                 } else {
                     int num_of_eyes = eyecount(gy.youmonst.data);
                     const char *eye = body_part(EYE);
@@ -192,14 +192,14 @@ throne_sit_effect(void)
             }
             break;
         case 12:
-            You("are granted an insight!");
+            You(_("are granted an insight!"));
             if (gi.invent) {
                 /* rn2(5) agrees w/seffects() */
                 identify_pack(rn2(5), FALSE);
             }
             break;
         case 13:
-            Your("mind turns into a pretzel!");
+            Your(_("mind turns into a pretzel!"));
             make_confused((HConfusion & TIMEOUT) + (long) rn1(7, 16),
                           FALSE);
             break;
@@ -256,7 +256,7 @@ special_throne_effect(int effect) {
         break;
     case 5:
         /* permanent level drain */
-        pline("Sitting on the throne was a terrible experience.");
+        pline("%s", _("Sitting on the throne was a terrible experience."));
         if (!Drain_resistance) {
             losexp("a bad experience sitting on a throne");
             if (u.ulevelmax > u.ulevel)
@@ -270,7 +270,7 @@ special_throne_effect(int effect) {
            Same rules for which items can be affected as grease_ok in apply.c */
         struct obj *otmp;
 
-        pline("A greasy liquid sprays all over you!");
+        pline("%s", _("A greasy liquid sprays all over you!"));
         for (otmp = gi.invent; otmp; otmp = otmp->nobj)
             if (otmp->oclass != COIN_CLASS)
                 otmp->greased = 1;
@@ -328,14 +328,14 @@ special_throne_effect(int effect) {
         if (is_vampire(gy.youmonst.data)) {
             You_feel("unworthy.");
         } else {
-            pline("This throne was not meant for those such as you!");
+            pline("%s", _("This throne was not meant for those such as you!"));
             You_feel("a change coming over you.");
             polyself(POLY_NOFLAGS);
         }
         break;
     case 12:
         /* acid damage */
-        pline("The throne is covered in acid!");
+        pline("%s", _("The throne is covered in acid!"));
         losehp(Acid_resistance ? rnd(16) : rnd(80), "acidic chair",
                KILLED_BY_AN);
         exercise(A_CON, FALSE);
@@ -344,7 +344,7 @@ special_throne_effect(int effect) {
     {
         /* ability shuffle */
         int ability;
-        pline("As you sit on the throne, your body and mind start to warp.");
+        pline("%s", _("As you sit on the throne, your body and mind start to warp."));
         for (ability = 0; ability < A_MAX; ++ability) {
             adjattrib(ability, rn2(5) - 2, -1);
         }
@@ -366,17 +366,17 @@ lay_an_egg(void)
               : "Males");
         return ECMD_OK;
     } else if (u.uhunger < (int) objects[EGG].oc_nutrition) {
-        You("don't have enough energy to lay an egg.");
+        You(_("don't have enough energy to lay an egg."));
         return ECMD_OK;
     } else if (eggs_in_water(gy.youmonst.data)) {
         if (!(Underwater || Is_waterlevel(&u.uz))) {
-            pline("A splash tetra you are not.");
+            pline("%s", _("A splash tetra you are not."));
             return ECMD_OK;
         }
         if (Upolyd
             && (gy.youmonst.data == &mons[PM_GIANT_EEL]
                 || gy.youmonst.data == &mons[PM_ELECTRIC_EEL])) {
-            You("yearn for the Sargasso Sea.");
+            You(_("yearn for the Sargasso Sea."));
             return ECMD_OK;
         }
     }
@@ -413,11 +413,11 @@ dosit(void)
 
     if (!can_reach_floor(FALSE)) {
         if (u.uswallow)
-            There("are no seats in here!");
+            There(_("are no seats in here!"));
         else if (Levitation)
-            You("tumble in place.");
+            You(_("tumble in place."));
         else
-            You("are sitting on air.");
+            You(_("are sitting on air."));
         return ECMD_OK;
     } else if (u.ustuck && !sticks(gy.youmonst.data)) {
         /* holding monster is next to hero rather than beneath, but
@@ -445,23 +445,23 @@ dosit(void)
                 (obj->quan + money_cnt(gi.invent) < u.ulevel * 1000)
                 ? "meager " : "");
         } else if (obj->otyp == TOWEL) {
-            pline("It's probably not a good time for a picnic...");
+            pline("%s", _("It's probably not a good time for a picnic..."));
         } else {
             if (slithy(gy.youmonst.data))
                 You("coil up around %s.", the(xname(obj)));
             else
                 You("sit on %s.", the(xname(obj)));
             if (obj->otyp == CORPSE && amorphous(&mons[obj->corpsenm]))
-                pline("It's squishy...");
+                pline("%s", _("It's squishy..."));
             else if (obj->otyp == CREAM_PIE) {
                  if (!Deaf) {
                    Soundeffect(se_squelch, 30);
-                   pline("Squelch!");
+                   pline("%s", _("Squelch!"));
                 }
                 useupf(obj, obj->quan);
             } else if (!(Is_box(obj)
                          || objects[obj->otyp].oc_material == CLOTH))
-                pline("It's not very comfortable...");
+                pline("%s", _("It's not very comfortable..."));
         }
     } else if (trap != 0 || (u.utrap && (u.utraptype >= TT_LAVA))) {
         if (u.utrap) {
@@ -472,15 +472,15 @@ dosit(void)
                 u.utrap++;
             } else if (u.utraptype == TT_PIT) {
                 if (trap && trap->ttyp == SPIKED_PIT) {
-                    You("sit down on a spike.  Ouch!");
+                    You(_("sit down on a spike.  Ouch!"));
                     losehp(Half_physical_damage ? rn2(2) : 1,
                            "sitting on an iron spike", KILLED_BY);
                     exercise(A_STR, FALSE);
                 } else
-                    You("sit down in the pit.");
+                    You(_("sit down in the pit."));
                 u.utrap += rn2(5);
             } else if (u.utraptype == TT_WEB) {
-                You("sit in the spider web and get entangled further!");
+                You(_("sit in the spider web and get entangled further!"));
                 u.utrap += rn1(10, 5);
             } else if (u.utraptype == TT_LAVA) {
                 /* Must have fire resistance or they'd be dead already */
@@ -492,7 +492,7 @@ dosit(void)
                        KILLED_BY); /* lava damage */
             } else if (u.utraptype == TT_INFLOOR
                        || u.utraptype == TT_BURIEDBALL) {
-                You_cant("maneuver to sit!");
+                You_cant(_("maneuver to sit!"));
                 u.utrap++;
             }
         } else {
@@ -505,9 +505,9 @@ dosit(void)
     } else if ((Underwater || Is_waterlevel(&u.uz))
                 && !eggs_in_water(gy.youmonst.data)) {
         if (Is_waterlevel(&u.uz))
-            There("are no cushions floating nearby.");
+            There(_("are no cushions floating nearby."));
         else
-            You("sit down on the muddy bottom.");
+            You(_("sit down on the muddy bottom."));
     } else if (is_pool(u.ux, u.uy) && !eggs_in_water(gy.youmonst.data)) {
  in_water:
         You("sit in the %s.", hliquid("water"));
@@ -678,7 +678,7 @@ attrcurse(void)
             HTelepat &= ~INTRINSIC;
             if (Blind && !Blind_telepat)
                 see_monsters(); /* Can't sense mons anymore! */
-            Your("senses fail!");
+            Your(_("senses fail!"));
             ret = TELEPAT;
             break;
         }

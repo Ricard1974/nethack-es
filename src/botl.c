@@ -3934,7 +3934,7 @@ status_hilite_menu_add(int origfld)
 
  choose_value:
     if (retry++ > 5) {
-        pline("That's enough tries.");
+        pline("%s", _("That's enough tries."));
         return FALSE;
     }
     if (behavior == BL_TH_VAL_PERCENTAGE
@@ -3984,7 +3984,7 @@ status_hilite_menu_add(int origfld)
         }
         if (*inp == '%') {
             if (!percent) {
-                pline("Not expecting a percentage.");
+                pline("%s", _("Not expecting a percentage."));
                 goto choose_behavior;
             }
             *inp = '\0'; /* strip '%' [this accepts trailing junk!] */
@@ -3994,7 +3994,7 @@ status_hilite_menu_add(int origfld)
             goto choose_value;
         }
         if (!gotnum) {
-            pline("Is that an invisible number?");
+            pline("%s", _("Is that an invisible number?"));
             goto choose_value;
         }
         op = (lt_gt_eq == LT_VALUE) ? "<"

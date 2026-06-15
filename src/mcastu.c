@@ -80,7 +80,7 @@ cursetxt(struct monst *mtmp, boolean undirected)
         pline_mon(mtmp, "%s points %s.", Monnam(mtmp), point_msg);
     } else if ((!(svm.moves % 4) || !rn2(4))) {
         if (!Deaf)
-            Norep("You hear a mumbled curse.");   /* Deaf-aware */
+            Norep(_("You hear a mumbled curse."));   /* Deaf-aware */
     }
 }
 
@@ -251,10 +251,10 @@ castmu(
      */
     switch (mattk->adtyp) {
     case AD_FIRE:
-        pline("You're enveloped in flames.");
+        pline("%s", _("You're enveloped in flames."));
         if (Fire_resistance) {
             shieldeff(u.ux, u.uy);
-            pline("But you resist the effects.");
+            pline("%s", _("But you resist the effects."));
             monstseesu(M_SEEN_FIRE);
             dmg = 0;
         } else {
@@ -265,10 +265,10 @@ castmu(
         mon_spell_hits_spot(mtmp, AD_FIRE, u.ux, u.uy);
         break;
     case AD_COLD:
-        pline("You're covered in frost.");
+        pline("%s", _("You're covered in frost."));
         if (Cold_resistance) {
             shieldeff(u.ux, u.uy);
-            pline("But you resist the effects.");
+            pline("%s", _("But you resist the effects."));
             monstseesu(M_SEEN_COLD);
             dmg = 0;
         } else {
@@ -280,7 +280,7 @@ castmu(
         mon_spell_hits_spot(mtmp, AD_COLD, u.ux, u.uy);
         break;
     case AD_MAGM:
-        You("are hit by a shower of missiles!");
+        You(_("are hit by a shower of missiles!"));
         if (Antimagic) {
             shieldeff(u.ux, u.uy);
             pline_The("missiles bounce off!");
@@ -390,10 +390,10 @@ mcast_death_touch(struct monst *mtmp)
 {
     pline("Oh no, %s's using the touch of death!", mhe(mtmp));
     if (nonliving(gy.youmonst.data) || is_demon(gy.youmonst.data)) {
-        You("seem no deader than before.");
+        You(_("seem no deader than before."));
     } else if (!Antimagic && rn2(mtmp->m_lev) > 12) {
         if (Hallucination) {
-            You("have an out of body experience.");
+            You(_("have an out of body experience."));
         } else {
             touch_of_death(mtmp);
         }
@@ -403,7 +403,7 @@ mcast_death_touch(struct monst *mtmp)
             shieldeff(u.ux, u.uy);
             monstseesu(M_SEEN_MAGR);
         }
-        pline("Lucky for you, it didn't work!");
+        pline("%s", _("Lucky for you, it didn't work!"));
     }
 }
 
@@ -411,7 +411,7 @@ staticfn void
 mcast_clone_wiz(struct monst *mtmp)
 {
     if (mtmp->iswiz && svc.context.no_of_wizards == 1) {
-        pline("Double Trouble...");
+        pline("%s", _("Double Trouble..."));
         clonewiz();
     } else
         impossible("bad wizard cloning?");
@@ -452,9 +452,9 @@ mcast_destroy_armor(void)
     if (Antimagic) {
         shieldeff(u.ux, u.uy);
         monstseesu(M_SEEN_MAGR);
-        pline("A field of force surrounds you!");
+        pline("%s", _("A field of force surrounds you!"));
     } else if (!destroy_arm()) {
-        Your("skin itches.");
+        Your(_("skin itches."));
     } else {
         /* monsters only realize you aren't magic-protected if armor is
            actually destroyed */
@@ -472,7 +472,7 @@ mcast_weaken_you(struct monst *mtmp, int dmg)
     } else {
         char kbuf[BUFSZ];
 
-        You("suddenly feel weaker!");
+        You(_("suddenly feel weaker!"));
         dmg = mtmp->m_lev - 6;
         if (dmg < 1) /* paranoia since only chosen when m_lev is high */
             dmg = 1;
@@ -525,7 +525,7 @@ mcast_geyser(int dmg)
     /* this is physical damage (force not heat),
      * not magical damage or fire damage
      */
-    pline("A sudden geyser slams into you from nowhere!");
+    pline("%s", _("A sudden geyser slams into you from nowhere!"));
     dmg = d(8, 6);
     if (Half_physical_damage)
         dmg = (dmg + 1) / 2;
@@ -541,7 +541,7 @@ mcast_fire_pillar(struct monst *mtmp, int dmg)
 {
     int orig_dmg;
 
-    pline("A pillar of fire strikes all around you!");
+    pline("%s", _("A pillar of fire strikes all around you!"));
     orig_dmg = dmg = d(8, 6);
     if (Fire_resistance) {
         shieldeff(u.ux, u.uy);
@@ -569,7 +569,7 @@ mcast_lightning(struct monst *mtmp, int dmg)
     boolean reflects;
 
     Soundeffect(se_bolt_of_lightning, 80);
-    pline("A bolt of lightning strikes down at you from above!");
+    pline("%s", _("A bolt of lightning strikes down at you from above!"));
     reflects = ureflects("It bounces off your %s%s.", "");
     orig_dmg = dmg = d(8, 6);
     if (reflects || Shock_resistance) {
@@ -612,7 +612,7 @@ mcast_psi_bolt(int dmg)
     if (dmg <= 5)
         You("get a slight %sache.", body_part(HEAD));
     else if (dmg <= 10)
-        Your("brain is on fire!");
+        Your(_("brain is on fire!"));
     else if (dmg <= 20)
         Your("%s suddenly aches painfully!", body_part(HEAD));
     else
@@ -631,13 +631,13 @@ mcast_open_wounds(int dmg)
         monstunseesu(M_SEEN_MAGR);
     }
     if (dmg <= 5)
-        Your("skin itches badly for a moment.");
+        Your(_("skin itches badly for a moment."));
     else if (dmg <= 10)
-        pline("Wounds appear on your body!");
+        pline("%s", _("Wounds appear on your body!"));
     else if (dmg <= 20)
-        pline("Severe wounds appear on your body!");
+        pline("%s", _("Severe wounds appear on your body!"));
     else
-        Your("body is covered with painful wounds!");
+        Your(_("body is covered with painful wounds!"));
     return dmg;
 }
 
@@ -751,11 +751,11 @@ mcast_paralyze(struct monst *mtmp)
         shieldeff(u.ux, u.uy);
         monstseesu(M_SEEN_MAGR);
         if (gm.multi >= 0)
-            You("stiffen briefly.");
+            You(_("stiffen briefly."));
         dmg = 1; /* to produce nomul(-1), not actual damage */
     } else {
         if (gm.multi >= 0)
-            You("are frozen in place!");
+            You(_("are frozen in place!"));
         dmg = 4 + (int) mtmp->m_lev;
         if (Half_spell_damage)
             dmg = (dmg + 1) / 2;
