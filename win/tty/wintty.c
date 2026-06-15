@@ -1542,7 +1542,7 @@ process_menu_window(winid window, struct WinDesc *cw)
             else if (msave)
                 Strcpy(cw->morestr, msave);
             else
-                Strcpy(cw->morestr, defmorestr);
+                Strcpy(cw->morestr, _(defmorestr));
 
             tty_curs(window, 1, page_lines);
             cl_end();
