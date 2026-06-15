@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack-es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 17:25+0200\n"
+"POT-Creation-Date: 2026-06-15 17:29+0200\n"
 "PO-Revision-Date: 2026-06-10 21:50\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2953,6 +2953,42 @@ msgstr "gnomo"
 msgid "orc"
 msgstr "orco"
 
+#: src/role.c:689
+msgid "male"
+msgstr ""
+
+#: src/role.c:690
+msgid "female"
+msgstr ""
+
+#: src/role.c:691
+msgid "neuter"
+msgstr ""
+
+#: src/role.c:698
+msgid "law"
+msgstr ""
+
+#: src/role.c:698
+msgid "lawful"
+msgstr ""
+
+#: src/role.c:699
+msgid "balance"
+msgstr "lanza"
+
+#: src/role.c:699
+msgid "neutral"
+msgstr ""
+
+#: src/role.c:700
+msgid "chaos"
+msgstr ""
+
+#: src/role.c:700
+msgid "chaotic"
+msgstr ""
+
 #: src/role.c:1587
 msgid "Shall I pick a character for you? [ynaq] "
 msgstr "¿Quieres que elija un personaje por ti? [ynaq] "
@@ -2960,6 +2996,11 @@ msgstr "¿Quieres que elija un personaje por ti? [ynaq] "
 #: src/role.c:1594
 msgid "Shall I pick "
 msgstr "¿Quieres que elija "
+
+#: src/role.c:1932
+#, c-format
+msgid "%s forces %s"
+msgstr "%s obliga a %s"
 
 #: src/role.c:1950
 msgid "Random"
@@ -3016,6 +3057,14 @@ msgstr "Elige un rol o profesión"
 #: src/role.c:2417
 msgid "Pick a race or species"
 msgstr "Elige una raza o especie"
+
+#: src/role.c:2505
+msgid "Pick a gender or sex"
+msgstr "Elige un género o sexo"
+
+#: src/role.c:2591
+msgid "Pick an alignment or creed"
+msgstr "Elige una alineación o credo"
 
 #: src/rumors.c:281
 msgid "rumors not accessible."
@@ -27756,9 +27805,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "lama"
 #~ msgstr "lama"
 
-#~ msgid "lance"
-#~ msgstr "lanza"
-
 #~ msgid "land mine"
 #~ msgstr "tierra mina"
 
@@ -47055,12 +47101,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "In what direction do you want to %s? [%s]"
 #~ msgstr "¿En qué dirección quieres %s? [%s]"
 
-#~ msgid "Pick a gender or sex"
-#~ msgstr "Elige un género o sexo"
-
-#~ msgid "Pick an alignment or creed"
-#~ msgstr "Elige una alineación o credo"
-
 #~ msgid "Illegal objects"
 #~ msgstr "Objetos ilegales"
 
@@ -47207,3 +47247,6 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "Not using any items"
 #~ msgstr "No estás usando ningún objeto"
+
+#~ msgid "Pick another %s first"
+#~ msgstr "Elige otro %s primero"

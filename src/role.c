@@ -686,18 +686,18 @@ const struct Race races[NUM_RACES + 1] = {
 
 /* Table of all genders */
 const struct Gender genders[] = {
-    { "male", "he", "him", "his", "Mal", ROLE_MALE },
-    { "female", "she", "her", "her", "Fem", ROLE_FEMALE },
-    { "neuter", "it", "it", "its", "Ntr", ROLE_NEUTER },
+    { N_("male"), "he", "him", "his", "Mal", ROLE_MALE },
+    { N_("female"), "she", "her", "her", "Fem", ROLE_FEMALE },
+    { N_("neuter"), "it", "it", "its", "Ntr", ROLE_NEUTER },
     /* used by pronoun_gender() when hallucinating */
     { "group", "they", "them", "their", "Grp", 0 },
 };
 
 /* Table of all alignments */
 const struct Align aligns[] = {
-    { "law", "lawful", "Law", ROLE_LAWFUL, A_LAWFUL },
-    { "balance", "neutral", "Neu", ROLE_NEUTRAL, A_NEUTRAL },
-    { "chaos", "chaotic", "Cha", ROLE_CHAOTIC, A_CHAOTIC },
+    { N_("law"), N_("lawful"), "Law", ROLE_LAWFUL, A_LAWFUL },
+    { N_("balance"), N_("neutral"), "Neu", ROLE_NEUTRAL, A_NEUTRAL },
+    { N_("chaos"), N_("chaotic"), "Cha", ROLE_CHAOTIC, A_CHAOTIC },
     { "evil", "unaligned", "Una", 0, A_NONE }
 };
 
@@ -1929,7 +1929,7 @@ role_menu_extra(int which, winid where, boolean preselect)
     if (constrainer) {
         any.a_int = 0;
         /* use four spaces of padding to fake a grayed out menu choice */
-        Sprintf(buf, "%4s%s forces %s", "", constrainer, forcedvalue);
+        Sprintf(buf, _("%s forces %s"), "", constrainer, forcedvalue);
         add_menu_str(where, buf);
     } else if (what) {
         any.a_int = RS_menu_arg(which);
@@ -2502,7 +2502,7 @@ genl_player_setup(int screenheight)
                         role_menu_extra(RS_ALGNMNT, win, FALSE);
                         role_menu_extra(RS_filter, win, FALSE);
                         role_menu_extra(ROLE_NONE, win, FALSE); /* quit */
-                        Strcpy(pbuf, "Pick a gender or sex");
+                        Strcpy(pbuf, _("Pick a gender or sex"));
                         end_menu(win, pbuf);
                         n = select_menu(win, PICK_ONE, &selected);
                         if (n > 0) {
@@ -2588,7 +2588,7 @@ genl_player_setup(int screenheight)
                         role_menu_extra(RS_GENDER, win, FALSE);
                         role_menu_extra(RS_filter, win, FALSE);
                         role_menu_extra(ROLE_NONE, win, FALSE); /* quit */
-                        Strcpy(pbuf, "Pick an alignment or creed");
+                        Strcpy(pbuf, _("Pick an alignment or creed"));
                         end_menu(win, pbuf);
                         n = select_menu(win, PICK_ONE, &selected);
                         if (n > 0) {
@@ -2962,14 +2962,14 @@ setup_gendmenu(
         if (filtering)
             any.a_int = i + 1;
         else
-            any.a_string = genders[i].adj;
+            any.a_string = _(genders[i].adj);
         this_ch = *genders[i].adj;
         /* (see setup_racemenu for explanation of selector letters
            and setup_rolemenu for preselection) */
         add_menu(win, &nul_glyphinfo, &any,
                  filtering ? this_ch : highc(this_ch),
                  filtering ? highc(this_ch) : 0,
-                 ATR_NONE, clr, genders[i].adj,
+                 ATR_NONE, clr, _(genders[i].adj),
                  (!filtering && !gend_ok)
                     ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     }
@@ -2998,14 +2998,14 @@ setup_algnmenu(
         if (filtering)
             any.a_int = i + 1;
         else
-            any.a_string = aligns[i].adj;
+            any.a_string = _(aligns[i].adj);
         this_ch = *aligns[i].adj;
         /* (see setup_racemenu for explanation of selector letters
            and setup_rolemenu for preselection) */
         add_menu(win, &nul_glyphinfo, &any,
                  filtering ? this_ch : highc(this_ch),
                  filtering ? highc(this_ch) : 0,
-                 ATR_NONE, clr, aligns[i].adj,
+                 ATR_NONE, clr, _(aligns[i].adj),
                  (!filtering && !algn_ok)
                     ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     }

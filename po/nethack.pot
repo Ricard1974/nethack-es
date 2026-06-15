@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 17:25+0200\n"
+"POT-Creation-Date: 2026-06-15 17:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2908,12 +2908,53 @@ msgstr ""
 msgid "orc"
 msgstr ""
 
+#: src/role.c:689
+msgid "male"
+msgstr ""
+
+#: src/role.c:690
+msgid "female"
+msgstr ""
+
+#: src/role.c:691
+msgid "neuter"
+msgstr ""
+
+#: src/role.c:698
+msgid "law"
+msgstr ""
+
+#: src/role.c:698
+msgid "lawful"
+msgstr ""
+
+#: src/role.c:699
+msgid "balance"
+msgstr ""
+
+#: src/role.c:699
+msgid "neutral"
+msgstr ""
+
+#: src/role.c:700
+msgid "chaos"
+msgstr ""
+
+#: src/role.c:700
+msgid "chaotic"
+msgstr ""
+
 #: src/role.c:1587
 msgid "Shall I pick a character for you? [ynaq] "
 msgstr ""
 
 #: src/role.c:1594
 msgid "Shall I pick "
+msgstr ""
+
+#: src/role.c:1932
+#, c-format
+msgid "%s forces %s"
 msgstr ""
 
 #: src/role.c:1950
@@ -2970,6 +3011,14 @@ msgstr ""
 
 #: src/role.c:2417
 msgid "Pick a race or species"
+msgstr ""
+
+#: src/role.c:2505
+msgid "Pick a gender or sex"
+msgstr ""
+
+#: src/role.c:2591
+msgid "Pick an alignment or creed"
 msgstr ""
 
 #: src/rumors.c:281
