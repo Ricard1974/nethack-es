@@ -5,7 +5,7 @@
 -- The dungeon description file.
 dungeon = {
    {
-      name = "Mazmorras de Perdición",
+      name = "The Dungeons of Doom",
       bonetag = "D",
       base = 25,
       range = 5,
@@ -13,7 +13,7 @@ dungeon = {
       themerooms = "themerms.lua",
       branches = {
          {
-            name = "Minas de los Gnomos",
+            name = "The Gnomish Mines",
             base = 2,
             range = 3
          },
@@ -24,7 +24,7 @@ dungeon = {
             direction = "up"
          },
          {
-            name = "La Misión",
+            name = "The Quest",
             chainlevel = "oracle",
             base = 6,
             range = 2,
@@ -43,7 +43,7 @@ dungeon = {
             branchtype = "no_down"
          },
          {
-            name = "Los Planos Elementales",
+            name = "The Elemental Planes",
             base = 1,
             branchtype = "no_down",
             direction = "up"
@@ -95,7 +95,7 @@ dungeon = {
       alignment = "noalign",
       branches = {
          {
-            name = "Torre de Vlad",
+            name = "Vlad's Tower",
             base = 9,
             range = 5,
             direction = "up"
@@ -167,7 +167,7 @@ dungeon = {
       }
    },
    {
-      name = "Minas de los Gnomos",
+      name = "The Gnomish Mines",
       bonetag = "M",
       base = 8,
       range = 2,
@@ -193,7 +193,7 @@ dungeon = {
       }
    },
    {
-      name = "La Misión",
+      name = "The Quest",
       bonetag = "Q",
       base = 5,
       range = 2,
@@ -259,7 +259,7 @@ dungeon = {
       }
    },
    {
-      name = "Torre de Vlad",
+      name = "Vlad's Tower",
       base = 3,
       bonetag = "T",
       protofile = "tower",
@@ -282,7 +282,7 @@ dungeon = {
       }
    },
    {
-      name = "Los Planos Elementales",
+      name = "The Elemental Planes",
       bonetag = "E",
       base = 6,
       alignment = "unaligned",
@@ -316,7 +316,7 @@ dungeon = {
       }
    },
    {
-      name = "El Tutorial",
+      name = "The Tutorial",
       base = 2,
       flags = { "mazelike", "unconnected" },
       levels = {
