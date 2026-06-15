@@ -2804,7 +2804,7 @@ djinni_from_bottle(struct obj *obj)
         pline(_("%s speaks."), Monnam(mtmp));
     } else {
         You(_("smell acrid fumes."));
-        pline("%s speaks.", Something);
+        pline(_("%s speaks."), Something);
     }
 
     chance = rn2(5);
@@ -2898,7 +2898,7 @@ speed_up(long duration)
    if (!Very_fast)
        You(_("are suddenly moving %sfaster."), Fast ? "" : "much ");
    else
-       Your("%s get new energy.", makeplural(body_part(LEG)));
+       Your(_("%s get new energy."), makeplural(body_part(LEG)));
 
    exercise(A_DEX, TRUE);
    incr_itimeout(&HFast, duration);

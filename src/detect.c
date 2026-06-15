@@ -1866,7 +1866,7 @@ findit(void)
         else
             Sprintf(buf, "%s unseen monster",
                     found.num_kept_invis ? "another" : "an");
-        You("detect %s!", buf);
+        You(_("detect %s!"), buf);
         num += found.num_invis;
     }
 

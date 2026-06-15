@@ -1263,7 +1263,7 @@ level_tele(void)
             Strcpy(svk.killer.name, "committed suicide");
             done(DIED);
             pline(_("%s"), _("An energized cloud of dust begins to coalesce."));
-            Your("body rematerializes%s.",
+            Your(_("body rematerializes%s."),
                  gi.invent ? ", and you gather up all your possessions" : "");
             return;
         }

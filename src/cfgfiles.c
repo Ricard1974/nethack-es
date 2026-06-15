@@ -1623,7 +1623,7 @@ config_error_done(void)
     if (n) {
         boolean cmdline = !strcmp(config_error_data->source, "command line");
 
-        pline("\n%d error%s %s %s.\n", n, plur(n), cmdline ? "on" : "in",
+        pline(_("\n%d error%s %s %s.\n"), n, plur(n), cmdline ? "on" : "in",
               *config_error_data->source ? config_error_data->source
                                          : configfile);
         wait_synch();

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NetHack-es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 17:36+0200\n"
+"POT-Creation-Date: 2026-06-15 21:06+0200\n"
 "PO-Revision-Date: 2026-06-10 21:50\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: src/allmain.c:55
 msgid "are lucky!  Full moon tonight."
-msgstr "estás lucky!  Full moon tonight."
+msgstr "¡tienes suerte!  Luna llena esta noche."
 
 #: src/allmain.c:58 src/allmain.c:62 src/allmain.c:908 src/allmain.c:1019
 #: src/apply.c:1017 src/apply.c:1623 src/apply.c:1637 src/apply.c:2252
@@ -160,6 +160,17 @@ msgstr "Has vuelto, pero sigues sintiendo %s dentro."
 msgid "NetHack is filmed in front of an undead studio audience."
 msgstr "NetHack se filma ante un público de estudio no-muerto."
 
+#: src/allmain.c:952
+#, c-format
+msgid "%s %s, welcome to NetHack!  You are a%s."
+msgstr "%s %s, ¡bienvenido a NetHack!  Eres un%s."
+
+#: src/allmain.c:953
+#, fuzzy, c-format
+#| msgid "%s %s, and %s your backpack!"
+msgid "%s %s, the%s, welcome back to NetHack!"
+msgstr "%s %s, %s, bienvenido de vuelta a NetHack!"
+
 #: src/apply.c:82
 msgid "Using your camera underwater would void the warranty."
 msgstr "Usar su cámara bajo el agua anularía la garantía."
@@ -184,11 +195,11 @@ msgid "cannot use it while you're wearing it!"
 msgstr "¡no puedes usarla mientras lo llevas!"
 
 #: src/apply.c:127 src/artifact.c:1414 src/hack.c:3031 src/lock.c:1308
-#: src/mhitu.c:670 src/mhitu.c:986 src/mon.c:3505 src/polyself.c:802
-#: src/polyself.c:1372 src/potion.c:1942 src/shk.c:1474 src/sounds.c:415
-#: src/sounds.c:466 src/trap.c:819 src/trap.c:1670 src/trap.c:1880
-#: src/uhitm.c:2439 src/uhitm.c:2509 src/uhitm.c:5124 src/weapon.c:873
-#: src/wizcmds.c:314
+#: src/mhitu.c:670 src/mhitu.c:986 src/mhitu.c:1312 src/mon.c:3505
+#: src/polyself.c:802 src/polyself.c:1372 src/potion.c:1942 src/shk.c:1474
+#: src/sounds.c:415 src/sounds.c:466 src/trap.c:819 src/trap.c:1670
+#: src/trap.c:1880 src/uhitm.c:2439 src/uhitm.c:2509 src/uhitm.c:5124
+#: src/weapon.c:873 src/wizcmds.c:314
 #, c-format
 msgid "%s %s!"
 msgstr "%s %s!"
@@ -489,6 +500,12 @@ msgstr "%s deja de moverse."
 msgid "%s confuses itself!"
 msgstr "¡%s se confunde!"
 
+#: src/apply.c:1133
+#, fuzzy, c-format
+#| msgid "%s off your %s."
+msgid "%s in your %s."
+msgstr "%s fuera de su %s."
+
 #: src/apply.c:1136
 #, c-format
 msgid "%s takes it!"
@@ -702,6 +719,12 @@ msgstr "Fuma %s."
 #: src/apply.c:1795
 msgid "Rubbing the electric lamp is not particularly rewarding."
 msgstr "Robar la lámpara eléctrica no es particularmente gratificante."
+
+#: src/apply.c:1796
+#, fuzzy
+#| msgid "Nothing interesting happens."
+msgid "Anyway, nothing exciting happens."
+msgstr "No pasa nada interesante."
 
 #: src/apply.c:1857
 msgid "Illegal move!"
@@ -1650,6 +1673,14 @@ msgstr ""
 msgid "%s %s%s%s"
 msgstr "%s %s%s%s"
 
+#: src/cfgfiles.c:1626
+#, fuzzy, c-format
+#| msgid "%s over %s %s."
+msgid ""
+"\n"
+"%d error%s %s %s.\n"
+msgstr "%s sobre %s %s."
+
 #: src/cmd.c:508
 #, c-format
 msgid "'%s' prefix has no effect for the %s command."
@@ -1772,83 +1803,79 @@ msgstr "El prefijo ' %s ' debe ser seguido por un comando de movimiento %s ."
 
 #: src/cmd.c:4087
 msgid "Invalid direction key!"
-msgstr ""
+msgstr "¡Dirección no válida!"
 
 #: src/cmd.c:4092
 msgid "What a strange direction!"
 msgstr "¡Qué dirección tan rara!"
 
+#
 #: src/cmd.c:4174
-#, fuzzy
-#| msgid "do that."
 msgid "do that"
 msgstr "hacer eso."
 
 #: src/cmd.c:4200
 #, c-format
 msgid "Invalid direction for '%s' prefix."
-msgstr ""
+msgstr "Dirección no válida para el prefijo '%s'."
 
 #: src/cmd.c:4221
-#, fuzzy, c-format
-#| msgid "cmdassist"
+#, c-format
 msgid "cmdassist: %s"
-msgstr "cmdassist"
+msgstr "cmdassist: %s"
 
 #: src/cmd.c:4232
 #, c-format
 msgid "Are you trying to use ^%c%s?"
-msgstr ""
+msgstr "¿Estás intentando usar ^%c%s?"
 
 #: src/cmd.c:4234
 msgid " as specified in the Guidebook"
-msgstr ""
+msgstr " como se especifica en el Manual"
 
 #: src/cmd.c:4240
 msgid "To use that command, hold down the <Ctrl> key as a shift"
 msgstr ""
+"Para usar ese comando, mantén presionada la tecla <Ctrl> como mayúscula"
 
 #: src/cmd.c:4241
 #, c-format
 msgid "and press the <%c> key."
-msgstr ""
+msgstr "y presiona la tecla <%c>."
 
 #: src/cmd.c:4247
 #, c-format
 msgid "Valid direction keys%s%s%s are:"
-msgstr ""
+msgstr "Las teclas de dirección válidas%s%s%s son:"
 
 #: src/cmd.c:4248
 msgid " to "
-msgstr ""
+msgstr " a "
 
 #: src/cmd.c:4249
-#, fuzzy
-#| msgid "use two weapons in your current form."
 msgid " in your current form"
-msgstr "usar dos armas en tu forma actual."
+msgstr " en tu forma actual"
 
 #: src/cmd.c:4259
 msgid "          <  up"
-msgstr ""
+msgstr "          <  arriba"
 
 #: src/cmd.c:4260
 msgid "          >  down"
-msgstr ""
+msgstr "          >  abajo"
 
 #: src/cmd.c:4264
-#, fuzzy, c-format
-#| msgid "%s %s %s directed at you!"
+#, c-format
 msgid "       %4s  direct at yourself"
-msgstr "%s %s %s dirigida a usted!"
+msgstr "       %4s  dirigirte a ti mismo"
 
 #: src/cmd.c:4274
 msgid "(Suppress this message with !cmdassist in config file.)"
-msgstr ""
+msgstr "(Suprime este mensaje con !cmdassist en el archivo de configuración.)"
 
 #: src/cmd.c:5316
 msgid "Where do you want to travel to?"
-msgstr "¿A dónde quieres viajar?"
+msgstr "¿Adónde quieres viajar?"
 
 #: src/cmd.c:5335
 msgid "No travel destination set."
@@ -2126,6 +2153,12 @@ msgstr "¡Eres una explosión! %s"
 #, c-format
 msgid "reveal %s!"
 msgstr "¡Revelación %s!"
+
+#: src/detect.c:1869
+#, fuzzy, c-format
+#| msgid "get %s!"
+msgid "detect %s!"
+msgstr "¡Consigue a %s!"
 
 #: src/detect.c:1876
 #, c-format
@@ -2802,11 +2835,6 @@ msgstr "¡Suena una alarma!"
 msgid "enter what seems to be an older, more primitive world."
 msgstr "entras en lo que parece ser un mundo mas antiguo y primitivo."
 
-#: src/do.c:1896 src/dungeon.c:2435 src/dungeon.c:3137 src/quest.c:191
-#: src/trap.c:4335
-msgid "The Quest"
-msgstr "La Misión"
-
 #: src/do.c:1984
 #, c-format
 msgid "It is %s here."
@@ -3310,7 +3338,7 @@ msgstr ""
 #: src/do_wear.c:2272
 #, c-format
 msgid "cannot remove your %s to put on the ring."
-msgstr "no puede quitar su %s para poner en el anillo."
+msgstr "no puedes quitarte %s para ponerte el anillo."
 
 #: src/do_wear.c:2286
 #, c-format
@@ -3419,6 +3447,46 @@ msgstr "¿Qué quieres quitarte?"
 #: src/do_wear.c:3094
 msgid "is nothing else you can remove or unwield."
 msgstr "no es nada más que puedas quitar o desenrollar."
+
+#: src/do_wear.c:3174
+#, fuzzy, c-format
+#| msgid "%s %sturns to dust."
+msgid "Your %s crumbles and turns to dust!"
+msgstr "%s %s vuelve al polvo."
+
+#: src/do_wear.c:3185
+#, fuzzy, c-format
+#| msgid "%s%s and %s a %s in the %s!"
+msgid "Your %s %s to dust and %s to the %s!"
+msgstr "%s%s y %s un %s en el %s!"
+
+#: src/do_wear.c:3191
+#, c-format
+msgid "Your %s crumbles into tiny threads and falls apart!"
+msgstr ""
+
+#: src/do_wear.c:3194
+#, c-format
+msgid "Your %s turns to dust and is blown away!"
+msgstr ""
+
+#: src/do_wear.c:3197
+#, fuzzy, c-format
+#| msgid "%s vanishes!"
+msgid "Your %s vanish!"
+msgstr "%s desaparece!"
+
+#: src/do_wear.c:3200
+#, fuzzy, c-format
+#| msgid "%s disintegrates."
+msgid "Your %s disintegrate!"
+msgstr "Se desintegra. %s"
+
+#: src/do_wear.c:3202
+#, fuzzy, c-format
+#| msgid "It tumbles away."
+msgid "Your %s crumbles away!"
+msgstr "Se hunde."
 
 #: src/dog.c:121
 msgid "... into a pile of dust."
@@ -3845,9 +3913,21 @@ msgstr "¡Ay!"
 msgid "crash into some iron bars.  Ouch!"
 msgstr "¡chocas contra unos barrotes de hierro.  Ay!"
 
+#: src/dothrow.c:812
+#, fuzzy, c-format
+#| msgid "bump into %s.  Ouch!"
+msgid "bump into a %s.  Ouch!"
+msgstr "con %s. ¡Ay!"
+
 #: src/dothrow.c:816
 msgid "smack into something!"
 msgstr "¡chocas contra algo!"
+
+#: src/dothrow.c:825
+#, fuzzy, c-format
+#| msgid "%s gets stuck in a crevice."
+msgid "%sget forcefully wedged into a crevice."
+msgstr "%s se queda atrapado en un grieta."
 
 #: src/dothrow.c:858
 #, c-format
@@ -3910,6 +3990,12 @@ msgstr "¡No bromea! %s"
 #, c-format
 msgid "%s hits the %s."
 msgstr "%s golpea el %s ."
+
+#: src/dothrow.c:1277
+#, fuzzy, c-format
+#| msgid "sense a pointy hat on top of your %s."
+msgid "%s %s the %s, then falls back on top of your %s."
+msgstr "sentir un gorro puntiagudo encima de su %s ."
 
 #: src/dothrow.c:1305
 #, c-format
@@ -4397,6 +4483,11 @@ msgstr "Este correo basura no es muy satisfactorio."
 msgid "Yuck%c"
 msgstr "Yuck %c"
 
+#: src/eat.c:2419 src/mon.c:1625
+#, c-format
+msgid "Yum%c"
+msgstr "Yum %c"
+
 #: src/eat.c:2421
 msgid "Needs salt..."
 msgstr "Necesita sal..."
@@ -4685,7 +4776,7 @@ msgstr ""
 #: src/engrave.c:1138
 #, c-format
 msgid "wipe out the message that was %s here."
-msgstr "borrar el mensaje que era %s aquí."
+msgstr "borrar el mensaje que estaba %s aquí."
 
 #: src/engrave.c:1154
 #, c-format
@@ -5029,7 +5120,7 @@ msgstr ""
 
 #: src/fountain.c:418
 msgid "As the hand retreats, the fountain disappears!"
-msgstr "Cuando la mano se retira, ¡la fuente desaparece!"
+msgstr "¡Al retirarse la mano, la fuente desaparece!"
 
 #: src/fountain.c:461
 msgid "A feeling of loss comes over you."
@@ -5837,6 +5928,12 @@ msgstr "Ninguna criatura ha sido genocidio. %s"
 msgid "Status of %s (%s, %s):  Level %d  HP %d(%d)  AC %d%s."
 msgstr "Estado de %s (%s, %s): Nivel %d HP %d(%d) AC %d%s."
 
+#: src/insight.c:3483
+#, fuzzy, c-format
+#| msgid "Status of %s (%s, %s):  Level %d  HP %d(%d)  AC %d%s."
+msgid "Status of %s (%s):  Level %d  HP %d(%d)  AC %d%s."
+msgstr "Estado de %s (%s, %s): Nivel %d HP %d(%d) AC %d%s."
+
 #: src/invent.c:941
 msgid "You learn more about your items by comparing them."
 msgstr "Usted aprende más sobre sus artículos al compararlos."
@@ -5953,7 +6050,7 @@ msgstr ""
 
 #: src/invent.c:2833
 msgid "Persistent inventory display is empty."
-msgstr "La pantalla de inventario persistente está vacía."
+msgstr "La visualización persistente del inventario está vacía."
 
 #: src/invent.c:3215
 msgid "Debug Identify"
@@ -6055,6 +6152,12 @@ msgstr "es %s%s%s aquí."
 
 #: src/invent.c:4173
 msgid "try to feel what is here."
+msgstr "intenta sentir lo que está aquí."
+
+#: src/invent.c:4181
+#, fuzzy
+#| msgid "try to feel what is here."
+msgid "try to feel what is on it."
 msgstr "intenta sentir lo que está aquí."
 
 #: src/invent.c:4190
@@ -6314,6 +6417,12 @@ msgstr "Esta puerta. %s"
 msgid "You're too small to pull the door open."
 msgstr "Eres demasiado pequeño para abrir la puerta."
 
+#: src/lock.c:934
+#, fuzzy, c-format
+#| msgid "%s%s blocks your way!"
+msgid "%s blocks the way!"
+msgstr "¡%s%s bloquea tu camino!"
+
 #: src/lock.c:943
 #, c-format
 msgid "%s's in the way."
@@ -6412,6 +6521,11 @@ msgstr "Ya no se puede obtener el estado de MAIL=\" %s \"."
 #, c-format
 msgid "is a%s message on this scroll."
 msgstr "es un mensaje de %s en este pergamino."
+
+#: src/mail.c:645
+#, c-format
+msgid "The voice of %s booms through the caverns:"
+msgstr ""
 
 #: src/mail.c:648
 #, c-format
@@ -6867,6 +6981,11 @@ msgstr "una pequeña enfermedad."
 msgid "%s was hidden under %s!"
 msgstr "%s estaba escondido bajo %s !"
 
+#: src/mhitu.c:1297
+#, c-format
+msgid "%s %s forward and plucks you off %s!"
+msgstr ""
+
 #: src/mhitu.c:1321
 #, c-format
 msgid "are released from the %s!"
@@ -6973,7 +7092,7 @@ msgstr "Alguien parece necesitar un corte de serpiente."
 msgid "meet %s gaze."
 msgstr "conocer %s mirada."
 
-#: src/mhitu.c:1722 src/polyself.c:1743
+#: src/mhitu.c:1722 src/polyself.c:1743 src/trap.c:3800
 msgid "You turn to stone..."
 msgstr "Te conviertes en piedra..."
 
@@ -7228,10 +7347,6 @@ msgstr "la presencia de un ángel amistoso cerca de ti."
 msgid "are standing at the top of a stairwell leading down!"
 msgstr "están de pie en la cima de una escalera que conduce hacia abajo!"
 
-#: src/mklev.c:2634
-msgid "Fort Ludios"
-msgstr "Fortaleza Ludios"
-
 #: src/mkmaze.c:1513
 #, c-format
 msgid "You hear a %swhoosh!"
@@ -7260,6 +7375,12 @@ msgstr "burbuja xmax: x = %d , xmax = %d"
 #, c-format
 msgid "bubble ymax: y = %d, ymax = %d"
 msgstr "burbuja ymax: y = %d , ymax = %d"
+
+#: src/mkobj.c:1631
+#, fuzzy, c-format
+#| msgid "%s %s slightly."
+msgid "%s %s%s lighter."
+msgstr "%s %s ligeramente."
 
 #: src/mkobj.c:1658
 #, c-format
@@ -7316,11 +7437,6 @@ msgstr "%s El contenido se derrama sobre el %s ."
 #: src/mon.c:1515
 msgid "a crunching sound."
 msgstr "un sonido de crujido."
-
-#: src/mon.c:1625
-#, c-format
-msgid "Yum%c"
-msgstr "Yum %c"
 
 #: src/mon.c:1629
 msgid "a slurping sound."
@@ -7777,7 +7893,7 @@ msgstr "Como %s abre la botella, emerge un enorme %s !"
 msgid "%s is frightened to death,"
 msgstr "%s está asustado hasta la muerte,"
 
-#: src/muse.c:108 src/potion.c:2804
+#: src/muse.c:108 src/potion.c:2804 src/potion.c:2807
 #, c-format
 msgid "%s speaks."
 msgstr "%s habla."
@@ -7972,7 +8088,7 @@ msgstr "rompe cadenas!"
 msgid "A chasm opens up under you!"
 msgstr "¡Se abre un abismo bajo ti!"
 
-#: src/music.c:300
+#: src/music.c:300 src/trap.c:1831
 msgid "don't fall in!"
 msgstr "¡no caigas!"
 
@@ -8126,6 +8242,12 @@ msgstr "Ninguno de tus descubrimientos puede recibir nombre..."
 msgid "Creation of %s failed."
 msgstr "La creación de %s falló."
 
+#: src/objnam.c:3595
+#, fuzzy, c-format
+#| msgid "is no fountain here."
+msgid "A %sfountain."
+msgstr "está no fountain here."
+
 #: src/objnam.c:3600
 msgid "A throne."
 msgstr "Un trono."
@@ -8164,6 +8286,12 @@ msgstr "Barrotes de hierro."
 #: src/objnam.c:3735
 msgid "A cloud."
 msgstr "Una nube."
+
+#: src/objnam.c:3817
+#, fuzzy, c-format
+#| msgid "Secret corridor requires corridor location."
+msgid "%s requires door or wall location."
+msgstr "El pasadizo secreto requiere ubicacion de pasillo."
 
 #: src/objnam.c:3833
 msgid "A wall."
@@ -8212,14 +8340,10 @@ msgid "autodig"
 msgstr "autodig"
 
 #: src/options.c:21
-#, fuzzy
-#| msgid "a door open."
 msgid "autoopen"
 msgstr "autoopen"
 
 #: src/options.c:22
-#, fuzzy
-#| msgid "Autopickup: %s."
 msgid "autopickup"
 msgstr "autopickup"
 
@@ -8244,8 +8368,6 @@ msgid "fireassist"
 msgstr "fireassist"
 
 #: src/options.c:28
-#, fuzzy
-#| msgid "pick up %s tongue."
 msgid "pickup_stolen"
 msgstr "pickup_stolen"
 
@@ -8346,8 +8468,6 @@ msgid "legacy"
 msgstr "legacy"
 
 #: src/options.c:53
-#, fuzzy
-#| msgid "The Tutorial"
 msgid "tutorial"
 msgstr "tutorial"
 
@@ -8356,8 +8476,6 @@ msgid "news"
 msgstr "news"
 
 #: src/options.c:55
-#, fuzzy
-#| msgid "turn to stone."
 msgid "tombstone"
 msgstr "tombstone"
 
@@ -8382,8 +8500,6 @@ msgid "sortloot"
 msgstr "sortloot"
 
 #: src/options.c:61
-#, fuzzy
-#| msgid "'menustyle' %s \"%s\"."
 msgid "menustyle"
 msgstr "menustyle"
 
@@ -8432,8 +8548,6 @@ msgid "toptenwin"
 msgstr "toptenwin"
 
 #: src/options.c:73
-#, fuzzy
-#| msgid "a boulder %s."
 msgid "boulder"
 msgstr "boulder"
 
@@ -8553,11 +8667,9 @@ msgstr ""
 
 #: src/options.c:8158
 msgid "out of menu map space."
-msgstr "sin espacio de mapa de menu."
+msgstr "sin espacio en el mapa del menú."
 
 #: src/options.c:8646
-#, fuzzy
-#| msgid "Use #optionsfull to set any option instead."
 msgid "Use command '#optionsfull' to get the complete options list."
 msgstr "Usa #optionsfull para establecer cualquier opción en su lugar."
 
@@ -9781,6 +9893,12 @@ msgstr "%s multiplica%s!"
 msgid "are suddenly moving %sfaster."
 msgstr "de repente se mueven %s faster."
 
+#: src/potion.c:2901
+#, fuzzy, c-format
+#| msgid "%s gets wet."
+msgid "%s get new energy."
+msgstr "Se moja. %s"
+
 #: src/pray.c:388 src/timeout.c:893
 msgid "amulet vanishes!"
 msgstr "¡el amuleto desaparece!"
@@ -9830,6 +9948,12 @@ msgstr "Parece que has vuelto a Kansas."
 #: src/pray.c:610
 msgid "Suddenly a bolt of lightning comes down at you from the heavens!"
 msgstr "¡De repente un rayo te cae desde los cielos!"
+
+#: src/pray.c:611
+#, fuzzy, c-format
+#| msgid "%s strikes at %s!"
+msgid "It strikes %s!"
+msgstr "%s huelgas en %s !"
 
 #: src/pray.c:613
 #, c-format
@@ -10009,6 +10133,12 @@ msgstr "sacrificio se consume en un %s !"
 msgid "the air around you grow charged..."
 msgstr "el aire alrededor de usted crece cargado ..."
 
+#: src/pray.c:1487
+#, fuzzy, c-format
+#| msgid "Suddenly, you notice %s."
+msgid "Suddenly, you realize that %s has noticed you..."
+msgstr "De repente, te das cuenta. %s"
+
 #: src/pray.c:1513
 #, c-format
 msgid "offer the Amulet of Yendor to %s..."
@@ -10050,6 +10180,11 @@ msgstr "Afortunadamente, %s te permite vivir..."
 #: src/pray.c:1547
 msgid "An invisible choir sings, and you are bathed in radiance..."
 msgstr "Un coro invisible canta y te bañas en resplandor..."
+
+#: src/pray.c:1553
+#, c-format
+msgid "ascend to the status of Demigod%s..."
+msgstr ""
 
 #: src/pray.c:1582
 msgid "a nearby thunderclap."
@@ -10207,6 +10342,12 @@ msgstr "no sabes how to turn undead!"
 #, c-format
 msgid "are %s upon %s to turn aside evilness."
 msgstr "son %s en %s para apartar la maldad."
+
+#: src/pray.c:2404
+#, fuzzy, c-format
+#| msgid "For some reason, %s presence is known to you."
+msgid "For some reason, %s seems to ignore you."
+msgstr "Por alguna razón, la presencia %s es conocida por ti."
 
 #: src/pray.c:2410
 #, c-format
@@ -10861,6 +11002,11 @@ msgstr "están envueltos en una nube de %s !"
 #: src/region.c:1388
 msgid "able to breathe."
 msgstr "capaz de respirar."
+
+#: src/report.c:464
+#, c-format
+msgid "Unable to send bug report.  Please visit %s instead."
+msgstr ""
 
 #: src/restore.c:122
 #, c-format
@@ -12167,7 +12313,7 @@ msgstr ""
 
 #: src/spell.c:196
 msgid "accidentally tear the spellbook to pieces."
-msgstr "desgarras accidentalmente el libro de hechizos en pedazos."
+msgstr "rompes accidentalmente el libro de hechizos."
 
 #: src/spell.c:201
 #, c-format
@@ -12236,7 +12382,7 @@ msgstr ""
 #: src/spell.c:428
 #, c-format
 msgid "learn %s."
-msgstr "aprender %s ."
+msgstr "aprendes %s."
 
 #: src/spell.c:430
 #, c-format
@@ -12422,6 +12568,23 @@ msgstr "%s intenta robarte, pero no hay nada que robar!"
 #, c-format
 msgid "%s tries to %s %s%s but gives up."
 msgstr "%s intenta %s %s%s pero se rinde."
+
+#: src/steal.c:526
+#, c-format
+msgid "%s charms you.  You gladly %s your %s."
+msgstr ""
+
+#: src/steal.c:534
+#, fuzzy, c-format
+#| msgid "%s your grasp and %s from your %s!"
+msgid "%s seduces you and %s off your %s."
+msgstr "%s tu comprensión y %s de tu %s !"
+
+#: src/steal.c:597
+#, fuzzy, c-format
+#| msgid "%s stops %s."
+msgid "%s stole %s."
+msgstr "%s para %s ."
 
 #: src/steal.c:784
 #, c-format
@@ -12640,6 +12803,12 @@ msgstr "%s es arrastrado al %s !"
 msgid "%s wakes up."
 msgstr "%s despierta."
 
+#: src/steed.c:862
+#, fuzzy, c-format
+#| msgid "hit yourself in the %s."
+msgid "adjust yourself in the saddle on %s."
+msgstr "te golpeó en el %s ."
+
 #: src/steed.c:879
 #, c-format
 msgid "%s won't move!"
@@ -12721,6 +12890,11 @@ msgstr "posesiones aterrizan en el %s con un golpe."
 #: src/teleport.c:1265
 msgid "An energized cloud of dust begins to coalesce."
 msgstr "Una nube de polvo energizada comienza a coalescer."
+
+#: src/teleport.c:1266
+#, c-format
+msgid "body rematerializes%s."
+msgstr ""
 
 #: src/teleport.c:1331
 msgid "arrive in heaven."
@@ -13777,6 +13951,12 @@ msgstr "Pheew! Eso estuvo cerca."
 msgid "But in vain."
 msgstr "Pero en vano."
 
+#: src/trap.c:5092
+#, fuzzy
+#| msgid "slow down."
+msgid "You drown."
+msgstr "frena."
+
 #: src/trap.c:5113
 msgid "You're still drowning."
 msgstr "Aún te estás ahogando."
@@ -14072,6 +14252,10 @@ msgstr "Sigues ardiendo."
 msgid "sink into the %s%s!"
 msgstr "hundirse en el %s%s!"
 
+#: src/trap.c:6909
+msgid "You sink below the surface and die."
+msgstr ""
+
 #: src/uhitm.c:92
 msgid "avoid harm."
 msgstr "evita el dano."
@@ -14321,6 +14505,12 @@ msgstr "¡Estás cubierto de %s ! ¡Quema!"
 #, c-format
 msgid "%s is covered in %s, but it seems harmless."
 msgstr "%s está cubierto de %s , pero parece inofensivo."
+
+#: src/uhitm.c:2744
+#, fuzzy, c-format
+#| msgid "It burns!"
+msgid "It burns %s!"
+msgstr "¡Quema!"
 
 #: src/uhitm.c:2771
 msgid "purse feels heavier."
@@ -15201,6 +15391,12 @@ msgstr "usar dos armas en tu forma actual."
 msgid "%s aren't able to use two weapons at once."
 msgstr "%s no pueden usar dos armas a la vez."
 
+#: src/wield.c:763
+#, fuzzy, c-format
+#| msgid "%s is empty."
+msgid "%s%s %s empty."
+msgstr "%s está vacío."
+
 #: src/wield.c:767
 #, c-format
 msgid "%s %s suitable %s weapon%s."
@@ -16042,6 +16238,12 @@ msgstr "vibraciones."
 msgid "%s of smoke."
 msgstr "%s de humo."
 
+#: src/zap.c:5512
+#, fuzzy, c-format
+#| msgid "are %s %s."
+msgid "fracture %s %s."
+msgstr "son %s %s ."
+
 #: src/zap.c:5562
 msgid "guilty about damaging such a historic statue."
 msgstr "culpable de dañar una estatua tan histórica."
@@ -16073,11 +16275,17 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 #~ msgid "Cannot open %s."
 #~ msgstr "No puedo abrir %s."
 
+#~ msgid "Fort Ludios"
+#~ msgstr "Fortaleza Ludios"
+
 #~ msgid "Sokoban"
 #~ msgstr "Sokoban"
 
 #~ msgid "The Gnomish Mines"
 #~ msgstr "Minas de los Gnomos"
+
+#~ msgid "The Quest"
+#~ msgstr "La Misión"
 
 #~ msgid "The Tutorial"
 #~ msgstr "El Tutorial"

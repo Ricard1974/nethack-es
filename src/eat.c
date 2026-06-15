@@ -2416,7 +2416,7 @@ eatspecial(void)
         else if (otmp->oclass == SCROLL_CLASS
                  /* check description after checking for specific scrolls */
                  && objdescr_is(otmp, "YUM YUM"))
-            pline("Yum%c", otmp->blessed ? '!' : '.');
+            pline(_("Yum%c"), otmp->blessed ? '!' : '.');
         else
             pline(_("%s"), _("Needs salt..."));
     }

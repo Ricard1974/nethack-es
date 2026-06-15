@@ -931,7 +931,7 @@ obstructed(coordxy x, coordxy y, boolean quietly)
                 /* s_suffix() returns a modifiable buffer */
                 Mn = strcat(s_suffix(Mn), " tail");
 
-            pline("%s blocks the way!", Mn);
+            pline(_("%s blocks the way!"), Mn);
         }
         if (!canspotmon(mtmp))
             map_invisible(x, y);

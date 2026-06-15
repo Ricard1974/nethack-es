@@ -1,3 +1,22 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-15 21:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 #: src/allmain.c:55
 msgid "are lucky!  Full moon tonight."
 msgstr ""
@@ -138,6 +157,16 @@ msgstr ""
 msgid "NetHack is filmed in front of an undead studio audience."
 msgstr ""
 
+#: src/allmain.c:952
+#, c-format
+msgid "%s %s, welcome to NetHack!  You are a%s."
+msgstr ""
+
+#: src/allmain.c:953
+#, c-format
+msgid "%s %s, the%s, welcome back to NetHack!"
+msgstr ""
+
 #: src/apply.c:82
 msgid "Using your camera underwater would void the warranty."
 msgstr ""
@@ -162,11 +191,11 @@ msgid "cannot use it while you're wearing it!"
 msgstr ""
 
 #: src/apply.c:127 src/artifact.c:1414 src/hack.c:3031 src/lock.c:1308
-#: src/mhitu.c:670 src/mhitu.c:986 src/mon.c:3505 src/polyself.c:802
-#: src/polyself.c:1372 src/potion.c:1942 src/shk.c:1474 src/sounds.c:415
-#: src/sounds.c:466 src/trap.c:819 src/trap.c:1670 src/trap.c:1880
-#: src/uhitm.c:2439 src/uhitm.c:2509 src/uhitm.c:5124 src/weapon.c:873
-#: src/wizcmds.c:314
+#: src/mhitu.c:670 src/mhitu.c:986 src/mhitu.c:1312 src/mon.c:3505
+#: src/polyself.c:802 src/polyself.c:1372 src/potion.c:1942 src/shk.c:1474
+#: src/sounds.c:415 src/sounds.c:466 src/trap.c:819 src/trap.c:1670
+#: src/trap.c:1880 src/uhitm.c:2439 src/uhitm.c:2509 src/uhitm.c:5124
+#: src/weapon.c:873 src/wizcmds.c:314
 #, c-format
 msgid "%s %s!"
 msgstr ""
@@ -467,6 +496,11 @@ msgstr ""
 msgid "%s confuses itself!"
 msgstr ""
 
+#: src/apply.c:1133
+#, c-format
+msgid "%s in your %s."
+msgstr ""
+
 #: src/apply.c:1136
 #, c-format
 msgid "%s takes it!"
@@ -679,6 +713,10 @@ msgstr ""
 
 #: src/apply.c:1795
 msgid "Rubbing the electric lamp is not particularly rewarding."
+msgstr ""
+
+#: src/apply.c:1796
+msgid "Anyway, nothing exciting happens."
 msgstr ""
 
 #: src/apply.c:1857
@@ -1626,6 +1664,13 @@ msgstr ""
 msgid "%s %s%s%s"
 msgstr ""
 
+#: src/cfgfiles.c:1626
+#, c-format
+msgid ""
+"\n"
+"%d error%s %s %s.\n"
+msgstr ""
+
 #: src/cmd.c:508
 #, c-format
 msgid "'%s' prefix has no effect for the %s command."
@@ -2095,6 +2140,11 @@ msgstr ""
 #: src/detect.c:1860
 #, c-format
 msgid "reveal %s!"
+msgstr ""
+
+#: src/detect.c:1869
+#, c-format
+msgid "detect %s!"
 msgstr ""
 
 #: src/detect.c:1876
@@ -2772,11 +2822,6 @@ msgstr ""
 msgid "enter what seems to be an older, more primitive world."
 msgstr ""
 
-#: src/do.c:1896 src/dungeon.c:2435 src/dungeon.c:3137 src/quest.c:191
-#: src/trap.c:4335
-msgid "The Quest"
-msgstr ""
-
 #: src/do.c:1984
 #, c-format
 msgid "It is %s here."
@@ -3388,6 +3433,41 @@ msgstr ""
 msgid "is nothing else you can remove or unwield."
 msgstr ""
 
+#: src/do_wear.c:3174
+#, c-format
+msgid "Your %s crumbles and turns to dust!"
+msgstr ""
+
+#: src/do_wear.c:3185
+#, c-format
+msgid "Your %s %s to dust and %s to the %s!"
+msgstr ""
+
+#: src/do_wear.c:3191
+#, c-format
+msgid "Your %s crumbles into tiny threads and falls apart!"
+msgstr ""
+
+#: src/do_wear.c:3194
+#, c-format
+msgid "Your %s turns to dust and is blown away!"
+msgstr ""
+
+#: src/do_wear.c:3197
+#, c-format
+msgid "Your %s vanish!"
+msgstr ""
+
+#: src/do_wear.c:3200
+#, c-format
+msgid "Your %s disintegrate!"
+msgstr ""
+
+#: src/do_wear.c:3202
+#, c-format
+msgid "Your %s crumbles away!"
+msgstr ""
+
 #: src/dog.c:121
 msgid "... into a pile of dust."
 msgstr ""
@@ -3813,8 +3893,18 @@ msgstr ""
 msgid "crash into some iron bars.  Ouch!"
 msgstr ""
 
+#: src/dothrow.c:812
+#, c-format
+msgid "bump into a %s.  Ouch!"
+msgstr ""
+
 #: src/dothrow.c:816
 msgid "smack into something!"
+msgstr ""
+
+#: src/dothrow.c:825
+#, c-format
+msgid "%sget forcefully wedged into a crevice."
 msgstr ""
 
 #: src/dothrow.c:858
@@ -3877,6 +3967,11 @@ msgstr ""
 #: src/dothrow.c:1262
 #, c-format
 msgid "%s hits the %s."
+msgstr ""
+
+#: src/dothrow.c:1277
+#, c-format
+msgid "%s %s the %s, then falls back on top of your %s."
 msgstr ""
 
 #: src/dothrow.c:1305
@@ -4363,6 +4458,11 @@ msgstr ""
 #: src/eat.c:2415
 #, c-format
 msgid "Yuck%c"
+msgstr ""
+
+#: src/eat.c:2419 src/mon.c:1625
+#, c-format
+msgid "Yum%c"
 msgstr ""
 
 #: src/eat.c:2421
@@ -5803,6 +5903,11 @@ msgstr ""
 msgid "Status of %s (%s, %s):  Level %d  HP %d(%d)  AC %d%s."
 msgstr ""
 
+#: src/insight.c:3483
+#, c-format
+msgid "Status of %s (%s):  Level %d  HP %d(%d)  AC %d%s."
+msgstr ""
+
 #: src/invent.c:941
 msgid "You learn more about your items by comparing them."
 msgstr ""
@@ -6018,6 +6123,10 @@ msgstr ""
 
 #: src/invent.c:4173
 msgid "try to feel what is here."
+msgstr ""
+
+#: src/invent.c:4181
+msgid "try to feel what is on it."
 msgstr ""
 
 #: src/invent.c:4190
@@ -6277,6 +6386,11 @@ msgstr ""
 msgid "You're too small to pull the door open."
 msgstr ""
 
+#: src/lock.c:934
+#, c-format
+msgid "%s blocks the way!"
+msgstr ""
+
 #: src/lock.c:943
 #, c-format
 msgid "%s's in the way."
@@ -6374,6 +6488,11 @@ msgstr ""
 #: src/mail.c:626
 #, c-format
 msgid "is a%s message on this scroll."
+msgstr ""
+
+#: src/mail.c:645
+#, c-format
+msgid "The voice of %s booms through the caverns:"
 msgstr ""
 
 #: src/mail.c:648
@@ -6830,6 +6949,11 @@ msgstr ""
 msgid "%s was hidden under %s!"
 msgstr ""
 
+#: src/mhitu.c:1297
+#, c-format
+msgid "%s %s forward and plucks you off %s!"
+msgstr ""
+
 #: src/mhitu.c:1321
 #, c-format
 msgid "are released from the %s!"
@@ -6936,7 +7060,7 @@ msgstr ""
 msgid "meet %s gaze."
 msgstr ""
 
-#: src/mhitu.c:1722 src/polyself.c:1743
+#: src/mhitu.c:1722 src/polyself.c:1743 src/trap.c:3800
 msgid "You turn to stone..."
 msgstr ""
 
@@ -7191,10 +7315,6 @@ msgstr ""
 msgid "are standing at the top of a stairwell leading down!"
 msgstr ""
 
-#: src/mklev.c:2634
-msgid "Fort Ludios"
-msgstr ""
-
 #: src/mkmaze.c:1513
 #, c-format
 msgid "You hear a %swhoosh!"
@@ -7222,6 +7342,11 @@ msgstr ""
 #: src/mkmaze.c:1993
 #, c-format
 msgid "bubble ymax: y = %d, ymax = %d"
+msgstr ""
+
+#: src/mkobj.c:1631
+#, c-format
+msgid "%s %s%s lighter."
 msgstr ""
 
 #: src/mkobj.c:1658
@@ -7278,11 +7403,6 @@ msgstr ""
 
 #: src/mon.c:1515
 msgid "a crunching sound."
-msgstr ""
-
-#: src/mon.c:1625
-#, c-format
-msgid "Yum%c"
 msgstr ""
 
 #: src/mon.c:1629
@@ -7740,7 +7860,7 @@ msgstr ""
 msgid "%s is frightened to death,"
 msgstr ""
 
-#: src/muse.c:108 src/potion.c:2804
+#: src/muse.c:108 src/potion.c:2804 src/potion.c:2807
 #, c-format
 msgid "%s speaks."
 msgstr ""
@@ -7935,7 +8055,7 @@ msgstr ""
 msgid "A chasm opens up under you!"
 msgstr ""
 
-#: src/music.c:300
+#: src/music.c:300 src/trap.c:1831
 msgid "don't fall in!"
 msgstr ""
 
@@ -8089,6 +8209,11 @@ msgstr ""
 msgid "Creation of %s failed."
 msgstr ""
 
+#: src/objnam.c:3595
+#, c-format
+msgid "A %sfountain."
+msgstr ""
+
 #: src/objnam.c:3600
 msgid "A throne."
 msgstr ""
@@ -8126,6 +8251,11 @@ msgstr ""
 
 #: src/objnam.c:3735
 msgid "A cloud."
+msgstr ""
+
+#: src/objnam.c:3817
+#, c-format
+msgid "%s requires door or wall location."
 msgstr ""
 
 #: src/objnam.c:3833
@@ -9726,6 +9856,11 @@ msgstr ""
 msgid "are suddenly moving %sfaster."
 msgstr ""
 
+#: src/potion.c:2901
+#, c-format
+msgid "%s get new energy."
+msgstr ""
+
 #: src/pray.c:388 src/timeout.c:893
 msgid "amulet vanishes!"
 msgstr ""
@@ -9774,6 +9909,11 @@ msgstr ""
 
 #: src/pray.c:610
 msgid "Suddenly a bolt of lightning comes down at you from the heavens!"
+msgstr ""
+
+#: src/pray.c:611
+#, c-format
+msgid "It strikes %s!"
 msgstr ""
 
 #: src/pray.c:613
@@ -9954,6 +10094,11 @@ msgstr ""
 msgid "the air around you grow charged..."
 msgstr ""
 
+#: src/pray.c:1487
+#, c-format
+msgid "Suddenly, you realize that %s has noticed you..."
+msgstr ""
+
 #: src/pray.c:1513
 #, c-format
 msgid "offer the Amulet of Yendor to %s..."
@@ -9994,6 +10139,11 @@ msgstr ""
 
 #: src/pray.c:1547
 msgid "An invisible choir sings, and you are bathed in radiance..."
+msgstr ""
+
+#: src/pray.c:1553
+#, c-format
+msgid "ascend to the status of Demigod%s..."
 msgstr ""
 
 #: src/pray.c:1582
@@ -10151,6 +10301,11 @@ msgstr ""
 #: src/pray.c:2394
 #, c-format
 msgid "are %s upon %s to turn aside evilness."
+msgstr ""
+
+#: src/pray.c:2404
+#, c-format
+msgid "For some reason, %s seems to ignore you."
 msgstr ""
 
 #: src/pray.c:2410
@@ -10805,6 +10960,11 @@ msgstr ""
 
 #: src/region.c:1388
 msgid "able to breathe."
+msgstr ""
+
+#: src/report.c:464
+#, c-format
+msgid "Unable to send bug report.  Please visit %s instead."
 msgstr ""
 
 #: src/restore.c:122
@@ -12364,6 +12524,21 @@ msgstr ""
 msgid "%s tries to %s %s%s but gives up."
 msgstr ""
 
+#: src/steal.c:526
+#, c-format
+msgid "%s charms you.  You gladly %s your %s."
+msgstr ""
+
+#: src/steal.c:534
+#, c-format
+msgid "%s seduces you and %s off your %s."
+msgstr ""
+
+#: src/steal.c:597
+#, c-format
+msgid "%s stole %s."
+msgstr ""
+
 #: src/steal.c:784
 #, c-format
 msgid "%s pulls %s away from you and absorbs %s!"
@@ -12581,6 +12756,11 @@ msgstr ""
 msgid "%s wakes up."
 msgstr ""
 
+#: src/steed.c:862
+#, c-format
+msgid "adjust yourself in the saddle on %s."
+msgstr ""
+
 #: src/steed.c:879
 #, c-format
 msgid "%s won't move!"
@@ -12661,6 +12841,11 @@ msgstr ""
 
 #: src/teleport.c:1265
 msgid "An energized cloud of dust begins to coalesce."
+msgstr ""
+
+#: src/teleport.c:1266
+#, c-format
+msgid "body rematerializes%s."
 msgstr ""
 
 #: src/teleport.c:1331
@@ -13718,6 +13903,10 @@ msgstr ""
 msgid "But in vain."
 msgstr ""
 
+#: src/trap.c:5092
+msgid "You drown."
+msgstr ""
+
 #: src/trap.c:5113
 msgid "You're still drowning."
 msgstr ""
@@ -14013,6 +14202,10 @@ msgstr ""
 msgid "sink into the %s%s!"
 msgstr ""
 
+#: src/trap.c:6909
+msgid "You sink below the surface and die."
+msgstr ""
+
 #: src/uhitm.c:92
 msgid "avoid harm."
 msgstr ""
@@ -14261,6 +14454,11 @@ msgstr ""
 #: src/uhitm.c:2740
 #, c-format
 msgid "%s is covered in %s, but it seems harmless."
+msgstr ""
+
+#: src/uhitm.c:2744
+#, c-format
+msgid "It burns %s!"
 msgstr ""
 
 #: src/uhitm.c:2771
@@ -15142,6 +15340,11 @@ msgstr ""
 msgid "%s aren't able to use two weapons at once."
 msgstr ""
 
+#: src/wield.c:763
+#, c-format
+msgid "%s%s %s empty."
+msgstr ""
+
 #: src/wield.c:767
 #, c-format
 msgid "%s %s suitable %s weapon%s."
@@ -15977,6 +16180,11 @@ msgstr ""
 #: src/zap.c:5455
 #, c-format
 msgid "%s of smoke."
+msgstr ""
+
+#: src/zap.c:5512
+#, c-format
+msgid "fracture %s %s."
 msgstr ""
 
 #: src/zap.c:5562

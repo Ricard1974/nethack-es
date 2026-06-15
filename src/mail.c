@@ -642,7 +642,7 @@ read_simplemail(const char *mbox, boolean adminmsg)
             endpunct = ".";
 
         if (adminmsg) {
-            urgent_pline("The voice of %s booms through the caverns:",
+            urgent_pline(_("The voice of %s booms through the caverns:"),
                          curline);
         } else {
             pline(_("This message is from '%s'."), curline);

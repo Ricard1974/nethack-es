@@ -1294,7 +1294,7 @@ gulpmu(struct monst *mtmp, struct attack *mattk)
             char buf[BUFSZ];
 
             Strcpy(buf, mon_nam(u.usteed));
-            urgent_pline("%s %s forward and plucks you off %s!",
+            urgent_pline(_("%s %s forward and plucks you off %s!"),
                          Some_Monnam(mtmp),
                          /* 't', purple 'w' */
                          is_animal(mtmp->data) ? "lunges"
@@ -1309,7 +1309,7 @@ gulpmu(struct monst *mtmp, struct attack *mattk)
                          buf);
             dismount_steed(DISMOUNT_ENGULFED);
         } else {
-            urgent_pline("%s %s!", Monnam(mtmp),
+            urgent_pline(_("%s %s!"), Monnam(mtmp),
                          digests(mtmp->data) ? "swallows you whole"
                          : enfolds(mtmp->data) ? "folds itself around you"
                            : "engulfs you");

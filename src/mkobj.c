@@ -1628,7 +1628,7 @@ shrink_glob(
                however, always say the bag is lighter for the 'gone' case */
             if (gone || (shrink && topcontnr->owt != old_top_owt)
                 || near_capacity() != go.oldcap)
-                pline("%s %s%s lighter.", Yname2(topcontnr),
+                pline(_("%s %s%s lighter."), Yname2(topcontnr),
                       /* containers also always have quantity 1 */
                       (topcontnr->owt != old_top_owt) ? "becomes" : "seems",
                       /* TODO?  maybe also skip "slightly" if description

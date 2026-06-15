@@ -1828,7 +1828,7 @@ trapeffect_pit(
                 You_see(_("%s %spit below you."), a_your[trap->madeby_u], ttype == SPIKED_PIT ? "spiked " : "");
             } else {
                 pline(_("%s pit %sopens up under you!"), A_Your[trap->madeby_u], ttype == SPIKED_PIT ? "full of spikes " : "");
-                You("don't fall in!");
+                You(_("don't fall in!"));
             }
             return Trap_Effect_Finished;
         }
@@ -3797,7 +3797,7 @@ instapetrify(const char *str)
         return;
     if (poly_when_stoned(gy.youmonst.data) && polymon(PM_STONE_GOLEM))
         return;
-    urgent_pline("You turn to stone...");
+    urgent_pline(_("You turn to stone..."));
     svk.killer.format = KILLED_BY;
     if (str != svk.killer.name)
         Strcpy(svk.killer.name, str ? str : "");
@@ -5089,7 +5089,7 @@ drown(void)
         pline("%s", _("But in vain."));
     }
     set_uinwater(1); /* u.uinwater = 1 */
-    urgent_pline("You drown.");
+    urgent_pline(_("You drown."));
     /* first pass is survivable by using up an amulet of life-saving or by
        answering no to "Die?" in explore|wizard mode; second pass can only
        be survivable via the latter */
@@ -6906,7 +6906,7 @@ sink_into_lava(void)
         if (u.utrap < (1 << 8)) {
             svk.killer.format = KILLED_BY;
             Strcpy(svk.killer.name, "molten lava");
-            urgent_pline("You sink below the surface and die.");
+            urgent_pline(_("You sink below the surface and die."));
             burn_away_slime(); /* add insult to injury? */
             done(DISSOLVED);
             /* can only get here via life-saving; try to get away from lava */

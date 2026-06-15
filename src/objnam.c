@@ -3592,7 +3592,7 @@ wizterrainwish(struct _readobjnam_data *d)
             svl.level.flags.nfountains++;
         lev->looted = d->looted ? F_LOOTED : 0; /* overlays 'flags' */
         lev->blessedftn = d->blessed || !strncmpi(bp, "magic ", 6);
-        pline("A %sfountain.", lev->blessedftn ? "magic " : "");
+        pline(_("A %sfountain."), lev->blessedftn ? "magic " : "");
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 6, "throne")) {
         lev->typ = THRONE;
@@ -3814,7 +3814,7 @@ wizterrainwish(struct _readobjnam_data *d)
             madeterrain = TRUE;
         } else {
             Strcpy(dbuf, secret ? "secret door" : "door");
-            pline("%s requires door or wall location.", upstart(dbuf));
+            pline(_("%s requires door or wall location."), upstart(dbuf));
             badterrain = TRUE;
         }
     } else if (!BSTRCMPI(bp, p - 4, "wall")

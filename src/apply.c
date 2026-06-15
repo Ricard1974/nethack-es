@@ -1130,7 +1130,7 @@ use_mirror(struct obj *obj)
         if (vis) {
             char buf[BUFSZ]; /* "She" or "He" */
 
-            pline("%s in your %s.", /* "<mon> admires self in your mirror " */
+            pline(_("%s in your %s."), /* "<mon> admires self in your mirror " */
                   monverbself(mtmp, Monnam(mtmp), "admire", (char *) 0),
                   mirror);
             pline(_("%s takes it!"), upstart(strcpy(buf, mhe(mtmp))));
@@ -1793,7 +1793,7 @@ dorub(void)
     } else if (obj->otyp == BRASS_LANTERN) {
         /* message from Adventure */
         pline("%s", _("Rubbing the electric lamp is not particularly rewarding."));
-        pline("Anyway, nothing exciting happens.");
+        pline(_("Anyway, nothing exciting happens."));
     } else
         pline1(nothing_happens);
     return ECMD_TIME;

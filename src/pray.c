@@ -608,7 +608,7 @@ god_zaps_you(aligntyp resp_god)
 {
     if (u.uswallow) {
         pline("%s", _("Suddenly a bolt of lightning comes down at you from the heavens!"));
-        pline("It strikes %s!", mon_nam(u.ustuck));
+        pline(_("It strikes %s!"), mon_nam(u.ustuck));
         if (!resists_elec(u.ustuck)) {
             pline(_("%s fries to a crisp!"), Monnam(u.ustuck));
             /* Yup, you get experience.  It takes guts to successfully
@@ -1484,7 +1484,7 @@ desecrate_altar(boolean highaltar, aligntyp altaralign)
         u.ugangr += 5;
     }
     You_feel(_("the air around you grow charged..."));
-    pline("Suddenly, you realize that %s has noticed you...",
+    pline(_("Suddenly, you realize that %s has noticed you..."),
           align_gname(altaralign));
     Sprintf(gvbuf, "So, mortal!  You dare desecrate my %s!",
             highaltar ? "High Temple" : "altar");
@@ -1550,7 +1550,7 @@ offer_real_amulet(struct obj *otmp, aligntyp altaralign)
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
         verbalize(
           "In return for thy service, I grant thee the gift of Immortality!");
-        You("ascend to the status of Demigod%s...",
+        You(_("ascend to the status of Demigod%s..."),
             flags.female ? "dess" : "");
         done(ASCENDED);
         /*NOTREACHED*/
@@ -2401,7 +2401,7 @@ doturn(void)
          && (is_demon(gy.youmonst.data)
              || is_undead(gy.youmonst.data) || is_vampshifter(&gy.youmonst)))
         || u.ugangr > 6) { /* "Die, mortal!" */
-        pline("For some reason, %s seems to ignore you.", Gname);
+        pline(_("For some reason, %s seems to ignore you."), Gname);
         aggravate();
         exercise(A_WIS, FALSE);
         return ECMD_TIME;

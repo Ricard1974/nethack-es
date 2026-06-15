@@ -859,7 +859,7 @@ poly_steed(
                              SUPPRESS_SADDLE, FALSE));
         if (oldshape != steed->data)
             (void) strsubst(buf, "your ", "your new ");
-        You("adjust yourself in the saddle on %s.", buf);
+        You(_("adjust yourself in the saddle on %s."), buf);
 
         /* riding blocks stealth unless hero+steed fly */
         steed_vs_stealth();

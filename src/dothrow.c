@@ -809,7 +809,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
             You(_("crash into some iron bars.  Ouch!"));
         } else if ((obj = sobj_at(BOULDER, x, y)) != 0) {
             why = "bumping into a boulder";
-            You("bump into a %s.  Ouch!", xname(obj));
+            You(_("bump into a %s.  Ouch!"), xname(obj));
         }  else if (!may_pass) {
             /* did we hit a no-dig non-wall position? */
             why = "touching the edge of the universe";
@@ -822,7 +822,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
 
             if (bigmonst(gy.youmonst.data) || too_much) {
                 why = "wedging into a narrow crevice";
-                You("%sget forcefully wedged into a crevice.",
+                You(_("%sget forcefully wedged into a crevice."),
                     too_much ? "and all your belongings " : "");
             }
         }
@@ -1274,7 +1274,7 @@ toss_up(struct obj *obj, boolean hitsroof)
     } else {
         action = "almost hits";
     }
-    pline("%s %s the %s, then falls back on top of your %s.", Doname2(obj),
+    pline(_("%s %s the %s, then falls back on top of your %s."), Doname2(obj),
           action, ceiling(u.ux, u.uy), body_part(HEAD));
 
     /* object now hits you */

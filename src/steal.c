@@ -523,7 +523,7 @@ steal(struct monst *mtmp, char *objnambuf)
                 otmp->cursed = 0;
                 slowly = (armordelay >= 1 || gm.multi < 0);
                 if (flags.female)
-                    urgent_pline("%s charms you.  You gladly %s your %s.",
+                    urgent_pline(_("%s charms you.  You gladly %s your %s."),
                                  !seen ? "She" : Monnambuf,
                                  curssv ? "let her take"
                                  : !slowly ? "hand over"
@@ -531,7 +531,7 @@ steal(struct monst *mtmp, char *objnambuf)
                                      : "start removing",
                                  armor_simple_name(otmp));
                 else
-                    urgent_pline("%s seduces you and %s off your %s.",
+                    urgent_pline(_("%s seduces you and %s off your %s."),
                                  !seen ? "She" : Adjmonnam(mtmp, "beautiful"),
                                  curssv ? "helps you to take"
                                  : !slowly ? "you take"
@@ -594,7 +594,7 @@ steal(struct monst *mtmp, char *objnambuf)
     if (iflags.last_msg == PLNMSG_MON_TAKES_OFF_ITEM
         && mtmp->data->mlet == S_NYMPH)
         ++named;
-    urgent_pline("%s stole %s.", named ? "She" : Monnambuf, doname(otmp));
+    urgent_pline(_("%s stole %s."), named ? "She" : Monnambuf, doname(otmp));
     encumber_msg();
     could_petrify = (otmp->otyp == CORPSE
                      && touch_petrifies(&mons[otmp->corpsenm]));

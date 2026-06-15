@@ -3171,7 +3171,7 @@ disintegrate_arm(struct obj *atmp)
      */
 
     if ((otmp = maybe_destroy_armor(uarmc, atmp, &resistedc)) != 0) {
-        urgent_pline("Your %s crumbles and turns to dust!",
+        urgent_pline(_("Your %s crumbles and turns to dust!"),
                      /* cloak/robe/apron/smock (ID'd apron)/wrapping */
                      cloak_simple_name(otmp));
     } else if (!resistedc
@@ -3182,24 +3182,24 @@ disintegrate_arm(struct obj *atmp)
            stops shining _after_ we've been told that it is destroyed */
         if (otmp->lamplit)
             end_burn(otmp, FALSE);
-        urgent_pline("Your %s %s to dust and %s to the %s!",
+        urgent_pline(_("Your %s %s to dust and %s to the %s!"),
                      /* suit might be "dragon scales" so vtense() is needed */
                      suit, vtense(suit, "turn"), vtense(suit, "fall"),
                      surface(u.ux, u.uy));
     } else if (!resistedc && !resistedsuit
              && (otmp = maybe_destroy_armor(uarmu, atmp, &resisted)) != 0) {
-        urgent_pline("Your %s crumbles into tiny threads and falls apart!",
+        urgent_pline(_("Your %s crumbles into tiny threads and falls apart!"),
                      shirt_simple_name(otmp)); /* always "shirt" */
     } else if ((otmp = maybe_destroy_armor(uarmh, atmp, &resisted)) != 0) {
-        urgent_pline("Your %s turns to dust and is blown away!",
+        urgent_pline(_("Your %s turns to dust and is blown away!"),
                      helm_simple_name(otmp)); /* "helm" or "hat" */
     } else if ((otmp = maybe_destroy_armor(uarmg, atmp, &resisted)) != 0) {
-        urgent_pline("Your %s vanish!", gloves_simple_name(otmp));
+        urgent_pline(_("Your %s vanish!"), gloves_simple_name(otmp));
         losing_gloves = TRUE;
     } else if ((otmp = maybe_destroy_armor(uarmf, atmp, &resisted)) != 0) {
-        urgent_pline("Your %s disintegrate!", boots_simple_name(otmp));
+        urgent_pline(_("Your %s disintegrate!"), boots_simple_name(otmp));
     } else if ((otmp = maybe_destroy_armor(uarms, atmp, &resisted)) != 0) {
-        urgent_pline("Your %s crumbles away!", shield_simple_name(otmp));
+        urgent_pline(_("Your %s crumbles away!"), shield_simple_name(otmp));
     } else {
         return 0; /* could not destroy anything */
     }
