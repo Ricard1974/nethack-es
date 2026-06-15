@@ -1035,9 +1035,9 @@ hope and pray to %d that you become ready for your task before
 you fall victim to the bad humors."]],
       },
       leader_other = {
-         text = [["Chiron ha caído, Hermes ha caído, ¿qué más debo decirles que
-¡Impresione sobre usted la importancia de su misión! Espero que usted
-han venido preparados esta vez."]],
+         text = [["Chiron has fallen, Hermes has fallen, what else must I tell you to
+impress upon you the importance of your mission!  I hope that you
+have come prepared this time."]],
       },
       locate_first = {
          synopsis = "[You have reached %i but all is not well.]",
@@ -1069,8 +1069,8 @@ to defeat %l."]],
 not going to live to escape this place."]],
       },
       nexttime = {
-         text = [[Después de su última experiencia que esperabas estar aquí, pero sin duda
-no esperaba ver las cosas mucho peor. Esta vez debes tener éxito.]],
+         text = [[After your last experience you expected to be here, but you certainly
+did not expect to see things so much worse.  This time you must succeed.]],
       },
       offeredit = {
          synopsis = "[%l touches %o and tells %lj %gP to do so too, then tells you to take it with you.]",
@@ -1397,10 +1397,11 @@ You realize that %l needs your assistance!]],
       goal_first = {
          synopsis = "[You are surrounded by brimstone, lava, and elementals.]",
          output = "text",
-         text = [[Th[[El hedor de azufre es todo sobre ti, y los elementales se acercan
-de todos los lados!
+         text = [[The stench of brimstone is all about you, and the elementals close in
+from all sides!
 
-Ahead, hay un pequeño claro en medio de los agujeros de lava...]]    },
+Ahead, there is a small clearing amidst the bubbling pits of lava...]],
+      },
       goal_next = {
          text = "Again, you have invaded %ns domain.",
       },
@@ -1610,10 +1611,11 @@ You realize that %l needs your assistance!]],
       goal_first = {
          synopsis = "[The stench of brimstone surrounds you, the shrieks and moans are endless.]",
          output = "text",
-         text = [[The ste[[El hedor de la piedra preciosa es todo sobre ti, y los arbustos y gemidos
-de almas torturadas asaltan su psique.
+         text = [[The stench of brimstone is all about you, and the shrieks and moans
+of tortured souls assault your psyche.
 
-Ahead, hay un pequeño claro en medio de los agujeros de lava...]],
+Ahead, there is a small clearing amidst the bubbling pits of lava...]],
+      },
       goal_next = {
          text = "Again, you have invaded %ns domain.",
       },
@@ -1831,12 +1833,13 @@ And they've noticed you!]],
       goal_first = {
          synopsis = "[You descend into a subterranean complex.  Hooves clatter in the distance.]",
          output = "text",
-         text = [[You de[[Bajas a un lugar extraño, en el que cortas paredes como cuevas
-unirse con suaves, acabados, como si alguien estuviera en medio de
-terminando la construcción de un complejo subterráneo.
+         text = [[You descend into a weird place, in which roughly cut cave-like walls
+join with smooth, finished ones, as if someone was in the midst of
+finishing off the construction of a subterranean complex.
 
-En la distancia, escuchas un sonido como el ruido de muchos
-pezuñas en la roca.]]},
+Off in the distance, you hear a sound like the clattering of many
+hooves on rock.]],
+      },
       goal_next = {
          text = "Once again, you enter the distorted castle of %n.",
       },
@@ -2117,9 +2120,11 @@ of %ls curse.]],
       leader_next = {
          synopsis = "[Are you stupid or are you ready?]",
          output = "text",
-         text = [["Well, I didn't e[["Bueno, no esperaba verte de vuelta. Muestra que eres estúpido,
-o finalmente estás listo para aceptar mi oferta. Esperemos por su bien.
-no es la estupidez que te trae de vuelta."]]ader_other = {
+         text = [["Well, I didn't expect to see you back.  It shows that you are either stupid,
+or you are finally ready to accept my offer.  Let us hope for your sake it
+isn't stupidity that brings you back."]],
+      },
+      leader_other = {
          text = [["Did you perhaps mistake me for some other %lt?  You must
 think me as stupid as your behavior.  I warn you not to try my patience."]],
       },
@@ -2352,8 +2357,10 @@ If you cannot determine what I want in a samurai, how can I rely on you
 to figure out what I need from a samurai?"]],
       },
       locate_first = {
-         text = [[You instinctively reach for yo[[Instintivamente alcanzas tus espadas. No reconoces el
-lay de esta tierra, pero sabes que tu teki está en todas partes.]]
+         text = [[You instinctively reach for your swords.  You do not recognize the
+lay of this land, but you know that your teki are everywhere.]],
+      },
+      locate_next = {
          text = [[Thankful that your %sp at %H cannot see
 your fear, you prepare again to advance.]],
       },
@@ -3036,8 +3043,11 @@ still hungry for more pain?
 "Come!  Your soul, like %o, shall soon be mine to command."]],
       },
       nemesis_other = {
-         text = [["I'm sure that your perseverance shall b[[Estoy seguro de que tu perseverancia será objeto de innumerables
-baladas, pero no estarás cerca para escucharlas, ¡temo!"]]    text = [["Thief!  %oC belongs to me, now.  I shall feed
+         text = [["I'm sure that your perseverance shall be the subject of innumerable
+ballads, but you shall not be around to hear them, I fear!"]],
+      },
+      nemesis_wantsit = {
+         text = [["Thief!  %oC belongs to me, now.  I shall feed
 your living flesh to my minions."]],
       },
       nexttime = {
