@@ -193,7 +193,7 @@ dungeon = {
       }
    },
    {
-      name = "La búsqueda",
+      name = "La Misión",
       bonetag = "Q",
       base = 5,
       range = 2,
