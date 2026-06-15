@@ -3008,7 +3008,6 @@ msgid "Pick%s %s first"
 msgstr "Elige otro %s primero"
 
 #: src/role.c:1936
-#, fuzzy
 msgid " another"
 msgstr "uno otro."
 
