@@ -67,10 +67,24 @@ mkdir -p "$INSTALL_DIR/locale/es/LC_MESSAGES"
 # Binarios y datos
 cp playground/nethack "$INSTALL_DIR/"
 cp playground/nhdat "$INSTALL_DIR/"
+cp playground/sysconf "$INSTALL_DIR/"
+cp playground/license "$INSTALL_DIR/"
+cp playground/symbols "$INSTALL_DIR/" 2>/dev/null || true
+cp playground/recover "$INSTALL_DIR/" 2>/dev/null || true
 cp playground/locale/es/LC_MESSAGES/nethack.mo "$INSTALL_DIR/locale/es/LC_MESSAGES/"
 
+# Archivos de registro (necesarios para que el juego funcione)
+# sysconf define las rutas, pero los archivos deben existir
+touch "$INSTALL_DIR/perm"
+touch "$INSTALL_DIR/record"
+touch "$INSTALL_DIR/logfile"
+touch "$INSTALL_DIR/xlogfile"
+touch "$INSTALL_DIR/livelog"
+chmod 0660 "$INSTALL_DIR"/perm "$INSTALL_DIR"/record
+chmod 0660 "$INSTALL_DIR"/logfile "$INSTALL_DIR"/xlogfile "$INSTALL_DIR"/livelog
+
 # Archivos de traducción Lua (.lua.es) — necesarios para nombres de mazmorras,
-# diálogos de quests, tutorial, etc. dlb_fopen los busca en el directorio de datos.
+# diálogos de quests, tutorial, etc. dlb_fopen los busca vía NETHACKDIR.
 cp dat/dungeon.lua.es "$INSTALL_DIR/"
 cp dat/quest.lua.es "$INSTALL_DIR/"
 cp dat/themerms.lua.es "$INSTALL_DIR/"
