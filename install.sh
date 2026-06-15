@@ -1,7 +1,6 @@
 #!/bin/bash
 # NetHack-es: Instalación con un solo clic
-# Uso: curl -sL https://git.io/JUMP | bash
-# O:   bash install.sh
+# Uso: bash install.sh
 
 set -e
 
@@ -17,7 +16,7 @@ echo -e "${AZUL}║${NC}  NetHack 5.0 en Español            ${AZUL}║${NC}"
 echo -e "${AZUL}╚══════════════════════════════════════╝${NC}"
 echo ""
 
-# Directorio de instalación
+# Directorios de instalación
 INSTALL_DIR="$HOME/.local/games/nethack-es"
 BIN_DIR="$HOME/.local/bin"
 APP_DIR="$HOME/.local/share/applications"
@@ -26,7 +25,7 @@ TMP_DIR="/tmp/nethack-es-install"
 echo -e "${AZUL}📦 Instalando en:${NC} $INSTALL_DIR"
 echo ""
 
-# 1. Dependencias
+# ── 1. Dependencias ──
 echo -e "${AZUL}🔧 Instalando dependencias...${NC}"
 if command -v apt &> /dev/null; then
     sudo apt update -qq
@@ -37,53 +36,68 @@ elif command -v pacman &> /dev/null; then
     sudo pacman -S --noconfirm base-devel ncurses flex bison gettext git
 else
     echo -e "${ROJO}❌ No se pudo instalar dependencias. Instálalas manualmente.${NC}"
+    echo -e "${AMARILLO}   Paquetes necesarios: gcc, ncurses, flex, bison, gettext, git${NC}"
     exit 1
 fi
 
-# 2. Clonar o actualizar
+# ── 2. Clonar repositorio ──
 echo -e "${AZUL}📥 Descargando NetHack-es...${NC}"
 if [ -d "$TMP_DIR" ]; then
     rm -rf "$TMP_DIR"
 fi
-git clone --depth 1 https://github.com/Ricard1974/nethack-es.git "$TMP_DIR" 2>&1 | tail -1
+git clone --depth 1 https://github.com/Ricard1974/nethack-es.git "$TMP_DIR"
 cd "$TMP_DIR"
 
-# 3. Compilar
+# ── 3. Compilar ──
 echo -e "${AZUL}⚙️  Compilando (tarda unos minutos)...${NC}"
-cd sys/unix && sh setup.sh hints/linux.500 2>&1 | tail -1 && cd ../..
-make fetch-lua 2>&1 | tail -1
-make 2>&1 | tail -1
+cd sys/unix && sh setup.sh hints/linux.500 && cd ../..
+make fetch-lua
+make
 
-# 4. Preparar .mo
-msgfmt po/combined-es.po -o po/combined-es.mo 2>&1 | tail -1
+# ── 4. Generar archivo de traducción .mo ──
+echo -e "${AZUL}🌐 Generando traducción...${NC}"
+mkdir -p playground/locale/es/LC_MESSAGES
+msgfmt po/combined-es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
 
-# 5. Instalar
+# ── 5. Instalar ──
 echo -e "${AZUL}📂 Instalando en $INSTALL_DIR...${NC}"
 mkdir -p "$INSTALL_DIR"
-cp src/nethack "$INSTALL_DIR/"
-cp dat/nhdat "$INSTALL_DIR/"
 mkdir -p "$INSTALL_DIR/locale/es/LC_MESSAGES"
-cp po/combined-es.mo "$INSTALL_DIR/locale/es/LC_MESSAGES/nethack.mo"
-cp nethack-es "$INSTALL_DIR/" 2>/dev/null || true
 
-# 6. Crear lanzador
+# Binarios y datos
+cp playground/nethack "$INSTALL_DIR/"
+cp playground/nhdat "$INSTALL_DIR/"
+cp playground/locale/es/LC_MESSAGES/nethack.mo "$INSTALL_DIR/locale/es/LC_MESSAGES/"
+
+# Archivos de traducción Lua (.lua.es) — necesarios para nombres de mazmorras,
+# diálogos de quests, tutorial, etc. dlb_fopen los busca en el directorio de datos.
+cp dat/dungeon.lua.es "$INSTALL_DIR/"
+cp dat/quest.lua.es "$INSTALL_DIR/"
+cp dat/themerms.lua.es "$INSTALL_DIR/"
+cp dat/tut-1.lua.es "$INSTALL_DIR/"
+cp dat/tut-2.lua.es "$INSTALL_DIR/"
+
+# ── 6. Crear lanzador ──
 echo -e "${AZUL}🚀 Creando lanzador...${NC}"
 mkdir -p "$BIN_DIR"
-cat > "$BIN_DIR/nethack-es" << EOF
+cat > "$BIN_DIR/nethack-es" << LUAEOF
 #!/bin/bash
-# NetHack-es lanzador
+# NetHack-es lanzador con traducción al español
+export NETHACK_LOCALE_DIR="$INSTALL_DIR/locale"
 cd "$INSTALL_DIR"
 exec ./nethack "\$@"
-EOF
+LUAEOF
 chmod +x "$BIN_DIR/nethack-es"
 
 # Añadir ~/.local/bin al PATH si no está
-if ! grep -q "\.local/bin" "$HOME/.bashrc" 2>/dev/null; then
-    echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.bashrc"
-    echo -e "${AZUL}➕ Añadido ~/.local/bin al PATH${NC}"
+if ! echo "$PATH" | grep -q "$BIN_DIR"; then
+    if ! grep -q "\.local/bin" "$HOME/.bashrc" 2>/dev/null; then
+        echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.bashrc"
+        echo -e "${AZUL}➕ Añadido ~/.local/bin al PATH${NC}"
+    fi
 fi
 
-# 7. Crear acceso directo (menú de aplicaciones)
+# ── 7. Crear acceso directo (menú de aplicaciones) ──
 mkdir -p "$APP_DIR"
 cat > "$APP_DIR/nethack-es.desktop" << EOF
 [Desktop Entry]
@@ -97,10 +111,11 @@ Categories=Game;RolePlaying;
 Keywords=nethack;roguelike;spanish;
 EOF
 
-# 8. Limpiar
+# ── 8. Limpiar ──
+cd "$HOME"
 rm -rf "$TMP_DIR"
 
-# 9. Resultado
+# ── 9. Resultado ──
 echo ""
 echo -e "${VERDE}╔══════════════════════════════════════╗${NC}"
 echo -e "${VERDE}║${NC}     ✅  NetHack-es instalado        ${VERDE}║${NC}"
@@ -111,11 +126,9 @@ echo -e "  🎮 ${AZUL}Ejecutar:${NC}     $BIN_DIR/nethack-es"
 echo -e "  🖥️ ${AZUL}Menú:${NC}          Busca 'NetHack-es' en tus aplicaciones"
 echo ""
 echo -e "  Para jugar ahora:"
-echo -e "    ${VERDE}export PATH=\"\$PATH:$BIN_DIR\"${NC}"
 echo -e "    ${VERDE}nethack-es${NC}"
 echo ""
-echo -e "  Si no te funciona el PATH, abre una terminal nueva o ejecuta:"
+echo -e "  Si no funciona, abre una terminal nueva o ejecuta:"
 echo -e "    ${VERDE}source ~/.bashrc${NC}"
 echo ""
-echo -e "${AMARILLO}⚠️  Necesitas cerrar y abrir la terminal${NC}"
-echo -e "${AMARILLO}   o ejecutar 'source ~/.bashrc' para usar 'nethack-es'${NC}"
+EOF
