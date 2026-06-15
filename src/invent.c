@@ -1910,13 +1910,13 @@ getobj(
     *ap = '\0';
 
     if (suggested == 0 && !forceprompt && !allownone) {
-        You("don't have anything %sto %s.", inaccess ? "else " : "", word);
+        You(_("don't have anything %sto %s."), inaccess ? _("else ") : "", word);
         return (struct obj *) 0;
     }
     for (;;) {
         cnt = 0L;
         cntgiven = FALSE;
-        Sprintf(qbuf, "What do you want to %s?", word);
+        Sprintf(qbuf, _("What do you want to %s?"), word);
         if (gi.in_doagain) {
             ilet = readchar();
         } else if (iflags.force_invmenu) {
@@ -3133,7 +3133,7 @@ display_pickinv(
         ++n;
 
     if (n == 0) {
-        pline("%s.", not_carrying_anything);
+        pline("%s.", _(not_carrying_anything));
         return 0;
     }
 
@@ -3219,36 +3219,36 @@ display_pickinv(
         char prompt[QBUFSZ];
 
         unid_cnt = count_unidentified(gi.invent);
-        Sprintf(prompt, "Debug Identify"); /* 'title' rather than 'prompt' */
+        Strcpy(prompt, _("Debug Identify")); /* 'title' rather than 'prompt' */
         if (unid_cnt)
             Sprintf(eos(prompt),
-                    " -- unidentified or partially identified item%s",
+                    _(" -- unidentified or partially identified item%s"),
                     plur(unid_cnt));
         add_menu_str(win, prompt);
         if (!unid_cnt) {
             add_menu_str(win,
-                         "(all items are permanently identified already)");
+                         _("(all items are permanently identified already)"));
             gotsomething = TRUE;
         } else {
             any.a_obj = &wizid_fakeobj;
-            Sprintf(prompt, "select %s to permanently identify",
-                    (unid_cnt == 1) ? "it": "any or all of them");
+            Sprintf(prompt, _("select %s to permanently identify"),
+                    (unid_cnt == 1) ? _("it") : _("any or all of them"));
             /* wiz_identify stuffed the wiz_identify command character (^I)
                into iflags.override_ID for our use as an accelerator;
                it could be ambiguous if player has assigned a letter to
                the #wizidentify command, so include it as a group accelerator
                but use '_' as the primary selector */
             if (unid_cnt > 1)
-                Sprintf(eos(prompt), " (%s for all)",
+                Sprintf(eos(prompt), _(" (%s for all)"),
                         visctrl(iflags.override_ID));
             add_menu(win, &nul_glyphinfo, &any, '_', iflags.override_ID,
                      ATR_NONE, clr, prompt, MENU_ITEMFLAGS_SKIPINVERT);
             gotsomething = TRUE;
         }
-   } else if (usextra) {
-        /* wizard override ID and xtra_choice are mutually exclusive */
-        if (flags.sortpack)
-            add_menu_heading(win, "Miscellaneous");
+    } else if (usextra) {
+         /* wizard override ID and xtra_choice are mutually exclusive */
+         if (flags.sortpack)
+             add_menu_heading(win, _("Miscellaneous"));
         any.a_char = HANDS_SYM; /* '-' */
         add_menu(win, &nul_glyphinfo, &any, HANDS_SYM, 0, ATR_NONE,
                  clr, xtra_choice, MENU_ITEMFLAGS_NONE);
@@ -3269,10 +3269,10 @@ display_pickinv(
             if (wizid && !not_fully_identified(otmp))
                 continue;
             if (inuse_only) {
-                /* for inuse-only, start with an extra header */
-                if (!inusecount++)
-                    add_menu_heading(win, doing_perm_invent ? "In use"
-                                            : "Inventory in use");
+                 /* for inuse-only, start with an extra header */
+                 if (!inusecount++)
+                     add_menu_heading(win, doing_perm_invent ? _("In use")
+                                             : _("Inventory in use"));
             } else if (doing_perm_invent && !show_gold) {
                 /* don't skip gold if it is quivered, even for !show_gold */
                 if (otmp->invlet == GOLD_SYM && !otmp->owornmask) {
@@ -3301,15 +3301,16 @@ display_pickinv(
                 any.a_char = ilet;
 
             if (otmp == &inuse_fakeobj) {
-                /* fake item to format as "bare|gloved hands" */
-                char barehands[QBUFSZ];
+                 /* fake item to format as "bare|gloved hands" */
+                 char barehands[QBUFSZ];
 
-                /* like doname() below, makeplural() returns an obuf[] */
-                formattedobj = makeplural(body_part(HAND));
-                Sprintf(barehands, "%s %s (no weapon)",
-                        uarmg ? "gloved" : "bare", formattedobj);
-                add_menu(win, &nul_glyphinfo, &any, ilet, 0,
-                         ATR_NONE, clr, barehands, MENU_ITEMFLAGS_NONE);
+                 /* like doname() below, makeplural() returns an obuf[] */
+                 formattedobj = makeplural(body_part(HAND));
+                 const char *gloved_or_bare = uarmg ? _("gloved") : _("bare");
+                 const char *no_weapon = _("(no weapon)");
+                 Sprintf(barehands, "%s %s %s", gloved_or_bare, formattedobj, no_weapon);
+                 add_menu(win, &nul_glyphinfo, &any, ilet, 0,
+                          ATR_NONE, clr, barehands, MENU_ITEMFLAGS_NONE);
             } else {
                 /* normal inventory item */
                 tmpglyph = obj_to_glyph(otmp, rn2_on_display_rng);
@@ -3365,9 +3366,9 @@ display_pickinv(
        there isn't anything applicable to list; the n==0 case above
        gets skipped for perm_invent), put something into the menu */
     if (doing_perm_invent && !lets && !gotsomething) {
-        add_menu_str(win, inuse_only ? not_using_anything
-                          : (!show_gold && skipped_gold) ? only_carrying_gold
-                            : not_carrying_anything);
+        add_menu_str(win, inuse_only ? _(not_using_anything)
+                          : (!show_gold && skipped_gold) ? _(only_carrying_gold)
+                            : _(not_carrying_anything));
         want_reply = FALSE;
     }
     end_menu(win, (query && *query) ? query : (char *) 0);
@@ -3500,7 +3501,7 @@ display_used_invlets(char avoidlet)
                 continue;
             invdone = 1;
         }
-        end_menu(win, "Inventory letters used:");
+        end_menu(win, _("Inventory letters used:"));
 
         n = select_menu(win, PICK_ONE, &selected);
         if (n > 0) {

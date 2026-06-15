@@ -1157,7 +1157,7 @@ dmore(
     struct WinDesc *cw,
     const char *s) /* valid responses */
 {
-    const char *prompt = cw->morestr ? cw->morestr : defmorestr;
+    const char *prompt = cw->morestr ? cw->morestr : _(defmorestr);
     int offset = (cw->type == NHW_TEXT) ? 1 : 2;
 
     HUPSKIP();
@@ -3641,7 +3641,7 @@ tty_wait_synch(void)
     } else {
         tty_display_nhwindow(WIN_MAP, FALSE);
         if (ttyDisplay->inmore) {
-            addtopl("--More--");
+            addtopl(_("--More--"));
             (void) fflush(stdout);
         } else if (ttyDisplay->inread > program_state.gameover) {
             /* this can only happen if we were reading and got interrupted */

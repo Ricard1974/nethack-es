@@ -2551,7 +2551,7 @@ query_annotation(d_level *lev)
                values will end up with one anyway; remove it */
             (void) trimspaces(lbuf);
         }
-        Snprintf(qbuf, sizeof qbuf, "What do you want to call %s?", lbuf);
+        Snprintf(qbuf, sizeof qbuf, _("What do you want to call %s?"), lbuf);
         getlin(qbuf, nbuf);
     }
 

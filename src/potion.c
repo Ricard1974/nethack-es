@@ -2312,8 +2312,9 @@ dodip(void)
         if (!can_reach_floor(FALSE)) {
             ; /* can't dip something into fountain or pool if can't reach */
         } else if (at_fountain) {
-            Snprintf(qbuf, sizeof(qbuf), "%s%s into the fountain?", Dip_,
-                     flags.verbose ? obuf : shortestname);
+            Snprintf(qbuf, sizeof(qbuf), "%s%s %s", Dip_,
+                     flags.verbose ? obuf : shortestname,
+                     _("into the fountain?"));
             /* "Dip <the object> into the fountain?" */
             if (y_n(qbuf) == 'y') {
                 if (!is_hands)
@@ -2323,8 +2324,9 @@ dodip(void)
             }
             ++drink_ok_extra;
         } else if (at_sink) {
-            Snprintf(qbuf, sizeof(qbuf), "%s%s into the sink?", Dip_,
-                     flags.verbose ? obuf : shortestname);
+            Snprintf(qbuf, sizeof(qbuf), "%s%s %s", Dip_,
+                     flags.verbose ? obuf : shortestname,
+                     _("into the sink?"));
             if (y_n(qbuf) == 'y') {
                 if (!is_hands)
                     obj->pickup_prev = 0;
@@ -2335,8 +2337,9 @@ dodip(void)
         } else if (at_pool) {
             const char *pooltype = waterbody_name(u.ux, u.uy);
 
-            Snprintf(qbuf, sizeof(qbuf), "%s%s into the %s?", Dip_,
-                     flags.verbose ? obuf : shortestname, pooltype);
+            Snprintf(qbuf, sizeof(qbuf), "%s%s %s", Dip_,
+                     flags.verbose ? obuf : shortestname,
+                     pooltype); /* pooltype is already translated via waterbody_name */
             /* "Dip <the object> into the {pool, moat, &c}?" */
             if (y_n(qbuf) == 'y') {
                 if (Levitation) {

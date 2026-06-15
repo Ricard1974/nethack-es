@@ -1206,7 +1206,7 @@ doengrave(void)
             de->everb, de->eloc, body_part(FINGERTIP));
 
     /* Prompt for engraving! */
-    Sprintf(de->qbuf, "What do you want to %s the %s here?",
+    Sprintf(de->qbuf, _("What do you want to %s the %s here?"),
             de->everb, de->eloc);
     getlin(de->qbuf, de->ebuf);
     /* convert tabs to spaces and condense consecutive spaces to one */
