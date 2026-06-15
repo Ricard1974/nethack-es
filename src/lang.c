@@ -1,9 +1,5 @@
 /* NetHack-es: language detection for i18n */
-#include "config.h"
-#include "tradstdc.h"
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+#include "hack.h"
 
 static char current_lang[3] = "en"; /* default: English */
 
