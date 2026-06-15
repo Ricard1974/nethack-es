@@ -1083,13 +1083,12 @@ minliquid_core(struct monst *mtmp)
                     pline_mon(mtmp, "%s drowns.", Monnam(mtmp));
                 else
                     /* hero used fire to melt ice that monster was on */
-                    You("drown %s.", mon_nam(mtmp));
+                    You(_("drown %s."), mon_nam(mtmp));
             }
             if (engulfing_u(mtmp)) {
                 /* This can happen after a purple worm plucks you off a
                    flying steed while you are over water. */
-                pline("%s sinks as %s rushes in and flushes you out.",
-                      Monnam(mtmp), hliquid("water"));
+                pline(_("%s sinks as %s rushes in and flushes you out."), Monnam(mtmp), hliquid("water"));
             }
             if (svc.context.mon_moving)
                 mondied(mtmp); /* ok to leave corpse despite water */
@@ -1369,9 +1368,7 @@ meatbox(struct monst *mon, struct obj *otmp)
       the floor; this is arbitrary, but otherwise g-cubes are too
       powerful */
     if (!engulf_contents && cansee(x, y)) {
-        pline("%s contents spill out onto the %s.",
-              s_suffix(The(distant_name(otmp, xname))),
-              surface(x, y));
+        pline(_("%s contents spill out onto the %s."), s_suffix(The(distant_name(otmp, xname))), surface(x, y));
     }
     while ((cobj = otmp->cobj) != 0) {
         obj_extract_self(cobj);
@@ -1625,7 +1622,7 @@ meatobj(struct monst *mtmp) /* for gelatinous cubes */
                 /* give this one even if !verbose */
                 if (otmp->oclass == SCROLL_CLASS
                     && objdescr_is(otmp, "YUM YUM"))
-                    pline("Yum%c", otmp->blessed ? '!' : '.');
+                    pline(_("Yum%c"), otmp->blessed ? '!' : '.');
             } else {
                 Soundeffect(se_slurping_sound, 30);
                 if (flags.verbose)
@@ -1647,8 +1644,7 @@ meatobj(struct monst *mtmp) /* for gelatinous cubes */
         if (cansee(mtmp->mx, mtmp->my) && flags.verbose && buf[0])
             pline1(buf);
         else if (flags.verbose)
-            You_hear("%s slurping sound%s.",
-                     (ecount == 1) ? "a" : "several", plur(ecount));
+            You_hear(_("%s slurping sound%s."), (ecount == 1) ? "a" : "several", plur(ecount));
     }
     return (count > 0 || ecount > 0) ? 1 : 0;
 }
@@ -2852,16 +2848,16 @@ lifesaved_monster(struct monst *mtmp)
          * Nor do you check invisibility, because glowing and
          * disintegrating amulets are always visible. */
         if (cansee(mtmp->mx, mtmp->my)) {
-            pline("%s", _("But wait..."));
+            pline(_("%s"), _("But wait..."));
             pline("%s medallion begins to glow!", s_suffix(Monnam(mtmp)));
             makeknown(AMULET_OF_LIFE_SAVING);
             /* amulet is visible, but monster might not be */
             if (canseemon(mtmp)) {
                 if (attacktype(mtmp->data, AT_EXPL)
                     || attacktype(mtmp->data, AT_BOOM))
-                    pline("%s reconstitutes!", Monnam(mtmp));
+                    pline(_("%s reconstitutes!"), Monnam(mtmp));
                 else
-                    pline("%s looks much better!", Monnam(mtmp));
+                    pline(_("%s looks much better!"), Monnam(mtmp));
             }
             pline_The("medallion crumbles to dust!");
         }
@@ -2881,8 +2877,7 @@ lifesaved_monster(struct monst *mtmp)
         if (!surviver) {
             /* genocided monster can't be life-saved */
             if (cansee(mtmp->mx, mtmp->my))
-                pline("Unfortunately, %s is still genocided...",
-                      mon_nam(mtmp));
+                pline(_("Unfortunately, %s is still genocided..."), mon_nam(mtmp));
             mtmp->mhp = 0;
         }
     }
@@ -2961,9 +2956,9 @@ vamprises(struct monst *mtmp)
 
             set_msg_xy(x, y); /* You()/pline() will reset this */
             if (!seeit)
-                You_hear("%s.", trapped ? "an explosion" : door_smashed);
+                You_hear(_("%s."), trapped ? "an explosion" : door_smashed);
             else if (!canspotmon(mtmp))
-                You_see("%s.", trapped ? door_go_boom : door_smashed);
+                You_see(_("%s."), trapped ? door_go_boom : door_smashed);
             else if (!Unaware)
                 pline_The("door is smashed%s",
                           trapped ? " and it explodes!" : ".");
@@ -3215,7 +3210,7 @@ corpse_chance(
                 /* mdef is a gas spore (AT_BOOM) that is exploding inside an
                    engulfer; suppress usual explosion since it's contained */
                 if (magr == &gy.youmonst) {
-                    There("is an explosion in your %s!", body_part(STOMACH));
+                    There(_("is an explosion in your %s!"), body_part(STOMACH));
                     Sprintf(svk.killer.name, "%s explosion",
                             s_suffix(pmname(mdat, Mgender(mon))));
                     losehp(Maybe_Half_Phys(tmp), svk.killer.name,
@@ -3371,8 +3366,7 @@ monstone(struct monst *mdef)
     mondead(mdef);
     if (wasinside) {
         if (digests(mdef->data))
-            You("%s through an opening in the new %s.",
-                u_locomotion("jump"), xname(otmp));
+            You(_("%s through an opening in the new %s."), u_locomotion("jump"), xname(otmp));
     }
     return;
 }
@@ -3417,7 +3411,7 @@ monkilled(
                             : (how == AD_DCAY && completelyrots(mptr)) ? "rot"
                               :  0;
         if (rxt)
-            pline("May %s %s in peace.", noit_mon_nam(mdef), rxt);
+            pline(_("May %s %s in peace."), noit_mon_nam(mdef), rxt);
     }
     return;
 }
@@ -3508,9 +3502,7 @@ xkilled(
     if (!nomsg) {
         boolean namedpet = has_mgivenname(mtmp) && !Hallucination;
 
-        You("%s %s!",
-            nonliving(mtmp->data) ? "destroy" : "kill",
-            !(wasinside || canspotmon(mtmp)) ? "it"
+        You(_("%s %s!"), nonliving(mtmp->data) ? "destroy" : "kill", !(wasinside || canspotmon(mtmp)) ? "it"
               : !mtmp->mtame ? mon_nam(mtmp)
                 : x_monnam(mtmp, namedpet ? ARTICLE_NONE : ARTICLE_THE,
                            "poor", namedpet ? SUPPRESS_SADDLE : 0, FALSE));
@@ -3561,7 +3553,7 @@ xkilled(
          */
         gs.stoned = FALSE;
         if (!cansee(x, y) && !gv.vamp_rise_msg)
-            pline("%s", _("Maybe not..."));
+            pline(_("%s"), _("Maybe not..."));
         return;
     }
 
@@ -3629,7 +3621,7 @@ xkilled(
             gz.zombify = FALSE; /* reset */
             if (burycorpse && cadaver && cansee(x, y) && !mtmp->minvis
                 && cadaver->where == OBJ_BURIED && !nomsg) {
-                pline("%s corpse ends up buried.", s_suffix(Monnam(mtmp)));
+                pline(_("%s corpse ends up buried."), s_suffix(Monnam(mtmp)));
             }
         }
     }
@@ -3670,7 +3662,7 @@ xkilled(
         change_luck(-1);
     if (is_unicorn(mdat) && sgn(u.ualign.type) == sgn(mdat->maligntyp)) {
         change_luck(-5);
-        You_feel("guilty...");
+        You_feel(_("guilty..."));
     }
 
     /* give experience points */
@@ -3683,8 +3675,7 @@ xkilled(
         adjalign(-(u.ualign.record + (int) ALIGNLIM / 2));
         u.ugangr += 7; /* instantly become "extremely" angry */
         change_luck(-20);
-        pline("That was %sa bad idea...",
-              u.uevent.qcompleted ? "probably " : "");
+        pline(_("That was %sa bad idea..."), u.uevent.qcompleted ? "probably " : "");
         if (!svc.context.mon_moving)
             iter_mons(anger_quest_guardians);
     } else if (mdat->msound == MS_NEMESIS) { /* Real good! */
@@ -3695,9 +3686,9 @@ xkilled(
         u.ugangr++;
         change_luck(-4);
         if (!Hallucination)
-            pline("%s", _("That was probably a bad idea..."));
+            pline(_("%s"), _("That was probably a bad idea..."));
         else
-            pline("%s", _("Whoopsie-daisy!"));
+            pline(_("%s"), _("Whoopsie-daisy!"));
     } else if (mtmp->ispriest) {
         adjalign((p_coaligned(mtmp)) ? -2 : 2);
         /* cancel divine protection for killing your priest */
@@ -3758,10 +3749,10 @@ mon_to_stone(struct monst *mtmp)
             pline_mon(mtmp, "%s solidifies...", Monnam(mtmp));
         if (newcham(mtmp, &mons[PM_STONE_GOLEM], NO_NC_FLAGS)) {
             if (canseemon(mtmp))
-                pline("Now it's %s.", an(pmname(mtmp->data, Mgender(mtmp))));
+                pline(_("Now it's %s."), an(pmname(mtmp->data, Mgender(mtmp))));
         } else {
             if (canseemon(mtmp))
-                pline("%s", _("... and returns to normal."));
+                pline(_("%s"), _("... and returns to normal."));
         }
     } else
         impossible("Can't polystone %s!", a_monnam(mtmp));
@@ -3890,7 +3881,7 @@ elemental_clog(struct monst *mon)
         m1 = m2 = m3 = m4 = m5 = zm = (struct monst *) 0;
         if (!msgmv || (svm.moves - msgmv) > 200L) {
             if (!msgmv || rn2(2))
-                You_feel("besieged.");
+                You_feel(_("besieged."));
             msgmv = svm.moves;
         }
         /*
@@ -4094,7 +4085,7 @@ staticfn void
 m_respond_shrieker(struct monst *mtmp)
 {
     if (!Deaf) {
-        pline("%s shrieks.", Monnam(mtmp));
+        pline(_("%s shrieks."), Monnam(mtmp));
         stop_occupation();
     }
     if (!rn2(10)) { /* 1/10 chance per shriek to create a monster */
@@ -4254,7 +4245,7 @@ peacefuls_respond(struct monst *mtmp)
                     if (exclaimed && !alreadyfleeing)
                         /* word like a separate sentence so that we
                            don't have to poke around inside growl() */
-                        pline("%s", _("And then starts to flee."));
+                        pline(_("%s"), _("And then starts to flee."));
                 }
             }
         }
@@ -4273,7 +4264,7 @@ setmangry(struct monst *mtmp, boolean via_attack)
         /* only hypocritical if monster is vulnerable to Elbereth (or
            peaceful--not vulnerable but attacking it is hypocritical) */
         && (onscary(u.ux, u.uy, mtmp) || mtmp->mpeaceful)) {
-        You_feel("like a hypocrite.");
+        You_feel(_("like a hypocrite."));
         /* AIS: Yes, I know alignment penalties and bonuses aren't balanced
            at the moment. This is about correct relative to other "small"
            penalties; it should be fairly large, as attacking while standing
@@ -4285,7 +4276,7 @@ setmangry(struct monst *mtmp, boolean via_attack)
         adjalign((u.ualign.record > 5) ? -5 : -rnd(5));
 
         if (!Blind)
-            pline("%s", _("The engraving beneath you fades."));
+            pline(_("%s"), _("The engraving beneath you fades."));
         del_engr_at(u.ux, u.uy);
     }
 
@@ -4782,7 +4773,7 @@ hideunder(struct monst *mtmp)
         u.uundetected = undetected ? 1 : 0;
 #if 0   /* feedback handled via #monster */
         if (undetected && !oldundeteced && seenobj)
-            You("hide under %s.", seenobj);
+            You(_("hide under %s."), seenobj);
 #endif
     } else {
         if (seeit)
@@ -4796,7 +4787,7 @@ hideunder(struct monst *mtmp)
             if (!locomo)
                 locomo = locomotion(mtmp->data, "hide");
             set_msg_xy(mtmp->mx, mtmp->my); /* pline() will reset this */
-            You_see("%s %s under %s.", seenmon, locomo, seenobj);
+            You_see(_("%s %s under %s."), seenmon, locomo, seenobj);
             iflags.last_msg = PLNMSG_HIDE_UNDER;
             gl.last_hider = mtmp->m_id;
         }
@@ -5138,7 +5129,7 @@ wiz_force_cham_form(struct monst *mon)
             mndx = NON_PM;
         }
 
-        pline("%s", _("It can't become that."));
+        pline(_("%s"), _("It can't become that."));
 #ifdef EDIT_GETLIN
         /* EDIT_GETLIN preloads the input buffer with the previous
            response but we shouldn't just keep repeating that if player
@@ -5430,10 +5421,8 @@ newcham(
                         msgtrail[0] = '\0';
                     }
                     /* Do this even if msg is FALSE */
-                    You("%s %s%s!",
-                        (amorphous(olddata) || is_whirly(olddata))
-                            ? "emerge from" : "break out of",
-                        l_oldname, msgtrail);
+                    You(_("%s %s%s!"), (amorphous(olddata) || is_whirly(olddata))
+                            ? "emerge from" : "break out of", l_oldname, msgtrail);
                     msg = FALSE; /* message has been given */
                     mtmp->mhp = 1; /* almost dead */
                 }
@@ -5750,13 +5739,11 @@ angry_guards(boolean silent)
                 pline_The("%s %s angry!", buf, vtense(buf, "get"));
             } else if (sct) { /* seen/sensed non-adjacent guard(s) */
                 Sprintf(buf, "guard%s", plur(sct));
-                pline("%s %s %s approaching!",
-                      (sct == 1) ? "An angry" : "Angry",
-                      buf, vtense(buf, "are"));
+                pline(_("%s %s %s approaching!"), (sct == 1) ? "An angry" : "Angry", buf, vtense(buf, "are"));
             } else {
                 Strcpy(buf, (ct == 1) ? "a guard's" : "guards'");
                 Soundeffect(se_shrill_whistle, 100);
-                You_hear("the shrill sound of %s whistle%s.", buf, plur(ct));
+                You_hear(_("the shrill sound of %s whistle%s."), buf, plur(ct));
             }
         }
         return TRUE;
@@ -5852,7 +5839,7 @@ usmellmon(struct permonst *mdat)
             msg_given = TRUE;
             break;
         case PM_GREEN_SLIME:
-            pline("%s stinks.", Something);
+            pline(_("%s stinks."), Something);
             msg_given = TRUE;
             break;
         case PM_VIOLET_FUNGUS:
@@ -5883,12 +5870,11 @@ usmellmon(struct permonst *mdat)
                 msg_given = TRUE;
                 break;
             case S_FUNGUS:
-                pline("%s smells moldy.", Something);
+                pline(_("%s smells moldy."), Something);
                 msg_given = TRUE;
                 break;
             case S_UNICORN:
-                You("detect a%s odor reminiscent of a stable.",
-                    (mndx == PM_PONY) ? "n" : " strong");
+                You(_("detect a%s odor reminiscent of a stable."), (mndx == PM_PONY) ? "n" : " strong");
                 msg_given = TRUE;
                 break;
             case S_ZOMBIE:
@@ -5903,7 +5889,7 @@ usmellmon(struct permonst *mdat)
                 if (maybe_polyd(is_orc(gy.youmonst.data), Race_if(PM_ORC)))
                     You(_("notice an attractive smell."));
                 else
-                    pline("%s", _("A foul stench makes you feel a little nauseated."));
+                    pline(_("%s"), _("A foul stench makes you feel a little nauseated."));
                 msg_given = TRUE;
                 break;
             default:

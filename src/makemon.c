@@ -106,8 +106,7 @@ m_initgrp(
     cnt /= (u.ulevel < 3) ? 4 : (u.ulevel < 5) ? 2 : 1;
 #if defined(__GNUC__) && (defined(HPUX) || defined(DGUX))
     if (cnt != (cnttmp / cntdiv)) {
-        pline("cnt=%d using %d, cnttmp=%d, cntdiv=%d", cnt,
-              (u.ulevel < 3) ? 4 : (u.ulevel < 5) ? 2 : 1, cnttmp, cntdiv);
+        pline(_("cnt=%d using %d, cnttmp=%d, cntdiv=%d"), cnt, (u.ulevel < 3) ? 4 : (u.ulevel < 5) ? 2 : 1, cnttmp, cntdiv);
     }
 #endif
     if (!cnt)
@@ -1489,14 +1488,10 @@ makemon(
             }
             if (what) {
                 set_msg_xy(mtmp->mx, mtmp->my);
-                Norep("%s%s %s%s%c", what,
-                      exclaim ? " suddenly" : "",
-                      /* 'what' might be "gold pieces" so need plural verb */
-                      vtense(what, "appear"),
-                      next2u(x, y) ? " next to you"
+                Norep(_("%s%s %s%s%c"), what, exclaim ? " suddenly" : "", /* 'what' might be "gold pieces" so need plural verb */
+                      vtense(what, "appear"), next2u(x, y) ? " next to you"
                       : (distu(x, y) <= (BOLT_LIM * BOLT_LIM)) ? " close by"
-                        : "",
-                      exclaim ? '!' : '.');
+                        : "", exclaim ? '!' : '.');
             }
         }
         /* if discernable and a threat, stop fiddling while Rome burns */
@@ -2124,9 +2119,7 @@ grow_up(struct monst *mtmp, struct monst *victim)
 
         if (svm.mvitals[newtype].mvflags & G_GENOD) { /* allow G_EXTINCT */
             if (canspotmon(mtmp))
-                pline("As %s grows up into %s, %s %s!", mon_nam(mtmp),
-                      an(pmname(ptr, Mgender(mtmp))), mhe(mtmp),
-                      nonliving(ptr) ? "expires" : "dies");
+                pline(_("As %s grows up into %s, %s %s!"), mon_nam(mtmp), an(pmname(ptr, Mgender(mtmp))), mhe(mtmp), nonliving(ptr) ? "expires" : "dies");
             set_mon_data(mtmp, ptr); /* keep svm.mvitals[] accurate */
             mondied(mtmp);
             return (struct permonst *) 0;

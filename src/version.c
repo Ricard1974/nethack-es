@@ -160,7 +160,7 @@ doversion(void)
     if (iflags.menu_requested)
         return doextversion();
 
-    pline("%s", getversionstring(buf, sizeof buf));
+    pline(_("%s"), getversionstring(buf, sizeof buf));
     return ECMD_OK;
 }
 
@@ -399,7 +399,7 @@ check_version(
         ) {
 #ifndef SFCTOOL
         if (complain) {
-            pline("Version mismatch for file \"%s\".", filename);
+            pline(_("Version mismatch for file \"%s\"."), filename);
             if (WIN_MESSAGE != WIN_ERR)
                  display_nhwindow(WIN_MESSAGE, TRUE);
         }
@@ -413,7 +413,7 @@ check_version(
         ) {
 #ifndef SFCTOOL
         if (complain) {
-            pline("Configuration incompatibility for file \"%s\".", filename);
+            pline(_("Configuration incompatibility for file \"%s\"."), filename);
             display_nhwindow(WIN_MESSAGE, TRUE);
         }
 #endif

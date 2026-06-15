@@ -73,17 +73,17 @@ static int optfn_##a(int, int, boolean, char *, char *);
 
 #elif defined(NHOPT_PARSE)
 #define NHOPTB(a, sec, b, c, s, i, n, v, d, al, bp, termp, desc)             \
-    { #a, OptS_##sec, 0, b, opt_##a, s, BoolOpt, n, v, d, No, termp, c,  \
-      bp, &optfn_boolean, al, desc, (const char *) 0, i, 0, 0 , 0 },
+    { N_(#a), OptS_##sec, 0, b, opt_##a, s, BoolOpt, n, v, d, No, termp, c,  \
+      bp, &optfn_boolean, al, N_(desc), (const char *) 0, i, 0, 0 , 0 },
 #define NHOPTC(a, sec, b, c, s, n, v, d, h, al, z) \
-    { #a, OptS_##sec, 0, b, opt_##a, s, CompOpt, n, v, d, No, 0, c,  \
-      (boolean *) 0, &optfn_##a, al, z, (const char *) 0, Off, h, 0, 0 },
+    { N_(#a), OptS_##sec, 0, b, opt_##a, s, CompOpt, n, v, d, No, 0, c,  \
+      (boolean *) 0, &optfn_##a, al, N_(z), (const char *) 0, Off, h, 0, 0 },
 #define NHOPTP(a, sec, b, c, s, n, v, d, h, al, z) \
-    { #a, OptS_##sec, 0, b, pfx_##a, s, CompOpt, n, v, d, Yes, 0, c, \
-      (boolean *) 0, &pfxfn_##a, al, z, #a, Off, h, 0, 0 },
+    { N_(#a), OptS_##sec, 0, b, pfx_##a, s, CompOpt, n, v, d, Yes, 0, c, \
+      (boolean *) 0, &pfxfn_##a, al, N_(z), #a, Off, h, 0, 0 },
 #define NHOPTO(m, sec, a, b, c, s, n, v, d, al, z) \
-    { m, OptS_##sec, 0, b, opt_##a, s, OthrOpt, n, v, d, No, 0, c,   \
-      (boolean *) 0, &optfn_##a, al, z, (const char *) 0, On, On, 0, 0 },
+    { N_(m), OptS_##sec, 0, b, opt_##a, s, OthrOpt, n, v, d, No, 0, c,   \
+      (boolean *) 0, &optfn_##a, al, N_(z), (const char *) 0, On, On, 0, 0 },
 
 /* this is not reliable because TILES_IN_GLYPHMAP might be defined
  * in a multi-interface binary but not apply to the current interface */

@@ -49,7 +49,7 @@ dosave(void)
             nomul(0);
     } else {
         clear_nhwindow(WIN_MESSAGE);
-        pline("%s", _("Saving..."));
+        pline(_("%s"), _("Saving..."));
 #if defined(HANGUPHANDLING)
         program_state.done_hup = 0;
 #endif
@@ -127,7 +127,7 @@ dosave0(void)
 
     nhfp = create_savefile();
     if (!nhfp) {
-        HUP pline("%s", _("Cannot open save file."));
+        HUP pline(_("%s"), _("Cannot open save file."));
         (void) delete_savefile(); /* ab@unido */
         goto done;
     }
@@ -345,7 +345,7 @@ tricked_fileremoved(NHFILE *nhfp, char *whynot)
 {
     if (!nhfp) {
         pline1(whynot);
-        pline("%s", _("Probably someone removed it."));
+        pline(_("%s"), _("Probably someone removed it."));
         Strcpy(svk.killer.name, whynot);
         done(TRICKED);
         return TRUE;

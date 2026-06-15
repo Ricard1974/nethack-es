@@ -31,9 +31,7 @@ noises(struct monst *magr, struct attack *mattk)
     if (!Deaf && (farq != gf.far_noise || svm.moves - gn.noisetime > 10)) {
         gf.far_noise = farq;
         gn.noisetime = svm.moves;
-        You_hear("%s%s.",
-                 (mattk->aatyp == AT_EXPL) ? "an explosion" : "some noises",
-                 farq ? " in the distance" : "");
+        You_hear(_("%s%s."), (mattk->aatyp == AT_EXPL) ? "an explosion" : "some noises", farq ? " in the distance" : "");
     }
 }
 
@@ -81,10 +79,8 @@ missmm(
     pre_mm_attack(magr, mdef);
 
     if (gv.vis) {
-        pline("%s %s %s.", Monnam(magr),
-              (magr->mcan || !could_seduce(magr, mdef, mattk)) ? "misses"
-                  : "pretends to be friendly to",
-              mon_nam_too(mdef, magr));
+        pline(_("%s %s %s."), Monnam(magr), (magr->mcan || !could_seduce(magr, mdef, mattk)) ? "misses"
+                  : "pretends to be friendly to", mon_nam_too(mdef, magr));
     } else {
         noises(magr, mattk);
     }
@@ -132,7 +128,7 @@ fightm(struct monst *mtmp)
                 if (!u.uswallow && (mtmp == u.ustuck)) {
                     if (!rn2(4)) {
                         set_ustuck((struct monst *) 0);
-                        pline("%s releases you!", Monnam(mtmp));
+                        pline(_("%s releases you!"), Monnam(mtmp));
                     } else
                         break;
                 }
@@ -229,8 +225,7 @@ mdisplacem(
             }
             if (!quietly && canspotmon(magr)) {
                 if (gv.vis) {
-                    pline("%s tries to move %s out of %s way.", Monnam(magr),
-                          mon_nam(mdef), is_rider(pa) ? "the" : mhis(magr));
+                    pline(_("%s tries to move %s out of %s way."), Monnam(magr), mon_nam(mdef), is_rider(pa) ? "the" : mhis(magr));
                 }
                 pline_mon(magr, "%s turns to stone!", Monnam(magr));
             }
@@ -257,8 +252,7 @@ mdisplacem(
     update_monster_region(mdef);
 
     if (gv.vis && !quietly)
-        pline("%s moves %s out of %s way!", Monnam(magr), mon_nam(mdef),
-              is_rider(pa) ? "the" : mhis(magr));
+        pline(_("%s moves %s out of %s way!"), Monnam(magr), mon_nam(mdef), is_rider(pa) ? "the" : mhis(magr));
     newsym(fx, fy);  /* see it       */
     newsym(tx, ty);  /*   all happen */
     flush_screen(0); /* make sure it shows up */
@@ -337,15 +331,15 @@ mattackm(
                                                       : ARTICLE_NONE);
                 if (!justone)
                     montype = makeplural(montype);
-                You("dream of %s.", montype);
+                You(_("dream of %s."), montype);
             } else {
                 if (iflags.last_msg == PLNMSG_HIDE_UNDER
                     && mdef->m_id == gl.last_hider)
                     pline_mon(mdef, "%s emerges from hiding.", Monnam(mdef));
                 else if (mdef->m_id == gl.last_hider)
-                    You("notice %s.", mon_nam(mdef));
+                    You(_("notice %s."), mon_nam(mdef));
                 else
-                    pline("Suddenly, you notice %s.", a_monnam(mdef));
+                    pline(_("Suddenly, you notice %s."), a_monnam(mdef));
             }
         }
     }
@@ -462,8 +456,7 @@ mattackm(
 
                     if ((mclone = clone_mon(mdef, 0, 0)) != 0) {
                         if (gv.vis && canspotmon(mdef))
-                            pline("%s divides as %s hits it!",
-                                  Monnam(mdef), mon_nam(magr));
+                            pline(_("%s divides as %s hits it!"), Monnam(mdef), mon_nam(magr));
                         (void) mintrap(mclone, NO_TRAP_FLAGS);
                         if (DEADMONSTER(magr))
                             res[i] |= M_ATTK_AGR_DIED;
@@ -510,8 +503,7 @@ mattackm(
         case AT_ENGL:
             if (mdef->data == &mons[PM_SHADE]) { /* no silver teeth... */
                 if (gv.vis)
-                    pline("%s attempt to engulf %s is futile.",
-                          s_suffix(Monnam(magr)), mon_nam(mdef));
+                    pline(_("%s attempt to engulf %s is futile."), s_suffix(Monnam(magr)), mon_nam(mdef));
                 strike = 0;
                 break;
             }
@@ -630,9 +622,7 @@ failed_grab(
             }
             /* unsolid grab misses are actually somewhat iffy--how come
                ordinary attacks don't also pass right through? */
-            pline("%.99s %s attempt %s %.99s!", magrnam, verb,
-                  !tailmiss ? "passes right through" : "fails to hold",
-                  mdefnam);
+            pline(_("%.99s %s attempt %s %.99s!"), magrnam, verb, !tailmiss ? "passes right through" : "fails to hold", mdefnam);
         }
         return TRUE;
     }
@@ -701,7 +691,7 @@ hitmm(
                 break;
             }
             if (*buf)
-                pline("%s %s.", buf, mon_nam_too(mdef, magr));
+                pline(_("%s %s."), buf, mon_nam_too(mdef, magr));
 
             if (mon_hates_silver(mdef) && silverhit) {
                 char *mdef_name = mon_nam_too(mdef, magr);
@@ -721,7 +711,7 @@ hitmm(
                     Strcat(mdef_name, " flesh");
                 }
 
-                pline("%s %s sears %s!", magr_name, /* s_suffix(magr_name), */
+                pline(_("%s %s sears %s!"), magr_name, /* s_suffix(magr_name), */
                       simpleonames(mwep), mdef_name);
             }
         }
@@ -759,7 +749,7 @@ gazemm(struct monst *magr, struct monst *mdef, struct attack *mattk)
         || (archon ? resists_blnd(mdef) : !magr->mcansee)
         || (magr->minvis && !perceives(mdef->data)) || mdef->msleeping) {
         if (gv.vis && canspotmon(mdef))
-            pline("%s", _("but nothing happens."));
+            pline(_("%s"), _("but nothing happens."));
         return M_ATTK_MISS;
     }
     /* call mon_reflects 2x, first test, then, if visible, print message */
@@ -775,9 +765,7 @@ gazemm(struct monst *magr, struct monst *mdef, struct attack *mattk)
             }
             if (mdef->minvis && !perceives(magr->data)) {
                 if (canseemon(magr)) {
-                    pline(
-                      "%s doesn't seem to notice that %s gaze was reflected.",
-                          Monnam(magr), mhis(magr));
+                    pline(_("%s doesn't seem to notice that %s gaze was reflected."), Monnam(magr), mhis(magr));
                 }
                 return M_ATTK_MISS;
             }
@@ -859,11 +847,9 @@ gulpmm(
         return M_ATTK_MISS;
 
     if (gv.vis) {
-        pline("%s %s %s.", Monnam(magr),
-              digests(magr->data) ? "swallows"
+        pline(_("%s %s %s."), Monnam(magr), digests(magr->data) ? "swallows"
               : enfolds(magr->data) ? "encloses"
-                : "engulfs",
-              mon_nam(mdef));
+                : "engulfs", mon_nam(mdef));
     }
     if (!flaming(magr->data)) {
         for (obj = mdef->minvent; obj; obj = obj->nobj)
@@ -875,11 +861,9 @@ gulpmm(
         if (gv.vis) {
             /* 'it' -- previous form is no longer available and
                using that would be excessively verbose */
-            pline("%s expels %s.", Monnam(magr),
-                  canspotmon(mdef) ? "it" : something);
+            pline(_("%s expels %s."), Monnam(magr), canspotmon(mdef) ? "it" : something);
             if (canspotmon(mdef)) {
-                pline("It turns into %s.",
-                      x_monnam(mdef, ARTICLE_A, (char *) 0,
+                pline(_("It turns into %s."), x_monnam(mdef, ARTICLE_A, (char *) 0,
                                (SUPPRESS_NAME | SUPPRESS_IT
                                 | SUPPRESS_INVISIBLE), FALSE));
             }
@@ -950,8 +934,7 @@ gulpmm(
         newsym(dx, dy);
     } else {                           /* both alive, put them back */
         if (cansee(dx, dy)) {
-            pline("%s is %s!", Monnam(mdef),
-                  digests(magr->data) ? "regurgitated"
+            pline(_("%s is %s!"), Monnam(mdef), digests(magr->data) ? "regurgitated"
                     : enfolds(magr->data) ? "released"
                       : "expelled");
         }
@@ -1135,10 +1118,10 @@ mon_poly(struct monst *magr, struct monst *mdef, int dmg)
                 You(_("are subjected to a freakish metamorphosis."));
                 polyself(POLY_NOFLAGS);
             } else if (u.umonnum != u.ulycn) {
-                You_feel("an unnatural urge coming on.");
+                You_feel(_("an unnatural urge coming on."));
                 you_were();
             } else {
-                You_feel("a natural urge coming on.");
+                You_feel(_("a natural urge coming on."));
                 you_unwere(FALSE);
             }
             dmg = 0;
@@ -1160,7 +1143,7 @@ mon_poly(struct monst *magr, struct monst *mdef, int dmg)
             /* system shock; this variation takes away half of mon's HP
                rather than kill outright */
             if (gv.vis)
-                pline("%s shudders!", Before);
+                pline(_("%s shudders!"), Before);
 
             dmg += (mdef->mhpmax + 1) / 2;
             mdef->mhp -= dmg;
@@ -1177,14 +1160,11 @@ mon_poly(struct monst *magr, struct monst *mdef, int dmg)
                         verbosely = flags.verbose || !was_seen;
 
                 if (canspotmon(mdef))
-                    pline("%s%s%s turns into %s.", Before,
-                          verbosely ? freaky : "", verbosely ? " and" : "",
-                          x_monnam(mdef, ARTICLE_A, (char *) 0,
+                    pline(_("%s%s%s turns into %s."), Before, verbosely ? freaky : "", verbosely ? " and" : "", x_monnam(mdef, ARTICLE_A, (char *) 0,
                                    (SUPPRESS_NAME | SUPPRESS_IT
                                     | SUPPRESS_INVISIBLE), FALSE));
                 else if (was_seen || magr == &gy.youmonst)
-                    pline("%s%s%s.", Before, freaky,
-                          !was_seen ? "" : " and disappears");
+                    pline(_("%s%s%s."), Before, freaky, !was_seen ? "" : " and disappears");
             }
             dmg = 0;
             if (can_teleport(magr->data)) {
@@ -1290,9 +1270,7 @@ mswingsm(
                         && (dist2(magr->mx, magr->my, mdef->mx, mdef->my)
                             <= 2));
 
-        pline("%s %s %s%s %s at %s.", Monnam(magr), mswings_verb(otemp, bash),
-              (otemp->quan > 1L) ? "one of " : "", mhis(magr), xname(otemp),
-              mon_nam(mdef));
+        pline(_("%s %s %s%s %s at %s."), Monnam(magr), mswings_verb(otemp, bash), (otemp->quan > 1L) ? "one of " : "", mhis(magr), xname(otemp), mon_nam(mdef));
     }
 }
 
@@ -1333,11 +1311,10 @@ passivemm(
         if (mhitb && !rn2(2)) {
             Strcpy(buf, Monnam(magr));
             if (canseemon(magr))
-                pline("%s is splashed by %s %s!", buf,
-                      s_suffix(mon_nam(mdef)), hliquid("acid"));
+                pline(_("%s is splashed by %s %s!"), buf, s_suffix(mon_nam(mdef)), hliquid("acid"));
             if (resists_acid(magr)) {
                 if (canseemon(magr))
-                    pline("%s is not affected.", Monnam(magr));
+                    pline(_("%s is not affected."), Monnam(magr));
                 tmp = 0;
             }
         } else
@@ -1379,15 +1356,14 @@ passivemm(
                         return (mdead | mhit);
                     Strcpy(buf, Monnam(magr));
                     if (canseemon(magr))
-                        pline("%s is frozen by %s gaze!", buf,
-                              s_suffix(mon_nam(mdef)));
+                        pline(_("%s is frozen by %s gaze!"), buf, s_suffix(mon_nam(mdef)));
                     paralyze_monst(magr, tmp);
                     return (mdead | mhit);
                 }
             } else { /* gelatinous cube */
                 Strcpy(buf, Monnam(magr));
                 if (canseemon(magr))
-                    pline("%s is frozen by %s.", buf, mon_nam(mdef));
+                    pline(_("%s is frozen by %s."), buf, mon_nam(mdef));
                 paralyze_monst(magr, tmp);
                 return (mdead | mhit);
             }

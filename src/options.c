@@ -6,6 +6,78 @@
 #ifndef OPTION_LISTS_ONLY
 #include "hack.h"
 #include "tcap.h"
+
+/* OPTIONS TRANSLATION MARKERS
+ * These N_() calls exist solely for xgettext to extract option names and
+ * descriptions so they can be translated in the .po file.
+ * The actual lookup happens via _() in the options display code below.
+ */
+static const char *nethack_opt_strings[] = {
+    /* Option names (identifiers, used in config and display) */
+    N_("fruit"),
+    N_("number_pad"),
+    N_("price_quotes"),
+    N_("autodig"),
+    N_("autoopen"),
+    N_("autopickup"),
+    N_("autoquiver"),
+    N_("autounlock"),
+    N_("cmdassist"),
+    N_("dropped_nopick"),
+    N_("fireassist"),
+    N_("pickup_stolen"),
+    N_("pickup_thrown"),
+    N_("pickup_types"),
+    N_("pushweapon"),
+    N_("autodescribe"),
+    N_("hilite_pet"),
+    N_("hilite_pile"),
+    N_("showexp"),
+    N_("showrace"),
+    N_("showscore"),
+    N_("time"),
+    N_("hitpointbar"),
+    N_("statuslines"),
+    N_("color"),
+    N_("sparkle"),
+    N_("timed_delay"),
+    N_("bgcolors"),
+    N_("showdamage"),
+    N_("showvers"),
+    N_("sortpack"),
+    N_("help"),
+    N_("verbose"),
+    N_("silent"),
+    N_("confirm"),
+    N_("legacy"),
+    N_("tutorial"),
+    N_("news"),
+    N_("tombstone"),
+    N_("standout"),
+    N_("null"),
+    N_("scores"),
+    N_("packorder"),
+    N_("sortloot"),
+    N_("menustyle"),
+    N_("menucolors"),
+    N_("extmenu"),
+    N_("force_invmenu"),
+    N_("lootabc"),
+    N_("perm_invent"),
+    N_("fixinv"),
+    N_("safe_pet"),
+    N_("safe_wait"),
+    N_("rest_on_space"),
+    N_("travel"),
+    N_("toptenwin"),
+    N_("boulder"),
+    N_("mail"),
+    N_("checkpoint"),
+    N_("bones"),
+    N_("sounds"),
+    (const char *) 0
+};
+
 #else /* OPTION_LISTS_ONLY: (AMIGA) external program for opt lists */
 #include "config.h"
 #include "objclass.h"
@@ -112,7 +184,7 @@ static boolean opt_set_in_config[OPTCOUNT];
 static char *roleoptvals[MAX_ROLEOPT][num_opt_phases];
 
 static NEARDATA const char *OptS_type[OptS_Advanced+1] = {
-    "General", "Behavior", "Map", "Status", "Advanced"
+    N_("General"), N_("Behavior"), N_("Map"), N_("Status"), N_("Advanced")
 };
 
 static const char def_inv_order[MAXOCLASSES] = {
@@ -1758,7 +1830,7 @@ optfn_fruit(
                been created since the previous name was put in place */
             (void) fruitadd(svp.pl_fruit, forig);
             if (give_opt_msg)
-                pline("Fruit is now \"%s\".", svp.pl_fruit);
+                pline(_("Fruit is now \"%s\"."), svp.pl_fruit);
         }
         /* If initial, then initoptions is allowed to do it instead
          * of here (initoptions always has to do it even if there's
@@ -4000,12 +4072,9 @@ optfn_sortvanquished(
 
         /* return handler_sortvanquished(); */
         (void) set_vanq_order(TRUE); /* insight.c */
-        pline("'%s' %s \"%s: %s\".", optname,
-              (flags.vanq_sortmode == prev_sortmode)
+        pline(_("'%s' %s \"%s: %s\"."), optname, (flags.vanq_sortmode == prev_sortmode)
                  ? "not changed, still"
-                 : "changed to",
-              vanqorders[flags.vanq_sortmode][0],
-              vanqorders[flags.vanq_sortmode][1]);
+                 : "changed to", vanqorders[flags.vanq_sortmode][0], vanqorders[flags.vanq_sortmode][1]);
     }
     return optn_ok;
 }
@@ -4512,9 +4581,7 @@ optfn_versinfo(
     } else if (req == do_handler) {
         /* return handler_versinfo(); */
         (void) handler_versinfo();
-        pline("'%s' %s %u.", optname,
-              (flags.versinfo == vi) ? "not changed, still" : "changed to",
-              flags.versinfo);
+        pline(_("'%s' %s %u."), optname, (flags.versinfo == vi) ? "not changed, still" : "changed to", flags.versinfo);
     } else if (req == get_val) {
         char vbuf[QBUFSZ];
         boolean g = (vi & VI_NAME) != 0,
@@ -5313,8 +5380,7 @@ optfn_boolean(
             break;
 #ifndef IDLECHECKPOINT
         case opt_idlecheckpoint:
-            pline("There is no underlying support for 'idlecheckpoint'"
-                  " compiled in."); 
+            pline("%s", _("There is no underlying support for 'idlecheckpoint'")); 
             iflags.idlecheckpoint = FALSE;
             give_opt_msg = FALSE;
             break;
@@ -5437,8 +5503,7 @@ optfn_boolean(
            still be pending at this point (mainly for opt_need_redraw);
            give the toggled message now regardless */
         if (give_opt_msg)
-            pline("'%s' option toggled %s.", allopt[optidx].name,
-                  !negated ? "on" : "off");
+            pline(_("'%s' option toggled %s."), allopt[optidx].name, !negated ? "on" : "off");
 
         return optn_ok;
     }
@@ -5578,8 +5643,7 @@ handler_menustyle(void)
     destroy_nhwindow(tmpwin);
     chngd = (flags.menu_style != old_menu_style);
     if (chngd || flags.verbose)
-        pline("'menustyle' %s \"%s\".", chngd ? "changed to" : "is still",
-              menutype[(int) flags.menu_style][0]);
+        pline(_("'menustyle' %s \"%s\"."), chngd ? "changed to" : "is still", menutype[(int) flags.menu_style][0]);
     return optn_ok;
 }
 
@@ -5666,8 +5730,7 @@ handler_autounlock(int optidx)
     chngd = (flags.autounlock != oldflags);
     if ((chngd || flags.verbose) && give_opt_msg) {
         optfn_autounlock(optidx, get_val, FALSE, buf, (char *) NULL);
-        pline("'%s' %s '%s'.", optname,
-              chngd ? "changed to" : "is still", buf);
+        pline(_("'%s' %s '%s'."), optname, chngd ? "changed to" : "is still", buf);
     }
     return res;
 }
@@ -5880,13 +5943,11 @@ handler_msg_window(void)
         if (chngd || flags.verbose) {
             (void) optfn_msg_window(opt_msg_window, get_val,
                                     FALSE, buf, empty_optstr);
-            pline("'msg_window' %.20s \"%.20s\".",
-                  chngd ? "changed to" : "is still", buf);
+            pline(_("'msg_window' %.20s \"%.20s\"."), chngd ? "changed to" : "is still", buf);
         }
     } else
 #endif /* PREV_MSGS (for tty or curses) */
-        pline("'%s' option is not supported for '%s'.",
-              allopt[opt_msg_window].name, windowprocs.name);
+        pline(_("'%s' option is not supported for '%s'."), allopt[opt_msg_window].name, windowprocs.name);
     return optn_ok;
 }
 
@@ -6059,9 +6120,7 @@ handler_perminv_mode(void)
     if (n >= 0) { /* not ESC */
         buf[0] = '\0';
         (void) optfn_perminv_mode(opt_perm_invent, get_val, FALSE, buf, NULL);
-        pline("'perminv_mode' %s '%s' (%s).",
-              (new_pi != old_pi) ? "changed to" : "is still",
-              perminv_modes[new_pi][0], buf);
+        pline(_("'perminv_mode' %s '%s' (%s)."), (new_pi != old_pi) ? "changed to" : "is still", perminv_modes[new_pi][0], buf);
         if (new_pi != InvOptNone && !old_perm_invent)
             iflags.perm_invent = can_set_perm_invent();
         else if (new_pi == InvOptNone && old_perm_invent)
@@ -6440,7 +6499,7 @@ handler_menu_colors(void)
             && (mcclr = query_color((char *) 0, NO_COLOR)) != -1
                 && (mcattr = query_attr((char *) 0, ATR_NONE)) != -1
             && !add_menu_coloring_parsed(mcbuf, mcclr, mcattr)) {
-            pline("%s", _("Error adding the menu color."));
+            pline(_("%s"), _("Error adding the menu color."));
             wait_synch();
         }
         goto menucolors_again;
@@ -6521,7 +6580,7 @@ handler_msgtype(void)
             && test_regex_pattern(mtbuf, "MSGTYPE regex")
             && (mttyp = query_msgtype()) != -1
             && !msgtype_add(mttyp, mtbuf)) {
-            pline("%s", _("Error adding the message type."));
+            pline(_("%s"), _("Error adding the message type."));
             wait_synch();
         }
         goto msgtypes_again;
@@ -6813,10 +6872,9 @@ staticfn void
 rejectoption(const char *optname)
 {
 #ifdef MICRO
-    pline("\"%s\" settable only from %s.", optname, get_configfile());
+    pline(_("\"%s\" settable only from %s."), optname, get_configfile());
 #else
-    pline("%s can be set only from NETHACKOPTIONS or %s.", optname,
-          get_configfile());
+    pline(_("%s can be set only from NETHACKOPTIONS or %s."), optname, get_configfile());
 #endif
 }
 
@@ -7596,9 +7654,7 @@ feature_alert_opts(char *op, const char *optn)
     if (!go.opt_initial) {
         Sprintf(buf, "%lu.%lu.%lu", FEATURE_NOTICE_VER_MAJ,
                 FEATURE_NOTICE_VER_MIN, FEATURE_NOTICE_VER_PATCH);
-        pline(
-          "Feature change alerts disabled for NetHack %s features and prior.",
-              buf);
+        pline(_("Feature change alerts disabled for NetHack %s features and prior."), buf);
     }
     return 1;
 }
@@ -8099,7 +8155,7 @@ void
 add_menu_cmd_alias(char from_ch, char to_ch)
 {
     if (gn.n_menu_mapped >= MAX_MENU_MAPPED_CMDS) {
-        pline("%s", _("out of menu map space."));
+        pline(_("%s"), _("out of menu map space."));
     } else {
         gm.mapped_menu_cmds[gn.n_menu_mapped] = from_ch;
         gm.mapped_menu_op[gn.n_menu_mapped] = to_ch;
@@ -8587,20 +8643,20 @@ doset_simple_menu(void)
            and show that, or whether #reqmenu and #options are both still
            bound to keys and show those, but if meta keys are involved
            the player might not know how to type them; keep this simple */
-        Strcpy(buf, "Use command '#optionsfull'"
-                    " to get the complete options list.");
+        Strcpy(buf, _("Use command '#optionsfull'"
+                    " to get the complete options list."));
         add_menu_str(tmpwin, buf);
     }
     any = cg.zeroany;
     any.a_int = -2 + 1;
     add_menu(tmpwin, &nul_glyphinfo, &any, '?', 0, ATR_NONE, NO_COLOR,
-             gs.simple_options_help ? "hide help" : "show help",
+             gs.simple_options_help ? _("hide help") : _("show help"),
              MENU_ITEMFLAGS_NONE);
 
     for (section = OptS_General; section < OptS_Advanced; section++) {
         any = cg.zeroany;
         add_menu_str(tmpwin, "");
-        Sprintf(buf, " %-30s ", OptS_type[section]);
+        Sprintf(buf, " %-30s ", _(OptS_type[section]));
         add_menu_heading(tmpwin, buf);
         for (i = 0; (name = allopt[i].name) != 0; i++) {
             if (allopt[i].section != section)
@@ -8617,7 +8673,7 @@ doset_simple_menu(void)
                     continue;
                 if (iflags.wc_tiled_map && allopt[i].idx == opt_color)
                     continue;
-                Sprintf(buf, fmtstr, name, *bool_p ? "X" : " ");
+                Sprintf(buf, fmtstr, _(name), *bool_p ? "X" : " ");
                 break;
             case CompOpt:
             case OthrOpt:
@@ -8634,7 +8690,7 @@ doset_simple_menu(void)
                     if (allopt[k].optfn)
                         reslt = (*allopt[k].optfn)(allopt[k].idx, get_val,
                                                    FALSE, buf2, empty_optstr);
-                    Sprintf(buf, fmtstr, name,
+                    Sprintf(buf, fmtstr, _(name),
                             ((reslt == optn_ok && buf2[0])
                              ? (const char *) buf2 : "unknown"));
                 break;
@@ -8648,17 +8704,17 @@ doset_simple_menu(void)
                 || allopt[i].idx == opt_pickup_thrown
                 || allopt[i].idx == opt_pickup_stolen
                 || allopt[i].idx == opt_dropped_nopick)
-                Strcat(buf, "  (for autopickup)");
+                Strcat(buf, _("  (for autopickup)"));
             add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0,
                      ATR_NONE, NO_COLOR, buf, MENU_ITEMFLAGS_NONE);
             if (gs.simple_options_help && allopt[i].descr) {
-                Sprintf(buf, "    %s", allopt[i].descr);
+                Sprintf(buf, "    %s", _(allopt[i].descr));
                 add_menu_str(tmpwin, buf);
                 add_menu_str(tmpwin, "");
             }
         }
     }
-    end_menu(tmpwin, "Options");
+    end_menu(tmpwin, _("Options"));
 
     go.opt_need_redraw = FALSE;
     go.opt_need_glyph_reset = FALSE;
@@ -9288,7 +9344,7 @@ dotogglepickup(void)
     } else {
         Strcpy(buf, "OFF");
     }
-    pline("Autopickup: %s.", buf);
+    pline(_("Autopickup: %s."), buf);
     return ECMD_OK;
 }
 

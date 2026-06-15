@@ -135,11 +135,11 @@ cursed_book(struct obj *bp)
 
     switch (rn2(lev)) {
     case 0:
-        You_feel("a wrenching sensation.");
+        You_feel(_("a wrenching sensation."));
         tele(); /* teleport him */
         break;
     case 1:
-        You_feel("threatened.");
+        You_feel(_("threatened."));
         aggravate();
         break;
     case 2:
@@ -149,7 +149,7 @@ cursed_book(struct obj *bp)
         take_gold();
         break;
     case 4:
-        pline("%s", _("These runes were just too much to comprehend."));
+        pline(_("%s"), _("These runes were just too much to comprehend."));
         make_confused(HConfusion + rn1(7, 16), FALSE);
         break;
     case 5:
@@ -171,8 +171,7 @@ cursed_book(struct obj *bp)
             shieldeff(u.ux, u.uy);
             pline_The("book %s, but you are unharmed!", explodes);
         } else {
-            pline("As you read the book, it %s in your %s!", explodes,
-                  body_part(FACE));
+            pline(_("As you read the book, it %s in your %s!"), explodes, body_part(FACE));
             dmg = 2 * rnd(10) + 5;
             losehp(Maybe_Half_Phys(dmg), "exploding rune", KILLED_BY_AN);
         }
@@ -192,16 +191,14 @@ confused_book(struct obj *spellbook)
 
     if (!rn2(3) && spellbook->otyp != SPE_BOOK_OF_THE_DEAD) {
         spellbook->in_use = TRUE; /* in case called from learn() */
-        pline(
-         "Being confused you have difficulties in controlling your actions.");
+        pline("%s", _("Being confused you have difficulties in controlling your actions."));
         display_nhwindow(WIN_MESSAGE, FALSE);
         You(_("accidentally tear the spellbook to pieces."));
         trycall(spellbook);
         useup(spellbook);
         gone = TRUE;
     } else {
-        You("find yourself reading the %s line over and over again.",
-            spellbook == svc.context.spbook.book ? "next" : "first");
+        You(_("find yourself reading the %s line over and over again."), spellbook == svc.context.spbook.book ? "next" : "first");
     }
     return gone;
 }
@@ -251,13 +248,13 @@ deadbook(struct obj *book2)
         }
 
         if (!u.uhave.bell || !u.uhave.menorah) {
-            pline("A chill runs down your %s.", body_part(SPINE));
+            pline(_("A chill runs down your %s."), body_part(SPINE));
             if (!u.uhave.bell) {
                 Soundeffect(se_faint_chime, 30);
                 You_hear(_("a faint chime..."));
             }
             if (!u.uhave.menorah)
-                pline("%s", _("Vlad's doppelganger is amused."));
+                pline(_("%s"), _("Vlad's doppelganger is amused."));
             return;
         }
 
@@ -282,7 +279,7 @@ deadbook(struct obj *book2)
             pline_The("invocation fails!");
             /* this used to say "your artifacts" but the invocation tools
                are not artifacts */
-            pline("%s", _("At least one of your relics is cursed..."));
+            pline(_("%s"), _("At least one of your relics is cursed..."));
         } else if (arti1_primed && arti2_primed) {
             unsigned soon = (unsigned) d(2, 6); /* time til next intervene() */
 
@@ -296,7 +293,7 @@ deadbook(struct obj *book2)
             if (!u.udg_cnt || u.udg_cnt > soon)
                 u.udg_cnt = soon;
         } else { /* at least one relic not prepared properly */
-            You("have a feeling that %s is amiss...", something);
+            You(_("have a feeling that %s is amiss..."), something);
             goto raise_dead;
         }
         return;
@@ -332,7 +329,7 @@ deadbook(struct obj *book2)
             pline_The("headstones in the cemetery begin to move!");
             break;
         default:
-            pline("%s", _("Oh my!  Your name appears in the book!"));
+            pline(_("%s"), _("Oh my!  Your name appears in the book!"));
         }
     }
     return;
@@ -344,7 +341,7 @@ book_cursed(struct obj *book)
 {
     if (book->cursed && gm.multi >= 0
         && go.occupation == learn && svc.context.spbook.book == book) {
-        pline("%s shut!", Tobjnam(book, "slam"));
+        pline(_("%s shut!"), Tobjnam(book, "slam"));
         set_bknown(book, 1);
         stop_occupation();
     }
@@ -399,14 +396,13 @@ learn(void)
     } else if (spellid(i) == booktype) {
         /* normal book can be read and re-read a total of 4 times */
         if (book->spestudied > MAX_SPELL_STUDY) {
-            pline("%s", _("This spellbook is too faint to be read any more."));
+            pline(_("%s"), _("This spellbook is too faint to be read any more."));
             book->otyp = booktype = SPE_BLANK_PAPER;
             faded_to_blank = TRUE;
             /* reset spestudied as if polymorph had taken place */
             book->spestudied = rn2(book->spestudied);
         } else {
-            Your("knowledge of %s is %s.", splname,
-                 spellknow(i) ? "keener" : "restored");
+            Your(_("knowledge of %s is %s."), splname, spellknow(i) ? "keener" : "restored");
             incrnknow(i, 1);
             book->spestudied++;
             exercise(A_WIS, TRUE); /* extra study */
@@ -417,7 +413,7 @@ learn(void)
            one less reading is available than when re-learning */
         if (book->spestudied >= MAX_SPELL_STUDY) {
             /* pre-used due to being the product of polymorph */
-            pline("%s", _("This spellbook is too faint to read even once."));
+            pline(_("%s"), _("This spellbook is too faint to read even once."));
             book->otyp = booktype = SPE_BLANK_PAPER;
             faded_to_blank = TRUE;
             /* reset spestudied as if polymorph had taken place */
@@ -429,10 +425,9 @@ learn(void)
             book->spestudied++;
             if (!i)
                 /* first is always 'a', so no need to mention the letter */
-                You("learn %s.", splname);
+                You(_("learn %s."), splname);
             else
-                You("add %s to your repertoire, as '%c'.",
-                    splname, spellet(i));
+                You(_("add %s to your repertoire, as '%c'."), splname, spellet(i));
         }
     }
     if (i < MAXSPELL) {
@@ -485,8 +480,7 @@ study_book(struct obj *spellbook)
             eyes = body_part(EYE);
             if (eyecount(gy.youmonst.data) > 1)
                 eyes = makeplural(eyes);
-            pline("This book is so dull that you can't keep your %s open.",
-                  eyes);
+            pline(_("This book is so dull that you can't keep your %s open."), eyes);
             dullbook += rnd(2 * objects[booktype].oc_level);
             fall_asleep(-dullbook, TRUE);
             return 1;
@@ -498,13 +492,12 @@ study_book(struct obj *spellbook)
         /* handle the sequence: start reading, get interrupted, have
            svc.context.spbook.book become erased somehow, resume reading it */
         && booktype != SPE_BLANK_PAPER) {
-        You("continue your efforts to %s.",
-            (booktype == SPE_NOVEL) ? "read the novel"
+        You(_("continue your efforts to %s."), (booktype == SPE_NOVEL) ? "read the novel"
                                     : "memorize the spell");
     } else {
         /* KMH -- Simplified this code */
         if (booktype == SPE_BLANK_PAPER) {
-            pline("%s", _("This spellbook is all blank."));
+            pline(_("%s"), _("This spellbook is all blank."));
             makeknown(booktype);
             return 1;
         }
@@ -563,8 +556,7 @@ study_book(struct obj *spellbook)
             if (spellid(i) == booktype || spellid(i) == NO_SPELL)
                 break;
         if (spellid(i) == booktype && spellknow(i) > KEEN / 10) {
-            You("know \"%s\" quite well already.",
-                OBJ_NAME(objects[booktype]));
+            You(_("know \"%s\" quite well already."), OBJ_NAME(objects[booktype]));
             /* hero has just been told what spell this book is for; it may
                have been undiscovered if spell was learned via divine gift */
             makeknown(booktype);
@@ -629,8 +621,7 @@ study_book(struct obj *spellbook)
         }
         spellbook->in_use = FALSE;
 
-        You("begin to %s the runes.",
-            spellbook->otyp == SPE_BOOK_OF_THE_DEAD ? "recite" : "memorize");
+        You(_("begin to %s the runes."), spellbook->otyp == SPE_BOOK_OF_THE_DEAD ? "recite" : "memorize");
     }
 
     svc.context.spbook.book = spellbook;
@@ -758,7 +749,7 @@ getspell(int *spell_no)
                 /* limit is mainly to prevent the fuzzer from getting stuck
                    since hangup should hit the 'quitchars' case; fuzzer
                    would too, but after an arbitrary number of attempts */
-                pline("%s", _("That's enough tries."));
+                pline(_("%s"), _("That's enough tries."));
                 return FALSE;
             }
             ilet = yn_function(qbuf, (char *) 0, '\0', TRUE);
@@ -1048,7 +1039,7 @@ cast_chain_lightning(void)
                     if (DEADMONSTER(mon)) {
                         xkilled(mon, XKILL_GIVEMSG);
                     } else {
-                        pline("You shock %s%s", mon_nam(mon), exclam(dmg));
+                        pline(_("You shock %s%s"), mon_nam(mon), exclam(dmg));
                         /* if a long worm, only map 'I' for its head */
                         if (!canseemon(mon) && !gn.notonhead)
                             /* FIXME: this doesn't work, possibly because
@@ -1056,7 +1047,7 @@ cast_chain_lightning(void)
                             map_invisible(zap.x, zap.y);
                     }
                 } else if (canseemon(mon)) {
-                    pline("%s resists.", Monnam(mon));
+                    pline(_("%s resists."), Monnam(mon));
                 }
                 if (!DEADMONSTER(mon)) {
                     /* wakeup is via attack, but since mon is already
@@ -1288,7 +1279,7 @@ spelleffects_check(int spell, int *res, int *energy)
        the attempt may fail due to lack of energy after the draining, in
        which case a turn will be used up in addition to the energy loss */
     if (u.uhave.amulet && u.uen >= *energy) {
-        You_feel("the amulet draining your energy away.");
+        You_feel(_("the amulet draining your energy away."));
         /* this used to be 'energy += rnd(2 * energy)' (without 'res'),
            so if amulet-induced cost was more than u.uen, nothing
            (except the "don't have enough energy" message) happened
@@ -1312,8 +1303,7 @@ spelleffects_check(int spell, int *res, int *energy)
          * isn't now (lost energy when losing levels or polymorphing into
          * new person or had some stripped away by traps or monsters).
          */
-        You("don't have enough energy to cast that spell%s.",
-            (u.uen < u.uenmax) ? "" /* not at full energy => normal message */
+        You(_("don't have enough energy to cast that spell%s."), (u.uen < u.uenmax) ? "" /* not at full energy => normal message */
             : (*energy > u.uenpeak) ? " yet" /* haven't ever had enough */
               : " anymore"); /* once had enough but have lost some since */
         return TRUE;
@@ -1561,7 +1551,7 @@ spelleffects(int spell_otyp, boolean atme, boolean force)
          *  Sick +  Slimed -- You are no longer ill.  The slime disappears.
          */
         if (was_sick || !was_slimed)
-            You("are %s ill.", was_sick ? "no longer" : "not");
+            You(_("are %s ill."), was_sick ? "no longer" : "not");
         if (was_slimed)
             make_slimed(0L, "The slime disappears!");
         break;
@@ -1576,7 +1566,7 @@ spelleffects(int spell_otyp, boolean atme, boolean force)
             do_vicinity_map(pseudo);
         /* at present, only one thing blocks clairvoyance */
         } else if (uarmh && uarmh->otyp == CORNUTHAUM)
-            You("sense a pointy hat on top of your %s.", body_part(HEAD));
+            You(_("sense a pointy hat on top of your %s."), body_part(HEAD));
         break;
     case SPE_PROTECTION:
         cast_protection();
@@ -1658,14 +1648,14 @@ throwspell(void)
     struct monst *mtmp;
 
     if (u.uinwater) {
-        pline("%s", _("You're joking!  In this weather?"));
+        pline(_("%s"), _("You're joking!  In this weather?"));
         return 0;
     } else if (Is_waterlevel(&u.uz)) {
         You(_("had better wait for the sun to come out."));
         return 0;
     }
 
-    pline("%s", _("Where do you want to cast the spell?"));
+    pline(_("%s"), _("Where do you want to cast the spell?"));
     cc.x = u.ux;
     cc.y = u.uy;
     getpos_sethilite(display_spell_target_positions,
@@ -2060,10 +2050,10 @@ show_spells(void)
 {
     int unused = SPELLMENU_DUMP;
     if (spellid(0) == NO_SPELL) {
-        pline("%s", _("You didn't know any spells."));
+        pline(_("%s"), _("You didn't know any spells."));
         pline("%s", "");
     } else {
-        pline("%s", _("Spells:"));
+        pline(_("%s"), _("Spells:"));
         nhUse(dospellmenu("", SPELLMENU_DUMP, &unused));
     }
 }

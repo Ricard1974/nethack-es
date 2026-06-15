@@ -75,11 +75,11 @@ amulet(void)
             if (ttmp->ttyp == MAGIC_PORTAL) {
                 int du = distu(ttmp->tx, ttmp->ty);
                 if (du <= 9)
-                    pline("%s hot!", Tobjnam(amu, "feel"));
+                    pline(_("%s hot!"), Tobjnam(amu, "feel"));
                 else if (du <= 64)
-                    pline("%s very warm.", Tobjnam(amu, "feel"));
+                    pline(_("%s very warm."), Tobjnam(amu, "feel"));
                 else if (du <= 144)
-                    pline("%s warm.", Tobjnam(amu, "feel"));
+                    pline(_("%s warm."), Tobjnam(amu, "feel"));
                 /* else, the amulet feels normal */
                 break;
             }
@@ -95,8 +95,7 @@ amulet(void)
         if (mtmp->iswiz && mtmp->msleeping && !rn2(40)) {
             mtmp->msleeping = 0;
             if (!m_next2u(mtmp))
-                You(
-      "get the creepy feeling that somebody noticed your taking the Amulet.");
+                You(_("get the creepy feeling that somebody noticed your taking the Amulet."));
             return;
         }
     }
@@ -441,8 +440,7 @@ tactics(struct monst *mtmp)
 
                 if ((otmp = on_ground(which_arti(targ))) != 0) {
                     if (cansee(mtmp->mx, mtmp->my))
-                        pline("%s picks up %s.", Monnam(mtmp),
-                              distant_name(otmp, doname));
+                        pline(_("%s picks up %s."), Monnam(mtmp), distant_name(otmp, doname));
                     obj_extract_self(otmp);
                     (void) mpickobj(mtmp, otmp);
                     return 1;
@@ -772,7 +770,7 @@ resurrect(void)
         mtmp->mtame = 0, mtmp->mpeaceful = 0; /* paranoia */
         set_malign(mtmp);
         if (!Deaf) {
-            pline("%s", _("A voice booms out..."));
+            pline(_("%s"), _("A voice booms out..."));
             SetVoice(mtmp, 0, 80, 0);
             verbalize("So thou thought thou couldst %s me, fool.", verb);
         }
@@ -790,11 +788,11 @@ intervene(void)
     switch (which) {
     case 0:
     case 1:
-        You_feel("vaguely nervous.");
+        You_feel(_("vaguely nervous."));
         break;
     case 2:
         if (!Blind)
-            You("notice a %s glow surrounding you.", hcolor(NH_BLACK));
+            You(_("notice a %s glow surrounding you."), hcolor(NH_BLACK));
         rndcurse();
         break;
     case 3:
@@ -849,7 +847,7 @@ cuss(struct monst *mtmp)
         return;
     if (mtmp->iswiz) {
         if (!rn2(5)) { /* typical bad guy action */
-            pline("%s laughs fiendishly.", Monnam(mtmp));
+            pline(_("%s laughs fiendishly."), Monnam(mtmp));
         } else if (u.uhave.amulet && !rn2(SIZE(random_insult))) {
             SetVoice(mtmp, 0, 80, 0);
             verbalize("Relinquish the amulet, %s!",
@@ -875,7 +873,7 @@ cuss(struct monst *mtmp)
           + QT_ANGELIC);*/
     } else {
         if (!rn2(is_minion(mtmp->data) ? 100 : 5))
-            pline("%s casts aspersions on your ancestry.", Monnam(mtmp));
+            pline(_("%s casts aspersions on your ancestry."), Monnam(mtmp));
         else
             com_pager("demon_cuss");
     }

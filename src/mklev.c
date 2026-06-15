@@ -2494,7 +2494,7 @@ mkinvokearea(void)
         nh_delay_output();
     }
 
-    You("are standing at the top of a stairwell leading down!");
+    You(_("are standing at the top of a stairwell leading down!"));
     mkstairs(u.ux, u.uy, 0, (struct mkroom *) 0, FALSE); /* down */
     newsym(u.ux, u.uy);
     gv.vision_full_recalc = 1; /* everything changed */
@@ -2631,7 +2631,7 @@ mk_knox_portal(coordxy x, coordxy y)
     branch *br;
     schar u_depth;
 
-    br = dungeon_branch(_("Fort Ludios"));
+    br = dungeon_branch("Fort Ludios");
     /* dungeon_branch() panics (so never returns) if result would be Null */
     assert(br != NULL);
 

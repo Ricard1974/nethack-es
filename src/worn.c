@@ -949,9 +949,7 @@ m_dowear_type(
             }
             pline_mon(mon, "%s%s puts on %s.", Monnam(mon), buf, newarm);
             if (autocurse)
-                pline("%s %s %s %s for a moment.", s_suffix(Monnam(mon)),
-                      simpleonames(best), otense(best, "glow"),
-                      hcolor(NH_BLACK));
+                pline(_("%s %s %s %s for a moment."), s_suffix(Monnam(mon)), simpleonames(best), otense(best, "glow"), hcolor(NH_BLACK));
         } /* can see it */
         m_delay += objects[best->otyp].oc_delay;
         mon->mfrozen = m_delay;
@@ -978,22 +976,20 @@ m_dowear_type(
             const char *adesc = arti_light_description(best);
 
             if (sawmon) /* could already see monster */
-                pline("%s %s to shine %s.", Yname2(best),
-                      otense(best, "begin"), adesc);
+                pline(_("%s %s to shine %s."), Yname2(best), otense(best, "begin"), adesc);
             else if (canseemon(mon)) /* didn't see it until new light */
-                pline("%s %s shining %s.", Yname2(best),
-                      otense(best, "are"), adesc);
+                pline(_("%s %s shining %s."), Yname2(best), otense(best, "are"), adesc);
             else if (sawloc) /* saw location but not invisible monster */
-                pline("%s begins to shine %s.", Something, adesc);
+                pline(_("%s begins to shine %s."), Something, adesc);
             else /* didn't see location until new light */
-                pline("%s is shining %s.", Something, adesc);
+                pline(_("%s is shining %s."), Something, adesc);
         }
     }
     update_mon_extrinsics(mon, best, TRUE, creation);
     /* if couldn't see it but now can, or vice versa */
     if (!creation && (sawmon ^ canseemon(mon))) {
         if (mon->minvis && !See_invisible) {
-            pline("Suddenly you cannot see %s.", nambuf);
+            pline(_("Suddenly you cannot see %s."), nambuf);
             makeknown(best->otyp);
         /* } else if (!mon->minvis) {
          *     pline("%s suddenly appears!", Amonnam(mon)); */
@@ -1320,11 +1316,11 @@ mon_break_armor(struct monst *mon, boolean polyspot)
             noride = TRUE;
     }
     if (noride || (mon == u.usteed && !can_ride(mon))) {
-        You("can no longer ride %s.", mon_nam(mon));
+        You(_("can no longer ride %s."), mon_nam(mon));
         if (touch_petrifies(u.usteed->data) && !Stone_resistance && rnl(3)) {
             char buf[BUFSZ];
 
-            You("touch %s.", mon_nam(u.usteed));
+            You(_("touch %s."), mon_nam(u.usteed));
             Sprintf(buf, "falling off %s",
                     an(pmname(u.usteed->data, Mgender(u.usteed))));
             instapetrify(buf);

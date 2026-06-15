@@ -2299,7 +2299,7 @@ genl_player_setup(int screenheight)
                     /* pick a random role */
                     k = pick_role(RACE, GEND, ALGN, PICK_RANDOM);
                     if (k < 0) {
-                        pline("Incompatible role!");
+                        pline("%s", _("Incompatible role!"));
                         k = randrole(FALSE);
                     }
                 } else {
@@ -2380,7 +2380,7 @@ genl_player_setup(int screenheight)
                 if (pick4u == 'y' || pick4u == 'a' || RACE == ROLE_RANDOM) {
                     k = pick_race(ROLE, GEND, ALGN, PICK_RANDOM);
                     if (k < 0) {
-                        pline("Incompatible race!");
+                        pline("%s", _("Incompatible race!"));
                         k = randrace(ROLE);
                     }
                 } else { /* pick4u == 'n' */
@@ -2468,7 +2468,7 @@ genl_player_setup(int screenheight)
                 if (pick4u == 'y' || pick4u == 'a' || GEND == ROLE_RANDOM) {
                     k = pick_gend(ROLE, RACE, ALGN, PICK_RANDOM);
                     if (k < 0) {
-                        pline("Incompatible gender!");
+                        pline("%s", _("Incompatible gender!"));
                         k = randgend(ROLE, RACE);
                     }
                 } else { /* pick4u == 'n' */
@@ -2556,7 +2556,7 @@ genl_player_setup(int screenheight)
                 if (pick4u == 'y' || pick4u == 'a' || ALGN == ROLE_RANDOM) {
                     k = pick_align(ROLE, RACE, GEND, PICK_RANDOM);
                     if (k < 0) {
-                        pline("Incompatible alignment!");
+                        pline("%s", _("Incompatible alignment!"));
                         k = randalign(ROLE, RACE);
                     }
                 } else { /* pick4u == 'n' */

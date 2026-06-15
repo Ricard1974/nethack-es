@@ -466,9 +466,7 @@ run_regions(void)
         gg.gas_cloud_diss_within = FALSE;
     }
     if (gg.gas_cloud_diss_seen) {
-        You_see("%s gas cloud%s dissipate.",
-                (gg.gas_cloud_diss_seen == 1) ? "a" : "some",
-                plur(gg.gas_cloud_diss_seen));
+        You_see(_("%s gas cloud%s dissipate."), (gg.gas_cloud_diss_seen == 1) ? "a" : "some", plur(gg.gas_cloud_diss_seen));
         gg.gas_cloud_diss_seen = 0;
     }
 }
@@ -986,15 +984,14 @@ enter_force_field(genericptr_t p1, genericptr_t p2)
 
     if (p2 == (genericptr_t) 0) { /* That means the player */
         if (!Blind)
-            You("bump into %s.  Ouch!",
-                Hallucination ? "an invisible tree"
+            You(_("bump into %s.  Ouch!"), Hallucination ? "an invisible tree"
                               : "some kind of invisible wall");
         else
-            pline("%s", _("Ouch!"));
+            pline(_("%s"), _("Ouch!"));
     } else {
         mtmp = (struct monst *) p2;
         if (canseemon(mtmp))
-            pline("%s bumps into %s!", Monnam(mtmp), something);
+            pline(_("%s bumps into %s!"), Monnam(mtmp), something);
     }
     return FALSE;
 }
@@ -1111,12 +1108,11 @@ inside_gas_cloud(genericptr_t p1, genericptr_t p2)
         if (m_poisongas_ok(&gy.youmonst) == M_POISONGAS_OK)
             return FALSE;
         if (!Blind) {
-            Your("%s sting.", makeplural(body_part(EYE)));
+            Your(_("%s sting."), makeplural(body_part(EYE)));
             make_blinded(1L, FALSE);
         }
         if (!Poison_resistance) {
-            pline("%s is burning your %s!", Something,
-                  makeplural(body_part(LUNG)));
+            pline(_("%s is burning your %s!"), Something, makeplural(body_part(LUNG)));
             You(_("cough and spit blood!"));
             wake_nearto(u.ux, u.uy, 2);
             dam = Maybe_Half_Phys(rnd(dam) + 5);
@@ -1138,7 +1134,7 @@ inside_gas_cloud(genericptr_t p1, genericptr_t p2)
             if (!is_silent(mtmp->data)) {
                 if (cansee(mtmp->mx, mtmp->my)
                     || (distu(mtmp->mx, mtmp->my) < 8))
-                    pline("%s coughs!", Monnam(mtmp));
+                    pline(_("%s coughs!"), Monnam(mtmp));
                 wake_nearto(mtmp->mx, mtmp->my, 2);
             }
             if (heros_fault(reg))
@@ -1195,8 +1191,7 @@ make_gas_cloud(
     add_region(cloud);
 
     if (!gi.in_mklev && !inside_cloud && is_hero_inside_gas_cloud()) {
-        You("are enveloped in a cloud of %s!",
-            /* FIXME: "steam" is wrong if this cloud is just the trail of
+        You(_("are enveloped in a cloud of %s!"), /* FIXME: "steam" is wrong if this cloud is just the trail of
                a fog cloud's movement; changing to "vapor" would handle
                that but seems a step backward when it really is steam */
             damage ? "noxious gas" : "steam");
@@ -1390,7 +1385,7 @@ region_safety(void)
         if (region_danger()) {
             set_itimeout(&HMagical_breathing, (long) (d(4, 4) + 4));
             /* not already Breathless or wouldn't be in region danger */
-            You_feel("able to breathe.");
+            You_feel(_("able to breathe."));
         }
     } else if (r) {
         remove_region(r);

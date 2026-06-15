@@ -78,19 +78,19 @@ picklock(void)
         }
         switch (gx.xlock.door->doormask) {
         case D_NODOOR:
-            pline("%s", _("This doorway has no door."));
+            pline(_("%s"), _("This doorway has no door."));
             return ((gx.xlock.usedtime = 0));
         case D_ISOPEN:
             You(_("cannot lock an open door."));
             return ((gx.xlock.usedtime = 0));
         case D_BROKEN:
-            pline("%s", _("This door is broken."));
+            pline(_("%s"), _("This door is broken."));
             return ((gx.xlock.usedtime = 0));
         }
     }
 
     if (gx.xlock.usedtime++ >= 50 || nohands(gy.youmonst.data)) {
-        You("give up your attempt at %s.", lock_action());
+        You(_("give up your attempt at %s."), lock_action());
         exercise(A_DEX, TRUE); /* even if you don't succeed */
         return ((gx.xlock.usedtime = 0));
     }
@@ -125,17 +125,16 @@ picklock(void)
                 what = (gx.xlock.box->otyp == CHEST) ? "chest" : "box";
                 alreadyunlocked = !gx.xlock.box->olocked;
             }
-            You("succeed in disarming the trap.  The %s is still %slocked.",
-                what, alreadyunlocked ? "un" : "");
+            You(_("succeed in disarming the trap.  The %s is still %slocked."), what, alreadyunlocked ? "un" : "");
             exercise(A_WIS, TRUE);
         } else {
-            You("stop %s.", lock_action());
+            You(_("stop %s."), lock_action());
             exercise(A_WIS, FALSE);
         }
         return ((gx.xlock.usedtime = 0));
     }
 
-    You("succeed in %s.", lock_action());
+    You(_("succeed in %s."), lock_action());
     if (gx.xlock.door) {
         if (gx.xlock.door->doormask & D_TRAPPED) {
             b_trapped("door", FINGER);
@@ -179,7 +178,7 @@ breakchestlock(struct obj *box, boolean destroyit)
                 peaceful_shk = costly && (boolean) shkp->mpeaceful;
         long loss = 0L;
 
-        pline("In fact, you've totally destroyed %s.", the(xname(box)));
+        pline(_("In fact, you've totally destroyed %s."), the(xname(box)));
         /* Put the contents on ground at the hero's feet. */
         while ((otmp = box->cobj) != 0) {
             obj_extract_self(otmp);
@@ -206,7 +205,7 @@ breakchestlock(struct obj *box, boolean destroyit)
         if (costly)
             loss += stolen_value(box, u.ux, u.uy, peaceful_shk, TRUE);
         if (loss)
-            You("owe %ld %s for objects destroyed.", loss, currency(loss));
+            You(_("owe %ld %s for objects destroyed."), loss, currency(loss));
         delobj(box);
     }
 }
@@ -231,8 +230,7 @@ forcelock(void)
             /* for a +0 weapon, probability that it survives an unsuccessful
              * attempt to force the lock is (.992)^50 = .67
              */
-            pline("%sour %s broke!", (uwep->quan > 1L) ? "One of y" : "Y",
-                  xname(uwep));
+            pline(_("%sour %s broke!"), (uwep->quan > 1L) ? "One of y" : "Y", xname(uwep));
             useup(uwep);
             You(_("give up your attempt to force the lock."));
             exercise(A_DEX, TRUE);
@@ -395,7 +393,7 @@ pick_lock(
         } else {
             const char *action = lock_action();
 
-            You("resume your attempt at %s.", action);
+            You(_("resume your attempt at %s."), action);
             gx.xlock.magic_key = is_magic_key(&gy.youmonst, pick);
             set_occupation(picklock, action, 0);
             return PICKLOCK_DID_SOMETHING;
@@ -433,11 +431,10 @@ pick_lock(
         int count;
 
         if (u.dz < 0 && !autounlock) { /* beware stale u.dz value */
-            There("isn't any sort of lock up %s.",
-                  Levitation ? "here" : "there");
+            There(_("isn't any sort of lock up %s."), Levitation ? "here" : "there");
             return PICKLOCK_LEARNED_SOMETHING;
         } else if (is_lava(u.ux, u.uy)) {
-            pline("Doing that would probably melt %s.", yname(pick));
+            pline(_("Doing that would probably melt %s."), yname(pick));
             return PICKLOCK_LEARNED_SOMETHING;
         } else if (is_pool(u.ux, u.uy) && !Underwater) {
             pline_The("%s has no lock.", hliquid("water"));
@@ -564,8 +561,7 @@ pick_lock(
                 SetVoice(mtmp, 0, 80, 0);
                 verbalize("No checks, no credit, no problem.");
             } else {
-                pline("I don't think %s would appreciate that.",
-                      mon_nam(mtmp));
+                pline(_("I don't think %s would appreciate that."), mon_nam(mtmp));
             }
             return PICKLOCK_LEARNED_SOMETHING;
         } else if (mtmp && is_door_mappear(mtmp)) {
@@ -586,20 +582,20 @@ pick_lock(
                 res = PICKLOCK_LEARNED_SOMETHING;
 
             if (is_drawbridge_wall(cc.x, cc.y) >= 0)
-                You("%s no lock on the drawbridge.", Blind ? "feel" : "see");
+                You(_("%s no lock on the drawbridge."), Blind ? "feel" : "see");
             else
-                You("%s no door there.", Blind ? "feel" : "see");
+                You(_("%s no door there."), Blind ? "feel" : "see");
             return res;
         }
         switch (door->doormask) {
         case D_NODOOR:
-            pline("%s", _("This doorway has no door."));
+            pline(_("%s"), _("This doorway has no door."));
             return PICKLOCK_LEARNED_SOMETHING;
         case D_ISOPEN:
             You(_("cannot lock an open door."));
             return PICKLOCK_LEARNED_SOMETHING;
         case D_BROKEN:
-            pline("%s", _("This door is broken."));
+            pline(_("%s"), _("This door is broken."));
             return PICKLOCK_LEARNED_SOMETHING;
         default:
             if ((flags.autounlock & AUTOUNLOCK_UNTRAP) != 0
@@ -721,8 +717,7 @@ doforce(void)
                    since we're about to set lknown, there's no need to
                    remember and then reset its current value */
                 otmp->lknown = 0;
-                There("is %s here, but its lock is already %s.",
-                      doname(otmp), otmp->obroken ? "broken" : "unlocked");
+                There(_("is %s here, but its lock is already %s."), doname(otmp), otmp->obroken ? "broken" : "unlocked");
                 otmp->lknown = 1;
                 continue;
             }
@@ -737,9 +732,9 @@ doforce(void)
                 continue;
 
             if (picktyp)
-                You("force %s into a crack and pry.", yname(uwep));
+                You(_("force %s into a crack and pry."), yname(uwep));
             else
-                You("start bashing it with %s.", yname(uwep));
+                You(_("start bashing it with %s."), yname(uwep));
             gx.xlock.box = otmp;
             gx.xlock.chance = objects[uwep->otyp].oc_wldam * 2;
             gx.xlock.picktyp = picktyp;
@@ -845,10 +840,9 @@ doopen_indir(coordxy x, coordxy y)
         else if (portcullis || door->typ == DRAWBRIDGE_DOWN)
             pline_The("drawbridge is already open.");
         else if (container_at(cc.x, cc.y, TRUE))
-            pline("%s like something lootable over there.",
-                  Blind ? "Feels" : "Seems");
+            pline(_("%s like something lootable over there."), Blind ? "Feels" : "Seems");
         else
-            You("%s no door there.", Blind ? "feel" : "see");
+            You(_("%s no door there."), Blind ? "feel" : "see");
         return res;
     }
 
@@ -872,7 +866,7 @@ doopen_indir(coordxy x, coordxy y)
             break;
         }
         set_msg_xy(cc.x, cc.y);
-        pline("This door%s.", mesg);
+        pline(_("This door%s."), mesg);
         if (locked && flags.autounlock) {
             struct obj *unlocktool;
 
@@ -896,7 +890,7 @@ doopen_indir(coordxy x, coordxy y)
     }
 
     if (verysmall(gy.youmonst.data)) {
-        pline("%s", _("You're too small to pull the door open."));
+        pline(_("%s"), _("You're too small to pull the door open."));
         return res;
     }
 
@@ -946,7 +940,7 @@ obstructed(coordxy x, coordxy y, boolean quietly)
     if (OBJ_AT(x, y)) {
  objhere:
         if (!quietly)
-            pline("%s's in the way.", Something);
+            pline(_("%s's in the way."), Something);
         return TRUE;
     }
     return FALSE;
@@ -1012,27 +1006,27 @@ doclose(void)
             There(_("is no obvious way to close the drawbridge."));
         else {
  nodoor:
-            You("%s no door there.", Blind ? "feel" : "see");
+            You(_("%s no door there."), Blind ? "feel" : "see");
         }
         return res;
     }
 
     if (door->doormask == D_NODOOR) {
-        pline("%s", _("This doorway has no door."));
+        pline(_("%s"), _("This doorway has no door."));
         return res;
     } else if (obstructed(x, y, FALSE)) {
         return res;
     } else if (door->doormask == D_BROKEN) {
-        pline("%s", _("This door is broken."));
+        pline(_("%s"), _("This door is broken."));
         return res;
     } else if (door->doormask & (D_CLOSED | D_LOCKED)) {
-        pline("%s", _("This door is already closed."));
+        pline(_("%s"), _("This door is already closed."));
         return res;
     }
 
     if (door->doormask == D_ISOPEN) {
         if (verysmall(gy.youmonst.data) && !u.usteed) {
-            pline("%s", _("You're too small to push the door closed."));
+            pline(_("%s"), _("You're too small to push the door closed."));
             return res;
         }
         if (u.usteed
@@ -1062,7 +1056,7 @@ boxlock(struct obj *obj, struct obj *otmp) /* obj *is* a box */
     case SPE_WIZARD_LOCK:
         if (!obj->olocked) { /* lock it; fix if broken */
             Soundeffect(se_klunk, 50);
-            pline("%s", _("Klunk!"));
+            pline(_("%s"), _("Klunk!"));
             obj->olocked = 1;
             obj->obroken = 0;
             if (Role_if(PM_WIZARD))
@@ -1076,7 +1070,7 @@ boxlock(struct obj *obj, struct obj *otmp) /* obj *is* a box */
     case SPE_KNOCK:
         if (obj->olocked) { /* unlock; isn't broken so doesn't need fixing */
             Soundeffect(se_klick, 50);
-            pline("%s", _("Klick!"));
+            pline(_("%s"), _("Klick!"));
             obj->olocked = 0;
             res = 1;
             if (Role_if(PM_WIZARD))
@@ -1120,7 +1114,7 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
             door->doormask = D_CLOSED | (door->doormask & D_TRAPPED);
             newsym(x, y);
             if (cansee(x, y))
-                pline("%s", _("A door appears in the wall!"));
+                pline(_("%s"), _("A door appears in the wall!"));
             if (otmp->otyp == WAN_OPENING || otmp->otyp == SPE_KNOCK)
                 return TRUE;
             break; /* striking: continue door handling below */
@@ -1139,8 +1133,7 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
 
             /* Can't have real locking in Rogue, so just hide doorway */
             if (vis) {
-                pline("%s springs up in the older, more primitive doorway.",
-                      dustcloud);
+                pline(_("%s springs up in the older, more primitive doorway."), dustcloud);
             } else {
                 Soundeffect(se_swoosh, 25);
                 You_hear(_("a swoosh."));
@@ -1163,8 +1156,7 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
         /* & trap doors, but is it ever OK for anything else? */
         if (t_at(x, y)) {
             /* maketrap() clears doormask, so it should be NODOOR */
-            pline("%s springs up in the doorway, but %s.", dustcloud,
-                  quickly_dissipates);
+            pline(_("%s springs up in the doorway, but %s."), dustcloud, quickly_dissipates);
             return FALSE;
         }
 
@@ -1220,11 +1212,10 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
                     if (flags.verbose) {
                         Soundeffect(se_kaboom_door_explodes, 75);
                         if ((sawit || seeit) && !Unaware) {
-                            pline("%s", _("KABOOM!!  You see a door explode."));
+                            pline(_("%s"), _("KABOOM!!  You see a door explode."));
                         } else if (!Deaf) {
                             Soundeffect(se_explosion, 75);
-                            You_hear("a %s explosion.",
-                                     (distu(x, y) > 7 * 7) ? "distant"
+                            You_hear(_("a %s explosion."), (distu(x, y) > 7 * 7) ? "distant"
                                                            : "nearby");
                         }
                     }
@@ -1280,7 +1271,7 @@ chest_shatter_msg(struct obj *otmp)
     long save_HBlinded, save_BBlinded;
 
     if (otmp->oclass == POTION_CLASS) {
-        You("%s %s shatter!", Blind ? "hear" : "see", an(bottlename()));
+        You(_("%s %s shatter!"), Blind ? "hear" : "see", an(bottlename()));
         if (!breathless(gy.youmonst.data) || haseyes(gy.youmonst.data))
             potionbreathe(otmp);
         return;
@@ -1314,7 +1305,7 @@ chest_shatter_msg(struct obj *otmp)
         disposition = "is destroyed";
         break;
     }
-    pline("%s %s!", An(thing), disposition);
+    pline(_("%s %s!"), An(thing), disposition);
 }
 
 /*lock.c*/

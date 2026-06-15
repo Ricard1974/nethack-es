@@ -119,7 +119,7 @@ inven_inuse(boolean quietly)
         otmp2 = otmp->nobj;
         if (otmp->in_use) {
             if (!quietly)
-                pline("Finishing off %s...", xname(otmp));
+                pline(_("Finishing off %s..."), xname(otmp));
             useup(otmp);
         }
     }
@@ -545,7 +545,7 @@ restgamestate(NHFILE *nhfp)
         if (!gc.converted_savefile_loaded)
             /* for wizard mode, issue a reminder; for others, treat it
              * as an attempt to cheat and refuse to restore this file */
-            pline("%s", _("Saved game was not yours."));
+            pline(_("%s"), _("Saved game was not yours."));
         if (wizard || gc.converted_savefile_loaded) {
             if (gc.converted_savefile_loaded)
                 gc.converted_savefile_loaded = FALSE;
@@ -866,9 +866,7 @@ dorecover(NHFILE *nhfp)
         clear_nhwindow(WIN_MAP);
 #endif
     clear_nhwindow(WIN_MESSAGE);
-    You("return to level %d in %s%s.", depth(&u.uz),
-        svd.dungeons[u.uz.dnum].dname,
-        flags.debug ? " while in debug mode"
+    You(_("return to level %d in %s%s."), depth(&u.uz), svd.dungeons[u.uz.dnum].dname, flags.debug ? " while in debug mode"
                     : flags.explore ? " while in explore mode" : "");
     curs(WIN_MAP, 1, 1);
     dotcnt = 0;
@@ -1051,7 +1049,7 @@ rest_levl(NHFILE *nhfp)
 void
 trickery(char *reason)
 {
-    pline("%s", _("Strange, this map is not as I remember it."));
+    pline(_("%s"), _("Strange, this map is not as I remember it."));
     pline("%s", _("Somebody is trying some trickery here..."));
     pline("%s", _("This game is void."));
     Strcpy(svk.killer.name, reason ? reason : "");

@@ -751,9 +751,9 @@ savelife(int how)
         expels(u.ustuck, u.ustuck->data, TRUE);
     } else if (u.ustuck) {
         if (Upolyd && sticks(gy.youmonst.data))
-            You("release %s.", mon_nam(u.ustuck));
+            You(_("release %s."), mon_nam(u.ustuck));
         else
-            pline("%s releases you.", Monnam(u.ustuck));
+            pline(_("%s releases you."), Monnam(u.ustuck));
         unstuck(u.ustuck);
     }
 }
@@ -1082,10 +1082,10 @@ done(int how)
         }
     }
     if (Lifesaved && (how <= GENOCIDED)) {
-        pline("%s", _("But wait..."));
+        pline(_("%s"), _("But wait..."));
         /* assumes that only one type of item confers LifeSaved property */
         makeknown(AMULET_OF_LIFE_SAVING);
-        Your("medallion %s!", !Blind ? "begins to glow" : "feels warm");
+        Your(_("medallion %s!"), !Blind ? "begins to glow" : "feels warm");
         if (how == CHOKING)
             You(_("vomit ..."));
         You_feel("much better!");
@@ -1096,7 +1096,7 @@ done(int how)
         (void) adjattrib(A_CON, -1, TRUE);
         savelife(how);
         if (how == GENOCIDED) {
-            pline("%s", _("Unfortunately you are still genocided..."));
+            pline(_("%s"), _("Unfortunately you are still genocided..."));
         } else {
             char killbuf[BUFSZ];
             formatkiller(killbuf, BUFSZ, how, FALSE);
@@ -1113,7 +1113,7 @@ done(int how)
         && !(program_state.done_hup && gd.done_seq++ == gh.hero_seq)
 #endif
         && !paranoid_query(ParanoidDie, "Die?")) {
-        pline("OK, so you don't %s.", (how == CHOKING) ? "choke" : "die");
+        pline(_("OK, so you don't %s."), (how == CHOKING) ? "choke" : "die");
         iflags.last_msg = PLNMSG_OK_DONT_DIE;
         savelife(how);
         survive = TRUE;
@@ -1187,7 +1187,7 @@ really_done(int how)
      * smiling... :-)  -3.
      */
     if (svm.moves <= 1 && how < PANICKED && !done_stopprint)
-        pline("Do not pass Go.  Do not collect 200 %s.", currency(200L));
+        pline(_("Do not pass Go.  Do not collect 200 %s."), currency(200L));
 
     if (have_windows)
         wait_synch(); /* flush screen output */
@@ -1355,11 +1355,9 @@ really_done(int how)
         /* give this feedback even if bones aren't going to be created,
            so that its presence or absence doesn't tip off the player to
            new bones or their lack; it might be a lie if makemon fails */
-        Your("%s as %s...",
-             (u.ugrave_arise != PM_GREEN_SLIME)
+        Your(_("%s as %s..."), (u.ugrave_arise != PM_GREEN_SLIME)
                  ? "body rises from the dead"
-                 : "revenant persists",
-             an(pmname(&mons[u.ugrave_arise], Ugender)));
+                 : "revenant persists", an(pmname(&mons[u.ugrave_arise], Ugender)));
         display_nhwindow(WIN_MESSAGE, FALSE);
     }
 
@@ -1663,7 +1661,7 @@ container_contents(
                     container_contents(box->cobj, identified, TRUE,
                                        reportempty);
             } else if (reportempty) {
-                pline("%s is empty.", upstart(thesimpleoname(box)));
+                pline(_("%s is empty."), upstart(thesimpleoname(box)));
                 display_nhwindow(WIN_MESSAGE, FALSE);
             }
         }

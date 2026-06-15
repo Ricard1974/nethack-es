@@ -2440,7 +2440,7 @@ tty_display_file(
 
         if (fd < 0) {
             if (complain)
-                pline("Cannot open %s.", fname);
+                pline(_("Cannot open %s."), fname);
             else /* [is this refresh actually necessary?] */
                 docrt();
             return;
@@ -2481,7 +2481,7 @@ tty_display_file(
                 tty_wait_synch(); /* "Hit <space> to continue: " */
                 if (u.ux) /* if hero is on map, refresh the screen */
                     docrt();
-                pline("Cannot open \"%s\".", fname);
+                pline(_("Cannot open \"%s\"."), fname);
             }
         } else {
             winid datawin = tty_create_nhwindow(NHW_TEXT);
@@ -2830,7 +2830,7 @@ tty_message_menu(char let, int how, const char *mesg)
     HUPSKIP_RESULT('\033');
     /* "menu" without selection; use ordinary pline, no more() */
     if (how == PICK_NONE) {
-        pline("%s", mesg);
+        pline(_("%s"), mesg);
         return 0;
     }
 
@@ -2964,7 +2964,7 @@ ttyinv_create_window(int newid, struct WinDesc *newwin)
                    &newwin->maxrow)) {
         tty_destroy_nhwindow(newid);
         WIN_INVEN = WIN_ERR;
-        pline("%s.", "tty perm_invent could not be enabled");
+        pline(_("%s."), "tty perm_invent could not be enabled");
         pline("tty perm_invent needs a terminal that is at least %dx%d, "
               "yours is %dx%d.",
               (int) (minrow + 1 + ROWNO + StatusRows()), tty_perminv_mincol,

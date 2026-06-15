@@ -2072,7 +2072,7 @@ youhiding(boolean via_enlghtmt, /* enlightenment line vs topl message */
         you_are(buf, "");
     } else {
         /* for dohide(), when player uses '#monster' command */
-        You("are %s %s.", msgflag ? "already" : "now", buf);
+        You(_("are %s %s."), msgflag ? "already" : "now", buf);
     }
 }
 
@@ -2535,10 +2535,10 @@ do_gamelog(void)
     if (gg.gamelog) {
         show_gamelog(ENL_GAMEINPROGRESS);
     } else {
-        pline("%s", _("No chronicled events."));
+        pline(_("%s"), _("No chronicled events."));
     }
 #else
-    pline("%s", _("Chronicle was turned off during compile-time."));
+    pline(_("%s"), _("Chronicle was turned off during compile-time."));
 #endif /* !CHRONICLE */
     return ECMD_OK;
 }
@@ -2940,7 +2940,7 @@ list_vanquished(char defquery, boolean ask)
      */
     } else if (!program_state.gameover) {
         /* #vanquished rather than final disclosure, so pline() is ok */
-        pline("%s", _("No creatures have been vanquished."));
+        pline(_("%s"), _("No creatures have been vanquished."));
 #ifdef DUMPLOG
     } else if (dumping) {
         putstr(0, 0, "No creatures were vanquished."); /* not pline() */
@@ -3122,7 +3122,7 @@ list_genocided(char defquery, boolean ask)
     } else if (!program_state.gameover) {
         /* #genocided rather than final disclosure, so pline() is ok and
            extinction has been ignored */
-        pline("No creatures have been genocided%s.", genoing ? " yet" : "");
+        pline(_("No creatures have been genocided%s."), genoing ? " yet" : "");
 #ifdef DUMPLOG
     } else if (dumping) { /* 'gameover' is True if we make it here */
         putstr(0, 0, "No species were genocided or became extinct.");
@@ -3392,9 +3392,7 @@ mstatusline(struct monst *mtmp)
     Strcpy(monnambuf, x_monnam(mtmp, ARTICLE_YOUR, (char *) 0,
                                (SUPPRESS_IT | SUPPRESS_INVISIBLE), FALSE));
 
-    pline("Status of %s (%s, %s):  Level %d  HP %d(%d)  AC %d%s.",
-          monnambuf, align_str(alignment), size_str(mtmp->data->msize),
-          mtmp->m_lev, mtmp->mhp, mtmp->mhpmax, find_mac(mtmp), info);
+    pline(_("Status of %s (%s, %s):  Level %d  HP %d(%d)  AC %d%s."), monnambuf, align_str(alignment), size_str(mtmp->data->msize), mtmp->m_lev, mtmp->mhp, mtmp->mhpmax, find_mac(mtmp), info);
 }
 
 /* stethoscope or probing applied to hero -- one-line feedback */

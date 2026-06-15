@@ -88,8 +88,7 @@ dowrite(struct obj *pen)
         You(_("need hands to be able to write!"));
         return ECMD_OK;
     } else if (Glib) {
-        pline("%s from your %s.", Tobjnam(pen, "slip"),
-              fingers_or_gloves(FALSE));
+        pline(_("%s from your %s."), Tobjnam(pen, "slip"), fingers_or_gloves(FALSE));
         dropx(pen);
         return ECMD_TIME;
     }
@@ -105,18 +104,17 @@ dowrite(struct obj *pen)
                  : "scroll";
     if (Blind) {
         if (!paper->dknown) {
-            You("don't know whether that %s is blank or not.", typeword);
+            You(_("don't know whether that %s is blank or not."), typeword);
             return ECMD_OK;
         } else if (paper->oclass == SPBOOK_CLASS) {
             /* can't write a magic book while blind */
-            pline("%s can't create braille text.",
-                  upstart(ysimple_name(pen)));
+            pline(_("%s can't create braille text."), upstart(ysimple_name(pen)));
             return ECMD_OK;
         }
     }
     observe_object(paper);
     if (paper->otyp != SCR_BLANK_PAPER && paper->otyp != SPE_BLANK_PAPER) {
-        pline("That %s is not blank!", typeword);
+        pline(_("That %s is not blank!"), typeword);
         exercise(A_WIS, FALSE);
         return ECMD_TIME;
     }
@@ -204,7 +202,7 @@ dowrite(struct obj *pen)
         goto found;
     }
 
-    There("is no such %s!", typeword);
+    There(_("is no such %s!"), typeword);
     return ECMD_TIME;
  found:
 
@@ -216,13 +214,9 @@ dowrite(struct obj *pen)
         boolean fanfic = !rn2(3), tearup = !rn2(3);
 
         if (!fanfic) {
-            You("%s to write the Great Yendorian Novel, but %s inspiration.",
-                !tearup ? "prepare" : "try",
-                !Hallucination ? "lack" : "have too much");
+            You(_("%s to write the Great Yendorian Novel, but %s inspiration."), !tearup ? "prepare" : "try", !Hallucination ? "lack" : "have too much");
         } else {
-            You("%sproduce really %s fan-fiction.",
-                !tearup ? "start to " : "",
-                !Hallucination ? "lame" : "awesome");
+            You(_("%sproduce really %s fan-fiction."), !tearup ? "start to " : "", !Hallucination ? "lame" : "awesome");
         }
         if (!tearup) {
             You(_("give up on the idea."));
@@ -232,12 +226,12 @@ dowrite(struct obj *pen)
         }
         return ECMD_TIME;
     } else if (i == SPE_BOOK_OF_THE_DEAD) {
-        pline("%s", _("No mere dungeon adventurer could write that."));
+        pline(_("%s"), _("No mere dungeon adventurer could write that."));
         return ECMD_TIME;
     } else if (by_descr && paper->oclass == SPBOOK_CLASS
                && !objects[i].oc_name_known) {
         /* can't write unknown spellbooks by description */
-        pline("%s", _("Unfortunately you don't have enough information to go on."));
+        pline(_("%s"), _("Unfortunately you don't have enough information to go on."));
         return ECMD_TIME;
     }
 
@@ -319,11 +313,10 @@ dowrite(struct obj *pen)
         && rnl(((Role_if(PM_WIZARD) && paper->oclass != SPBOOK_CLASS)
                 || spell_knowledge == spe_GoingStale)
                ? 5 : 15)) {
-        You("%s to write that.", by_descr ? "fail" : "don't know how");
+        You(_("%s to write that."), by_descr ? "fail" : "don't know how");
         /* scrolls disappear, spellbooks don't */
         if (paper->oclass == SPBOOK_CLASS) {
-            You(
-      "write in your best handwriting:  \"My Diary\", but it quickly fades.");
+            You(_("write in your best handwriting:  \"My Diary\", but it quickly fades."));
             update_inventory(); /* pen charges */
         } else {
             if (by_descr) {
@@ -331,7 +324,7 @@ dowrite(struct obj *pen)
                 wipeout_text(namebuf, (6 + MAXULEV - u.ulevel) / 6, 0);
             } else
                 Sprintf(namebuf, "%s was here!", svp.plname);
-            You("write \"%s\" and the scroll disappears.", namebuf);
+            You(_("write \"%s\" and the scroll disappears."), namebuf);
             useup(paper);
         }
         obfree(new_obj, (struct obj *) 0);

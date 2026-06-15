@@ -106,22 +106,22 @@ thitu(
     if (u.uac + tlev <= (dieroll = rnd(20))) {
         ++gm.mesg_given;
         if (Blind || !flags.verbose) {
-            pline("%s", _("It misses."));
+            pline(_("%s"), _("It misses."));
         } else if (u.uac + tlev <= dieroll - 2) {
             if (onm != onmbuf)
                 Strcpy(onmbuf, onm); /* [modifiable buffer for upstart()] */
-            pline("%s %s you.", upstart(onmbuf), vtense(onmbuf, "miss"));
+            pline(_("%s %s you."), upstart(onmbuf), vtense(onmbuf, "miss"));
         } else
-            You("are almost hit by %s.", onm);
+            You(_("are almost hit by %s."), onm);
         return 0;
     } else {
         if (Blind || !flags.verbose)
-            You("are hit%s", exclam(dam));
+            You(_("are hit%s"), exclam(dam));
         else
-            You("are hit by %s%s", onm, exclam(dam));
+            You(_("are hit by %s%s"), onm, exclam(dam));
 
         if (is_acid && Acid_resistance) {
-            pline("%s", _("It doesn't seem to hurt you."));
+            pline(_("%s"), _("It doesn't seem to hurt you."));
             monstseesu(M_SEEN_ACID);
         } else if (obj && stone_missile(obj)
                    && passes_rocks(gy.youmonst.data)) {
@@ -129,8 +129,7 @@ thitu(
                we avoid "passes through you" for horizontal flight path
                because missile stops and that wording would suggest that
                it should keep going */
-            pline("It %s you.",
-                  named ? "passes harmlessly through" : "doesn't harm");
+            pline(_("It %s you."), named ? "passes harmlessly through" : "doesn't harm");
         } else if (obj && obj->oclass == POTION_CLASS) {
             /* an explosion which scatters objects might hit hero with one
                (potions deliberately thrown at hero are handled by m_throw) */
@@ -144,7 +143,7 @@ thitu(
                 exercise(A_CON, FALSE);
             }
             if (is_acid) {
-                pline("%s", _("It burns!"));
+                pline(_("%s"), _("It burns!"));
                 monstunseesu(M_SEEN_ACID);
             }
             losehp(dam, knm, kprefix); /* acid damage */
@@ -288,9 +287,7 @@ monshoot(struct monst *mtmp, struct obj *otmp, struct obj *mwep)
         gm.m_shot.s = ammo_and_launcher(otmp, mwep) ? TRUE : FALSE;
         Strcpy(trgbuf, mtarg ? some_mon_nam(mtarg) : "");
         set_msg_xy(mtmp->mx, mtmp->my);
-        pline("%s %s %s%s%s!", Monnam(mtmp),
-              gm.m_shot.s ? "shoots" : "throws", onm,
-              mtarg ? " at " : "", trgbuf);
+        pline(_("%s %s %s%s%s!"), Monnam(mtmp), gm.m_shot.s ? "shoots" : "throws", onm, mtarg ? " at " : "", trgbuf);
         gm.m_shot.o = otmp->otyp;
     } else {
         gm.m_shot.o = STRANGE_OBJECT; /* don't give multishot feedback */
@@ -352,7 +349,7 @@ ohitmon(
             if (vis)
                 miss(distant_name(otmp, mshot_xname), mtmp);
             else if (verbose && !gm.mtarget)
-                pline("%s", _("It is missed."));
+                pline(_("%s"), _("It is missed."));
         }
         if (!range) { /* Last position; object drops */
             (void) drop_throw(otmp, 0, mtmp->mx, mtmp->my);
@@ -383,8 +380,7 @@ ohitmon(
         Soundeffect(se_splat_egg, 35);
         if (vis) {
             if (otmp->otyp == EGG) {
-                pline("Splat!  %s is hit with %s egg!", Monnam(mtmp),
-                      otmp->known ? an(mons[otmp->corpsenm].pmnames[NEUTRAL])
+                pline(_("Splat!  %s is hit with %s egg!"), Monnam(mtmp), otmp->known ? an(mons[otmp->corpsenm].pmnames[NEUTRAL])
                                   : "an");
             } else {
                 char how[BUFSZ];
@@ -397,8 +393,7 @@ ohitmon(
                 hit(distant_name(otmp, mshot_xname), mtmp, how);
             }
         } else if (verbose && !gm.mtarget)
-            pline("%s%s is hit%s", (otmp->otyp == EGG) ? "Splat!  " : "",
-                  Monnam(mtmp), exclam(damage));
+            pline(_("%s%s is hit%s"), (otmp->otyp == EGG) ? "Splat!  " : "", Monnam(mtmp), exclam(damage));
 
         if (otmp->opoisoned && is_poisonable(otmp)) {
             if (resists_poison(mtmp)) {
@@ -427,18 +422,18 @@ ohitmon(
                     m_name = strcat(s_suffix(m_name), " flesh");
                 pline_The("silver sears %s!", m_name);
             } else if (verbose && !gm.mtarget) {
-                pline("%s is seared!", flesh ? "Its flesh" : "It");
+                pline(_("%s is seared!"), flesh ? "Its flesh" : "It");
             }
         }
         if (otmp->otyp == ACID_VENOM && cansee(mtmp->mx, mtmp->my)) {
             if (resists_acid(mtmp)) {
                 if (vis || (verbose && !gm.mtarget))
-                    pline("%s is unaffected.", Monnam(mtmp));
+                    pline(_("%s is unaffected."), Monnam(mtmp));
             } else {
                 if (vis)
                     pline_The("%s burns %s!", hliquid("acid"), mon_nam(mtmp));
                 else if (verbose && !gm.mtarget)
-                    pline("%s", _("It is burned!"));
+                    pline(_("%s"), _("It is burned!"));
             }
         }
         if (otmp->otyp == EGG && touch_petrifies(&mons[otmp->corpsenm])) {
@@ -453,8 +448,7 @@ ohitmon(
             mtmp->mhp -= damage;
             if (DEADMONSTER(mtmp)) {
                 if (vis || (verbose && !gm.mtarget))
-                    pline("%s is %s!", Monnam(mtmp),
-                          (nonliving(mtmp->data) || is_vampshifter(mtmp)
+                    pline(_("%s is %s!"), Monnam(mtmp), (nonliving(mtmp->data) || is_vampshifter(mtmp)
                            || !canspotmon(mtmp)) ? "destroyed" : "killed");
                 /* don't blame hero for unknown rolling boulder trap */
                 if (!svc.context.mon_moving
@@ -477,8 +471,7 @@ ohitmon(
                    two message [first via hit() above] sequence:
                    "The {splash of venom,cream pie} hits <mon>."
                    "<Mon> is blinded by the {venom,pie}." */
-                pline("%s is blinded by %s.", Monnam(mtmp),
-                      the((otmp->oclass == VENOM_CLASS) ? "venom"
+                pline(_("%s is blinded by %s."), Monnam(mtmp), the((otmp->oclass == VENOM_CLASS) ? "venom"
                           : (otmp->otyp == CREAM_PIE) ? "pie"
                             : xname(otmp))); /* catchall; not used */
             mtmp->mcansee = 0;
@@ -513,13 +506,12 @@ ucatchgem(
              *mon_s_name = s_suffix(mon_nam(mon));
 
         if (gem->otyp >= FIRST_GLASS_GEM) {
-            You("catch the %s.", gem_xname);
-            You("are not interested in %s junk.", mon_s_name);
+            You(_("catch the %s."), gem_xname);
+            You(_("are not interested in %s junk."), mon_s_name);
             makeknown(gem->otyp);
             dropy(gem);
         } else {
-            You("accept %s gift in the spirit in which it was intended.",
-                mon_s_name);
+            You(_("accept %s gift in the spirit in which it was intended."), mon_s_name);
             (void) hold_another_object(gem, "You catch, but drop, %s.",
                                        gem_xname, "You catch:");
         }
@@ -622,10 +614,9 @@ m_throw(
     if ((singleobj->cursed || singleobj->greased) && (dx || dy) && !rn2(7)) {
         if (canseemon(mon) && flags.verbose) {
             if (is_ammo(singleobj))
-                pline("%s misfires!", Monnam(mon));
+                pline(_("%s misfires!"), Monnam(mon));
             else
-                pline("%s as %s throws it!", Tobjnam(singleobj, "slip"),
-                      mon_nam(mon));
+                pline(_("%s as %s throws it!"), Tobjnam(singleobj, "slip"), mon_nam(mon));
         }
         dx = rn2(3) - 1;
         dy = rn2(3) - 1;
@@ -760,10 +751,9 @@ m_throw(
                 blindinc = rnd(25);
                 if (singleobj->otyp == CREAM_PIE) {
                     if (!Blind)
-                        pline("%s", _("Yecch!  You've been creamed."));
+                        pline(_("%s"), _("Yecch!  You've been creamed."));
                     else
-                        pline("There's %s sticky all over your %s.",
-                              something, body_part(FACE));
+                        pline(_("There's %s sticky all over your %s."), something, body_part(FACE));
                 } else if (singleobj->otyp == BLINDING_VENOM) {
                     const char *eyes = body_part(EYE);
 
@@ -773,7 +763,7 @@ m_throw(
                     if (!Blind)
                         pline_The("venom blinds you.");
                     else
-                        Your("%s %s.", eyes, vtense(eyes, "sting"));
+                        Your(_("%s %s."), eyes, vtense(eyes, "sting"));
                 }
             }
             if (hitu && singleobj->otyp == EGG) {
@@ -803,14 +793,13 @@ m_throw(
                    in order to get "Grimtooth" rather than "The Grimtooth" */
                 if (range && cansee(gb.bhitpos.x, gb.bhitpos.y)
                     && IS_SINK(levl[gb.bhitpos.x][gb.bhitpos.y].typ))
-                    pline("%s %s onto the sink.", The(mshot_xname(singleobj)),
-                          otense(singleobj, Hallucination ? "plop" : "drop"));
+                    pline(_("%s %s onto the sink."), The(mshot_xname(singleobj)), otense(singleobj, Hallucination ? "plop" : "drop"));
                 else if (gm.m_shot.n > 1
                          && (!gm.mesg_given
                              || gb.bhitpos.x != u.ux || gb.bhitpos.y != u.uy)
                          && (cansee(gb.bhitpos.x, gb.bhitpos.y)
                              || (gm.marcher && canseemon(gm.marcher))))
-                    pline("%s misses.", The(mshot_xname(singleobj)));
+                    pline(_("%s misses."), The(mshot_xname(singleobj)));
                 if (!tethered_weapon) {
                     (void) drop_throw(singleobj, 0,
                                       gb.bhitpos.x, gb.bhitpos.y);
@@ -883,8 +872,7 @@ return_from_mtoss(
             static long do_not_annoy = 0;
 
             if (!do_not_annoy || (svm.moves - do_not_annoy) > 500L) {
-                pline("%s to %s %s!", Tobjnam(otmp, "return"),
-                      s_suffix(mon_nam(magr)), mbodypart(magr, HAND));
+                pline(_("%s to %s %s!"), Tobjnam(otmp, "return"), s_suffix(mon_nam(magr)), mbodypart(magr, HAND));
                 do_not_annoy = svm.moves;
             }
             if (otmp) {
@@ -902,22 +890,16 @@ return_from_mtoss(
             dmg = rn2(2);
             if (!dmg) {
                 if (canseemon(magr)) {
-                    pline("%s back to %s, landing %s %s %s.",
-                          Tobjnam(otmp, "return"), mon_nam(magr),
-                          mlevitating ? "beneath" : "at", mhis(magr),
-                          makeplural(mbodypart(magr, FOOT)));
+                    pline(_("%s back to %s, landing %s %s %s."), Tobjnam(otmp, "return"), mon_nam(magr), mlevitating ? "beneath" : "at", mhis(magr), makeplural(mbodypart(magr, FOOT)));
                 } else if (!Deaf) {
-                    You_hear("%s land near %s.", Something, mon_nam(magr));
+                    You_hear(_("%s land near %s."), Something, mon_nam(magr));
                 }
             } else {
                 dmg += rnd(3);
                 if (canseemon(magr)) {
-                    pline("%s back toward %s, hitting %s %s!",
-                          Tobjnam(otmp, "fly"), mon_nam(magr),
-                          mhis(magr), body_part(ARM));
+                    pline(_("%s back toward %s, hitting %s %s!"), Tobjnam(otmp, "fly"), mon_nam(magr), mhis(magr), body_part(ARM));
                 } else if (!Deaf) {
-                    You_hear("%s hit %s with a thud!", something,
-                             mon_nam(magr));
+                    You_hear(_("%s hit %s with a thud!"), something, mon_nam(magr));
                 }
                 hits_thrower = TRUE;
             }
@@ -1020,8 +1002,7 @@ spitmm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
     if (mtmp->mcan) {
         if (!Deaf && mdistu(mtmp) < BOLT_LIM * BOLT_LIM) {
             if (canspotmon(mtmp)) {
-                pline("A dry rattle comes from %s throat.",
-                      s_suffix(mon_nam(mtmp)));
+                pline(_("A dry rattle comes from %s throat."), s_suffix(mon_nam(mtmp)));
             } else {
                 Soundeffect(se_dry_throat_rattle, 50);
                 You_hear(_("a dry rattle nearby."));
@@ -1049,7 +1030,7 @@ spitmm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
         }
         if (!rn2(BOLT_LIM-distmin(mtmp->mx,mtmp->my,tx,ty))) {
             if (canseemon(mtmp))
-                pline("%s spits venom!", Monnam(mtmp));
+                pline(_("%s spits venom!"), Monnam(mtmp));
             if (!utarg)
                 gm.mtarget = mtarg;
             m_throw(mtmp, mtmp->mx, mtmp->my, sgn(gt.tbx), sgn(gt.tby),
@@ -1099,7 +1080,7 @@ breamm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
         if (mtmp->mcan) {
             if (!Deaf) {
                 if (canseemon(mtmp)) {
-                    pline("%s coughs.", Monnam(mtmp));
+                    pline(_("%s coughs."), Monnam(mtmp));
                 } else {
                     Soundeffect(se_cough, 100);
                     You_hear(_("a cough."));
@@ -1117,8 +1098,7 @@ breamm(struct monst *mtmp, struct attack *mattk, struct monst *mtarg)
         if (!mtmp->mspec_used && rn2(3)) {
             if (BZ_VALID_ADTYP(typ)) {
                 if (canseemon(mtmp))
-                    pline("%s breathes %s!",
-                          Monnam(mtmp), breathwep_name(typ));
+                    pline(_("%s breathes %s!"), Monnam(mtmp), breathwep_name(typ));
                 gb.buzzer = mtmp;
                 dobuzz(BZ_M_BREATH(BZ_OFS_AD(typ)), (int) mattk->damn,
                        mtmp->mx, mtmp->my, sgn(gt.tbx), sgn(gt.tby),
@@ -1464,7 +1444,7 @@ hit_bars(
                            : SIZE(barsounds) - 1;
 
             Soundeffect(se[bsindx], 100);
-            pline("%s!", barsounds[bsindx]);
+            pline(_("%s!"), barsounds[bsindx]);
             nhUse(se[bsindx]);
         }
         if (!(harmless_missile(otmp) || is_flimsy(otmp)))

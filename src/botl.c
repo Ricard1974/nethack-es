@@ -3934,7 +3934,7 @@ status_hilite_menu_add(int origfld)
 
  choose_value:
     if (retry++ > 5) {
-        pline("%s", _("That's enough tries."));
+        pline(_("%s"), _("That's enough tries."));
         return FALSE;
     }
     if (behavior == BL_TH_VAL_PERCENTAGE
@@ -3984,17 +3984,17 @@ status_hilite_menu_add(int origfld)
         }
         if (*inp == '%') {
             if (!percent) {
-                pline("%s", _("Not expecting a percentage."));
+                pline(_("%s"), _("Not expecting a percentage."));
                 goto choose_behavior;
             }
             *inp = '\0'; /* strip '%' [this accepts trailing junk!] */
         } else if (*inp) {
             /* some random characters */
-            pline("\"%s\" is not a recognized number.", inp);
+            pline(_("\"%s\" is not a recognized number."), inp);
             goto choose_value;
         }
         if (!gotnum) {
-            pline("%s", _("Is that an invisible number?"));
+            pline(_("%s"), _("Is that an invisible number?"));
             goto choose_value;
         }
         op = (lt_gt_eq == LT_VALUE) ? "<"
@@ -4011,8 +4011,7 @@ status_hilite_menu_add(int origfld)
         if (percent) {
             val = aval.a_int;
             if (initblstats[fld].idxmax == -1) {
-                pline("Field '%s' does not support percentage values.",
-                      initblstats[fld].fldname);
+                pline(_("Field '%s' does not support percentage values."), initblstats[fld].fldname);
                 behavior = BL_TH_VAL_ABSOLUTE;
                 goto choose_value;
             }
@@ -4025,7 +4024,7 @@ status_hilite_menu_add(int origfld)
                 || (val == 0 && lt_gt_eq == LT_VALUE)
                 || (val == 100 && lt_gt_eq == GT_VALUE)
                 || (val > 100 && (val != 101 || lt_gt_eq != LT_VALUE))) {
-                pline("'%s%d%%' is not a valid percent value.", op, val);
+                pline(_("'%s%d%%' is not a valid percent value."), op, val);
                 goto choose_value;
             }
             /* restore suffix for use in color and attribute prompts */
@@ -4037,14 +4036,12 @@ status_hilite_menu_add(int origfld)
                    && (aval.a_int < ((fld == BL_AC) ? -128
                                      : (lt_gt_eq == GT_VALUE) ? -1
                                        : (lt_gt_eq == LT_VALUE) ? 1 : 0))) {
-            pline("%s'%s%d'%s", threshold_value,
-                  op, aval.a_int, is_out_of_range);
+            pline(_("%s'%s%d'%s"), threshold_value, op, aval.a_int, is_out_of_range);
             goto choose_value;
         } else if (dt == ANY_LONG
                    && (aval.a_long < ((lt_gt_eq == GT_VALUE) ? -1L
                                       : (lt_gt_eq == LT_VALUE) ? 1L : 0L))) {
-            pline("%s'%s%ld'%s", threshold_value,
-                  op, aval.a_long, is_out_of_range);
+            pline(_("%s'%s%ld'%s"), threshold_value, op, aval.a_long, is_out_of_range);
             goto choose_value;
         }
 
@@ -4272,8 +4269,7 @@ status_hilite_menu_add(int origfld)
         tmpattr = hlattr2attrname(atr, attrbuf, BUFSZ);
         if (tmpattr)
             Sprintf(eos(clrbuf), "&%s", tmpattr);
-        pline("Added hilite condition/%s/%s",
-              conditionbitmask2str(cond), clrbuf);
+        pline(_("Added hilite condition/%s/%s"), conditionbitmask2str(cond), clrbuf);
     } else {
         char *p, *q;
 
@@ -4286,7 +4282,7 @@ status_hilite_menu_add(int origfld)
             *p = '\0'; /* chop off " or female-rank" */
             /* new rule for male-rank */
             status_hilite_add_threshold(fld, &hilite);
-            pline("Added hilite %s", status_hilite2str(&hilite));
+            pline(_("Added hilite %s"), status_hilite2str(&hilite));
             /* transfer female-rank to start of hilite.textmatch buffer */
             p += sizeof " or " - sizeof "";
             q = hilite.textmatch;
@@ -4295,7 +4291,7 @@ status_hilite_menu_add(int origfld)
             /* proceed with normal addition of new rule */
         }
         status_hilite_add_threshold(fld, &hilite);
-        pline("Added hilite %s", status_hilite2str(&hilite));
+        pline(_("Added hilite %s"), status_hilite2str(&hilite));
     }
     reset_status_hilites();
     return TRUE;

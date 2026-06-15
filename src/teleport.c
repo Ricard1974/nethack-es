@@ -543,8 +543,7 @@ teleds(coordxy nux, coordxy nuy, int teleds_flags)
     /* this used to take place sooner, but if a --More-- prompt was issued
        then the old map display was shown instead of the new one */
     if (is_teleport && flags.verbose)
-        You("materialize in %s location!",
-            (nux == u.ux0 && nuy == u.uy0) ? "the same" : "a different");
+        You(_("materialize in %s location!"), (nux == u.ux0 && nuy == u.uy0) ? "the same" : "a different");
     /* if terrain type changes, levitation or flying might become blocked
        or unblocked; might issue message, so do this after map+vision has
        been updated for new location instead of right after u_on_newpos() */
@@ -852,7 +851,7 @@ scrolltele(struct obj *scroll)
 
     /* Disable teleportation in stronghold && Vlad's Tower */
     if (noteleport_level(&gy.youmonst) && !wizard) {
-        pline("%s", _("A mysterious force prevents you from teleporting!"));
+        pline(_("%s"), _("A mysterious force prevents you from teleporting!"));
         if (scroll)
             learnscroll(scroll); /* this is obviously a teleport scroll */
         return;
@@ -863,7 +862,7 @@ scrolltele(struct obj *scroll)
         make_blinded(0L, FALSE);
 
     if ((u.uhave.amulet || On_W_tower_level(&u.uz)) && !rn2(3)) {
-        You_feel("disoriented for a moment.");
+        You_feel(_("disoriented for a moment."));
         /* don't discover the scroll [at least not yet for wizard override];
            disorientation doesn't reveal that this is a teleport attempt */
         if (!wizard || y_n("Override?") != 'y')
@@ -872,14 +871,14 @@ scrolltele(struct obj *scroll)
     if (((Teleport_control || (scroll && scroll->blessed)) && !Stunned)
         || wizard) {
         if (unconscious()) {
-            pline("%s", _("Being unconscious, you cannot control your teleport."));
+            pline(_("%s"), _("Being unconscious, you cannot control your teleport."));
         } else {
             char whobuf[BUFSZ];
 
             Strcpy(whobuf, "you");
             if (u.usteed)
                 Sprintf(eos(whobuf), " and %s", mon_nam(u.usteed));
-            pline("Where do %s want to be teleported?", whobuf);
+            pline(_("Where do %s want to be teleported?"), whobuf);
             if (scroll)
                 learnscroll(scroll);
             cc.x = u.ux;
@@ -900,7 +899,7 @@ scrolltele(struct obj *scroll)
                     iflags.travelcc.x = iflags.travelcc.y = 0;
                 return;
             }
-            pline("%s", _("Sorry..."));
+            pline(_("%s"), _("Sorry..."));
         }
     }
 
@@ -1054,7 +1053,7 @@ dotele(
         } else if (trap->ttyp == TELEP_TRAP) {
             trap_once = trap->once; /* trap may get deleted, save this */
             if (trap->once) {
-                pline("%s", _("This is a vault teleport, usable once only."));
+                pline(_("%s"), _("This is a vault teleport, usable once only."));
                 if (y_n("Jump in?") == 'n') {
                     trap = 0;
                 } else {
@@ -1063,7 +1062,7 @@ dotele(
                 }
             }
             if (trap)
-                You("%s onto the teleportation trap.", u_locomotion("jump"));
+                You(_("%s onto the teleportation trap."), u_locomotion("jump"));
         } else
             trap = 0;
     }
@@ -1079,7 +1078,7 @@ dotele(
             /* casting isn't inhibited by being Stunned (...it ought to be) */
             castit = (knownsp >= spe_Fresh && !Confusion);
             if (!castit && !break_the_rules) {
-                You("%s.", (!Teleportation ? ((knownsp != spe_Unknown)
+                You(_("%s."), (!Teleportation ? ((knownsp != spe_Unknown)
                                               ? "can't cast that spell"
                                               : "don't know that spell")
                             : "are not able to teleport at will"));
@@ -1120,8 +1119,7 @@ dotele(
             cantdoit = "lack the energy";
         }
         if (cantdoit) {
-            You("%s %s.", cantdoit,
-                castit ? "for a teleport spell" : "to teleport");
+            You(_("%s %s."), cantdoit, castit ? "for a teleport spell" : "to teleport");
             return 0;
         } else if (check_capacity(
                        "Your concentration falters from carrying so much.")) {
@@ -1153,7 +1151,7 @@ dotele(
         }
         (void) next_to_u();
     } else {
-        You("%s", shudder_for_moment);
+        You(_("%s"), shudder_for_moment);
         return 0;
     }
     if (!trap)
@@ -1184,7 +1182,7 @@ level_tele(void)
     }
     if ((u.uhave.amulet || In_endgame(&u.uz) || In_sokoban(&u.uz))
         && !wizard) {
-        You_feel("very disoriented for a moment.");
+        You_feel(_("very disoriented for a moment."));
         return;
     }
     if ((Teleport_control && !Stunned) || wizard) {
@@ -1213,7 +1211,7 @@ level_tele(void)
             if (!strcmp(buf, "*")) {
                 goto random_levtport;
             } else if (Confusion && rnl(5)) {
-                pline("%s", _("Oops..."));
+                pline(_("%s"), _("Oops..."));
                 goto random_levtport;
             } else if (!strcmp(buf, "\033")) { /* cancelled */
                 return;
@@ -1256,17 +1254,15 @@ level_tele(void)
                 goto random_levtport;
             if (ynq("Go to Nowhere.  Are you sure?") != 'y')
                 return;
-            You("%s in agony as your body begins to warp...",
-                is_silent(gy.youmonst.data) ? "writhe" : "scream");
+            You(_("%s in agony as your body begins to warp..."), is_silent(gy.youmonst.data) ? "writhe" : "scream");
             display_nhwindow(WIN_MESSAGE, FALSE);
             You(_("cease to exist."));
             if (gi.invent)
-                Your("possessions land on the %s with a thud.",
-                     surface(u.ux, u.uy));
+                Your(_("possessions land on the %s with a thud."), surface(u.ux, u.uy));
             svk.killer.format = NO_KILLER_PREFIX;
             Strcpy(svk.killer.name, "committed suicide");
             done(DIED);
-            pline("%s", _("An energized cloud of dust begins to coalesce."));
+            pline(_("%s"), _("An energized cloud of dust begins to coalesce."));
             Your("body rematerializes%s.",
                  gi.invent ? ", and you gather up all your possessions" : "");
             return;
@@ -1338,7 +1334,7 @@ level_tele(void)
             svk.killer.format = NO_KILLER_PREFIX;
             Strcpy(svk.killer.name, "went to heaven prematurely");
         } else if (newlev == -9) {
-            You_feel("deliriously happy.");
+            You_feel(_("deliriously happy."));
             pline("%s", _("(In fact, you're on Cloud 9!)"));
             display_nhwindow(WIN_MESSAGE, FALSE);
         } else
@@ -1351,7 +1347,7 @@ level_tele(void)
         } else if (Flying) {
             escape_by_flying = "fly down to the ground";
         } else {
-            pline("%s", _("Unfortunately, you don't know how to fly."));
+            pline(_("%s"), _("Unfortunately, you don't know how to fly."));
             You(_("plummet a few thousand feet to your death."));
             Sprintf(svk.killer.name,
                     "teleported out of the dungeon and fell to %s death",
@@ -1376,7 +1372,7 @@ level_tele(void)
 
     /* calls done(ESCAPED) if newlevel==0 */
     if (escape_by_flying) {
-        You("%s.", escape_by_flying);
+        You(_("%s."), escape_by_flying);
         /* [dlevel used to be set to 1, but it doesn't make sense to
             teleport out of the dungeon and float or fly down to the
             surface but then actually arrive back inside the dungeon] */
@@ -1405,7 +1401,7 @@ level_tele(void)
          */
         if (!wizard && Inhell && !u.uevent.invoked && newlev >= deepest) {
             newlev = deepest - 1;
-            pline("%s", _("Sorry..."));
+            pline(_("%s"), _("Sorry..."));
         }
         /* no teleporting out of quest dungeon */
         if (In_quest(&u.uz) && newlev < depth(&qstart_level))
@@ -1467,7 +1463,7 @@ domagicportal(struct trap *ttmp)
      * next level, and thus losing the game
      */
     if (In_endgame(&u.uz) && !u.uhave.amulet) {
-        You_feel("dizzy for a moment, but nothing happens...");
+        You_feel(_("dizzy for a moment, but nothing happens..."));
         return;
     }
 
@@ -1502,7 +1498,7 @@ tele_trap(struct trap *trap)
     if (In_endgame(&u.uz) || Antimagic || noteleport_level(&gy.youmonst)) {
         if (Antimagic)
             shieldeff(u.ux, u.uy);
-        You_feel("a wrenching sensation.");
+        You_feel(_("a wrenching sensation."));
     } else if (!next_to_u()) {
         You1(shudder_for_moment);
     } else if (trap->once) {
@@ -1545,13 +1541,13 @@ level_tele_trap(struct trap *trap, unsigned int trflags)
         intentional = TRUE;
     } else
         Sprintf(verbbuf, "%s onto", u_locomotion("step"));
-    You("%s a level teleport trap!", verbbuf);
+    You(_("%s a level teleport trap!"), verbbuf);
 
     if (Antimagic && !intentional) {
         shieldeff(u.ux, u.uy);
     }
     if ((Antimagic && !intentional) || In_endgame(&u.uz)) {
-        You_feel("a wrenching sensation.");
+        You_feel(_("a wrenching sensation."));
         return;
     }
     deltrap(trap);
@@ -1559,9 +1555,9 @@ level_tele_trap(struct trap *trap, unsigned int trflags)
     level_tele();
 
     if (Hallucination || Teleport_control)
-        You("briefly feel %s.", Hallucination ? "oriented" : "centered");
+        You(_("briefly feel %s."), Hallucination ? "oriented" : "centered");
     else
-        You_feel("%sdisoriented.", Confusion ? "even more " : "");
+        You_feel(_("%sdisoriented."), Confusion ? "even more " : "");
     /* magic portal traversal causes brief Stun; for level teleport, use
        confusion instead, and only when hero lacks control; do this after
        processing the level teleportation attempt because being confused
@@ -1663,7 +1659,7 @@ rloc_to_core(
             if (couldsee(x, y) || sensemon(mtmp)) {
                 telemsg = TRUE;
             } else {
-                pline("%s vanishes!", Monnam(mtmp));
+                pline(_("%s vanishes!"), Monnam(mtmp));
             }
             /* avoid "It suddenly appears!" for a STRAT_APPEARMSG monster
                that has just teleported away if we won't see it after this
@@ -1708,21 +1704,15 @@ rloc_to_core(
         set_msg_xy(x, y);
         mtmp->mstrategy &= ~STRAT_APPEARMSG; /* one chance only */
         if (mtmp == u.ustuck && !u_at(u.ux0, u.uy0)) {
-            You("and %s teleport together.", mon_nam(mtmp));
+            You(_("and %s teleport together."), mon_nam(mtmp));
         } else if (telemsg && (couldsee(x, y) || sensemon(mtmp))) {
-            pline("%s vanishes and reappears%s.",
-                  Monnam(mtmp),
-                  next ? next
+            pline(_("%s vanishes and reappears%s."), Monnam(mtmp), next ? next
                   : nearu ? nearu
                     : ((olddu = distu(oldx, oldy)) == du) ? ""
                       : (du < olddu) ? " closer to you"
                         : " farther away");
         } else {
-            pline("%s %s%s%s!",
-                  appearmsg ? Amonnam(mtmp) : Monnam(mtmp),
-                  appearmsg ? "suddenly " : "",
-                  !Blind ? "appears" : "arrives",
-                  next ? next : nearu ? nearu : "");
+            pline(_("%s %s%s%s!"), appearmsg ? Amonnam(mtmp) : Monnam(mtmp), appearmsg ? "suddenly " : "", !Blind ? "appears" : "arrives", next ? next : nearu ? nearu : "");
         }
         /* wand discovery only happens if a messaage is delivered (bug?);
            if spell or q.mechanic attack or artifact #invoke for banish
@@ -1913,8 +1903,7 @@ control_mon_tele(
     if (!wizard || !iflags.mon_telecontrol)
         return FALSE;
 
-    pline("Teleport %s @ <%d,%d> where?",
-          noit_mon_nam(mon), mon->mx, mon->my);
+    pline(_("Teleport %s @ <%d,%d> where?"), noit_mon_nam(mon), mon->mx, mon->my);
     /* getpos '?' will show "Move the cursor to <where to teleport Foo>:" */
     Sprintf(tcbuf, "where to teleport %s", noit_mon_nam(mon));
     if (getpos(cc_p, FALSE, tcbuf) >= 0 && !u_at(cc_p->x, cc_p->y)) {
@@ -1929,7 +1918,7 @@ control_mon_tele(
                 return TRUE;
         }
     }
-    pline("%s destination.", via_rloc ? "Picking random" : "Using derived");
+    pline(_("%s destination."), via_rloc ? "Picking random" : "Using derived");
     return FALSE;
 }
 
@@ -1951,8 +1940,7 @@ tele_restrict(struct monst *mon)
 {
     if (noteleport_level(mon)) {
         if (canseemon(mon))
-            pline("A mysterious force prevents %s from teleporting!",
-                  mon_nam(mon));
+            pline(_("A mysterious force prevents %s from teleporting!"), mon_nam(mon));
         return TRUE;
     }
     return FALSE;
@@ -1993,9 +1981,9 @@ mtele_trap(struct monst *mtmp, struct trap *trap, int in_sight)
 
         if (in_sight) {
             if (canseemon(mtmp))
-                pline("%s seems disoriented.", monname);
+                pline(_("%s seems disoriented."), monname);
             else
-                pline("%s suddenly disappears!", monname);
+                pline(_("%s suddenly disappears!"), monname);
             seetrap(trap);
         }
     }
@@ -2268,16 +2256,15 @@ u_teleport_mon(
 
     if (svl.level.flags.stasis_until >= svm.moves) {
         if (give_feedback)
-            pline("A mysterious force prevents you teleporting %s!",
-                  mon_nam(mtmp));
+            pline(_("A mysterious force prevents you teleporting %s!"), mon_nam(mtmp));
         return FALSE;
     } else if (mtmp->ispriest && *in_rooms(mtmp->mx, mtmp->my, TEMPLE)) {
         if (give_feedback)
-            pline("%s resists your magic!", Monnam(mtmp));
+            pline(_("%s resists your magic!"), Monnam(mtmp));
         return FALSE;
     } else if (engulfing_u(mtmp) && noteleport_level(mtmp)) {
         if (give_feedback)
-            You("are no longer inside %s!", mon_nam(mtmp));
+            You(_("are no longer inside %s!"), mon_nam(mtmp));
         unstuck(mtmp);
         if (!rloc(mtmp, RLOC_MSG))
             m_into_limbo(mtmp);

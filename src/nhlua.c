@@ -636,7 +636,7 @@ nhl_pline(lua_State *L)
     int argc = lua_gettop(L);
 
     if (argc == 1 || argc == 2) {
-        pline("%s", luaL_checkstring(L, 1));
+        pline(_("%s"), luaL_checkstring(L, 1));
         if (lua_toboolean(L, 2))
             display_nhwindow(WIN_MESSAGE, TRUE); /* --more-- */
     } else
@@ -1735,7 +1735,7 @@ nhl_gamestate(lua_State *L)
 
         /* restore game state */
         svm.moves = gg.gmst_moves;
-        pline("Resetting time to move #%ld.", svm.moves);
+        pline(_("Resetting time to move #%ld."), svm.moves);
         gg.gmst_moves = 0L;
 
         gl.lastinvnr = 51;

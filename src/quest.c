@@ -157,13 +157,11 @@ is_pure(boolean talk)
 
     if (wizard && talk) {
         if (u.ualign.type != original_alignment) {
-            You("are currently %s instead of %s.", align_str(u.ualign.type),
-                align_str(original_alignment));
+            You(_("are currently %s instead of %s."), align_str(u.ualign.type), align_str(original_alignment));
         } else if (u.ualignbase[A_CURRENT] != original_alignment) {
-            You("have converted.");
+            You(_("have converted."));
         } else if (u.ualign.record < MIN_QUEST_ALIGN) {
-            You("are currently %d and require %d.", u.ualign.record,
-                MIN_QUEST_ALIGN);
+            You(_("are currently %d and require %d."), u.ualign.record, MIN_QUEST_ALIGN);
             if (yn_function("adjust?", (char *) 0, 'y', TRUE) == 'y')
                 u.ualign.record = MIN_QUEST_ALIGN;
         }
@@ -190,7 +188,7 @@ expulsion(boolean seal)
     struct trap *t;
     int portal_flag = u.uevent.qexpelled ? UTOTYPE_NONE : UTOTYPE_PORTAL;
 
-    br = dungeon_branch(_("The Quest"));
+    br = dungeon_branch("The Quest");
     dest = (br->end1.dnum == u.uz.dnum) ? &br->end2 : &br->end1;
     if (seal)
         portal_flag |= UTOTYPE_RMPORTAL;
@@ -454,7 +452,7 @@ prisoner_speaks(struct monst *mtmp)
         && (mtmp->mstrategy & STRAT_WAITMASK)) {
         /* Awaken the prisoner */
         if (canseemon(mtmp))
-            pline("%s speaks:", Monnam(mtmp));
+            pline(_("%s speaks:"), Monnam(mtmp));
         SetVoice(mtmp, 0, 80, 0);
         verbalize("I'm finally free!");
         mtmp->mstrategy &= ~STRAT_WAITMASK;

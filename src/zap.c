@@ -197,7 +197,7 @@ bhitm(struct monst *mtmp, struct obj *otmp)
             if (disguised_mimic && !disguised_as_mon(mtmp))
                 seemimic(mtmp);
             shieldeff(mtmp->mx, mtmp->my);
-            pline("%s", _("Boing!"));
+            pline(_("%s"), _("Boing!"));
             /* 5.0: used to 'break' to avoid setting learn_it here */
         } else if (u.uswallow || rnd(20) < 10 + find_mac(mtmp)) {
             if (disguised_mimic)
@@ -224,8 +224,8 @@ bhitm(struct monst *mtmp, struct obj *otmp)
             check_gear_next_turn(mtmp); /* might want speed boots */
 
             if (engulfing_u(mtmp) && is_whirly(mtmp->data)) {
-                You("disrupt %s!", mon_nam(mtmp));
-                pline("%s", _("A huge hole opens up..."));
+                You(_("disrupt %s!"), mon_nam(mtmp));
+                pline(_("%s"), _("A huge hole opens up..."));
                 expels(mtmp, mtmp->data, TRUE);
             }
         }
@@ -289,7 +289,7 @@ bhitm(struct monst *mtmp, struct obj *otmp)
                with their metabolism...) */
             if (mtmp->cham == NON_PM && !rn2(25)) {
                 if (canseemon(mtmp)) {
-                    pline("%s shudders!", Monnam(mtmp));
+                    pline(_("%s shudders!"), Monnam(mtmp));
                     learn_it = TRUE;
                 }
                 /* svc.context.bypasses = TRUE; ## for make_corpse() */
@@ -356,14 +356,14 @@ bhitm(struct monst *mtmp, struct obj *otmp)
         Strcpy(nambuf, Monnam(mtmp));
         mon_set_minvis(mtmp, FALSE);
         if (!oldinvis && knowninvisible(mtmp)) {
-            pline("%s turns transparent!", nambuf);
+            pline(_("%s turns transparent!"), nambuf);
             reveal_invis = TRUE;
             learn_it = TRUE;
         } else if (couldsee && !canseemon(mtmp)) {
             /* keep the immediate effects of make invisible and teleportation
                ambiguous by using the same message that's used if we
                teleported mtmp (and it ended up somewhere you can't see) */
-            pline("%s vanishes!", nambuf);
+            pline(_("%s vanishes!"), nambuf);
         }
         break;
     }
@@ -403,12 +403,11 @@ bhitm(struct monst *mtmp, struct obj *otmp)
             ret = 1;
             if (mtmp->data->msize < MZ_HUMAN && !m_is_steadfast(mtmp)) {
                 if (canseemon(mtmp))
-                    pline("%s is knocked back!",
-                          Monnam(mtmp));
+                    pline(_("%s is knocked back!"), Monnam(mtmp));
                 mhurtle(mtmp, mtmp->mx - u.ux, mtmp->my - u.uy, rnd(2));
             } else {
                 if (canseemon(mtmp))
-                    pline("%s doesn't budge.", Monnam(mtmp));
+                    pline(_("%s doesn't budge."), Monnam(mtmp));
             }
             if (!DEADMONSTER(mtmp)) {
                 wakeup(mtmp, !mindless(mtmp->data));
@@ -422,10 +421,9 @@ bhitm(struct monst *mtmp, struct obj *otmp)
             if (cansee(mtmp->mx, mtmp->my)) {
                 if (!canspotmon(mtmp))
                     Strcpy(buf, An(distant_name(obj, xname)));
-                pline("%s falls to the %s.", buf,
-                      surface(mtmp->mx, mtmp->my));
+                pline(_("%s falls to the %s."), buf, surface(mtmp->mx, mtmp->my));
             } else if (canspotmon(mtmp)) {
-                pline("%s falls off.", buf);
+                pline(_("%s falls off."), buf);
             }
             mdrop_obj(mtmp, obj, FALSE);
         }
@@ -455,8 +453,7 @@ bhitm(struct monst *mtmp, struct obj *otmp)
                     } else
                         mimic_hit_msg(mtmp, otyp);
                 } else
-                    pline("%s looks%s better.", Monnam(mtmp),
-                          otyp == SPE_EXTRA_HEALING ? " much" : "");
+                    pline(_("%s looks%s better."), Monnam(mtmp), otyp == SPE_EXTRA_HEALING ? " much" : "");
             }
             if (mtmp->mtame && Role_if(PM_HEALER) && (delta > 0)) {
                 more_experienced(min(delta, healamt), 0);
@@ -502,7 +499,7 @@ bhitm(struct monst *mtmp, struct obj *otmp)
                 mesg = "looks rather fleshy for a moment.";
 
             if (canseemon(mtmp))
-                pline("%s %s", name, mesg);
+                pline(_("%s %s"), name, mesg);
         } else if (mtmp->data->mlet == S_MIMIC
                    && ((M_AP_TYPE(mtmp) == M_AP_FURNITURE
                         && stone_furniture_type(mtmp->mappearance))
@@ -538,7 +535,7 @@ bhitm(struct monst *mtmp, struct obj *otmp)
             } else {
                 mtmp->m_lev--;
                 if (canseemon(mtmp))
-                    pline("%s suddenly seems weaker!", Monnam(mtmp));
+                    pline(_("%s suddenly seems weaker!"), Monnam(mtmp));
             }
         }
         break;
@@ -584,9 +581,9 @@ release_hold(void)
     } else if (u.uswallow) { /* possible for sticky hero to be swallowed */
         if (digests(mtmp->data)) {
             if (!Blind)
-                pline("%s opens its mouth!", Monnam(mtmp));
+                pline(_("%s opens its mouth!"), Monnam(mtmp));
             else
-                You_feel("a sudden rush of air!");
+                You_feel(_("a sudden rush of air!"));
         }
         /* gives "you get regurgitated" or "you get expelled from <mon>" */
         expels(mtmp, mtmp->data, TRUE);
@@ -595,7 +592,7 @@ release_hold(void)
            set_ustuck() will set flag for botl update, You() pline will
            trigger a status update with "UHold" removed */
         set_ustuck((struct monst *) 0);
-        You("release %s.", mon_nam(mtmp));
+        You(_("release %s."), mon_nam(mtmp));
     } else { /* held but not swallowed */
         char relbuf[BUFSZ];
 
@@ -604,7 +601,7 @@ release_hold(void)
             Sprintf(relbuf, "from %s grasp", s_suffix(mon_nam(mtmp)));
         else
             Sprintf(relbuf, "by %s", mon_nam(mtmp));
-        You("are released %s.", relbuf);
+        You(_("are released %s."), relbuf);
     }
 }
 
@@ -634,8 +631,7 @@ probe_monster(struct monst *mtmp)
         (void) display_minventory(mtmp, MINV_ALL | MINV_NOLET | PICK_NONE,
                                   (char *) 0);
     } else {
-        pline("%s is not carrying anything%s.", noit_Monnam(mtmp),
-              engulfing_u(mtmp) ? " besides you" : "");
+        pline(_("%s is not carrying anything%s."), noit_Monnam(mtmp), engulfing_u(mtmp) ? " besides you" : "");
     }
 }
 
@@ -967,8 +963,7 @@ revive(struct obj *corpse, boolean by_hero)
     if (corpse->norevive
         || (mons[montype].mlet == S_EEL && !IS_POOL(levl[x][y].typ))) {
         if (cansee(x, y))
-            pline("%s twitches feebly.",
-                upstart(corpse_xname(corpse, (const char *) 0, CXN_PFX_THE)));
+            pline(_("%s twitches feebly."), upstart(corpse_xname(corpse, (const char *) 0, CXN_PFX_THE)));
         return (struct monst *) 0;
     }
 
@@ -1045,12 +1040,12 @@ revive(struct obj *corpse, boolean by_hero)
             Strcat(buf, corpse_xname(corpse, (const char *) 0, CXN_NO_PFX));
             if (one_of) /* could be simplified to ''corpse->quan = 1L;'' */
                 corpse->quan--;
-            pline("%s glows iridescently.", upstart(buf));
+            pline(_("%s glows iridescently."), upstart(buf));
             iflags.last_msg = PLNMSG_OBJ_GLOWS; /* usually for BUC change */
         } else if (shkp) {
             /* need some prior description of the corpse since
                stolen_value() will refer to the object as "it" */
-            pline("%s", _("A corpse is resuscitated."));
+            pline(_("%s"), _("A corpse is resuscitated."));
         }
         /* don't charge for shopkeeper's own corpse if we just revived him */
         if (shkp && mtmp != shkp)
@@ -1071,8 +1066,7 @@ revive(struct obj *corpse, boolean by_hero)
         ghost = find_mid(m_id, FM_FMON);
         if (ghost && ghost->data == &mons[PM_GHOST]) {
             if (canseemon(ghost))
-                pline("%s is suddenly drawn into its former body!",
-                      Monnam(ghost));
+                pline(_("%s is suddenly drawn into its former body!"), Monnam(ghost));
             /* transfer the ghost's inventory along with it */
             while ((otmp = ghost->minvent) != 0) {
                 obj_extract_self(otmp);
@@ -1204,12 +1198,9 @@ unturn_dead(struct monst *mon)
                 owner[0] = '\0';
             }
             if (youseeit)
-                pline("%s%s suddenly %s%s%s!", owner, corpse,
-                      nonliving(mtmp2->data) ? "reanimates" : "comes alive",
-                      different_type ? " as " : "",
-                      different_type ? an(mon_pmname(mtmp2)) : "");
+                pline(_("%s%s suddenly %s%s%s!"), owner, corpse, nonliving(mtmp2->data) ? "reanimates" : "comes alive", different_type ? " as " : "", different_type ? an(mon_pmname(mtmp2)) : "");
             else if (canseemon(mtmp2))
-                pline("%s suddenly appears!", Amonnam(mtmp2));
+                pline(_("%s suddenly appears!"), Amonnam(mtmp2));
         } else {
             /* revival failed; corpse 'otmp' is intact */
             otmp->norevive = save_norevive ? 1 : 0;
@@ -1227,7 +1218,7 @@ unturn_you(void)
     (void) unturn_dead(&gy.youmonst); /* hit carried corpses and eggs */
 
     if (is_undead(gy.youmonst.data)) {
-        You_feel("frightened and %sstunned.", Stunned ? "even more " : "");
+        You_feel(_("frightened and %sstunned."), Stunned ? "even more " : "");
         make_stunned((HStun & TIMEOUT) + (long) rnd(30), FALSE);
     } else {
         You(_("shudder in dread."));
@@ -1627,8 +1618,7 @@ create_polymon(struct obj *obj, int okind)
     polyuse(obj, okind, (int) mons[pm_index].cwt);
 
     if (mtmp && cansee(mtmp->mx, mtmp->my)) {
-        pline("Some %sobjects meld, and %s arises from the pile!", material,
-              a_monnam(mtmp));
+        pline(_("Some %sobjects meld, and %s arises from the pile!"), material, a_monnam(mtmp));
     }
 }
 
@@ -1977,11 +1967,11 @@ poly_obj(struct obj *obj, int id)
                     && !costly_spot(u.ux, u.uy)) {
                     make_angry_shk(shkp, ox, oy);
                 } else {
-                    pline("%s gets angry!", Shknam(shkp));
+                    pline(_("%s gets angry!"), Shknam(shkp));
                     hot_pursuit(shkp);
                 }
             } else
-                Norep("%s is furious!", Shknam(shkp));
+                Norep(_("%s is furious!"), Shknam(shkp));
         }
     }
     delobj(obj);
@@ -2230,19 +2220,17 @@ bhito(struct obj *obj, struct obj *otmp)
                        statues; plural handling here and the "empty" case
                        below are superfluous because containers don't stack */
                     if (obj->otrapped)
-                        pline("%s trapped!", Tobjnam(obj, "are"));
+                        pline(_("%s trapped!"), Tobjnam(obj, "are"));
                     obj->tknown = 1;
                 }
 
                 if (!obj->cobj) {
-                    pline("%s empty.", Tobjnam(obj, "are"));
+                    pline(_("%s empty."), Tobjnam(obj, "are"));
                 } else if (SchroedingersBox(obj)) {
                     /* we don't want to force alive vs dead
                        determination for Schroedinger's Cat here,
                        so just make probing be inconclusive for it */
-                    You("aren't sure whether %s has %s or its corpse inside.",
-                        the(xname(obj)),
-                        /* unfortunately, we can't tell whether rndmonnam()
+                    You(_("aren't sure whether %s has %s or its corpse inside."), the(xname(obj)), /* unfortunately, we can't tell whether rndmonnam()
                            picks a form which can't leave a corpse */
                         an(Hallucination ? rndmonnam((char *) 0) : "cat"));
                     obj->cknown = 0;
@@ -2356,8 +2344,7 @@ bhito(struct obj *obj, struct obj *otmp)
                 } else {
                     if (cansee(ox, oy)) {
                         if (canspotmon(mtmp)) {
-                            pline("%s is resurrected!",
-                                  upstart(noname_monnam(mtmp, ARTICLE_THE)));
+                            pline(_("%s is resurrected!"), upstart(noname_monnam(mtmp, ARTICLE_THE)));
                             learn_it = by_u ? TRUE : gz.zap_oseen;
                         } else {
                             /* saw corpse but don't see monster: maybe
@@ -2365,7 +2352,7 @@ bhito(struct obj *obj, struct obj *otmp)
                                a different spot than <ox,oy> */
                             if (!type_is_pname(&mons[corpsenm]))
                                 corpsname = The(corpsname);
-                            pline("%s disappears.", corpsname);
+                            pline(_("%s disappears."), corpsname);
                         }
                     } else {
                         /* couldn't see corpse's location */
@@ -2374,7 +2361,7 @@ bhito(struct obj *obj, struct obj *otmp)
                             if (!type_is_pname(&mons[corpsenm]))
                                 corpsname = an(corpsname);
                             if (!Hallucination)
-                                You_hear("%s reviving.", corpsname);
+                                You_hear(_("%s reviving."), corpsname);
                             else
                                 You_hear(_("a defibrillator."));
                             learn_it = by_u ? TRUE : gz.zap_oseen;
@@ -2383,7 +2370,7 @@ bhito(struct obj *obj, struct obj *otmp)
                             /* didn't see corpse but do see monster: it
                                has been placed somewhere other than <ox,oy>
                                or blind hero spots it with ESP */
-                            pline("%s appears.", Monnam(mtmp));
+                            pline(_("%s appears."), Monnam(mtmp));
                     }
                     if (learn_it)
                         exercise(A_WIS, TRUE);
@@ -2524,7 +2511,7 @@ zappable(struct obj *wand)
 void
 do_enlightenment_effect(void)
 {
-    You_feel("self-knowledgeable...");
+    You_feel(_("self-knowledgeable..."));
     display_nhwindow(WIN_MESSAGE, FALSE);
     enlightenment(MAGICENLIGHTENMENT, ENL_GAMEINPROGRESS);
     pline_The("feeling subsides.");
@@ -2574,7 +2561,7 @@ zapnodir(struct obj *obj)
         break;
     case WAN_WISHING:
         if (Luck + rn2(5) < 0) {
-            pline("%s", _("Unfortunately, nothing happens."));
+            pline(_("%s"), _("Unfortunately, nothing happens."));
             known = FALSE;
         } else {
             known = !!obj->dknown;
@@ -2607,7 +2594,7 @@ backfire(struct obj *otmp)
     int dmg;
 
     otmp->in_use = TRUE; /* in case losehp() is fatal */
-    pline("%s suddenly explodes!", The(xname(otmp)));
+    pline(_("%s suddenly explodes!"), The(xname(otmp)));
     dmg = d(otmp->spe + 2, 6);
     losehp(Maybe_Half_Phys(dmg), "exploding wand", KILLED_BY_AN);
     useupall(otmp);
@@ -2652,7 +2639,7 @@ dozap(void)
         return ECMD_TIME;
     } else if (need_dir && !getdir((char *) 0)) {
         if (!Blind)
-            pline("%s glows and fades.", The(xname(obj)));
+            pline(_("%s glows and fades."), The(xname(obj)));
         /* make him pay for knowing !NODIR */
     } else if (need_dir && !u.dx && !u.dy && !u.dz) {
         if ((damage = zapyourself(obj, TRUE)) != 0) {
@@ -2675,7 +2662,7 @@ dozap(void)
         gc.current_wand = 0;
     }
     if (obj && obj->spe < 0) {
-        pline("%s to dust.", Tobjnam(obj, "turn"));
+        pline(_("%s to dust."), Tobjnam(obj, "turn"));
         useupall(obj); /* calls freeinv() -> update_inventory() */
     } else
         update_inventory(); /* maybe used a charge */
@@ -2714,7 +2701,7 @@ zapyourself(struct obj *obj, boolean ordinary)
         learn_it = TRUE;
         if (Antimagic) {
             shieldeff(u.ux, u.uy);
-            pline("%s", _("Boing!"));
+            pline(_("%s"), _("Boing!"));
             monstseesu(M_SEEN_MAGR);
         } else {
             if (ordinary) {
@@ -2755,11 +2742,11 @@ zapyourself(struct obj *obj, boolean ordinary)
         orig_dmg = d(12, 6);
         if (Fire_resistance) {
             shieldeff(u.ux, u.uy);
-            You_feel("rather warm.");
+            You_feel(_("rather warm."));
             monstseesu(M_SEEN_FIRE);
             ugolemeffects(AD_FIRE, orig_dmg);
         } else {
-            pline("%s", _("You've set yourself afire!"));
+            pline(_("%s"), _("You've set yourself afire!"));
             damage = orig_dmg;
             monstunseesu(M_SEEN_FIRE);
         }
@@ -2776,7 +2763,7 @@ zapyourself(struct obj *obj, boolean ordinary)
         orig_dmg = d(12, 6);
         if (Cold_resistance) {
             shieldeff(u.ux, u.uy);
-            You_feel("a little chill.");
+            You_feel(_("a little chill."));
             monstseesu(M_SEEN_COLD);
             ugolemeffects(AD_COLD, orig_dmg);
         } else {
@@ -2796,7 +2783,7 @@ zapyourself(struct obj *obj, boolean ordinary)
             monstseesu(M_SEEN_MAGR);
         } else {
             damage = d(4, 6);
-            pline("%s", _("Idiot!  You've shot yourself!"));
+            pline(_("%s"), _("Idiot!  You've shot yourself!"));
             monstunseesu(M_SEEN_MAGR);
         }
         break;
@@ -2830,7 +2817,7 @@ zapyourself(struct obj *obj, boolean ordinary)
 
         if (BInvis && uarmc->otyp == MUMMY_WRAPPING) {
             /* A mummy wrapping absorbs it and protects you */
-            You_feel("rather itchy under %s.", yname(uarmc));
+            You_feel(_("rather itchy under %s."), yname(uarmc));
             break;
         }
         incr_itimeout(&HInvis, rn1(15, 31));
@@ -2910,7 +2897,7 @@ zapyourself(struct obj *obj, boolean ordinary)
         learn_it = TRUE; /* (no effect for spells...) */
         healup(d(6, obj->otyp == SPE_EXTRA_HEALING ? 8 : 4), 0, FALSE,
                (obj->blessed || obj->otyp == SPE_EXTRA_HEALING));
-        You_feel("%sbetter.", obj->otyp == SPE_EXTRA_HEALING ? "much " : "");
+        You_feel(_("%sbetter."), obj->otyp == SPE_EXTRA_HEALING ? "much " : "");
         break;
     case WAN_LIGHT: /* (broken wand) */
         /* assert( !ordinary ); */
@@ -3039,7 +3026,7 @@ lightdamage(
             dmg = 10 + rnd(dmg - 10);
         if (dmg > 20)
             dmg = 20;
-        pline("Ow, that light hurts%c", (dmg > 2 || u.mh <= 5) ? '!' : '.');
+        pline(_("Ow, that light hurts%c"), (dmg > 2 || u.mh <= 5) ? '!' : '.');
         /* [composing killer/reason is superfluous here; if fatal, cause
            of death will always be "killed while stuck in creature form"] */
         if (obj->oclass == SCROLL_CLASS || obj->oclass == SPBOOK_CLASS)
@@ -3185,7 +3172,7 @@ cancel_monst(struct monst *mdef, struct obj *obj, boolean youattack,
                 if (!Blind)
                     pline(writing_vanishes, your);
                 else /* note: "dark" rather than "heavy" is intentional... */
-                    You_feel("%s headed.", Hallucination ? "dark" : "light");
+                    You_feel(_("%s headed."), Hallucination ? "dark" : "light");
                 u.mh = 0; /* fatal; death handled by rehumanize() */
             }
             if (Unchanging && u.mh > 0)
@@ -3236,7 +3223,7 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
     case WAN_PROBING:
         ptmp = 0;
         if (u.dz < 0) {
-            You("probe towards the %s.", ceiling(x, y));
+            You(_("probe towards the %s."), ceiling(x, y));
         } else { /* down */
             const char *surf;
             schar ltyp, rememberedltyp = update_mapseen_for(x, y);
@@ -3254,7 +3241,7 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
             } else {
                 surf = the(surface(x, y));
             }
-            You("probe beneath %s.", surf);
+            You(_("probe beneath %s."), surf);
             ptmp += display_binventory(x, y, TRUE);
         }
         if (!ptmp)
@@ -3309,8 +3296,7 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
                    && !Is_qstart(&u.uz)) {
             int dmg;
             /* similar to zap_dig() */
-            pline("A rock is dislodged from the %s and falls on your %s.",
-                  ceiling(x, y), body_part(HEAD));
+            pline(_("A rock is dislodged from the %s and falls on your %s."), ceiling(x, y), body_part(HEAD));
             dmg = rnd(hard_helmet(uarmh) ? 2 : 6);
             losehp(Maybe_Half_Phys(dmg), "falling rock", KILLED_BY_AN);
             if ((otmp = mksobj_at(ROCK, x, y, FALSE, FALSE)) != 0) {
@@ -3324,11 +3310,11 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
             } else if (striking && ttmp->ttyp == TRAPDOOR) {
                 /* striking transforms trapdoor into hole */
                 if (Blind && !ttmp->tseen) {
-                    pline("%s beneath you shatters.", Something);
+                    pline(_("%s beneath you shatters."), Something);
                 } else if (!ttmp->tseen) { /* => !Blind */
-                    pline("%s", _("There's a trapdoor beneath you; it shatters."));
+                    pline(_("%s"), _("There's a trapdoor beneath you; it shatters."));
                 } else {
-                    pline("%s", _("The trapdoor beneath you shatters."));
+                    pline(_("%s"), _("The trapdoor beneath you shatters."));
                     disclose = TRUE;
                 }
                 ttmp->ttyp = HOLE;
@@ -3340,12 +3326,11 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
                 /* locking transforms hole into trapdoor */
                 ttmp->ttyp = TRAPDOOR;
                 if (Blind || !ttmp->tseen) {
-                    pline("Some %s swirls beneath you.",
-                          is_ice(x, y) ? "frost" : "dust");
+                    pline(_("Some %s swirls beneath you."), is_ice(x, y) ? "frost" : "dust");
                 } else {
                     ttmp->tseen = 1;
                     newsym(x, y);
-                    pline("%s", _("A trapdoor appears beneath you."));
+                    pline(_("%s"), _("A trapdoor appears beneath you."));
                     disclose = TRUE;
                 }
                 /* hadn't fallen down hole; won't fall now */
@@ -3357,7 +3342,7 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
             || (Is_qstart(&u.uz) && u.dz < 0)) {
             pline1(nothing_happens);
         } else if (u.dz < 0) { /* we should do more... */
-            pline("Blood drips on your %s.", body_part(FACE));
+            pline(_("Blood drips on your %s."), body_part(FACE));
         } else if (u.dz > 0 && !OBJ_AT(u.ux, u.uy)) {
             /*
             Print this message only if there wasn't an engraving
@@ -3368,10 +3353,7 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
                 if (is_pool(u.ux, u.uy) || is_ice(u.ux, u.uy))
                     pline1(nothing_happens);
                 else
-                    pline("Blood %ss %s your %s.",
-                          is_lava(u.ux, u.uy) ? "boil" : "pool",
-                          Levitation ? "beneath" : "at",
-                          makeplural(body_part(FOOT)));
+                    pline(_("Blood %ss %s your %s."), is_lava(u.ux, u.uy) ? "boil" : "pool", Levitation ? "beneath" : "at", makeplural(body_part(FOOT)));
             }
         }
         break;
@@ -3422,7 +3404,7 @@ zapwrapup(void)
 {
     /* if do_osshock() set obj_zapped while polying, give a message now */
     if (go.obj_zapped)
-        You_feel("shuddering vibrations.");
+        You_feel(_("shuddering vibrations."));
     go.obj_zapped = FALSE;
 }
 
@@ -3563,15 +3545,13 @@ hit(
                              && (cansee(gb.bhitpos.x, gb.bhitpos.y)
                                  || canspotmon(mtmp) || engulfing_u(mtmp))));
 
-    pline("%s %s %s%s", The(str), vtense(str, "hit"),
-          verbosely ? mon_nam(mtmp) : "it", force);
+    pline(_("%s %s %s%s"), The(str), vtense(str, "hit"), verbosely ? mon_nam(mtmp) : "it", force);
 }
 
 void
 miss(const char *str, struct monst *mtmp)
 {
-    pline("%s %s %s.", The(str), vtense(str, "miss"),
-          ((cansee(gb.bhitpos.x, gb.bhitpos.y) || canspotmon(mtmp))
+    pline(_("%s %s %s."), The(str), vtense(str, "miss"), ((cansee(gb.bhitpos.x, gb.bhitpos.y) || canspotmon(mtmp))
            && flags.verbose) ? mon_nam(mtmp) : "it");
 }
 
@@ -3740,7 +3720,7 @@ zap_map(
             recalc_block_point(x, y);
             newsym(x, y);
             if (cansee(x, y)) {
-                pline("%s", _("Probing reveals a secret door."));
+                pline(_("%s"), _("Probing reveals a secret door."));
                 learn_it = TRUE;
             } else if (Is_rogue_level(&u.uz)) { /* from zap_over_floor() */
                 draft_message(FALSE); /* "You feel a draft." (open doorway) */
@@ -3753,7 +3733,7 @@ zap_map(
             levl[x][y].typ = CORR;
             unblock_point(x, y);
             newsym(x, y);
-            pline("%s", _("Probing exposes a secret corridor."));
+            pline(_("%s"), _("Probing exposes a secret corridor."));
             learn_it = TRUE;
 
         /* if on or over ice, describe it ("solid ice", "thin ice", &c);
@@ -3787,9 +3767,7 @@ zap_map(
                 use_the = !hallu ? (ttmp->ttyp == VIBRATING_SQUARE
                                     && Invocation_lev(&u.uz))
                                  : !rn2(4);
-                You("find %s%c",
-                    use_the ? the(ttmpname) : an(ttmpname),
-                    use_the ? '!' : '.');
+                You(_("find %s%c"), use_the ? the(ttmpname) : an(ttmpname), use_the ? '!' : '.');
                 learn_it = !hallu;
             }
         } /* t_at() */
@@ -3929,7 +3907,7 @@ bhit(
             && (weapon == THROWN_WEAPON || weapon == KICKED_WEAPON)
             && !rn2(3)) {
             if (cansee(x, y)) {
-                pline("%s gets stuck in a web!", Yname2(obj));
+                pline(_("%s gets stuck in a web!"), Yname2(obj));
                 ttmp->tseen = TRUE;
                 newsym(x, y);
             }
@@ -3947,10 +3925,9 @@ bhit(
             if (is_pool(x, y) && !mtmp) {
                 in_skip = TRUE;
                 if (!Blind)
-                    pline("%s %s%s.", Yname2(obj), otense(obj, "skip"),
-                          skipcount ? " again" : "");
+                    pline(_("%s %s%s."), Yname2(obj), otense(obj, "skip"), skipcount ? " again" : "");
                 else
-                    You_hear("%s skip.", yname(obj));
+                    You_hear(_("%s skip."), yname(obj));
                 skipcount++;
             } else if (skiprange_start > skiprange_end + 1) {
                 --skiprange_start;
@@ -3963,8 +3940,7 @@ bhit(
                     skiprange(range, &skiprange_start, &skiprange_end);
             } else if (mtmp && M_IN_WATER(mtmp->data)) {
                 if (!Blind && canspotmon(mtmp))
-                    pline("%s %s over %s.", Yname2(obj), otense(obj, "pass"),
-                          mon_nam(mtmp));
+                    pline(_("%s %s over %s."), Yname2(obj), otense(obj, "pass"), mon_nam(mtmp));
                 mtmp = (struct monst *) 0;
             }
         }
@@ -4100,15 +4076,13 @@ bhit(
 
             if ((bobj = sobj_at(BOULDER, x, y)) != 0) {
                 if (cansee(x, y))
-                    pline("%s hits %s.", The(distant_name(obj, xname)),
-                          an(xname(bobj)));
+                    pline(_("%s hits %s."), The(distant_name(obj, xname)), an(xname(bobj)));
                 range = 0;
             } else if (obj == uball) {
                 if (!test_move(x - ddx, y - ddy, ddx, ddy, TEST_MOVE)) {
                     /* nb: it didn't hit anything directly */
                     if (cansee(x, y))
-                        pline("%s jerks to an abrupt halt.",
-                              The(distant_name(obj, xname))); /* lame */
+                        pline(_("%s jerks to an abrupt halt."), The(distant_name(obj, xname))); /* lame */
                     range = 0;
                 } else if (Sokoban && (t = t_at(x, y)) != 0
                            && (is_pit(t->ttyp) || is_hole(t->ttyp))) {
@@ -4219,7 +4193,7 @@ boomhit(struct obj *obj, int dx, int dy)
         if (IS_SINK(levl[gb.bhitpos.x][gb.bhitpos.y].typ)) {
             Soundeffect(se_boomerang_klonk, 75);
             if (!Deaf)
-                pline("%s", _("Klonk!"));
+                pline(_("%s"), _("Klonk!"));
             wake_nearto(gb.bhitpos.x, gb.bhitpos.y, 20);
             break; /* boomerang falls on sink */
         }
@@ -4642,9 +4616,9 @@ burn_floor_objects(
                 cnt += delquan;
                 if (give_feedback) {
                     if (delquan > 1L)
-                        pline("%ld %s burn.", delquan, buf2);
+                        pline(_("%ld %s burn."), delquan, buf2);
                     else
-                        pline("%s burns.", An(buf1));
+                        pline(_("%s burns."), An(buf1));
                 }
             }
         }
@@ -4729,7 +4703,7 @@ disintegrate_mon(
 
     if (canseemon(mon)) {
         if (!m_amulet)
-            pline("%s is disintegrated!", Monnam(mon));
+            pline(_("%s is disintegrated!"), Monnam(mon));
         else
             hit(fltxt, mon, "!");
     }
@@ -4808,8 +4782,7 @@ dobuzz(
         if (!u.ustuck) {
             u.uswallow = 0;
         } else {
-            pline("%s rips into %s%s", The(flash_str(fltyp, FALSE)),
-                  mon_nam(u.ustuck), exclam(tmp));
+            pline(_("%s rips into %s%s"), The(flash_str(fltyp, FALSE)), mon_nam(u.ustuck), exclam(tmp));
             /* Using disintegration from the inside only makes a hole... */
             if (tmp == MAGIC_COOKIE)
                 u.ustuck->mhp = 0;
@@ -4888,13 +4861,11 @@ dobuzz(
                         && abs(type) == ZT_BREATH(ZT_DEATH)) {
                         if (canseemon(mon)) {
                             hit(flash_str(fltyp, FALSE), mon, ".");
-                            pline("%s disintegrates.", Monnam(mon));
-                            pline("%s body reintegrates before your %s!",
-                                  s_suffix(Monnam(mon)),
-                                  (eyecount(gy.youmonst.data) == 1)
+                            pline(_("%s disintegrates."), Monnam(mon));
+                            pline(_("%s body reintegrates before your %s!"), s_suffix(Monnam(mon)), (eyecount(gy.youmonst.data) == 1)
                                       ? body_part(EYE)
                                       : makeplural(body_part(EYE)));
-                            pline("%s resurrects!", Monnam(mon));
+                            pline(_("%s resurrects!"), Monnam(mon));
                         }
                         mon->mhp = mon->mhpmax;
                         break; /* Out of while loop */
@@ -4902,10 +4873,9 @@ dobuzz(
                     if (mon->data == &mons[PM_DEATH] && damgtype == ZT_DEATH) {
                         if (canseemon(mon)) {
                             hit(flash_str(fltyp, FALSE), mon, ".");
-                            pline("%s absorbs the deadly %s!", Monnam(mon),
-                                  type == ZT_BREATH(ZT_DEATH) ? "blast"
+                            pline(_("%s absorbs the deadly %s!"), Monnam(mon), type == ZT_BREATH(ZT_DEATH) ? "blast"
                                                               : "ray");
-                            pline("%s", _("It seems even stronger than before."));
+                            pline(_("%s"), _("It seems even stronger than before."));
                         }
                         break; /* Out of while loop */
                     }
@@ -4937,9 +4907,7 @@ dobuzz(
                         } else {
                             /* some armor was destroyed; no damage done */
                             if (canseemon(mon))
-                                pline("%s %s is disintegrated!",
-                                      s_suffix(Monnam(mon)),
-                                      distant_name(otmp, xname));
+                                pline(_("%s %s is disintegrated!"), s_suffix(Monnam(mon)), distant_name(otmp, xname));
                             m_useup(mon, otmp);
                         }
                         if (mon_could_move && !mon->mcanmove) /* ZT_SLEEP */
@@ -4968,7 +4936,7 @@ dobuzz(
                         (void) ureflects("But %s reflects from your %s!",
                                          "it");
                     } else
-                        pline("%s", _("For some reason you are not affected."));
+                        pline(_("%s"), _("For some reason you are not affected."));
                     monstseesu(M_SEEN_REFL);
                     dx = -dx;
                     dy = -dy;
@@ -4981,9 +4949,9 @@ dobuzz(
                     monstunseesu(M_SEEN_REFL);
                 }
             } else if (!Blind) {
-                pline("%s whizzes by you!", The(flash_str(fltyp, FALSE)));
+                pline(_("%s whizzes by you!"), The(flash_str(fltyp, FALSE)));
             } else if (damgtype == ZT_LIGHTNING) {
-                Your("%s tingles.", body_part(ARM));
+                Your(_("%s tingles."), body_part(ARM));
             }
             if (damgtype == ZT_LIGHTNING)
                 (void) flashburn((long) d(nd, 50), TRUE);
@@ -5060,10 +5028,10 @@ melt_ice(coordxy x, coordxy y, const char *msg)
         vision_recalc(1);
     newsym(x, y);
     if (cansee(x, y) || u_at(x, y))
-        Norep("%s", msg);
+        Norep(_("%s"), msg);
     if ((otmp = sobj_at(BOULDER, x, y)) != 0) {
         if (cansee(x, y))
-            pline("%s settles...", An(xname(otmp)));
+            pline(_("%s settles..."), An(xname(otmp)));
         do {
             obj_extract_self(otmp); /* boulder isn't being pushed */
             if (!boulder_hits_pool(otmp, x, y, FALSE))
@@ -5204,7 +5172,7 @@ zap_over_floor(
                     msgtxt = "The water evaporates.";
             }
             if (msgtxt && !msggiven)
-                Norep("%s", msgtxt);
+                Norep(_("%s"), msgtxt);
 
             if (lev->typ == ROOM) { /* POOL changed to ROOM above */
                 if ((mon = m_at(x, y)) != 0) {
@@ -5229,7 +5197,7 @@ zap_over_floor(
         } else if (IS_FOUNTAIN(lev->typ)) {
             create_gas_cloud(x, y, rnd(3), 0); /* 1..3, no damage */
             if (see_it)
-                pline("%s", _("Steam billows from the fountain."));
+                pline(_("%s"), _("Steam billows from the fountain."));
             rangemod -= 1;
             dryup(x, y, type > 0);
         }
@@ -5280,12 +5248,11 @@ zap_over_floor(
                 }
                 if (see_it) {
                     if (lava)
-                        Norep("The %s cools and solidifies.",
-                              hliquid("lava"));
+                        Norep(_("The %s cools and solidifies."), hliquid("lava"));
                     else if (moat)
-                        Norep("The %s is bridged with ice!", buf);
+                        Norep(_("The %s is bridged with ice!"), buf);
                     else
-                        Norep("The %s freezes.", hliquid("water"));
+                        Norep(_("The %s freezes."), hliquid("water"));
                     newsym(x, y);
                 } else if (!lava) {
                     You_hear(_("a crackling sound."));
@@ -5350,15 +5317,12 @@ zap_over_floor(
                 break;
             if ((lev->wall_info & W_NONDIGGABLE) != 0) {
                 if (see_it)
-                    Norep("The %s %s somewhat but remain intact.",
-                          defsyms[S_bars].explanation,
-                          (damgtype == ZT_ACID) ? "corrode" : "melt");
+                    Norep(_("The %s %s somewhat but remain intact."), defsyms[S_bars].explanation, (damgtype == ZT_ACID) ? "corrode" : "melt");
                 /* but nothing actually happens... */
             } else {
                 rangemod -= 3;
                 if (see_it)
-                    Norep("The %s %s.", defsyms[S_bars].explanation,
-                          (damgtype == ZT_ACID) ? "corrode away" : "melt");
+                    Norep(_("The %s %s."), defsyms[S_bars].explanation, (damgtype == ZT_ACID) ? "corrode away" : "melt");
                 dissolve_bars(x, y);
                 if (*in_rooms(x, y, SHOPBASE)) {
                     add_damage(x, y, (type >= 0) ? SHOP_BARS_COST : 0L);
@@ -5402,8 +5366,7 @@ zap_over_floor(
            (except on rogue level) */
         newsym(x, y);
         if (see_it)
-            pline("%s %s reveals a secret door.",
-                  yourzap ? "Your" : "The", zapverb);
+            pline(_("%s %s reveals a secret door."), yourzap ? "Your" : "The", zapverb);
         else if (Is_rogue_level(&u.uz))
             draft_message(FALSE); /* "You feel a draft." (open doorway) */
     }
@@ -5459,7 +5422,7 @@ zap_over_floor(
                     pline_The("door absorbs %s %s!", yourzap ? "your" : "the",
                               zapverb);
             } else
-                You_feel("vibrations.");
+                You_feel(_("vibrations."));
             break;
         }
         if (new_doormask >= 0) { /* door gets broken */
@@ -5489,7 +5452,7 @@ zap_over_floor(
     if (OBJ_AT(x, y) && damgtype == ZT_FIRE)
         if (burn_floor_objects(x, y, FALSE, type > 0) && couldsee(x, y)) {
             newsym(x, y);
-            You("%s of smoke.", !Blind ? "see a puff" : "smell a whiff");
+            You(_("%s of smoke."), !Blind ? "see a puff" : "smell a whiff");
         }
     if (!ignoremon && (mon = m_at(x, y)) != 0)
         wakeup(mon, (type >= 0) ? TRUE : FALSE);
@@ -5596,7 +5559,7 @@ break_statue(struct obj *obj)
     }
     if (by_you && Role_if(PM_ARCHEOLOGIST)
         && (obj->spe & CORPSTAT_HISTORIC)) {
-        You_feel("guilty about damaging such a historic statue.");
+        You_feel(_("guilty about damaging such a historic statue."));
         adjalign(-1);
     }
     obj->spe = 0;
@@ -5829,9 +5792,7 @@ maybe_destroy_item(
         if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
             skip = 1;
             if (u_carry ? !Blind : vis) {
-                pline("%s glows a strange %s, but remains intact.",
-                      The(u_carry ? xname(obj) : distant_name(obj, xname)),
-                      hcolor("dark red"));
+                pline(_("%s glows a strange %s, but remains intact."), The(u_carry ? xname(obj) : distant_name(obj, xname)), hcolor("dark red"));
             }
             break;
         }
@@ -5906,9 +5867,7 @@ maybe_destroy_item(
                    : ((cnt < quan) ? "Some of "     /* n of N */
                       : (quan == 2L) ? "Both of "   /* 2 of 2 */
                         : "All of ");               /* N of N */
-            pline("%s%s %s!", mult,
-                  (cnt == 1L && quan == 1L) ? Yname2(obj) : yname(obj),
-                  destroy_strings[dindx][(cnt > 1L)]);
+            pline(_("%s%s %s!"), mult, (cnt == 1L && quan == 1L) ? Yname2(obj) : yname(obj), destroy_strings[dindx][(cnt > 1L)]);
         }
         if (u_carry) { /* effects that happen only to the player */
             if (osym == POTION_CLASS && dmgtyp != AD_COLD
@@ -6359,7 +6318,7 @@ makewish(void)
     strcpy(bufcpy, buf);
     otmp = readobjnam(buf, &nothing);
     if (!otmp) {
-        pline("%s", _("Nothing fitting that description exists in the game."));
+        pline(_("%s"), _("Nothing fitting that description exists in the game."));
         if (++tries < MAXWISHTRY)
             goto retry;
         pline1(thats_enough_tries);

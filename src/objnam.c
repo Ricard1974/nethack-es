@@ -3573,10 +3573,9 @@ wizterrainwish(struct _readobjnam_data *d)
         if ((t = maketrap(x, y, trap)) != 0) {
             trap = t->ttyp;
             tname = trapname(trap, TRUE);
-            pline("%s%s.", An(tname),
-                  (trap != MAGIC_PORTAL) ? "" : " to nowhere");
+            pline(_("%s%s."), An(tname), (trap != MAGIC_PORTAL) ? "" : " to nowhere");
         } else {
-            pline("Creation of %s failed.", an(tname));
+            pline(_("Creation of %s failed."), an(tname));
         }
         return &hands_obj;
     }
@@ -3598,14 +3597,14 @@ wizterrainwish(struct _readobjnam_data *d)
     } else if (!BSTRCMPI(bp, p - 6, "throne")) {
         lev->typ = THRONE;
         lev->looted = d->looted ? T_LOOTED : 0; /* overlays 'flags' */
-        pline("%s", _("A throne."));
+        pline(_("%s"), _("A throne."));
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 4, "sink")) {
         lev->typ = SINK;
         if (oldtyp != SINK)
             svl.level.flags.nsinks++;
         lev->looted = d->looted ? (S_LPUDDING | S_LDWASHER | S_LRING) : 0;
-        pline("%s", _("A sink."));
+        pline(_("%s"), _("A sink."));
         madeterrain = TRUE;
 
     /* ("water" matches "potion of water" rather than terrain) */
@@ -3632,7 +3631,7 @@ wizterrainwish(struct _readobjnam_data *d)
             EHalluc_resistance = 1;
             new_water = waterbody_name(x, y);
             EHalluc_resistance = save_prop;
-            pline("%s.", An(new_water));
+            pline(_("%s."), An(new_water));
             /* Must manually make kelp! */
         } else {
             dbterrainmesg("Moat", x, y);
@@ -3654,8 +3653,7 @@ wizterrainwish(struct _readobjnam_data *d)
         }
         del_engr_at(x, y);
         if (!is_dbridge) {
-            pline("A %s of molten lava.",
-                  (lev->typ == LAVAPOOL) ? "pool" : "wall");
+            pline(_("A %s of molten lava."), (lev->typ == LAVAPOOL) ? "pool" : "wall");
             if (!(Levitation || Flying) || lev->typ == LAVAWALL)
                 pooleffects(FALSE);
         } else {
@@ -3681,7 +3679,7 @@ wizterrainwish(struct _readobjnam_data *d)
         if (!is_dbridge) {
             char icebuf[40];
 
-            pline("%s.", upstart(ice_descr(x, y, icebuf)));
+            pline(_("%s."), upstart(ice_descr(x, y, icebuf)));
         } else {
             dbterrainmesg("Ice", x, y);
         }
@@ -3701,7 +3699,7 @@ wizterrainwish(struct _readobjnam_data *d)
         else /* -1 - A_CHAOTIC, 0 - A_NEUTRAL, 1 - A_LAWFUL */
             al = !rn2(6) ? A_NONE : (rn2((int) A_LAWFUL + 2) - 1);
         lev->altarmask = Align2amask(al); /* overlays 'flags' */
-        pline("%s altar.", An(align_str(al)));
+        pline(_("%s altar."), An(align_str(al)));
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 5, "grave")
                || !BSTRCMPI(bp, p - 9, "headstone")) {
@@ -3709,17 +3707,17 @@ wizterrainwish(struct _readobjnam_data *d)
         if (IS_GRAVE(lev->typ)) {
             lev->looted = 0; /* overlays 'flags' */
             lev->disturbed = d->looted ? 1 : 0;
-            pline("A %sgrave.", lev->disturbed ? "disturbed " : "");
+            pline(_("A %sgrave."), lev->disturbed ? "disturbed " : "");
             madeterrain = TRUE;
         } else {
-            pline("%s", _("Can't place a grave here."));
+            pline(_("%s"), _("Can't place a grave here."));
             badterrain = TRUE;
         }
     } else if (!BSTRCMPI(bp, p - 4, "tree")) {
         lev->typ = TREE;
         lev->looted = d->looted ? (TREE_LOOTED | TREE_SWARM) : 0;
         set_wallprop_from_str(bp);
-        pline("%s", _("A tree."));
+        pline(_("%s"), _("A tree."));
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 4, "bars")) {
         lev->typ = IRONBARS;
@@ -3729,12 +3727,12 @@ wizterrainwish(struct _readobjnam_data *d)
             is already set up, that should be calculated for this spot.
             Unfortunately, it can be tricky; placing one in open space
             and then another adjacent might need to recalculate first one.] */
-        pline("%s", _("Iron bars."));
+        pline(_("%s"), _("Iron bars."));
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 5, "cloud")) {
         lev->typ = CLOUD;
         lev->flags = 0;
-        pline("%s", _("A cloud."));
+        pline(_("%s"), _("A cloud."));
         del_engr_at(x, y);
         madeterrain = TRUE;
     } else if (!BSTRCMPI(bp, p - 4, "door")
@@ -3812,7 +3810,7 @@ wizterrainwish(struct _readobjnam_data *d)
                 else
                     Strcat(dbuf, "door");
             }
-            pline("%s.", upstart(an(dbuf)));
+            pline(_("%s."), upstart(an(dbuf)));
             madeterrain = TRUE;
         } else {
             Strcpy(dbuf, secret ? "secret door" : "door");
@@ -3832,15 +3830,15 @@ wizterrainwish(struct _readobjnam_data *d)
         set_wallprop_from_str(bp);
         fix_wall_spines(max(0,u.ux-1), max(0,u.uy-1),
                         min(COLNO,u.ux+1), min(ROWNO,u.uy+1));
-        pline("%s", _("A wall."));
+        pline(_("%s"), _("A wall."));
     } else if (!BSTRCMPI(bp, p - 15, "secret corridor")) {
         if (lev->typ == CORR) {
             lev->typ = SCORR;
             /* neither CORR nor SCORR uses 'flags' or 'horizontal' */
-            pline("%s", _("Secret corridor."));
+            pline(_("%s"), _("Secret corridor."));
             madeterrain = TRUE;
         } else {
-            pline("%s", _("Secret corridor requires corridor location."));
+            pline(_("%s"), _("Secret corridor requires corridor location."));
             badterrain = TRUE;
         }
     } else if (!BSTRCMPI(bp, p - 4, "room")
@@ -3852,7 +3850,7 @@ wizterrainwish(struct _readobjnam_data *d)
             struct trap *t;
 
             lev->typ = ROOM;
-            pline("%s", _("Room floor."));
+            pline(_("%s"), _("Room floor."));
             if (IS_FURNITURE(oldtyp))
                 count_level_features();
             if ((t = t_at(x, y)) != 0 && t->ttyp != MAGIC_PORTAL)
@@ -3864,7 +3862,7 @@ wizterrainwish(struct _readobjnam_data *d)
             dbterrainmesg("Floor", x, y);
             madeterrain = TRUE;
         } else {
-            pline("%s", _("Room|floor|ground not allowed here."));
+            pline(_("%s"), _("Room|floor|ground not allowed here."));
             badterrain = TRUE;
         }
     }
@@ -3921,8 +3919,7 @@ dbterrainmesg(
     const char *newtype,
     coordxy x, coordxy y)
 {
-    pline("%s %s the drawbridge.", newtype,
-          (levl[x][y].typ == DRAWBRIDGE_UP) ? "in front of" : "under");
+    pline(_("%s %s the drawbridge."), newtype, (levl[x][y].typ == DRAWBRIDGE_UP) ? "in front of" : "under");
 }
 
 #define TIN_UNDEFINED 0
@@ -5375,8 +5372,7 @@ readobjnam(char *bp, struct obj *no_wish)
         artifact_exists(d.otmp, safe_oname(d.otmp), FALSE, ONAME_NO_FLAGS);
         obfree(d.otmp, (struct obj *) 0);
         d.otmp = &hands_obj;
-        pline("For a moment, you feel %s in your %s, but it disappears!",
-              something, makeplural(body_part(HAND)));
+        pline(_("For a moment, you feel %s in your %s, but it disappears!"), something, makeplural(body_part(HAND)));
         return d.otmp;
     }
 

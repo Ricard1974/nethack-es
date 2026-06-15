@@ -163,9 +163,7 @@ alreadynamed(struct monst *mtmp, char *monnambuf, char *usrbuf)
         boolean name_not_title = (has_mgivenname(mtmp)
                                   || type_is_pname(mtmp->data)
                                   || mtmp->isshk);
-        pline("%s would rather keep %s existing %s.", upstart(monnambuf),
-              is_rider(mtmp->data) ? "its" : mhis(mtmp),
-              name_not_title ? "name" : "title");
+        pline(_("%s would rather keep %s existing %s."), upstart(monnambuf), is_rider(mtmp->data) ? "its" : mhis(mtmp), name_not_title ? "name" : "title");
         return TRUE;
     } else if (fuzzymatch(usrbuf, monnambuf, " -_", TRUE)
                /* catch trying to name "the Oracle" as "Oracle" */
@@ -179,10 +177,9 @@ alreadynamed(struct monst *mtmp, char *monnambuf, char *usrbuf)
                    && fuzzymatch(usrbuf, p + 4, " -_", TRUE))) {
         if (is_rider(mtmp->data)) {
             /* avoid gendered pronoun for riders */
-            pline("%s is already called that.", upstart(monnambuf));
+            pline(_("%s is already called that."), upstart(monnambuf));
         } else {
-            pline("%s is already called %s.",
-                  upstart(strcpy(pronounbuf, mhe(mtmp))), monnambuf);
+            pline(_("%s is already called %s."), upstart(strcpy(pronounbuf, mhe(mtmp))), monnambuf);
         }
         return TRUE;
     } else if (mtmp->data == &mons[PM_JUIBLEX]
@@ -205,7 +202,7 @@ do_mgivenname(void)
     boolean do_swallow = FALSE;
 
     if (Hallucination) {
-        You("would never recognize it anyway.");
+        You(_("would never recognize it anyway."));
         return;
     }
     cc.x = u.ux;
@@ -219,8 +216,7 @@ do_mgivenname(void)
         if (u.usteed && canspotmon(u.usteed)) {
             mtmp = u.usteed;
         } else {
-            pline("This %s creature is called %s and cannot be renamed.",
-                  beautiful(), svp.plname);
+            pline(_("This %s creature is called %s and cannot be renamed."), beautiful(), svp.plname);
             return;
         }
     } else
@@ -243,7 +239,7 @@ do_mgivenname(void)
                 || M_AP_TYPE(mtmp) == M_AP_OBJECT
                 || (mtmp->minvis && !See_invisible))))) {
 
-        pline("I see no monster there.");
+        pline("%s", _("I see no monster there."));
         return;
     }
     /* special case similar to the one in lookat() */
@@ -264,7 +260,7 @@ do_mgivenname(void)
      */
     if ((mtmp->data->geno & G_UNIQ) && !mtmp->ispriest) {
         if (!alreadynamed(mtmp, monnambuf, buf))
-            pline("%s doesn't like being called names!", upstart(monnambuf));
+            pline(_("%s doesn't like being called names!"), upstart(monnambuf));
     } else if (mtmp->isshk
                && !(Deaf || helpless(mtmp)
                     || mtmp->data->msound <= MS_ANIMAL)) {
@@ -275,7 +271,7 @@ do_mgivenname(void)
     } else if (mtmp->ispriest || mtmp->isminion || mtmp->isshk
                || mtmp->data == &mons[PM_GHOST] || has_ebones(mtmp)) {
         if (!alreadynamed(mtmp, monnambuf, buf))
-            pline("%s will not accept the name %s.", upstart(monnambuf), buf);
+            pline(_("%s will not accept the name %s."), upstart(monnambuf), buf);
     } else {
         (void) christen_monst(mtmp, buf);
     }
@@ -295,7 +291,7 @@ do_oname(struct obj *obj)
 
     /* Do this now because there's no point in even asking for a name */
     if (obj->otyp == SPE_NOVEL) {
-        pline("%s already has a published name.", Ysimple_name2(obj));
+        pline(_("%s already has a published name."), Ysimple_name2(obj));
         return;
     }
 
@@ -319,8 +315,7 @@ do_oname(struct obj *obj)
     if (obj->oartifact) {
         /* this used to give "The artifact seems to resist the attempt."
            but resisting is definite, no "seems to" about it */
-        pline("%s resists the attempt.",
-              /* any artifact should always pass the has_oname() test
+        pline(_("%s resists the attempt."), /* any artifact should always pass the has_oname() test
                  but be careful just in case */
               has_oname(obj) ? ONAME(obj) : "The artifact");
         return;
@@ -348,9 +343,9 @@ do_oname(struct obj *obj)
         do {
             wipeout_text(bufp, rnd_on_display_rng(2), (unsigned) 0);
         } while (!strcmp(buf, bufcpy));
-        pline("While engraving, your %s slips.", body_part(HAND));
+        pline(_("While engraving, your %s slips."), body_part(HAND));
         display_nhwindow(WIN_MESSAGE, FALSE);
-        You("engrave: \"%s\".", buf);
+        You(_("engrave: \"%s\"."), buf);
         /* violate illiteracy conduct since hero attempted to write
            a valid artifact name */
         u.uconduct.literate++;
@@ -577,10 +572,10 @@ docallcmd(void)
             (void) xname(obj);
 
             if (!obj->dknown) {
-                You("would never recognize another one.");
+                You(_("would never recognize another one."));
 #if 0
             } else if (call_ok(obj) == GETOBJ_EXCLUDE) {
-                You("know those as well as you ever will.");
+                You(_("know those as well as you ever will."));
 #endif
             } else {
                 docall(obj);
@@ -703,8 +698,7 @@ namefloorobj(void)
     }
     if (!obj) {
         /* "under you" is safe here since there's no object to hide under */
-        There("doesn't seem to be any object %s.",
-              u_at(cc.x, cc.y) ? "under you" : "there");
+        There(_("doesn't seem to be any object %s."), u_at(cc.x, cc.y) ? "under you" : "there");
         return;
     }
     /* note well: 'obj' might be an instance of STRANGE_OBJECT if target
@@ -742,11 +736,9 @@ namefloorobj(void)
               The(buf), use_plural ? "decide" : "decides",
               unames[rn2_on_display_rng(SIZE(unames))]);
     } else if (call_ok(obj) == GETOBJ_EXCLUDE) {
-        pline("%s %s can't be assigned a type name.",
-              use_plural ? "Those" : "That", buf);
+        pline(_("%s %s can't be assigned a type name."), use_plural ? "Those" : "That", buf);
     } else if (!obj->dknown) {
-        You("don't know %s %s well enough to name %s.",
-            use_plural ? "those" : "that", buf, use_plural ? "them" : "it");
+        You(_("don't know %s %s well enough to name %s."), use_plural ? "those" : "that", buf, use_plural ? "them" : "it");
     } else {
         docall(obj);
     }

@@ -278,7 +278,7 @@ rumor_check(void)
        we didn't bother trying again this time */
     } else if (gt.true_rumor_size < 0L) {
  no_rumors: /* file could be opened but init_rumors() didn't like it */
-        pline("%s", _("rumors not accessible."));
+        pline(_("%s"), _("rumors not accessible."));
         /* engravings, epitaphs, and bogus monsters will still be shown,
            and in tmpwin rather than via additional pline() calls */
         display_nhwindow(WIN_MESSAGE, TRUE); /* --more-- */
@@ -543,7 +543,7 @@ outrumor(
         } else if (Blind) {
             if (mechanism == BY_COOKIE)
                 pline(fortune_msg);
-            pline("%s", _("What a pity that you cannot read it!"));
+            pline(_("%s"), _("What a pity that you cannot read it!"));
             return;
         }
     }
@@ -554,8 +554,7 @@ outrumor(
     switch (mechanism) {
     case BY_ORACLE:
         /* Oracle delivers the rumor */
-        pline("True to her word, the Oracle %ssays: ",
-              (!rn2(4) ? "offhandedly "
+        pline(_("True to her word, the Oracle %ssays: "), (!rn2(4) ? "offhandedly "
                        : (!rn2(3) ? "casually "
                                   : (rn2(2) ? "nonchalantly " : ""))));
         SetVoice((struct monst *) 0, 0, 80, voice_oracle);
@@ -567,7 +566,7 @@ outrumor(
         FALLTHROUGH;
     /* FALLTHRU */
     case BY_PAPER:
-        pline("%s", _("It reads:"));
+        pline(_("%s"), _("It reads:"));
         break;
     }
     pline1(line);
@@ -707,7 +706,7 @@ doconsult(struct monst *oracl)
         There(_("is no one here to consult."));
         return ECMD_OK;
     } else if (!oracl->mpeaceful) {
-        pline("%s is in no mood for consultations.", Monnam(oracl));
+        pline(_("%s is in no mood for consultations."), Monnam(oracl));
         return ECMD_OK;
     } else if (!umoney) {
         You(_("have no gold."));

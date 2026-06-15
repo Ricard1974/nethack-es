@@ -55,11 +55,11 @@ moveloop_preamble(boolean resuming)
         You(_("are lucky!  Full moon tonight."));
         change_luck(1);
     } else if (flags.moonphase == NEW_MOON) {
-        pline("%s", _("Be careful!  New moon tonight."));
+        pline(_("%s"), _("Be careful!  New moon tonight."));
     }
     flags.friday13 = friday_13th();
     if (flags.friday13) {
-        pline("%s", _("Watch out!  Bad things can happen on Friday the 13th."));
+        pline(_("%s"), _("Watch out!  Bad things can happen on Friday the 13th."));
         change_luck(-1);
     }
 
@@ -687,7 +687,7 @@ stop_occupation(void)
 {
     if (go.occupation) {
         if (!maybe_finished_meal(TRUE))
-            You("stop %s.", go.occtxt);
+            You(_("stop %s."), go.occtxt);
         go.occupation = (int (*)(void)) 0;
         disp.botl = TRUE; /* in case u.uhs changed */
         nomul(0);
@@ -900,12 +900,12 @@ welcome(boolean new_game) /* false => restoring an old game */
     /* skip "welcome back" if restoring a doomed character */
     if (!new_game && Upolyd && ugenocided()) {
         /* death via self-genocide is pending */
-        pline("You're back, but you still feel %s inside.", udeadinside());
+        pline(_("You're back, but you still feel %s inside."), udeadinside());
         return;
     }
 
     if (Hallucination)
-        pline("%s", _("NetHack is filmed in front of an undead studio audience."));
+        pline(_("%s"), _("NetHack is filmed in front of an undead studio audience."));
 
     /*
      * The "welcome back" message always describes your innate form
@@ -1016,7 +1016,7 @@ interrupt_multi(const char *msg)
     if (gm.multi > 0 && !svc.context.travel && !svc.context.run) {
         nomul(0);
         if (flags.verbose && msg)
-            Norep("%s", msg);
+            Norep(_("%s"), msg);
     }
 }
 

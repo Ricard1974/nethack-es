@@ -1172,11 +1172,11 @@ fixup_level_locations(void)
     /*
      *  I hate hardwiring these names. :-(
      */
-    quest_dnum = dname_to_dnum(_("The Quest"));
-    sokoban_dnum = dname_to_dnum(_("Sokoban"));
-    mines_dnum = dname_to_dnum(_("The Gnomish Mines"));
-    tower_dnum = dname_to_dnum(_("Vlad's Tower"));
-    tutorial_dnum = dname_to_dnum(_("The Tutorial"));
+    quest_dnum = dname_to_dnum("The Quest");
+    sokoban_dnum = dname_to_dnum("Sokoban");
+    mines_dnum = dname_to_dnum("The Gnomish Mines");
+    tower_dnum = dname_to_dnum("Vlad's Tower");
+    tutorial_dnum = dname_to_dnum("The Tutorial");
 
     /* one special fixup for dummy surface level */
     if ((x = find_level("dummy")) != 0) {
@@ -1570,7 +1570,7 @@ earth_sense(void)
 
     for (otmp = svl.level.buriedobjlist; otmp; otmp = otmp->nobj)
         if (u_at(otmp->ox, otmp->oy)) {
-            You("sense something below your %s.", makeplural(body_part(FOOT)));
+            You(_("sense something below your %s."), makeplural(body_part(FOOT)));
             return;
         }
 }
@@ -2432,7 +2432,7 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
         /* only report "no portal found" when actually expecting a portal */
         else if (Is_earthlevel(&u.uz) || Is_waterlevel(&u.uz)
                  || Is_firelevel(&u.uz) || Is_airlevel(&u.uz)
-                  || Is_qstart(&u.uz) || at_dgn_entrance(_("The Quest"))
+                  || Is_qstart(&u.uz) || at_dgn_entrance("The Quest")
                  || Is_knox(&u.uz))
             Strcpy(buf, "No portal found.");
 
@@ -2502,7 +2502,7 @@ print_level_annotation(void)
     const char *annotation;
 
     if ((annotation = get_annotation(&u.uz)) != 0)
-        You("remember this level as %s.", annotation);
+        You(_("remember this level as %s."), annotation);
 }
 
 /* ask user to annotate level lev.
@@ -3134,7 +3134,7 @@ recalc_mapseen(void)
     /* flags.castle retains previous value */
     mptr->flags.forgot = 0;
     /* flags.quest_summons disabled once quest finished */
-    mptr->flags.quest_summons = (at_dgn_entrance(_("The Quest"))
+    mptr->flags.quest_summons = (at_dgn_entrance("The Quest")
                                  && u.uevent.qcalled
                                  && !(u.uevent.qcompleted
                                       || u.uevent.qexpelled

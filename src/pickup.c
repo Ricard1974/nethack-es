@@ -238,9 +238,9 @@ query_classes(
                         where = !strcmp(action, "pick up") ? "here"
                                 : !strcmp(action, "take out") ? "inside" : "";
                     if (*where)
-                        There("are no %c's %s.", sym, where);
+                        There(_("are no %c's %s."), sym, where);
                     else
-                        You("have no %c's.", sym);
+                        You(_("have no %c's."), sym);
                     not_everything = TRUE;
                 }
             }
@@ -292,8 +292,7 @@ fatal_corpse_mistake(struct obj *obj, boolean remotely)
         return FALSE;
     }
 
-    pline("Touching %s is a fatal mistake.",
-          corpse_xname(obj, (const char *) 0, CXN_SINGULAR | CXN_ARTICLE));
+    pline(_("Touching %s is a fatal mistake."), corpse_xname(obj, (const char *) 0, CXN_SINGULAR | CXN_ARTICLE));
     instapetrify(killer_xname(obj));
     return TRUE;
 }
@@ -305,8 +304,7 @@ rider_corpse_revival(struct obj *obj, boolean remotely)
     if (!obj || obj->otyp != CORPSE || !is_rider(&mons[obj->corpsenm]))
         return FALSE;
 
-    pline("At your %s, the corpse suddenly moves...",
-          remotely ? "attempted acquisition" : "touch");
+    pline(_("At your %s, the corpse suddenly moves..."), remotely ? "attempted acquisition" : "touch");
     (void) revive_corpse(obj);
     exercise(A_WIS, FALSE);
     return TRUE;
@@ -405,9 +403,9 @@ describe_decor(void)
             Sprintf(outbuf, "%s.", upstart(fbuf));
         }
         if (ltyp == ICE && flags.mention_decor)
-            Norep("%s", outbuf);
+            Norep(_("%s"), outbuf);
         else
-            pline("%s", outbuf);
+            pline(_("%s"), outbuf);
     } else if (!Underwater) {
         if (IS_POOL(iflags.prev_decor)
             || IS_LAVA(iflags.prev_decor)
@@ -819,7 +817,7 @@ pickup(int what) /* should be a long */
         } else if (ct >= 2) {
             int via_menu = 0;
 
-            There("are %s objects here.", (ct <= 10) ? "several" : "many");
+            There(_("are %s objects here."), (ct <= 10) ? "several" : "many");
             if (!query_classes(oclasses, &selective, &all_of_a_type,
                                "pick up", *objchain_p,
                                (traverse_how & BY_NEXTHERE) ? TRUE : FALSE,
@@ -1498,7 +1496,7 @@ query_category(
         free((genericptr_t) *pick_list), *pick_list = 0;
         /* the menu entry description is "Auto-select every relevant item"
            [not sure whether issuing a message here is a good idea...] */
-        pline("%s", _("No relevant items selected."));
+        pline(_("%s"), _("No relevant items selected."));
     }
  query_done:
     destroy_nhwindow(win);
@@ -1676,8 +1674,7 @@ carry_count(struct obj *obj,            /* object to pick up... */
     /* we can carry qq of them */
     if (qq > 0) {
         if (qq < count)
-            You("can only %s %s of the %s %s.", verb,
-                (qq == 1L) ? "one" : "some", obj_nambuf, where);
+            You(_("can only %s %s of the %s %s."), verb, (qq == 1L) ? "one" : "some", obj_nambuf, where);
         *wt_after = wt;
         return qq;
     }
@@ -1693,8 +1690,7 @@ carry_count(struct obj *obj,            /* object to pick up... */
         prefx2 = "is too heavy for you to ";
         suffx = "";
     }
-    There("%s %s %s, but %s%s%s%s.", otense(obj, "are"), obj_nambuf, where,
-          prefx1, prefx2, verb, suffx);
+    There(_("%s %s %s, but %s%s%s%s."), otense(obj, "are"), obj_nambuf, where, prefx1, prefx2, verb, suffx);
 
     /* *wt_after = iw; */
     return 0L;
@@ -1711,8 +1707,7 @@ lift_object(
     int result, old_wt, new_wt, prev_encumbr, next_encumbr;
 
     if (obj->otyp == BOULDER && Sokoban) {
-        You("cannot get your %s around this %s.", body_part(HAND),
-            xname(obj));
+        You(_("cannot get your %s around this %s."), body_part(HAND), xname(obj));
         return -1;
     }
     /* override weight consideration for loadstone picked up by anybody
@@ -1728,8 +1723,7 @@ lift_object(
            [this was using simpleonames(obj) for shortest description, but
            that's suboptimal for loadstones because it omits user-assigned
            type name which is something of interest for gray stones] */
-        You("are carrying too much stuff to pick up %s %s.",
-            (obj->quan == 1L) ? "another" : "more", xname(obj));
+        You(_("are carrying too much stuff to pick up %s %s."), (obj->quan == 1L) ? "another" : "more", xname(obj));
         return -1;
     }
 
@@ -1746,8 +1740,7 @@ lift_object(
            we aren't limited by the 52 item limit for it, but caller and
            "grandcaller" aren't prepared to skip stuff and then pickup
            just gold, so the best we can do here is vary the message */
-        Your("knapsack cannot accommodate any more items%s.",
-             /* floor follows by nexthere, otherwise container so by nobj */
+        Your(_("knapsack cannot accommodate any more items%s."), /* floor follows by nexthere, otherwise container so by nobj */
              nxtobj(obj, GOLD_PIECE, (boolean) (obj->where == OBJ_FLOOR))
                  ? " (except gold)" : "");
         result = -1; /* nothing lifted */
@@ -1988,12 +1981,10 @@ encumber_msg(void)
             You(_("rebalance your load.  Movement is difficult."));
             break;
         case 3:
-            You("%s under your heavy load.  Movement is very hard.",
-                stagger(gy.youmonst.data, "stagger"));
+            You(_("%s under your heavy load.  Movement is very hard."), stagger(gy.youmonst.data, "stagger"));
             break;
         default:
-            You("%s move a handspan with this load!",
-                newcap == 4 ? "can barely" : "can't even");
+            You(_("%s move a handspan with this load!"), newcap == 4 ? "can barely" : "can't even");
             break;
         }
         disp.botl = TRUE;
@@ -2009,8 +2000,7 @@ encumber_msg(void)
             You(_("rebalance your load.  Movement is still difficult."));
             break;
         case 3:
-            You("%s under your load.  Movement is still very hard.",
-                stagger(gy.youmonst.data, "stagger"));
+            You(_("%s under your load.  Movement is still very hard."), stagger(gy.youmonst.data, "stagger"));
             break;
         }
         disp.botl = TRUE;
@@ -2054,15 +2044,13 @@ able_to_loot(
     } else if ((is_pool(x, y) && (looting || !Underwater)) || is_lava(x, y)) {
         /* at present, can't loot in water even when Underwater;
            can tip underwater, but not when over--or stuck in--lava */
-        You("cannot %s things that are deep in the %s.", verb,
-            hliquid(is_lava(x, y) ? "lava" : "water"));
+        You(_("cannot %s things that are deep in the %s."), verb, hliquid(is_lava(x, y) ? "lava" : "water"));
         return FALSE;
     } else if (nolimbs(gy.youmonst.data)) {
-        pline("Without limbs, you cannot %s anything.", verb);
+        pline(_("Without limbs, you cannot %s anything."), verb);
         return FALSE;
     } else if (looting && !freehand()) {
-        pline("Without a free %s, you cannot loot anything.",
-              body_part(HAND));
+        pline(_("Without a free %s, you cannot loot anything."), body_part(HAND));
         return FALSE;
     }
     return TRUE;
@@ -2099,14 +2087,13 @@ do_loot_cont(
 
 #if 0
         if (ccount < 2 && (svl.level.objects[cobj->ox][cobj->oy] == cobj))
-            pline("%s locked.",
-                  cobj->lknown ? "It is" : "Hmmm, it turns out to be");
+            pline(_("%s locked."), cobj->lknown ? "It is" : "Hmmm, it turns out to be");
         else
 #endif
         if (cobj->lknown)
-            pline("%s is locked.", The(xname(cobj)));
+            pline(_("%s is locked."), The(xname(cobj)));
         else
-            pline("Hmmm, %s turns out to be locked.", the(xname(cobj)));
+            pline(_("Hmmm, %s turns out to be locked."), the(xname(cobj)));
         cobj->lknown = 1;
 
         if (flags.autounlock) {
@@ -2150,8 +2137,8 @@ do_loot_cont(
     if (cobj->otyp == BAG_OF_TRICKS) {
         int tmp;
 
-        You("carefully open %s...", the(xname(cobj)));
-        pline("%s", _("It develops a huge set of teeth and bites you!"));
+        You(_("carefully open %s..."), the(xname(cobj)));
+        pline(_("%s"), _("It develops a huge set of teeth and bites you!"));
         tmp = rnd(10);
         losehp(Maybe_Half_Phys(tmp), "carnivorous bag", KILLED_BY_AN);
         makeknown(BAG_OF_TRICKS);
@@ -2203,7 +2190,7 @@ doloot_core(void)
         if (rn2(6) && reverse_loot())
             return ECMD_TIME;
         if (rn2(2)) {
-            pline("%s", _("Being confused, you find nothing to loot."));
+            pline(_("%s"), _("Being confused, you find nothing to loot."));
             return ECMD_TIME; /* costs a turn */
         }             /* else fallthrough to normal looting */
     }
@@ -2305,8 +2292,7 @@ doloot_core(void)
         if (underfoot && container_at(cc.x, cc.y, FALSE))
             goto lootcont;
         if (u.dz < 0) {
-            You("%s to loot on the %s.", dont_find_anything,
-                ceiling(cc.x, cc.y));
+            You(_("%s to loot on the %s."), dont_find_anything, ceiling(cc.x, cc.y));
             return ECMD_TIME;
         }
         mtmp = m_at(cc.x, cc.y);
@@ -2335,15 +2321,12 @@ doloot_core(void)
                     You(_("have to be at a container to loot it."));
                 }
             } else {
-                You("%s %s%shere to loot.", dont_find_anything,
-                    (prev_inquiry || prev_loot) ? "else " : "",
-                    !underfoot ? "t" : "");
+                You(_("%s %s%shere to loot."), dont_find_anything, (prev_inquiry || prev_loot) ? "else " : "", !underfoot ? "t" : "");
                 return (timepassed ? ECMD_TIME : ECMD_OK);
             }
         }
     } else if (c != 'y' && c != 'n') {
-        You("%s %s to loot.", dont_find_anything,
-            underfoot ? "here" : "there");
+        You(_("%s %s to loot."), dont_find_anything, underfoot ? "here" : "there");
     }
     return (timepassed ? ECMD_TIME : ECMD_OK);
 }
@@ -2387,7 +2370,7 @@ reverse_loot(void)
         dropx(goldob);
         /* the dropped gold might have fallen to lower level */
         if (g_at(x, y))
-            pline("%s", _("Ok, now there is loot here."));
+            pline(_("%s"), _("Ok, now there is loot here."));
     } else {
         /* find original coffers chest if present, otherwise use nearest */
         otmp = 0;
@@ -2417,11 +2400,11 @@ reverse_loot(void)
                    && (mon = makemon(courtmon(), x, y, NO_MM_FLAGS)) != 0) {
             freeinv(goldob);
             add_to_minv(mon, goldob);
-            pline("%s", _("The exchequer accepts your contribution."));
+            pline(_("%s"), _("The exchequer accepts your contribution."));
             if (!rn2(10))
                 levl[x][y].looted = T_LOOTED;
         } else {
-            You("drop %s.", doname(goldob));
+            You(_("drop %s."), doname(goldob));
             dropx(goldob);
         }
     }
@@ -2454,16 +2437,14 @@ loot_mon(struct monst *mtmp, int *passed_info, boolean *prev_loot)
                 return 0;
             }
             if (otmp->cursed) {
-                You("can't.  The saddle seems to be stuck to %s.",
-                    x_monnam(mtmp, ARTICLE_THE, (char *) 0,
+                You(_("can't.  The saddle seems to be stuck to %s."), x_monnam(mtmp, ARTICLE_THE, (char *) 0,
                              SUPPRESS_SADDLE, FALSE));
                 /* the attempt costs you time */
                 return 1;
             }
             extract_from_minvent(mtmp, otmp, TRUE, FALSE);
             if (flags.verbose)
-                You("take %s off of %s.",
-                    thesimpleoname(otmp), mon_nam(mtmp));
+                You(_("take %s off of %s."), thesimpleoname(otmp), mon_nam(mtmp));
             otmp = hold_another_object(otmp, "You drop %s!", doname(otmp),
                                        (const char *) 0);
             nhUse(otmp);
@@ -2571,11 +2552,10 @@ in_container(struct obj *obj)
         You(_("must be kidding."));
         return 0;
     } else if (obj == gc.current_container) {
-        pline("%s", _("That would be an interesting topological exercise."));
+        pline(_("%s"), _("That would be an interesting topological exercise."));
         return 0;
     } else if (obj->owornmask & (W_ARMOR | W_ACCESSORY)) {
-        Norep("You cannot %s %s you are wearing.",
-              Icebox ? "refrigerate" : "stash", something);
+        Norep(_("You cannot %s %s you are wearing."), Icebox ? "refrigerate" : "stash", something);
         return 0;
     } else if ((obj->otyp == LOADSTONE) && obj->cursed) {
         set_bknown(obj, 1);
@@ -2589,10 +2569,10 @@ in_container(struct obj *obj)
          * steal them.  It also becomes a pain to check to see if someone
          * has the Amulet.  Ditto for the Candelabrum, the Bell and the Book.
          */
-        pline("%s cannot be confined in such trappings.", The(xname(obj)));
+        pline(_("%s cannot be confined in such trappings."), The(xname(obj)));
         return 0;
     } else if (obj->otyp == LEASH && obj->leashmon != 0) {
-        pline("%s attached to your pet.", Tobjnam(obj, "are"));
+        pline(_("%s attached to your pet."), Tobjnam(obj, "are"));
         return 0;
     } else if (obj == uwep) {
         if (welded(obj)) {
@@ -2620,7 +2600,7 @@ in_container(struct obj *obj)
         || (obj->otyp == STATUE && bigmonst(&mons[obj->corpsenm]))) {
         /* consumes multiple obufs but not enough to overwrite the result */
         Strcpy(buf, the(xname(obj)));
-        You("cannot fit %s into %s.", buf, the(xname(gc.current_container)));
+        You(_("cannot fit %s into %s."), buf, the(xname(gc.current_container)));
         return 0;
     }
 
@@ -2698,7 +2678,7 @@ in_container(struct obj *obj)
 
     if (gc.current_container) {
         Strcpy(buf, the(xname(gc.current_container)));
-        You("put %s into %s.", doname(obj), buf);
+        You(_("put %s into %s."), doname(obj), buf);
 
         /* gold in container always needs to be added to credit */
         if (floor_container && obj->oclass == COIN_CLASS)
@@ -2810,9 +2790,9 @@ mbag_item_gone(boolean held, struct obj *item, boolean silent)
 
     if (!silent) {
         if (item->dknown)
-            pline("%s %s vanished!", Doname2(item), otense(item, "have"));
+            pline(_("%s %s vanished!"), Doname2(item), otense(item, "have"));
         else
-            You("%s %s disappear!", Blind ? "notice" : "see", doname(item));
+            You(_("%s %s disappear!"), Blind ? "notice" : "see", doname(item));
     }
 
     if (*u.ushops && (shkp = shop_keeper(*u.ushops)) != 0) {
@@ -2853,11 +2833,9 @@ observe_quantum_cat(struct obj *box, boolean makecat, boolean givemsg)
             set_malign(livecat);
             if (givemsg) {
                 if (!canspotmon(livecat))
-                    You("think %s brushed your %s.", something,
-                        body_part(FOOT));
+                    You(_("think %s brushed your %s."), something, body_part(FOOT));
                 else
-                    pline("%s inside the box is still alive!",
-                          Monnam(livecat));
+                    pline(_("%s inside the box is still alive!"), Monnam(livecat));
             }
             (void) christen_monst(livecat, sc);
             if (deadcat) {
@@ -2949,7 +2927,7 @@ u_handsy(void)
         You(_("have no hands!")); /* not `body_part(HAND)' */
         return FALSE;
     } else if (!freehand()) {
-        You("have no free %s.", body_part(HAND));
+        You(_("have no free %s."), body_part(HAND));
         return FALSE;
     }
     return TRUE;
@@ -2997,13 +2975,13 @@ use_container(
             update_inventory();
     }
     if (obj->olocked) {
-        pline("%s locked.", Tobjnam(obj, "are"));
+        pline(_("%s locked."), Tobjnam(obj, "are"));
         if (held)
             You(_("must put it down to unlock."));
         return ECMD_OK;
     } else if (obj->otrapped) {
         if (held)
-            You("open %s...", the(xname(obj)));
+            You(_("open %s..."), the(xname(obj)));
         (void) chest_trap(obj, HAND, FALSE);
         /* even if the trap fails, you've used up this turn */
         if (gm.multi >= 0) { /* in case we didn't become paralyzed */
@@ -3033,7 +3011,7 @@ use_container(
     if (cursed_mbag
         && (loss = boh_loss(gc.current_container, held)) != 0) {
         used = ECMD_TIME;
-        You("owe %ld %s for lost merchandise.", loss, currency(loss));
+        You(_("owe %ld %s for lost merchandise."), loss, currency(loss));
         gc.current_container->owt = weight(gc.current_container);
     }
     /* might put something in if carrying anything other than just the
@@ -3158,8 +3136,7 @@ use_container(
     }
 
     if ((loot_in || stash_one) && !inokay) {
-        You("don't have anything%s to %s.", gi.invent ? " else" : "",
-            stash_one ? "stash" : "put in");
+        You(_("don't have anything%s to %s."), gi.invent ? " else" : "", stash_one ? "stash" : "put in");
         loot_in = stash_one = FALSE;
     }
 
@@ -3676,8 +3653,7 @@ dotip(void)
         else if (is_lava(u.ux, u.uy))
             Sprintf(buf, " and immediately %s away",
                     vtense(spillage, "burn"));
-        pline("Some %s %s onto the %s%s.", spillage,
-              vtense(spillage, "spill"), surface(u.ux, u.uy), buf);
+        pline(_("Some %s %s onto the %s%s."), spillage, vtense(spillage, "spill"), surface(u.ux, u.uy), buf);
         /* shop usage message comes after the spill message */
         if (cobj->otyp == CAN_OF_GREASE && cobj->spe > 0) {
             consume_obj_charge(cobj, TRUE);
@@ -3691,7 +3667,7 @@ dotip(void)
     else if (uarmh && cobj == uarmh)
         return tiphat() ? ECMD_TIME : ECMD_OK;
     else if (cobj->otyp == STATUE)
-        pline("%s", _("Nothing interesting happens."));
+        pline(_("%s"), _("Nothing interesting happens."));
     else
         pline1(nothing_happens);
     return ECMD_OK;
@@ -3767,13 +3743,9 @@ tipcontainer(struct obj *box) /* or bag */
          * "ObjK drops to the floor.", "ObjL drops to the floor.", &c.
          */
         if (targetbox)
-            pline("%s into %s.",
-                  box->cobj->nobj ? "Objects tumble" : "An object tumbles",
-                  the(xname(targetbox)));
+            pline(_("%s into %s."), box->cobj->nobj ? "Objects tumble" : "An object tumbles", the(xname(targetbox)));
         else
-            pline("%s out%c",
-              box->cobj->nobj ? "Objects spill" : "An object spills",
-              terse ? ':' : '.');
+            pline(_("%s out%c"), box->cobj->nobj ? "Objects spill" : "An object spills", terse ? ':' : '.');
 
         for (otmp = box->cobj; otmp; otmp = nobj) {
             nobj = otmp->nobj;
@@ -3833,10 +3805,9 @@ tipcontainer(struct obj *box) /* or bag */
                 if (altarizing) {
                     doaltarobj(otmp);
                 } else if (!terse) {
-                    pline("%s %s to the %s.", Doname2(otmp),
-                          otense(otmp, "drop"), surface(ox, oy));
+                    pline(_("%s %s to the %s."), Doname2(otmp), otense(otmp, "drop"), surface(ox, oy));
                 } else {
-                    pline("%s%c", doname(otmp), nobj ? ',' : '.');
+                    pline(_("%s%c"), doname(otmp), nobj ? ', ' : '.');
                     iflags.last_msg = PLNMSG_OBJNAM_ONLY;
                 }
                 otmp->how_lost = LOST_DROPPED;
@@ -3849,7 +3820,7 @@ tipcontainer(struct obj *box) /* or bag */
                 iflags.suppress_price--; /* reset */
         }
         if (loss) /* magic bag lost some shop goods */
-            You("owe %ld %s for lost merchandise.", loss, currency(loss));
+            You(_("owe %ld %s for lost merchandise."), loss, currency(loss));
         box->owt = weight(box); /* mbag_item_gone() doesn't update this */
         if (targetbox)
             targetbox->owt = weight(targetbox);
@@ -3910,7 +3881,7 @@ tipcontainer_gettarget(
 
     if (n_conts < 1 || !u_handsy()) {
         if (n_conts >= 1)
-            pline("%s", _("Tipping contents to floor only..."));
+            pline(_("%s"), _("Tipping contents to floor only..."));
         *cancelled = FALSE;
         return (struct obj *) 0;
     }
@@ -4031,7 +4002,7 @@ tipcontainer_checks(
     }
 
     if (box->olocked) {
-        pline("%s is locked.", upstart(thesimpleoname(box)));
+        pline(_("%s is locked."), upstart(thesimpleoname(box)));
         return TIPCHECK_LOCKED;
 
     } else if (box->otrapped) {
@@ -4093,7 +4064,7 @@ tipcontainer_checks(
         observe_quantum_cat(box, TRUE, TRUE);
         if (!Has_contents(box)) /* evidently a live cat came out */
             /* container type of "large box" is inferred */
-            pline("%sbox is now empty.", Shk_Your(yourbuf, box));
+            pline(_("%sbox is now empty."), Shk_Your(yourbuf, box));
         else /* holds cat corpse */
             empty_it = TRUE;
         box->cknown = 1;
@@ -4101,7 +4072,7 @@ tipcontainer_checks(
 
     } else if (!allowempty && !Has_contents(box)) {
         box->cknown = 1;
-        pline("%s is empty.", upstart(thesimpleoname(box)));
+        pline(_("%s is empty."), upstart(thesimpleoname(box)));
         return TIPCHECK_EMPTY;
 
     }

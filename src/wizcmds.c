@@ -253,7 +253,7 @@ wiz_kill(void)
 
     cc.x = u.ux, cc.y = u.uy;
     for (;;) {
-        pline("%s:", prompt);
+        pline(_("%s:"), prompt);
         prompt = "Next monster";
 
         flags.verbose = FALSE;
@@ -311,7 +311,7 @@ wiz_kill(void)
 
             if (!iflags.menu_requested) {
                 /* normal case: hero is credited/blamed */
-                You("%s %s!", nonliving(mtmp->data) ? "destroy" : "kill", Mn);
+                You(_("%s %s!"), nonliving(mtmp->data) ? "destroy" : "kill", Mn);
                 xkilled(mtmp, XKILL_NOMSG);
             } else { /* 'm'-prefix */
                 /* we know that monsters aren't moving because player has
@@ -320,8 +320,7 @@ wiz_kill(void)
                    need to have the mon_moving flag be True in order to
                    avoid blaming or crediting hero for their deaths */
                 svc.context.mon_moving = TRUE;
-                pline("%s is %s.", upstart(Mn),
-                      nonliving(mtmp->data) ? "destroyed" : "killed");
+                pline(_("%s is %s."), upstart(Mn), nonliving(mtmp->data) ? "destroyed" : "killed");
                 /* Null second arg suppresses the usual message */
                 monkilled(mtmp, (char *) 0, AD_PHYS);
                 svc.context.mon_moving = FALSE;
@@ -435,7 +434,7 @@ wiz_flip_level(void)
 
             docrt();
         } else {
-            pline("%s", Never_mind);
+            pline(_("%s"), Never_mind);
         }
     }
     return ECMD_OK;
@@ -500,7 +499,7 @@ wiz_telekinesis(void)
     cc.x = u.ux;
     cc.y = u.uy;
 
-    pline("%s", _("Pick a monster to hurtle."));
+    pline(_("%s"), _("Pick a monster to hurtle."));
     do {
         ans = getpos(&cc, TRUE, "a monster");
         if (ans < 0 || cc.x < 1)
@@ -549,7 +548,7 @@ int
 wiz_fuzzer(void)
 {
     if (flags.suppress_alert < FEATURE_NOTICE_VER(3,7,0)) {
-        pline("%s", _("The fuzz tester will make NetHack execute random keypresses."));
+        pline(_("%s"), _("The fuzz tester will make NetHack execute random keypresses."));
         There(_("is no conventional way out of this mode."));
     }
     if (paranoid_query(TRUE, "Do you want to start fuzz testing?")) {
@@ -899,7 +898,7 @@ wiz_smell(void)
 
     You(_("can move the cursor to a monster that you want to smell."));
     do {
-        pline("%s", _("Pick a monster to smell."));
+        pline(_("%s"), _("Pick a monster to smell."));
         ans = getpos(&cc, TRUE, "a monster");
         if (ans < 0 || cc.x < 0) {
             return ECMD_CANCEL; /* done */
@@ -923,10 +922,9 @@ wiz_smell(void)
         /* Is it a monster? */
         if (mptr) {
             if (is_you)
-                You("surreptitiously sniff under your %s.", body_part(ARM));
+                You(_("surreptitiously sniff under your %s."), body_part(ARM));
             if (!usmellmon(mptr))
-                pline("%s to not give off any smell.",
-                      is_you ? "You seem" : "That monster seems");
+                pline(_("%s to not give off any smell."), is_you ? "You seem" : "That monster seems");
             if (!glyph_is_monster(glyph))
                 map_invisible(cc.x, cc.y);
         } else {
@@ -1073,8 +1071,7 @@ wiz_intrinsic(void)
                 if (p != GLIB)
                     incr_itimeout(&u.uprops[p].intrinsic, amt);
                 disp.botl = TRUE; /* have pline() do a status update */
-                pline("Timeout for %s %s %d.", propname,
-                      oldtimeout ? "increased by" : "set to", amt);
+                pline(_("Timeout for %s %s %d."), propname, oldtimeout ? "increased by" : "set to", amt);
                 break;
             }
             /* this has to be after incr_itimeout() */
@@ -1524,11 +1521,9 @@ list_migrating_mons(
             ++other;
     }
     if (here + nxtlv + other == 0) {
-        pline("%s", _("No monsters currently migrating."));
+        pline(_("%s"), _("No monsters currently migrating."));
     } else {
-        pline(
-      "%d mon%s pending for current level, %d for next level, %d for others.",
-              here, plur(here), nxtlv, other);
+        pline(_("%d mon%s pending for current level, %d for next level, %d for others."), here, plur(here), nxtlv, other);
         prmpt[0] = xtra[0] = '\0';
         (void) strkitten(here ? prmpt : xtra, 'c');
         (void) strkitten(nxtlv ? prmpt : xtra, 'n');
@@ -1603,7 +1598,7 @@ list_migrating_mons(
             display_nhwindow(win, FALSE);
             destroy_nhwindow(win);
         } else if (c != 'q') {
-            pline("%s", _("None."));
+            pline(_("%s"), _("None."));
         }
 
     }
@@ -1781,7 +1776,7 @@ wiz_display_macros(void)
 int
 wiz_show_nhuuid(void)
 {
-    pline("The NHUUID for this game is { %s }.", svn.nhuuid);
+    pline(_("The NHUUID for this game is { %s }."), svn.nhuuid);
     return ECMD_OK;
 }
 
@@ -1897,7 +1892,7 @@ wiz_migrate_mons(void)
         getlin("How many random monsters to migrate to next level? [0]",
                inbuf);
     else
-        pline("%s", _("Can't get there from here."));
+        pline(_("%s"), _("Can't get there from here."));
     if (*inbuf == '\033' || *inbuf == '\0')
         return ECMD_OK;
 

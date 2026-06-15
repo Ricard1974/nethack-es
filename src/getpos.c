@@ -677,9 +677,7 @@ getpos_menu(coord *ccp, int gloc)
 
     if (gcount < 2) { /* gcount always includes the hero */
         free((genericptr_t) garr);
-        You("cannot %s %s.",
-            (iflags.getloc_filter == GFILTER_VIEW) ? "see" : "detect",
-            gloc_descr[gloc][0]);
+        You(_("cannot %s %s."), (iflags.getloc_filter == GFILTER_VIEW) ? "see" : "detect", gloc_descr[gloc][0]);
         return FALSE;
     }
 
@@ -841,8 +839,7 @@ getpos(coord *ccp, boolean force, const char *goal)
     if (!goal)
         goal = "desired location";
     if (flags.verbose) {
-        pline("(For instructions type a '%s')",
-              visctrl(gc.Cmd.spkeys[NHKF_GETPOS_HELP]));
+        pline(_("(For instructions type a '%s')"), visctrl(gc.Cmd.spkeys[NHKF_GETPOS_HELP]));
         msg_given = TRUE;
     }
     cx = gg.getposx = ccp->x;
@@ -858,7 +855,7 @@ getpos(coord *ccp, boolean force, const char *goal)
     lock_mouse_buttons(TRUE);
     for (;;) {
         if (show_goal_msg) {
-            pline("Move cursor to %s:", goal);
+            pline(_("Move cursor to %s:"), goal);
             curs(WIN_MAP, cx, cy);
             flush_screen(0);
             show_goal_msg = FALSE;
@@ -961,9 +958,7 @@ getpos(coord *ccp, boolean force, const char *goal)
             goto nxtc;
         } else if (c == gc.Cmd.spkeys[NHKF_GETPOS_AUTODESC]) {
             iflags.autodescribe = !iflags.autodescribe;
-            pline("Automatic description %sis %s.",
-                  flags.verbose ? "of features under cursor " : "",
-                  iflags.autodescribe ? "on" : "off");
+            pline(_("Automatic description %sis %s."), flags.verbose ? "of features under cursor " : "", iflags.autodescribe ? "on" : "off");
             if (!iflags.autodescribe)
                 show_goal_msg = TRUE;
             msg_given = TRUE;
@@ -983,14 +978,12 @@ getpos(coord *ccp, boolean force, const char *goal)
                 }
                 gidx[i] = gcount[i] = 0;
             }
-            pline("%s.", view_filters[iflags.getloc_filter]);
+            pline(_("%s."), view_filters[iflags.getloc_filter]);
             msg_given = TRUE;
             goto nxtc;
         } else if (c == gc.Cmd.spkeys[NHKF_GETPOS_MENU]) {
             iflags.getloc_usemenu = !iflags.getloc_usemenu;
-            pline("%s a menu to show possible targets%s.",
-                  iflags.getloc_usemenu ? "Using" : "Not using",
-                  iflags.getloc_usemenu
+            pline(_("%s a menu to show possible targets%s."), iflags.getloc_usemenu ? "Using" : "Not using", iflags.getloc_usemenu
                       ? " for 'm|M', 'o|O', 'd|D', and 'x|X'" : "");
             msg_given = TRUE;
             goto nxtc;
@@ -1004,8 +997,7 @@ getpos(coord *ccp, boolean force, const char *goal)
             goto nxtc;
         } else if (c == gc.Cmd.spkeys[NHKF_GETPOS_MOVESKIP]) {
             iflags.getloc_moveskip = !iflags.getloc_moveskip;
-            pline("%skipping over similar terrain when fastmoving the cursor.",
-                  iflags.getloc_moveskip ? "S" : "Not s");
+            pline(_("%skipping over similar terrain when fastmoving the cursor."), iflags.getloc_moveskip ? "S" : "Not s");
             msg_given = TRUE;
             goto nxtc;
         } else if ((cp = strchr(mMoOdDxX, c)) != 0) { /* 'm|M', 'o|O', &c */
@@ -1111,7 +1103,7 @@ getpos(coord *ccp, boolean force, const char *goal)
                             } /* column */
                         }     /* row */
                     }         /* pass */
-                    pline("Can't find dungeon feature '%c'.", c);
+                    pline(_("Can't find dungeon feature '%c'."), c);
                     msg_given = TRUE;
                     goto nxtc;
                 } else {
@@ -1126,14 +1118,13 @@ getpos(coord *ccp, boolean force, const char *goal)
                                 visctrl(cmd_from_func(do_move_north)),
                                 visctrl(cmd_from_func(do_move_east)),
                                 visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK]));
-                    pline("Unknown direction: '%s' (%s).", visctrl((char) c),
-                          note);
+                    pline(_("Unknown direction: '%s' (%s)."), visctrl((char) c), note);
                     msg_given = TRUE;
                 } /* k => matching */
             }     /* !quitchars */
             if (force)
                 goto nxtc;
-            pline("%s", _("Done."));
+            pline(_("%s"), _("Done."));
             msg_given = FALSE; /* suppress clear */
             cx = -1;
             cy = 0;

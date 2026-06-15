@@ -76,8 +76,7 @@ beehive_mon_sound(struct monst *mtmp)
             break;
         case 2:
             Soundeffect(se_bees, 100);
-            You_hear("bees in your %sbonnet!",
-                     uarmh ? "" : "(nonexistent) ");
+            You_hear(_("bees in your %sbonnet!"), uarmh ? "" : "(nonexistent) ");
             break;
         }
         return TRUE;
@@ -413,7 +412,7 @@ growl(struct monst *mtmp)
         growl_verb = growl_sound(mtmp);
     if (growl_verb) {
         if (canseemon(mtmp) || !Deaf) {
-            pline("%s %s!", Monnam(mtmp), vtense((char *) 0, growl_verb));
+            pline(_("%s %s!"), Monnam(mtmp), vtense((char *) 0, growl_verb));
             iflags.last_msg = PLNMSG_GROWL;
             if (svc.context.run)
                 nomul(0);
@@ -464,7 +463,7 @@ yelp(struct monst *mtmp)
         }
     if (yelp_verb) {
         Soundeffect(se, 70);  /* Soundeffect() handles Deaf or not Deaf */
-        pline("%s %s!", Monnam(mtmp), vtense((char *) 0, yelp_verb));
+        pline(_("%s %s!"), Monnam(mtmp), vtense((char *) 0, yelp_verb));
         if (svc.context.run)
             nomul(0);
         wake_nearto(mtmp->mx, mtmp->my, mtmp->data->mlevel * 12);
@@ -504,7 +503,7 @@ whimper(struct monst *mtmp)
         if (!Hallucination) {
             Soundeffect(se, 50);
         }
-        pline("%s %s.", Monnam(mtmp), vtense((char *) 0, whimper_verb));
+        pline(_("%s %s."), Monnam(mtmp), vtense((char *) 0, whimper_verb));
         if (svc.context.run)
             nomul(0);
         wake_nearto(mtmp->mx, mtmp->my, mtmp->data->mlevel * 6);
@@ -536,7 +535,7 @@ beg(struct monst *mtmp)
            MS_SILENT too (if caller lets that get this far) since it's
            excluded by the first two cases */
         if (canspotmon(mtmp))
-            pline("%s seems famished.", Monnam(mtmp));
+            pline(_("%s seems famished."), Monnam(mtmp));
         /* looking famished will be a good trick for a tame skeleton... */
     }
 }
@@ -822,9 +821,7 @@ domonnoise(struct monst *mtmp)
     }
     case MS_WERE:
         if (flags.moonphase == FULL_MOON && (night() ^ !rn2(13))) {
-            pline("%s throws back %s head and lets out a blood curdling %s!",
-                  Monnam(mtmp), mhis(mtmp),
-                  (ptr == &mons[PM_HUMAN_WERERAT]) ? "shriek" : "howl");
+            pline(_("%s throws back %s head and lets out a blood curdling %s!"), Monnam(mtmp), mhis(mtmp), (ptr == &mons[PM_HUMAN_WERERAT]) ? "shriek" : "howl");
             Soundeffect((ptr == &mons[PM_HUMAN_WERERAT]) ? se_scream
                                                          : se_canine_howl,
                         80);
@@ -967,7 +964,7 @@ domonnoise(struct monst *mtmp)
         break;
     case MS_BONES:
         Soundeffect(se_bone_rattle, 60);
-        pline("%s rattles noisily.", Monnam(mtmp));
+        pline(_("%s rattles noisily."), Monnam(mtmp));
         You(_("freeze for a moment."));
         nomul(-2);
         gm.multi_reason = "scared by rattling";
@@ -1007,8 +1004,7 @@ domonnoise(struct monst *mtmp)
         if (!mtmp->mpeaceful) {
             switch (rn2(4)) {
             case 0:
-                pline("%s boasts about %s gem collection.", Monnam(mtmp),
-                      mhis(mtmp));
+                pline(_("%s boasts about %s gem collection."), Monnam(mtmp), mhis(mtmp));
                 break;
             case 1:
                 pline_msg = "complains about a diet of mutton.";
@@ -1220,7 +1216,7 @@ domonnoise(struct monst *mtmp)
     } /* switch */
 
     if (pline_msg) {
-        pline("%s %s", Monnam(mtmp), pline_msg);
+        pline(_("%s %s"), Monnam(mtmp), pline_msg);
     } else if (mtmp->mcan && verbl_msg_mcan) {
         SetVoice(mtmp, 0, 80, 0);
         verbalize1(verbl_msg_mcan);
@@ -1261,8 +1257,7 @@ dochat(void)
     struct obj *otmp;
 
     if (is_silent(gy.youmonst.data)) {
-        pline("As %s, you cannot speak.",
-              an(pmname(gy.youmonst.data, flags.female ? FEMALE : MALE)));
+        pline(_("As %s, you cannot speak."), an(pmname(gy.youmonst.data, flags.female ? FEMALE : MALE)));
         return ECMD_OK;
     }
     if (Strangled) {
@@ -1270,7 +1265,7 @@ dochat(void)
         return ECMD_OK;
     }
     if (u.uswallow) {
-        pline("%s", _("They won't hear you out there."));
+        pline(_("%s"), _("They won't hear you out there."));
         return ECMD_OK;
     }
     if (Underwater) {
@@ -1296,14 +1291,14 @@ dochat(void)
 
     if (u.usteed && u.dz > 0) {
         if (helpless(u.usteed)) {
-            pline("%s seems not to notice you.", Monnam(u.usteed));
+            pline(_("%s seems not to notice you."), Monnam(u.usteed));
             return ECMD_TIME;
         } else
             return domonnoise(u.usteed);
     }
 
     if (u.dz) {
-        pline("They won't hear you %s there.", u.dz < 0 ? "up" : "down");
+        pline(_("They won't hear you %s there."), u.dz < 0 ? "up" : "down");
         return ECMD_OK;
     }
 
@@ -1318,7 +1313,7 @@ dochat(void)
             return 1;
         }
          */
-        pline("%s", _("Talking to yourself is a bad habit for a dungeoneer."));
+        pline(_("%s"), _("Talking to yourself is a bad habit for a dungeoneer."));
         return ECMD_OK;
     }
 
@@ -1349,7 +1344,7 @@ dochat(void)
                    already been mapped as a wall */
                 ;
             } else if (!Hallucination) {
-                pline("%s", _("It's like talking to a wall."));
+                pline(_("%s"), _("It's like talking to a wall."));
             } else {
                 static const char *const walltalk[] = {
                     "gripes about its job.",
@@ -1381,7 +1376,7 @@ dochat(void)
         /* If it is unseen, the player can't tell the difference between
            not noticing him and just not existing, so skip the message. */
         if (canspotmon(mtmp))
-            pline("%s seems not to notice you.", Monnam(mtmp));
+            pline(_("%s seems not to notice you."), Monnam(mtmp));
         return ECMD_OK;
     }
 
@@ -1391,7 +1386,7 @@ dochat(void)
     if (!Deaf && mtmp->mtame && mtmp->meating) {
         if (!canspotmon(mtmp))
             map_invisible(mtmp->mx, mtmp->my);
-        pline("%s is eating noisily.", Monnam(mtmp));
+        pline(_("%s is eating noisily."), Monnam(mtmp));
         return ECMD_OK;
     }
     if (Deaf) {
@@ -1446,16 +1441,16 @@ tiphat(void)
     /* most helmets have a short wear/take-off delay and we could set
        'multi' to account for that, but we'll pretend that no extra time
        beyond the current move is necessary */
-    You("briefly doff your %s.", helm_simple_name(uarmh));
+    You(_("briefly doff your %s."), helm_simple_name(uarmh));
 
     if (!u.dx && !u.dy) {
         if (u.usteed && u.dz > 0) {
             if (helpless(u.usteed))
-                pline("%s doesn't notice.", Monnam(u.usteed));
+                pline(_("%s doesn't notice."), Monnam(u.usteed));
             else
                 (void) domonnoise(u.usteed);
         } else if (u.dz) {
-            pline("There's no one %s there.", (u.dz < 0) ? "up" : "down");
+            pline(_("There's no one %s there."), (u.dz < 0) ? "up" : "down");
         } else {
             pline_The("lout here doesn't acknowledge you...");
         }
@@ -1493,10 +1488,10 @@ tiphat(void)
     }
 
     if (unseen || (statue && Hallucination)) {
-        pline("That %screature is ignoring you!", unseen ? "unseen " : "");
+        pline(_("That %screature is ignoring you!"), unseen ? "unseen " : "");
     } else if (!mtmp || !responsive_mon_at(x, y)) {
         if (vismon) /* 'vismon' is only True when 'mtmp' is non-Null */
-            pline("%s seems not to notice you.", Monnam(mtmp));
+            pline(_("%s seems not to notice you."), Monnam(mtmp));
         else
             goto nada;
     } else { /* 'mtmp' is guaranteed to be non-Null if we get here */
@@ -1505,14 +1500,12 @@ tiphat(void)
 
         if (vismon && humanoid(mtmp->data) && mtmp->mpeaceful && !Conflict) {
             if ((otmp = which_armor(mtmp, W_ARMH)) == 0) {
-                pline("%s waves.", Monnam(mtmp));
+                pline(_("%s waves."), Monnam(mtmp));
             } else if (otmp->cursed) {
-                pline("%s grasps %s %s but can't remove it.", Monnam(mtmp),
-                      mhis(mtmp), helm_simple_name(otmp));
+                pline(_("%s grasps %s %s but can't remove it."), Monnam(mtmp), mhis(mtmp), helm_simple_name(otmp));
                 otmp->bknown = 1;
             } else {
-                pline("%s tips %s %s in response.", Monnam(mtmp),
-                      mhis(mtmp), helm_simple_name(otmp));
+                pline(_("%s tips %s %s in response."), Monnam(mtmp), mhis(mtmp), helm_simple_name(otmp));
             }
         } else if (vismon && humanoid(mtmp->data)) {
             static const char *const reaction[3] = {
@@ -1521,16 +1514,15 @@ tiphat(void)
             int which = !Deaf ? rn2(3) : rn1(2, 1),
                 twice = (Deaf || which > 0 || rn2(3)) ? 0 : rn1(2, 1);
 
-            pline("%s %s%s%s at you...", Monnam(mtmp), reaction[which],
-                  twice ? " and " : "", twice ? reaction[twice] : "");
+            pline(_("%s %s%s%s at you..."), Monnam(mtmp), reaction[which], twice ? " and " : "", twice ? reaction[twice] : "");
         } else if (next2u(x, y) && !Deaf && domonnoise(mtmp)) {
             if (!vismon)
                 map_invisible(x, y);
         } else if (vismon) {
-            pline("%s doesn't respond.", Monnam(mtmp));
+            pline(_("%s doesn't respond."), Monnam(mtmp));
         } else {
  nada:
-            pline("%s", nothing_happens);
+            pline(_("%s"), nothing_happens);
         }
     }
     return res;

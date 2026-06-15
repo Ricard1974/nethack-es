@@ -1180,7 +1180,7 @@ rename_disco(void)
     if (ct == 0) {
         You(_("haven't discovered anything yet..."));
     } else if (mn == 0) {
-        pline("%s", _("None of your discoveries can be assigned names..."));
+        pline(_("%s"), _("None of your discoveries can be assigned names..."));
     } else {
         end_menu(tmpwin, "Pick an object type to name");
         dis = STRANGE_OBJECT;
