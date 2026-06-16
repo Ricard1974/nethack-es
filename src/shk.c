@@ -1682,7 +1682,7 @@ menu_pick_pay_items(
        the bill, no matter whether there are also any intact items;
        note: ibill[] has been sorted to hold used-up items first */
     if (ibill[0].usedup <= PartlyUsedUp) {
-        Sprintf(buf, "Used up item%s:",
+        Sprintf(buf, _("Used up item%s:"),
                 (ibillct > 1 && ibill[1].usedup <= PartlyUsedUp) ? "s" : "");
         add_menu_heading(win, buf);
     }
@@ -1691,7 +1691,7 @@ menu_pick_pay_items(
            one was shown before the first menu entry */
         if (i > 0 && ibill[i - 1].usedup <= PartlyUsedUp
             && ibill[i].usedup >= PartlyIntact) {
-            Sprintf(buf, "Unpaid item%s:", (i < ibillct - 1) ? "s" : "");
+            Sprintf(buf, _("Unpaid item%s:"), (i < ibillct - 1) ? "s" : "");
             add_menu_heading(win, buf);
         }
         otmp = ibill[i].obj;
@@ -1935,7 +1935,7 @@ dopay(void)
         char sbuf[BUFSZ];
 
         umoney = money_cnt(gi.invent);
-        Sprintf(sbuf, "You owe %s %ld %s ", shkname(shkp), dtmp,
+        Sprintf(sbuf, _("You owe %s %ld %s "), shkname(shkp), dtmp,
                 currency(dtmp));
         if (loan) {
             if (loan == dtmp)
@@ -2237,7 +2237,7 @@ dopayobj(
          *  'a' to buy the rest without asking, 'q' to just stop.
          */
 
-        Sprintf(qsfx, " for %ld %s.  Pay?", ltmp, currency(ltmp));
+        Sprintf(qsfx, _(" for %ld %s.  Pay?"), ltmp, currency(ltmp));
         (void) safe_qbuf(qbuf, (char *) 0, qsfx, obj,
                          (quan == 1L) ? Doname2 : doname, ansimpleoname,
                          (quan == 1L) ? "that" : "those");
@@ -3996,7 +3996,7 @@ sellobj(
             c = gs.sell_response = 'y';
         } else if (gs.sell_response != 'n') {
             pline(_("%s cannot pay you at present."), Shknam(shkp));
-            Sprintf(qbuf, "Will you accept %ld %s in credit for ", tmpcr,
+            Sprintf(qbuf, _("Will you accept %ld %s in credit for "), tmpcr,
                     currency(tmpcr));
             record_price_quote(obj->otyp, tmpcr / obj->quan, FALSE);
             c = ynaq(safe_qbuf(qbuf, qbuf, "?", obj, doname, thesimpleoname,
@@ -4086,7 +4086,7 @@ sellobj(
                         : "",
                     obj->unpaid ? "the" : "your");
             one = !ltmp ? (yourc == 1L) : (obj->quan == 1L && !cltmp);
-            Sprintf(qsfx, "%s.  Sell %s?",
+            Sprintf(qsfx, _("%s.  Sell %s?"),
                     (cltmp && ltmp)
                         ? (only_partially_your_contents
                                ? ((yourc == 1L) ? " and item inside"
@@ -5232,7 +5232,7 @@ pay_for_damage(const char *dmgstr, boolean cant_mollify)
 
     if (Invis)
         Your(_("invisibility does not fool %s!"), shkname(shkp));
-    Sprintf(qbuf, "%sYou did %ld %s worth of damage!%s  Pay?",
+    Sprintf(qbuf, _("%sYou did %ld %s worth of damage!%s  Pay?"),
             !animal ? cad(TRUE) : "", cost_of_damage,
             currency(cost_of_damage), !animal ? "\"" : "");
     if (y_n(qbuf) != 'n') {
@@ -5612,7 +5612,7 @@ check_unpaid_usage(struct obj *otmp, boolean altusage)
     arg1 = arg2 = "";
     if (otmp->oclass == SPBOOK_CLASS) {
         fmt = "%sYou owe%s %ld %s.";
-        Sprintf(buf, "This is no free library, %s!  ", cad(FALSE));
+        Sprintf(buf, _("This is no free library, %s!  "), cad(FALSE));
         arg1 = rn2(2) ? buf : "";
         arg2 = ESHK(shkp)->debit > 0L ? " an additional" : "";
     } else if (otmp->otyp == POT_OIL) {

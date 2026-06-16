@@ -1345,7 +1345,7 @@ enhance_weapon_skill(void)
            with "*" or "#" below */
         if (eventually_advance > 0 || maxxed_cnt > 0) {
             if (eventually_advance > 0) {
-                Sprintf(buf, "(Skill%s flagged by \"*\" may be enhanced %s.)",
+                Sprintf(buf, _("(Skill%s flagged by \"*\" may be enhanced %s.)"),
                         plur(eventually_advance),
                         (u.ulevel < MAXULEV)
                             ? "when you're more experienced"
@@ -1354,7 +1354,7 @@ enhance_weapon_skill(void)
             }
             if (maxxed_cnt > 0) {
                 Sprintf(buf,
-                 "(Skill%s flagged by \"#\" cannot be enhanced any further.)",
+                 _("(Skill%s flagged by \"#\" cannot be enhanced any further.)"),
                         plur(maxxed_cnt));
                 add_menu_str(win, buf);
             }

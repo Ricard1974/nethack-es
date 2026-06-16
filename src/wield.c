@@ -420,7 +420,7 @@ dowield(void)
         } else {
             boolean use_plural = (is_plural(uquiver) || pair_of(uquiver));
 
-            Sprintf(qbuf, "You have %s readied.  Wield %s instead?",
+            Sprintf(qbuf, _("You have %s readied.  Wield %s instead?"),
                     !use_plural ? "that" : "those",
                     !use_plural ? "it" : "them");
         }
@@ -602,7 +602,7 @@ doquiver_core(const char *verb) /* "ready" or "fire" */
     } else if (newquiver == uswapwep) {
         if (uswapwep->quan > 1L && inv_cnt(FALSE) < invlet_basic
             && splittable(uswapwep)) {
-            Sprintf(qbuf, "%s %ld %s.  Ready %ld of them?",
+            Sprintf(qbuf, _("%s %ld %s.  Ready %ld of them?"),
                     u.twoweap ? "You are dual wielding"
                               : "Your alternate weapon is",
                     uswapwep->quan, simpleonames(uswapwep),
@@ -622,7 +622,7 @@ doquiver_core(const char *verb) /* "ready" or "fire" */
         } else {
             boolean use_plural = (is_plural(uswapwep) || pair_of(uswapwep));
 
-            Sprintf(qbuf, "%s your %s weapon.  Ready %s instead?",
+            Sprintf(qbuf, _("%s your %s weapon.  Ready %s instead?"),
                     !use_plural ? "That is" : "Those are",
                     u.twoweap ? "second" : "alternate",
                     !use_plural ? "it" : "them");

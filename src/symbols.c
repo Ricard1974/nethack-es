@@ -999,7 +999,7 @@ do_symset(boolean rogueflag)
                                                 : MENU_ITEMFLAGS_NONE);
             }
         }
-        Sprintf(buf, "Select %ssymbol set:",
+        Sprintf(buf, _("Select %ssymbol set:"),
                 rogueflag ? "rogue level " : "");
         end_menu(tmpwin, buf);
         n = select_menu(tmpwin, PICK_ONE, &symset_pick);

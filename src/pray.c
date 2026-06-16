@@ -1486,7 +1486,7 @@ desecrate_altar(boolean highaltar, aligntyp altaralign)
     You_feel(_("the air around you grow charged..."));
     pline(_("Suddenly, you realize that %s has noticed you..."),
           align_gname(altaralign));
-    Sprintf(gvbuf, "So, mortal!  You dare desecrate my %s!",
+    Sprintf(gvbuf, _("So, mortal!  You dare desecrate my %s!"),
             highaltar ? "High Temple" : "altar");
     godvoice(altaralign, gvbuf);
     /* Throw everything we have at the player */

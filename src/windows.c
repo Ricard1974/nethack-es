@@ -1429,7 +1429,7 @@ encglyph(int glyph)
 {
     static char encbuf[20]; /* 10+1 would suffice */
 
-    Sprintf(encbuf, "\\G%04X%04X", svc.context.rndencode, glyph);
+    Sprintf(encbuf, _("\\G%04X%04X"), svc.context.rndencode, glyph);
     return encbuf;
 }
 

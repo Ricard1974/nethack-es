@@ -3771,7 +3771,7 @@ vamp_stone(struct monst *mtmp)
             char buf[BUFSZ];
 
             /* construct a format string before transformation */
-            Sprintf(buf, "The lapidifying %s %s %s",
+            Sprintf(buf, _("The lapidifying %s %s %s"),
                     x_monnam(mtmp, ARTICLE_NONE, (char *) 0,
                              (SUPPRESS_SADDLE | SUPPRESS_HALLUCINATION
                               | SUPPRESS_INVISIBLE | SUPPRESS_IT), FALSE),
@@ -5077,7 +5077,7 @@ wiz_force_cham_form(struct monst *mon)
     int monclass, len, tryct, mndx = NON_PM;
 
     /* construct prompt in pieces */
-    Sprintf(pprompt, "Change %s", noit_mon_nam(mon));
+    Sprintf(pprompt, _("Change %s"), noit_mon_nam(mon));
     Sprintf(parttwo, " @ %s into what?",
             coord_desc((int) mon->mx, (int) mon->my, buf,
                        (iflags.getpos_coords != GPCOORDS_NONE)

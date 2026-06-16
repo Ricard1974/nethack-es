@@ -2254,7 +2254,7 @@ ggetobj(const char *word, int (*fn)(OBJ_P), int mx,
     ilets[iletct] = '\0';
 
     for (;;) {
-        Sprintf(qbuf, "What kinds of thing do you want to %s? [%s]",
+        Sprintf(qbuf, _("What kinds of thing do you want to %s? [%s]"),
                 word, ilets);
         getlin(qbuf, buf);
         if (buf[0] == '\033')
@@ -2656,7 +2656,7 @@ menu_identify(int id_limit)
     /* assumptions:  id_limit > 0 and at least one unID'd item is present */
 
     while (id_limit) {
-        Sprintf(buf, "What would you like to identify %s?",
+        Sprintf(buf, _("What would you like to identify %s?"),
                 first ? "first" : "next");
         n = query_objlist(buf, &gi.invent, (SIGNAL_NOMENU | SIGNAL_ESCAPE
                                            | USE_INVLET | INVORDER_SORT),
@@ -3764,7 +3764,7 @@ dounpaid(
             You(_("aren't carrying any unpaid items but there %s %d %s."), floorverb, xtracount, where);
         } else {
             putstr(win, 0, "");
-            Sprintf(buf, "(There %s %d more unpaid object%s %s.)",
+            Sprintf(buf, _("(There %s %d more unpaid object%s %s.)"),
                     floorverb, xtracount, plur(xtracount), where);
             putstr(win, 0, buf);
         }
@@ -3994,7 +3994,7 @@ dotypeinv(void)
     if (strchr("BUCXP", c)) {
         /* the before and after phrases for "you have no..." can both be
            treated as mutually-exclusive suffices when creating a title */
-        Sprintf(title, "Items %s", (before && *before) ? before : after);
+        Sprintf(title, _("Items %s"), (before && *before) ? before : after);
         /* get rid of trailing space from 'before' and double-space from
            'after's leading space */
         (void) mungspaces(title);
@@ -4124,7 +4124,7 @@ look_here(
          *  something along the lines of "because it's worn on the outside
          *  so is unreachable from in here...").
          */
-        Sprintf(fbuf, "Contents of %s %s", s_suffix(mon_nam(mtmp)),
+        Sprintf(fbuf, _("Contents of %s %s"), s_suffix(mon_nam(mtmp)),
                 mbodypart(mtmp, STOMACH));
         /* Skip "Contents of " by using fbuf index 12 */
         You(_("%s to %s what is lying in %s."), Blind ? "try" : "look around", verb, &fbuf[12]);
@@ -5111,7 +5111,7 @@ doorganize_core(struct obj *obj)
     if (!splitting)
         Strcpy(qbuf, "Adjust letter");
     else /* note: splitting->quan is the amount being left in original slot */
-        Sprintf(qbuf, "Split %ld", obj->quan);
+        Sprintf(qbuf, _("Split %ld"), obj->quan);
     Sprintf(eos(qbuf), " to what [%s]%s?", lets,
             gi.invent ? " (? see used letters)" : "");
     for (trycnt = 1; ; ++trycnt) {
@@ -5486,7 +5486,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
                 more_than_1 = TRUE;
             underwhat = more_than_1 ? "under them" : "beneath it";
         } else {
-            Sprintf(qbuf, "Things that are under the %s here:", seen_liquid);
+            Sprintf(qbuf, _("Things that are under the %s here:"), seen_liquid);
             if (query_objlist(qbuf, &svl.level.objects[x][y], BY_NEXTHERE,
                               &selected, PICK_NONE, allow_all) > 0)
                 free((genericptr_t) selected), selected = 0;
@@ -5508,7 +5508,7 @@ display_binventory(coordxy x, coordxy y, boolean as_if_seen)
         go.only.x = x;
         go.only.y = y;
         /* "buried here", but vary if we've already shown underwater items */
-        Sprintf(qbuf, "Things that are buried %s:", underwhat);
+        Sprintf(qbuf, _("Things that are buried %s:"), underwhat);
         if (query_objlist(qbuf, &svl.level.buriedobjlist, INVORDER_SORT,
                           &selected, PICK_NONE, only_here) > 0)
             free((genericptr_t) selected);

@@ -564,7 +564,7 @@ dump_everything(
 
     /* game start and end date+time to disambiguate version date+time */
     Strcpy(datetimebuf, yyyymmddhhmmss(ubirthday));
-    Sprintf(pbuf, "Game began %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s",
+    Sprintf(pbuf, _("Game began %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s"),
             &datetimebuf[0], &datetimebuf[4], &datetimebuf[6],
             &datetimebuf[8], &datetimebuf[10], &datetimebuf[12]);
     Strcpy(datetimebuf, yyyymmddhhmmss(when));
@@ -1524,7 +1524,7 @@ really_done(int how)
         if (u.uz.dnum == 0 && u.uz.dlevel <= 0) {
             /* level teleported out of the dungeon; `how' is DIED,
                due to falling or to "arriving at heaven prematurely" */
-            Sprintf(pbuf, "You %s beyond the confines of the dungeon",
+            Sprintf(pbuf, _("You %s beyond the confines of the dungeon"),
                     (u.uz.dlevel < 0) ? "passed away" : ends[how]);
         } else {
             /* more conventional demise */
@@ -1532,7 +1532,7 @@ really_done(int how)
 
             if (Is_astralevel(&u.uz))
                 where = "The Astral Plane";
-            Sprintf(pbuf, "You %s in %s", ends[how], where);
+            Sprintf(pbuf, _("You %s in %s"), ends[how], where);
             if (!In_endgame(&u.uz) && !single_level_branch(&u.uz))
                 Sprintf(eos(pbuf), " on dungeon level %d",
                         In_quest(&u.uz) ? dunlev(&u.uz) : depth(&u.uz));
@@ -1546,7 +1546,7 @@ really_done(int how)
             plur(umoney), svm.moves, plur(svm.moves));
     dump_forward_putstr(endwin, 0, pbuf, done_stopprint);
     Sprintf(pbuf,
-            "You were level %d with a maximum of %d hit point%s when you %s.",
+            _("You were level %d with a maximum of %d hit point%s when you %s."),
             u.ulevel, u.uhpmax, plur(u.uhpmax), ends[how]);
     dump_forward_putstr(endwin, 0, pbuf, done_stopprint);
     dump_forward_putstr(endwin, 0, "", done_stopprint);
@@ -1625,7 +1625,7 @@ container_contents(
                    reports the box as containing "1 item" */
                 cat = SchroedingersBox(box);
 
-                Sprintf(buf, "Contents of %s:", the(xname(box)));
+                Sprintf(buf, _("Contents of %s:"), the(xname(box)));
                 putstr(tmpwin, 0, buf);
                 if (!dumping)
                     putstr(tmpwin, 0, "");

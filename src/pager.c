@@ -2031,7 +2031,7 @@ look_all(
                                   ? coord_desc(u.ux, u.uy, coordbuf, cmode)
                                   : !canspotself() ? "your position" : "you");
                     else
-                        Sprintf(outbuf, "All %s currently shown on the map:",
+                        Sprintf(outbuf, _("All %s currently shown on the map:"),
                                 which);
                     putstr(win, 0, outbuf);
                     /* hack alert! Qt watches a text window for any line
@@ -2715,18 +2715,18 @@ docontact(void)
 
     if (sysopt.support) {
         /*XXX overflow possibilities*/
-        Sprintf(buf, "To contact local support, %s", sysopt.support);
+        Sprintf(buf, _("To contact local support, %s"), sysopt.support);
         putstr(cwin, 0, buf);
         putstr(cwin, 0, "");
     } else if (sysopt.fmtd_wizard_list) { /* formatted SYSCF WIZARDS */
-        Sprintf(buf, "To contact local support, contact %s.",
+        Sprintf(buf, _("To contact local support, contact %s."),
                 sysopt.fmtd_wizard_list);
         putstr(cwin, 0, buf);
         putstr(cwin, 0, "");
     }
     putstr(cwin, 0, "To contact the NetHack development team directly,");
     /*XXX overflow possibilities*/
-    Sprintf(buf, "see the 'Contact' form on our website or email <%s>.",
+    Sprintf(buf, _("see the 'Contact' form on our website or email <%s>."),
             DEVTEAM_EMAIL);
     putstr(cwin, 0, buf);
     putstr(cwin, 0, "");

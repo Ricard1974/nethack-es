@@ -3412,7 +3412,7 @@ optfn_pickup_types(
                 boolean wasspace;
 
                 use_menu = FALSE;
-                Sprintf(qbuf, "New %s: [%s am] (%s)", allopt[optidx].name,
+                Sprintf(qbuf, _("New %s: [%s am] (%s)"), allopt[optidx].name,
                         ocl, *tbuf ? tbuf : "all");
                 abuf[0] = '\0';
                 getlin(qbuf, abuf);
@@ -5671,7 +5671,7 @@ handler_align_misc(int optidx)
     any.a_int = ALIGN_RIGHT;
     add_menu(tmpwin, &nul_glyphinfo, &any, 'r', 0, ATR_NONE, clr, "right",
              MENU_ITEMFLAGS_NONE);
-    Sprintf(abuf, "Select %s window placement relative to the map:",
+    Sprintf(abuf, _("Select %s window placement relative to the map:"),
             (optidx == opt_align_message) ? "message" : "status");
     end_menu(tmpwin, abuf);
     if (select_menu(tmpwin, PICK_ONE, &window_pick) > 0) {
@@ -5710,7 +5710,7 @@ handler_autounlock(int optidx)
                  ATR_NONE, clr, buf,
                  (presel ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE));
     }
-    Sprintf(buf, "Select '%.20s' actions:", optname);
+    Sprintf(buf, _("Select '%.20s' actions:"), optname);
     end_menu(tmpwin, buf);
     n = select_menu(tmpwin, PICK_ANY, &window_pick);
     if (n > 0) {
@@ -5780,7 +5780,7 @@ handler_disclose(void)
     for (i = 0; i < NUM_DISCLOSURE_OPTIONS; i++) {
         if (disc_cat[i]) {
             c = flags.end_disclose[i];
-            Sprintf(buf, "Disclosure options for %s:",
+            Sprintf(buf, _("Disclosure options for %s:"),
                     disclosure_names[i]);
             tmpwin = create_nhwindow(NHW_MENU);
             start_menu(tmpwin, MENU_BEHAVE_STANDARD);
@@ -8695,7 +8695,7 @@ doset_simple_menu(void)
                              ? (const char *) buf2 : "unknown"));
                 break;
             default:
-                Sprintf(buf, "ERROR");
+                Sprintf(buf, _("ERROR"));
                 break;
             }
             /* pickup_types is separated from autopickup due to the
@@ -8744,7 +8744,7 @@ doset_simple_menu(void)
                 if (reslt == optn_ok && allopt[k].idx != pfx_cond_)
                     opt_set_in_config[k] = TRUE;
             } else {
-                Sprintf(buf, "Set %s to what?", allopt[k].name);
+                Sprintf(buf, _("Set %s to what?"), allopt[k].name);
                 getlin(buf, abuf);
                 if (abuf[0] != '\033') { /* ESC */
                     Sprintf(buf, "%s:", allopt[k].name);
@@ -9016,7 +9016,7 @@ doset(void) /* changing options via menu by Per Liboriussen */
                 } else {
                     char abuf[BUFSZ];
 
-                    Sprintf(buf, "Set %s to what?", allopt[opt_indx].name);
+                    Sprintf(buf, _("Set %s to what?"), allopt[opt_indx].name);
                     abuf[0] = '\0';
                     getlin(buf, abuf);
                     if (abuf[0] == '\033')
@@ -9335,7 +9335,7 @@ dotogglepickup(void)
     flags.pickup = !flags.pickup;
     if (flags.pickup) {
         oc_to_str(flags.pickup_types, ocl);
-        Sprintf(buf, "ON, for %s objects%s", ocl[0] ? ocl : "all",
+        Sprintf(buf, _("ON, for %s objects%s"), ocl[0] ? ocl : "all",
                 (ga.apelist)
                     ? ((count_apes() == 1)
                            ? ", with one exception"

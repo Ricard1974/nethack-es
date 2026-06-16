@@ -580,7 +580,7 @@ study_book(struct obj *spellbook)
                     char qbuf[QBUFSZ];
 
                     Sprintf(qbuf,
-                    "This spellbook is %sdifficult to comprehend.  Continue?",
+                    _("This spellbook is %sdifficult to comprehend.  Continue?"),
                             (read_ability < 12 ? "very " : ""));
                     if (y_n(qbuf) != 'y') {
                         spellbook->in_use = FALSE;
@@ -741,7 +741,7 @@ getspell(int *spell_no)
             Strcpy(lets, "a-zA");
         /* this assumes that there are at most 52 spells... */
         else
-            Sprintf(lets, "a-zA-%c", 'A' + nspells - 27);
+            Sprintf(lets, _("a-zA-%c"), 'A' + nspells - 27);
 
         Snprintf(qbuf, sizeof qbuf, "Cast which spell? [%s *?]", lets);
         for (retry_limit = 0; ; ++retry_limit) {
@@ -2023,7 +2023,7 @@ dovspell(void)
                 if (spellsortmenu())
                     sortspells();
             } else {
-                Sprintf(qbuf, "Reordering spells; swap '%c' with",
+                Sprintf(qbuf, _("Reordering spells; swap '%c' with"),
                         spellet(splnum));
                 if (!dospellmenu(qbuf, splnum, &othnum))
                     break;
@@ -2090,14 +2090,14 @@ dospellmenu(
      * need to be subtracted.
      */
     if (!iflags.menu_tab_sep) {
-        Sprintf(buf, "%s%-20s Level %-12s Fail Retention",
+        Sprintf(buf, _("%s%-20s Level %-12s Fail Retention"),
                 splaction == SPELLMENU_DUMP ? "" : "    ",
                 "Name",
                 "Category");
         fmt = "%-20s  %2d   %-12s %3d%% %9s";
         sep = ' ';
     } else {
-        Sprintf(buf, "Name\tLevel\tCategory\tFail\tRetention");
+        Sprintf(buf, _("Name\tLevel\tCategory\tFail\tRetention"));
         fmt = "%s\t%-d\t%s\t%-d%%\t%s";
         sep = '\t';
     }

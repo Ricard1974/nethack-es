@@ -580,7 +580,7 @@ background_enlightenment(int unused_mode UNUSED, int final)
         difalgn &= ~1; /* suppress helm from "started out <foo>" message */
     }
     if (difgend || difalgn) { /* sex change or perm align change or both */
-        Sprintf(buf, " You started out %s%s%s.",
+        Sprintf(buf, _(" You started out %s%s%s."),
                 difgend ? genders[flags.initgend].adj : "",
                 (difgend && difalgn) ? " and " : "",
                 difalgn ? align_str(u.ualignbase[A_ORIGINAL]) : "");
@@ -674,7 +674,7 @@ background_enlightenment(int unused_mode UNUSED, int final)
            the start of the session and it might be past midnight (or
            days later if the game has been paused without save/restore),
            so phrase this similar to the start up message */
-        Sprintf(buf, " Bad things %s on Friday the 13th.",
+        Sprintf(buf, _(" Bad things %s on Friday the 13th."),
                 !final ? "can happen"
                 : (final == ENL_GAMEOVERALIVE) ? "could have happened"
                   /* there's no may to tell whether -1 Luck made a
@@ -781,9 +781,9 @@ basics_enlightenment(int mode UNUSED, int final)
         long umoney = money_cnt(gi.invent), hmoney = hidden_gold(final);
 
         if (!umoney) {
-            Sprintf(buf, " Your wallet %s empty", !final ? "is" : "was");
+            Sprintf(buf, _(" Your wallet %s empty"), !final ? "is" : "was");
         } else {
-            Sprintf(buf, " Your wallet contain%s %ld %s", !final ? "s" : "ed",
+            Sprintf(buf, _(" Your wallet contain%s %ld %s"), !final ? "s" : "ed",
                     umoney, currency(umoney));
         }
         /* terminate the wallet line if appropriate, otherwise add an
@@ -828,7 +828,7 @@ characteristics_enlightenment(int mode, int final)
     char buf[BUFSZ];
 
     enlght_out("");
-    Sprintf(buf, "%sCharacteristics:", !final ? "" : "Final ");
+    Sprintf(buf, _("%sCharacteristics:"), !final ? "" : "Final ");
     enlght_out(buf);
 
     /* bottom line order */
@@ -1359,7 +1359,7 @@ weapon_insight(int final)
             pfx[0] = sfx[0] = '\0';
             if (twoskl < sklvl) {
                 /* twoskil won't be restricted so sklvl is at least basic */
-                Sprintf(pfx, "Your skill in %s ", skill_name(wtype));
+                Sprintf(pfx, _("Your skill in %s "), skill_name(wtype));
                 Sprintf(sfx, " limited by being %s with two weapons", twobuf);
                 also = also_;
             } else if (twoskl > sklvl) {
@@ -1392,7 +1392,7 @@ weapon_insight(int final)
                 pfx[0] = sfx[0] = buf[0] = '\0';
                 if (twoskl < sklvl2) {
                     /* twoskil is at least unskilled, sklvl2 at least basic */
-                    Sprintf(pfx, "Your skill in %s ", sknambuf2);
+                    Sprintf(pfx, _("Your skill in %s "), sknambuf2);
                     Sprintf(sfx, " %slimited by being %s with two weapons",
                             also, twobuf);
                 } else if (twoskl > sklvl2) {
@@ -1959,7 +1959,7 @@ attributes_enlightenment(
                               * possibly mask or even introduce a problem,
                               * but it does useful sanity checking */
         for (f = gf.ffruit; f; f = f->nextf) {
-            Sprintf(buf, "Fruit #%d ", f->fid);
+            Sprintf(buf, _("Fruit #%d "), f->fid);
             enl_msg(buf, _("is "), _("was "), f->fname, "");
         }
         enl_msg("The current fruit ", _("is "), _("was "), svp.pl_fruit, "");
@@ -2098,7 +2098,7 @@ show_conduct(int final)
     else if (!u.uroleplay.numrerolls)
         Strcpy(buf, " Your character was not rerolled.");
     else
-        Sprintf(buf, " Your character was rerolled %s.",
+        Sprintf(buf, _(" Your character was rerolled %s."),
                 N_times(u.uroleplay.numrerolls, bufN));
     enlght_out(buf);
 
@@ -2257,7 +2257,7 @@ show_achievements(
     } else {
         awin = create_nhwindow(NHW_MENU);
     }
-    Sprintf(title, "Achievement%s:", plur(acnt));
+    Sprintf(title, _("Achievement%s:"), plur(acnt));
     putstr(awin, 0, title);
 
     /* display achievements in the order in which they were recorded;
@@ -2381,7 +2381,7 @@ show_achievements(
             break;
 
         default:
-            Sprintf(buf, " [Unexpected achievement #%d.]", achidx);
+            Sprintf(buf, _(" [Unexpected achievement #%d.]"), achidx);
             enlght_out(buf);
             break;
         } /* switch */
@@ -2737,7 +2737,7 @@ set_vanq_order(boolean for_vanq)
                  (i == flags.vanq_sortmode) ? MENU_ITEMFLAGS_SELECTED
                                             : MENU_ITEMFLAGS_NONE);
     }
-    Sprintf(buf, "Sort order for %s",
+    Sprintf(buf, _("Sort order for %s"),
             for_vanq ? "vanquished monster counts (also genocided types)"
                      : "genocided monster types (also vanquished counts)");
     end_menu(tmpwin, buf);
@@ -3024,7 +3024,7 @@ list_genocided(char defquery, boolean ask)
 
     /* genocided or extinct species list */
     if (ngone > 0) {
-        Sprintf(buf, "Do you want a list of %sspecies%s%s?",
+        Sprintf(buf, _("Do you want a list of %sspecies%s%s?"),
                 (nextinct && !ngenocided) ? "extinct " : "",
                 (ngenocided) ? " genocided" : "",
                 (nextinct && ngenocided) ? " and extinct" : "");

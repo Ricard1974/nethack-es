@@ -1241,7 +1241,7 @@ dodown(void)
             char qbuf[QBUFSZ];
 
             You(_("don't fit %s easily."), down_or_thru);
-            Sprintf(qbuf, "Try to squeeze %s?", down_or_thru);
+            Sprintf(qbuf, _("Try to squeeze %s?"), down_or_thru);
             if (y_n(qbuf) == 'y') {
                 if (!rn2(3)) {
                     actn = "manage to squeeze";
@@ -2299,7 +2299,7 @@ cmd_safety_prevention(const char *ucverb, const char *cmddesc,
 
         buf[0] = '\0';
         if (iflags.cmdassist || !(*flagcounter)++)
-            Sprintf(buf, "  Use '%s' prefix to force %s.",
+            Sprintf(buf, _("  Use '%s' prefix to force %s."),
                     visctrl(cmd_from_func(do_reqmenu)), cmddesc);
 
         if (monster_nearby()) {

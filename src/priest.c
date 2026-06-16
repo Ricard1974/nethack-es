@@ -457,7 +457,7 @@ intemple(int roomno)
                 msg1 = "You desecrate this place by your presence!";
             }
         } else if (svm.moves >= epri_p->enter_time) {
-            Sprintf(buf, "Pilgrim, you enter a %s place!",
+            Sprintf(buf, _("Pilgrim, you enter a %s place!"),
                     !shrined ? "desecrated" : "sacred");
             msg1 = buf;
         }
@@ -636,7 +636,7 @@ priest_talk(struct monst *priest)
         if (quan < 1)
             quan = 1;
 
-        Sprintf(buf, "How much will you offer (suggested: %ld or %ld)?",
+        Sprintf(buf, _("How much will you offer (suggested: %ld or %ld)?"),
                 suggested * quan, suggested * quan * 2);
 
         if (flags.debug)

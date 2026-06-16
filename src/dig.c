@@ -1136,7 +1136,7 @@ use_pick_axe(struct obj *obj)
         *dsp++ = dirch;
     }
     *dsp = 0;
-    Sprintf(qbuf, "In what direction do you want to %s? [%s]", verb, dirsyms);
+    Sprintf(qbuf, _("In what direction do you want to %s? [%s]"), verb, dirsyms);
     if (!getdir(qbuf))
         return (res|ECMD_CANCEL);
 
@@ -1810,7 +1810,7 @@ adj_pit_checks(coord *cc, char *msg)
             supporting = "drawbridge";
 
         if (supporting) {
-            Sprintf(msg, "The %s supporting structures remain intact.",
+            Sprintf(msg, _("The %s supporting structures remain intact."),
                     s_suffix(supporting));
             return FALSE;
         }

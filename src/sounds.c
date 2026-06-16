@@ -757,7 +757,7 @@ domonnoise(struct monst *mtmp)
 
         if (mtmp->mtame) {
             if (kindred) {
-                Sprintf(verbuf, "Good %s to you Master%s",
+                Sprintf(verbuf, _("Good %s to you Master%s"),
                         isnight ? "evening" : "day",
                         isnight ? "!" : ".  Why do we not rest?");
                 verbl_msg = verbuf;
@@ -773,11 +773,11 @@ domonnoise(struct monst *mtmp)
             }
         } else if (mtmp->mpeaceful) {
             if (kindred && isnight) {
-                Sprintf(verbuf, "Good feeding %s!",
+                Sprintf(verbuf, _("Good feeding %s!"),
                         flags.female ? "sister" : "brother");
                 verbl_msg = verbuf;
             } else if (nightchild && isnight) {
-                Sprintf(verbuf, "How nice to hear you, child of the night!");
+                Sprintf(verbuf, _("How nice to hear you, child of the night!"));
                 verbl_msg = verbuf;
             } else
                 verbl_msg = "I only drink... potions.";
@@ -797,7 +797,8 @@ domonnoise(struct monst *mtmp)
                        || gy.youmonst.data == &mons[PM_BABY_SILVER_DRAGON]) {
                 /* Silver dragons are silver in color, not made of silver */
                 Sprintf(verbuf,
-                        "%s!  Your silver sheen"" does not frighten me!",
+                        _("%s!  Your silver sheen"
+                          " does not frighten me!"),
                         (gy.youmonst.data == &mons[PM_SILVER_DRAGON])
                             ? "Fool"
                             : "Young Fool");
@@ -1195,7 +1196,7 @@ domonnoise(struct monst *mtmp)
         if (ms_Death && !svc.context.tribute.Deathnotice
             && (book = u_have_novel()) != 0) {
             if ((tribtitle = noveltitle(&book->novelidx)) != 0) {
-                Sprintf(verbuf, "Ah, so you have a copy of /%s/.", tribtitle);
+                Sprintf(verbuf, _("Ah, so you have a copy of /%s/."), tribtitle);
                 /* no Death featured in these two, so exclude them */
                 if (strcmpi(tribtitle, "Snuff")
                     && strcmpi(tribtitle, "The Wee Free Men"))

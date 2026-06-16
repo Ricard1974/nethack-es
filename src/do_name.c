@@ -640,7 +640,7 @@ docall(struct obj *obj)
 
     if (obj->oclass == POTION_CLASS && obj->fromsink)
         /* fromsink: kludge, meaning it's sink water */
-        Sprintf(qbuf, "Call a stream of %s fluid:",
+        Sprintf(qbuf, _("Call a stream of %s fluid:"),
                 OBJ_DESCR(objects[obj->otyp]));
     else
         (void) safe_qbuf(qbuf, "Call ", ":", obj,

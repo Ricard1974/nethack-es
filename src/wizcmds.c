@@ -267,7 +267,7 @@ wiz_kill(void)
         mtmp = 0;
         if (u_at(cc.x, cc.y)) {
             if (u.usteed) {
-                Sprintf(qbuf, "Kill %.110s?", mon_nam(u.usteed));
+                Sprintf(qbuf, _("Kill %.110s?"), mon_nam(u.usteed));
                 if ((c = ynq(qbuf)) == 'q')
                     break;
                 if (c == 'y')
@@ -1622,7 +1622,7 @@ wiz_show_stats(void)
 
     total_obj_count = total_obj_size = 0L;
     putstr(win, 0, stats_hdr);
-    Sprintf(buf, "  Objects, base size %ld", (long) sizeof (struct obj));
+    Sprintf(buf, _("  Objects, base size %ld"), (long) sizeof (struct obj));
     putstr(win, 0, buf);
     obj_chain(win, "invent", gi.invent, TRUE,
               &total_obj_count, &total_obj_size);
@@ -1643,7 +1643,7 @@ wiz_show_stats(void)
 
     total_mon_count = total_mon_size = 0L;
     putstr(win, 0, "");
-    Sprintf(buf, "  Monsters, base size %ld", (long) sizeof (struct monst));
+    Sprintf(buf, _("  Monsters, base size %ld"), (long) sizeof (struct monst));
     putstr(win, 0, buf);
     mon_chain(win, "fmon", fmon, TRUE, &total_mon_count, &total_mon_size);
     mon_chain(win, "migrating", gm.migrating_mons, FALSE,

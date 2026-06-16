@@ -3195,7 +3195,7 @@ create_particular_creation(
             /* wizard mode can override handling of special monsters */
             char buf[BUFSZ];
 
-            Sprintf(buf, "Creating %s instead; force %s?",
+            Sprintf(buf, _("Creating %s instead; force %s?"),
                     mons[d->which].pmnames[NEUTRAL],
                     mons[firstchoice].pmnames[NEUTRAL]);
             if (y_n(buf) == 'y')

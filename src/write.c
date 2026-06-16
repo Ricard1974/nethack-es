@@ -121,7 +121,7 @@ dowrite(struct obj *pen)
     makeknown(SCR_BLANK_PAPER);
 
     /* what to write */
-    Sprintf(qbuf, "What type of %s do you want to write?", typeword);
+    Sprintf(qbuf, _("What type of %s do you want to write?"), typeword);
     getlin(qbuf, namebuf);
     (void) mungspaces(namebuf); /* remove any excess whitespace */
     if (namebuf[0] == '\033' || !namebuf[0])

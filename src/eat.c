@@ -864,7 +864,7 @@ fix_petrification(void)
     char buf[BUFSZ];
 
     if (Hallucination)
-        Sprintf(buf, "What a pity--you just ruined a future piece of %sart!",
+        Sprintf(buf, _("What a pity--you just ruined a future piece of %sart!"),
                 ACURR(A_CHA) > 15 ? "fine " : "");
     else
         Strcpy(buf, "You feel limber!");
@@ -3657,7 +3657,7 @@ floorfood(
             }
             /* "There is <an object> here; <verb> it?" or
                "There are <N objects> here; <verb> one?" */
-            Sprintf(qbuf, "There %s ", otense(otmp, "are"));
+            Sprintf(qbuf, _("There %s "), otense(otmp, "are"));
             Sprintf(qsfx, " here; %s %s?", verb, one ? "it" : "one");
             (void) safe_qbuf(qbuf, qbuf, qsfx, otmp, doname, ansimpleoname,
                              one ? something : (const char *) "things");

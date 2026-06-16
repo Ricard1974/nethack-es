@@ -1693,7 +1693,7 @@ stop_donning(
        by unmul() since the on or off action isn't completing */
     ga.afternmv = (int (*)(void)) 0;
     if (putting_on || otmp != stolenobj) {
-        Sprintf(buf, "You stop %s %s.",
+        Sprintf(buf, _("You stop %s %s."),
                 putting_on ? "putting on" : "taking off",
                 thesimpleoname(otmp));
     } else {
@@ -2243,7 +2243,7 @@ accessory_or_armor_on(struct obj *obj)
                 mask = LEFT_RING;
             } else {
                 do {
-                    Sprintf(qbuf, "Which %s%s, Right or Left?",
+                    Sprintf(qbuf, _("Which %s%s, Right or Left?"),
                             humanoid(gy.youmonst.data) ? "ring-" : "",
                             body_part(FINGER));
                     answer = yn_function(qbuf, rightleftchars, '\0', TRUE);

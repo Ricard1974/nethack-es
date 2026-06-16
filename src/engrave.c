@@ -640,7 +640,7 @@ doengrave_sfx_item_WAN(struct _doengrave_ctx *de)
         de->ptext = TRUE;
         if (!Blind) {
             Sprintf(de->post_engr_text,
-                    "The %s is riddled by bullet holes!",
+                    _("The %s is riddled by bullet holes!"),
                     surface(u.ux, u.uy));
         }
         break;

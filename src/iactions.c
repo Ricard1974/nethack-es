@@ -105,7 +105,7 @@ item_reading_classification(struct obj *obj, char *outbuf)
                                   || !objects[otyp].oc_name_known))
                              ? " to activate its magic" : "");
 
-        Sprintf(outbuf, "Read this scroll%s", magic);
+        Sprintf(outbuf, _("Read this scroll%s"), magic);
     } else if (obj->oclass == SPBOOK_CLASS) {
         boolean novel = (otyp == SPE_NOVEL),
                 blank = (otyp == SPE_BLANK_PAPER
@@ -355,7 +355,7 @@ itemactions(struct obj *otmp)
         struct obj *o = carrying(CANDELABRUM_OF_INVOCATION);
 
         if (o && o->spe < 7)
-            Sprintf(buf, "Attach %s to your candelabrum, or %s %s", s,
+            Sprintf(buf, _("Attach %s to your candelabrum, or %s %s"), s,
                     !otmp->lamplit ? "light" : "extinguish", /* [lowercase] */
                     multiple ? "them" : "it");
         else
@@ -370,7 +370,7 @@ itemactions(struct obj *otmp)
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->oclass == POTION_CLASS) {
         /* FIXME? this should probably be moved to 'D' rather than be 'a' */
-        Sprintf(buf, "Dip something into %s potion%s",
+        Sprintf(buf, _("Dip something into %s potion%s"),
                 is_plural(otmp) ? "one of these" : "this", plur(otmp->quan));
         ia_addmenu(win, IA_DIP_OBJ, 'a', buf);
     } else if (otmp->otyp == EXPENSIVE_CAMERA)
@@ -411,19 +411,19 @@ itemactions(struct obj *otmp)
        always have a takeoff/remove choice so we don't have to worry
        about the menu maybe being empty when 'd' is suppressed */
     if (!already_worn) {
-        Sprintf(buf, "Drop this %s", (otmp->quan > 1L) ? "stack" : "item");
+        Sprintf(buf, _("Drop this %s"), (otmp->quan > 1L) ? "stack" : "item");
         ia_addmenu(win, IA_DROP_OBJ, 'd', buf);
     }
 
     /* e: eat item */
     if (otmp->otyp == TIN) {
-        Sprintf(buf, "Open %s%s and eat the contents",
+        Sprintf(buf, _("Open %s%s and eat the contents"),
                 (otmp->quan > 1L) ? "one of these tins" : "this tin",
                 (otmp->otyp == TIN && uwep && uwep->otyp == TIN_OPENER)
                 ? " with your tin opener" : "");
         ia_addmenu(win, IA_EAT_OBJ, 'e', buf);
     } else if (is_edible(otmp)) {
-        Sprintf(buf, "Eat %s", (otmp->quan > 1L) ? "one of these" : "this");
+        Sprintf(buf, _("Eat %s"), (otmp->quan > 1L) ? "one of these" : "this");
         ia_addmenu(win, IA_EAT_OBJ, 'e', buf);
     }
 
@@ -488,7 +488,7 @@ itemactions(struct obj *otmp)
            flagged 'unpaid') holding shop owned items */
         && (mtmp = shop_keeper(*in_rooms(u.ux, u.uy, SHOPBASE))) != 0
         && inhishop(mtmp)) {
-        Sprintf(buf, "Buy this unpaid %s",
+        Sprintf(buf, _("Buy this unpaid %s"),
                 (otmp->quan > 1L) ? "stack" : "item");
         ia_addmenu(win, IA_BUY_OBJ, 'p', buf);
     }
@@ -517,7 +517,7 @@ itemactions(struct obj *otmp)
             else if (otmp->otyp == LENSES)
                 Strcpy(buf, "Put these lenses on");
             else
-                Sprintf(buf, "Put this on%s",
+                Sprintf(buf, _("Put this on%s"),
                         (otmp->otyp == TOWEL) ? " to blindfold yourself" : "");
         }
         if (*buf)
@@ -526,7 +526,7 @@ itemactions(struct obj *otmp)
 
     /* q: drink item */
     if (otmp->oclass == POTION_CLASS) {
-        Sprintf(buf, "Quaff (drink) %s",
+        Sprintf(buf, _("Quaff (drink) %s"),
                 (otmp->quan > 1L) ? "one of these potions" : "this potion");
         ia_addmenu(win, IA_QUAFF_OBJ, 'q', buf);
     }
@@ -534,7 +534,7 @@ itemactions(struct obj *otmp)
     /* Q: quiver throwable item */
     if ((otmp->oclass == GEM_CLASS || otmp->oclass == WEAPON_CLASS)
         && otmp != uquiver) {
-        Sprintf(buf, "Quiver this %s for easy %s with \'f\'ire",
+        Sprintf(buf, _("Quiver this %s for easy %s with \'f\'ire"),
                 (otmp->quan > 1L) ? "stack" : "item",
                 ammo_and_launcher(otmp, uwep) ? "shooting" : "throwing");
         ia_addmenu(win, IA_QUIVER_OBJ, 'Q', buf);
@@ -546,7 +546,7 @@ itemactions(struct obj *otmp)
 
     /* R: remove accessory or rub item */
     if (otmp->owornmask & W_ACCESSORY) {
-        Sprintf(buf, "Remove this %s",
+        Sprintf(buf, _("Remove this %s"),
                 (otmp->owornmask & W_AMUL) ? "amulet"
                 : (otmp->owornmask & W_RING) ? "ring"
                   : (otmp->owornmask & W_TOOL) ? "eyewear"
@@ -555,7 +555,7 @@ itemactions(struct obj *otmp)
     }
     if (otmp->otyp == OIL_LAMP || otmp->otyp == MAGIC_LAMP
         || otmp->otyp == BRASS_LANTERN) {
-        Sprintf(buf, "Rub this %s", simpleonames(otmp));
+        Sprintf(buf, _("Rub this %s"), simpleonames(otmp));
         ia_addmenu(win, IA_RUB_OBJ, 'R', buf);
     } else if (otmp->oclass == GEM_CLASS && is_graystone(otmp))
         ia_addmenu(win, IA_RUB_OBJ, 'R', "Rub something on this stone");
@@ -609,7 +609,7 @@ itemactions(struct obj *otmp)
         ; /* either already wielded or can't wield anything; skip 'w' */
     } else if (otmp->oclass == WEAPON_CLASS || is_weptool(otmp)
                || is_wet_towel(otmp) || otmp->otyp == HEAVY_IRON_BALL) {
-        Sprintf(buf, "Wield this %s as your weapon",
+        Sprintf(buf, _("Wield this %s as your weapon"),
                 (otmp->quan > 1L) ? "stack" : "item");
         ia_addmenu(win, IA_WIELD_OBJ, 'w', buf);
     } else if (otmp->otyp == TIN_OPENER) {
@@ -619,7 +619,7 @@ itemactions(struct obj *otmp)
         /* originally this was using "hold this item in your hands" but
            there's no concept of "holding an item", plus it unwields
            whatever item you already have wielded so use "wield this item" */
-        Sprintf(buf, "Wield this %s in your %s",
+        Sprintf(buf, _("Wield this %s in your %s"),
                 (otmp->quan > 1L) ? "stack" : "item",
                 /* only two-handed weapons and unicorn horns care about
                    pluralizing "hand" and they won't reach here, but plural
@@ -677,7 +677,7 @@ itemactions(struct obj *otmp)
             || (could_twoweap(gy.youmonst.data) && !uarms
                 && uwep && MAYBETWOWEAPON(uwep)
                 && uswapwep && MAYBETWOWEAPON(uswapwep)))) {
-        Sprintf(buf, "Toggle two-weapon combat %s", u.twoweap ? "off" : "on");
+        Sprintf(buf, _("Toggle two-weapon combat %s"), u.twoweap ? "off" : "on");
         ia_addmenu(win, IA_TWOWEAPON, 'X', buf);
     }
 
@@ -690,12 +690,12 @@ itemactions(struct obj *otmp)
 
     /* ?: Look up an item in the game's database */
     if (ia_checkfile(otmp)) {
-        Sprintf(buf, "Look up information about %s",
+        Sprintf(buf, _("Look up information about %s"),
                 (otmp->quan > 1L) ? "these" : "this");
         ia_addmenu(win, IA_WHATIS_OBJ, '/', buf);
     }
 
-    Sprintf(buf, "Do what with %s?", the(cxname(otmp)));
+    Sprintf(buf, _("Do what with %s?"), the(cxname(otmp)));
     end_menu(win, buf);
 
     n = select_menu(win, PICK_ONE, &selected);

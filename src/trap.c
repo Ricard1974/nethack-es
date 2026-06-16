@@ -6078,7 +6078,7 @@ openholdingtrap(
         if (!u.usteed)
             Strcpy(buf, "You are");
         else if (u.utraptype == TT_BURIEDBALL)
-            Sprintf(buf, "You and %s are", y_monnam(u.usteed));
+            Sprintf(buf, _("You and %s are"), y_monnam(u.usteed));
         else
             Sprintf(buf, "%s is", noit_Monnam(u.usteed));
         /* give release message before untrap in case it triggers a message */

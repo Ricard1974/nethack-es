@@ -199,7 +199,7 @@ query_classes(
         oclasses[oclassct = 0] = '\0';
         *one_at_a_time = *everything = FALSE;
         not_everything = filtered = FALSE;
-        Sprintf(qbuf, "What kinds of thing do you want to %s? [%s]", action,
+        Sprintf(qbuf, _("What kinds of thing do you want to %s? [%s]"), action,
                 ilets);
         getlin(qbuf, inbuf);
         if (*inbuf == '\033')
@@ -396,7 +396,7 @@ describe_decor(void)
             dfeature = an(dfeature);
 
         if (flags.verbose) {
-            Sprintf(outbuf, "There is %s here.", dfeature);
+            Sprintf(outbuf, _("There is %s here."), dfeature);
         } else {
             if (dfeature != fbuf)
                 Strcpy(fbuf, dfeature);
@@ -761,7 +761,7 @@ pickup(int what) /* should be a long */
         if (count) { /* looking for N of something */
             char qbuf[QBUFSZ];
 
-            Sprintf(qbuf, "Pick %d of what?", count);
+            Sprintf(qbuf, _("Pick %d of what?"), count);
             gv.val_for_n_or_more = count; /* set up callback selector */
             n = query_objlist(qbuf, objchain_p, traverse_how,
                               &pick_list, PICK_ONE, n_or_more);
@@ -1146,7 +1146,7 @@ query_objlist(const char *qstr,        /* query string */
 
         any = cg.zeroany;
         if (sorted && n > 1) {
-            Sprintf(buf, "%s Creatures",
+            Sprintf(buf, _("%s Creatures"),
                     digests(u.ustuck->data) ? "Swallowed" : "Engulfed");
             add_menu_heading(win, buf);
         }
@@ -1433,7 +1433,7 @@ query_category(
         char tmpbuf[BUFSZ];
 
         if (num_justpicked == 1)
-            Sprintf(tmpbuf, "Just picked up: %s",
+            Sprintf(tmpbuf, _("Just picked up: %s"),
                     doname(find_justpicked(olist)));
         else
             Strcpy(tmpbuf, "Items you just picked up");
@@ -3397,7 +3397,7 @@ in_or_out_menu(
     start_menu(win, MENU_BEHAVE_STANDARD);
 
     any.a_int = 1; /* ':' */
-    Sprintf(buf, "Look inside %s", thesimpleoname(obj));
+    Sprintf(buf, _("Look inside %s"), thesimpleoname(obj));
     add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
              ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
     if (outokay) {
@@ -3949,7 +3949,7 @@ tipcontainer_gettarget(
         }
     }
     if (!skip_targetmenu) {
-        Sprintf(buf, "Where to tip the contents of %s", doname(box));
+        Sprintf(buf, _("Where to tip the contents of %s"), doname(box));
         end_menu(win, buf);
         n = select_menu(win, PICK_ONE, &pick_list);
         destroy_nhwindow(win);

@@ -729,7 +729,7 @@ topten(int how, time_t when)
 
                 topten_print("");
                 Sprintf(pbuf,
-             "Since you were in %s mode, the score list will not be checked.",
+             _("Since you were in %s mode, the score list will not be checked."),
                         wizard ? "wizard" : "discover");
                 topten_print(pbuf);
             }
@@ -792,7 +792,7 @@ topten(int how, time_t when)
                     char pbuf[BUFSZ];
 
                     Sprintf(pbuf,
-                         "You didn't beat your previous score of %ld points.",
+                         _("You didn't beat your previous score of %ld points."),
                             t1->points);
                     topten_print(pbuf);
                     topten_print("");
@@ -833,7 +833,7 @@ topten(int how, time_t when)
                     char pbuf[BUFSZ];
 
                     Sprintf(pbuf,
-                            "You reached the %d%s place on the top %d list.",
+                            _("You reached the %d%s place on the top %d list."),
                             rank0, ordin(rank0), sysopt.entrymax);
                     topten_print(pbuf);
                 }

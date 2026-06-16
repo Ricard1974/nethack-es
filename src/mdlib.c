@@ -692,7 +692,7 @@ build_options(void)
 #else
 #define STATUS_ARG ""
 #endif /* NH_DEVEL_STATUS == NH_STATUS_RELEASED */
-    Sprintf(optbuf, "%sNetHack version %d.%d.%d%s\n",
+    Sprintf(optbuf, _("%sNetHack version %d.%d.%d%s\n"),
             opt_indent, VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL, STATUS_ARG);
     STOREOPTTEXT(optbuf);
     Sprintf(optbuf, "Options compiled into this edition:");

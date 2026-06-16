@@ -2824,7 +2824,7 @@ use_trap(struct obj *otmp)
         else
             chance = (rnl(10) > 5);
         You(_("aren't very skilled at reaching from %s."), mon_nam(u.usteed));
-        Sprintf(buf, "Continue your attempt to set %s?",
+        Sprintf(buf, _("Continue your attempt to set %s?"),
                 the(trapname(ttyp, FALSE)));
         if (y_n(buf) == 'y') {
             if (chance) {

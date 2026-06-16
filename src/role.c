@@ -2753,7 +2753,7 @@ reset_role_filtering(void)
     add_menu_str(win, "Unacceptable alignments");
     setup_algnmenu(win, FALSE, ROLE_NONE, ROLE_NONE, ROLE_NONE);
 
-    Sprintf(filterprompt, "Pick all that apply%s",
+    Sprintf(filterprompt, _("Pick all that apply%s"),
             gotrolefilter() ? " and/or unpick any that no longer apply" : "");
     end_menu(win, filterprompt);
     n = select_menu(win, PICK_ANY, &selected);

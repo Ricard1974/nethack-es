@@ -5012,7 +5012,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
                     } else {
                         tmp = 0;
                     }
-                    Sprintf(msgbuf, "You totally digest %s.", mon_nam(mdef));
+                    Sprintf(msgbuf, _("You totally digest %s."), mon_nam(mdef));
                     if (tmp != 0) {
                         /* setting afternmv = end_engulf is tempting,
                          * but will cause problems if the player is

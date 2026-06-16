@@ -2597,7 +2597,7 @@ potion_dip(struct obj *obj, struct obj *potion)
             char buf[BUFSZ];
 
             if (potion->quan > 1L)
-                Sprintf(buf, "One of %s", the(xname(potion)));
+                Sprintf(buf, _("One of %s"), the(xname(potion)));
             else
                 Strcpy(buf, The(xname(potion)));
             pline(_("%s forms a coating on %s."), buf, the(xname(obj)));

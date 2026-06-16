@@ -582,7 +582,7 @@ doextlist(void)
         add_menu_str(menuwin, "Extended Commands List");
         add_menu_str(menuwin, "");
 
-        Sprintf(buf, "Switch to %s commands that don't autocomplete",
+        Sprintf(buf, _("Switch to %s commands that don't autocomplete"),
                 menumode ? "including" : "excluding");
         any.a_int = 1;
         add_menu(menuwin, &nul_glyphinfo, &any, 'a', 0, ATR_NONE, clr, buf,
@@ -2304,10 +2304,10 @@ handler_rebind_keys_add(boolean keyfirst)
         struct Cmd_bind *bind = cmdbind_get(key);
 
         if (bind && bind->cmd) {
-            Sprintf(buf, "Key '%s' is currently bound to \"%s\".",
+            Sprintf(buf, _("Key '%s' is currently bound to \"%s\"."),
                     key2txt(key, buf2), bind->cmd->ef_txt);
         } else {
-            Sprintf(buf, "Key '%s' is not bound to anything.",
+            Sprintf(buf, _("Key '%s' is not bound to anything."),
                     key2txt(key, buf2));
         }
         add_menu_str(win, buf);
@@ -2333,9 +2333,9 @@ handler_rebind_keys_add(boolean keyfirst)
              MENU_ITEMFLAGS_NONE);
     }
     if (key)
-        Sprintf(buf, "Bind '%s' to what command?", key2txt(key, buf2));
+        Sprintf(buf, _("Bind '%s' to what command?"), key2txt(key, buf2));
     else
-        Sprintf(buf, "Bind what command?");
+        Sprintf(buf, _("Bind what command?"));
     end_menu(win, buf);
     npick = select_menu(win, PICK_ONE, &picks);
     destroy_nhwindow(win);
@@ -2358,7 +2358,7 @@ handler_rebind_keys_add(boolean keyfirst)
                 char querybuf[BUFSZ];
 
                 parambuf[0] = '\0';
-                Sprintf(querybuf, "Command %s requires a parameter:", ec->ef_txt);
+                Sprintf(querybuf, _("Command %s requires a parameter:"), ec->ef_txt);
                 getlin(querybuf, parambuf);
                 (void) mungspaces(parambuf);
                 Snprintf(cmdstr, BUFSZ-1, "%s(%s)", ec->ef_txt, parambuf);
@@ -4427,7 +4427,7 @@ there_cmd_menu_self(winid win, coordxy x, coordxy y, int *act UNUSED)
         return K;
 
     if ((IS_FOUNTAIN(typ) || IS_SINK(typ)) && can_reach_floor(FALSE)) {
-        Sprintf(buf, "Drink from the %s",
+        Sprintf(buf, _("Drink from the %s"),
                 defsyms[IS_FOUNTAIN(typ) ? S_fountain : S_sink].explanation);
         mcmd_addmenu(win, MCMD_QUAFF, buf), ++K;
     }
@@ -4439,17 +4439,17 @@ there_cmd_menu_self(winid win, coordxy x, coordxy y, int *act UNUSED)
         mcmd_addmenu(win, MCMD_OFFER, "Sacrifice something on the altar"), ++K;
 
     if (stway && stway->up) {
-        Sprintf(buf, "Go up the %s",
+        Sprintf(buf, _("Go up the %s"),
                 stway->isladder ? "ladder" : "stairs");
         mcmd_addmenu(win, MCMD_UP, buf), ++K;
     }
     if (stway && !stway->up) {
-        Sprintf(buf, "Go down the %s",
+        Sprintf(buf, _("Go down the %s"),
                 stway->isladder ? "ladder" : "stairs");
         mcmd_addmenu(win, MCMD_DOWN, buf), ++K;
     }
     if (u.usteed) { /* another movement choice */
-        Sprintf(buf, "Dismount %s",
+        Sprintf(buf, _("Dismount %s"),
                 x_monnam(u.usteed, ARTICLE_THE, (char *) 0,
                          SUPPRESS_SADDLE, FALSE));
         mcmd_addmenu(win, MCMD_DISMOUNT, buf), ++K;
@@ -4457,7 +4457,7 @@ there_cmd_menu_self(winid win, coordxy x, coordxy y, int *act UNUSED)
 
 #if 0
     if (Upolyd) { /* before objects */
-        Sprintf(buf, "Use %s special ability",
+        Sprintf(buf, _("Use %s special ability"),
                 s_suffix(pmname(&mons[u.umonnum], Ugender)));
         mcmd_addmenu(win, MCMD_MONABILITY, buf), ++K;
     }
@@ -4466,18 +4466,18 @@ there_cmd_menu_self(winid win, coordxy x, coordxy y, int *act UNUSED)
     if (OBJ_AT(x, y)) {
         struct obj *otmp = svl.level.objects[x][y];
 
-        Sprintf(buf, "Pick up %s", otmp->nexthere ? "items" : doname(otmp));
+        Sprintf(buf, _("Pick up %s"), otmp->nexthere ? "items" : doname(otmp));
         mcmd_addmenu(win, MCMD_PICKUP, buf), ++K;
 
         if (Is_container(otmp)) {
-            Sprintf(buf, "Loot %s", doname(otmp));
+            Sprintf(buf, _("Loot %s"), doname(otmp));
             mcmd_addmenu(win, MCMD_LOOT, buf), ++K;
 
-            Sprintf(buf, "Tip %s", doname(otmp));
+            Sprintf(buf, _("Tip %s"), doname(otmp));
             mcmd_addmenu(win, MCMD_TIP, buf), ++K;
         }
         if (otmp->oclass == FOOD_CLASS) {
-            Sprintf(buf, "Eat %s", doname(otmp));
+            Sprintf(buf, _("Eat %s"), doname(otmp));
             mcmd_addmenu(win, MCMD_EAT, buf), ++K;
         }
     }
@@ -4567,22 +4567,22 @@ there_cmd_menu_next2u(
                               SUPPRESS_SADDLE, FALSE);
 
         if (!u.usteed) {
-            Sprintf(buf, "Ride %s", mnam);
+            Sprintf(buf, _("Ride %s"), mnam);
             mcmd_addmenu(win, MCMD_RIDE, buf), ++K;
         }
-        Sprintf(buf, "Remove saddle from %s", mnam);
+        Sprintf(buf, _("Remove saddle from %s"), mnam);
         mcmd_addmenu(win, MCMD_REMOVE_SADDLE, buf), ++K;
     }
     if (mtmp && can_saddle(mtmp) && !which_armor(mtmp, W_SADDLE)
         && carrying(SADDLE)) {
-        Sprintf(buf, "Put saddle on %s", mon_nam(mtmp));
+        Sprintf(buf, _("Put saddle on %s"), mon_nam(mtmp));
         mcmd_addmenu(win, MCMD_APPLY_SADDLE, buf), ++K;
     }
     if (mtmp && (mtmp->mpeaceful || mtmp->mtame)) {
-        Sprintf(buf, "Talk to %s", mon_nam(mtmp));
+        Sprintf(buf, _("Talk to %s"), mon_nam(mtmp));
         mcmd_addmenu(win, MCMD_TALK, buf), ++K;
 
-        Sprintf(buf, "Swap places with %s", mon_nam(mtmp));
+        Sprintf(buf, _("Swap places with %s"), mon_nam(mtmp));
         mcmd_addmenu(win, MCMD_MOVE_DIR, buf), ++K;
 
         Sprintf(buf, "%s %s",
@@ -4593,7 +4593,7 @@ there_cmd_menu_next2u(
 
     if ((mtmp && !(mtmp->mpeaceful || mtmp->mtame))
         || glyph_is_invisible(glyph_at(x, y))) {
-        Sprintf(buf, "Attack %s", mtmp ? mon_nam(mtmp) : "unseen creature");
+        Sprintf(buf, _("Attack %s"), mtmp ? mon_nam(mtmp) : "unseen creature");
         mcmd_addmenu(win, MCMD_ATTACK_NEXT2U, buf), ++K;
         /* attacking overrides any other automatic action */
         *act = MCMD_ATTACK_NEXT2U;
@@ -5053,9 +5053,9 @@ get_count(
         if (cnt > 9 || backspaced || echoalways) {
             clear_nhwindow(WIN_MESSAGE);
             if (backspaced && !cnt && !showzero) {
-                Sprintf(qbuf, "Count: ");
+                Sprintf(qbuf, _("Count: "));
             } else {
-                Sprintf(qbuf, "Count: %ld", cnt);
+                Sprintf(qbuf, _("Count: %ld"), cnt);
                 backspaced = FALSE;
             }
             custompline(SUPPRESS_HISTORY, "%s", qbuf);
@@ -5064,7 +5064,7 @@ get_count(
     }
 
     if (historicmsg || (conditionalmsg && *count != first)) {
-        Sprintf(qbuf, "Count: %ld ", *count);
+        Sprintf(qbuf, _("Count: %ld "), *count);
         (void) key2txt((uchar) key, eos(qbuf));
         putmsghistory(qbuf, FALSE);
     }

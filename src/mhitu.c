@@ -2284,7 +2284,7 @@ mayberem(struct monst *mon,
         pline(_("%s takes off your %s."), seducer, str);
     } else if (rn2(20) < ACURR(A_CHA)) {
         SetVoice(mon, 0, 80, 0); /* y_n aka yn_function is set up for this */
-        Sprintf(qbuf, "\"Shall I remove your %s, %s?\"", str,
+        Sprintf(qbuf, _("\"Shall I remove your %s, %s?\""), str,
                 (!rn2(2) ? "lover" : !rn2(2) ? "dear" : "sweetheart"));
         if (y_n(qbuf) == 'n')
             return;

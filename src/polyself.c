@@ -677,7 +677,7 @@ polyself(int psflags)
                     mntmp = gy.youmonst.cham;
             }
             if (controllable_poly) {
-                Sprintf(buf, "Become %s?",
+                Sprintf(buf, _("Become %s?"),
                         an(pmname(&mons[mntmp], gvariant)));
                 if (y_n(buf) != 'y')
                     return;
@@ -1675,7 +1675,7 @@ dogaze(void)
                 You(_("avoid gazing at %s."), y_monnam(mtmp));
             } else {
                 if (flags.confirm && mtmp->mpeaceful && !Confusion) {
-                    Sprintf(qbuf, "Really %s %s?",
+                    Sprintf(qbuf, _("Really %s %s?"),
                             (adtyp == AD_CONF) ? "confuse" : "attack",
                             mon_nam(mtmp));
                     if (y_n(qbuf) != 'y')
