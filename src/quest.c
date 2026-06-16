@@ -209,7 +209,7 @@ expulsion(boolean seal)
         if (t)
             deltrap(t); /* (display might be briefly out of sync) */
         else if (!reexpelled)
-            impossible("quest portal already gone?");
+            impossible(_("quest portal already gone?"));
     }
 }
 
@@ -239,9 +239,9 @@ finish_quest(struct obj *obj) /* quest artifact or thrown unique item or faux
             qt_pager("hasamulet");
         } else if (obj->otyp == FAKE_AMULET_OF_YENDOR) {
             verbalize(
-      "Sorry to say, this is a mere imitation of the true Amulet of Yendor.");
+      _("Sorry to say, this is a mere imitation of the true Amulet of Yendor."));
         } else {
-            verbalize("Ah, I see you've found %s.", the(xname(obj)));
+            verbalize(_("Ah, I see you've found %s."), the(xname(obj)));
         }
         return;
     }
@@ -454,7 +454,7 @@ prisoner_speaks(struct monst *mtmp)
         if (canseemon(mtmp))
             pline(_("%s speaks:"), Monnam(mtmp));
         SetVoice(mtmp, 0, 80, 0);
-        verbalize("I'm finally free!");
+        verbalize(_("I'm finally free!"));
         mtmp->mstrategy &= ~STRAT_WAITMASK;
         mtmp->mpeaceful = 1;
 
@@ -485,7 +485,7 @@ quest_chat(struct monst *mtmp)
         chat_with_guardian();
         break;
     default:
-        impossible("quest_chat: Unknown quest character %s.", mon_nam(mtmp));
+        impossible(_("quest_chat: Unknown quest character %s."), mon_nam(mtmp));
     }
 }
 

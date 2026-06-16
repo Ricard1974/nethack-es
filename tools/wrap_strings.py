@@ -27,6 +27,7 @@ FUNC_1ST_ARG = [
     "verbatim",
     "raw_printf",
     "add_menu_str",
+    "end_menu",
     "impossible",
     "panic",
     "config_error_add",
@@ -167,6 +168,69 @@ def process_file(filepath):
         for str_start, str_end, full_raw in reversed(calls_to_process):
             short = full_raw[:70] + ("..." if len(full_raw) > 70 else "")
             print(f"  {func_name}: {short}")
+            replacement = "_(" + full_raw + ")"
+            content = content[:str_start] + replacement + content[str_end:]
+            changes += 1
+
+    for func_name, arg_positions in FUNC_NAMED_ARGS:
+        pattern = re.compile(r"\b" + re.escape(func_name) + r"\s*\(")
+        calls_to_process = []
+
+        for match in pattern.finditer(content):
+            paren_start = match.end()
+
+            # Parsear argumentos separados por coma, respetando parentesis anidados
+            args = []
+            depth = 0
+            arg_start = paren_start
+            i = paren_start
+            while i < len(content) and depth >= 0:
+                ch = content[i]
+                if ch == "(":
+                    depth += 1
+                elif ch == ")":
+                    depth -= 1
+                    if depth < 0:
+                        break  # Fin de la llamada
+                elif ch == "," and depth == 1:
+                    args.append(content[arg_start:i])
+                    arg_start = i + 1
+                elif ch in "\"'" and (i == arg_start or content[i - 1] != "\\"):
+                    # Saltar strings, no confundir comas dentro de strings
+                    pass
+                i += 1
+            if depth < 0:
+                args.append(content[arg_start : i - 1])  # Ultimo argumento
+
+            # Intentar de otra forma: parsear saltando strings y parentesis
+            # Mas robusto: usar get_string_group para argumentos string
+            if len(args) < max(arg_positions):
+                continue
+
+            # Para cada posicion de argumento especificada
+            for arg_pos in arg_positions:
+                if arg_pos > len(args):
+                    continue
+                arg = args[arg_pos - 1].strip()
+                # El argumento debe ser un string literal
+                if not arg.startswith('"') or arg.startswith('_("'):
+                    continue
+                if is_already_wrapped(content, content.find(arg, match.start())):
+                    continue
+                # Encontrar posicion exacta en el contenido
+                search_start = match.start()
+                while True:
+                    pos = content.find(arg, search_start)
+                    if pos == -1:
+                        break
+                    if not is_already_wrapped(content, pos):
+                        calls_to_process.append((pos, pos + len(arg), arg))
+                        break
+                    search_start = pos + 1
+
+        for str_start, str_end, full_raw in reversed(calls_to_process):
+            short = full_raw[:70] + ("..." if len(full_raw) > 70 else "")
+            print(f"  {func_name}[arg{arg_pos}]: {short}")
             replacement = "_(" + full_raw + ")"
             content = content[:str_start] + replacement + content[str_end:]
             changes += 1

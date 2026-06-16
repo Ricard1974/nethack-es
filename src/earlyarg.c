@@ -86,15 +86,15 @@ lopt(char *arg,  /* command line token; beginning matches 'optname' */
     if (arg[1] != optname[1]) {
     loptbail:
         if (complain)
-            config_error_add("Unknown option: %.60s", origarg);
+            config_error_add(_("Unknown option: %.60s"), origarg);
         return (char *) 0;
     loptnotallowed:
         if (complain)
-            config_error_add("Value not allowed: %.60s", origarg);
+            config_error_add(_("Value not allowed: %.60s"), origarg);
         return (char *) 0;
     loptrequired:
         if (complain)
-            config_error_add("Missing required value: %.60s", origarg);
+            config_error_add(_("Missing required value: %.60s"), origarg);
         return (char *) 0;
     }
 
@@ -833,7 +833,7 @@ static const struct enum_dump glyph_offsets_dump[] = {
     char comment[BUFSZ];
 
     for (i = 0; i < NUM_ENUM_DUMPS; ++ i) {
-        raw_printf("enum %s = {", edmp[i].title);
+        raw_printf(_("enum %s = {"), edmp[i].title);
         for (j = 0; j < edmp[i].szd; ++j) {
             nmprefix = (j >= edmp[i].szd - edmp[i].unprefixed_count)
                            ? "" : edmp[i].pfx; /* "" or "PM_" */
@@ -846,7 +846,7 @@ static const struct enum_dump glyph_offsets_dump[] = {
             } else {
                 comment[0] = '\0';
             }
-            raw_printf("    %s%*s = %3d,%s",
+            raw_printf(_("    %s%*s = %3d,%s"),
                        nmprefix, -nmwidth,
                        ed[i][j].nm, ed[i][j].val,
                        comment);

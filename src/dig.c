@@ -80,7 +80,7 @@ mkcavepos(coordxy x, coordxy y, int dist, boolean waslit, boolean rockit)
     gv.viz_array[y][x] = (dist < 3) ? (IN_SIGHT | COULD_SEE) : COULD_SEE;
     lev->typ = (rockit ? STONE : ROOM); /* flags set via doormask above */
     if (dist >= 3)
-        impossible("mkcavepos called with dist %d", dist);
+        impossible(_("mkcavepos called with dist %d"), dist);
     feel_newsym(x, y);
 }
 
@@ -653,7 +653,7 @@ digactualhole(coordxy x, coordxy y, struct monst *madeby, int ttyp)
         return;
 
     if (ttyp != PIT && (!Can_dig_down(&u.uz) && !lev->candig)) {
-        impossible("digactualhole: can't dig %s on this level.",
+        impossible(_("digactualhole: can't dig %s on this level."),
                    trapname(ttyp, TRUE));
         ttyp = PIT;
     }
@@ -837,7 +837,7 @@ liquid_flow(
     /* caller should have changed levl[x][y].typ to POOL, MOAT, or LAVA */
     if (!is_pool_or_lava(x, y)) {
         if (iflags.sanity_check) {
-            impossible("Insane liquid_flow(%d,%d,%s,%s).", x, y,
+            impossible(_("Insane liquid_flow(%d,%d,%s,%s)."), x, y,
                        ttmp ? trapname(ttmp->ttyp, TRUE) : "no trap",
                        fillmsg ? fillmsg : "no mesg");
         }
@@ -1164,7 +1164,7 @@ use_pick_axe2(struct obj *obj)
         if (Levitation)
             You(_("don't have enough leverage."));
         else
-            You_cant("reach the %s.", ceiling(u.ux, u.uy));
+            You_cant(_("reach the %s."), ceiling(u.ux, u.uy));
     } else if (!u.dx && !u.dy && !u.dz) {
         char buf[BUFSZ];
         int dam;
@@ -1237,7 +1237,7 @@ use_pick_axe2(struct obj *obj)
                     /* using a pick but dig_target is DIGTYPE_UNDIGGABLE
                        and there is at least one boulder or statue or both
                        present; pick_can_reach() returned false */
-                    You_cant("reach the %s.", what);
+                    You_cant(_("reach the %s."), what);
                 }
             } else if (u.utrap && u.utraptype == TT_PIT && trap
                        && (trap_with_u = t_at(u.ux, u.uy))
@@ -1370,7 +1370,7 @@ watch_dig(struct monst *mtmp, coordxy x, coordxy y, boolean zap)
         if (mtmp) {
             SetVoice(mtmp, 0, 80, 0);
             if (zap || svc.context.digging.warned) {
-                verbalize("Halt, vandal!  You're under arrest!");
+                verbalize(_("Halt, vandal!  You're under arrest!"));
                 (void) angry_guards(!!Deaf);
             } else {
                 const char *str;
@@ -1383,7 +1383,7 @@ watch_dig(struct monst *mtmp, coordxy x, coordxy y, boolean zap)
                     str = "wall";
                 else
                     str = "fountain";
-                verbalize("Hey, stop damaging that %s!", str);
+                verbalize(_("Hey, stop damaging that %s!"), str);
                 svc.context.digging.warned = TRUE;
             }
             if (is_digging())
@@ -1439,7 +1439,7 @@ mdig_tunnel(struct monst *mtmp)
 
     /* Only rock, trees, and walls fall through to this point. */
     if ((here->wall_info & W_NONDIGGABLE) != 0) {
-        impossible("mdig_tunnel:  %s at (%d,%d) is undiggable",
+        impossible(_("mdig_tunnel:  %s at (%d,%d) is undiggable"),
                    (IS_WALL(here->typ) ? "wall"
                     : IS_TREE(here->typ) ? "tree" : "stone"),
                    (int) mtmp->mx, (int) mtmp->my);

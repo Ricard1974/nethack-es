@@ -81,7 +81,7 @@ simple_look(struct obj *otmp, /* list of objects */
      * detected, hence multiple objects must be present.
      */
     if (!otmp) {
-        impossible("simple_look(null)");
+        impossible(_("simple_look(null)"));
     } else if (!(here ? otmp->nexthere : otmp->nobj)) {
         pline1(doname(otmp));
     } else {
@@ -1181,7 +1181,7 @@ query_objlist(const char *qstr,        /* query string */
                 continue;
             }
             if (engulfer_minvent && curr->owornmask != 0L) {
-                You_cant("pick %s up.", ysimple_name(curr));
+                You_cant(_("pick %s up."), ysimple_name(curr));
                 continue;
             }
             if (mi->count == -1L || mi->count > curr->quan)
@@ -1368,7 +1368,7 @@ query_category(
         }
         pack++;
         if (invlet >= 'u') {
-            impossible("query_category: too many categories");
+            impossible(_("query_category: too many categories"));
             n = 0;
             goto query_done;
         }
@@ -1553,7 +1553,7 @@ delta_cwt(struct obj *container, struct obj *obj)
         if (*prev == obj)
             break;
     if (!*prev) {
-        panic("delta_cwt: obj not inside container?");
+        panic(_("delta_cwt: obj not inside container?"));
     } else {
         /* temporarily remove the object and calculate resulting weight */
         *prev = obj->nobj;
@@ -1801,7 +1801,7 @@ pickup_object(
     int res;
 
     if (obj->quan < count) {
-        impossible("pickup_object: count %ld > quan %ld?", count, obj->quan);
+        impossible(_("pickup_object: count %ld > quan %ld?"), count, obj->quan);
         return 0;
     }
 
@@ -1814,7 +1814,7 @@ pickup_object(
         return 0;
     } else if (obj->where == OBJ_MINVENT && obj->owornmask != 0L
                && engulfing_u(obj->ocarry)) {
-        You_cant("pick %s up.", ysimple_name(obj));
+        You_cant(_("pick %s up."), ysimple_name(obj));
         return 0;
     } else if (obj->oartifact && !touch_artifact(obj, &gy.youmonst)) {
         return 0;
@@ -2314,7 +2314,7 @@ doloot_core(void)
         if (!looted_mon) {
             if (!underfoot && container_at(cc.x, cc.y, FALSE)) {
                 if (mtmp) {
-                    You_cant("loot anything %sthere with %s in the way.",
+                    You_cant(_("loot anything %sthere with %s in the way."),
                              prev_inquiry ? "else " : "", mon_nam(mtmp));
                     return (timepassed ? ECMD_TIME : ECMD_OK);
                 } else {
@@ -2387,7 +2387,7 @@ reverse_loot(void)
 
         if (coffers) {
             SetVoice((struct monst *) 0, 0, 80, 0);
-            verbalize("Thank you for your contribution to reduce the debt.");
+            verbalize(_("Thank you for your contribution to reduce the debt."));
             freeinv(goldob);
             (void) add_to_container(coffers, goldob);
             coffers->owt = weight(coffers);
@@ -2546,7 +2546,7 @@ in_container(struct obj *obj)
     char buf[BUFSZ];
 
     if (!gc.current_container) {
-        impossible("<in> no gc.current_container?");
+        impossible(_("<in> no gc.current_container?"));
         return 0;
     } else if (obj == uball || obj == uchain) {
         You(_("must be kidding."));
@@ -2670,7 +2670,7 @@ in_container(struct obj *obj)
         else if (obj_here(gc.current_container, u.ux, u.uy))
             useupf(gc.current_container, gc.current_container->quan);
         else
-            panic("in_container:  bag not found.");
+            panic(_("in_container:  bag not found."));
 
         losehp(d(6, 6), "magical explosion", KILLED_BY_AN);
         gc.current_container = 0; /* baggone = TRUE; */
@@ -2715,7 +2715,7 @@ out_container(struct obj *obj)
     boolean is_gold = (obj->oclass == COIN_CLASS);
 
     if (!gc.current_container) {
-        impossible("<out> no gc.current_container?");
+        impossible(_("<out> no gc.current_container?"));
         return -1;
     } else if (is_gold) {
         obj->owt = weight(obj);

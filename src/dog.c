@@ -273,7 +273,7 @@ makedog(void)
         gn.notonhead = FALSE;
         see_monster_closeup(mtmp, carrying(EXPENSIVE_CAMERA) ? TRUE : FALSE);
     } else {
-        impossible("makedog() when startingpet_mid is already non-zero?");
+        impossible(_("makedog() when startingpet_mid is already non-zero?"));
     }
 
     if (!gp.petname_used++ && *petname)
@@ -565,7 +565,7 @@ mon_arrive(struct monst *mtmp, int when)
             break;
         } else if (!(u.uevent.qexpelled
                      && (Is_qstart(&u.uz0) || Is_qstart(&u.uz)))) {
-            impossible("mon_arrive: no corresponding portal?");
+            impossible(_("mon_arrive: no corresponding portal?"));
         }
         FALLTHROUGH;
         /*FALLTHRU*/
@@ -635,11 +635,11 @@ mon_catchup_elapsed_time(
 #if defined(DEBUG) || (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
 
     if (nmv < 0L) { /* crash likely... */
-        panic("catchup from future time?");
+        panic(_("catchup from future time?"));
         /*NOTREACHED*/
         return;
     } else if (nmv == 0L) { /* safe, but shouldn't happen */
-        impossible("catchup from now?");
+        impossible(_("catchup from now?"));
     } else
 #endif
         if (nmv >= LARGEST_INT) /* paranoia */
@@ -713,7 +713,7 @@ mon_catchup_elapsed_time(
     if (!mtmp->mtame && mtmp->mleashed) {
         /* leashed monsters should always be with hero, consequently
            never losing any time to be accounted for later */
-        impossible("catching up for leashed monster?");
+        impossible(_("catching up for leashed monster?"));
         m_unleash(mtmp, FALSE);
     }
 
@@ -851,7 +851,7 @@ keepdogs(
                 if (mtmp == u.usteed) {
                     /* can't happen unless someone makes a change
                        which scrambles the stay_behind logic above */
-                    impossible("steed left behind?");
+                    impossible(_("steed left behind?"));
                     dismount_steed(DISMOUNT_GENERIC);
                 }
                 continue;

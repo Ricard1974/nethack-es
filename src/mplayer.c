@@ -248,7 +248,7 @@ mk_mplayer(struct permonst *ptr, coordxy x, coordxy y, boolean special)
             shield = STRANGE_OBJECT;
             break;
         default:
-            impossible("bad mplayer monster");
+            impossible(_("bad mplayer monster"));
             weapon = 0;
             break;
         }
@@ -371,7 +371,7 @@ mplayer_talk(struct monst *mtmp)
         return; /* will drop to humanoid talk */
 
     SetVoice(mtmp, 0, 80, 0);
-    verbalize("Talk? -- %s", mtmp->data == &mons[gu.urole.mnum]
+    verbalize(_("Talk? -- %s"), mtmp->data == &mons[gu.urole.mnum]
                                 ? same_class_msg[rn2(3)]
                                 : other_class_msg[rn2(3)]);
 }

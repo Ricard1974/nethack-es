@@ -185,7 +185,7 @@ alreadynamed(struct monst *mtmp, char *monnambuf, char *usrbuf)
     } else if (mtmp->data == &mons[PM_JUIBLEX]
                && strstri(monnambuf, "Juiblex")
                && !strcmpi(usrbuf, "Jubilex")) {
-        pline("%s doesn't like being called %s.", upstart(monnambuf), usrbuf);
+        pline(_("%s doesn't like being called %s."), upstart(monnambuf), usrbuf);
         return TRUE;
     }
     return FALSE;
@@ -266,7 +266,7 @@ do_mgivenname(void)
                     || mtmp->data->msound <= MS_ANIMAL)) {
         if (!alreadynamed(mtmp, monnambuf, buf)) {
             SetVoice(mtmp, 0, 80, 0);
-            verbalize("I'm %s, not %s.", shkname(mtmp), buf);
+            verbalize(_("I'm %s, not %s."), shkname(mtmp), buf);
         }
     } else if (mtmp->ispriest || mtmp->isminion || mtmp->isshk
                || mtmp->data == &mons[PM_GHOST] || has_ebones(mtmp)) {
@@ -1346,7 +1346,7 @@ obj_pmname(struct obj *obj)
 
         return pmname(&mons[mndx], mgend);
     }
-    impossible("obj_pmname otyp:%i,corpsenm:%i", obj->otyp, obj->corpsenm);
+    impossible(_("obj_pmname otyp:%i,corpsenm:%i"), obj->otyp, obj->corpsenm);
     return "two-legged glorkum-seeker";
 }
 

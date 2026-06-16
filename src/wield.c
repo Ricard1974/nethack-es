@@ -685,7 +685,7 @@ wield_tool(struct obj *obj,
                    || strstri(what, "s of ") != 0);
 
     if (obj->owornmask & (W_ARMOR | W_ACCESSORY)) {
-        You_cant("%s %s while wearing %s.", verb, yname(obj),
+        You_cant(_("%s %s while wearing %s."), verb, yname(obj),
                  more_than_1 ? "them" : "it");
         return FALSE;
     }
@@ -704,7 +704,7 @@ wield_tool(struct obj *obj,
         return FALSE;
     }
     if (cantwield(gy.youmonst.data)) {
-        You_cant("hold %s strongly enough.", more_than_1 ? "them" : "it");
+        You_cant(_("hold %s strongly enough."), more_than_1 ? "them" : "it");
         return FALSE;
     }
     /* check shield */

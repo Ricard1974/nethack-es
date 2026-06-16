@@ -339,7 +339,7 @@ md_rush(struct monst *md,
             if (mon)
                 verbalize1(md_exclamations());
             else if (u_at(fx, fy))
-                verbalize("Excuse me.");
+                verbalize(_("Excuse me."));
         }
 
         if (mon)
@@ -370,7 +370,7 @@ md_rush(struct monst *md,
         newsym(fx, fy);
         if (!Deaf) {
             SetVoice(md, 0, 80, 0);
-            verbalize("This place's too crowded.  I'm outta here.");
+            verbalize(_("This place's too crowded.  I'm outta here."));
         } else {
             pline(_("%s."), Never_mind);
         }
@@ -415,7 +415,7 @@ newmail(struct mail_info *info)
     message_seen = TRUE;
     if (!Deaf) {
         SetVoice(md, 0, 80, 0);
-        verbalize("%s, %s!  %s.", Hello(md), svp.plname, info->display_txt);
+        verbalize(_("%s, %s!  %s."), Hello(md), svp.plname, info->display_txt);
     } else {
         pline(_("Message:  %s."), info->display_txt);
     }
@@ -431,7 +431,7 @@ newmail(struct mail_info *info)
         if (!m_next2u(md)) {
             if (!Deaf) {
                 SetVoice(md, 0, 80, 0);
-                verbalize("Catch!");
+                verbalize(_("Catch!"));
             } else {
                 /* don't bother with nonverbal alternative ... */
                 ;
@@ -526,7 +526,7 @@ readmail(struct obj *otmp UNUSED)
             recipient = DEVTEAM_URL;
             delivery = subst_delivery;
         } else {
-            impossible("fake mail #%d has undefined substitution", i);
+            impossible(_("fake mail #%d has undefined substitution"), i);
             delivery = faulty_delivery;
         }
     }

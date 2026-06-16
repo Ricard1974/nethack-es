@@ -772,7 +772,7 @@ resurrect(void)
         if (!Deaf) {
             pline(_("%s"), _("A voice booms out..."));
             SetVoice(mtmp, 0, 80, 0);
-            verbalize("So thou thought thou couldst %s me, fool.", verb);
+            verbalize(_("So thou thought thou couldst %s me, fool."), verb);
         }
     }
 }
@@ -850,7 +850,7 @@ cuss(struct monst *mtmp)
             pline(_("%s laughs fiendishly."), Monnam(mtmp));
         } else if (u.uhave.amulet && !rn2(SIZE(random_insult))) {
             SetVoice(mtmp, 0, 80, 0);
-            verbalize("Relinquish the amulet, %s!",
+            verbalize(_("Relinquish the amulet, %s!"),
                       ROLL_FROM(random_insult));
         } else if (u.uhp < 5 && !rn2(2)) { /* Panic */
             SetVoice(mtmp, 0, 80, 0);
@@ -862,7 +862,7 @@ cuss(struct monst *mtmp)
             verbalize(rn2(2) ? "I shall return." : "I'll be back.");
         } else {
             SetVoice(mtmp, 0, 80, 0);
-            verbalize("%s %s!",
+            verbalize(_("%s %s!"),
                       ROLL_FROM(random_malediction),
                       ROLL_FROM(random_insult));
         }

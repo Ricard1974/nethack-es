@@ -366,7 +366,7 @@ fqname(const char *basenam,
     if (!gf.fqn_prefix[whichprefix])
         return basenam;
     if (buffnum < 0 || buffnum >= FQN_NUMBUF) {
-        impossible("Invalid fqn_filename_buffer specified: %d", buffnum);
+        impossible(_("Invalid fqn_filename_buffer specified: %d"), buffnum);
         buffnum = 0;
     }
     bufptr = gf.fqn_prefix[whichprefix];
@@ -376,7 +376,7 @@ fqname(const char *basenam,
         bufptr = translate_path_variables(gf.fqn_prefix[whichprefix], tmpbuf);
 #endif
     if (strlen(bufptr) + strlen(basenam) >= FQN_MAX_FILENAME) {
-        impossible("fqname too long: %s + %s", bufptr, basenam);
+        impossible(_("fqname too long: %s + %s"), bufptr, basenam);
         return basenam; /* XXX */
     }
     Strcpy(fqn_filename_buffer[buffnum], bufptr);
@@ -473,12 +473,12 @@ init_nhfile(NHFILE *nhfp)
 {
     if (nhfp->structlevel) {
         if (nhfp->fd != -1) {
-            impossible("Warning - Unclosed structlevel file being reinitialized");
+            impossible(_("Warning - Unclosed structlevel file being reinitialized"));
             (void) nhclose(nhfp->fd);
         }
     } else if (nhfp->fpdef) {
         if (nhfp->fpdef) {
-            impossible("Warning - Unclosed fieldlevel file being reinitialized");
+            impossible(_("Warning - Unclosed fieldlevel file being reinitialized"));
             (void) fclose(nhfp->fpdef);
         }
     }
@@ -964,7 +964,7 @@ open_bonesfile(d_level *lev, char **bonesid)
     if (nhfp) {
 #if defined(WIN32) && defined(DEBUG)
         if (nhfp->fd >= 0)
-            impossible("bones file NHFILE * has odd fd (%d)", nhfp->fd);
+            impossible(_("bones file NHFILE * has odd fd (%d)"), nhfp->fd);
 #endif
         nhfp->structlevel = TRUE;
         nhfp->fieldlevel = FALSE;
@@ -1735,7 +1735,7 @@ docompress_file(const char *filename, boolean uncomp)
             Sprintf(numbuf, "(%d)", errno);
             details = numbuf;
         }
-        raw_printf("Wait when %scompressing %s failed; %s.",
+        raw_printf(_("Wait when %scompressing %s failed; %s."),
                    uncomp ? "un" : "", filename, details);
     }
     (void) signal(SIGINT, (SIG_RET_TYPE) done1);
@@ -1759,7 +1759,7 @@ docompress_file(const char *filename, boolean uncomp)
     } else {
         /* (un)compress failed; remove the new, bad file */
         if (uncomp) {
-            raw_printf("Unable to uncompress %s", filename);
+            raw_printf(_("Unable to uncompress %s"), filename);
             (void) unlink(filename);
         } else {
             /* no message needed for compress case; life will go on */
@@ -1877,7 +1877,7 @@ docompress_file(const char *filename, boolean uncomp)
             if (errno == 0) {
                 pline(_("%s"), _("zlib failed to allocate memory"));
             } else {
-                panic("Error in docompress_file %d", errno);
+                panic(_("Error in docompress_file %d"), errno);
             }
 #ifdef SFCTOOL
             free(cfn);
@@ -1936,7 +1936,7 @@ docompress_file(const char *filename, boolean uncomp)
             if (errno == 0) {
                 pline(_("%s"), _("zlib failed to allocate memory"));
             } else if (errno != ENOENT) {
-                panic("Error in zlib docompress_file %s, %d", filename,
+                panic(_("Error in zlib docompress_file %s, %d"), filename,
                       errno);
             }
 #ifdef SFCTOOL
@@ -2045,7 +2045,7 @@ problematic_savefile(int sfstatus, const char *savefilenm)
     default:
         for (i = 0; i < SIZE(sf2msg); ++i) {
             if (sf2msg[i].sfstatus == sfstatus) {
-                raw_printf("\n%s is %s %s\n",
+                raw_printf(_("\n%s is %s %s\n"),
                            savefilenm,
                            (sfstatus == SF_OUTDATED) ? "an" : "a",
                            sf2msg[i].msg);
@@ -2273,7 +2273,7 @@ lock_file(const char *filename, int whichprefix,
 
     gn.nesting++;
     if (gn.nesting > 1) {
-        impossible("TRIED TO NEST LOCKS");
+        impossible(_("TRIED TO NEST LOCKS"));
         return TRUE;
     }
 
@@ -2318,7 +2318,7 @@ lock_file(const char *filename, int whichprefix,
             sleep(1);
         } else {
             HUP raw_print("I give up.  Sorry.");
-            HUP raw_printf("Some other process has an unnatural grip on %s.",
+            HUP raw_printf(_("Some other process has an unnatural grip on %s."),
                            filename);
             gn.nesting--;
             return FALSE;
@@ -2338,7 +2338,7 @@ lock_file(const char *filename, int whichprefix,
                     sleep(1);
             } else {
                 HUP raw_print("I give up.  Sorry.");
-                HUP raw_printf("Perhaps there is an old %s around?",
+                HUP raw_printf(_("Perhaps there is an old %s around?"),
                                lockname);
                 gn.nesting--;
                 return FALSE;
@@ -2346,17 +2346,17 @@ lock_file(const char *filename, int whichprefix,
 
             break;
         case ENOENT:
-            HUP raw_printf("Can't find file %s to lock!", filename);
+            HUP raw_printf(_("Can't find file %s to lock!"), filename);
             gn.nesting--;
             return FALSE;
         case EACCES:
-            HUP raw_printf("No write permission to lock %s!", filename);
+            HUP raw_printf(_("No write permission to lock %s!"), filename);
             gn.nesting--;
             return FALSE;
 #ifdef VMS /* c__translate(vmsfiles.c) */
         case EPERM:
             /* could be misleading, but usually right */
-            HUP raw_printf("Can't lock %s due to directory protection.",
+            HUP raw_printf(_("Can't lock %s due to directory protection."),
                            filename);
             gn.nesting--;
             return FALSE;
@@ -2364,14 +2364,14 @@ lock_file(const char *filename, int whichprefix,
         case EROFS:
             /* take a wild guess at the underlying cause */
             HUP perror(lockname);
-            HUP raw_printf("Cannot lock %s.", filename);
+            HUP raw_printf(_("Cannot lock %s."), filename);
             HUP raw_printf("(Perhaps you are running NetHack from"
                            " inside the distribution package?).");
             gn.nesting--;
             return FALSE;
         default:
             HUP perror(lockname);
-            HUP raw_printf("Cannot lock %s for unknown reason (%d).",
+            HUP raw_printf(_("Cannot lock %s for unknown reason (%d)."),
                            filename, errnosv);
             gn.nesting--;
             return FALSE;
@@ -2401,13 +2401,13 @@ lock_file(const char *filename, int whichprefix,
 #endif
 #endif
         if (OPENFAILURE(gl.lockptr)) {
-            raw_printf("Waiting for access to %s.  (%d retries left).",
+            raw_printf(_("Waiting for access to %s.  (%d retries left)."),
                        filename, retryct);
             Delay(50);
         }
     }
     if (!retryct) {
-        raw_printf("I give up.  Sorry.");
+        raw_printf(_("I give up.  Sorry."));
         gn.nesting--;
         return FALSE;
     }
@@ -2436,7 +2436,7 @@ unlock_file(const char *filename)
         sflock.l_type = F_UNLCK;
         if (lockfd >= 0) {
             if (fcntl(lockfd, F_SETLK, &sflock) == -1)
-                HUP raw_printf("Can't remove fcntl lock on %s.", filename);
+                HUP raw_printf(_("Can't remove fcntl lock on %s."), filename);
             (void) close(lockfd), lockfd = -1;
         }
 #else
@@ -2447,7 +2447,7 @@ unlock_file(const char *filename)
 
 #if defined(UNIX) || defined(VMS)
         if (unlink(lockname) < 0)
-            HUP raw_printf("Can't unlink %s.", lockname);
+            HUP raw_printf(_("Can't unlink %s."), lockname);
 #ifdef NO_FILE_LINKS
         (void) nhclose(lockfd), lockfd = -1;
 #endif
@@ -2495,7 +2495,7 @@ fopen_wizkit_file(void)
          * place a file name may be wholly under the player's
          * control
          */
-        raw_printf("Access to %s denied (%d).", gw.wizkit, errno);
+        raw_printf(_("Access to %s denied (%d)."), gw.wizkit, errno);
         wait_synch();
         /* fall through to standard names */
     } else
@@ -2505,7 +2505,7 @@ fopen_wizkit_file(void)
 #if defined(UNIX) || defined(VMS)
     } else {
         /* access() above probably caught most problems for UNIX */
-        raw_printf("Couldn't open requested wizkit file %s (%d).", gw.wizkit,
+        raw_printf(_("Couldn't open requested wizkit file %s (%d)."), gw.wizkit,
                    errno);
         wait_synch();
 #endif
@@ -2534,7 +2534,7 @@ fopen_wizkit_file(void)
     else if (errno != ENOENT) {
         /* e.g., problems when setuid NetHack can't search home
          * directory restricted to user */
-        raw_printf("Couldn't open default gw.wizkit file %s (%d).",
+        raw_printf(_("Couldn't open default gw.wizkit file %s (%d)."),
                    tmp_wizkit, errno);
         wait_synch();
     }
@@ -2722,7 +2722,7 @@ check_recordfile(const char *dir UNUSED_if_not_OS2_CODEVIEW)
         (void) chmod(fq_record, FCMASK | 007);
 #endif /* VMS && !SECURE */
     } else {
-        raw_printf("Warning: cannot write scoreboard file '%s'", fq_record);
+        raw_printf(_("Warning: cannot write scoreboard file '%s'"), fq_record);
         wait_synch();
     }
 #endif /* !UNIX && !VMS */
@@ -2779,7 +2779,7 @@ check_recordfile(const char *dir UNUSED_if_not_OS2_CODEVIEW)
         fd = open(fq_record, O_CREAT | O_RDWR, S_IREAD | S_IWRITE);
 #endif
         if (fd <= 0) {
-            raw_printf("Warning: cannot write record '%s'", tmp);
+            raw_printf(_("Warning: cannot write record '%s'"), tmp);
             wait_synch();
         } else {
             (void) nhclose(fd);
@@ -2899,7 +2899,7 @@ recover_savefile(void)
 
     gnhfp = open_levelfile(0, errbuf);
     if (!gnhfp) {
-        raw_printf("%s\n", errbuf);
+        raw_printf(_("%s\n"), errbuf);
         return FALSE;
     }
     filesz = lseek(gnhfp->fd, 0L, SEEK_END);
@@ -2927,7 +2927,7 @@ recover_savefile(void)
         }
     }
     if (read(gnhfp->fd, (genericptr_t) &hpid, sizeof hpid) != sizeof hpid) {
-        raw_printf("\n%s\n%s\n",
+        raw_printf(_("\n%s\n%s\n"),
                    "Checkpoint data incompletely written"
                    " or subsequently clobbered.",
                    "Recovery impossible.");
@@ -2936,7 +2936,7 @@ recover_savefile(void)
     }
     if (read(gnhfp->fd, (genericptr_t) &savelev, sizeof(savelev))
         != sizeof(savelev)) {
-        raw_printf("\n%s %s %s\n",
+        raw_printf(_("\n%s %s %s\n"),
                    "Checkpointing was not in effect for",
                    gl.lock,
                    "-- recovery impossible.");
@@ -2958,7 +2958,7 @@ recover_savefile(void)
             != sizeof pltmpsiz) || (pltmpsiz > PL_NSIZ_PLUS)
         || (read(gnhfp->fd, (genericptr_t) &tmpplbuf, pltmpsiz)
             != pltmpsiz)) {
-        raw_printf("\nError reading %s -- can't recover.\n", gl.lock);
+        raw_printf(_("\nError reading %s -- can't recover.\n"), gl.lock);
         close_nhfile(gnhfp);
         return FALSE;
     }
@@ -2985,14 +2985,14 @@ recover_savefile(void)
     set_savefile_name(TRUE);
     snhfp = create_savefile();
     if (!snhfp) {
-        raw_printf("\nCannot recover savefile %s.\n", gs.SAVEF);
+        raw_printf(_("\nCannot recover savefile %s.\n"), gs.SAVEF);
         close_nhfile(gnhfp);
         return FALSE;
     }
 
     lnhfp = open_levelfile(savelev, errbuf);
     if (!lnhfp) {
-        raw_printf("\n%s\n", errbuf);
+        raw_printf(_("\n%s\n"), errbuf);
         close_nhfile(gnhfp);
         close_nhfile(snhfp);
         delete_savefile();
@@ -3077,7 +3077,7 @@ recover_savefile(void)
     }
  cleanup:
     if (savewrite_failure) {
-        raw_printf("\nError writing %s; recovery failed (%s).\n",
+        raw_printf(_("\nError writing %s; recovery failed (%s).\n"),
                    gs.SAVEF, savewrite_failure);
         close_nhfile(gnhfp);
         close_nhfile(snhfp);
@@ -3223,7 +3223,7 @@ reveal_paths(int code)
 #else
     buf[0] = '\0';
 #endif
-    raw_printf("%s %s%s:", s_suffix(gamename),
+    raw_printf(_("%s %s%s:"), s_suffix(gamename),
                SYSCONFFILE, buf);
 #ifdef SYSCF_FILE
     filep = SYSCF_FILE;
@@ -3237,12 +3237,12 @@ reveal_paths(int code)
     }
     raw_printf("    \"%s\"", filep);
     if (code == 1) {
-        raw_printf("NOTE: The %s above is missing or inaccessible!",
+        raw_printf(_("NOTE: The %s above is missing or inaccessible!"),
                    SYSCONFFILE);
         skip_sysopt = TRUE;
     }
 #else /* !SYSCF */
-    raw_printf("No system configuration file.");
+    raw_printf(_("No system configuration file."));
 #endif /* ?SYSCF */
 
     /* symbols file */
@@ -3259,7 +3259,7 @@ reveal_paths(int code)
     if (cstrp && (int) strlen(cstrp) < maxlen)
         Sprintf(buf, " (in %s)", cstrp);
 #endif /* PREFIXES_IN_USE */
-    raw_printf("The loadable symbols file%s:", buf);
+    raw_printf(_("The loadable symbols file%s:"), buf);
 #endif /* UNIX */
 
 #ifdef UNIX
@@ -3292,7 +3292,7 @@ reveal_paths(int code)
         Sprintf(buf, " (in %s)", cstrp);
 #endif
 #ifdef DLB
-    raw_printf("Basic data files%s are collected inside:", buf);
+    raw_printf(_("Basic data files%s are collected inside:"), buf);
     filep = DLBFILE;
 #ifdef VERSION_IN_DLB_FILENAME
     Strcpy(buf, build_dlb_filename((const char *) 0));
@@ -3308,7 +3308,7 @@ reveal_paths(int code)
     raw_printf("    \"%s\"", filep);
 #endif
 #else /* !DLB */
-    raw_printf("Basic data files%s are in many separate files.", buf);
+    raw_printf(_("Basic data files%s are in many separate files."), buf);
 #endif /* ?DLB */
 
     /* dumplog */
@@ -3337,7 +3337,7 @@ reveal_paths(int code)
         buf[sizeof buf - sizeof "    \"\""] = '\0';
         raw_printf("    \"%s\"", buf);
     } else {
-        raw_printf("No end-of-game disclosure file (%s).", nodumpreason);
+        raw_printf(_("No end-of-game disclosure file (%s)."), nodumpreason);
     }
 #endif /* ?DUMPLOG */
 
@@ -3351,7 +3351,7 @@ reveal_paths(int code)
                got set TRUE in a sysconf file other than the one containing
                the executable; disregard it */
             if (strlen(pd) > 0) {
-                raw_printf("portable_device_paths (set in sysconf):");
+                raw_printf(_("portable_device_paths (set in sysconf):"));
                 raw_printf("    \"%s\"", pd);
             }
         }
@@ -3368,7 +3368,7 @@ reveal_paths(int code)
     if (cstrp && (int) strlen(cstrp) < maxlen)
         Sprintf(buf, " (in %s)", cstrp);
 #endif /* PREFIXES_IN_USE */
-    raw_printf("Your personal configuration file%s:", buf);
+    raw_printf(_("Your personal configuration file%s:"), buf);
 
 #ifdef UNIX
     buf[0] = '\0';

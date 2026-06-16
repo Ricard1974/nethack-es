@@ -132,3 +132,6 @@ src/dothrow.c
 src/fountain.c
 src/invent.c
 src/cmd.c
+src/allmain.c
+src/options.c
+src/end.c

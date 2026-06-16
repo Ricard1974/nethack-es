@@ -401,17 +401,17 @@ pick_lock(
     }
 
     if (nohands(gy.youmonst.data)) {
-        You_cant("hold %s -- you have no hands!", doname(pick));
+        You_cant(_("hold %s -- you have no hands!"), doname(pick));
         return PICKLOCK_DID_NOTHING;
     } else if (u.uswallow) {
-        You_cant("%sunlock %s.", (picktyp == CREDIT_CARD) ? "" : "lock or ",
+        You_cant(_("%sunlock %s."), (picktyp == CREDIT_CARD) ? "" : "lock or ",
                  mon_nam(u.ustuck));
         return PICKLOCK_DID_NOTHING;
     }
 
     if (pick != &dummypick && picktyp != SKELETON_KEY
         && picktyp != LOCK_PICK && picktyp != CREDIT_CARD) {
-        impossible("picking lock with object %d?", picktyp);
+        impossible(_("picking lock with object %d?"), picktyp);
         return PICKLOCK_DID_NOTHING;
     }
     ch = 0; /* lint suppression */
@@ -452,7 +452,7 @@ pick_lock(
             if (Is_box(otmp)) {
                 ++count;
                 if (!can_reach_floor(TRUE)) {
-                    You_cant("reach %s from up here.", the(xname(otmp)));
+                    You_cant(_("reach %s from up here."), the(xname(otmp)));
                     return PICKLOCK_LEARNED_SOMETHING;
                 }
                 it = 0;
@@ -501,12 +501,12 @@ pick_lock(
                 }
 
                 if (otmp->obroken) {
-                    You_cant("fix its broken lock with %s.",
+                    You_cant(_("fix its broken lock with %s."),
                              ansimpleoname(pick));
                     return PICKLOCK_LEARNED_SOMETHING;
                 } else if (picktyp == CREDIT_CARD && !otmp->olocked) {
                     /* credit cards are only good for unlocking */
-                    You_cant("do that with %s.",
+                    You_cant(_("do that with %s."),
                              an(simple_typename(picktyp)));
                     return PICKLOCK_LEARNED_SOMETHING;
                 } else if (autounlock
@@ -559,7 +559,7 @@ pick_lock(
             if (picktyp == CREDIT_CARD
                 && (mtmp->isshk || mtmp->data == &mons[PM_ORACLE])) {
                 SetVoice(mtmp, 0, 80, 0);
-                verbalize("No checks, no credit, no problem.");
+                verbalize(_("No checks, no credit, no problem."));
             } else {
                 pline(_("I don't think %s would appreciate that."), mon_nam(mtmp));
             }
@@ -687,7 +687,7 @@ doforce(void)
     if (!u_have_forceable_weapon()) {
         boolean use_plural = uwep && uwep->quan > 1;
 
-        You_cant("force anything %s weapon%s.",
+        You_cant(_("force anything %s weapon%s."),
                  !uwep ? "when not wielding a"
                  : (uwep->oclass != WEAPON_CLASS && !is_weptool(uwep))
                    ? (use_plural ? "without proper" : "without a proper")
@@ -1243,7 +1243,7 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
             res = FALSE;
         break;
     default:
-        impossible("magic (%d) attempted on door.", otmp->otyp);
+        impossible(_("magic (%d) attempted on door."), otmp->otyp);
         break;
     }
     if (msg && cansee(x, y))

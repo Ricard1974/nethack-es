@@ -657,7 +657,7 @@ hitmm(
         if (compat) {
             Snprintf(buf, sizeof buf, "%s %s", magr_name,
                     mdef->mcansee ? "smiles at" : "talks to");
-            pline("%s %s %s.", buf, mon_nam(mdef),
+            pline(_("%s %s %s."), buf, mon_nam(mdef),
                   (compat == 2) ? "engagingly" : "seductively");
         } else {
             buf[0] = '\0';
@@ -741,7 +741,7 @@ gazemm(struct monst *magr, struct monst *mdef, struct attack *mattk)
         Sprintf(buf, "%s gazes %s",
                 altmesg ? Adjmonnam(magr, "blinded") : Monnam(magr),
                 altmesg ? "toward" : "at");
-        pline("%s %s...", buf,
+        pline(_("%s %s..."), buf,
               canspotmon(mdef) ? mon_nam(mdef) : "something");
     }
 

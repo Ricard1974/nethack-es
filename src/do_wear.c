@@ -1337,7 +1337,7 @@ Ring_off_or_gone(struct obj *obj, boolean gone)
 
     svc.context.takeoff.mask &= ~mask;
     if (!(u.uprops[objects[obj->otyp].oc_oprop].extrinsic & mask))
-        impossible("Strange... I didn't know you had that ring.");
+        impossible(_("Strange... I didn't know you had that ring."));
     if (gone)
         setnotworn(obj);
     else
@@ -1455,7 +1455,7 @@ Blindf_on(struct obj *otmp)
     if (Blind && !already_blind) {
         changed = TRUE;
         if (flags.verbose)
-            You_cant("see any more.");
+            You_cant(_("see any more."));
         /* set ball&chain variables before the hero goes blind */
         if (Punished)
             set_bc(0);
@@ -1485,7 +1485,7 @@ Blindf_off(struct obj *otmp)
     if (!otmp)
         otmp = ublindf;
     if (!otmp) {
-        impossible("Blindf_off without eyewear?");
+        impossible(_("Blindf_off without eyewear?"));
         return;
     }
     svc.context.takeoff.mask &= ~W_TOOL;
@@ -1502,7 +1502,7 @@ Blindf_off(struct obj *otmp)
         } else {
             changed = TRUE; /* !was_blind */
             /* "You were wearing the Eyes of the Overworld." */
-            You_cant("see anything now!");
+            You_cant(_("see anything now!"));
             /* set ball&chain variables before the hero goes blind */
             if (Punished)
                 set_bc(0);
@@ -1778,7 +1778,7 @@ armor_or_accessory_off(struct obj *obj)
         } else {
             Strcpy(why, "; it's embedded");
         }
-        You_cant("take that off%s.", why);
+        You_cant(_("take that off%s."), why);
         return ECMD_OK;
     }
 
@@ -1805,7 +1805,7 @@ armor_or_accessory_off(struct obj *obj)
     } else if (obj == ublindf) {
         Blindf_off(obj); /* does its own off_msg */
     } else {
-        impossible("removing strange accessory: %s",
+        impossible(_("removing strange accessory: %s"),
                    safe_typename(obj->otyp));
         if (obj->owornmask)
             remove_worn_item(obj, FALSE);
@@ -1878,7 +1878,7 @@ int
 cursed(struct obj *otmp)
 {
     if (!otmp) {
-        impossible("cursed without otmp");
+        impossible(_("cursed without otmp"));
         return 0;
     }
     /* Curses, like chickens, come home to roost. */
@@ -1944,7 +1944,7 @@ armoroff(struct obj *otmp)
             ga.afternmv = Shirt_off;
             break;
         default:
-            impossible("Taking off unknown armor (%d: %d), delay %d",
+            impossible(_("Taking off unknown armor (%d: %d), delay %d"),
                        otmp->otyp, objects[otmp->otyp].oc_armcat, delay);
             break;
         }
@@ -1979,7 +1979,7 @@ armoroff(struct obj *otmp)
             (void) Shirt_off();
             break;
         default:
-            impossible("Taking off unknown armor (%d: %d), no delay",
+            impossible(_("Taking off unknown armor (%d: %d), no delay"),
                        otmp->otyp, objects[otmp->otyp].oc_armcat);
             break;
         }
@@ -2000,7 +2000,7 @@ already_wearing(const char *cc)
 staticfn void
 already_wearing2(const char *cc1, const char *cc2)
 {
-    You_cant("wear %s because you're wearing %s there already.", cc1, cc2);
+    You_cant(_("wear %s because you're wearing %s there already."), cc1, cc2);
 }
 
 /*
@@ -2139,7 +2139,7 @@ canwearobj(struct obj *otmp, long *mask, boolean noisy)
                     already_wearing(an(c_shirt));
             } else {
                 if (noisy)
-                    You_cant("wear that over your %s.",
+                    You_cant(_("wear that over your %s."),
                              (uarm && !uarmc) ? c_armor
                                               : cloak_simple_name(uarmc));
             }
@@ -2319,7 +2319,7 @@ accessory_or_armor_on(struct obj *obj)
             }
         } else {
             /* neither armor nor accessory */
-            You_cant("wear that!");
+            You_cant(_("wear that!"));
             return ECMD_OK;
         }
     }
@@ -2362,7 +2362,7 @@ accessory_or_armor_on(struct obj *obj)
         else if (obj == uarmu)
             ga.afternmv = Shirt_on;
         else
-            panic("wearing armor not worn as armor? [%08lx]", obj->owornmask);
+            panic(_("wearing armor not worn as armor? [%08lx]"), obj->owornmask);
 
         delay = -objects[obj->otyp].oc_delay;
         if (delay) {
@@ -2392,7 +2392,7 @@ accessory_or_armor_on(struct obj *obj)
             /* setworn() and on_msg() handled by Blindf_on() */
             Blindf_on(obj);
         } else {
-            impossible("putting on unexpected type of accessory: %s",
+            impossible(_("putting on unexpected type of accessory: %s"),
                        safe_typename(obj->otyp));
         }
     }
@@ -2620,7 +2620,7 @@ struct obj *
 stuck_ring(struct obj *ring, int otyp)
 {
     if (ring != uleft && ring != uright) {
-        impossible("stuck_ring: neither left nor right?");
+        impossible(_("stuck_ring: neither left nor right?"));
         return (struct obj *) 0;
     }
 
@@ -2775,7 +2775,7 @@ select_off(struct obj *otmp)
         svc.context.takeoff.mask |= W_QUIVER;
 
     else
-        impossible("select_off: %s???", doname(otmp));
+        impossible(_("select_off: %s???"), doname(otmp));
 
     return 0;
 }
@@ -2847,7 +2847,7 @@ do_takeoff(void)
         if (!cursed(ublindf))
             Blindf_off(ublindf);
     } else {
-        impossible("do_takeoff: taking off %lx", doff->what);
+        impossible(_("do_takeoff: taking off %lx"), doff->what);
     }
     svc.context.takeoff.mask &= ~I_SPECIAL; /* clear cancel_doff() flag */
 
@@ -2927,7 +2927,7 @@ take_off(void)
            remove a blindfold, so 'A' shouldn't have been requiring 2] */
         doff->delay = 1;
     } else {
-        impossible("take_off: taking off %lx", doff->what);
+        impossible(_("take_off: taking off %lx"), doff->what);
         return 0; /* force done */
     }
 

@@ -160,7 +160,7 @@ castmu(
                     || spell_would_be_useless(mtmp, spellnum)) {
                     if (foundyou)
                         impossible(
-                       "spellcasting monster found you and doesn't know it?");
+                       _("spellcasting monster found you and doesn't know it?"));
                     return M_ATTK_MISS;
                 }
                 break;
@@ -233,7 +233,7 @@ castmu(
         dmg = 0;
         if (mattk->adtyp != AD_SPEL && mattk->adtyp != AD_CLRC) {
             impossible(
-              "%s casting non-hand-to-hand version of hand-to-hand spell %d?",
+              _("%s casting non-hand-to-hand version of hand-to-hand spell %d?"),
                        Monnam(mtmp), mattk->adtyp);
             return M_ATTK_MISS;
         }
@@ -414,7 +414,7 @@ mcast_clone_wiz(struct monst *mtmp)
         pline(_("%s"), _("Double Trouble..."));
         clonewiz();
     } else
-        impossible("bad wizard cloning?");
+        impossible(_("bad wizard cloning?"));
 }
 
 staticfn void
@@ -426,7 +426,7 @@ mcast_summon_mons(struct monst *mtmp)
         ; /* nothing was created? */
     } else if (mtmp->iswiz) {
         SetVoice(mtmp, 0, 80, 0);
-        verbalize("Destroy the thief, my pet%s!", plur(count));
+        verbalize(_("Destroy the thief, my pet%s!"), plur(count));
     } else {
         boolean one = (count == 1);
         const char *mappear = one ? "A monster appears"
@@ -495,7 +495,7 @@ mcast_disappear(struct monst *mtmp)
         if (cansee(mtmp->mx, mtmp->my) && !canspotmon(mtmp))
             map_invisible(mtmp->mx, mtmp->my);
     } else
-        impossible("no reason for monster to cast disappear spell?");
+        impossible(_("no reason for monster to cast disappear spell?"));
 }
 
 staticfn void
@@ -736,7 +736,7 @@ mcast_blind_you(void)
         if (!Blind)
             Your1(vision_clears);
     } else
-        impossible("no reason for monster to cast blindness spell?");
+        impossible(_("no reason for monster to cast blindness spell?"));
 }
 
 staticfn int
@@ -798,12 +798,12 @@ staticfn void
 mcast_spell(struct monst *mtmp, int dmg, int spellnum)
 {
     if (dmg < 0) {
-        impossible("monster cast spell (%d) with negative dmg (%d)?",
+        impossible(_("monster cast spell (%d) with negative dmg (%d)?"),
                    spellnum, dmg);
         return;
     }
     if (dmg == 0 && !is_undirected_spell(spellnum)) {
-        impossible("cast directed wizard spell (%d) with dmg=0?", spellnum);
+        impossible(_("cast directed wizard spell (%d) with dmg=0?"), spellnum);
         return;
     }
 
@@ -884,7 +884,7 @@ mcast_spell(struct monst *mtmp, int dmg, int spellnum)
         dmg = mcast_open_wounds(dmg);
         break;
     default:
-        impossible("mcastu: invalid magic spell (%d)", spellnum);
+        impossible(_("mcastu: invalid magic spell (%d)"), spellnum);
         dmg = 0;
         break;
     }

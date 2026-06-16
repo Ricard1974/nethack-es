@@ -110,11 +110,11 @@ precheck(struct monst *mon, struct obj *obj)
                 /* can't wish for wands of death here.... */
                 SetVoice(mtmp, 0, 80, 0);
                 if (rn2(2)) {
-                    verbalize("You freed me!");
+                    verbalize(_("You freed me!"));
                     mtmp->mpeaceful = 1;
                     set_malign(mtmp);
                 } else {
-                    verbalize("It is about time.");
+                    verbalize(_("It is about time."));
                     if (vis)
                         pline(_("%s vanishes."), Monnam(mtmp));
                     mongone(mtmp);
@@ -162,7 +162,7 @@ mzapwand(
     boolean self)
 {
     if (otmp->spe < 1) {
-        impossible("Mon zapping wand with %d charges?", otmp->spe);
+        impossible(_("Mon zapping wand with %d charges?"), otmp->spe);
         return;
     }
     if (!canseemon(mtmp)) {
@@ -206,7 +206,7 @@ mplayhorn(
             objnamp = simpleonames(otmp);
         Sprintf(objbuf, "a %s directed at", objnamp);
         /* "<mon> plays a <horn> directed at himself!" */
-        pline("%s!", monverbself(mtmp, Monnam(mtmp), "play", objbuf));
+        pline(_("%s!"), monverbself(mtmp, Monnam(mtmp), "play", objbuf));
         makeknown(otmp->otyp); /* (wands handle this slightly differently) */
     } else {
         observe_object(otmp);
@@ -819,7 +819,7 @@ use_defensive(struct monst *mtmp)
             if (vismon)
                 pline_mon(mtmp, "%s seems steadier now.", Monnam(mtmp));
         } else {
-            impossible("No need for unicorn horn?");
+            impossible(_("No need for unicorn horn?"));
         }
         return 2;
     case MUSE_BUGLE:
@@ -1194,7 +1194,7 @@ use_defensive(struct monst *mtmp)
     case 0:
         return 0; /* i.e. an exploded wand */
     default:
-        impossible("%s wanted to perform action %d?", Monnam(mtmp),
+        impossible(_("%s wanted to perform action %d?"), Monnam(mtmp),
                    gm.m.has_defense);
         break;
     }
@@ -1922,7 +1922,7 @@ use_offensive(struct monst *mtmp)
     case MUSE_CAMERA: {
         if (Hallucination) {
             SetVoice(mtmp, 0, 80, 0);
-            verbalize("Say cheese!");
+            verbalize(_("Say cheese!"));
         } else if (!Blind) {
             pline(_("%s takes a picture of you with %s!"), Monnam(mtmp), an(xname(otmp)));
         }
@@ -2007,7 +2007,7 @@ use_offensive(struct monst *mtmp)
     case 0:
         return 0; /* i.e. an exploded wand */
     default:
-        impossible("%s wanted to perform action %d?", Monnam(mtmp),
+        impossible(_("%s wanted to perform action %d?"), Monnam(mtmp),
                    gm.m.has_offense);
         break;
     }
@@ -2596,7 +2596,7 @@ use_misc(struct monst *mtmp)
     case 0:
         return 0; /* i.e. an exploded wand */
     default:
-        impossible("%s wanted to perform action %d?", Monnam(mtmp),
+        impossible(_("%s wanted to perform action %d?"), Monnam(mtmp),
                    gm.m.has_misc);
         break;
     }

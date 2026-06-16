@@ -141,7 +141,7 @@ itemactions_pushkeys(struct obj *otmp, int act)
 {
     switch (act) {
     default:
-        impossible("Unknown item action %d", act);
+        impossible(_("Unknown item action %d"), act);
         break;
     case IA_NONE:
         break;

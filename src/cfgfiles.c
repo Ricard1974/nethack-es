@@ -260,7 +260,7 @@ fopen_config_file(const char *filename, int src)
              * control (but SYSCF_FILE is not under the player's
              * control so it's OK).
              */
-            raw_printf("Access to %s denied (%d).", configfile, errno);
+            raw_printf(_("Access to %s denied (%d)."), configfile, errno);
             wait_synch();
             /* fall through to standard names */
         } else
@@ -270,7 +270,7 @@ fopen_config_file(const char *filename, int src)
 #if defined(UNIX) || defined(VMS)
         } else {
             /* access() above probably caught most problems for UNIX */
-            raw_printf("Couldn't open requested config file %s (%d).",
+            raw_printf(_("Couldn't open requested config file %s (%d)."),
                        configfile, errno);
             wait_synch();
 #endif
@@ -364,7 +364,7 @@ fopen_config_file(const char *filename, int src)
         if ((details = strerror(errno)) == 0)
 #endif
             details = "";
-        raw_printf("Couldn't open default config file %s %s(%d).",
+        raw_printf(_("Couldn't open default config file %s %s(%d)."),
                    configfile, details, errno);
         wait_synch();
     }
@@ -430,7 +430,7 @@ get_uchars(char *bufp,       /* current pointer */
 
         default:
  gi_error:
-            raw_printf("Syntax error in %s", name);
+            raw_printf(_("Syntax error in %s"), name);
             wait_synch();
             return count;
         }
@@ -936,7 +936,7 @@ cnf_line_SEDUCE(char *bufp)
     /* allow anyone to disable it but can only enable it in sysconf
        or as a no-op for the user when sysconf hasn't disabled it */
     if (!in_sysconf && !sysopt.seduce && n != 0) {
-        config_error_add("Illegal value in SEDUCE");
+        config_error_add(_("Illegal value in SEDUCE"));
         n = 0;
     }
     sysopt.seduce = n;
@@ -960,7 +960,7 @@ cnf_line_MAXPLAYERS(char *bufp)
 
     /* XXX to get more than 25, need to rewrite all lock code */
     if (n < 0 || n > 25) {
-        config_error_add("Illegal value in MAXPLAYERS (maximum is 25)");
+        config_error_add(_("Illegal value in MAXPLAYERS (maximum is 25)"));
         n = 5;
     }
     sysopt.maxplayers = n;
@@ -973,7 +973,7 @@ cnf_line_MAX_REROLL_RATE(char *bufp)
     int n = atoi(bufp);
 
     if (n < 0 || n > 255) {
-        config_error_add("Illegal value in MAX_REROLL_RATE (maximum is 255)");
+        config_error_add(_("Illegal value in MAX_REROLL_RATE (maximum is 255)"));
         n = 10;
     }
     sysopt.maxrerollrate = n;
@@ -986,7 +986,7 @@ cnf_line_PERSMAX(char *bufp)
     int n = atoi(bufp);
 
     if (n < 1) {
-        config_error_add("Illegal value in PERSMAX (minimum is 1)");
+        config_error_add(_("Illegal value in PERSMAX (minimum is 1)"));
         n = 0;
     }
     sysopt.persmax = n;
@@ -999,7 +999,7 @@ cnf_line_PERS_IS_UID(char *bufp)
     int n = atoi(bufp);
 
     if (n != 0 && n != 1) {
-        config_error_add("Illegal value in PERS_IS_UID (must be 0 or 1)");
+        config_error_add(_("Illegal value in PERS_IS_UID (must be 0 or 1)"));
         n = 0;
     }
     sysopt.pers_is_uid = n;
@@ -1012,7 +1012,7 @@ cnf_line_ENTRYMAX(char *bufp)
     int n = atoi(bufp);
 
     if (n < 10) {
-        config_error_add("Illegal value in ENTRYMAX (minimum is 10)");
+        config_error_add(_("Illegal value in ENTRYMAX (minimum is 10)"));
         n = 10;
     }
     sysopt.entrymax = n;
@@ -1025,7 +1025,7 @@ cnf_line_POINTSMIN(char *bufp)
     int n = atoi(bufp);
 
     if (n < 1) {
-        config_error_add("Illegal value in POINTSMIN (minimum is 1)");
+        config_error_add(_("Illegal value in POINTSMIN (minimum is 1)"));
         n = 100;
     }
     sysopt.pointsmin = n;
@@ -1070,7 +1070,7 @@ cnf_line_PANICTRACE_LIBC(char *bufp)
 
 #if defined(PANICTRACE) && defined(PANICTRACE_LIBC)
     if (n < 0 || n > 2) {
-        config_error_add("Illegal value in PANICTRACE_LIBC (not 0,1,2)");
+        config_error_add(_("Illegal value in PANICTRACE_LIBC (not 0,1,2)"));
         n = 0;
     }
 #endif
@@ -1085,7 +1085,7 @@ cnf_line_PANICTRACE_GDB(char *bufp)
 
 #if defined(PANICTRACE)
     if (n < 0 || n > 2) {
-        config_error_add("Illegal value in PANICTRACE_GDB (not 0,1,2)");
+        config_error_add(_("Illegal value in PANICTRACE_GDB (not 0,1,2)"));
         n = 0;
     }
 #endif
@@ -1098,7 +1098,7 @@ cnf_line_GDBPATH(char *bufp)
 {
 #if defined(PANICTRACE) && !defined(VMS)
     if (!file_exists(bufp)) {
-        config_error_add("File specified in GDBPATH does not exist");
+        config_error_add(_("File specified in GDBPATH does not exist"));
         return FALSE;
     }
 #endif
@@ -1113,7 +1113,7 @@ cnf_line_GREPPATH(char *bufp)
 {
 #if defined(PANICTRACE) && !defined(VMS)
     if (!file_exists(bufp)) {
-        config_error_add("File specified in GREPPATH does not exist");
+        config_error_add(_("File specified in GREPPATH does not exist"));
         return FALSE;
     }
 #endif
@@ -1138,7 +1138,7 @@ cnf_line_ACCESSIBILITY(char *bufp)
     int n = atoi(bufp);
 
     if (n < 0 || n > 1) {
-        config_error_add("Illegal value in ACCESSIBILITY (not 0,1)");
+        config_error_add(_("Illegal value in ACCESSIBILITY (not 0,1)"));
         n = 0;
     }
     sysopt.accessibility = n;
@@ -1159,7 +1159,7 @@ cnf_line_PORTABLE_DEVICE_PATHS(char *bufp)
     sysopt.portable_device_paths = n;
 #else   /* Windows-only directive encountered by non-Windows config */
     nhUse(bufp);
-    config_error_add("PORTABLE_DEVICE_PATHS is not supported");
+    config_error_add(_("PORTABLE_DEVICE_PATHS is not supported"));
 #endif
     return TRUE;
 }
@@ -1209,7 +1209,7 @@ cnf_line_ROGUESYMBOLS(char *bufp)
         switch_symbols(TRUE);
         return TRUE;
     }
-    config_error_add("Error in ROGUESYMBOLS definition '%s'", bufp);
+    config_error_add(_("Error in ROGUESYMBOLS definition '%s'"), bufp);
     return FALSE;
 }
 
@@ -1221,7 +1221,7 @@ cnf_line_SYMBOLS(char *bufp)
         return TRUE;
     }
     if (!config_unmatched_ignored())
-        config_error_add("Error in SYMBOLS definition '%s'", bufp);
+        config_error_add(_("Error in SYMBOLS definition '%s'"), bufp);
     return FALSE;
 }
 
@@ -1427,7 +1427,7 @@ parse_config_line(char *origbuf)
     bufp = find_optparam(buf);
     if (!bufp) {
         if (!ignore_statement_errors)
-            config_error_add("Not a config statement, missing '='");
+            config_error_add(_("Not a config statement, missing '='"));
         return FALSE;
     }
     /* skip past '=', then space between it and value, if any */
@@ -1450,7 +1450,7 @@ parse_config_line(char *origbuf)
     }
 
     if (!ignore_errors_on_unmatched)
-        config_error_add("Unknown config statement");
+        config_error_add(_("Unknown config statement"));
     return FALSE;
 }
 
@@ -1719,7 +1719,7 @@ parse_conf_buf(struct _cnf_parser_state *p, boolean (*proc)(char *arg))
                    missing a newline; process it anyway  */
                 p->ep = eos(p->inbuf);
             } else {
-                config_error_add("Line too long, skipping");
+                config_error_add(_("Line too long, skipping"));
                 p->skip = TRUE; /* discard next fgets */
             }
         } else {
@@ -1805,7 +1805,7 @@ parse_conf_buf(struct _cnf_parser_state *p, boolean (*proc)(char *arg))
                 if (section) {
                     gc.config_section_chosen = dupstr(section);
                 } else {
-                    config_error_add("No config section to choose");
+                    config_error_add(_("No config section to choose"));
                     p->rv = FALSE;
                 }
                 free(p->buf), p->buf = (char *) 0;
@@ -1894,7 +1894,7 @@ vconfig_error_add(const char *str, va_list the_args)
     vlen = vsnprintf(buf, sizeof buf, str, the_args);
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED) && defined(DEBUG)
     if (vlen >= (int) sizeof buf)
-        panic("%s: truncation of buffer at %zu of %d bytes",
+        panic(_("%s: truncation of buffer at %zu of %d bytes"),
               "config_error_add", sizeof buf, vlen);
 #else
     nhUse(vlen);
@@ -2215,7 +2215,7 @@ assure_syscf_file(void)
     if (gd.deferred_showpaths)
         do_deferred_showpaths(1); /* does not return */
 #endif
-    raw_printf("Unable to open SYSCF_FILE.\n");
+    raw_printf(_("Unable to open SYSCF_FILE.\n"));
     exit(EXIT_FAILURE);
 }
 

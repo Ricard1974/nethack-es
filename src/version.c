@@ -727,7 +727,7 @@ uptodate(NHFILE *nhfp, const char *name, unsigned long utdflags)
                                                              != SF_UPTODATE) {
         if (sfstatus > 0 && idx_1st_mismatch) {
             if (!quietly)
-                raw_printf("comparison of critical bytes mismatched at %d (%s).",
+                raw_printf(_("comparison of critical bytes mismatched at %d (%s)."),
                            critical_sizes[idx_1st_mismatch].ucsize,
                            critical_sizes[idx_1st_mismatch].nm);
         }

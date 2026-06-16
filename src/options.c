@@ -592,7 +592,7 @@ parseoptions(
             retval = FALSE;
     }
     if (strlen(opts) > BUFSZ / 2) {
-        config_error_add("Option too long, max length is %i characters",
+        config_error_add(_("Option too long, max length is %i characters"),
                          (BUFSZ / 2));
         return FALSE;
     }
@@ -605,7 +605,7 @@ parseoptions(
         *op = '\0';
 
     if (!*opts) {
-        config_error_add("Empty statement");
+        config_error_add(_("Empty statement"));
         return FALSE;
     }
     negated = FALSE;
@@ -656,7 +656,7 @@ parseoptions(
         if (got_match) {
             if (!allopt[i].pfx && optlen < allopt[i].minmatch) {
                 config_error_add(
-             "Ambiguous option %s, %d characters are needed to differentiate",
+             _("Ambiguous option %s, %d characters are needed to differentiate"),
                                  opts, allopt[i].minmatch);
                 break;
             }
@@ -750,7 +750,7 @@ parseoptions(
         Snprintf(pfxbuf, sizeof pfxbuf, "%s", opts);
         if ((pfxp = strchr(pfxbuf, ':')) != 0)
             *pfxp = '\0';
-        config_error_add("bad option suffix variation '%s'", pfxbuf);
+        config_error_add(_("bad option suffix variation '%s'"), pfxbuf);
         return FALSE;
     }
     if (got_match && optresult == optn_err)
@@ -759,7 +759,7 @@ parseoptions(
         return retval;
 
     /* out of valid options */
-    config_error_add("Unknown option '%s'", opts);
+    config_error_add(_("Unknown option '%s'"), opts);
     return FALSE;
 }
 
@@ -822,7 +822,7 @@ getoptstr(int optidx, int ophase)
     if ((roleoptindx >= 0 && roleoptindx < MAX_ROLEOPT
           && ophase >= 0 && ophase < num_opt_phases))
         return roleoptvals[roleoptindx][ophase];
-    panic("bad index roleoptvals[%d][%d]", roleoptindx, ophase);
+    panic(_("bad index roleoptvals[%d][%d]"), roleoptindx, ophase);
     /*NOTREACHED*/
 }
 
@@ -972,7 +972,7 @@ optfn_alignment(
 
         if (*op != '!') {
             if ((flags.initalign = str2align(op)) == ROLE_NONE) {
-                config_error_add("Unknown %s '%s'", allopt[optidx].name, op);
+                config_error_add(_("Unknown %s '%s'"), allopt[optidx].name, op);
                 return optn_err;
             }
             saveoptstr(optidx, rolestring(flags.initalign, aligns, adj));
@@ -1014,7 +1014,7 @@ optfn_align_message(
             else if (!strncmpi(op, "bottom", sizeof "bottom" - 1))
                 iflags.wc_align_message = ALIGN_BOTTOM;
             else {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -1063,7 +1063,7 @@ optfn_align_status(
             else if (!strncmpi(op, "bottom", sizeof "bottom" - 1))
                 iflags.wc_align_status = ALIGN_BOTTOM;
             else {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -1270,7 +1270,7 @@ optfn_boulder(
         else if (opts[0] >= '1' && opts[0] < WARNCOUNT + '0')
             clash = 2;
         if (opts[0] < ' ') {
-            config_error_add("boulder symbol cannot be a control character");
+            config_error_add(_("boulder symbol cannot be a control character"));
             return optn_ok;
         } else if (clash) {
             /* symbol chosen matches a used monster or warning
@@ -1300,7 +1300,7 @@ optfn_boulder(
         }
         return optn_ok;
 #else
-        config_error_add("'%s' no longer supported; use S_boulder:c instead",
+        config_error_add(_("'%s' no longer supported; use S_boulder:c instead"),
                          allopt[optidx].name);
         return optn_err;
 #endif
@@ -1443,14 +1443,14 @@ optfn_cursesgraphics(
                     switch_symbols(TRUE);
             }
             if (badflag) {
-                config_error_add("Failure to load symbol set %s.",
+                config_error_add(_("Failure to load symbol set %s."),
                                  allopt[optidx].name);
                 return optn_err;
             }
         }
         return optn_ok;
 #else
-        config_error_add("'%s' no longer supported; use 'symset:%s' instead",
+        config_error_add(_("'%s' no longer supported; use 'symset:%s' instead"),
                          allopt[optidx].name, allopt[optidx].name);
         return optn_err;
 #endif
@@ -1492,14 +1492,14 @@ optfn_DECgraphics(
                     switch_symbols(TRUE);
             }
             if (badflag) {
-                config_error_add("Failure to load symbol set %s.",
+                config_error_add(_("Failure to load symbol set %s."),
                                  allopt[optidx].name);
                 return optn_err;
             }
         }
         return optn_ok;
 #else
-        config_error_add("'%s' no longer supported; use 'symset:%s' instead",
+        config_error_add(_("'%s' no longer supported; use 'symset:%s' instead"),
                          allopt[optidx].name, allopt[optidx].name);
         return optn_err;
 #endif
@@ -1589,7 +1589,7 @@ optfn_disclose(
             if (dop) {
                 idx = (int) (dop - disclosure_options);
                 if (idx < 0 || idx > NUM_DISCLOSURE_OPTIONS - 1) {
-                    impossible("bad disclosure index %d %c", idx, c);
+                    impossible(_("bad disclosure index %d %c"), idx, c);
                     continue;
                 }
                 if (prefix_val != -1) {
@@ -1608,7 +1608,7 @@ optfn_disclose(
             } else if (c == ' ') {
                 ; /* do nothing */
             } else {
-                config_error_add("Unknown %s parameter '%c'",
+                config_error_add(_("Unknown %s parameter '%c'"),
                                  allopt[optidx].name, *op);
                 return optn_err;
             }
@@ -1812,7 +1812,7 @@ optfn_fruit(
 
                 if (!forig && fnum >= 100) {
                     config_error_add(
-                        "Doing that so many times isn't very fruitful.");
+                        _("Doing that so many times isn't very fruitful."));
                     return optn_ok;
                 }
             }
@@ -1864,7 +1864,7 @@ optfn_gender(
 
         if (*op != '!') {
             if ((flags.initgend = str2gend(op)) == ROLE_NONE) {
-                config_error_add("Unknown %s '%s'", allopt[optidx].name, op);
+                config_error_add(_("Unknown %s '%s'"), allopt[optidx].name, op);
                 return optn_err;
             }
             flags.female = flags.initgend;
@@ -1940,7 +1940,7 @@ optfn_hilite_status(
             clear_status_hilites();
             return optn_ok;
         } else if (op == empty_optstr) {
-            config_error_add("Value is mandatory for hilite_status");
+            config_error_add(_("Value is mandatory for hilite_status"));
             return optn_err;
         }
         if (!parse_status_hl1(op, go.opt_from_file))
@@ -1949,7 +1949,7 @@ optfn_hilite_status(
 #else
         nhUse(negated);
         nhUse(op);
-        config_error_add("'%s' is not supported", allopt[optidx].name);
+        config_error_add(_("'%s' is not supported"), allopt[optidx].name);
         return optn_err;
 #endif
     }
@@ -2010,7 +2010,7 @@ optfn_IBMgraphics(
                 }
             }
             if (badflag) {
-                config_error_add("Failure to load symbol set %s.", sym_name);
+                config_error_add(_("Failure to load symbol set %s."), sym_name);
                 return optn_err;
             } else {
                 switch_symbols(TRUE);
@@ -2020,7 +2020,7 @@ optfn_IBMgraphics(
         }
         return optn_ok;
 #else
-        config_error_add("'%s' no longer supported; use 'symset:%s' instead",
+        config_error_add(_("'%s' no longer supported; use 'symset:%s' instead"),
                          allopt[optidx].name, allopt[optidx].name);
         return optn_err;
 #endif
@@ -2083,7 +2083,7 @@ optfn_map_mode(
                                sizeof "tiles_fit_to_screen" - 1))
                 iflags.wc_map_mode = MAP_MODE_TILES_FIT_TO_SCREEN;
             else {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -2323,7 +2323,7 @@ optfn_menu_objsyms(
         } else if (digit(*op)) {
             i = atoi(op);
             if (i >= SIZE(objsymvals)) {
-                config_error_add("Illegal %s parameter '%s'",
+                config_error_add(_("Illegal %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -2374,7 +2374,7 @@ optfn_menuinvertmode(
             int mode = atoi(op);
 
             if (mode < 0 || mode > 2) {
-                config_error_add("Illegal %s parameter '%s'",
+                config_error_add(_("Illegal %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -2431,7 +2431,7 @@ optfn_menustyle(
             flags.menu_style = MENU_PARTIAL;
             break;
         default:
-            config_error_add("Unknown %s parameter '%s'", allopt[optidx].name,
+            config_error_add(_("Unknown %s parameter '%s'"), allopt[optidx].name,
                              op);
             return optn_err;
         }
@@ -2488,7 +2488,7 @@ optfn_mouse_support(
             int mode = atoi(op);
 
             if (mode < 0 || mode > 2 || (mode == 0 && *op != '0')) {
-                config_error_add("Illegal %s parameter '%s'",
+                config_error_add(_("Illegal %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             } else { /* mode >= 0 */
@@ -2564,7 +2564,7 @@ optfn_msg_window(
             iflags.prevmsg_window = (char) tmp;
             break;
         default:
-            config_error_add("Unknown %s parameter '%s'", allopt[optidx].name,
+            config_error_add(_("Unknown %s parameter '%s'"), allopt[optidx].name,
                              op);
             retval = optn_err;
         }
@@ -2670,7 +2670,7 @@ optfn_number_pad(
             int mode = atoi(op);
 
             if (mode < -1 || mode > 4 || (mode == 0 && *op != '0')) {
-                config_error_add("Illegal %s parameter '%s'",
+                config_error_add(_("Illegal %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             } else if (mode <= 0) {
@@ -2785,7 +2785,7 @@ optfn_palette(
              *  palette (adjust an RGB color in palette (color/R-G-B)
              */
             if (!alternative_palette(op)) {
-                config_error_add("Error in palette parameter '%s'", op);
+                config_error_add(_("Error in palette parameter '%s'"), op);
                 return optn_err;
             }
             if (!go.opt_initial)
@@ -2938,7 +2938,7 @@ optfn_paranoid_confirmation(
                    bad; back when prayconfirm was in active use, tacking on
                    an explicit value to a boolean option wasn't supported */
                 config_error_add(
-           "deprecated %sprayconfirm option takes no parameters (found '%s')",
+           _("deprecated %sprayconfirm option takes no parameters (found '%s')"),
                                  opt_negated ? "!" : "", op);
                 return optn_silenterr;
             }
@@ -2948,7 +2948,7 @@ optfn_paranoid_confirmation(
                that isn't supported [not important since this is considered
                temporary until 'prayconfirm' gets removed altogether] */
             config_error_add(
-                 "%sprayconfirm option is deprecated; switching to %s:%cpray",
+                 _("%sprayconfirm option is deprecated; switching to %s:%cpray"),
                              opt_negated ? "!" : "",
                              allopt[optidx].name,
                              opt_negated ? '-' : '+');
@@ -2972,13 +2972,13 @@ optfn_paranoid_confirmation(
                 flags.paranoia_bits = 0;
                 return optn_ok;
             } else {
-                config_error_add("!%s does not accept a value",
+                config_error_add(_("!%s does not accept a value"),
                                  allopt[optidx].name);
                 return optn_silenterr;
             }
         } else if (!*op) {
             /* "paranoid_confirm" without any arguments is disallowed */
-            config_error_add("%s requires a value; use 'none' to cancel all",
+            config_error_add(_("%s requires a value; use 'none' to cancel all"),
                              allopt[optidx].name);
             return optn_silenterr;
         }
@@ -3079,7 +3079,7 @@ optfn_paranoid_confirmation(
             if (i == SIZE(paranoia)) {
                 /* didn't match anything, so arg is bad;
                    any flags already modified will stay modified */
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_silenterr;
             }
@@ -3155,7 +3155,7 @@ optfn_perminv_mode(
                     if (strstri(pi0, "+grid") && !WINDOWPORT(tty)) {
                         i &= ~InvSparse;
                         config_error_add(
-                          "%s: unavailable perm_invent mode '%s', using '%s'",
+                          _("%s: unavailable perm_invent mode '%s', using '%s'"),
                                          allopt[optidx].name, pi0,
                                          perminv_modes[i][0]);
                     }
@@ -3166,7 +3166,7 @@ optfn_perminv_mode(
                 }
             }
             if (i == SIZE(perminv_modes)) {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 iflags.perminv_mode = InvOptNone;
                 iflags.perm_invent = FALSE;
@@ -3229,7 +3229,7 @@ optfn_petattr(
             int itmp = match_str2attr(op, FALSE);
 
             if (itmp == -1) {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, opts);
                 retval = optn_err;
             } else
@@ -3299,7 +3299,7 @@ optfn_pettype(
                 gp.preferred_pet = '\0';
                 break;
             default:
-                config_error_add("Unrecognized pet type '%s'.", op);
+                config_error_add(_("Unrecognized pet type '%s'."), op);
                 return optn_err;
                 break;
             }
@@ -3359,7 +3359,7 @@ optfn_pickup_burden(
                 flags.pickup_burden = OVERLOADED;
                 break;
             default:
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -3455,7 +3455,7 @@ optfn_pickup_types(
                 op++;
             }
             if (badopt) {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -3525,7 +3525,7 @@ optfn_player_selection(
             } else if (!strncmpi(op, "prompt", sizeof "prompt" - 1)) {
                 iflags.wc_player_selection = VIA_PROMPTS;
             } else {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -3594,7 +3594,7 @@ optfn_race(
 
         if (*op != '!') {
             if ((flags.initrace = str2race(op)) == ROLE_NONE) {
-                config_error_add("Unknown %s '%s'", allopt[optidx].name, op);
+                config_error_add(_("Unknown %s '%s'"), allopt[optidx].name, op);
                 return optn_err;
             }
             gp.pl_race = *op; /* Backwards compatibility */
@@ -3676,7 +3676,7 @@ optfn_role(
 
         if (*op != '!') {
             if ((flags.initrole = str2role(op)) == ROLE_NONE) {
-                config_error_add("Unknown %s '%s'", allopt[optidx].name, op);
+                config_error_add(_("Unknown %s '%s'"), allopt[optidx].name, op);
                 return optn_err;
             }
             nmcpy(svp.pl_character, op, PL_NSIZ); /* Backwards compat */
@@ -3717,12 +3717,12 @@ optfn_runmode(
             else if (str_start_is("crawl", op, TRUE))
                 flags.runmode = RUN_CRAWL;
             else {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
         } else {
-            config_error_add("Value is mandatory for %s",
+            config_error_add(_("Value is mandatory for %s"),
                              allopt[optidx].name);
             return optn_err;
         }
@@ -3792,7 +3792,7 @@ optfn_scores(
             case '-':
                 if (digit(*(op + 1))) {
                     config_error_add(
-                       "Values for %s:top and %s:around must not be negative",
+                       _("Values for %s:top and %s:around must not be negative"),
                                      allopt[optidx].name,
                                      allopt[optidx].name);
                     return optn_silenterr;
@@ -3800,7 +3800,7 @@ optfn_scores(
                 FALLTHROUGH;
                 /*FALLTHRU*/
             default:
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_silenterr;
             }
@@ -3964,7 +3964,7 @@ optfn_sortdiscoveries(
                 flags.discosort = 'a';
                 break;
             default:
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_silenterr;
             }
@@ -4005,7 +4005,7 @@ optfn_sortloot(
                 flags.sortloot = c;
                 break;
             default:
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -4053,7 +4053,7 @@ optfn_sortvanquished(
             } else if (strchr("01234567", *op)) {
                 vndx = *op - '0';
             } else {
-                config_error_add("Unknown %s parameter '%s'", optname, op);
+                config_error_add(_("Unknown %s parameter '%s'"), optname, op);
                 return optn_silenterr;
             }
             flags.vanq_sortmode = (uchar) vndx;
@@ -4107,7 +4107,7 @@ optfn_statushilites(
 #else
         nhUse(negated);
         nhUse(op);
-        config_error_add("'%s' is not supported", allopt[optidx].name);
+        config_error_add(_("'%s' is not supported"), allopt[optidx].name);
         return optn_err;
 #endif
     }
@@ -4156,7 +4156,7 @@ optfn_statuslines(
             itmp = atoi(op);
         }
         if (itmp < 2 || itmp > 3) {
-            config_error_add("'%s:%s' is invalid; must be 2 or 3",
+            config_error_add(_("'%s:%s' is invalid; must be 2 or 3"),
                              allopt[optidx].name, op);
             retval = optn_silenterr;
         } else {
@@ -4325,7 +4325,7 @@ optfn_term_cols(
             /* just checks atol() sanity, not logical window size sanity
              */
             if (ltmp <= 0L || ltmp >= (long) LARGEST_INT) {
-                config_error_add("Invalid %s: %ld", allopt[optidx].name,
+                config_error_add(_("Invalid %s: %ld"), allopt[optidx].name,
                                  ltmp);
                 retval = optn_err;
             } else {
@@ -4366,7 +4366,7 @@ optfn_term_rows(
             /* just checks atol() sanity, not logical window size sanity
              */
             if (ltmp <= 0L || ltmp >= (long) LARGEST_INT) {
-                config_error_add("Invalid %s: %ld", allopt[optidx].name,
+                config_error_add(_("Invalid %s: %ld"), allopt[optidx].name,
                                  ltmp);
                 retval = optn_err;
             } else {
@@ -4566,7 +4566,7 @@ optfn_versinfo(
         }
         op = string_for_opt(opts, FALSE);
         if (op == empty_optstr) {
-            config_error_add("'%s' requires a value; defaulting to %d",
+            config_error_add(_("'%s' requires a value; defaulting to %d"),
                              optname, dflt);
             return optn_silenterr;
         }
@@ -4618,7 +4618,7 @@ optfn_videocolors(
             return optn_err;
         }
         if (!assign_videocolors(opts)) {
-            config_error_add("Unknown error handling '%s'",
+            config_error_add(_("Unknown error handling '%s'"),
                              allopt[optidx].name);
             return optn_err;
         }
@@ -4653,7 +4653,7 @@ optfn_videoshades(
             return optn_err;
         }
         if (!assign_videoshades(opts)) {
-            config_error_add("Unknown error handling '%s'",
+            config_error_add(_("Unknown error handling '%s'"),
                              allopt[optidx].name);
             return optn_err;
         }
@@ -4726,7 +4726,7 @@ optfn_video(
             return optn_err;
         }
         if (!assign_video(opts)) {
-            config_error_add("Unknown error handling '%s'",
+            config_error_add(_("Unknown error handling '%s'"),
                              allopt[optidx].name);
             return optn_err;
         }
@@ -4789,7 +4789,7 @@ optfn_whatis_coord(
             if (c && strchr(gpcoords, c))
                 iflags.getpos_coords = c;
             else {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -4839,7 +4839,7 @@ optfn_whatis_filter(
                 iflags.getloc_filter = GFILTER_AREA;
                 break;
             default: {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                                  allopt[optidx].name, op);
                 return optn_err;
             }
@@ -4889,7 +4889,7 @@ optfn_windowborders(
                 itmp = atoi(op);
 
             if (itmp < 0 || itmp > 4) {
-                config_error_add("Invalid %s (should be within 0 to 4): %s",
+                config_error_add(_("Invalid %s (should be within 0 to 4): %s"),
                                  allopt[optidx].name, opts);
                 retval = optn_silenterr;
             } else {
@@ -4979,7 +4979,7 @@ optfn_windowcolors(
          */
         if ((op = string_for_opt(opts, FALSE)) != empty_optstr) {
             if (!wc_set_window_colors(op)) {
-                config_error_add("Could not set %s '%s'", allopt[optidx].name,
+                config_error_add(_("Could not set %s '%s'"), allopt[optidx].name,
                                  op);
                 return optn_err;
             }
@@ -5078,12 +5078,12 @@ pfxfn_cond_(
             opt_set_in_config[pfx_cond_] = TRUE;
             break;
         case 3:
-            config_error_add("Ambiguous condition option %s", opts);
+            config_error_add(_("Ambiguous condition option %s"), opts);
             break;
         case 1:
         case 2:
         default:
-            config_error_add("Unknown condition option %s (%d)", opts, reslt);
+            config_error_add(_("Unknown condition option %s (%d)"), opts, reslt);
             break;
         }
         if (reslt != 0)
@@ -5140,7 +5140,7 @@ pfxfn_font(int optidx, int req, boolean negated, char *opts, char *op)
             else if (optidx == opt_font_size_status)
                 opttype = STATUS_OPTION;
             else {
-                config_error_add("Unknown %s parameter '%s'",
+                config_error_add(_("Unknown %s parameter '%s'"),
                              allopt[optidx].name, opts);
                 return optn_err;
             }
@@ -5168,7 +5168,7 @@ pfxfn_font(int optidx, int req, boolean negated, char *opts, char *op)
             }
             return optn_ok;
         } else {
-            config_error_add("Unknown %s parameter '%s'",
+            config_error_add(_("Unknown %s parameter '%s'"),
                              "font", opts);
             return FALSE;
         }
@@ -5283,7 +5283,7 @@ optfn_boolean(
         if (op != empty_optstr) {
             if (negated) {
                 config_error_add(
-                           "Negated boolean '%s' should not have a parameter",
+                           _("Negated boolean '%s' should not have a parameter"),
                                  allopt[optidx].name);
                 return optn_silenterr;
             }
@@ -5300,7 +5300,7 @@ optfn_boolean(
                        || (digit(*op) && atoi(op) == 0)) {
                 negated = TRUE;
             } else if (!allopt[optidx].valok) {
-                config_error_add("'%s' is not valid for a boolean", opts);
+                config_error_add(_("'%s' is not valid for a boolean"), opts);
                 return optn_silenterr;
             }
         }
@@ -5347,7 +5347,7 @@ optfn_boolean(
         if (nosexchange) {
             /* can't arbitrarily change sex after game has started;
                magic (amulet or polymorph) is required for that */
-            config_error_add("'%s' is not anatomically possible.", opts);
+            config_error_add(_("'%s' is not anatomically possible."), opts);
             return optn_silenterr;
         }
 
@@ -5403,7 +5403,7 @@ optfn_boolean(
         case opt_armorstatus:
             if (!wc2_supported(allopt[optidx].name)) {
                 /* not actually an error */
-                config_error_add("'%s' is not supported.",
+                config_error_add(_("'%s' is not supported."),
                                  allopt[optidx].name);
                 return optn_ok;
             }
@@ -6733,7 +6733,7 @@ string_for_opt(char *opts, boolean val_optional)
 
     if (!colon || !*++colon) {
         if (!val_optional)
-            config_error_add("Missing parameter for '%s'", opts);
+            config_error_add(_("Missing parameter for '%s'"), opts);
         return empty_optstr;
     }
     return colon;
@@ -6752,7 +6752,7 @@ string_for_env_opt(const char *optname, char *opts, boolean val_optional)
 staticfn void
 bad_negation(const char *optname, boolean with_parameter)
 {
-    config_error_add("The %s option may not %sbe negated.", optname,
+    config_error_add(_("The %s option may not %sbe negated."), optname,
                      with_parameter ? "both have a value and " : "");
 }
 
@@ -6860,7 +6860,7 @@ complain_about_duplicate(int optidx)
     buf[0] = '\0';
     if (using_alias)
         Sprintf(buf, " (via alias: %s)", allopt[optidx].alias);
-    config_error_add("%s option specified multiple times: %s%s",
+    config_error_add(_("%s option specified multiple times: %s%s"),
                      (allopt[optidx].opttyp == CompOpt) ? "compound"
                                                         : "boolean",
                      allopt[optidx].name, buf);
@@ -7417,7 +7417,7 @@ initoptions_finish(void)
      * is even initialized, so check for that too.
      */
     if (iflags.hilite_delta && !wc2_supported("statushilites")) {
-        raw_printf("Status highlighting not supported for %s interface.",
+        raw_printf(_("Status highlighting not supported for %s interface."),
                     windowprocs.name);
         iflags.hilite_delta = 0;
     }
@@ -7478,7 +7478,7 @@ allopt_array_init(void)
                 if (allopt[i].opttyp == BoolOpt
                     && allopt[i].initval != allopt[i].opt_in_out)
                     if (wizard)
-                        impossible("conflicting option init for %s: %s is %s, %s is %s",
+                        impossible(_("conflicting option init for %s: %s is %s, %s is %s"),
                                    allopt[i].name,
                                    "opt_in_out",
                                    allopt[i].opt_in_out ? "on" : "off", "initval",
@@ -7555,18 +7555,18 @@ change_inv_order(char *op)
         oc_sym = def_char_to_objclass(*sp);
         /* reject bad or duplicate entries */
         if (oc_sym == MAXOCLASSES) { /* not an object class char */
-            config_error_add("Not an object class '%c'", *sp);
+            config_error_add(_("Not an object class '%c'"), *sp);
             retval = 0;
             fail = TRUE;
         } else if (!strchr(flags.inv_order, oc_sym)) {
             /* VENOM_CLASS, RANDOM_CLASS, and ILLOBJ_CLASS are excluded
                because they aren't in def_inv_order[] so don't make it
                into flags.inv_order, hence always fail this strchr() test */
-            config_error_add("Object class '%c' not allowed", *sp);
+            config_error_add(_("Object class '%c' not allowed"), *sp);
             retval = 0;
             fail = TRUE;
         } else if (strchr(sp + 1, *sp)) {
-            config_error_add("Duplicate object class '%c'", *sp);
+            config_error_add(_("Duplicate object class '%c'"), *sp);
             retval = 0;
             fail = TRUE;
         }
@@ -7644,7 +7644,7 @@ feature_alert_opts(char *op, const char *optn)
             You_cant(_("disable new feature alerts for future versions."));
         } else {
             config_error_add(
-                        "%s=%s Invalid reference to a future version ignored",
+                        _("%s=%s Invalid reference to a future version ignored"),
                              optn, op);
         }
         return 0;
@@ -7710,7 +7710,7 @@ parsebindings(char *bindings)
     for (i = 0; i < SIZE(mousebtn_names); i++)
         if (!strcmp(bindings, mousebtn_names[i])) {
             if (!bind_mousebtn(i + 1, bind)) {
-                config_error_add("Error binding mouse button %i", i + 1);
+                config_error_add(_("Error binding mouse button %i"), i + 1);
             } else {
                 return ret;
             }
@@ -7719,7 +7719,7 @@ parsebindings(char *bindings)
     /* read the key to be bound */
     key = txt2key(bindings);
     if (!key) {
-        config_error_add("Unknown key binding key '%s'", bindings);
+        config_error_add(_("Unknown key binding key '%s'"), bindings);
         return FALSE;
     }
 
@@ -7731,7 +7731,7 @@ parsebindings(char *bindings)
     for (i = 0; default_menu_cmd_info[i].name; i++) {
         if (!strcmp(default_menu_cmd_info[i].name, bind)) {
             if (illegal_menu_cmd_key(key)) {
-                config_error_add("Bad menu key %s:%s", visctrl(key), bind);
+                config_error_add(_("Bad menu key %s:%s"), visctrl(key), bind);
                 return FALSE;
             } else {
                 add_menu_cmd_alias((char) key, default_menu_cmd_info[i].cmd);
@@ -7742,7 +7742,7 @@ parsebindings(char *bindings)
 
     /* extended command? */
     if (!bind_key(key, bind, TRUE)) {
-        config_error_add("Unknown key binding command '%s'", bind);
+        config_error_add(_("Unknown key binding command '%s'"), bind);
         return FALSE;
     }
     return ret;
@@ -7819,7 +7819,7 @@ msgtype_add(int typ, char *pattern)
         /* free first in case reason for failure was insufficient memory */
         regex_free(tmp->regex);
         free((genericptr_t) tmp);
-        config_error_add("%s: %s", re_error, re_error_desc);
+        config_error_add(_("%s: %s"), re_error, re_error_desc);
         return FALSE;
     }
     tmp->pattern = dupstr(pattern);
@@ -7933,9 +7933,9 @@ msgtype_parse_add(char *str)
         if (typ != -1)
             return msgtype_add(typ, pattern);
         else
-            config_error_add("Unknown message type '%s'", msgtype);
+            config_error_add(_("Unknown message type '%s'"), msgtype);
     } else {
-        config_error_add("Malformed MSGTYPE");
+        config_error_add(_("Malformed MSGTYPE"));
     }
     return FALSE;
 }
@@ -7970,7 +7970,7 @@ test_regex_pattern(const char *str, const char *errmsg)
     regex_free(match);
     /* if returning failure, tell player */
     if (!retval)
-        config_error_add("%s: %s", errmsg, re_error_desc);
+        config_error_add(_("%s: %s"), errmsg, re_error_desc);
 
     return retval;
 }
@@ -8020,18 +8020,18 @@ parse_role_opt(
                 op += (*op == '!') ? 1 : (op[2] != '-') ? 2 : 3;
             }
             if (!*op || *op == ' ') {
-                config_error_add("Negated nothing for '%s'", fullname);
+                config_error_add(_("Negated nothing for '%s'"), fullname);
                 return FALSE;
             }
             if (!first) {
                 if ((val_negated ^ prev_negated)
                     || (negated && val_negated)) {
-                    config_error_add("Invalid mixed negation for '%s%s'",
+                    config_error_add(_("Invalid mixed negation for '%s%s'"),
                                      negated ? "!" : "", fullname);
                     return FALSE;
                 } else if (!negated && !val_negated) {
                     config_error_add(
-                    "Multiple role values only allowed when list is negated");
+                    _("Multiple role values only allowed when list is negated"));
                     return FALSE;
                 }
             }
@@ -8053,7 +8053,7 @@ parse_role_opt(
                 if (!preval || *preval != '!')
                     clearrolefilter(which);
                 if (!setrolefilter(op)) {
-                    config_error_add("Invalid %s '%s'", fullname, op);
+                    config_error_add(_("Invalid %s '%s'"), fullname, op);
                     return FALSE;
                 }
                 saveoptstr(optidx, rolefilterstring(negbuf, which));
@@ -8113,14 +8113,14 @@ illegal_menu_cmd_key(uchar c)
 {
     if (c == 0 || c == '\r' || c == '\n' || c == '\033' || c == ' '
         || digit((char) c) || (letter((char) c) && c != '@')) {
-        config_error_add("Reserved menu command key '%s'", visctrl((char) c));
+        config_error_add(_("Reserved menu command key '%s'"), visctrl((char) c));
         return TRUE;
     } else { /* reject default object class symbols */
         int j;
 
         for (j = 1; j < MAXOCLASSES; j++)
             if (c == (uchar) def_oc_syms[j].sym) {
-                config_error_add("Menu command key '%s' is an object class",
+                config_error_add(_("Menu command key '%s' is an object class"),
                                  visctrl((char) c));
                 return TRUE;
             }
@@ -8140,7 +8140,7 @@ oc_to_str(char *src, char *dest)
 
     while ((i = (int) *src++) != 0) {
         if (i < 0 || i >= MAXOCLASSES)
-            impossible("oc_to_str:  illegal object class %d", i);
+            impossible(_("oc_to_str:  illegal object class %d"), i);
         else
             *dest++ = def_oc_syms[i].sym;
     }
@@ -9410,7 +9410,7 @@ add_autopickup_exception(const char *mapping)
         /* free first in case reason for failure was insufficient memory */
         regex_free(ape->regex);
         free((genericptr_t) ape);
-        config_error_add("%s: %s", APE_regex_error, re_error_desc);
+        config_error_add(_("%s: %s"), APE_regex_error, re_error_desc);
         return 0;
     }
     ape->pattern = dupstr(text);
@@ -9932,7 +9932,7 @@ set_option_mod_status(const char *optnam, int status)
     int k;
 
     if (SET__IS_VALUE_VALID(status)) {
-        impossible("set_option_mod_status: status out of range %d.", status);
+        impossible(_("set_option_mod_status: status out of range %d."), status);
         return;
     }
     for (k = 0; allopt[k].name; k++) {
@@ -9958,7 +9958,7 @@ set_wc_option_mod_status(unsigned long optmask, int status)
     int k = 0;
 
     if (SET__IS_VALUE_VALID(status)) {
-        impossible("set_wc_option_mod_status: status out of range %d.",
+        impossible(_("set_wc_option_mod_status: status out of range %d."),
                    status);
         return;
     }
@@ -10012,7 +10012,7 @@ set_wc2_option_mod_status(unsigned long optmask, int status)
     int k = 0;
 
     if (SET__IS_VALUE_VALID(status)) {
-        impossible("set_wc2_option_mod_status: status out of range %d.",
+        impossible(_("set_wc2_option_mod_status: status out of range %d."),
                    status);
         return;
     }
@@ -10171,7 +10171,7 @@ wc_set_window_colors(char *op)
                 }
                 if (wcolors_opt[j] != 0) {
                     config_error_add(
-                       "windowcolors for %s windows specified multiple times",
+                       _("windowcolors for %s windows specified multiple times"),
                                      wcnames[j]);
                 }
                 wcolors_opt[j]++;
@@ -10179,7 +10179,7 @@ wc_set_window_colors(char *op)
             }
         }
         if (j == WC_COUNT) {
-            config_error_add("windowcolors for unrecognized window type: %s",
+            config_error_add(_("windowcolors for unrecognized window type: %s"),
                              wn);
         }
     }

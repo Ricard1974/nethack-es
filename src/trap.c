@@ -232,7 +232,7 @@ erode_obj(
         cost_type = COST_CRACK;
         break;
     default:
-        impossible("Invalid erosion type in erode_obj");
+        impossible(_("Invalid erosion type in erode_obj"));
         return ER_NOTHING;
     }
     erosion = is_primary ? otmp->oeroded : otmp->oeroded2;
@@ -301,7 +301,7 @@ erode_obj(
                 Sprintf(actbuf, "%s away", vtense(ostr, action[type]));
             else
                 Sprintf(actbuf, "shatters");
-            pline("%s %s %s!",
+            pline(_("%s %s %s!"),
                   uvictim ? "Your"
                   : !vismon ? "The" /* visobj */
                     : s_suffix(Monnam(victim)),
@@ -324,7 +324,7 @@ erode_obj(
                 extract_from_minvent(otmp->ocarry, otmp, TRUE, FALSE);
             } else { /* worn but not in hero invent or monster minvent ? */
                 impossible(
-            "erode_obj(%d): destroying strangely worn item [%d, 0x%08lx: %s]",
+            _("erode_obj(%d): destroying strangely worn item [%d, 0x%08lx: %s]"),
                            type,
                            otmp->where, otmp->owornmask, simpleonames(otmp));
                 otmp->owornmask = 0L; /* otherwise a second complaint (about
@@ -558,7 +558,7 @@ maketrap(coordxy x, coordxy y, int typ)
             ttmp->teledest.x = gx.xstart + gl.launchplace.x;
             ttmp->teledest.y = gy.ystart + gl.launchplace.y;
             if (ttmp->teledest.x == x && ttmp->teledest.y == y) {
-                impossible("making fixed-dest tele trap pointing to itself");
+                impossible(_("making fixed-dest tele trap pointing to itself"));
             }
         }
         break;
@@ -825,7 +825,7 @@ animate_statue(
                     xname(statue));
         else
             Strcpy(statuename, "a statue");
-        pline("Instead of shattering, %s suddenly %s!", statuename,
+        pline(_("Instead of shattering, %s suddenly %s!"), statuename,
               comes_to_life);
     } else { /* cause == ANIMATE_NORMAL */
         set_msg_xy(x, y);
@@ -1164,7 +1164,7 @@ m_harmless_trap(struct monst *mtmp, struct trap *ttmp)
     case VIBRATING_SQUARE:
         return TRUE;
     default:
-        impossible("m_harmless_trap: unknown trap %i", ttmp->ttyp);
+        impossible(_("m_harmless_trap: unknown trap %i"), ttmp->ttyp);
         break;
     }
 
@@ -1985,7 +1985,7 @@ trapeffect_hole(
     if (mtmp == &gy.youmonst) {
         if (!Can_fall_thru(&u.uz)) {
             seetrap(trap); /* normally done in fall_through */
-            impossible("dotrap: %ss cannot exist on this level.",
+            impossible(_("dotrap: %ss cannot exist on this level."),
                        trapname(trap->ttyp, TRUE));
             return Trap_Effect_Finished; /* don't activate it after all */
         }
@@ -1998,7 +1998,7 @@ trapeffect_hole(
         boolean inescapable = (forcetrap || (Sokoban && !trap->madeby_u));
 
         if (!Can_fall_thru(&u.uz)) {
-            impossible("mintrap: %ss cannot exist on this level.",
+            impossible(_("mintrap: %ss cannot exist on this level."),
                        trapname(tt, TRUE));
             return Trap_Effect_Finished; /* don't activate it after all */
         }
@@ -2469,7 +2469,7 @@ trapeffect_poly_trap(
             struct obj *shoes = which_armor(mtmp, W_ARMF);
             extract_from_minvent(mtmp, shoes, TRUE, TRUE);
             if (mpickobj(mtmp, shoes)) {
-                impossible("re-equipping iron shoes destroyed them?");
+                impossible(_("re-equipping iron shoes destroyed them?"));
                 return Trap_Effect_Finished;
             }
             shoes = poly_obj(
@@ -2745,7 +2745,7 @@ immune_to_trap(struct monst *mon, unsigned ttype)
     boolean is_you;
 
     if (!mon) {
-        impossible("immune_to_trap: null monster");
+        impossible(_("immune_to_trap: null monster"));
         return TRAP_NOT_IMMUNE;
     }
     pm = mon->data;
@@ -2885,7 +2885,7 @@ immune_to_trap(struct monst *mon, unsigned ttype)
         /* no adverse effects */
         return TRAP_CLEARLY_IMMUNE;
     default:
-        impossible("immune_to_trap: bad ttype %u", ttype);
+        impossible(_("immune_to_trap: bad ttype %u"), ttype);
         break;
     }
     return TRAP_NOT_IMMUNE;
@@ -2943,7 +2943,7 @@ trapeffect_selector(
     case VIBRATING_SQUARE:
         return trapeffect_vibrating_square(mtmp, trap, trflags);
     default:
-        impossible("%s encountered a strange trap of type %d.",
+        impossible(_("%s encountered a strange trap of type %d."),
                    (mtmp == &gy.youmonst) ? "You" : "Some monster",
                    trap->ttyp);
     }
@@ -3068,7 +3068,7 @@ steedintrap(struct trap *trap, struct obj *otmp)
     switch (tt) {
     case ARROW_TRAP:
         if (!otmp) {
-            impossible("steed hit by non-existent arrow?");
+            impossible(_("steed hit by non-existent arrow?"));
             return Trap_Effect_Finished;
         }
         trapkilled = thitm(8, steed, otmp, 0, FALSE);
@@ -3076,7 +3076,7 @@ steedintrap(struct trap *trap, struct obj *otmp)
         break;
     case DART_TRAP:
         if (!otmp) {
-            impossible("steed hit by non-existent dart?");
+            impossible(_("steed hit by non-existent dart?"));
             return Trap_Effect_Finished;
         }
         trapkilled = thitm(7, steed, otmp, 0, FALSE);
@@ -4303,7 +4303,7 @@ domagictrap(void)
                     if (!See_invisible)
                         You(_("can see yourself again!"));
                     else
-                        You_cant("see through yourself anymore.");
+                        You_cant(_("see through yourself anymore."));
                 }
             } else {
                 /* If we're invisible from another source */
@@ -5834,7 +5834,7 @@ untrap(
             Strcpy(the_trap, the(trapdescr));
             if (boxcnt) {
                 if (is_pit(ttmp->ttyp)) {
-                    You_cant("do much about %s%s.", the_trap,
+                    You_cant(_("do much about %s%s."), the_trap,
                              u.utrap ? " that you're stuck in"
                                      : " while standing on the edge of it");
                     trap_skipped = TRUE;
@@ -6241,7 +6241,7 @@ chest_trap(
             msg = "gas cloud blows away";
             break;
         default:
-            impossible("chest disarm bug");
+            impossible(_("chest disarm bug"));
             msg = (char *) 0;
             break;
         }
@@ -6388,7 +6388,7 @@ chest_trap(
                 (HHallucination & TIMEOUT) + (long) rn1(5, 16), FALSE, 0L);
             break;
         default:
-            impossible("bad chest trap");
+            impossible(_("bad chest trap"));
             break;
         }
         bot(); /* to get immediate botl re-display */
@@ -6440,7 +6440,7 @@ deltrap(struct trap *trap)
             if (ttmp->ntrap == trap)
                 break;
         if (!ttmp)
-            panic("deltrap: no preceding trap!");
+            panic(_("deltrap: no preceding trap!"));
         ttmp->ntrap = trap->ntrap;
     }
     if (Sokoban && (trap->ttyp == PIT || trap->ttyp == HOLE))
@@ -6734,7 +6734,7 @@ lava_effects(void)
                     obj->in_use = 0;
                 } else {
                     impossible(
-                     "lava_effects: '%s' (#%u) is already in use; so is #%u.",
+                     _("lava_effects: '%s' (#%u) is already in use; so is #%u."),
                                simpleonames(obj), obj->o_id, protect_oid);
                 }
                 continue;
@@ -7096,9 +7096,9 @@ trap_sanity_check(void)
 
     while (ttmp) {
         if (!isok(ttmp->tx, ttmp->ty))
-            impossible("trap sanity: location (%i,%i)", ttmp->tx, ttmp->ty);
+            impossible(_("trap sanity: location (%i,%i)"), ttmp->tx, ttmp->ty);
         if (ttmp->ttyp <= NO_TRAP || ttmp->ttyp >= TRAPNUM)
-            impossible("trap sanity: type (%i)", ttmp->ttyp);
+            impossible(_("trap sanity: type (%i)"), ttmp->ttyp);
         ttmp = ttmp->ntrap;
     }
 }

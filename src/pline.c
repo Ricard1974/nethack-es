@@ -211,7 +211,7 @@ vpline(const char *line, va_list the_args)
            the extremely-too-long panic then 'ln' will be actual length */
     }
     if (ln > (int) sizeof pbuf - 1) /* extremely too long */
-        panic("pline attempting to print %d characters!", ln);
+        panic(_("pline attempting to print %d characters!"), ln);
 
     if (ln > BUFSZ - 1) {
         /* too long but modestly so; allow but truncate, preserving final
@@ -241,7 +241,7 @@ vpline(const char *line, va_list the_args)
        during shutdown) or if we're being called recursively (probably
        via debugpline() in the interface code) */
     if (in_pline++ || !iflags.window_inited) {
-        /* [we should probably be using raw_printf("\n%s", line) here] */
+        /* [we should probably be using raw_printf(_("\n%s"), line) here] */
         raw_print(line);
         iflags.last_msg = PLNMSG_UNKNOWN;
         goto pline_done;
@@ -621,7 +621,7 @@ impossible(const char *s, ...)
 
     va_start(the_args, s);
     if (program_state.in_impossible)
-        panic("impossible called impossible");
+        panic(_("impossible called impossible"));
 
     program_state.in_impossible = 1;
     (void) vsnprintf(pbuf, sizeof pbuf, s, the_args);
@@ -744,7 +744,7 @@ nhassert_failed(const char *expression, const char *filepath, int line)
         filename = p + 1;
 #endif
 
-    impossible("nhassert(%s) failed in file '%s' at line %d",
+    impossible(_("nhassert(%s) failed in file '%s' at line %d"),
                expression, filename, line);
 }
 

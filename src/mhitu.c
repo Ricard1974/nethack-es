@@ -185,7 +185,7 @@ wildmiss(struct monst *mtmp, struct attack *mattk)
        impossible can be given, if warranted, before the early returns */
     if (!unotseen && !unotthere && !usubmerged) {
         /* this used to be the 'else' case below */
-        impossible("%s attacks you without knowing your location?",
+        impossible(_("%s attacks you without knowing your location?"),
                    Some_Monnam(mtmp));
         return;
     }
@@ -273,7 +273,7 @@ expels(
 
             blast[0] = '\0';
             if (!attk) {
-                impossible("Swallower has no engulfing attack?");
+                impossible(_("Swallower has no engulfing attack?"));
             } else {
                 if (is_whirly(mdat)) {
                     switch (attk->adtyp) {
@@ -636,7 +636,7 @@ mattacku(struct monst *mtmp)
                     if (obj)
                         obj->spe = save_spe;
                 } else
-                    impossible("hiding under nothing?");
+                    impossible(_("hiding under nothing?"));
             }
             newsym(u.ux, u.uy);
         }
@@ -1621,7 +1621,7 @@ explmu(
         }
         break;
     default:
-        impossible("unknown exploder damage type %d", mattk->adtyp);
+        impossible(_("unknown exploder damage type %d"), mattk->adtyp);
         break;
     }
     if (not_affected) {
@@ -1849,7 +1849,7 @@ gazemu(struct monst *mtmp, struct attack *mattk)
         break;
 #endif /* BEHOLDER */
     default:
-        impossible("Gaze attack %d?", mattk->adtyp);
+        impossible(_("Gaze attack %d?"), mattk->adtyp);
         break;
     }
     if (react >= 0) {
@@ -1870,7 +1870,7 @@ void
 mdamageu(struct monst *mtmp, int n)
 {
     if (n < 0) {
-        impossible("mdamageu for negative damage? (%d)", n);
+        impossible(_("mdamageu for negative damage? (%d)"), n);
         n = 0;
     }
 
@@ -2066,7 +2066,7 @@ doseduce(struct monst *mon)
                     return 1;
                 setworn(ring, LEFT_RING);
             } else
-                impossible("ring replacement");
+                impossible(_("ring replacement"));
             Ring_on(ring);
             prinv((char *) 0, ring, 0L);
         }
@@ -2102,7 +2102,7 @@ doseduce(struct monst *mon)
         if (!Deaf) {
             if (!(ld() && mon->female)) {
                 SetVoice(mon, 0, 80, 0);
-                verbalize("You're such a %s; I wish...",
+                verbalize(_("You're such a %s; I wish..."),
                           flags.female ? "sweet lady" : "nice guy");
             } else {
                 struct obj *yourgloves = u_carried_gloves();
@@ -2111,7 +2111,7 @@ doseduce(struct monst *mon)
                    name, possibly revealing them to you */
                 if (yourgloves)
                     observe_object(yourgloves);
-                verbalize("Well, then you owe me %s%s!",
+                verbalize(_("Well, then you owe me %s%s!"),
                           yourgloves ? yname(yourgloves)
                                      : "twelve pairs of gloves",
                           yourgloves ? " and eleven more pairs of gloves"
@@ -2246,7 +2246,7 @@ doseduce(struct monst *mon)
         if (!cost) {
             if (!Deaf) {
                 SetVoice(mon, 0, 80, 0);
-                verbalize("It's on the house!");
+                verbalize(_("It's on the house!"));
             } else {
                 pline(_("%s"), _("No charge."));
             }
@@ -2294,7 +2294,7 @@ mayberem(struct monst *mon,
         Sprintf(hairbuf, "let me run my fingers through your %s",
                 body_part(HAIR));
         SetVoice(mon, 0, 80, 0);
-        verbalize("Take off your %s; %s.", str,
+        verbalize(_("Take off your %s; %s."), str,
                   (obj == uarm)
                      ? "let's get a little closer"
                      : (obj == uarmc || obj == uarms)

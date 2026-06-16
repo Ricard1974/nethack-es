@@ -240,7 +240,7 @@ throw_obj(struct obj *obj, int shotlimit)
        attempted to specify a count */
     if (multishot > 1 || shotlimit > 0) {
         /* "You shoot N arrows." or "You throw N daggers." */
-        You("%s %d %s.", gm.m_shot.s ? "shoot" : "throw",
+        You(_("%s %d %s."), gm.m_shot.s ? "shoot" : "throw",
             multishot, /* (might be 1 if player gave shotlimit) */
             (multishot == 1) ? singular(obj, xname) : xname(obj));
     }
@@ -2104,7 +2104,7 @@ thitmonst(
         case GAUNTLETS_OF_DEXTERITY:
             break;
         default:
-            impossible("Unknown type of gloves (%d)", uarmg->otyp);
+            impossible(_("Unknown type of gloves (%d)"), uarmg->otyp);
             break;
         }
     }
@@ -2159,10 +2159,10 @@ thitmonst(
                     /* just in case, identify the object so its name will
                        appear in the message */
                     fully_identify_obj(obj);
-                    verbalize("%s part in this is finished.",
+                    verbalize(_("%s part in this is finished."),
                               s_suffix(The(xname(obj))));
                     verbalize(
-               "We will guard it in case it is ever needed again, %s forbid.",
+               _("We will guard it in case it is ever needed again, %s forbid."),
                               align_gname(u.ualignbase[A_ORIGINAL]));
                 }
                 if (*u.ushops || obj->unpaid) /* not very likely... */
@@ -2657,7 +2657,7 @@ breakmsg(struct obj *obj, boolean in_view)
     switch (obj->oclass == POTION_CLASS ? POT_WATER : obj->otyp) {
     default: /* glass or crystal wand */
         if (obj->oclass != WAND_CLASS)
-            impossible("breaking odd object (%d)?", obj->otyp);
+            impossible(_("breaking odd object (%d)?"), obj->otyp);
         FALLTHROUGH;
         /*FALLTHRU*/
     case LENSES:

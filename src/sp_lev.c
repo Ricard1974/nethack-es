@@ -266,7 +266,7 @@ schar
 mapfrag_get(struct mapfragment *mf, int x, int y)
 {
     if (y < 0 || x < 0 || y > mf->hei - 1 || x > mf->wid - 1)
-        panic("outside mapfrag (%i,%i), wanted (%i,%i)",
+        panic(_("outside mapfrag (%i,%i), wanted (%i,%i)"),
               mf->wid, mf->hei, x, y);
     return splev_chr2typ(mf->data[y * (mf->wid + 1) + x]);
 }
@@ -1248,7 +1248,7 @@ get_location(
                         goto found_it;
                 }
             if (!(humidity & NO_LOC_WARN)) {
-                impossible("get_location:  can't find a place!");
+                impossible(_("get_location:  can't find a place!"));
             } else {
                 *x = *y = -1;
             }
@@ -1366,7 +1366,7 @@ get_room_loc(coordxy *x, coordxy *y, struct mkroom *croom)
             *x = c.x;
             *y = c.y;
         } else
-            panic("get_room_loc : can't find a place!");
+            panic(_("get_room_loc : can't find a place!"));
     } else {
         if (*x < 0)
             *x = rn2(croom->hx - croom->lx + 1);
@@ -1398,7 +1398,7 @@ get_free_room_loc(
         } while (levl[try_x][try_y].typ != ROOM && ++trycnt <= 100);
 
         if (trycnt > 100)
-            panic("get_free_room_loc:  can't find a place!");
+            panic(_("get_free_room_loc:  can't find a place!"));
     }
     *x = try_x, *y = try_y;
 }
@@ -1797,7 +1797,7 @@ create_door(room_door *dd, struct mkroom *broom)
             break;
     }
     if (trycnt >= 100) {
-        impossible("create_door: Can't find a proper place!");
+        impossible(_("create_door: Can't find a proper place!"));
         return;
     }
     if (!set_levltyp(x, y, (dd->secret ? SDOOR : DOOR)))
@@ -1938,7 +1938,7 @@ create_monster(monster *m, struct mkroom *croom)
         class = 0;
 
     if (class == MAXMCLASSES)
-        panic("create_monster: unknown monster class '%c'", m->class);
+        panic(_("create_monster: unknown monster class '%c'"), m->class);
 
     amask = sp_amask_to_amask(m->sp_amask);
 
@@ -2218,7 +2218,7 @@ create_object(object *o, struct mkroom *croom)
         char oclass = (char) def_char_to_objclass(c);
 
         if (oclass == MAXOCLASSES)
-            panic("create_object:  unexpected object class '%c'", c);
+            panic(_("create_object:  unexpected object class '%c'"), c);
 
         /* KMH -- Create piles of gold properly */
         if (oclass == COIN_CLASS)
@@ -2304,7 +2304,7 @@ create_object(object *o, struct mkroom *croom)
     if (o->containment & SP_OBJ_CONTENT || invent_carrying_monster) {
         if (!container_idx) {
             if (!invent_carrying_monster) {
-                /*impossible("create_object: no container");*/
+                /*impossible(_("create_object: no container"));*/
                 /* don't complain, the monster may be gone legally
                    (eg. unique demon already generated)
                    TODO: In the case of unique demon lords, they should
@@ -2346,7 +2346,7 @@ create_object(object *o, struct mkroom *croom)
             container_obj[container_idx] = otmp;
             container_idx++;
         } else
-            impossible("create_object: too deeply nested containers.");
+            impossible(_("create_object: too deeply nested containers."));
     }
 
     /* Medusa level special case: statues are petrified monsters, so they
@@ -2523,7 +2523,7 @@ search_door(
         yy = croom->ly;
         break;
     default:
-        panic("search_door: Bad wall!");
+        panic(_("search_door: Bad wall!"));
         /*NOTREACHED*/
     }
     while (xx <= croom->hx + 1 && yy <= croom->hy + 1) {
@@ -2682,7 +2682,7 @@ create_corridor(corridor *c)
      * implemented in search_door. */
     if (c->src.wall == W_ANY || c->src.wall == W_RANDOM
         || c->dest.wall == W_ANY || c->dest.wall == W_RANDOM) {
-        impossible("create_corridor to/from a random wall");
+        impossible(_("create_corridor to/from a random wall"));
         return;
     }
     if (!search_door(&svr.rooms[c->src.room], &org.x, &org.y, c->src.wall,
@@ -2983,7 +2983,7 @@ splev_initlev(lev_init *linit)
 {
     switch (linit->init_style) {
     default:
-        impossible("Unrecognized level init style.");
+        impossible(_("Unrecognized level init style."));
         break;
     case LVLINIT_NONE:
         break;
@@ -4005,7 +4005,7 @@ get_mkroom_name(int rtype)
         if (room_types[i].type == rtype)
             return room_types[i].name;
 
-    impossible("get_mkroom_name unknown rtype %d", rtype);
+    impossible(_("get_mkroom_name unknown rtype %d"), rtype);
     return "unknown"; /* not NULL */
 }
 
@@ -4022,7 +4022,7 @@ get_table_roomtype_opt(lua_State *L, const char *name, int defval)
                 break;
             }
         if (!room_types[i].name)
-            impossible("Unknown room type '%s'", roomstr);
+            impossible(_("Unknown room type '%s'"), roomstr);
     }
     Free(roomstr);
     return res;
@@ -4044,7 +4044,7 @@ lspo_room(lua_State *L)
     lcheck_param_table(L);
 
     if (gc.coder->n_subroom > MAX_NESTED_ROOMS) {
-        panic("Too deeply nested rooms?!");
+        panic(_("Too deeply nested rooms?!"));
     } else {
         static const char *const left_or_right[] = {
             "left", "half-left", "center", "half-right", "right",
@@ -4643,7 +4643,7 @@ sel_set_feature(coordxy x, coordxy y, genericptr_t arg)
 {
     if (!isok(x, y)) {
 #ifdef EXTRA_SANITY_CHECKS
-        impossible("sel_set_feature(%i,%i,%i) !isok", x, y, (*(int *) arg));
+        impossible(_("sel_set_feature(%i,%i,%i) !isok"), x, y, (*(int *) arg));
 #endif /*EXTRA_SANITY_CHECKS*/
         return;
     }
@@ -4900,7 +4900,7 @@ lspo_feature(lua_State *L)
     get_location_coord(&x, &y, humidity, gc.coder->croom, fcoord);
 
     if (typ == STONE)
-        impossible("feature has unknown type param.");
+        impossible(_("feature has unknown type param."));
     else
         sel_set_feature(x, y, (genericptr_t) &typ);
 
@@ -5663,7 +5663,7 @@ lspo_region(lua_State *L)
     if (room_not_needed || svn.nroom >= MAXNROFROOMS) {
         region tmpregion;
         if (!room_not_needed)
-            impossible("Too many rooms on new level!");
+            impossible(_("Too many rooms on new level!"));
         tmpregion.rlit = rlit;
         tmpregion.x1 = dx1;
         tmpregion.y1 = dy1;
@@ -5701,7 +5701,7 @@ lspo_region(lua_State *L)
 
     if (!room_not_needed) {
         if (gc.coder->n_subroom > 1) {
-            impossible("region as subroom");
+            impossible(_("region as subroom"));
         } else {
             gc.coder->tmproomlist[gc.coder->n_subroom] = troom;
             gc.coder->failed_room[gc.coder->n_subroom] = FALSE;
@@ -5765,7 +5765,7 @@ lspo_drawbridge(lua_State *L)
     if (db_open == -1)
         db_open = !rn2(2);
     if (!create_drawbridge(x, y, dir, db_open ? TRUE : FALSE))
-        impossible("Cannot create drawbridge.");
+        impossible(_("Cannot create drawbridge."));
     SpLev_Map[x][y] = 1;
 
     return 0;
@@ -5839,7 +5839,7 @@ lspo_mazewalk(lua_State *L)
         --x;
         break;
     default:
-        impossible("mazewalk: Bad direction");
+        impossible(_("mazewalk: Bad direction"));
     }
 
     if (!IS_DOOR(levl[x][y].typ)) {

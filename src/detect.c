@@ -614,7 +614,7 @@ object_detect(struct obj *detector, /* object doing the detecting */
     int sym, boulder = 0, ter_typ = TER_DETECT | TER_OBJ;
 
     if (class < 0 || class >= MAXOCLASSES) {
-        impossible("object_detect:  illegal class %d", class);
+        impossible(_("object_detect:  illegal class %d"), class);
         class = 0;
     }
 

@@ -109,7 +109,7 @@ formatkiller(
     buf[0] = '\0'; /* lint suppression */
     switch (svk.killer.format) {
     default:
-        impossible("bad killer format? (%d)", svk.killer.format);
+        impossible(_("bad killer format? (%d)"), svk.killer.format);
         FALLTHROUGH;
         /*FALLTHRU*/
     case NO_KILLER_PREFIX:
@@ -1208,7 +1208,7 @@ prscore(int argc, char **argv)
            : Strlen(argv[1]);
     if (ln < 2 || (strncmp(argv[1], "-s", 2)
                    && strcmp(argv[1], "--scores"))) {
-        raw_printf("prscore: bad arguments (%d)", argc);
+        raw_printf(_("prscore: bad arguments (%d)"), argc);
         return;
     }
 
@@ -1336,9 +1336,9 @@ prscore(int argc, char **argv)
         if (strlen(pbuf) < BUFSZ - 1)
             Strcat(pbuf, ".");
         raw_print(pbuf);
-        raw_printf("Usage: %s -s [-v] <playertypes> [maxrank] [playernames]",
+        raw_printf(_("Usage: %s -s [-v] <playertypes> [maxrank] [playernames]"),
                    gh.hname);
-        raw_printf("Player types are: [-p role] [-r race]");
+        raw_printf(_("Player types are: [-p role] [-r race]"));
     }
     free_ttlist(tt_head);
 #ifdef AMIGA
@@ -1370,7 +1370,7 @@ classmon(char *plch)
     if (!strcmp(plch, "E"))
         return PM_RANGER;
 
-    impossible("What weird role is this? (%s)", plch);
+    impossible(_("What weird role is this? (%s)"), plch);
     return  PM_HUMAN_MUMMY;
 }
 
@@ -1387,7 +1387,7 @@ get_rnd_toptenentry(void)
 
     rfile = fopen_datafile(RECORD, "r", SCOREPREFIX);
     if (!rfile) {
-        impossible("Cannot open record file!");
+        impossible(_("Cannot open record file!"));
         return NULL;
     }
 

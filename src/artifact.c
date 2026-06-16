@@ -409,9 +409,9 @@ void
 found_artifact(int a)
 {
     if (a < 1 || a > NROFARTIFACTS)
-        impossible("found_artifact: invalid artifact index! (%d)", a);
+        impossible(_("found_artifact: invalid artifact index! (%d)"), a);
     else if (!artiexist[a].exists)
-        impossible("found_artifact: artifact doesn't exist yet? (%d)", a);
+        impossible(_("found_artifact: artifact doesn't exist yet? (%d)"), a);
     else
         artiexist[a].found = 1;
 }
@@ -508,7 +508,7 @@ artifact_origin(
         if ((aflags & ONAME_RANDOM) != 0)
             artiexist[a].rndm = 1, ++ct;
         if (ct != 1)
-            impossible("invalid artifact origin: %4o", aflags);
+            impossible(_("invalid artifact origin: %4o"), aflags);
     }
 }
 
@@ -1053,7 +1053,7 @@ spec_applies(const struct artifact *weap, struct monst *mtmp)
         case AD_STON:
             return !(yours ? Stone_resistance : resists_ston(mtmp));
         default:
-            impossible("Weird weapon special attack.");
+            impossible(_("Weird weapon special attack."));
         }
     }
     return 0;
@@ -1123,7 +1123,7 @@ discover_artifact(xint16 m)
         }
     /* there is one slot per artifact, so we should never reach the
        end without either finding the artifact or an empty slot... */
-    impossible("couldn't discover artifact (%d)", (int) m);
+    impossible(_("couldn't discover artifact (%d)"), (int) m);
 }
 
 /* used to decide whether an artifact has been fully identified */
@@ -1425,7 +1425,7 @@ Mb_hit(struct monst *magr, /* attacker */
                 Strcat(buf, " and ");
             if (do_confuse)
                 Strcat(buf, "confused");
-            pline("%s %s %s%c", hittee, vtense(fakename[fakeidx], "are"), buf,
+            pline(_("%s %s %s%c"), hittee, vtense(fakename[fakeidx], "are"), buf,
                   (do_stun && do_confuse) ? '!' : '.');
         }
     }
@@ -1470,7 +1470,7 @@ artifact_hit(
     *dmgptr += spec_dbon(otmp, mdef, *dmgptr);
 
     if (youattack && youdefend) {
-        impossible("attacking yourself with weapon?");
+        impossible(_("attacking yourself with weapon?"));
         return FALSE;
     }
 
@@ -2122,7 +2122,7 @@ arti_invoke(struct obj *obj)
     int res = ECMD_OK;
 
     if (!obj) {
-        impossible("arti_invoke without obj");
+        impossible(_("arti_invoke without obj"));
         return ECMD_OK;
     }
     oart = get_artifact(obj);
@@ -2159,7 +2159,7 @@ arti_invoke(struct obj *obj)
         case FIRESTORM: res = invoke_storm_spell(obj); break;
         case BLINDING_RAY: res = invoke_blinding_ray(obj); break;
         default:
-            impossible("Unknown invoke power %d.", oart->inv_prop);
+            impossible(_("Unknown invoke power %d."), oart->inv_prop);
             break;
         }
         return res;
@@ -2275,7 +2275,7 @@ arti_speak(struct obj *obj)
     line = getrumor(bcsign(obj), buf, TRUE);
     if (!*line)
         line = "NetHack rumors file closed for renovation.";
-    pline("%s:", Tobjnam(obj, "whisper"));
+    pline(_("%s:"), Tobjnam(obj, "whisper"));
     SetVoice((struct monst *) 0, 0, 80, voice_talking_artifact);
     verbalize1(line);
     return ECMD_TIME;
@@ -2509,7 +2509,7 @@ retouch_object(
 
         /* hero can't handle this object, but didn't get touch_artifact()'s
            "<obj> evades your grasp|control" message; give an alternate one */
-        You_cant("handle %s%s!", yname(obj),
+        You_cant(_("handle %s%s!"), yname(obj),
                  obj->owornmask ? " anymore" : "");
         /* also inflict damage unless touch_artifact() already did so */
         if (!touch_blasted) {

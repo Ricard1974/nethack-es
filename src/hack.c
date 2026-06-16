@@ -1023,7 +1023,7 @@ test_move(
                 } else if (Passes_walls && !may_passwall(x, y)
                            && In_sokoban(&u.uz)) {
                     /* soko restriction stays even after puzzle is solved */
-                    pline_The("Sokoban walls resist your ability.");
+                    pline_The(_("Sokoban walls resist your ability."));
                 } else if (flags.mention_walls) {
                     char buf[BUFSZ];
                     int glyph = back_to_glyph(x, y),
@@ -1083,7 +1083,7 @@ test_move(
                         if (Blind || Stunned || ACURR(A_DEX) < 10
                             || Fumbling) {
                             if (u.usteed) {
-                                You_cant("lead %s through that closed door.",
+                                You_cant(_("lead %s through that closed door."),
                                          y_monnam(u.usteed));
                             } else {
                                 pline(_("%s"), _("Ouch!  You bump into a door."));
@@ -1114,7 +1114,7 @@ test_move(
                     if (Blind)
                         feel_location(x, y);
                     if (Underwater || flags.mention_walls)
-                        You_cant("move diagonally into an intact doorway.");
+                        You_cant(_("move diagonally into an intact doorway."));
                 }
                 return FALSE;
             }
@@ -1179,7 +1179,7 @@ test_move(
         && (!doorless_door(ux, uy) || block_entry(x, y))) {
         /* Can't move at a diagonal out of a doorway with door. */
         if (mode == DO_MOVE && flags.mention_walls)
-            You_cant("move diagonally out of an intact doorway.");
+            You_cant(_("move diagonally out of an intact doorway."));
         return FALSE;
     }
 
@@ -1644,10 +1644,10 @@ trapmove(
         }
         break;
     case TT_NONE:
-        impossible("trapmove: trapped in nothing?");
+        impossible(_("trapmove: trapped in nothing?"));
         break;
     default:
-        impossible("trapmove: stuck in unknown trap? (%d)",
+        impossible(_("trapmove: stuck in unknown trap? (%d)"),
                    (int) u.utraptype);
         break;
     }
@@ -1833,7 +1833,7 @@ handle_tip(int tip)
             l_nhcore_call(NHCORE_GETPOS_TIP);
             break;
         default:
-            impossible("Unknown tip in handle_tip(%i)", tip);
+            impossible(_("Unknown tip in handle_tip(%i)"), tip);
             break;
         }
         return TRUE;
@@ -2024,7 +2024,7 @@ domove_fight_web(coordxy x, coordxy y)
                 scndstr = (uswapwep->quan == 1L) ? an(scndbuf)
                                                  : makeplural(scndbuf);
             }
-            You_cant("cut a web with %s%s%s!", uwepstr,
+            You_cant(_("cut a web with %s%s%s!"), uwepstr,
                      !onewep ? " or " : "", !onewep ? scndstr : "");
             return TRUE;
 
@@ -2172,7 +2172,7 @@ domove_swap_with_pet(
             }
             break;
         default:
-            impossible("that's strange, unknown mintrap result!");
+            impossible(_("that's strange, unknown mintrap result!"));
             break;
         }
     }
@@ -2301,7 +2301,7 @@ air_turbulence(void)
             exercise(A_DEX, FALSE);
             break;
         case 1:
-            You_cant("control your movements very well.");
+            You_cant(_("control your movements very well."));
             break;
         case 2:
             pline(_("%s"), _("It's hard to walk in thin air."));
@@ -3134,7 +3134,7 @@ switch_terrain(void)
     if (blocklev) {
         /* called from spoteffects(), stop levitating but skip float_down() */
         if (Levitation)
-            You_cant("levitate in here.");
+            You_cant(_("levitate in here."));
         BLevitation |= FROMOUTSIDE;
     } else if (BLevitation) {
         BLevitation &= ~FROMOUTSIDE;
@@ -3146,7 +3146,7 @@ switch_terrain(void)
     /* the same terrain that blocks levitation also blocks flight */
     if (blocklev) {
         if (Flying)
-            You_cant("fly in here.");
+            You_cant(_("fly in here."));
         BFlying |= FROMOUTSIDE;
     } else if (BFlying) {
         BFlying &= ~FROMOUTSIDE;
@@ -3654,9 +3654,9 @@ check_special_room(boolean newlev)
             if (oracle) {
                 SetVoice(oracle, 0, 80, 0);
                 if (!oracle->mpeaceful)
-                    verbalize("You're in Delphi, %s.", svp.plname);
+                    verbalize(_("You're in Delphi, %s."), svp.plname);
                 else
-                    verbalize("%s, %s, welcome to Delphi!",
+                    verbalize(_("%s, %s, welcome to Delphi!"),
                               Hello((struct monst *) 0), svp.plname);
             } else
                 msg_given = FALSE;
@@ -3748,14 +3748,14 @@ pickup_checks(void)
             You(_("cannot dive into the %s to pick things up."), hliquid("water"));
             return 0;
         } else if (!Underwater) {
-            You_cant("even see the bottom, let alone pick up %s.", something);
+            You_cant(_("even see the bottom, let alone pick up %s."), something);
             return 0;
         }
     }
     if (is_lava(u.ux, u.uy)) {
         if (Wwalking || is_floater(gy.youmonst.data)
             || is_clinger(gy.youmonst.data) || (Flying && !Breathless)) {
-            You_cant("reach the bottom to pick things up.");
+            You_cant(_("reach the bottom to pick things up."));
             return 0;
         } else if (!likes_lava(gy.youmonst.data)) {
             You(_("would burn to a crisp trying to pick things up."));
@@ -4128,7 +4128,7 @@ unmul(const char *msg_override)
            if life-saved while poly'd and Unchanging (explore or wizard mode
            declining to die since can't be both Unchanging and Lifesaved) */
         if (Upolyd && !strncmpi(gn.nomovemsg, "You survived that ", 18))
-            You("are %s.",
+            You(_("are %s."),
                 an(pmname(&mons[u.umonnum], Ugender))); /* (ignore Hallu) */
     }
     gn.nomovemsg = 0;
@@ -4340,7 +4340,7 @@ check_capacity(const char *str)
         if (str)
             pline1(str);
         else
-            You_cant("do that while carrying so much stuff.");
+            You_cant(_("do that while carrying so much stuff."));
         return 1;
     }
     return 0;
@@ -4405,10 +4405,10 @@ dump_weights(void)
     }
     qsort((genericptr_t) weightlist, cnt,
           sizeof (struct weight_table_entry), cmp_weights);
-    raw_printf("int all_weights[] = {");
+    raw_printf(_("int all_weights[] = {"));
     for (i = 0; i < cnt; ++i) {
         if (weightlist[i].nm) {
-            raw_printf("    %7u%s /* %*s */", weightlist[i].wt,
+            raw_printf(_("    %7u%s /* %*s */"), weightlist[i].wt,
                        (i == cnt - 1) ? " " : ",", -nmwidth,
                        &weightlist[i].nm[7]);
             free((genericptr_t) weightlist[i].nm), weightlist[i].nm = 0;
@@ -4492,7 +4492,7 @@ rounddiv(long x, int y)
     int divsgn = 1;
 
     if (y == 0)
-        panic("division by zero in rounddiv");
+        panic(_("division by zero in rounddiv"));
     else if (y < 0) {
         divsgn = -divsgn;
         y = -y;

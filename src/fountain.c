@@ -180,7 +180,7 @@ watchman_warn_fountain(struct monst *mtmp)
         && mtmp->mpeaceful) {
         if (!Deaf) {
             pline(_("%s yells:"), Amonnam(mtmp));
-            verbalize("Hey, stop using that fountain!");
+            verbalize(_("Hey, stop using that fountain!"));
         } else {
             pline(_("%s earnestly %s %s %s!"), Amonnam(mtmp), nolimbs(mtmp->data) ? "shakes" : "waves", mhis(mtmp), nolimbs(mtmp->data)
                   ? mbodypart(mtmp, HEAD)

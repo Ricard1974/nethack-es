@@ -40,7 +40,7 @@ quest_info(int typ)
     case MS_GUARDIAN:
         return gu.urole.guardnum;
     default:
-        impossible("quest_info(%d)", typ);
+        impossible(_("quest_info(%d)"), typ);
     }
     return 0;
 }
@@ -413,7 +413,7 @@ convert_line(char *in_line, char *out_line)
             break;
         }
         if (cc > &out_line[BUFSZ - 1])
-            panic("convert_line: overflow");
+            panic(_("convert_line: overflow"));
     }
     *cc = 0;
     return;
@@ -487,13 +487,13 @@ com_pager_core(
     L = nhl_init(&sbi);
     if (!L) {
         if (showerror)
-            impossible("com_pager: nhl_init() failed");
+            impossible(_("com_pager: nhl_init() failed"));
         goto compagerdone;
     }
 
     if (!nhl_loadlua(L, QTEXT_FILE)) {
         if (showerror)
-            impossible("com_pager: %s not found.", QTEXT_FILE);
+            impossible(_("com_pager: %s not found."), QTEXT_FILE);
         goto compagerdone;
     }
 
@@ -501,7 +501,7 @@ com_pager_core(
     lua_getglobal(L, "questtext");
     if (!lua_istable(L, -1)) {
         if (showerror)
-            impossible("com_pager: questtext in %s is not a lua table",
+            impossible(_("com_pager: questtext in %s is not a lua table"),
                        QTEXT_FILE);
         goto compagerdone;
     }
@@ -509,7 +509,7 @@ com_pager_core(
     lua_getfield(L, -1, section);
     if (!lua_istable(L, -1)) {
         if (showerror)
-            impossible("com_pager: questtext[%s] in %s is not a lua table",
+            impossible(_("com_pager: questtext[%s] in %s is not a lua table"),
                        section, QTEXT_FILE);
         goto compagerdone;
     }
@@ -530,11 +530,11 @@ com_pager_core(
         if (showerror) {
             if (!fallback_msgid)
                 impossible(
-                      "com_pager: questtext[%s][%s] in %s is not a lua table",
+                      _("com_pager: questtext[%s][%s] in %s is not a lua table"),
                            section, msgid, QTEXT_FILE);
             else
                 impossible(
-           "com_pager: questtext[%s][%s] and [][%s] in %s are not lua tables",
+           _("com_pager: questtext[%s][%s] and [][%s] in %s are not lua tables"),
                            section, msgid, fallback_msgid, QTEXT_FILE);
         }
         goto compagerdone;
@@ -558,7 +558,7 @@ com_pager_core(
         if (nelems < 2) {
             if (showerror)
                 impossible(
-              "com_pager: questtext[%s][%s] in %s is not an array of strings",
+              _("com_pager: questtext[%s][%s] in %s is not an array of strings"),
                            section, fallback_msgid ? fallback_msgid : msgid,
                            QTEXT_FILE);
             goto compagerdone;

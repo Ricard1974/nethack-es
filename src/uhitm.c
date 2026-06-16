@@ -660,7 +660,7 @@ hitum_cleave(
     /* find the direction toward primary target */
     i = xytodir(u.dx, u.dy);
     if (i == DIR_ERR) {
-        impossible("hitum_cleave: unknown target direction [%d,%d,%d]?",
+        impossible(_("hitum_cleave: unknown target direction [%d,%d,%d]?"),
                    u.dx, u.dy, u.dz);
         return TRUE; /* target hasn't been killed */
     }
@@ -2164,7 +2164,7 @@ steal_it(struct monst *mdef, struct attack *mattk)
         while ((otmp = *minvent_ptr) != 0)
             if (otmp->owornmask & W_ARM) {
                 if (ustealo)
-                    panic("steal_it: multiple worn suits");
+                    panic(_("steal_it: multiple worn suits"));
                 *minvent_ptr = otmp->nobj; /* take armor out of minvent */
                 ustealo = otmp;
                 ustealo->nobj = (struct obj *) 0;
@@ -3943,7 +3943,7 @@ mhitm_ad_phys(
         if (pd == &mons[PM_SHADE]) {
             mhm->damage = 0;
             if (!mhm->specialdmg)
-                impossible("bad shade attack function flow?");
+                impossible(_("bad shade attack function flow?"));
         }
         mhm->damage += mhm->specialdmg;
 
@@ -4321,7 +4321,7 @@ mhitm_ad_heal(
             if (Role_if(PM_HEALER)) {
                 if (!Deaf && !(svm.moves % 5)) {
                     SetVoice(magr, 0, 80, 0);
-                    verbalize("Doc, I can't help you unless you cooperate.");
+                    verbalize(_("Doc, I can't help you unless you cooperate."));
                 }
                 mhm->damage = 0;
             } else
@@ -4477,7 +4477,7 @@ mhitm_ad_dgst(
         if (flags.verbose && !Deaf) {
             /* Soundeffect? */
             SetVoice(magr, 0, 80, 0);
-            verbalize("Burrrrp!");
+            verbalize(_("Burrrrp!"));
         }
         wake_nearto(magr->mx, magr->my, 2 * 2); /* Burrrrp! */
         mhm->damage = mdef->mhp;
@@ -5743,7 +5743,7 @@ hmonas(struct monst *mon)
             break;
 
         default: /* Strange... */
-            impossible("strange attack of yours (%d)", mattk->aatyp);
+            impossible(_("strange attack of yours (%d)"), mattk->aatyp);
         }
         if (dhit == -1) {
             u.mh = -1; /* dead in the current form */

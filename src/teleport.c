@@ -792,7 +792,7 @@ teleport_pet(struct monst *mtmp, boolean force_it)
     if (mtmp->mleashed) {
         otmp = get_mleash(mtmp);
         if (!otmp) {
-            impossible("%s is leashed, without a leash.", Monnam(mtmp));
+            impossible(_("%s is leashed, without a leash."), Monnam(mtmp));
             goto release_it;
         }
         if (otmp->cursed && !force_it) {
@@ -1330,7 +1330,7 @@ level_tele(void)
         if (newlev <= -10) {
             You(_("arrive in heaven."));
             SetVoice((struct monst *) 0, 0, 80, voice_deity);
-            verbalize("Thou art early, but we'll admit thee.");
+            verbalize(_("Thou art early, but we'll admit thee."));
             svk.killer.format = NO_KILLER_PREFIX;
             Strcpy(svk.killer.name, "went to heaven prematurely");
         } else if (newlev == -9) {
@@ -1874,7 +1874,7 @@ rloc(
     if (!backupcc.x) {
         /* level either full of monsters or somehow faulty */
         if ((rlocflags & RLOC_ERR) != 0)
-            impossible("rloc(): couldn't relocate monster");
+            impossible(_("rloc(): couldn't relocate monster"));
         return FALSE;
     }
     x = backupcc.x, y = backupcc.y;
@@ -2065,7 +2065,7 @@ mlevel_tele_trap(
                 get_level(&tolevel, nlev);
             }
         } else {
-            impossible("mlevel_tele_trap: unexpected trap type (%d)", tt);
+            impossible(_("mlevel_tele_trap: unexpected trap type (%d)"), tt);
             return Trap_Effect_Finished;
         }
 

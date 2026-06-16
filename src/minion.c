@@ -211,7 +211,7 @@ summon_minion(aligntyp alignment, boolean talk)
         mnum = ndemon(alignment);
         break;
     default:
-        impossible("unaligned player?");
+        impossible(_("unaligned player?"));
         mnum = ndemon(A_NONE);
         break;
     }
@@ -244,7 +244,7 @@ summon_minion(aligntyp alignment, boolean talk)
             else
                 You_feel(_("%s booming voice:"), s_suffix(align_gname(alignment)));
             SetVoice(mon, 0, 80, 0);
-            verbalize("Thou shalt pay for thine indiscretion!");
+            verbalize(_("Thou shalt pay for thine indiscretion!"));
             if (canspotmon(mon))
                 pline(_("%s appears before you."), Amonnam(mon));
             mon->mstrategy &= ~STRAT_APPEARMSG;
@@ -470,7 +470,7 @@ lose_guardian_angel(
             if (!Deaf) {
                 pline(_("%s rebukes you, saying:"), Monnam(mon));
                 SetVoice(mon, 0, 80, 0);
-                verbalize("Since you desire conflict, have some more!");
+                verbalize(_("Since you desire conflict, have some more!"));
             } else {
                 pline(_("%s vanishes!"), Monnam(mon));
             }
@@ -503,7 +503,7 @@ gain_guardian_angel(void)
         else
             You_feel(_("a booming voice:"));
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
-        verbalize("Thy desire for conflict shall be fulfilled!");
+        verbalize(_("Thy desire for conflict shall be fulfilled!"));
         /* send in some hostile angels instead */
         lose_guardian_angel((struct monst *) 0);
     } else if (u.ualign.record > 8) { /* fervent */
@@ -512,7 +512,7 @@ gain_guardian_angel(void)
         else
             You_feel(_("a soft voice:"));
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
-        verbalize("Thou hast been worthy of me!");
+        verbalize(_("Thou hast been worthy of me!"));
         mm.x = u.ux;
         mm.y = u.uy;
         if (enexto(&mm, mm.x, mm.y, &mons[PM_ANGEL])
@@ -544,7 +544,7 @@ gain_guardian_angel(void)
             if ((otmp = select_hwep(mtmp)) == 0) {
                 otmp = mksobj(SILVER_SABER, FALSE, FALSE);
                 if (mpickobj(mtmp, otmp))
-                    panic("merged weapon?");
+                    panic(_("merged weapon?"));
             }
             bless(otmp);
             if (otmp->spe < 4)

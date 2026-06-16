@@ -543,7 +543,7 @@ forget_temple_entry(struct monst *priest)
     struct epri *epri_p = priest->ispriest ? EPRI(priest) : 0;
 
     if (!epri_p) {
-        impossible("attempting to manipulate shrine data for non-priest?");
+        impossible(_("attempting to manipulate shrine data for non-priest?"));
         return;
     }
     epri_p->intone_time = epri_p->enter_time = epri_p->peaceful_time =
@@ -600,7 +600,7 @@ priest_talk(struct monst *priest)
         && !has_shrine(priest)) {
         SetVoice(priest, 0, 80, 0);
         verbalize(
-              "Begone!  Thou desecratest this holy place with thy presence.");
+              _("Begone!  Thou desecratest this holy place with thy presence."));
         priest->mpeaceful = 0;
         return;
     }
@@ -645,29 +645,29 @@ priest_talk(struct monst *priest)
             pline(_("%s asks you for a contribution for the temple."), Monnam(priest));
         if ((offer = bribe(priest, buf)) == 0) {
             SetVoice(priest, 0, 80, 0);
-            verbalize("Thou shalt regret thine action!");
+            verbalize(_("Thou shalt regret thine action!"));
             if (coaligned)
                 adjalign(-1);
             if (cheapskate) ++*cheapskate;
         } else if (offer < suggested * quan) {
             if (money_cnt(gi.invent) > (offer * 2L)) {
                 SetVoice(priest, 0, 80, 0);
-                verbalize("Cheapskate.");
+                verbalize(_("Cheapskate."));
                 if (cheapskate) ++*cheapskate;
             } else {
                 SetVoice(priest, 0, 80, 0);
-                verbalize("I thank thee for thy contribution.");
+                verbalize(_("I thank thee for thy contribution."));
                 /* give player some token */
                 exercise(A_WIS, TRUE);
             }
         } else if (offer < suggested * quan * 2) {
             SetVoice(priest, 0, 80, 0);
-            verbalize("Thou art indeed a pious individual.");
+            verbalize(_("Thou art indeed a pious individual."));
             if (money_cnt(gi.invent) < (offer * 2L)) {
                 if (coaligned && u.ualign.record <= ALGN_SINNED)
                     adjalign(1);
             }
-            verbalize("I bestow upon thee a blessing.");
+            verbalize(_("I bestow upon thee a blessing."));
             incr_itimeout(&HClairvoyant, rn1(500 * offer / suggested,
                                              500 * offer / suggested));
         } else if (offer < suggested * quan * 3) {
@@ -691,13 +691,13 @@ priest_talk(struct monst *priest)
             }
             SetVoice(priest, 0, 80, 0);
             if (u.ublessed > orig_ublessed) {
-                verbalize("Thou hast been rewarded for thy devotion.");
+                verbalize(_("Thou hast been rewarded for thy devotion."));
             } else {
-                verbalize("Thy selfless generosity is deeply appreciated.");
+                verbalize(_("Thy selfless generosity is deeply appreciated."));
             }
         } else {
             SetVoice(priest, 0, 80, 0);
-            verbalize("Thy selfless generosity is deeply appreciated.");
+            verbalize(_("Thy selfless generosity is deeply appreciated."));
             /* money_cnt check is preserved for futureproofing but probably
                can't fail in the current code */
             if (money_cnt(gi.invent) < (offer * 2L) && coaligned) {

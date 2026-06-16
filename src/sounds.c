@@ -528,7 +528,7 @@ beg(struct monst *mtmp)
         if (!canspotmon(mtmp))
             map_invisible(mtmp->mx, mtmp->my);
         SetVoice(mtmp, 0, 80, 0);
-        verbalize("I'm hungry.");
+        verbalize(_("I'm hungry."));
     } else {
         /* this is pretty lame but is better than leaving out the block
            of speech types between animal and humanoid; this covers
@@ -1125,7 +1125,7 @@ domonnoise(struct monst *mtmp)
     case MS_ARREST:
         if (mtmp->mpeaceful) {
             SetVoice(mtmp, 0, 80, 0);
-            verbalize("Just the facts, %s.", flags.female ? "Ma'am" : "Sir");
+            verbalize(_("Just the facts, %s."), flags.female ? "Ma'am" : "Sir");
         } else {
             static const char *const arrest_msg[3] = {
                 "Anything you say can be used against you.",
@@ -1394,7 +1394,7 @@ dochat(void)
                     ? "falls on deaf ears"
                     : "is inaudible";
 
-        pline("Any response%s%s %s.",
+        pline(_("Any response%s%s %s."),
               canspotmon(mtmp) ? " from " : "",
               canspotmon(mtmp) ? mon_nam(mtmp) : "",
               xresponse);
@@ -1773,7 +1773,7 @@ activate_chosen_soundlib(void)
     int idx = gc.chosen_soundlib;
 
     if (!IndexOk(idx, soundlib_choices))
-        panic("activate_chosen_soundlib: invalid soundlib (%d)", idx);
+        panic(_("activate_chosen_soundlib: invalid soundlib (%d)"), idx);
 
     if (ga.active_soundlib != soundlib_nosound || idx != soundlib_nosound) {
         if (soundprocs.sound_exit_nhsound)
@@ -1790,7 +1790,7 @@ void
 assign_soundlib(int idx)
 {
     if (!IndexOk(idx, soundlib_choices))
-        panic("assign_soundlib: invalid soundlib (%d)", idx);
+        panic(_("assign_soundlib: invalid soundlib (%d)"), idx);
 
     gc.chosen_soundlib
         = (uint32_t) soundlib_choices[idx].sndprocs->soundlib_id;
@@ -1829,7 +1829,7 @@ choose_soundlib(const char *s)
 
     if (!soundlib_choices[1].sndprocs) {
         config_error_add(
-                   "Soundlib type %s not recognized.  The only choice is: %s",
+                   _("Soundlib type %s not recognized.  The only choice is: %s"),
                    s, soundlib_choices[0].sndprocs->soundname);
     } else {
         char buf[BUFSZ];
@@ -1842,7 +1842,7 @@ choose_soundlib(const char *s)
                     soundlib_choices[i].sndprocs->soundname);
             first = FALSE;
         }
-        config_error_add("Soundlib type %s not recognized.  Choices are:  %s",
+        config_error_add(_("Soundlib type %s not recognized.  Choices are:  %s"),
                          s, buf);
     }
     if (tmps)
@@ -1860,7 +1860,7 @@ get_soundlib_name(char *dest, int maxlen)
 
     idx = ga.active_soundlib;
     if (!IndexOk(idx, soundlib_choices))
-        panic("get_soundlib_name: invalid active_soundlib (%d)", idx);
+        panic(_("get_soundlib_name: invalid active_soundlib (%d)"), idx);
 
     src = soundlib_choices[idx].sndprocs->soundname;
     for (count = 1; count < maxlen; count++) {

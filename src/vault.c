@@ -257,7 +257,7 @@ uleftvault(struct monst *grd)
 {
     /* only called if caller has checked vault_occupied() and findgd() */
     if (!grd || !grd->isgd || DEADMONSTER(grd)) {
-        impossible("escaping vault without guard?");
+        impossible(_("escaping vault without guard?"));
         return;
     }
     /* if carrying gold and arriving anywhere other than next to the guard,
@@ -308,7 +308,7 @@ find_guard_dest(struct monst *guard, coordxy *rx, coordxy *ry)
  incr_radius:
         ;
     }
-    impossible("Not a single corridor on this level?");
+    impossible(_("Not a single corridor on this level?"));
     tele();
     return FALSE;
 }
@@ -456,7 +456,7 @@ invault(void)
             /* can't interrogate hero, don't interrogate engulfer */
             if (!Deaf) {
                 SetVoice(guard, 0, 80, 0);
-                verbalize("What's going on here?");
+                verbalize(_("What's going on here?"));
             }
             if (!spotted)
                 pline_The("other presence vanishes.");
@@ -468,7 +468,7 @@ invault(void)
                 && gy.youmonst.mappearance != GOLD_PIECE)
                 if (!Deaf) {
                     SetVoice(guard, 0, 80, 0);
-                    verbalize("Hey!  Who left that %s in here?",
+                    verbalize(_("Hey!  Who left that %s in here?"),
                               mimic_obj_name(&gy.youmonst));
                 }
             /* You're mimicking some object or you're hidden. */
@@ -484,7 +484,7 @@ invault(void)
                 pline(_("%s huffs and turns to leave."), noit_Monnam(guard));
             } else {
                 SetVoice(guard, 0, 80, 0);
-                verbalize("I'll be back when you're ready to speak to me!");
+                verbalize(_("I'll be back when you're ready to speak to me!"));
             }
             mongone(guard);
             return;
@@ -518,7 +518,7 @@ invault(void)
                 } else {
                     SetVoice(guard, 0, 80, 0);
                     verbalize(
-                         "Oh, yes, of course.  Sorry to have disturbed you.");
+                         _("Oh, yes, of course.  Sorry to have disturbed you."));
                 }
                 mongone(guard);
             } else {
@@ -529,7 +529,7 @@ invault(void)
                 } else {
                    SetVoice(guard, 0, 80, 0);
                    verbalize(
-                           "Back from the dead, are you?  I'll remedy that!");
+                           _("Back from the dead, are you?  I'll remedy that!"));
                 }
                 /* don't want guard to waste next turn wielding a weapon */
                 if (!MON_WEP(guard)) {
@@ -543,7 +543,7 @@ invault(void)
             pline(_("%s doesn't %srecognize you."), noit_Monnam(guard), (Blind) ? "" : "appear to ");
         } else {
             SetVoice(guard, 0, 80, 0);
-            verbalize("I don't know you.");
+            verbalize(_("I don't know you."));
         }
         umoney = money_cnt(gi.invent);
         if (!umoney && !hidden_gold(TRUE)) {
@@ -551,7 +551,7 @@ invault(void)
                 pline(_("%s stomps%s."), noit_Monnam(guard), (Blind) ? "" : " and beckons");
             } else {
                 SetVoice(guard, 0, 80, 0);
-                verbalize("Please follow me.");
+                verbalize(_("Please follow me."));
             }
         } else {
             if (!umoney) {
@@ -560,7 +560,7 @@ invault(void)
                         pline(_("%s glares at you%s."), noit_Monnam(guard), gi.invent ? "r stuff" : "");
                 } else {
                    SetVoice(guard, 0, 80, 0);
-                   verbalize("You have hidden gold.");
+                   verbalize(_("You have hidden gold."));
                 }
             }
             if (Deaf) {
@@ -569,9 +569,9 @@ invault(void)
             } else {
                 SetVoice(guard, 0, 80, 0);
                 verbalize(
-                    "Most likely all your gold was stolen from this vault.");
+                    _("Most likely all your gold was stolen from this vault."));
                 SetVoice(guard, 0, 80, 0);
-                verbalize("Please drop that gold and follow me.");
+                verbalize(_("Please drop that gold and follow me."));
             }
             EGD(guard)->dropgoldcnt++;
         }
@@ -730,7 +730,7 @@ gd_mv_monaway(struct monst *grd, int nx, int ny)
     if (mtmp && mtmp != grd) {
         if (!Deaf) {
             SetVoice(grd, 0, 80, 0);
-            verbalize("Out of my way, scum!");
+            verbalize(_("Out of my way, scum!"));
         }
         if (!rloc(mtmp, RLOC_ERR | RLOC_MSG) || MON_AT(nx, ny))
             m_into_limbo(mtmp);
@@ -755,7 +755,7 @@ gd_pick_corridor_gold(struct monst *grd, int goldx, int goldy)
            If guard is two or more steps away; bring him closer first. */
         gold = g_at(goldx, goldy);
         if (!gold) {
-            impossible("vault guard: no gold at hero's feet?");
+            impossible(_("vault guard: no gold at hero's feet?"));
             return;
         }
         gdelta = distu(guardx, guardy);
@@ -922,7 +922,7 @@ gd_move(struct monst *grd)
     if (egrd->witness) {
         if (!Deaf) {
             SetVoice(grd, 0, 80, 0);
-            verbalize("How dare you %s that gold, scoundrel!",
+            verbalize(_("How dare you %s that gold, scoundrel!"),
                       (egrd->witness & GD_EATGOLD) ? "consume" : "destroy");
         }
         egrd->witness = 0;
@@ -943,7 +943,7 @@ gd_move(struct monst *grd)
                                      : "");
                 SetVoice(grd, 0, 80, 0);
                 if (egrd->dropgoldcnt || !u_carry_gold)
-                    verbalize("I repeat, %s", buf);
+                    verbalize(_("I repeat, %s"), buf);
                 else
                     verbalize("%s", upstart(buf));
                 if (u_carry_gold)
@@ -954,7 +954,7 @@ gd_move(struct monst *grd)
                 n = grd->my;
                 if (!Deaf) {
                     SetVoice(grd, 0, 80, 0);
-                    verbalize("You've been warned, knave!");
+                    verbalize(_("You've been warned, knave!"));
                 }
                 grd->mpeaceful = 0;
                 mnexto(grd, RLOC_NOMSG);
@@ -987,7 +987,7 @@ gd_move(struct monst *grd)
             } else {
                 if (!Deaf) {
                     SetVoice(grd, 0, 80, 0);
-                    verbalize("Well, begone.");
+                    verbalize(_("Well, begone."));
                 }
                 egrd->gddone = 1;
                 return gd_move_cleanup(grd, semi_dead, FALSE);
@@ -1017,7 +1017,7 @@ gd_move(struct monst *grd)
                         pline(_("%s holds out %s palm demandingly!"), noit_Monnam(grd), noit_mhis(grd));
                 } else {
                     SetVoice(grd, 0, 80, 0);
-                    verbalize("Drop all your gold, scoundrel!");
+                    verbalize(_("Drop all your gold, scoundrel!"));
                 }
                 return 0;
             } else {
@@ -1026,7 +1026,7 @@ gd_move(struct monst *grd)
                         pline(_("%s rubs %s hands with enraged delight!"), noit_Monnam(grd), noit_mhis(grd));
                 } else {
                     SetVoice(grd, 0, 80, 0);
-                    verbalize("So be it, rogue!");
+                    verbalize(_("So be it, rogue!"));
                 }
                 grd->mpeaceful = 0;
                 return -1;
@@ -1054,7 +1054,7 @@ gd_move(struct monst *grd)
         if (!egrd->gddone && !rn2(10) && !Deaf && !u.uswallow
             && !(u.ustuck && !sticks(gy.youmonst.data))) {
             SetVoice(grd, 0, 80, 0);
-            verbalize("Move along!");
+            verbalize(_("Move along!"));
         }
         restfakecorr(grd);
         return 0; /* didn't move */
@@ -1152,7 +1152,7 @@ gd_move(struct monst *grd)
            is too small, but it has occurred when the same <x,y> are
            put into it repeatedly for some as yet unexplained reason */
         if (egrd->fcend++ == FCSIZ)
-            panic("fakecorr overflow");
+            panic(_("fakecorr overflow"));
         fcp->fx = nx;
         fcp->fy = ny;
         fcp->ftyp = typ;

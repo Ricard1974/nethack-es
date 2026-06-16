@@ -293,7 +293,7 @@ choose_windows(const char *s)
         windowprocs.win_wait_synch = def_wait_synch;
 
     if (!winchoices[0].procs) {
-        raw_printf("No window types supported?");
+        raw_printf(_("No window types supported?"));
         nh_terminate(EXIT_FAILURE);
     }
     /* 50: arbitrary, no real window_type names are anywhere near that long;
@@ -311,7 +311,7 @@ choose_windows(const char *s)
 
     if (!winchoices[1].procs) {
         config_error_add(
-                     "Window type %s not recognized.  The only choice is: %s",
+                     _("Window type %s not recognized.  The only choice is: %s"),
                          s, winchoices[0].procs->name);
     } else {
         char buf[BUFSZ];
@@ -327,7 +327,7 @@ choose_windows(const char *s)
                     first ? "" : ", ", winchoices[i].procs->name);
             first = FALSE;
         }
-        config_error_add("Window type %s not recognized.  Choices are:  %s",
+        config_error_add(_("Window type %s not recognized.  Choices are:  %s"),
                          s, buf);
     }
     if (tmps)
@@ -358,7 +358,7 @@ addto_windowchain(const char *s)
 
     windowprocs.win_raw_print = def_raw_print;
 
-    raw_printf("Window processor %s not recognized.  Choices are:", s);
+    raw_printf(_("Window processor %s not recognized.  Choices are:"), s);
     for (i = 0; winchoices[i].procs; i++) {
         if ('+' != winchoices[i].procs->name[0])
             continue;
@@ -386,7 +386,7 @@ commit_windowchain(void)
     p = wl_new();
     p->wincp = win_choices_find("-chainin");
     if (!p->wincp) {
-        raw_printf("Can't locate processor '-chainin'");
+        raw_printf(_("Can't locate processor '-chainin'"));
         exit(EXIT_FAILURE);
     }
     wl_addhead(p);
@@ -394,7 +394,7 @@ commit_windowchain(void)
     p = wl_new();
     p->wincp = win_choices_find("-chainout");
     if (!p->wincp) {
-        raw_printf("Can't locate processor '-chainout'");
+        raw_printf(_("Can't locate processor '-chainout'"));
         exit(EXIT_FAILURE);
     }
     wl_addtail(p);
@@ -1670,7 +1670,7 @@ choose_classes_menu(const char *prompt,
         case 0:
             idx = def_char_to_monclass(*class_list);
             if (!IndexOk(idx, def_monsyms)) {
-                panic("choose_classes_menu: invalid monclass '%c'",
+                panic(_("choose_classes_menu: invalid monclass '%c'"),
                       *class_list);
                 /*NOTREACHED*/
             }
@@ -1681,7 +1681,7 @@ choose_classes_menu(const char *prompt,
         case 1:
             idx = def_char_to_objclass(*class_list);
             if (!IndexOk(idx, def_oc_syms)) {
-                panic("choose_classes_menu: invalid objclass '%c'",
+                panic(_("choose_classes_menu: invalid objclass '%c'"),
                       *class_list);
                 /*NOTREACHED*/
             }
@@ -1690,7 +1690,7 @@ choose_classes_menu(const char *prompt,
             Sprintf(buf, "%c  %s", *class_list, text);
             break;
         default:
-            panic("choose_classes_menu: invalid category %d", category);
+            panic(_("choose_classes_menu: invalid category %d"), category);
             /*NOTREACHED*/
         }
         if (way && *class_select) { /* Selections there already */

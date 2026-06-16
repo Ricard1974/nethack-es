@@ -508,7 +508,7 @@ monflee(
                           Monnam(mtmp), lsrc);
                 } else {
                     SetVoice(mtmp, 0, 80, 0);
-                    verbalize("Bright light!");
+                    verbalize(_("Bright light!"));
                 }
             } else {
                 pline_mon(mtmp, "%s turns to flee.", Monnam(mtmp));
@@ -1810,7 +1810,7 @@ m_move(struct monst *mtmp, int after)
             mmoved = MMOVE_NOTHING; /* shk follow hero outside shop */
             break;
         default:
-            impossible("unknown shk/gd/pri_move return value (%d)", xm);
+            impossible(_("unknown shk/gd/pri_move return value (%d)"), xm);
             FALLTHROUGH;
             /*FALLTHRU*/
         case 0:
@@ -1825,7 +1825,7 @@ m_move(struct monst *mtmp, int after)
     if (ptr == &mons[PM_MAIL_DAEMON]) {
         if (!Deaf && canseemon(mtmp)) {
             SetVoice(mtmp, 0, 80, 0);
-            verbalize("I'm late!");
+            verbalize(_("I'm late!"));
         }
         mongone(mtmp);
         return MMOVE_DIED;

@@ -543,7 +543,7 @@ bhitm(struct monst *mtmp, struct obj *otmp)
         wake = FALSE;
         break;
     default:
-        impossible("What an interesting effect (%d)", otyp);
+        impossible(_("What an interesting effect (%d)"), otyp);
         break;
     }
     if (wake && !DEADMONSTER(mtmp)) {
@@ -577,7 +577,7 @@ release_hold(void)
     struct monst *mtmp = u.ustuck;
 
     if (!mtmp) {
-        impossible("release_hold when not held?");
+        impossible(_("release_hold when not held?"));
     } else if (u.uswallow) { /* possible for sticky hero to be swallowed */
         if (digests(mtmp->data)) {
             if (!Blind)
@@ -890,7 +890,7 @@ revive(struct obj *corpse, boolean by_hero)
     boolean is_zomb;
 
     if (corpse->otyp != CORPSE) {
-        impossible("Attempting to revive %s?", xname(corpse));
+        impossible(_("Attempting to revive %s?"), xname(corpse));
         return (struct monst *) 0;
     }
     montype = corpse->corpsenm;
@@ -1127,7 +1127,7 @@ revive(struct obj *corpse, boolean by_hero)
     case OBJ_ONBILL:
     case OBJ_LUAFREE:
     default:
-        panic("revive default case %d", (int) corpse->where);
+        panic(_("revive default case %d"), (int) corpse->where);
     }
 
     return mtmp;
@@ -2166,7 +2166,7 @@ bhito(struct obj *obj, struct obj *otmp)
      * for the STONE_TO_FLESH spell.
      */
     if (!(obj->where == OBJ_FLOOR || otmp->otyp == SPE_STONE_TO_FLESH))
-        impossible("bhito: obj is not floor or Stone To Flesh spell");
+        impossible(_("bhito: obj is not floor or Stone To Flesh spell"));
 
     if (obj == uball) {
         res = 0;
@@ -2400,7 +2400,7 @@ bhito(struct obj *obj, struct obj *otmp)
             res = stone_to_flesh_obj(obj);
             break;
         default:
-            impossible("What an interesting effect (%d)", otmp->otyp);
+            impossible(_("What an interesting effect (%d)"), otmp->otyp);
             break;
         }
     /* if effect was observable then discover the wand type provided
@@ -2989,7 +2989,7 @@ zapyourself(struct obj *obj, boolean ordinary)
         break;
     }
     default:
-        impossible("zapyourself: object %d used?", obj->otyp);
+        impossible(_("zapyourself: object %d used?"), obj->otyp);
         break;
     }
     /* if effect was observable then discover the wand type provided
@@ -3446,7 +3446,7 @@ weffects(struct obj *obj)
             ubuzz(BZ_U_WAND(BZ_OFS_WAN(otyp)),
                   (otyp == WAN_MAGIC_MISSILE) ? 2 : 6);
         else
-            impossible("weffects: unexpected spell or wand");
+            impossible(_("weffects: unexpected spell or wand"));
         disclose = TRUE;
     }
     if (disclose) {
@@ -5035,7 +5035,7 @@ melt_ice(coordxy x, coordxy y, const char *msg)
         do {
             obj_extract_self(otmp); /* boulder isn't being pushed */
             if (!boulder_hits_pool(otmp, x, y, FALSE))
-                impossible("melt_ice: no pool?");
+                impossible(_("melt_ice: no pool?"));
             /* try again if there's another boulder and pool didn't fill */
         } while (is_pool(x, y) && (otmp = sobj_at(BOULDER, x, y)) != 0);
         newsym(x, y);
@@ -5490,7 +5490,7 @@ mon_spell_hits_spot(
 
         (void) zap_over_floor(x, y, zapdmgtyp, &shopdummy, TRUE, 0);
     } else {
-        impossible("Unsupported damage type (%d) for mon_spell_hits_spot.",
+        impossible(_("Unsupported damage type (%d) for mon_spell_hits_spot."),
                    adtyp);
     }
 }
@@ -5841,7 +5841,7 @@ maybe_destroy_item(
         break;
     default:
         skip = 1; /* just in case ineligible damage type gets through... */
-        impossible("maybe_destroy_item with unexpected dmgtyp %d", dmgtyp);
+        impossible(_("maybe_destroy_item with unexpected dmgtyp %d"), dmgtyp);
         break;
     }
 
@@ -6013,7 +6013,7 @@ destroy_items(
         if (where == NOBJ_STATES)
             where = obj->where;
         else if (where != obj->where)
-            impossible("destroy_item: items in multiple chains");
+            impossible(_("destroy_item: items in multiple chains"));
 
         /* if loss of this item might dump us onto a trap, hold off
            until later because potential recursive destroy_items() will

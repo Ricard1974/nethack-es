@@ -90,7 +90,7 @@ append_str(char *buf, const char *new_str)
     oldlen = strlen(buf);
     if (oldlen >= BUFSZ - 1) {
         if (oldlen > BUFSZ - 1)
-            impossible("append_str: 'buf' contains %lu characters.",
+            impossible(_("append_str: 'buf' contains %lu characters."),
                        (unsigned long) oldlen);
         return 0; /* no space available */
     }
@@ -547,7 +547,7 @@ look_at_monster(
             }
             /* should have used up all the how_seen bits by now */
             if (how_seen) {
-                impossible("lookat: unknown method of seeing monster");
+                impossible(_("lookat: unknown method of seeing monster"));
                 Sprintf(eos(monbuf), "(%u)", how_seen);
             }
         } /* seen by something other than normal vision */
@@ -850,7 +850,7 @@ checkfile(
     }
     /* If someone passed us garbage, prevent fault. */
     if (!inp || strlen(inp) > (BUFSZ - 1)) {
-        impossible("bad do_look buffer passed (%s)!",
+        impossible(_("bad do_look buffer passed (%s)!"),
                    !inp ? "null" : "too long");
         goto checkfile_done;
     }
@@ -995,12 +995,12 @@ checkfile(
             found_in_file = skipping_entry = FALSE;
             txt_offset = 0L;
             if (dlb_fseek(fp, txt_offset, SEEK_SET) < 0 ) {
-                impossible("can't get to start of 'data' file");
+                impossible(_("can't get to start of 'data' file"));
                 goto checkfile_done;
             }
             /* skip first record; read second */
             if (!dlb_fgets(buf, BUFSZ, fp) || !dlb_fgets(buf, BUFSZ, fp)) {
-                impossible("can't read 'data' file");
+                impossible(_("can't read 'data' file"));
                 goto checkfile_done;
             } else if (sscanf(buf, "%8lx\n", &txt_offset) < 1
                        || txt_offset == 0L)
@@ -1120,7 +1120,7 @@ checkfile(
     goto checkfile_done; /* skip error feedback */
 
  bad_data_file:
-    impossible("'data' file in wrong format or corrupted");
+    impossible(_("'data' file in wrong format or corrupted"));
  checkfile_done:
     if (datawin != WIN_ERR)
         destroy_nhwindow(datawin);
@@ -2643,7 +2643,7 @@ dowhatdoes_core(char q, char *cbuf)
     }
     (void) dlb_fclose(fp);
     if (depth != 0)
-        impossible("cmdhelp: mismatched &? &: &. conditionals.");
+        impossible(_("cmdhelp: mismatched &? &: &. conditionals."));
     return (char *) 0;
 #endif /* 0 */
 }

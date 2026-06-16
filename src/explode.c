@@ -66,7 +66,7 @@ explosionmask(
                 res = EXPL_HERO;
             break;
         default:
-            impossible("explosion type %d?", adtyp);
+            impossible(_("explosion type %d?"), adtyp);
             break;
         }
 
@@ -107,7 +107,7 @@ explosionmask(
                 res = EXPL_MON;
             break;
         default:
-            impossible("explosion type %d?", adtyp);
+            impossible(_("explosion type %d?"), adtyp);
             break;
         }
     }
@@ -233,7 +233,7 @@ explode(
                 && type != WAN_DIGGING && type != WAN_SLEEP) {
                 type -= WAN_MAGIC_MISSILE;
                 if (type < 0 || type > 9) {
-                    impossible("explode: wand has bad zap type (%d).", type);
+                    impossible(_("explode: wand has bad zap type (%d)."), type);
                     type = 0;
                 }
             } else
@@ -344,7 +344,7 @@ explode(
             adtyp = AD_ACID;
             break;
         default:
-            impossible("explosion base type %d?", type);
+            impossible(_("explosion base type %d?"), type);
             return;
         }
         if (!str)
@@ -737,7 +737,7 @@ scatter(
     long total = 0L;
 
     if (individual_object && (obj->ox != sx || obj->oy != sy))
-        impossible("scattered object <%d,%d> not at scatter site <%d,%d>",
+        impossible(_("scattered object <%d,%d> not at scatter site <%d,%d>"),
                    obj->ox, obj->oy, sx, sy);
 
     shop_origin = ((shkp = shop_keeper(*in_rooms(sx, sy, SHOPBASE))) != 0
@@ -975,7 +975,7 @@ explode_oil(struct obj *obj, coordxy x, coordxy y)
     boolean diluted_oil = obj->odiluted;
 
     if (!obj->lamplit)
-        impossible("exploding unlit oil");
+        impossible(_("exploding unlit oil"));
     end_burn(obj, TRUE);
     obj->how_lost = LOST_EXPLODING;
     splatter_burning_oil(x, y, diluted_oil);
@@ -1005,7 +1005,7 @@ adtyp_to_expltype(const int adtyp)
     case AD_PHYS: /* gas spore */
         return EXPL_NOXIOUS;
     default:
-        impossible("adtyp_to_expltype: bad explosion type %d", adtyp);
+        impossible(_("adtyp_to_expltype: bad explosion type %d"), adtyp);
         return EXPL_FIERY;
     }
 }
@@ -1041,7 +1041,7 @@ mon_explodes(
         type = -((mattk->adtyp - 1) + 20);
     }
     else {
-        impossible("unknown type for mon_explode %d", mattk->adtyp);
+        impossible(_("unknown type for mon_explode %d"), mattk->adtyp);
         return;
     }
 

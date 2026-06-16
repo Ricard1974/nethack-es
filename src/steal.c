@@ -175,7 +175,7 @@ stealarm(void)
             for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
                 if (mtmp->m_id == gs.stealmid) {
                     if (DEADMONSTER(mtmp)) {
-                        impossible("stealarm(): dead monster stealing");
+                        impossible(_("stealarm(): dead monster stealing"));
                         goto botm; /* (could just use 'break' here) */
                     }
                     /* maybe the thief polymorphed into something without a
@@ -240,7 +240,7 @@ remove_worn_item(
 
     if (obj->owornmask & W_ARMOR) {
         if (obj == uskin) {
-            impossible("Removing embedded scales?");
+            impossible(_("Removing embedded scales?"));
             skinback(TRUE); /* uarm = uskin; uskin = 0; */
         }
         if (obj == uarm)
@@ -424,7 +424,7 @@ steal(struct monst *mtmp, char *objnambuf)
                 break;
         }
     if (!otmp) {
-        impossible("Steal fails!");
+        impossible(_("Steal fails!"));
         return 0;
     }
     /* can't steal ring(s) while wearing gloves */
@@ -554,7 +554,7 @@ steal(struct monst *mtmp, char *objnambuf)
             }
             break;
         default:
-            impossible("Tried to steal a strange worn thing. [%d]",
+            impossible(_("Tried to steal a strange worn thing. [%d]"),
                        otmp->oclass);
         }
         /* hero's blindfold might have just been stolen; if so, replace
@@ -615,11 +615,11 @@ mpickobj(struct monst *mtmp, struct obj *otmp)
     boolean snuff_otmp = FALSE;
 
     if (!otmp) {
-        impossible("monster (%s) taking or picking up nothing?",
+        impossible(_("monster (%s) taking or picking up nothing?"),
                    pmname(mtmp->data, Mgender(mtmp)));
         return 1;
     } else if (otmp == uball || otmp == uchain) {
-        impossible("monster (%s) taking or picking up attached %s (%s)?",
+        impossible(_("monster (%s) taking or picking up attached %s (%s)?"),
                    pmname(mtmp->data, Mgender(mtmp)),
                    (otmp == uchain) ? "chain" : "ball", simpleonames(otmp));
         return 0;

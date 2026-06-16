@@ -164,7 +164,7 @@ Resists_Elem(struct monst *mon, int propindx)
         return resists_blnd(mon);
 
     default:
-        impossible("Resists_Elem(%d), unexpected property type", propindx);
+        impossible(_("Resists_Elem(%d), unexpected property type"), propindx);
         return FALSE;
     }
 
@@ -265,7 +265,7 @@ resists_blnd(struct monst *mon)
         return TRUE;
     /* catchall */
     if (is_you && Blnd_resist) {
-        impossible("'Blnd_resist' but not resists_blnd()?");
+        impossible(_("'Blnd_resist' but not resists_blnd()?"));
         return TRUE;
     }
     return FALSE;

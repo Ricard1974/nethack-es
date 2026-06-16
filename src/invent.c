@@ -893,7 +893,7 @@ merged(struct obj **potmp, struct obj **pobj)
             } else if ((wmask & W_QUIVER) != 0L) {
                 wmask = W_QUIVER;
             } else {
-                impossible("merging strangely worn items (%lx)", wmask);
+                impossible(_("merging strangely worn items (%lx)"), wmask);
                 wmask = otmp->owornmask;
             }
             if ((otmp->owornmask & ~wmask) != 0L)
@@ -963,28 +963,28 @@ addinv_core1(struct obj *obj)
         disp.botl = TRUE;
     } else if (obj->otyp == AMULET_OF_YENDOR) {
         if (u.uhave.amulet)
-            impossible("already have amulet?");
+            impossible(_("already have amulet?"));
         u.uhave.amulet = 1;
         record_achievement(ACH_AMUL);
     } else if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
         if (u.uhave.menorah)
-            impossible("already have candelabrum?");
+            impossible(_("already have candelabrum?"));
         u.uhave.menorah = 1;
         record_achievement(ACH_CNDL);
     } else if (obj->otyp == BELL_OF_OPENING) {
         if (u.uhave.bell)
-            impossible("already have silver bell?");
+            impossible(_("already have silver bell?"));
         u.uhave.bell = 1;
         record_achievement(ACH_BELL);
     } else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
         if (u.uhave.book)
-            impossible("already have the book?");
+            impossible(_("already have the book?"));
         u.uhave.book = 1;
         record_achievement(ACH_BOOK);
     } else if (obj->oartifact) {
         if (is_quest_artifact(obj)) {
             if (u.uhave.questart)
-                impossible("already have quest artifact?");
+                impossible(_("already have quest artifact?"));
             u.uhave.questart = 1;
             artitouch(obj);
         }
@@ -1062,7 +1062,7 @@ addinv_core0(
     boolean obj_was_thrown;
 
     if (obj->where != OBJ_FREE)
-        panic("addinv: obj not free");
+        panic(_("addinv: obj not free"));
     if (obj->how_lost == LOST_EXPLODING)
         return (struct obj *) NULL;
 
@@ -1101,7 +1101,7 @@ addinv_core0(
     if (uquiver && merged(&uquiver, &obj)) {
         obj = uquiver;
         if (!obj)
-            panic("addinv: null obj after quiver merge otyp=%d", saved_otyp);
+            panic(_("addinv: null obj after quiver merge otyp=%d"), saved_otyp);
         goto added;
     }
     /* merge if possible; find end of chain in the process */
@@ -1109,7 +1109,7 @@ addinv_core0(
         if (merged(&otmp, &obj)) {
             obj = otmp;
             if (!obj)
-                panic("addinv: null obj after merge otyp=%d", saved_otyp);
+                panic(_("addinv: null obj after merge otyp=%d"), saved_otyp);
             goto added;
         }
     /* didn't merge, so insert into chain */
@@ -1360,24 +1360,24 @@ freeinv_core(struct obj *obj)
         return;
     } else if (obj->otyp == AMULET_OF_YENDOR) {
         if (!u.uhave.amulet)
-            impossible("don't have amulet?");
+            impossible(_("don't have amulet?"));
         u.uhave.amulet = 0;
     } else if (obj->otyp == CANDELABRUM_OF_INVOCATION) {
         if (!u.uhave.menorah)
-            impossible("don't have candelabrum?");
+            impossible(_("don't have candelabrum?"));
         u.uhave.menorah = 0;
     } else if (obj->otyp == BELL_OF_OPENING) {
         if (!u.uhave.bell)
-            impossible("don't have silver bell?");
+            impossible(_("don't have silver bell?"));
         u.uhave.bell = 0;
     } else if (obj->otyp == SPE_BOOK_OF_THE_DEAD) {
         if (!u.uhave.book)
-            impossible("don't have the book?");
+            impossible(_("don't have the book?"));
         u.uhave.book = 0;
     } else if (obj->oartifact) {
         if (is_quest_artifact(obj)) {
             if (!u.uhave.questart)
-                impossible("don't have quest artifact?");
+                impossible(_("don't have quest artifact?"));
             u.uhave.questart = 0;
         }
         set_artifact_intrinsic(obj, 0, W_ART);
@@ -1864,7 +1864,7 @@ getobj(
         if (&bp[suggested] == &buf[sizeof buf - 1]
             || ap == &altlets[sizeof altlets - 1]) {
             /* we must have a huge number of noinvsym items somehow */
-            impossible("getobj: inventory overflow");
+            impossible(_("getobj: inventory overflow"));
             break;
         }
 
@@ -1893,7 +1893,7 @@ getobj(
             break; /* adding otmp->invlet is all that's needed */
         case GETOBJ_EXCLUDE_NONINVENT: /* not applicable for invent items */
         default:
-            impossible("bad return from getobj callback");
+            impossible(_("bad return from getobj callback"));
         }
     }
     unsortloot(&sortedinvent);
@@ -2872,7 +2872,7 @@ prinv(const char *prefix, struct obj *obj, long quan)
     if (total_of)
         Snprintf(totalbuf, sizeof totalbuf,
                  " (%ld in total).", obj->quan);
-    pline("%s%s%s%s", prefix, *prefix ? " " : "",
+    pline(_("%s%s%s%s"), prefix, *prefix ? " " : "",
           xprname(obj, (char *) 0, obj_to_let(obj), !total_of, 0L, quan),
           flags.verbose ? totalbuf : "");
 }
@@ -4875,7 +4875,7 @@ check_invent_gold(const char *why) /* 'why' == caller in case of warning */
         }
 
     if (goldstacks > 1 || wrongslot > 0) {
-        impossible("%s: %s%s%s", why,
+        impossible(_("%s: %s%s%s"), why,
                    (wrongslot > 1) ? "gold in wrong slots"
                       : (wrongslot > 0) ? "gold in wrong slot"
                            : "",

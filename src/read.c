@@ -427,7 +427,7 @@ doread(void)
         if (scroll->o_id % 3) {
             /* no need to vary this when blind; "on this ___" is important
                because it suggests that there might be something on others */
-            You_cant("find anything to read on this %s.",
+            You_cant(_("find anything to read on this %s."),
                      simpleonames(scroll));
             return ECMD_OK;
         }
@@ -2225,7 +2225,7 @@ seffects(
         seffect_stinking_cloud(&sobj);
         break;
     default:
-        impossible("What weird effect is this? (%u)", otyp);
+        impossible(_("What weird effect is this? (%u)"), otyp);
     }
     /* if sobj is gone, we've already called useup() above and the
        update_inventory() that it performs might have come too soon
@@ -2856,7 +2856,7 @@ do_genocide(
                         pline("%s", _("A thunderous voice booms"));
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
                     /* FIXME? shouldn't this override deafness? */
-                    verbalize("No, mortal!  That will not be done.");
+                    verbalize(_("No, mortal!  That will not be done."));
                 }
                 continue;
             }

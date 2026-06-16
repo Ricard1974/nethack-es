@@ -703,7 +703,7 @@ do_improvisation(struct obj *instr)
         disp.botl = TRUE;
         break;
     default:
-        impossible("What a weird instrument (%d)!", instr->otyp);
+        impossible(_("What a weird instrument (%d)!"), instr->otyp);
         return 0;
     }
     nhUse(improvisation);

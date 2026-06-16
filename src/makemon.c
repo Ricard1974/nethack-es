@@ -625,7 +625,7 @@ m_initinv(struct monst *mtmp)
                 mac = -2;
                 break;
             default:
-                impossible("odd mercenary %d?", monsndx(ptr));
+                impossible(_("odd mercenary %d?"), monsndx(ptr));
                 mac = 0;
                 break;
             }
@@ -853,7 +853,7 @@ clone_mon(
         mm.y = y;
     }
     if (!isok(mm.x, mm.y)) { /* paranoia */
-        impossible("clone_mon trying to create a monster at <%d,%d>?",
+        impossible(_("clone_mon trying to create a monster at <%d,%d>?"),
                    mm.x, mm.y);
         return (struct monst *) 0;
     }
@@ -1185,7 +1185,7 @@ makemon(
 
     /* sanity check */
     if (!isok(x, y)) {
-        impossible("makemon trying to create a monster at <%d,%d>?", x, y);
+        impossible(_("makemon trying to create a monster at <%d,%d>?"), x, y);
         return (struct monst *) 0;
     }
 
@@ -1701,7 +1701,7 @@ rndmonst_adj(int minadj, int maxadj)
         weight = (int) (ptr->geno & G_FREQ) + align_shift(ptr);
         weight += temperature_shift(ptr);
         if (weight < 0 || weight > 127) {
-            impossible("bad weight in rndmonst for mndx %d", mndx);
+            impossible(_("bad weight in rndmonst for mndx %d"), mndx);
             weight = 0;
         }
         /* was unconditional, but if weight==0, rn2() < 0 will always fail;
@@ -1835,7 +1835,7 @@ dump_mongen(void)
 
     monst_globals_init();
     init_mongen_order();
-    raw_printf("int mongen_order[] = {");
+    raw_printf(_("int mongen_order[] = {"));
     for (i = LOW_PM; i < SPECIAL_PM; ++i) {
         special = (mons[MONSi(i)].geno & (G_NOGEN | G_UNIQ));
         mlet = def_monsyms[(int) mons[MONSi(i)].mlet].sym;
@@ -1844,7 +1844,7 @@ dump_mongen(void)
         Snprintf(nmbuf, sizeof nmbuf, "PM_%s%s",
                  monsdump[MONSi(i)].nm,
                  (i == SPECIAL_PM - 1) ? "" : ",");
-        raw_printf("    %*s /* %c seq=%3d, idx=%3d, sym='%c', diff=%2d, freq=%2d[%d] %s */",
+        raw_printf(_("    %*s /* %c seq=%3d, idx=%3d, sym='%c', diff=%2d, freq=%2d[%d] %s */"),
                    -nmwidth, nmbuf, (i == MONSi(i)) ? ' ' : '.', i, MONSi(i),
                    mlet, (int) mons[MONSi(i)].difficulty,
                    (int) (mons[MONSi(i)].geno & G_FREQ),
@@ -1884,7 +1884,7 @@ mkclass_aligned(char class, int spc, /* special mons[].geno handling */
     (void) memset((genericptr_t) nums, 0, sizeof nums);
     maxmlev = level_difficulty() >> 1;
     if (class < 1 || class >= MAXMCLASSES) {
-        impossible("mkclass called with bad class!");
+        impossible(_("mkclass called with bad class!"));
         return (struct permonst *) 0;
     }
 
@@ -1902,7 +1902,7 @@ mkclass_aligned(char class, int spc, /* special mons[].geno handling */
         if (mons[MONSi(first)].mlet == class)
             break;
     if (first == SPECIAL_PM) {
-        impossible("mkclass found no class %d monsters", class);
+        impossible(_("mkclass found no class %d monsters"), class);
         return (struct permonst *) 0;
     }
 
@@ -2552,7 +2552,7 @@ bagotricks(
     int moncount = 0;
 
     if (!bag || bag->otyp != BAG_OF_TRICKS) {
-        impossible("bad bag o' tricks");
+        impossible(_("bad bag o' tricks"));
     } else if (bag->spe < 1) {
         /* if tipping known empty bag, give normal empty container message */
         pline1((tipping && bag->cknown) ? "It's empty." : nothing_happens);

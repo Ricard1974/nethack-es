@@ -222,26 +222,26 @@ cmdq_print(int q)
     char buf[QBUFSZ];
     struct _cmd_queue *cq = gc.command_queue[q];
 
-    pline("CQ:%i", q);
+    pline(_("CQ:%i"), q);
     while (cq) {
         switch (cq->typ) {
         case CMDQ_KEY:
-            pline("(key:%s)", key2txt(cq->key, buf));
+            pline(_("(key:%s)"), key2txt(cq->key, buf));
             break;
         case CMDQ_EXTCMD:
-            pline("(extcmd:#%s)", cq->ec_entry->ef_txt);
+            pline(_("(extcmd:#%s)"), cq->ec_entry->ef_txt);
             break;
         case CMDQ_DIR:
-            pline("(dir:%i,%i,%i)", cq->dirx, cq->diry, cq->dirz);
+            pline(_("(dir:%i,%i,%i)"), cq->dirx, cq->diry, cq->dirz);
             break;
         case CMDQ_USER_INPUT:
             pline("%s", _("(userinput)"));
             break;
         case CMDQ_INT:
-            pline("(int:%i)", cq->intval);
+            pline(_("(int:%i)"), cq->intval);
             break;
         default:
-            pline("(ERROR:%i)",cq->typ);
+            pline(_("(ERROR:%i)"),cq->typ);
             break;
         }
         cq = cq->next;
@@ -480,7 +480,7 @@ can_do_extcmd(const struct ext_func_tab *extcmd)
         pline(unavailcmd, extcmd->ef_txt);
         return FALSE;
     } else if (u.uburied && !(ecflags & IFBURIED)) {
-        You_cant("do that while you are buried!");
+        You_cant(_("do that while you are buried!"));
         return FALSE;
     } else if (iflags.debug_fuzzer && (ecflags & NOFUZZERCMD)) {
         return FALSE;
@@ -782,7 +782,7 @@ extcmd_via_menu(void)
                 if (++i > MAX_EXT_CMD) {
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
                     impossible(
-      "Exceeded %d extended commands in doextcmd() menu; 'extmenu' disabled.",
+      _("Exceeded %d extended commands in doextcmd() menu; 'extmenu' disabled."),
                                MAX_EXT_CMD);
 #endif /* NH_DEVEL_STATUS != NH_STATUS_RELEASED */
                     iflags.extmenu = FALSE;
@@ -859,7 +859,7 @@ extcmd_via_menu(void)
             if (matchlevel > (QBUFSZ - 2)) {
                 free((genericptr_t) pick_list);
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
-                impossible("Too many chars (%d) entered in extcmd_via_menu()",
+                impossible(_("Too many chars (%d) entered in extcmd_via_menu()"),
                            matchlevel);
 #endif
                 ret = -1;
@@ -2612,7 +2612,7 @@ bind_mousebtn(int btn, const char *command)
     struct ext_func_tab *extcmd;
 
     if (btn < 1 || btn > NUM_MOUSE_BUTTONS) {
-        config_error_add("Wrong mouse button, valid are 1-%i",
+        config_error_add(_("Wrong mouse button, valid are 1-%i"),
                          NUM_MOUSE_BUTTONS);
         return FALSE;
     }
@@ -2681,13 +2681,13 @@ bind_key(uchar key, const char *command, boolean user)
 
         if ((extcmd->flags & CMD_PARAM) != 0) {
             if (!p) {
-                config_error_add("'%s' requires a parameter", buf);
+                config_error_add(_("'%s' requires a parameter"), buf);
             } else {
                 struct Cmd_bind *bind = cmdbind_get(key);
                 int maxlen = min(30, strlen(p)) + 1;
 
                 if (maxlen <= 1) {
-                    config_error_add("Required parameter cannot be empty");
+                    config_error_add(_("Required parameter cannot be empty"));
                 } else {
                     bind->param = (char *) alloc(maxlen);
                     (void) strncpy(bind->param, p, maxlen);
@@ -2695,7 +2695,7 @@ bind_key(uchar key, const char *command, boolean user)
                 }
             }
         } else if (p && strlen(p) > 0)
-            config_error_add("'%s' does not take a parameter", buf);
+            config_error_add(_("'%s' does not take a parameter"), buf);
 
 #if 0 /* silently accept key binding for unavailable command (!SHELL,&c) */
         if ((extcmd->flags & CMD_NOT_AVAILABLE) != 0) {
@@ -3272,7 +3272,7 @@ parseautocomplete(char *autocomplete, boolean condition)
     }
 
     /* not a real extended command */
-    raw_printf("Bad autocomplete: invalid extended command '%s'.",
+    raw_printf(_("Bad autocomplete: invalid extended command '%s'."),
                autocomplete);
     wait_synch();
 }
@@ -3762,7 +3762,7 @@ rhack(int key)
                              & (DOMOVE_RUSH | DOMOVE_WALK)) != 0L)
                            && !svc.context.travel && !dxdy_moveok()) {
                     /* trying to move diagonally as a grid bug */
-                    You_cant("get there from here...");
+                    You_cant(_("get there from here..."));
                     reset_cmd_vars(TRUE);
                     return;
                 } else if ((gd.domove_attempting & DOMOVE_WALK) != 0L) {
@@ -3957,7 +3957,7 @@ getdir(const char *s)
         } else {
             cmdq_clear(CQ_CANNED);
             dirsym = '\0';
-            impossible("getdir: command queue had no dir?");
+            impossible(_("getdir: command queue had no dir?"));
         }
         free(cmdq);
         goto got_dirsym;
@@ -4065,7 +4065,7 @@ getdir(const char *s)
                 /* could plug in bound values for spkeys[NHKF_GETPOS_PICK],&c
                    but that feels like overkill for something which should
                    never happen; just show their default values */
-                impossible("getpos successful but not one of [.,;:] (%d)",
+                impossible(_("getpos successful but not one of [.,;:] (%d)"),
                            pos);
                 mod = 0; /* neither CLICK_1 nor CLICK_2 */
                 pos = -1; /* return failure */
@@ -4093,7 +4093,7 @@ getdir(const char *s)
         }
         return 0;
     } else if (is_mov && !dxdy_moveok()) {
-        You_cant("orient yourself that direction.");
+        You_cant(_("orient yourself that direction."));
         return 0;
     }
     if (!u.dz)
@@ -5046,7 +5046,7 @@ get_count(
         } else if (!allowchars || strchr(allowchars, key)) {
             *count = (cmdcount_nht) cnt;
             if ((long) *count != cnt)
-                impossible("get_count: cmdcount_nht");
+                impossible(_("get_count: cmdcount_nht"));
             break;
         }
 
@@ -5559,7 +5559,7 @@ yn_function(
             paniclog("yn debug", dbg_buf);
 /*TEMP*/    /* don't let this known problem kill the fuzzer */
 /*TEMP*/    iflags.debug_fuzzer = fuzzer_impossible_continue;
-            impossible("yn_function() returned '%s'; using '%s' instead",
+            impossible(_("yn_function() returned '%s'; using '%s' instead"),
                        visctrl(res), visctrl(altres));
 /*TEMP*/    iflags.debug_fuzzer = fuzzing;
         }

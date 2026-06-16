@@ -335,14 +335,14 @@ ghitm(struct monst *mtmp, struct obj *gold)
                     ESHK(mtmp)->credit += value;
                     You(_("have %ld %s in credit."), ESHK(mtmp)->credit, currency(ESHK(mtmp)->credit));
                 } else
-                    verbalize("Thanks, scum!");
+                    verbalize(_("Thanks, scum!"));
             }
         } else if (mtmp->ispriest) {
             SetVoice(mtmp, 0, 80, 0);
             if (mtmp->mpeaceful)
-                verbalize("Thank you for your contribution.");
+                verbalize(_("Thank you for your contribution."));
             else
-                verbalize("Thanks, scum!");
+                verbalize(_("Thanks, scum!"));
         } else if (mtmp->isgd) {
             umoney = money_cnt(gi.invent);
             /* Some of these are iffy, because a hostile guard
@@ -380,15 +380,15 @@ ghitm(struct monst *mtmp, struct obj *gold)
             if (!mtmp->mpeaceful) {
                 SetVoice(mtmp, 0, 80, 0);
                 if (goldreqd)
-                    verbalize("That's not enough, coward!");
+                    verbalize(_("That's not enough, coward!"));
                 else /* unbribable (watchman) */
-                    verbalize("I don't take bribes from scum like you!");
+                    verbalize(_("I don't take bribes from scum like you!"));
             } else if (was_angry) {
                 SetVoice(mtmp, 0, 80, 0);
-                verbalize("That should do.  Now beat it!");
+                verbalize(_("That should do.  Now beat it!"));
             } else {
                 SetVoice(mtmp, 0, 80, 0);
-                verbalize("Thanks for the tip, %s.",
+                verbalize(_("Thanks for the tip, %s."),
                           flags.female ? "lady" : "buddy");
             }
         }
@@ -515,7 +515,7 @@ really_kick_object(coordxy x, coordxy y)
         if ((is_pit(trap->ttyp) && !Passes_walls) || trap->ttyp == WEB) {
             if (!trap->tseen)
                 find_trap(trap);
-            You_cant("kick %s that's in a %s!", something,
+            You_cant(_("kick %s that's in a %s!"), something,
                      Hallucination ? "tizzy"
                          : (trap->ttyp == WEB) ? "web"
                              : "pit");
@@ -688,7 +688,7 @@ really_kick_object(coordxy x, coordxy y)
 
                 if (!Deaf)
                     pline1("Thwwpingg!");
-                You("%s!", ROLL_FROM(flyingcoinmsg));
+                You(_("%s!"), ROLL_FROM(flyingcoinmsg));
                 (void) scatter(x, y, rnd(3), VIS_EFFECTS | MAY_HIT,
                                gk.kickedobj);
                 newsym(x, y);
@@ -1285,7 +1285,7 @@ dokick(void)
             break;
         case TT_WEB:
         case TT_BEARTRAP:
-            You_cant("move your %s!", body_part(LEG));
+            You_cant(_("move your %s!"), body_part(LEG));
             break;
         default:
             break;
@@ -1319,7 +1319,7 @@ dokick(void)
     if (u.uswallow) {
         switch (rn2(3)) {
         case 0:
-            You_cant("move your %s!", body_part(LEG));
+            You_cant(_("move your %s!"), body_part(LEG));
             break;
         case 1:
             if (digests(u.ustuck->data)) {

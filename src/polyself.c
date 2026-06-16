@@ -608,7 +608,7 @@ polyself(int psflags)
                     pm_name = the(pm_name);
                 else if (!type_is_pname(&mons[mntmp]))
                     pm_name = an(pm_name);
-                You_cant("polymorph into %s.", pm_name);
+                You_cant(_("polymorph into %s."), pm_name);
             } else
                 break;
         } while (--tryct > 0);
@@ -1427,7 +1427,7 @@ dobreathe(void)
 
     mattk = attacktype_fordmg(gy.youmonst.data, AT_BREA, AD_ANY);
     if (!mattk)
-        impossible("bad breath attack?"); /* mouthwash needed... */
+        impossible(_("bad breath attack?")); /* mouthwash needed... */
     else if (!u.dx && !u.dy && !u.dz)
         ubreatheu(mattk);
     else
@@ -1445,7 +1445,7 @@ dospit(void)
         return ECMD_CANCEL;
     mattk = attacktype_fordmg(gy.youmonst.data, AT_SPIT, AD_ANY);
     if (!mattk) {
-        impossible("bad spit attack?");
+        impossible(_("bad spit attack?"));
     } else {
         switch (mattk->adtyp) {
         case AD_BLND:
@@ -1453,7 +1453,7 @@ dospit(void)
             otmp = mksobj(BLINDING_VENOM, TRUE, FALSE);
             break;
         default:
-            impossible("bad attack type in dospit");
+            impossible(_("bad attack type in dospit"));
             FALLTHROUGH;
             /*FALLTHRU*/
         case AD_ACID:
@@ -1510,7 +1510,7 @@ dospinweb(void)
                 if (u.ustuck->data->mattk[i].aatyp == AT_ENGL)
                     break;
             if (i == NATTK)
-                impossible("Swallower has no engulfing attack?");
+                impossible(_("Swallower has no engulfing attack?"));
             else {
                 char sweep[30];
 
@@ -1587,7 +1587,7 @@ dospinweb(void)
             dotrap(ttmp, NO_TRAP_FLAGS);
             return ECMD_TIME;
         default:
-            impossible("Webbing over trap type %d?", ttmp->ttyp);
+            impossible(_("Webbing over trap type %d?"), ttmp->ttyp);
             return ECMD_OK;
         }
     } else if (On_stairs(x, y)) {
@@ -1640,7 +1640,7 @@ dogaze(void)
         }
     }
     if (adtyp != AD_CONF && adtyp != AD_FIRE) {
-        impossible("gaze attack %d?", adtyp);
+        impossible(_("gaze attack %d?"), adtyp);
         return ECMD_OK;
     }
 
@@ -1666,7 +1666,7 @@ dogaze(void)
             if (Invis && !perceives(mtmp->data)) {
                 pline(_("%s seems not to notice your gaze."), Monnam(mtmp));
             } else if (mtmp->minvis && !See_invisible) {
-                You_cant("see where to gaze at %s.", Monnam(mtmp));
+                You_cant(_("see where to gaze at %s."), Monnam(mtmp));
             } else if (M_AP_TYPE(mtmp) == M_AP_FURNITURE
                        || M_AP_TYPE(mtmp) == M_AP_OBJECT) {
                 looked--;
@@ -1764,7 +1764,7 @@ dohide(void)
     /* can't hide while being held (or holding) or while trapped
        (except for floor hiders [trapper or mimic] in pits) */
     if (u.ustuck || (u.utrap && (u.utraptype != TT_PIT || on_ceiling))) {
-        You_cant("hide while you're %s.",
+        You_cant(_("hide while you're %s."),
                  !u.ustuck ? "trapped"
                    : u.uswallow ? (digests(u.ustuck->data) ? "swallowed"
                                                            : "engulfed")
@@ -1922,7 +1922,7 @@ uunstick(void)
     struct monst *mtmp = u.ustuck;
 
     if (!mtmp) {
-        impossible("uunstick: no ustuck?");
+        impossible(_("uunstick: no ustuck?"));
         return;
     }
     set_ustuck((struct monst *) 0); /* before pline() */
@@ -2034,7 +2034,7 @@ mbodypart(struct monst *mon, int part)
     struct permonst *mptr = mon->data;
 
     if (part <= NO_PART) {
-        impossible("mbodypart: bad part %d", part);
+        impossible(_("mbodypart: bad part %d"), part);
         return "mystery part";
     }
 

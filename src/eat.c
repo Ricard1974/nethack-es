@@ -294,7 +294,7 @@ recalc_wt(void)
     struct obj *piece = svc.context.victual.piece;
 
     if (!piece) {
-        impossible("recalc_wt without piece");
+        impossible(_("recalc_wt without piece"));
         return;
     }
     debugpline1("Old weight = %d", piece->owt);
@@ -1195,7 +1195,7 @@ cpostfx(int pm)
                 livelog_printf(LL_CONDUCT,
                             "changed form for the first time by mimicking %s",
                                tempshape);
-            You_cant("resist the temptation to mimic %s.", tempshape);
+            You_cant(_("resist the temptation to mimic %s."), tempshape);
             /* A pile of gold can't ride. */
             if (u.usteed)
                 dismount_steed(DISMOUNT_FELL);
@@ -2559,7 +2559,7 @@ fpostfx(struct obj *otmp)
                not food, so we substitute cursed; fortunately our hero
                won't have to wait for a prince to be rescued/revived */
             if (Race_if(PM_DWARF) && Hallucination) {
-                verbalize("Heigh-ho, ho-hum, I think I'll skip work today.");
+                verbalize(_("Heigh-ho, ho-hum, I think I'll skip work today."));
             } else if (Deaf || !flags.acoustics) {
                 You(_("fall asleep."));
             } else {
@@ -2837,7 +2837,7 @@ doeat(void)
     } else if ((otmp->owornmask & (W_ARMOR | W_TOOL | W_AMUL | W_SADDLE))
                != 0) {
         /* let them eat rings */
-        You_cant("eat %s you're wearing.", something);
+        You_cant(_("eat %s you're wearing."), something);
         return ECMD_OK;
     } else if (!(carried(otmp) ? retouch_object(&otmp, FALSE)
                                : touch_artifact(otmp, &gy.youmonst))) {
@@ -3679,12 +3679,12 @@ floorfood(
     } else if (corpsecheck == 2) {
         otmp = getobj(verb, tin_ok, GETOBJ_NOFLAGS);
     } else {
-        impossible("floorfood: unknown request (%s)", verb);
+        impossible(_("floorfood: unknown request (%s)"), verb);
         otmp = (struct obj *) 0;
     }
     if (otmp && corpsecheck && !(offering && otmp->oclass == AMULET_CLASS)) {
         if (otmp->otyp != CORPSE || (corpsecheck == 2 && !tinnable(otmp))) {
-            You_cant("%s that!", verb);
+            You_cant(_("%s that!"), verb);
             otmp = (struct obj *) 0;
         }
     }
@@ -3758,7 +3758,7 @@ eaten_stat(int base, struct obj *obj)
     uneaten_amt = (long) obj->oeaten;
     if (uneaten_amt > full_amount) {
         impossible(
-          "partly eaten food (%ld) more nutritious than untouched food (%ld)",
+          _("partly eaten food (%ld) more nutritious than untouched food (%ld)"),
                    uneaten_amt, full_amount);
         uneaten_amt = full_amount;
     }
@@ -3784,7 +3784,7 @@ consume_oeaten(struct obj *obj, int amt)
             Sprintf(itembuf, "%d", otyp);
         }
         impossible(
-            "oeaten: attempting to set 0 nutrition food (%s) partially eaten",
+            _("oeaten: attempting to set 0 nutrition food (%s) partially eaten"),
                    itembuf);
         return;
     }

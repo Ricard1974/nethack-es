@@ -125,7 +125,7 @@ crashreport_init(int argc, char *argv[])
     int fd = open(binfile, HASH_OFLAGS, 0);
     if (fd == -1) {
 # ifdef BETA
-        raw_printf("open e=%s", strerror(errno));
+        raw_printf(_("open e=%s"), strerror(errno));
 # endif
         goto skip;
     }
@@ -502,7 +502,7 @@ NH_panictrace_libc(void)
         /* try to remove up to 16 blank spaces by removing 8 twice */
         (void) strsubst(buf, "        ", "");
         (void) strsubst(buf, "        ", "");
-        raw_printf("[%02lu] %s", (unsigned long) x, buf);
+        raw_printf(_("[%02lu] %s"), (unsigned long) x, buf);
     }
     /* free(info);   -- Don't risk it. */
     return TRUE;

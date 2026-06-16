@@ -1404,7 +1404,7 @@ peffects(struct obj *otmp)
         peffect_polymorph(otmp);
         break;
     default:
-        impossible("What a funny potion! (%u)", otmp->otyp);
+        impossible(_("What a funny potion! (%u)"), otmp->otyp);
         return 0;
     }
     return -1;
@@ -2366,7 +2366,7 @@ dip_into(void)
     char qbuf[QBUFSZ];
 
     if (!cmdq_peek(CQ_CANNED)) {
-        impossible("dip_into: where is potion?");
+        impossible(_("dip_into: where is potion?"));
         return ECMD_FAIL;
     }
     /* note: drink_ok() callback for quaffing is also used to validate
@@ -2817,27 +2817,27 @@ djinni_from_bottle(struct obj *obj)
     SetVoice(mtmp, 0, 80, 0);
     switch (chance) {
     case 0:
-        verbalize("I am in your debt.  I will grant one wish!");
+        verbalize(_("I am in your debt.  I will grant one wish!"));
         /* give a wish and discard the monster (mtmp set to null) */
         mongrantswish(&mtmp);
         break;
     case 1:
-        verbalize("Thank you for freeing me!");
+        verbalize(_("Thank you for freeing me!"));
         (void) tamedog(mtmp, (struct obj *) 0, FALSE);
         break;
     case 2:
-        verbalize("You freed me!");
+        verbalize(_("You freed me!"));
         mtmp->mpeaceful = TRUE;
         set_malign(mtmp);
         break;
     case 3:
-        verbalize("It is about time!");
+        verbalize(_("It is about time!"));
         if (canspotmon(mtmp))
             pline(_("%s vanishes."), Monnam(mtmp));
         mongone(mtmp);
         break;
     default:
-        verbalize("You disturbed me, fool!");
+        verbalize(_("You disturbed me, fool!"));
         mtmp->mpeaceful = FALSE;
         set_malign(mtmp);
         break;

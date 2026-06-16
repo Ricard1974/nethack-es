@@ -1112,7 +1112,7 @@ hatch_egg(anything *arg, long timeout)
                 pline(_("%s %s %s like \"%s%s\""), siblings ? "Their" : "Its", ing_suffix(cry_sound(mon)), (is_silent(mon->data) || Deaf) ? "seems" : "sounds", flags.female ? "mommy" : "daddy", egg->spe ? "." : "?");
             } else if (mon->data->mlet == S_DRAGON && !Deaf) {
                 SetVoice(mon, 0, 80, 0);
-                verbalize("Gleep!"); /* Mything eggs :-) */
+                verbalize(_("Gleep!")); /* Mything eggs :-) */
             }
             break;
 
@@ -1146,7 +1146,7 @@ hatch_egg(anything *arg, long timeout)
             break;
 #endif
         default:
-            impossible("egg hatched where? (%d)", (int) egg->where);
+            impossible(_("egg hatched where? (%d)"), (int) egg->where);
             break;
         }
 
@@ -1639,7 +1639,7 @@ burn_object(anything *arg, long timeout)
         break; /* case [otyp ==] candelabrum|tallow_candle|wax_candle */
 
     default:
-        impossible("burn_object: unexpected obj %s", xname(obj));
+        impossible(_("burn_object: unexpected obj %s"), xname(obj));
         break;
     }
     if (need_newsym)
@@ -1735,7 +1735,7 @@ begin_burn(struct obj *obj, boolean already_lit)
             do_timer = FALSE;
             radius = arti_light_radius(obj);
         } else {
-            impossible("begin burn: unexpected %s", xname(obj));
+            impossible(_("begin burn: unexpected %s"), xname(obj));
             turns = obj->age;
         }
         break;
@@ -1761,7 +1761,7 @@ begin_burn(struct obj *obj, boolean already_lit)
         if (get_obj_location(obj, &x, &y, CONTAINED_TOO | BURIED_TOO))
             new_light_source(x, y, radius, LS_OBJECT, obj_to_any(obj));
         else
-            impossible("begin_burn: can't get obj position");
+            impossible(_("begin_burn: can't get obj position"));
     }
 }
 
@@ -1773,7 +1773,7 @@ void
 end_burn(struct obj *obj, boolean timer_attached)
 {
     if (!obj->lamplit) {
-        impossible("end_burn: obj %s not lit", xname(obj));
+        impossible(_("end_burn: obj %s not lit"), xname(obj));
         return;
     }
 
@@ -1787,7 +1787,7 @@ end_burn(struct obj *obj, boolean timer_attached)
         if (obj->where == OBJ_INVENT)
             update_inventory();
     } else if (!stop_timer(BURN_OBJECT, obj_to_any(obj)))
-        impossible("end_burn: obj %s not timed!", xname(obj));
+        impossible(_("end_burn: obj %s not timed!"), xname(obj));
 }
 
 /*
@@ -1799,7 +1799,7 @@ cleanup_burn(anything *arg, long expire_time)
     struct obj *obj = arg->a_obj;
 
     if (!obj->lamplit) {
-        impossible("cleanup_burn: obj %s not lit", xname(obj));
+        impossible(_("cleanup_burn: obj %s not lit"), xname(obj));
         return;
     }
 
@@ -1965,7 +1965,7 @@ kind_name(short kind)
 {
     switch (kind) {
     case TIMER_NONE:
-        impossible("no timer type");
+        impossible(_("no timer type"));
         return "none";
     case TIMER_LEVEL:
         return "level";
@@ -2113,7 +2113,7 @@ timer_sanity_check(void)
             int owhere = obj->where;
 
             if (obj->timed == 0) {
-                impossible("timer sanity: untimed obj %s, timer %lu",
+                impossible(_("timer sanity: untimed obj %s, timer %lu"),
                            obj_adr, t_id);
             }
             x = y = 0;
@@ -2131,17 +2131,17 @@ timer_sanity_check(void)
                                          CONTAINED_TOO | BURIED_TOO)) {
                 /* free? or on a shop's used-up bill? */
                 impossible(
-                    "timer sanity: can't locate obj %s [where=%d], timer %lu",
+                    _("timer sanity: can't locate obj %s [where=%d], timer %lu"),
                            obj_adr, obj->where, t_id);
             } else if (!isok(x, y)) {
                 impossible(
-              "timer sanity: obj %s [where=%d] located at <%d,%d>, timer %lu",
+              _("timer sanity: obj %s [where=%d] located at <%d,%d>, timer %lu"),
                            obj_adr, obj->where, x, y, t_id);
             }
             break;
         }
         case TIMER_MONSTER:
-            impossible("timer sanity: unexpected monster timer %lu", t_id);
+            impossible(_("timer sanity: unexpected monster timer %lu"), t_id);
             break;
         case TIMER_LEVEL: {
             long lwhere = curr->arg.a_long;
@@ -2164,19 +2164,19 @@ timer_sanity_check(void)
                     && !(levl[x][y].typ == DRAWBRIDGE_DOWN
                          && (levl[x][y].drawbridgemask & DB_UNDER) == DB_ICE))
                     impossible(
-                         "timer sanity: melt timer %lu on non-ice %d <%d,%d>",
+                         _("timer sanity: melt timer %lu on non-ice %d <%d,%d>"),
                                t_id, levl[x][y].typ, x, y);
             } else {
-                impossible("timer sanity: spot timer %lu at <%d,%d>",
+                impossible(_("timer sanity: spot timer %lu at <%d,%d>"),
                            t_id, x, y);
             }
             break;
         }
         case TIMER_GLOBAL:
-            impossible("timer sanity: unexpected global timer %lu", t_id);
+            impossible(_("timer sanity: unexpected global timer %lu"), t_id);
             break;
         default:
-            impossible("timer sanity: unknown timer %lu, type: %d",
+            impossible(_("timer sanity: unknown timer %lu, type: %d"),
                        t_id, curr->kind);
             break;
         }
@@ -2223,7 +2223,7 @@ start_timer(
 
     if (kind <= TIMER_NONE || kind >= NUM_TIMER_KINDS
         || func_index < 0 || func_index >= NUM_TIME_FUNCS)
-        panic("start_timer (%s: %d)", kind_name(kind), (int) func_index);
+        panic(_("start_timer (%s: %d)"), kind_name(kind), (int) func_index);
 
     /* fail if <arg> already has a <func_index> timer running */
     for (dup = gt.timer_base; dup; dup = dup->next)
@@ -2239,7 +2239,7 @@ start_timer(
 #else
         Sprintf(idbuf, "%s timer (%d)", kind_name(kind), (int) func_index);
 #endif
-        impossible("Attempted to start duplicate %s, aborted.", idbuf);
+        impossible(_("Attempted to start duplicate %s, aborted."), idbuf);
         return FALSE;
     }
 
@@ -2317,7 +2317,7 @@ obj_move_timers(struct obj *src, struct obj *dest)
             count++;
         }
     if (count != src->timed)
-        panic("obj_move_timers");
+        panic(_("obj_move_timers"));
     src->timed = 0;
 }
 
@@ -2514,7 +2514,7 @@ write_timer(NHFILE *nhfp, timer_element *timer)
         break;
 
     default:
-        panic("write_timer");
+        panic(_("write_timer"));
         break;
     }
 }
@@ -2540,7 +2540,7 @@ obj_is_local(struct obj *obj)
     case OBJ_MINVENT:
         return mon_is_local(obj->ocarry);
     }
-    panic("obj_is_local");
+    panic(_("obj_is_local"));
     /*NOTREACHED*/
     return FALSE;
 }
@@ -2581,7 +2581,7 @@ timer_is_local(timer_element *timer)
     case TIMER_MONSTER:
         return mon_is_local(timer->arg.a_monst);
     }
-    panic("timer_is_local");
+    panic(_("timer_is_local"));
     /*NOTREACHED*/
     return FALSE;
 }
@@ -2727,17 +2727,17 @@ relink_timers(boolean ghostly)
             if (curr->kind == TIMER_OBJECT) {
                 if (ghostly) {
                     if (!lookup_id_mapping(curr->arg.a_uint, &nid))
-                        panic("relink_timers 1");
+                        panic(_("relink_timers 1"));
                 } else
                     nid = curr->arg.a_uint;
                 curr->arg.a_obj = find_oid(nid);
                 if (!curr->arg.a_obj)
-                    panic("can't find o_id %d", nid);
+                    panic(_("can't find o_id %d"), nid);
                 curr->needs_fixup = 0;
             } else if (curr->kind == TIMER_MONSTER) {
-                panic("relink_timers: no monster timer implemented");
+                panic(_("relink_timers: no monster timer implemented"));
             } else
-                panic("relink_timers 2");
+                panic(_("relink_timers 2"));
         }
     }
 }
