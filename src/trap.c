@@ -673,7 +673,7 @@ fall_through(
             You(_("%s down a %s%sshaft!"), controlled_flight ? "fly" : "fall", dist > 3 ? "very " : "", dist > 2 ? "deep " : "");
     }
     if (!td)
-        Sprintf(msgbuf, "The hole in the %s above you closes up.",
+        Sprintf(msgbuf, _("The hole in the %s above you closes up."),
                 ceiling(u.ux, u.uy));
 
     schedule_goto(&dtmp, !Flying ? UTOTYPE_FALLING : UTOTYPE_NONE, (char *) 0,
@@ -5187,14 +5187,14 @@ could_untrap(boolean verbosely, boolean check_floor)
                || !gy.youmonst.data->mmove) {
         Strcpy(buf, "And just how do you expect to do that?");
     } else if (u.ustuck && sticks(gy.youmonst.data)) {
-        Sprintf(buf, "You'll have to let go of %s first.", mon_nam(u.ustuck));
+        Sprintf(buf, _("You'll have to let go of %s first."), mon_nam(u.ustuck));
     } else if (u.ustuck || (welded(uwep) && bimanual(uwep))) {
-        Sprintf(buf, "Your %s seem to be too busy for that.",
+        Sprintf(buf, _("Your %s seem to be too busy for that."),
                 makeplural(body_part(HAND)));
     } else if (check_floor && !can_reach_floor(FALSE)) {
         /* only checked here for autounlock of chest/box and that will
            be !verbosely so precise details of the message don't matter */
-        Sprintf(buf, "You can't reach the %s.", surface(u.ux, u.uy));
+        Sprintf(buf, _("You can't reach the %s."), surface(u.ux, u.uy));
     }
     if (buf[0]) {
         if (verbosely)

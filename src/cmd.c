@@ -4183,10 +4183,10 @@ help_dir(
     if (prefixhandling
         && (sym == gc.Cmd.spkeys[NHKF_GETDIR_SELF]
             || (gc.Cmd.num_pad && sym == gc.Cmd.spkeys[NHKF_GETDIR_SELF2]))) {
-        Sprintf(buf, "You can't %s%s yourself.", dothat, how);
+        Sprintf(buf, _("You can't %s%s yourself."), dothat, how);
     /* for movement prefix followed by up or down */
     } else if (prefixhandling && (sym == '<' || sym == '>')) {
-        Sprintf(buf, "You can't %s %s.", dothat,
+        Sprintf(buf, _("You can't %s %s."), dothat,
                 /* was "upwards" and "downwards", but they're considered
                    to be variants of canonical "upward" and "downward" */
                 (sym == '<') ? "upward" : "downward");

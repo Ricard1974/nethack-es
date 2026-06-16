@@ -403,7 +403,7 @@ dowield(void)
         /* offer to split stack if multiple are quivered */
         if (uquiver->quan > 1L && inv_cnt(FALSE) < invlet_basic
                                     && splittable(uquiver)) {
-            Sprintf(qbuf, "You have %ld %s readied.  Wield one?",
+            Sprintf(qbuf, _("You have %ld %s readied.  Wield one?"),
                     uquiver->quan, simpleonames(uquiver));
             switch (ynq(qbuf)) {
             case 'q':
@@ -416,7 +416,7 @@ dowield(void)
             default:
                 break;
             }
-            Strcpy(qbuf, "Wield all of them instead?");
+            Strcpy(qbuf, _("Wield all of them instead?"));
         } else {
             boolean use_plural = (is_plural(uquiver) || pair_of(uquiver));
 
@@ -568,7 +568,7 @@ doquiver_core(const char *verb) /* "ready" or "fire" */
         /* offer to split stack if wielding more than 1 */
         if (uwep->quan > 1L && inv_cnt(FALSE) < invlet_basic
                                     && splittable(uwep)) {
-            Sprintf(qbuf, "You are wielding %ld %s.  Ready %ld of them?",
+            Sprintf(qbuf, _("You are wielding %ld %s.  Ready %ld of them?"),
                     uwep->quan, simpleonames(uwep), uwep->quan - 1L);
             switch (ynq(qbuf)) {
             case 'q':
@@ -581,11 +581,11 @@ doquiver_core(const char *verb) /* "ready" or "fire" */
             default:
                 break;
             }
-            Strcpy(qbuf, "Ready all of them instead?");
+            Strcpy(qbuf, _("Ready all of them instead?"));
         } else {
             boolean use_plural = (is_plural(uwep) || pair_of(uwep));
 
-            Sprintf(qbuf, "You are wielding %s.  Ready %s instead?",
+            Sprintf(qbuf, _("You are wielding %s.  Ready %s instead?"),
                     !use_plural ? "that" : "those",
                     !use_plural ? "it" : "them");
         }
@@ -618,7 +618,7 @@ doquiver_core(const char *verb) /* "ready" or "fire" */
             default:
                 break;
             }
-            Strcpy(qbuf, "Ready all of them instead?");
+            Strcpy(qbuf, _("Ready all of them instead?"));
         } else {
             boolean use_plural = (is_plural(uswapwep) || pair_of(uswapwep));
 
@@ -912,12 +912,12 @@ chwepon(struct obj *otmp, int amount)
                 uwep->bknown = !Hallucination; /* ok to bypass set_bknown() */
             } else {
                 /* cursed tin opener is wielded in right hand */
-                Sprintf(buf, "Your right %s tingles.", body_part(HAND));
+                Sprintf(buf, _("Your right %s tingles."), body_part(HAND));
             }
             uncurse(uwep);
             update_inventory();
         } else {
-            Sprintf(buf, "Your %s %s.", makeplural(body_part(HAND)),
+            Sprintf(buf, _("Your %s %s."), makeplural(body_part(HAND)),
                     (amount >= 0) ? "twitch" : "itch");
         }
         strange_feeling(otmp, buf); /* pline()+docall()+useup() */

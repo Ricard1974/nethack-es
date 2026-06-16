@@ -602,13 +602,13 @@ doengrave_sfx_item_WAN(struct _doengrave_ctx *de)
         break;
     case WAN_SLOW_MONSTER:
         if (!Blind) {
-            Sprintf(de->post_engr_text, "The bugs on the %s slow down!",
+            Sprintf(de->post_engr_text, _("The bugs on the %s slow down!"),
                     surface(u.ux, u.uy));
         }
         break;
     case WAN_SPEED_MONSTER:
         if (!Blind) {
-            Sprintf(de->post_engr_text, "The bugs on the %s speed up!",
+            Sprintf(de->post_engr_text, _("The bugs on the %s speed up!"),
                     surface(u.ux, u.uy));
         }
         break;
@@ -648,7 +648,7 @@ doengrave_sfx_item_WAN(struct _doengrave_ctx *de)
     case WAN_SLEEP:
     case WAN_DEATH:
         if (!Blind) {
-            Sprintf(de->post_engr_text, "The bugs on the %s stop moving!",
+            Sprintf(de->post_engr_text, _("The bugs on the %s stop moving!"),
                     surface(u.ux, u.uy));
         }
         break;

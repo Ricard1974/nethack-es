@@ -792,7 +792,7 @@ sink_backs_up(coordxy x, coordxy y)
     else if (!Deaf)
         Strcpy(buf, "You hear a sloshing sound"); /* Deaf-aware */
     else
-        Sprintf(buf, "Something splashes you in the %s", body_part(FACE));
+        Sprintf(buf, _("Something splashes you in the %s"), body_part(FACE));
     pline(_("%s%s."), !Deaf ? "Flupp!  " : "", buf);
 
     if (!(levl[x][y].looted & S_LRING)) { /* once per sink */
