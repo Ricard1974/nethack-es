@@ -3459,16 +3459,6 @@ msgstr "%s %s vuelve al polvo."
 msgid "Your %s %s to dust and %s to the %s!"
 msgstr "%s%s y %s un %s en el %s!"
 
-#: src/do_wear.c:3191
-#, c-format
-msgid "Your %s crumbles into tiny threads and falls apart!"
-msgstr ""
-
-#: src/do_wear.c:3194
-#, c-format
-msgid "Your %s turns to dust and is blown away!"
-msgstr ""
-
 #: src/do_wear.c:3197
 #, fuzzy, c-format
 #| msgid "%s vanishes!"
@@ -6521,11 +6511,6 @@ msgstr "Ya no se puede obtener el estado de MAIL=\" %s \"."
 msgid "is a%s message on this scroll."
 msgstr "es un mensaje de %s en este pergamino."
 
-#: src/mail.c:645
-#, c-format
-msgid "The voice of %s booms through the caverns:"
-msgstr ""
-
 #: src/mail.c:648
 #, c-format
 msgid "This message is from '%s'."
@@ -6979,11 +6964,6 @@ msgstr "una pequeña enfermedad."
 #, c-format
 msgid "%s was hidden under %s!"
 msgstr "%s estaba escondido bajo %s !"
-
-#: src/mhitu.c:1297
-#, c-format
-msgid "%s %s forward and plucks you off %s!"
-msgstr ""
 
 #: src/mhitu.c:1321
 #, c-format
@@ -10180,11 +10160,6 @@ msgstr "Afortunadamente, %s te permite vivir..."
 msgid "An invisible choir sings, and you are bathed in radiance..."
 msgstr "Un coro invisible canta y te bañas en resplandor..."
 
-#: src/pray.c:1553
-#, c-format
-msgid "ascend to the status of Demigod%s..."
-msgstr ""
-
 #: src/pray.c:1582
 msgid "a nearby thunderclap."
 msgstr "un trueno cercano."
@@ -11001,11 +10976,6 @@ msgstr "están envueltos en una nube de %s !"
 #: src/region.c:1388
 msgid "able to breathe."
 msgstr "capaz de respirar."
-
-#: src/report.c:464
-#, c-format
-msgid "Unable to send bug report.  Please visit %s instead."
-msgstr ""
 
 #: src/restore.c:122
 #, c-format
@@ -12568,11 +12538,6 @@ msgstr "%s intenta robarte, pero no hay nada que robar!"
 msgid "%s tries to %s %s%s but gives up."
 msgstr "%s intenta %s %s%s pero se rinde."
 
-#: src/steal.c:526
-#, c-format
-msgid "%s charms you.  You gladly %s your %s."
-msgstr ""
-
 #: src/steal.c:534
 #, fuzzy, c-format
 #| msgid "%s your grasp and %s from your %s!"
@@ -12889,11 +12854,6 @@ msgstr "posesiones aterrizan en el %s con un golpe."
 #: src/teleport.c:1265
 msgid "An energized cloud of dust begins to coalesce."
 msgstr "Una nube de polvo energizada comienza a coalescer."
-
-#: src/teleport.c:1266
-#, c-format
-msgid "body rematerializes%s."
-msgstr ""
 
 #: src/teleport.c:1331
 msgid "arrive in heaven."
@@ -14250,10 +14210,6 @@ msgstr "Sigues ardiendo."
 #, c-format
 msgid "sink into the %s%s!"
 msgstr "hundirse en el %s%s!"
-
-#: src/trap.c:6909
-msgid "You sink below the surface and die."
-msgstr ""
 
 #: src/uhitm.c:92
 msgid "avoid harm."
