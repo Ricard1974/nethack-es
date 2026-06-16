@@ -19604,29 +19604,56 @@ msgstr ""
 msgid "d(%d,%d) attempted"
 msgstr ""
 
-#: src/role.c:31
+# #-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#
+# Nombres de roles
+#: src/role.c:31 src/role.c
+#, fuzzy
 msgid "Archeologist"
-msgstr "Arqueólogo"
+msgstr ""
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Arqueólogo\n"
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Arqueólog@"
 
 #: src/role.c:72
+#, fuzzy
 msgid "Barbarian"
-msgstr "Bárbaro"
+msgstr ""
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Bárbaro\n"
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Barbar@"
 
 #: src/role.c:113
+#, fuzzy
 msgid "Caveman"
-msgstr "Cavernícola"
+msgstr ""
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Cavernícola\n"
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Cavernícol@"
 
 #: src/role.c:113
 msgid "Cavewoman"
 msgstr "Cavernícola"
 
 #: src/role.c:154
+#, fuzzy
 msgid "Healer"
-msgstr "Sanador"
+msgstr ""
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Sanador\n"
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Curander@"
 
 #: src/role.c:194 src/role.c:199
+#, fuzzy
 msgid "Knight"
-msgstr "Caballero"
+msgstr ""
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Caballero\n"
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Caballer@"
 
 #: src/role.c:234
 msgid "Monk"
@@ -19637,8 +19664,13 @@ msgid "Priest"
 msgstr "Sacerdote"
 
 #: src/role.c:275 src/role.c:279
+#, fuzzy
 msgid "Priestess"
-msgstr "Sacerdote"
+msgstr ""
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Sacerdote\n"
+"#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
+"Sacerdotisa"
 
 #: src/role.c:318 src/role.c:321
 msgid "Rogue"
@@ -19665,6 +19697,7 @@ msgid "Wizard"
 msgstr "Mago"
 
 # #-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#
+# #-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#
 # Razas (adjetivo)
 #: src/role.c:583 src/role.c:584
 msgid "human"
@@ -19686,6 +19719,7 @@ msgstr "gnomo"
 msgid "orc"
 msgstr "orco"
 
+# #-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#
 # #-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#
 # Adjetivos de personaje en descripcion (role.c)
 #: src/role.c:689
@@ -27308,6 +27342,18 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 msgid "blast of %s"
 msgstr "sueño de %s ."
 
+msgid "gnomish"
+msgstr "gnomo"
+
+msgid "elven"
+msgstr "élfico"
+
+msgid "dwarven"
+msgstr "enano"
+
+msgid "orcish"
+msgstr "orco"
+
 #, c-format
 #~ msgid "%s%.60s: unknown extended command."
 #~ msgstr "%s%.60s: comando extendido desconocido."
@@ -27329,4 +27375,3 @@ msgstr "sueño de %s ."
 
 #~ msgid "Vlad's Tower"
 #~ msgstr "Torre de Vlad"
-

@@ -944,10 +944,10 @@ welcome(boolean new_game) /* false => restoring an old game */
         && (new_game
             ? (gu.urole.allow & ROLE_GENDMASK) == (ROLE_MALE | ROLE_FEMALE)
             : currentgend != flags.initgend))
-        Sprintf(eos(buf), " %s", genders[currentgend].adj);
-    Sprintf(eos(buf), _(" %s %s"), gu.urace.adj,
-            (currentgend && gu.urole.name.f) ? gu.urole.name.f
-                                             : gu.urole.name.m);
+        Sprintf(eos(buf), " %s", _(genders[currentgend].adj));
+    Sprintf(eos(buf), _(" %s %s"), _(gu.urace.adj),
+            _(currentgend && gu.urole.name.f ? gu.urole.name.f
+                                             : gu.urole.name.m));
 
     pline(new_game ? _("%s %s, welcome to NetHack!  You are a%s.")
                    : _("%s %s, the%s, welcome back to NetHack!"),
