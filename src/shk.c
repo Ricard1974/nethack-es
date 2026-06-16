@@ -159,11 +159,11 @@ money2mon(struct monst *mon, long amount)
     struct obj *ygold = findgold(gi.invent);
 
     if (amount <= 0) {
-        impossible("%s payment in money2mon!", amount ? "negative" : "zero");
+        impossible(_("%s payment in money2mon!"), amount ? "negative" : "zero");
         return 0L;
     }
     if (!ygold || ygold->quan < amount) {
-        impossible("Paying without %s gold?", ygold ? "enough" : "");
+        impossible(_("Paying without %s gold?"), ygold ? "enough" : "");
         return 0L;
     }
 
@@ -188,11 +188,11 @@ money2u(struct monst *mon, long amount)
     struct obj *mongold = findgold(mon->minvent);
 
     if (amount <= 0) {
-        impossible("%s payment in money2u!", amount ? "negative" : "zero");
+        impossible(_("%s payment in money2u!"), amount ? "negative" : "zero");
         return;
     }
     if (!mongold || mongold->quan < amount) {
-        impossible("%s paying without %s gold?", a_monnam(mon),
+        impossible(_("%s paying without %s gold?"), a_monnam(mon),
                    mongold ? "enough" : "");
         return;
     }
@@ -795,7 +795,7 @@ u_entered_shop(char *enterstring)
         pline(_("%s senses your presence."), Shknam(shkp));
         if (!Deaf && !muteshk(shkp)) {
             SetVoice(shkp, 0, 80, 0);
-            verbalize("Invisible customers are not welcome!");
+            verbalize(_("Invisible customers are not welcome!"));
         } else {
             pline(_("%s stands firm as if %s knows you are there."), Shknam(shkp), noit_mhe(shkp));
         }
@@ -807,7 +807,7 @@ u_entered_shop(char *enterstring)
     if (ANGRY(shkp)) {
         if (!Deaf && !muteshk(shkp)) {
             SetVoice(shkp, 0, 80, 0);
-            verbalize("So, %s, you dare return to %s %s?!", svp.plname,
+            verbalize(_("So, %s, you dare return to %s %s?!"), svp.plname,
                       s_suffix(shkname(shkp)), shtypes[rt - SHOPBASE].name);
         } else {
             pline(_("%s seems %s over your return to %s %s!"), Shknam(shkp), ROLL_FROM(angrytexts), noit_mhis(shkp), shtypes[rt - SHOPBASE].name);
@@ -815,7 +815,7 @@ u_entered_shop(char *enterstring)
     } else if (eshkp->surcharge) {
         if (!Deaf && !muteshk(shkp)) {
             SetVoice(shkp, 0, 80, 0);
-            verbalize("Back again, %s?  I've got my %s on you.",
+            verbalize(_("Back again, %s?  I've got my %s on you."),
                       svp.plname, mbodypart(shkp, EYE));
         } else {
             pline_The("atmosphere at %s %s seems unwelcoming.",
@@ -831,7 +831,7 @@ u_entered_shop(char *enterstring)
     } else {
         if (!Deaf && !muteshk(shkp)) {
             set_voice(shkp, 0, 80, 0);
-            verbalize("%s, %s!  Welcome%s to %s %s!", Hello(shkp), svp.plname,
+            verbalize(_("%s, %s!  Welcome%s to %s %s!"), Hello(shkp), svp.plname,
                       eshkp->visitct++ ? " again" : "",
                       s_suffix(shkname(shkp)), shtypes[rt - SHOPBASE].name);
         } else {
@@ -914,7 +914,7 @@ pick_pick(struct obj *obj)
         if (svm.moves != pickmovetime) {
             if (!Deaf && !muteshk(shkp)) {
                 SetVoice(shkp, 0, 80, 0);
-                verbalize("You sneaky %s!  Get out of here with that pick!",
+                verbalize(_("You sneaky %s!  Get out of here with that pick!"),
                       cad(FALSE));
             } else {
                 pline(_("%s %s your pick!"), Shknam(shkp), haseyes(shkp->data) ? "glares at"
@@ -953,7 +953,7 @@ same_price(struct obj *obj1, struct obj *obj2)
     }
 
     if (!bp1 || !bp2)
-        impossible("same_price: object wasn't on any bill!");
+        impossible(_("same_price: object wasn't on any bill!"));
     else
         are_mergable = (shkp1 == shkp2 && bp1->price == bp2->price);
     return are_mergable;
@@ -1132,13 +1132,13 @@ onbill(struct obj *obj, struct monst *shkp, boolean silent)
              ct > 0; --ct, ++bp) {
             if (bp->bo_id == obj->o_id) {
                 if (!obj->unpaid)
-                    impossible("onbill: paid obj on bill?");
+                    impossible(_("onbill: paid obj on bill?"));
                 return bp;
             }
         }
     }
     if (obj->unpaid && !silent)
-        impossible("onbill: unpaid obj %s?",
+        impossible(_("onbill: unpaid obj %s?"),
                    !shkp ? "without shopkeeper" : "not on shk's bill");
     return (struct bill_x *) 0;
 }
@@ -1226,7 +1226,7 @@ obfree(struct obj *obj, struct obj *merge)
             /* this used to be a rename */
             /* !merge already returned */
             impossible(
-                   "obfree: not on bill, %s = (%d,%d,%ld,%d) (%d,%d,%ld,%d)?",
+                   _("obfree: not on bill, %s = (%d,%d,%ld,%d) (%d,%d,%ld,%d)?"),
                        "otyp,where,quan,unpaid",
                        obj->otyp, obj->where, obj->quan, obj->unpaid ? 1 : 0,
                        merge->otyp, merge->where, merge->quan,
@@ -1253,7 +1253,7 @@ obfree(struct obj *obj, struct obj *merge)
             merge->o_id = obj->o_id;
     }
     if (obj->owornmask) {
-        impossible("obfree: deleting worn obj (%d: %ld)", obj->otyp,
+        impossible(_("obfree: deleting worn obj (%d: %ld)"), obj->otyp,
                    obj->owornmask);
         /* unfortunately at this point we don't know whether worn mask
            applied to hero or a monster or perhaps something bogus, so
@@ -1557,7 +1557,7 @@ make_itemized_bill(
         /* find the object on the bill */
         otmp = bp_to_obj(bp);
         if (!otmp) {
-            impossible("Can't find shop bill entry for #%d", bp->bo_id);
+            impossible(_("Can't find shop bill entry for #%d"), bp->bo_id);
             continue;
         }
         bidx = i; /* index into bill_p[], except for hero-owner container */
@@ -1923,7 +1923,7 @@ dopay(void)
         return ECMD_TIME;
     }
     if (shkp != resident) {
-        impossible("dopay: not to shopkeeper?");
+        impossible(_("dopay: not to shopkeeper?"));
         if (resident)
             setpaid(resident);
         return ECMD_OK;
@@ -1989,7 +1989,7 @@ dopay(void)
     if (pay_done && !ANGRY(shkp) && paid) {
         if (!Deaf && !muteshk(shkp)) {
             SetVoice(shkp, 0, 80, 0);
-            verbalize("Thank you for shopping in %s %s%s",
+            verbalize(_("Thank you for shopping in %s %s%s"),
                       s_suffix(shkname(shkp)),
                       shtypes[eshkp->shoptype - SHOPBASE].name,
                       !eshkp->surcharge ? "!" : ".");
@@ -2102,8 +2102,8 @@ pay_billed_items(
                 buy = PAY_BUY;
             } else { /* buy_container() failed... */
                 if (boxbag_result == 2)    /* ... but didn't explain why */
-                    verbalize("You need to remove any unpaid items from"
-                              " that %s and buy them separately.",
+                    verbalize(_("You need to remove any unpaid items from"
+                              " that %s and buy them separately."),
                               simpleonames(otmp));
                 buy = PAY_CANT;
             }
@@ -2203,7 +2203,7 @@ dopayobj(
 
     if (!obj->unpaid && !bp->useup
         && !(Has_contents(obj) && unpaid_cost(obj, COST_CONTENTS))) {
-        impossible("Paid object on bill??");
+        impossible(_("Paid object on bill??"));
         return PAY_BUY;
     }
     if (itemize && insufficient_funds(shkp, obj, 0L)) {
@@ -2310,7 +2310,7 @@ buy_container(
         bp = &eshkp->bill_p[i];
         otmp = bp_to_obj(bp); /* ibill[bidx].obj is the container */
         if (!otmp) {
-            impossible("Can't find contained item on shop bill (#%d).",
+            impossible(_("Can't find contained item on shop bill (#%d)."),
                        bp->bo_id);
             return 2; /* failure; have caller give a generic message */
         }
@@ -2344,7 +2344,7 @@ buy_container(
             if (bp->bo_id == boid)
                 break;
         if (i == ebillct) {
-            impossible("Buying %s contents: item #%u disappeared from bill.",
+            impossible(_("Buying %s contents: item #%u disappeared from bill."),
                        simpleonames(container), boid);
             return 2;
         }
@@ -2352,7 +2352,7 @@ buy_container(
 
         buy = dopayobj(shkp, bp, otmp, 1, FALSE, sightunseen);
         if (buy != PAY_BUY) {
-            impossible("Buying %s contents failed unexpectedly (#%u %d).",
+            impossible(_("Buying %s contents failed unexpectedly (#%u %d)."),
                        simpleonames(container), otmp->o_id, buy);
             continue;
         }
@@ -2408,7 +2408,7 @@ reject_purchase(
             Sprintf(which, "%s", (intact_quan > 1L) ? "these" : "this one");
 
         SetVoice(shkp, 0, 80, 0);
-        verbalize("%s for the other %s before buying %s.",
+        verbalize(_("%s for the other %s before buying %s."),
                   ANGRY(shkp) ? "Pay" : "Please pay",
                   simpleonames(obj), /* short name suffices */
                   which);
@@ -2693,7 +2693,7 @@ finish_paybill(void)
         /* this used to be suppressed as "don't bother" (too late to matter)
            but that led to "place_object: \"<item>\" off map <0,0>" warning */
         if (shkp)
-            impossible("finish_paybill: bad location <%d,%d>.", ox, oy);
+            impossible(_("finish_paybill: bad location <%d,%d>."), ox, oy);
         /* force a valid location */
         ox = u.ux ? u.ux : u.ux0;
         oy = u.ux ? u.uy : u.uy0; /* [note: testing u.ux when setting oy
@@ -2891,7 +2891,7 @@ get_cost(
                 i = pseudorand ? AMETHYST : FLUORITE;
                 break;
             default:
-                impossible("bad glass gem %d?", obj->otyp);
+                impossible(_("bad glass gem %d?"), obj->otyp);
                 i = STRANGE_OBJECT;
                 break;
             }
@@ -3072,11 +3072,11 @@ special_stock(
                     pline(_("%s seems %s that you want to sell that."), Shknam(shkp), (obj->spe < 7) ? "horrified" : "concerned");
                 } else {
                     SetVoice(shkp, 0, 80, 0);
-                    verbalize("No thanks, I'd hang onto that if I were you.");
+                    verbalize(_("No thanks, I'd hang onto that if I were you."));
                     if (obj->spe < 7) {
                         SetVoice(shkp, 0, 80, 0);
                         verbalize(
-                             "You'll need %d%s candle%s to go along with it.",
+                             _("You'll need %d%s candle%s to go along with it."),
                                 (7 - obj->spe), (obj->spe > 0) ? " more" : "",
                                   plur(7 - obj->spe));
                     }
@@ -3086,7 +3086,7 @@ special_stock(
             } else {
                 if (!Deaf && !muteshk(shkp)) {
                     SetVoice(shkp, 0, 80, 0);
-                    verbalize("I won't stock that.  Take it out of here!");
+                    verbalize(_("I won't stock that.  Take it out of here!"));
                 } else {
                     pline(_("%s shakes %s %s in refusal."), Shknam(shkp), noit_mhis(shkp), mbodypart(shkp, HEAD));
                 }
@@ -3254,7 +3254,7 @@ unpaid_cost(
 
     /* onbill() gave no message if unexpected problem occurred */
     if (!shkp || (unp_obj->unpaid && !bp))
-        impossible("unpaid_cost: object wasn't on any bill.");
+        impossible(_("unpaid_cost: object wasn't on any bill."));
     return amt;
 }
 
@@ -3320,7 +3320,7 @@ staticfn void
 add_to_billobjs(struct obj *obj)
 {
     if (obj->where != OBJ_FREE)
-        panic("add_to_billobjs: obj not free");
+        panic(_("add_to_billobjs: obj not free"));
     if (obj->timed)
         obj_stop_timers(obj);
 
@@ -3578,19 +3578,19 @@ splitbill(struct obj *obj, struct obj *otmp)
     struct monst *shkp = shop_keeper(*u.ushops);
 
     if (!shkp || !inhishop(shkp)) {
-        impossible("splitbill: no resident shopkeeper??");
+        impossible(_("splitbill: no resident shopkeeper??"));
         return;
     }
     bp = onbill(obj, shkp, FALSE);
     if (!bp) {
-        impossible("splitbill: not on bill?");
+        impossible(_("splitbill: not on bill?"));
         return;
     }
     if (bp->bquan < otmp->quan) {
-        impossible("Negative quantity on bill??");
+        impossible(_("Negative quantity on bill??"));
     }
     if (bp->bquan == otmp->quan) {
-        impossible("Zero quantity on bill??");
+        impossible(_("Zero quantity on bill??"));
     }
     bp->bquan -= otmp->quan;
 
@@ -3634,7 +3634,7 @@ sub_one_frombill(struct obj *obj, struct monst *shkp)
         *bp = eshkp->bill_p[eshkp->billct];
         return;
     } else if (obj->unpaid) {
-        impossible("sub_one_frombill: unpaid object not on bill");
+        impossible(_("sub_one_frombill: unpaid object not on bill"));
         obj->unpaid = 0;
     }
 }
@@ -3913,7 +3913,7 @@ sellobj(
     if (ANGRY(shkp)) { /* they become shop-objects, no pay */
         if (!Deaf && !muteshk(shkp)) {
             SetVoice(shkp, 0, 80, 0);
-            verbalize("Thank you, scum!");
+            verbalize(_("Thank you, scum!"));
         } else {
             pline(_("%s smirks with satisfaction."), Shknam(shkp));
         }
@@ -3951,7 +3951,7 @@ sellobj(
         if (offer && !Deaf && !muteshk(shkp)) {
             SetVoice(shkp, 0, 80, 0);
             verbalize(
-  "Thank you for your contribution to restock this recently plundered shop.");
+  _("Thank you for your contribution to restock this recently plundered shop."));
         }
         subfrombill(obj, shkp);
         return;
@@ -4132,7 +4132,7 @@ sellobj(
                           offer, "");
             break;
         default:
-            impossible("invalid sell response");
+            impossible(_("invalid sell response"));
         }
     }
 }
@@ -4152,7 +4152,7 @@ doinvbill(
     shkp = shop_keeper(*u.ushops);
     if (!shkp || !inhishop(shkp)) {
         if (mode != 0)
-            impossible("doinvbill: no shopkeeper?");
+            impossible(_("doinvbill: no shopkeeper?"));
         return 0;
     }
     eshkp = ESHK(shkp);
@@ -4179,7 +4179,7 @@ doinvbill(
          bp < end_bp; bp++) {
         obj = bp_to_obj(bp);
         if (!obj) {
-            impossible("Bad shopkeeper administration.");
+            impossible(_("Bad shopkeeper administration."));
             goto quit;
         }
         if (bp->useup || bp->bquan > obj->quan) {
@@ -4321,7 +4321,7 @@ shkcatch(
         if (mnearto(shkp, x, y, TRUE, RLOC_NOMSG) == 2
             && !Deaf && !muteshk(shkp)) {
             SetVoice(shkp, 0, 80, 0);
-            verbalize("Out of my way, scum!");
+            verbalize(_("Out of my way, scum!"));
         }
         if (cansee(x, y)) {
             pline(_("%s nimbly%s catches %s."), Shknam(shkp), (x == shkp->mx && y == shkp->my) ? "" : " reaches over and", the(xname(obj)));
@@ -4587,7 +4587,7 @@ litter_scatter(
              */
             if (!Deaf && !muteshk(shkp)) {
                 SetVoice(shkp, 0, 80, 0);
-                verbalize("Get your junk out of my wall!");
+                verbalize(_("Get your junk out of my wall!"));
             }
             unplacebc(); /* pick 'em up */
             placebc();   /* put 'em down */
@@ -4845,7 +4845,7 @@ shk_move(struct monst *shkp)
             if (strncmp(eshkp->customer, svp.plname, PL_NSIZ)) {
                 if (!Deaf && !muteshk(shkp)) {
                     SetVoice(shkp, 0, 80, 0);
-                    verbalize("%s, %s!  I was looking for %s.", Hello(shkp),
+                    verbalize(_("%s, %s!  I was looking for %s."), Hello(shkp),
                               svp.plname, eshkp->customer);
                 }
                 eshkp->following = 0;
@@ -4854,7 +4854,7 @@ shk_move(struct monst *shkp)
             if (svm.moves > gf.followmsg + 4) {
                 if (!Deaf && !muteshk(shkp)) {
                     SetVoice(shkp, 0, 80, 0);
-                    verbalize("%s, %s!  Didn't you forget to pay?",
+                    verbalize(_("%s, %s!  Didn't you forget to pay?"),
                               Hello(shkp), svp.plname);
                 } else {
                     pline(_("%s holds out %s upturned %s."), Shknam(shkp), noit_mhis(shkp), mbodypart(shkp, HAND));
@@ -4984,10 +4984,10 @@ shopdig(int fall)
                 SetVoice(shkp, 0, 80, 0);
                 if (u.utraptype == TT_PIT) {
                     verbalize(
-                       "Be careful, %s, or you might fall through the floor.",
+                       _("Be careful, %s, or you might fall through the floor."),
                               flags.female ? "madam" : "sir");
                 } else {
-                    verbalize("%s, do not damage the floor here!",
+                    verbalize(_("%s, do not damage the floor here!"),
                               flags.female ? "Madam" : "Sir");
                 }
             }
@@ -5083,7 +5083,7 @@ getcad(
     } else if (pursue || uinshp || !um_dist(x, y, 1)) {
         if (!Deaf) {
             SetVoice(shkp, 0, 80, 0);
-            verbalize("How dare you %s my %s?", dmgstr,
+            verbalize(_("How dare you %s my %s?"), dmgstr,
                         dugwall ? "shop" : "door");
         } else {
             pline(_("%s is %s that you decided to %s %s %s!"), Shknam(shkp), ROLL_FROM(angrytexts), dmgstr, noit_mhis(shkp), dugwall ? "shop" : "door");
@@ -5092,7 +5092,7 @@ getcad(
         if (!Deaf) {
             pline(_("%s shouts:"), Shknam(shkp));
             SetVoice(shkp, 0, 80, 0);
-            verbalize("Who dared %s my %s?", dmgstr,
+            verbalize(_("Who dared %s my %s?"), dmgstr,
                         dugwall ? "shop" : "door");
         } else {
             pline(_("%s is %s that someone decided to %s %s %s!"), Shknam(shkp), ROLL_FROM(angrytexts), dmgstr, noit_mhis(shkp), dugwall ? "shop" : "door");
@@ -5207,7 +5207,7 @@ pay_for_damage(const char *dmgstr, boolean cant_mollify)
                     /* Soundeffect(se_angry_voice, 75); */
                     You_hear(_("an angry voice:"));
                     SetVoice(shkp, 0, 80, 0);
-                    verbalize("Out of my way, scum!");
+                    verbalize(_("Out of my way, scum!"));
                 }
                 wait_synch();
 #if defined(UNIX) || defined(VMS)
@@ -5262,7 +5262,7 @@ pay_for_damage(const char *dmgstr, boolean cant_mollify)
         if (!animal) {
             if (!Deaf && !muteshk(shkp)) {
                 SetVoice(shkp, 0, 80, 0);
-                verbalize("Oh, yes!  You'll pay!");
+                verbalize(_("Oh, yes!  You'll pay!"));
             } else {
                 pline(_("%s lunges %s %s toward your %s!"), Shknam(shkp), noit_mhis(shkp), mbodypart(shkp, HAND), body_part(NECK));
             }
@@ -5377,14 +5377,14 @@ price_quote(struct obj *first_obj)
         if (!cost) {
             /* "<doname(obj)>, no charge" */
             SetVoice(shkp, 0, 80, 0);
-            verbalize("%s!", upstart(buf)); /* buf contains the string */
+            verbalize(_("%s!"), upstart(buf)); /* buf contains the string */
         } else {
             /* print cost in slightly different format, so can't reuse buf;
                cost and contentsonly are already set up */
             Sprintf(buf, "%s%s", contentsonly ? the_contents_of : "",
                     doname(first_obj));
             SetVoice(shkp, 0, 80, 0);
-            verbalize("%s, price %ld %s%s%s", upstart(buf), cost,
+            verbalize(_("%s, price %ld %s%s%s"), upstart(buf), cost,
                       currency(cost), (first_obj->quan > 1L) ? " each" : "",
                       contentsonly ? "." : shk_embellish(first_obj, cost));
         }
@@ -5470,14 +5470,14 @@ shk_chat(struct monst *shkp)
         if (strncmp(eshk->customer, svp.plname, PL_NSIZ)) {
             if (!Deaf && !muteshk(shkp)) {
                 SetVoice(shkp, 0, 80, 0);
-                verbalize("%s %s!  I was looking for %s.",
+                verbalize(_("%s %s!  I was looking for %s."),
                       Hello(shkp), svp.plname, eshk->customer);
             }
             eshk->following = 0;
         } else {
             if (!Deaf && !muteshk(shkp)) {
                 SetVoice(shkp, 0, 80, 0);
-                verbalize("%s %s!  Didn't you forget to pay?",
+                verbalize(_("%s %s!  Didn't you forget to pay?"),
                           Hello(shkp), svp.plname);
             } else {
                 pline(_("%s taps you on the %s."), Shknam(shkp), body_part(ARM));
@@ -5830,7 +5830,7 @@ cad(
         res = "fiend";
         break;
     default:
-        impossible("cad: unknown gender");
+        impossible(_("cad: unknown gender"));
         res = "thing";
         break;
     }
@@ -5889,7 +5889,7 @@ globby_bill_fixup(struct obj *obj_absorber, struct obj *obj_absorbed)
     boolean floor_absorber = (obj_absorber->where == OBJ_FLOOR);
 
     if (!obj_absorber->globby)
-        impossible("globby_bill_fixup called for non-globby object");
+        impossible(_("globby_bill_fixup called for non-globby object"));
 
     if (floor_absorber) {
         x = obj_absorber->ox, y = obj_absorber->oy;
@@ -5989,7 +5989,7 @@ globby_bill_fixup(struct obj *obj_absorber, struct obj *obj_absorbed)
         amount = bp->price;
         bill_dummy_object(obj_absorbed);
         SetVoice(shkp, 0, 80, 0);
-        verbalize("You owe me %ld %s for my %s that you %s with your%s",
+        verbalize(_("You owe me %ld %s for my %s that you %s with your%s"),
                   amount, currency(amount), obj_typename(obj_absorbed->otyp),
                   ANGRY(shkp) ? "had the audacity to mix" : "just mixed",
                   ANGRY(shkp) ? " stinking batch!" : "s.");
@@ -6012,7 +6012,7 @@ use_unpaid_trapobj(struct obj *otmp, coordxy x, coordxy y)
 
             if (shkp && !muteshk(shkp)) {
                 SetVoice(shkp, 0, 80, 0);
-                verbalize("You set it, you buy it!");
+                verbalize(_("You set it, you buy it!"));
             }
         }
         bill_dummy_object(otmp);

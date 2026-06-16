@@ -115,7 +115,7 @@ throne_sit_effect(void)
                 /* Magical voice not affected by deafness */
                 pline(_("%s"), _("A voice echoes:"));
                 SetVoice((struct monst *) 0, 0, 80, voice_throne);
-                verbalize("Thine audience hath been summoned, %s!",
+                verbalize(_("Thine audience hath been summoned, %s!"),
                           flags.female ? "Dame" : "Sire");
                 while (cnt--)
                     (void) makemon(courtmon(), tx, ty, NO_MM_FLAGS);
@@ -125,7 +125,7 @@ throne_sit_effect(void)
             /* Magical voice not affected by deafness */
             pline(_("%s"), _("A voice echoes:"));
             SetVoice((struct monst *) 0, 0, 80, voice_throne);
-            verbalize("By thine Imperious order, %s...",
+            verbalize(_("By thine Imperious order, %s..."),
                       flags.female ? "Dame" : "Sire");
             do_genocide(5); /* REALLY|ONTHRONE, see do_genocide() */
             break;
@@ -134,7 +134,7 @@ throne_sit_effect(void)
             pline(_("%s"), _("A voice echoes:"));
             SetVoice((struct monst *) 0, 0, 80, voice_throne);
             verbalize(
-                 "A curse upon thee for sitting upon this most holy throne!");
+                 _("A curse upon thee for sitting upon this most holy throne!"));
             if (Luck > 0) {
                 make_blinded(BlindedTimeout + rn1(100, 250), TRUE);
                 change_luck((Luck > 1) ? -rnd(2) : -1);
@@ -202,7 +202,7 @@ throne_sit_effect(void)
                           FALSE);
             break;
         default:
-            impossible("throne effect");
+            impossible(_("throne effect"));
             break;
         }
     } else {
@@ -327,7 +327,7 @@ special_throne_effect(int effect) {
             You_feel(_("unworthy."));
         } else {
             pline(_("%s"), _("This throne was not meant for those such as you!"));
-            You_feel("a change coming over you.");
+            You_feel(_("a change coming over you."));
             polyself(POLY_NOFLAGS);
         }
         break;
@@ -463,7 +463,7 @@ dosit(void)
         if (u.utrap) {
             exercise(A_WIS, FALSE); /* you're getting stuck longer */
             if (u.utraptype == TT_BEARTRAP) {
-                You_cant("sit down with your %s in the bear trap.",
+                You_cant(_("sit down with your %s in the bear trap."),
                          body_part(FOOT));
                 u.utrap++;
             } else if (u.utraptype == TT_PIT) {

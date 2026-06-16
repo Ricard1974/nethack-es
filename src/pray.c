@@ -2257,7 +2257,7 @@ prayer_done(void) /* M. Stephenson (1.0.3b) */
                  (alignment == A_LAWFUL)
                     ? "Vile creature, thou durst call upon me?"
                     : "Walk no more, perversion of nature!");
-        You_feel("like you are falling apart.");
+        You_feel(_("like you are falling apart."));
         /* KMH -- Gods have mastery over unchanging */
         rehumanize();
         /* no Half_physical_damage adjustment here */

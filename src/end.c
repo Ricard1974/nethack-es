@@ -92,7 +92,7 @@ done2(void)
     boolean abandon_tutorial = FALSE;
 
     if (In_tutorial(&u.uz)
-        && y_n("Switch from the tutorial back to regular play?") == 'y')
+        && y_n(_("Switch from the tutorial back to regular play?")) == 'y')
         abandon_tutorial = TRUE;
 
     if (abandon_tutorial || !paranoid_query(
@@ -433,10 +433,10 @@ panic VA_DECL(const char *, str)
 
 // XXX this may need an update if defined(CRASHREPORT) TBD
         if (sysopt.support)
-            raw_printf("To report this error, %s%s", sysopt.support,
+            raw_printf(_("To report this error, %s%s"), sysopt.support,
                        maybe_rebuild);
         else if (sysopt.fmtd_wizard_list) /* formatted SYSCF WIZARDS */
-            raw_printf("To report this error, contact %s%s",
+            raw_printf(_("To report this error, contact %s%s"),
                        sysopt.fmtd_wizard_list, maybe_rebuild);
         else
             raw_printf("Report error to \"%s\"%s", WIZARD_NAME,
@@ -487,7 +487,7 @@ should_query_disclose_option(int category, char *defquery)
         idx = (int) (dop - disclosure_options);
         if (idx < 0 || idx >= NUM_DISCLOSURE_OPTIONS) {
             impossible(
-                   "should_query_disclose_option: bad disclosure index %d %c",
+                   _("should_query_disclose_option: bad disclosure index %d %c"),
                        idx, category);
             *defquery = DISCLOSE_PROMPT_DEFAULT_YES;
             return TRUE;
@@ -513,7 +513,7 @@ should_query_disclose_option(int category, char *defquery)
             return TRUE;
         }
     }
-    impossible("should_query_disclose_option: bad category %c", category);
+    impossible(_("should_query_disclose_option: bad category %c"), category);
     return TRUE;
 }
 
@@ -1088,7 +1088,7 @@ done(int how)
         Your(_("medallion %s!"), !Blind ? "begins to glow" : "feels warm");
         if (how == CHOKING)
             You(_("vomit ..."));
-        You_feel("much better!");
+        You_feel(_("much better!"));
         pline_The("medallion crumbles to dust!");
         if (uamul)
             useup(uamul);
@@ -1746,7 +1746,7 @@ dealloc_killer(struct kinfo *kptr)
     }
 
     if (k == (struct kinfo *) 0) {
-        impossible("dealloc_killer (#%d) not on list", kptr->id);
+        impossible(_("dealloc_killer (#%d) not on list"), kptr->id);
     } else {
         prev->next = k->next;
         free((genericptr_t) k);
@@ -1831,7 +1831,7 @@ build_english_list(char *in)
 
     switch (words) {
     case 0:
-        impossible("no words in list");
+        impossible(_("no words in list"));
         break;
     case 1:
         /* "single" */
