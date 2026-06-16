@@ -1119,20 +1119,20 @@ doterrain(void)
     any = cg.zeroany;
     any.a_int = 1;
     add_menu(men, &nul_glyphinfo, &any, 0, 0, ATR_NONE, clr,
-             "known map without monsters, objects, and traps",
+             _("known map without monsters, objects, and traps"),
              MENU_ITEMFLAGS_SELECTED);
     any.a_int = 2;
     add_menu(men, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
-             clr, "known map without monsters and objects",
+             clr, _("known map without monsters and objects"),
              MENU_ITEMFLAGS_NONE);
     any.a_int = 3;
     add_menu(men, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
-             clr, "known map without monsters",
+             clr, _("known map without monsters"),
              MENU_ITEMFLAGS_NONE);
     if (discover || wizard) {
         any.a_int = 4;
         add_menu(men, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
-                 clr, "full map without monsters, objects, and traps",
+                 clr, _("full map without monsters, objects, and traps"),
                  MENU_ITEMFLAGS_NONE);
         if (wizard) {
             any.a_int = 5;

@@ -2821,18 +2821,18 @@ plsel_startmenu(int ttyrows, int aspect)
     if (!svp.plname[0] || ROLE < 0 || RACE < 0 || GEND < 0 || ALGN < 0) {
         /* "<role> <race.noun> <gender> <alignment>" */
         Sprintf(qbuf, _("%.20s %.20s %.20s %.20s"),
-                rolename,
-                (RACE < 0) ? "<race>" : races[RACE].noun,
-                (GEND < 0) ? "<gender>" : genders[GEND].adj,
-                (ALGN < 0) ? "<alignment>" : aligns[ALGN].adj);
+                _(rolename),
+                (RACE < 0) ? _("<race>") : _(races[RACE].noun),
+                (GEND < 0) ? _("<gender>") : _(genders[GEND].adj),
+                (ALGN < 0) ? _("<alignment>") : _(aligns[ALGN].adj));
     } else {
         /* "<name> the <alignment> <gender> <race.adjective> <role>" */
         Sprintf(qbuf, _("%.20s %s %.20s %.20s %.20s %.20s"),
                 svp.plname, _("the"),
-                aligns[ALGN].adj,
-                genders[GEND].adj,
-                races[RACE].adj,
-                rolename);
+                _(aligns[ALGN].adj),
+                _(genders[GEND].adj),
+                _(races[RACE].adj),
+                _(rolename));
     }
 
     win = create_nhwindow(NHW_MENU);

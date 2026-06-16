@@ -3051,9 +3051,9 @@ display_pickinv(
     long *out_cnt) /* optional; count player entered when selecting an item */
 {
     static const char /* potential entries for perm_invent window */
-        not_carrying_anything[] = "Not carrying anything",
-        not_using_anything[] = "Not using any items",
-        only_carrying_gold[] = "Only carrying gold";
+        not_carrying_anything[] = N_("Not carrying anything"),
+        not_using_anything[] = N_("Not using any items"),
+        only_carrying_gold[] = N_("Only carrying gold");
     struct obj *otmp, wizid_fakeobj, inuse_fakeobj;
     char ilet, ret, *formattedobj;
     const char *invlet = flags.inv_order;
