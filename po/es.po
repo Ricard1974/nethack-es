@@ -16576,3 +16576,32 @@ msgstr "¿criatura única '%d: %s' genocidada?"
 #: src/insight.c:1906
 msgid "would be"
 msgstr "sería"
+
+# Palabras sueltas del prompt de creacion de personaje
+#: src/role.c:1569 src/role.c:1641
+msgid "character"
+msgstr "personaje"
+
+#: src/role.c:1641
+msgid "race"
+msgstr "raza"
+
+#: src/role.c:1645
+msgid "role"
+msgstr "rol"
+
+#: src/role.c:1649
+msgid "gender"
+msgstr "género"
+
+#: src/role.c:1653
+msgid "alignment"
+msgstr "alineamiento"
+
+#: src/role.c:1386
+msgid "and "
+msgstr "y "
+
+#: src/role.c:1656
+msgid " for you? [ynaq] "
+msgstr " para ti? [ynaq] "
