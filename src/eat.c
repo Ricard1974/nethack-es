@@ -3574,7 +3574,7 @@ floorfood(
             /* If not already stuck in the trap, perhaps there should
                be a chance to becoming trapped?  Probably not, because
                then the trap would just get eaten on the _next_ turn... */
-            Sprintf(qbuf, "There is a bear trap here (%s); eat it?",
+            Sprintf(qbuf, _("There is a bear trap here (%s); eat it?"),
                     u_in_beartrap ? "holding you" : "armed");
             if ((c = yn_function(qbuf, ynqchars, 'n', TRUE)) == 'y') {
                 struct obj *beartrap;
@@ -3583,7 +3583,7 @@ floorfood(
                 if (u_in_beartrap)
                     reset_utrap(TRUE);
                 beartrap = mksobj(BEARTRAP, TRUE, FALSE);
-                Sprintf(qbuf,"You only manage to %s the bear trap.",
+                Sprintf(qbuf,_("You only manage to %s the bear trap."),
                         u_in_beartrap ? "free yourself from" : "disarm");
                 if (check_capacity(qbuf) && beartrap) {
                     obj_extract_self(beartrap);
@@ -3622,9 +3622,9 @@ floorfood(
         if (uptr != &mons[PM_RUST_MONSTER]
             && (gold = g_at(u.ux, u.uy)) != 0) {
             if (gold->quan == 1L)
-                Sprintf(qbuf, "There is 1 gold piece here; eat it?");
+                Sprintf(qbuf, _("There is 1 gold piece here; eat it?"));
             else
-                Sprintf(qbuf, "There are %ld gold pieces here; eat them?",
+                Sprintf(qbuf, _("There are %ld gold pieces here; eat them?"),
                         gold->quan);
             if ((c = yn_function(qbuf, ynqchars, 'n', TRUE)) == 'y') {
                 return gold;

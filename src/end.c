@@ -627,7 +627,7 @@ disclose(int how, boolean taken)
 
     if (gi.invent && !done_stopprint) {
         if (taken)
-            Sprintf(qbuf, "Do you want to see what you had when you %s?",
+            Sprintf(qbuf, _("Do you want to see what you had when you %s?"),
                     (how == QUIT) ? "quit" : "died");
         else
             Strcpy(qbuf, "Do you want your possessions identified?");
@@ -672,7 +672,7 @@ disclose(int how, boolean taken)
         if (should_query_disclose_option('c', &defquery)) {
             int acnt = count_achievements();
 
-            Sprintf(qbuf, "Do you want to see your conduct%s?",
+            Sprintf(qbuf, _("Do you want to see your conduct%s?"),
                     /* this was distinguishing between one achievement and
                        multiple achievements, but "conduct and achievement"
                        looked strange if multiple conducts got shown (which

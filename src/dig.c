@@ -497,7 +497,7 @@ dig(void)
             if (!(lev->doormask & D_TRAPPED))
                 lev->doormask = D_BROKEN;
         } else if (closed_door(dpx, dpy)) {
-            Sprintf(digbuf, "You break through the door with your %s.",
+            Sprintf(digbuf, _("You break through the door with your %s."),
                     simpleonames(uwep));
             digtxt = digbuf;
             if (shopedge) {

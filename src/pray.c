@@ -558,7 +558,7 @@ fix_worst_trouble(int trouble)
         if (Blinded) {
             if (eyecount(gy.youmonst.data) != 1)
                 eyes = makeplural(eyes);
-            Sprintf(msgbuf, "Your %s %s better", eyes, vtense(eyes, "feel"));
+            Sprintf(msgbuf, _("Your %s %s better"), eyes, vtense(eyes, "feel"));
             u.ucreamed = 0;
             make_blinded(0L, FALSE);
         }
