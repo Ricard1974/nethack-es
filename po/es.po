@@ -26459,3 +26459,72 @@ msgstr "sueño de %s ."
 
 #~ msgid "Vlad's Tower"
 #~ msgstr "Torre de Vlad"
+
+# Terrenos (funcion surface() en dungeon.c)
+#: src/dungeon.c:1768
+msgid "maw"
+msgstr "boca"
+
+#: src/dungeon.c:1769
+msgid "husk"
+msgstr "vaina"
+
+#: src/dungeon.c:1770
+msgid "nonesuch"
+msgstr "inigualable"
+
+#: src/dungeon.c:1772
+msgid "air bubble"
+msgstr "burbuja de aire"
+
+#: src/dungeon.c:1773
+msgid "cloud"
+msgstr "nube"
+
+#: src/dungeon.c:1773
+msgid "air"
+msgstr "aire"
+
+#: src/dungeon.c:1776
+msgid "bottom"
+msgstr "fondo"
+
+#: src/dungeon.c:1778
+msgid "ice"
+msgstr "hielo"
+
+#: src/dungeon.c:1782
+msgid "bridge"
+msgstr "puente"
+
+#: src/dungeon.c:1784
+msgid "altar"
+msgstr "altar"
+
+#: src/dungeon.c:1786
+msgid "headstone"
+msgstr "lapida"
+
+#: src/dungeon.c:1788
+msgid "fountain"
+msgstr "fuente"
+
+#: src/dungeon.c:1790
+msgid "stairs"
+msgstr "escaleras"
+
+#: src/dungeon.c:1792
+msgid "wall"
+msgstr "muro"
+
+#: src/dungeon.c:1794
+msgid "doorway"
+msgstr "entrada"
+
+#: src/dungeon.c:1796
+msgid "floor"
+msgstr "suelo"
+
+#: src/dungeon.c:1798
+msgid "ground"
+msgstr "tierra"

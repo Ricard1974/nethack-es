@@ -1765,37 +1765,37 @@ surface(coordxy x, coordxy y)
 
     if (u_at(x, y) && u.uswallow && is_animal(u.ustuck->data))
         /* 'husk' is iffy but maw is wrong for 't' class */
-        return digests(u.ustuck->data) ? "maw"
-               : enfolds(u.ustuck->data) ? "husk"
-                 : "nonesuch"; /* can't happen (fingers crossed...) */
+        return digests(u.ustuck->data) ? _("maw")
+               : enfolds(u.ustuck->data) ? _("husk")
+                 : _("nonesuch"); /* can't happen (fingers crossed...) */
     else if (IS_AIR(levtyp))
-        return Is_waterlevel(&u.uz) ? "air bubble"
-                                    : (levtyp == CLOUD) ? "cloud" : "air";
+        return Is_waterlevel(&u.uz) ? _("air bubble")
+                                    : (levtyp == CLOUD) ? _("cloud") : _("air");
     else if (is_pool(x, y))
         return (Underwater && !Is_waterlevel(&u.uz))
-            ? "bottom" : hliquid("water");
+            ? _("bottom") : hliquid("water");
     else if (is_ice(x, y))
-        return "ice";
+        return _("ice");
     else if (is_lava(x, y))
         return hliquid("lava");
     else if (lev->typ == DRAWBRIDGE_DOWN)
-        return "bridge";
+        return _("bridge");
     else if (IS_ALTAR(levtyp))
-        return "altar";
+        return _("altar");
     else if (IS_GRAVE(levtyp))
-        return "headstone";
+        return _("headstone");
     else if (IS_FOUNTAIN(levtyp))
-        return "fountain";
+        return _("fountain");
     else if (On_stairs(x, y))
-        return "stairs";
+        return _("stairs");
     else if (IS_WALL(levtyp) || levtyp == SDOOR)
-        return "wall"; /* 'surface' during Passes_walls */
+        return _("wall"); /* 'surface' during Passes_walls */
     else if (IS_DOOR(levtyp))
-        return "doorway"; /* even for closed door */
+        return _("doorway"); /* even for closed door */
     else if (IS_ROOM(levtyp) && !Is_earthlevel(&u.uz))
-        return "floor";
+        return _("floor");
     else
-        return "ground";
+        return _("ground");
 }
 
 /*
