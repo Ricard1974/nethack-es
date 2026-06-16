@@ -17399,3 +17399,157 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "Vlad's Tower"
 #~ msgstr "Torre de Vlad"
+
+# Menu de ayuda (pager.c)
+#: src/pager.c:2827
+msgid "About NetHack (version information)."
+msgstr "Acerca de NetHack (informacion de version)."
+
+#: src/pager.c:2828
+msgid "Long description of the game and commands."
+msgstr "Descripcion larga del juego y los comandos."
+
+#: src/pager.c:2829
+msgid "List of game commands."
+msgstr "Lista de comandos del juego."
+
+#: src/pager.c:2830
+msgid "Concise history of NetHack."
+msgstr "Historia concisa de NetHack."
+
+#: src/pager.c:2831
+msgid "Info on a character in the game display."
+msgstr "Info sobre un personaje en la pantalla del juego."
+
+#: src/pager.c:2832
+msgid "Info on what a given key does."
+msgstr "Info sobre que hace una tecla."
+
+#: src/pager.c:2833
+msgid "List of game options."
+msgstr "Lista de opciones del juego."
+
+#: src/pager.c:2834
+msgid "Longer explanation of game options."
+msgstr "Explicacion mas detallada de las opciones del juego."
+
+#: src/pager.c:2835
+#, c-format
+msgid "Using the %s command to set options."
+msgstr "Usando el comando %s para ajustar opciones."
+
+#: src/pager.c:2836
+msgid "Full list of keyboard commands."
+msgstr "Lista completa de comandos de teclado."
+
+#: src/pager.c:2837
+msgid "List of extended commands."
+msgstr "Lista de comandos extendidos."
+
+#: src/pager.c:2838
+msgid "List menu control keys."
+msgstr "Lista de teclas de control de menu."
+
+#: src/pager.c:2839
+msgid "Description of NetHack's command line."
+msgstr "Descripcion de la linea de comandos de NetHack."
+
+#: src/pager.c:2840
+msgid "The NetHack license."
+msgstr "La licencia de NetHack."
+
+#: src/pager.c:2841
+msgid "Support information."
+msgstr "Informacion de soporte."
+
+#: src/pager.c:2843
+#, c-format
+msgid "%s-specific help and commands."
+msgstr "Ayuda y comandos especificos de %s."
+
+#: src/pager.c:2845
+msgid "List of wizard-mode commands."
+msgstr "Lista de comandos de modo mago."
+
+# Tutorial (options.c)
+#: src/options.c:527
+msgid "Yes, do a tutorial"
+msgstr "Si, hacer un tutorial"
+
+#: src/options.c:531
+msgid "No, just start play"
+msgstr "No, solo jugar"
+
+#: src/options.c:536
+msgid "(Please choose 'y' or 'n'.)"
+msgstr "(Por favor elige 's' o 'n'.)"
+
+#: src/options.c:538
+msgid "Do you want a tutorial?"
+msgstr "¿Quieres un tutorial?"
+
+# Dar patadas (dokick.c)
+#: src/dokick.c:816
+#, c-format
+msgid "kicking %s"
+msgstr "pateando %s"
+
+#: src/dokick.c:787
+msgid "nothing"
+msgstr "nada"
+
+#: src/dokick.c:789
+msgid "a door"
+msgstr "una puerta"
+
+#: src/dokick.c:791
+msgid "a tree"
+msgstr "un arbol"
+
+#: src/dokick.c:793
+msgid "a wall"
+msgstr "un muro"
+
+#: src/dokick.c:795
+msgid "a rock"
+msgstr "una roca"
+
+#: src/dokick.c:797
+msgid "a throne"
+msgstr "un trono"
+
+#: src/dokick.c:799
+msgid "a fountain"
+msgstr "una fuente"
+
+#: src/dokick.c:801
+msgid "a headstone"
+msgstr "una lapida"
+
+#: src/dokick.c:803
+msgid "a sink"
+msgstr "un fregadero"
+
+#: src/dokick.c:805
+msgid "an altar"
+msgstr "un altar"
+
+#: src/dokick.c:807
+msgid "a drawbridge"
+msgstr "un puente levadizo"
+
+#: src/dokick.c:809
+msgid "the stairs"
+msgstr "las escaleras"
+
+#: src/dokick.c:811
+msgid "a ladder"
+msgstr "una escalera de mano"
+
+#: src/dokick.c:813
+msgid "an iron bar"
+msgstr "una barra de hierro"
+
+#: src/dokick.c:815
+msgid "something weird"
+msgstr "algo extrano"

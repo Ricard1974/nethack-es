@@ -784,36 +784,37 @@ kickstr(char *buf, const char *kickobjnam)
     if (*kickobjnam)
         what = kickobjnam;
     else if (gm.maploc == &gn.nowhere)
-        what = "nothing";
+        what = N_("nothing");
     else if (IS_DOOR(gm.maploc->typ))
-        what = "a door";
+        what = N_("a door");
     else if (IS_TREE(gm.maploc->typ))
-        what = "a tree";
+        what = N_("a tree");
     else if (IS_STWALL(gm.maploc->typ))
-        what = "a wall";
+        what = N_("a wall");
     else if (IS_OBSTRUCTED(gm.maploc->typ))
-        what = "a rock";
+        what = N_("a rock");
     else if (IS_THRONE(gm.maploc->typ))
-        what = "a throne";
+        what = N_("a throne");
     else if (IS_FOUNTAIN(gm.maploc->typ))
-        what = "a fountain";
+        what = N_("a fountain");
     else if (IS_GRAVE(gm.maploc->typ))
-        what = "a headstone";
+        what = N_("a headstone");
     else if (IS_SINK(gm.maploc->typ))
-        what = "a sink";
+        what = N_("a sink");
     else if (IS_ALTAR(gm.maploc->typ))
-        what = "an altar";
+        what = N_("an altar");
     else if (IS_DRAWBRIDGE(gm.maploc->typ))
-        what = "a drawbridge";
+        what = N_("a drawbridge");
     else if (gm.maploc->typ == STAIRS)
-        what = "the stairs";
+        what = N_("the stairs");
     else if (gm.maploc->typ == LADDER)
-        what = "a ladder";
+        what = N_("a ladder");
     else if (gm.maploc->typ == IRONBARS)
-        what = "an iron bar";
+        what = N_("an iron bar");
     else
-        what = "something weird";
-    return strcat(strcpy(buf, "kicking "), what);
+        what = N_("something weird");
+    Sprintf(buf, _("kicking %s"), _(what));
+    return buf;
 }
 
 staticfn boolean

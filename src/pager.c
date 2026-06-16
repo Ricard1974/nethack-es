@@ -2824,25 +2824,25 @@ static const struct {
     void (*f)(void);
     const char *text;
 } help_menu_items[] = {
-    { hmenu_doextversion, "About NetHack (version information)." },
-    { dispfile_help, "Long description of the game and commands." },
-    { dispfile_shelp, "List of game commands." },
-    { hmenu_dohistory, "Concise history of NetHack." },
-    { hmenu_dowhatis, "Info on a character in the game display." },
-    { hmenu_dowhatdoes, "Info on what a given key does." },
-    { option_help, "List of game options." },
-    { dispfile_optionfile, "Longer explanation of game options." },
-    { dispfile_optmenu, "Using the %s command to set options." },
-    { dokeylist, "Full list of keyboard commands." },
-    { hmenu_doextlist, "List of extended commands." },
-    { domenucontrols, "List menu control keys." },
-    { dispfile_usagehelp, "Description of NetHack's command line." },
-    { dispfile_license, "The NetHack license." },
-    { docontact, "Support information." },
+    { hmenu_doextversion, N_("About NetHack (version information).") },
+    { dispfile_help, N_("Long description of the game and commands.") },
+    { dispfile_shelp, N_("List of game commands.") },
+    { hmenu_dohistory, N_("Concise history of NetHack.") },
+    { hmenu_dowhatis, N_("Info on a character in the game display.") },
+    { hmenu_dowhatdoes, N_("Info on what a given key does.") },
+    { option_help, N_("List of game options.") },
+    { dispfile_optionfile, N_("Longer explanation of game options.") },
+    { dispfile_optmenu, N_("Using the %s command to set options.") },
+    { dokeylist, N_("Full list of keyboard commands.") },
+    { hmenu_doextlist, N_("List of extended commands.") },
+    { domenucontrols, N_("List menu control keys.") },
+    { dispfile_usagehelp, N_("Description of NetHack's command line.") },
+    { dispfile_license, N_("The NetHack license.") },
+    { docontact, N_("Support information.") },
 #ifdef PORT_HELP
-    { port_help, "%s-specific help and commands." },
+    { port_help, N_("%s-specific help and commands.") },
 #endif
-    { dispfile_debughelp, "List of wizard-mode commands." },
+    { dispfile_debughelp, N_("List of wizard-mode commands.") },
     { (void (*)(void)) 0, (char *) 0 }
 };
 

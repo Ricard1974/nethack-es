@@ -524,18 +524,18 @@ ask_do_tutorial(void)
             any.a_char = 'y';
             add_menu(win, &nul_glyphinfo, &any, any.a_char, 0,
                      ATR_NONE, NO_COLOR,
-                     "Yes, do a tutorial", MENU_ITEMFLAGS_NONE);
+                     _("Yes, do a tutorial"), MENU_ITEMFLAGS_NONE);
             any.a_char = 'n';
             add_menu(win, &nul_glyphinfo, &any, any.a_char, 0,
                      ATR_NONE, NO_COLOR,
-                     "No, just start play", MENU_ITEMFLAGS_NONE);
+                     _("No, just start play"), MENU_ITEMFLAGS_NONE);
 
             add_menu_str(win, "");
             add_menu_str(win, buf);
             if (pass++) /* we'll get here after <space> or <return> */
-                add_menu_str(win, "(Please choose 'y' or 'n'.)");
+                add_menu_str(win, _("(Please choose 'y' or 'n'.)"));
 
-            end_menu(win, "Do you want a tutorial?");
+            end_menu(win, _("Do you want a tutorial?"));
 
             n = select_menu(win, PICK_ONE, &sel);
             destroy_nhwindow(win);
