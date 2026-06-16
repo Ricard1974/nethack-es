@@ -173,12 +173,12 @@ msgstr "%s %s, %s, bienvenido de vuelta a NetHack!"
 #: src/alloc.c:76
 #, c-format
 msgid "Memory allocation failure; cannot get %u bytes"
-msgstr ""
+msgstr "Fallo de asignacion de memoria; no se pueden obtener %u bytes"
 
 #: src/alloc.c:94
 #, c-format
 msgid "Memory allocation failure; cannot extend to %u bytes"
-msgstr ""
+msgstr "Fallo de asignacion de memoria; no se puede extender a %u bytes"
 
 #: src/alloc.c:163
 #, fuzzy, c-format
@@ -207,7 +207,7 @@ msgstr ""
 #: src/alloc.c:271 src/alloc.c:281
 #, c-format
 msgid "Overflow at %s:%d"
-msgstr ""
+msgstr "Desbordamiento en %s:%d"
 
 #: src/apply.c:82
 msgid "Using your camera underwater would void the warranty."
@@ -673,7 +673,7 @@ msgstr "%s %s Burn%s"
 
 #: src/apply.c:1341
 msgid "Candelabrum with candles but no fuel?"
-msgstr ""
+msgstr "¿Candelabro con velas pero sin combustible?"
 
 #: src/apply.c:1347
 #, c-format
@@ -729,7 +729,7 @@ msgstr "%s %s %s"
 #: src/apply.c:1576
 #, c-format
 msgid "That's in addition to the cost of %s %s, of course."
-msgstr ""
+msgstr "Eso es ademas del coste de %s %s, por supuesto."
 
 #: src/apply.c:1605
 #, c-format
@@ -786,7 +786,7 @@ msgstr "%spotion ligero.%s"
 
 #: src/apply.c:1707
 msgid "That's in addition to the cost of the potion, of course."
-msgstr ""
+msgstr "Eso es ademas del coste de la pocion, por supuesto."
 
 #: src/apply.c:1747
 msgid "aren't able to rub anything without hands."
@@ -961,7 +961,7 @@ msgstr "Tinning %s sin usar guantes es un error fatal..."
 
 #: src/apply.c:2166
 msgid "Yes...  But War does not preserve its enemies..."
-msgstr ""
+msgstr "Si...  Pero la Guerra no preserva a sus enemigos..."
 
 #: src/apply.c:2172
 msgid "That's too insubstantial to tin."
@@ -2025,39 +2025,39 @@ msgstr ""
 #: src/botl.c:3729
 #, c-format
 msgid "Always highlight %s"
-msgstr ""
+msgstr "Resaltar siempre %s"
 
 #: src/botl.c:3772
 #, c-format
 msgid "Highlight critically low %s"
-msgstr ""
+msgstr "Resaltar %s criticamente bajo"
 
 #: src/botl.c:3789
 #, c-format
 msgid "Select %s field hilite behavior:"
-msgstr ""
+msgstr "Seleccionar comportamiento de resalte para %s:"
 
 #: src/botl.c:3831
 msgid "Value goes down"
-msgstr ""
+msgstr "Valor baja"
 
 #: src/botl.c:3848
 #, c-format
 msgid "Exactly %s"
-msgstr ""
+msgstr "Exactamente %s"
 
 #: src/botl.c:3850
 msgid "Value changes"
-msgstr ""
+msgstr "Valor cambia"
 
 #: src/botl.c:3870
 msgid "Value goes up"
-msgstr ""
+msgstr "Valor sube"
 
 #: src/botl.c:3876
 #, c-format
 msgid "Select field %s value:"
-msgstr ""
+msgstr "Seleccionar valor del campo %s:"
 
 #: src/botl.c:3937 src/spell.c:752
 msgid "That's enough tries."
@@ -2066,7 +2066,7 @@ msgstr "Bastantes intentos."
 #: src/botl.c:3951
 #, c-format
 msgid "Enter %svalue for %s threshold:"
-msgstr ""
+msgstr "Introducir %svalor para el umbral de %s:"
 
 #: src/botl.c:3987
 msgid "Not expecting a percentage."
@@ -2099,12 +2099,12 @@ msgstr "%s'%s%d'%s"
 #: src/botl.c:4060
 #, c-format
 msgid "Choose a color for when %s is %s%s%s:"
-msgstr ""
+msgstr "Elegir color para cuando %s es %s%s%s:"
 
 #: src/botl.c:4069
 #, c-format
 msgid "Choose attribute for when %s is %s%s%s:"
-msgstr ""
+msgstr "Elegir atributo para cuando %s es %s%s%s:"
 
 #: src/botl.c:4098
 #, fuzzy, c-format
@@ -2115,27 +2115,27 @@ msgstr "afloja una roca del %s ."
 #: src/botl.c:4103
 #, c-format
 msgid "Choose attribute for when %s %s:"
-msgstr ""
+msgstr "Elegir atributo para cuando %s %s:"
 
 #: src/botl.c:4219
 #, c-format
 msgid "Choose a color for when %s is '%s':"
-msgstr ""
+msgstr "Elegir color para cuando %s es '%s':"
 
 #: src/botl.c:4221
 #, c-format
 msgid "Choose attribute for when %s is '%s':"
-msgstr ""
+msgstr "Elegir atributo para cuando %s es '%s':"
 
 #: src/botl.c:4224
 #, c-format
 msgid "Choose a color to always hilite %s:"
-msgstr ""
+msgstr "Elegir color para resaltar siempre %s:"
 
 #: src/botl.c:4226
 #, c-format
 msgid "Choose attribute to always hilite %s:"
-msgstr ""
+msgstr "Elegir atributo para resaltar siempre %s:"
 
 #: src/botl.c:4272
 #, c-format
@@ -2316,7 +2316,7 @@ msgstr "El prefijo '%s' no tiene ningún efecto para el comando %s."
 #: src/cmd.c:585
 #, c-format
 msgid "Switch to %s commands that don't autocomplete"
-msgstr ""
+msgstr "Cambiar a comandos %s que no auto-completan"
 
 #: src/cmd.c:785
 #, c-format
@@ -2435,16 +2435,16 @@ msgstr "%s no lleva nada%s."
 #: src/cmd.c:2336
 #, c-format
 msgid "Bind '%s' to what command?"
-msgstr ""
+msgstr "¿Vincular '%s' a qué comando?"
 
 #: src/cmd.c:2338
 msgid "Bind what command?"
-msgstr ""
+msgstr "¿Vincular qué comando?"
 
 #: src/cmd.c:2361
 #, c-format
 msgid "Command %s requires a parameter:"
-msgstr ""
+msgstr "El comando %s requiere un parametro:"
 
 #: src/cmd.c:2383
 #, c-format
@@ -2626,7 +2626,7 @@ msgstr "dismount %s ."
 #: src/cmd.c:4460
 #, c-format
 msgid "Use %s special ability"
-msgstr ""
+msgstr "Usar habilidad especial de %s"
 
 #: src/cmd.c:4469
 #, fuzzy, c-format
@@ -2673,7 +2673,7 @@ msgstr "pon la silla en %s ."
 #: src/cmd.c:4582
 #, c-format
 msgid "Talk to %s"
-msgstr ""
+msgstr "Hablar con %s"
 
 #: src/cmd.c:4585
 #, fuzzy, c-format
@@ -3817,7 +3817,7 @@ msgstr "no encajas %s fácilmente."
 #: src/do.c:1244
 #, c-format
 msgid "Try to squeeze %s?"
-msgstr ""
+msgstr "¿Intentar pasar por %s?"
 
 #: src/do.c:1251
 #, c-format
@@ -4133,7 +4133,7 @@ msgstr "conocerlos tan bien como siempre lo harás."
 #: src/do_name.c:643
 #, c-format
 msgid "Call a stream of %s fluid:"
-msgstr ""
+msgstr "Llamar a un chorro de fluido %s:"
 
 #: src/do_name.c:701
 #, c-format
@@ -4497,7 +4497,7 @@ msgstr "no son más %s%s para llenar."
 #: src/do_wear.c:2246
 #, c-format
 msgid "Which %s%s, Right or Left?"
-msgstr ""
+msgstr "Que %s%s, Derecha o Izquierda?"
 
 # #-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#
 # Nuevas visibles del .pot regenerado
@@ -5707,7 +5707,7 @@ msgstr "Aquí está %s ."
 #: src/dungeon.c:3652
 #, c-format
 msgid "%sOracle of Delphi."
-msgstr ""
+msgstr "%sOráculo de Delfos."
 
 #: src/dungeon.c:3657
 #, fuzzy, c-format
@@ -5718,12 +5718,12 @@ msgstr "%s muy caliente."
 #: src/dungeon.c:3659
 #, c-format
 msgid "%sA primitive area."
-msgstr ""
+msgstr "%sUn area primitiva."
 
 #: src/dungeon.c:3661
 #, c-format
 msgid "%sHome%s."
-msgstr ""
+msgstr "%sHogar%s."
 
 #: src/dungeon.c:3664
 #, fuzzy, c-format
@@ -5752,12 +5752,12 @@ msgstr "llegas al Valle de los Muertos..."
 #: src/dungeon.c:3678
 #, c-format
 msgid "%sGateway to Moloch's Sanctum."
-msgstr ""
+msgstr "%sPuerta al Santuario de Moloch."
 
 #: src/dungeon.c:3680
 #, c-format
 msgid "%sMoloch's Sanctum."
-msgstr ""
+msgstr "%sSantuario de Moloch."
 
 #: src/dungeon.c:3687
 #, fuzzy, c-format
@@ -6347,7 +6347,7 @@ msgstr ""
 #: src/end.c:567
 #, c-format
 msgid "Game began %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s"
-msgstr ""
+msgstr "Partida empezo %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s"
 
 #: src/end.c:630
 #, c-format
@@ -6409,7 +6409,7 @@ msgstr "%s como %s ..."
 #: src/end.c:1527
 #, c-format
 msgid "You %s beyond the confines of the dungeon"
-msgstr ""
+msgstr "%s mas alla de los confines de la mazmorra"
 
 #: src/end.c:1535
 #, fuzzy, c-format
@@ -6420,12 +6420,12 @@ msgstr "Usted es %s %s."
 #: src/end.c:1549
 #, c-format
 msgid "You were level %d with a maximum of %d hit point%s when you %s."
-msgstr ""
+msgstr "Eras nivel %d con un maximo de %d punto%s de golpe cuando %s."
 
 #: src/end.c:1628
 #, c-format
 msgid "Contents of %s:"
-msgstr ""
+msgstr "Contenido de %s:"
 
 #: src/end.c:1664 src/pickup.c:4075
 #, c-format
@@ -7522,7 +7522,7 @@ msgstr "Por favor, mueva el cursor a %s ."
 #: src/getpos.c:228
 #, c-format
 msgid "Use '%s' to change fast-move mode to %s."
-msgstr ""
+msgstr "Usa '%s' para cambiar el modo de movimiento rapido a %s."
 
 #: src/getpos.c:233
 #, fuzzy, c-format
@@ -7533,22 +7533,22 @@ msgstr "%s un menú para mostrar posibles objetivos%s."
 #: src/getpos.c:237
 #, c-format
 msgid "Use '%s' to change the mode of limiting possible targets."
-msgstr ""
+msgstr "Usa '%s' para cambiar el modo de limitar objetivos."
 
 #: src/getpos.c:245
 #, c-format
 msgid "Use '%s' or '%s' to move to valid locations."
-msgstr ""
+msgstr "Usa '%s' o '%s' para moverte a ubicaciones validas."
 
 #: src/getpos.c:251
 #, c-format
 msgid "Use '%s' to toggle marking of valid locations."
-msgstr ""
+msgstr "Usa '%s' para alternar marcado de ubicaciones validas."
 
 #: src/getpos.c:255
 #, c-format
 msgid "Use '%s' to toggle automatic description."
-msgstr ""
+msgstr "Usa '%s' para alternar descripcion automatica."
 
 #: src/getpos.c:680
 #, c-format
@@ -8289,7 +8289,7 @@ msgstr ""
 #: src/iactions.c:108
 #, c-format
 msgid "Read this scroll%s"
-msgstr ""
+msgstr "Leer este pergamino%s"
 
 #: src/iactions.c:144
 #, fuzzy, c-format
@@ -8300,7 +8300,7 @@ msgstr "Dirección desconocida: ' %s ' ( %s )."
 #: src/iactions.c:358
 #, c-format
 msgid "Attach %s to your candelabrum, or %s %s"
-msgstr ""
+msgstr "Acoplar %s al candelabro, o %s %s"
 
 #: src/iactions.c:373
 #, fuzzy, c-format
@@ -8317,12 +8317,12 @@ msgstr "suéltame al %s ."
 #: src/iactions.c:420
 #, c-format
 msgid "Open %s%s and eat the contents"
-msgstr ""
+msgstr "Abrir %s%s y comer el contenido"
 
 #: src/iactions.c:491
 #, c-format
 msgid "Buy this unpaid %s"
-msgstr ""
+msgstr "Comprar %s sin pagar"
 
 #: src/iactions.c:520
 #, fuzzy, c-format
@@ -8333,12 +8333,12 @@ msgstr "pon la silla en %s ."
 #: src/iactions.c:529
 #, c-format
 msgid "Quaff (drink) %s"
-msgstr ""
+msgstr "Beber %s"
 
 #: src/iactions.c:537
 #, c-format
 msgid "Quiver this %s for easy %s with 'f'ire"
-msgstr ""
+msgstr "Enfundar %s para %s facil con 'f'uego"
 
 #: src/iactions.c:549
 #, fuzzy, c-format
@@ -8373,7 +8373,7 @@ msgstr "empiezas two-weapon combat."
 #: src/iactions.c:693
 #, c-format
 msgid "Look up information about %s"
-msgstr ""
+msgstr "Buscar informacion sobre %s"
 
 #: src/iactions.c:698
 #, fuzzy, c-format
@@ -8454,7 +8454,7 @@ msgstr "tienes "
 #: src/insight.c:831
 #, c-format
 msgid "%sCharacteristics:"
-msgstr ""
+msgstr "%sCaracteristicas:"
 
 #: src/insight.c:896
 #, c-format
@@ -8617,7 +8617,7 @@ msgstr ""
 #: src/insight.c:1962
 #, c-format
 msgid "Fruit #%d "
-msgstr ""
+msgstr "Fruta #%d "
 
 #: src/insight.c:1985
 #, fuzzy
@@ -8662,7 +8662,7 @@ msgstr "no has deseado"
 #: src/insight.c:2260
 #, c-format
 msgid "Achievement%s:"
-msgstr ""
+msgstr "Logro%s:"
 
 #: src/insight.c:2282
 msgid "are exploring"
@@ -9205,7 +9205,7 @@ msgstr "%s %s bajo el %s aquí."
 #: src/invent.c:5511
 #, c-format
 msgid "Things that are buried %s:"
-msgstr ""
+msgstr "Cosas que estan enterradas %s:"
 
 #: src/invent.c:5603
 #, c-format
@@ -12955,7 +12955,7 @@ msgstr ""
 #: src/options.c:3415
 #, c-format
 msgid "New %s: [%s am] (%s)"
-msgstr ""
+msgstr "Nuevo %s: [%s am] (%s)"
 
 #: src/options.c:3725
 #, c-format
@@ -13059,12 +13059,12 @@ msgstr "'menustyle' %s \"%s\"."
 #: src/options.c:5674
 #, c-format
 msgid "Select %s window placement relative to the map:"
-msgstr ""
+msgstr "Seleccionar colocacion de ventana %s relativa al mapa:"
 
 #: src/options.c:5713
 #, c-format
 msgid "Select '%.20s' actions:"
-msgstr ""
+msgstr "Seleccionar acciones de '%.20s':"
 
 #: src/options.c:5733
 #, c-format
@@ -13074,7 +13074,7 @@ msgstr "%s %s %s."
 #: src/options.c:5783
 #, c-format
 msgid "Disclosure options for %s:"
-msgstr ""
+msgstr "Opciones de revelacion para %s:"
 
 #: src/options.c:5946
 #, c-format
@@ -13211,7 +13211,7 @@ msgstr "Dirección no válida para el prefijo '%s'."
 
 #: src/options.c:8034
 msgid "Multiple role values only allowed when list is negated"
-msgstr ""
+msgstr "Multiples valores de rol solo permitidos cuando la lista esta negada"
 
 #: src/options.c:8056
 #, c-format
@@ -13251,7 +13251,7 @@ msgstr "mostrar ayuda"
 
 #: src/options.c:8698
 msgid "ERROR"
-msgstr ""
+msgstr "ERROR"
 
 #: src/options.c:8707
 msgid "  (for autopickup)"
@@ -13961,7 +13961,7 @@ msgstr "%s revierte a escalas mientras se fusionan con ellos."
 #: src/polyself.c:680
 #, c-format
 msgid "Become %s?"
-msgstr ""
+msgstr "¿Convertirse en %s?"
 
 #: src/polyself.c:742
 #, c-format
@@ -15152,7 +15152,7 @@ msgstr "De repente, te das cuenta. %s"
 #: src/pray.c:1489
 #, c-format
 msgid "So, mortal!  You dare desecrate my %s!"
-msgstr ""
+msgstr "¡Asi que, mortal!  Te atreves a profanar mi %s!"
 
 #: src/pray.c:1513
 #, c-format
@@ -15430,7 +15430,7 @@ msgstr "%s intons:"
 #: src/priest.c:460
 #, c-format
 msgid "Pilgrim, you enter a %s place!"
-msgstr ""
+msgstr "Peregrino, entras en un lugar %s!"
 
 #: src/priest.c:504
 msgid "have an eerie feeling..."
@@ -15490,7 +15490,7 @@ msgstr "%s no está interesado."
 #: src/priest.c:639
 #, c-format
 msgid "How much will you offer (suggested: %ld or %ld)?"
-msgstr ""
+msgstr "¿Cuanto ofreces (sugerido: %ld o %ld)?"
 
 #: src/priest.c:643
 #, c-format
@@ -16603,7 +16603,7 @@ msgstr "¿Está bien? [yn%sq]"
 #: src/role.c:2756
 #, c-format
 msgid "Pick all that apply%s"
-msgstr ""
+msgstr "Elegir todas las que apliquen%s"
 
 #: src/role.c:2831
 msgid "the"
@@ -16934,7 +16934,7 @@ msgstr "acelera el %s."
 #: src/shk.c:1694
 #, c-format
 msgid "Unpaid item%s:"
-msgstr ""
+msgstr "Objeto%s sin pagar:"
 
 #: src/shk.c:1773
 msgid "appears to be no shopkeeper here to receive your payment."
@@ -17114,7 +17114,7 @@ msgstr "un objeto en el %s"
 #: src/shk.c:2240
 #, c-format
 msgid " for %ld %s.  Pay?"
-msgstr ""
+msgstr " por %ld %s.  ¿Pagar?"
 
 #: src/shk.c:2313
 #, c-format
@@ -17334,7 +17334,7 @@ msgstr "%ld %s en crédito."
 #: src/shk.c:4089
 #, c-format
 msgid "%s.  Sell %s?"
-msgstr ""
+msgstr "%s.  ¿Vender %s?"
 
 #: src/shk.c:4135
 msgid "invalid sell response"
@@ -17994,7 +17994,7 @@ msgstr "%s%s %s a su %s%s!"
 #: src/sounds.c:776
 #, c-format
 msgid "Good feeding %s!"
-msgstr ""
+msgstr "¡Buen provedo %s!"
 
 #: src/sounds.c:780
 msgid "How nice to hear you, child of the night!"
@@ -18003,7 +18003,7 @@ msgstr ""
 #: src/sounds.c:800
 #, c-format
 msgid "%s!  Your silver sheen does not frighten me!"
-msgstr ""
+msgstr "¡%s!  Tu brillo plateado no me asusta!"
 
 #: src/sounds.c:825
 #, c-format
@@ -18496,7 +18496,7 @@ msgstr ""
 #: src/spell.c:2026
 #, c-format
 msgid "Reordering spells; swap '%c' with"
-msgstr ""
+msgstr "Reordenando hechizos; intercambiar '%c' con"
 
 #: src/spell.c:2053
 msgid "You didn't know any spells."
@@ -19481,12 +19481,12 @@ msgstr ""
 #: src/topten.c:732
 #, c-format
 msgid "Since you were in %s mode, the score list will not be checked."
-msgstr ""
+msgstr "Ya que estabas en modo %s, la lista de puntuacion no se revisara."
 
 #: src/topten.c:795
 #, c-format
 msgid "You didn't beat your previous score of %ld points."
-msgstr ""
+msgstr "No superaste tu puntuacion anterior de %ld puntos."
 
 #: src/topten.c:836
 #, fuzzy, c-format
@@ -22261,7 +22261,7 @@ msgstr ""
 #: src/wizcmds.c:270
 #, c-format
 msgid "Kill %.110s?"
-msgstr ""
+msgstr "¿Matar a %.110s?"
 
 #: src/wizcmds.c:333
 msgid "is no monster there."
@@ -23213,3 +23213,5 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "Vlad's Tower"
 #~ msgstr "Torre de Vlad"
+
+
