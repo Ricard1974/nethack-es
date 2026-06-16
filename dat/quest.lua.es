@@ -133,47 +133,47 @@ Go now!  You are banished from this place.]],
          "\"I should fart in thy direction, but it might improve thy smell!\"",
       },
       legacy = {
-         synopsis = "[%dC has chosen you to recover the Amulet of Yendor for %dI.]",
+         synopsis = "[%dC te ha elegido para recuperar el Amuleto de Yendor para %dI.]",
          output = "menu",
-         text = [[It is written in the Book of %d:
+         text = [[Está escrito en el Libro de %d:
 
-    After the Creation, the cruel god Moloch rebelled
-    against the authority of Marduk the Creator.
-    Moloch stole from Marduk the most powerful of all
-    the artifacts of the gods, the Amulet of Yendor,
-    and he hid it in the dark cavities of Gehennom, the
-    Under World, where he now lurks, and bides his time.
+    Tras la Creación, el cruel dios Moloch se rebeló
+    contra la autoridad de Marduk el Creador.
+    Moloch robó a Marduk el más poderoso de todos
+    los artefactos de los dioses, el Amuleto de Yendor,
+    y lo escondió en las oscuras cavernas de Gehennom,
+    el Inframundo, donde ahora acecha, esperando su momento.
 
-Your %G %d seeks to possess the Amulet, and with it
-to gain deserved ascendance over the other gods.
+%G %d busca poseer el Amuleto, y con él
+obtener la ascensión que merece sobre los demás dioses.
 
-You, a newly trained %r, have been heralded
-from birth as the instrument of %d.  You are destined
-to recover the Amulet for your deity, or die in the
-attempt.  Your hour of destiny has come.  For the sake
-of us all:  Go bravely with %d!]],
+Tú, un %r recién entrenado, has sido señalado
+desde tu nacimiento como el instrumento de %d.  Estás destinado
+a recuperar el Amuleto para tu deidad, o morir en el
+intento.  Tu hora del destino ha llegado.  Por el bien
+de todos nosotros:  ¡Ve valientemente con %d!]],
       },
 -- starting with 'pauper' option set, last paragraph differs from normal legacy
       pauper_legacy = {
-         synopsis = "[%dC has chosen you to recover the Amulet of Yendor for %dI.]",
+         synopsis = "[%dC te ha elegido para recuperar el Amuleto de Yendor para %dI.]",
          output = "menu",
-         text = [[It is written in the Book of %d:
+         text = [[Está escrito en el Libro de %d:
 
-    After the Creation, the cruel god Moloch rebelled
-    against the authority of Marduk the Creator.
-    Moloch stole from Marduk the most powerful of all
-    the artifacts of the gods, the Amulet of Yendor,
-    and he hid it in the dark cavities of Gehennom, the
-    Under World, where he now lurks, and bides his time.
+    Tras la Creación, el cruel dios Moloch se rebeló
+    contra la autoridad de Marduk el Creador.
+    Moloch robó a Marduk el más poderoso de todos
+    los artefactos de los dioses, el Amuleto de Yendor,
+    y lo escondió en las oscuras cavernas de Gehennom,
+    el Inframundo, donde ahora acecha, esperando su momento.
 
-Your %G %d seeks to possess the Amulet, and with it
-to gain deserved ascendance over the other gods.
+%G %d busca poseer el Amuleto, y con él
+obtener la ascensión que merece sobre los demás dioses.
 
-You, an untrained %r, have been unable to adequately
-prepare to be the instrument of %d.  Nevertheless, you
-are destined to recover the Amulet for your deity, or die
-in the attempt.  Your hour of destiny has come.  For the
-sake of us all:  Go bravely with %d!]],
+Tú, un %r sin entrenar, no has podido prepararte
+adecuadamente para ser el instrumento de %d.  No obstante,
+estás destinado a recuperar el Amuleto para tu deidad, o morir
+en el intento.  Tu hora del destino ha llegado.  Por el
+bien de todos nosotros:  ¡Ve valientemente con %d!]],
       },
       quest_complete_no_bell = {
          text = [["The silver bell which was hoarded by %n will be

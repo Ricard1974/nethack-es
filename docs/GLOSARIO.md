@@ -204,6 +204,33 @@ Los nombres de roles se mantienen en inglés por tradición roguelike:
 - neutral → neutral
 - chaotic → caótico
 
+## "the" en descripciones y títulos
+
+En las descripciones de personaje y títulos de rango, "the" se traduce como
+"de" para que suene natural en español:
+
+| Inglés                            | Español                        |
+| --------------------------------- | ------------------------------ |
+| Ricard the Archeologist           | Ricard de Arqueólog@           |
+| Ricard the Stripling              | Ricard de Stripling            |
+| the neutral female gnomish Wizard | de Neutral Femenin@ Gnom@ Mag@ |
+
+Esto se controla desde `src/role.c:2830` y `src/botl.c:1000`, ambos con `_()`.
+
+## Nombres de atributos traducidos
+
+Los nombres de atributos se usan en la pantalla de enlightenment (^X) y en
+mensajes de mejora (`"Su Fuerza innat@ ha mejorado."`):
+
+| Inglés       | Español      | Notas                |
+| ------------ | ------------ | -------------------- |
+| strength     | Fuerza       | mayúscula en títulos |
+| dexterity    | Destreza     |                      |
+| constitution | Constitución | con tilde            |
+| intelligence | Inteligencia |                      |
+| wisdom       | Sabiduría    |                      |
+| charisma     | Carisma      | masculino            |
+
 ## Frases hechas (mensajes comunes)
 
 | Inglés                                   | Español                                     |

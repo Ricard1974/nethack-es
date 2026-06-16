@@ -231,7 +231,7 @@ str_start_is(
     }
 #if 0
     if (n == 0)
-        panic("string too long");
+        panic(_("string too long"));
 #endif
     return TRUE;
 }
@@ -340,11 +340,47 @@ strcasecpy(char *dst, const char *src)
     return result;
 }
 
+/*
+ * NetHack-es: weak stubs for functions needed by hacklib.a and alloc.o when
+ * linked into utilities (dlb, recover, etc.) that don't have the game's full
+ * object set.  When the game links the real objects, the strong definitions
+ * override these weak stubs.
+ */
+
+/* Weak stub for get_lang() - real one is in lang.o */
+const char *get_lang(void) __attribute__((weak));
+const char *
+get_lang(void)
+{
+    return "en"; /* utilities default to English */
+}
+
+/* Weak stub for nh_gettext() - real one is in nh_gettext.o */
+const char *nh_gettext(const char *msgid) __attribute__((weak));
+const char *
+nh_gettext(const char *msgid)
+{
+    return msgid; /* utilities pass strings through untranslated */
+}
+
 /* return a name converted to possessive */
 char *
 s_suffix(const char *s)
 {
     static char buf[BUFSZ];
+    static int is_spanish = -1; /* -1 = uninitialized, 0 = no, 1 = yes */
+
+    /* NetHack-es: detect language on first call; Spanish does not use
+     * possessive suffixes like "'s".  get_lang() is safe to call here
+     * because init_lang() runs before any s_suffix() invocation. */
+    if (is_spanish < 0) {
+        const char *lang = get_lang();
+        is_spanish = (lang && !strcmp(lang, "es")) ? 1 : 0;
+    }
+    if (is_spanish) {
+        Strcpy(buf, s);
+        return buf;
+    }
 
     Strcpy(buf, s);
     if (!strcmpi(buf, "it")) /* it -> its */
@@ -866,7 +902,7 @@ nh_snprintf(
 #if 0
 TODO: add set_impossible(), impossible -> func pointer,
  test funcpointer before call
-        impossible("snprintf %s: func %s, file line %d",
+        impossible(_("snprintf %s: func %s, file line %d"),
                    (n < 0) ? "format error" : "overflow",
                    func, line);
 #endif

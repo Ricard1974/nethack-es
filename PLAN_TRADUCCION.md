@@ -1,16 +1,29 @@
 # Plan de Traducción NetHack-es (NetHack 5.0)
 
-## Estado: COMPLETADO ✅
+## Estado: EN PROGRESO — jugable en español con limitaciones
 
-**Objetivo cumplido:** NetHack 5.0 es completamente jugable en español.
-**Rama:** `NetHack-5.0-es`
-**Última actualización:** 2026-06-15
+**Última actualización:** 2026-06-16
 
 ---
 
 ## 📊 Estado Actual
 
-### ✅ Archivos de datos (.es) — 29 archivos
+### Código C (.po)
+
+| Métrica               | Valor                                         |
+| --------------------- | --------------------------------------------- |
+| Total en .po          | ~2.714                                        |
+| Traducciones activas  | **2.580**                                     |
+| Fuzzy (desactivadas)  | **134** (placeholders rotos, muestran inglés) |
+| Sin traducir          | 0                                             |
+| `msgfmt -c`           | ✅ 0 errores                                  |
+| Cobertura real activa | ~95%                                          |
+
+> Las 134 fuzzy son traducciones automáticas con placeholders `%s`/`%d` dañados.
+> Se mantienen fuzzy para que el juego muestre el inglés original en lugar de
+> texto roto. Requieren traducción manual.
+
+### Archivos de datos (.es) — 29 archivos
 
 | Archivo           | Estado                               |
 | ----------------- | ------------------------------------ |
@@ -34,38 +47,85 @@
 | `rumors.fal.es`   | ✅ Rumores falsos                    |
 | `rumors.tru.es`   | ✅ Rumores verdaderos                |
 
-### ✅ Archivos Lua (.lua.es) — traducidos (parcialmente funcionales)
+### Archivos Lua
 
-| Archivo           | Contenido                                                    |
-| ----------------- | ------------------------------------------------------------ |
-| `dungeon.lua.es`  | Nombres de mazmorras traducidos                              |
-| `quest.lua.es`    | 238 diálogos de quests traducidos (placeholders preservados) |
-| `tut-1.lua.es`    | Tutorial parte 1 traducido                                   |
-| `tut-2.lua.es`    | Tutorial parte 2 traducido                                   |
-| `themerms.lua.es` | Habitaciones temáticas traducidas                            |
+| Archivo           | Estado                                             |
+| ----------------- | -------------------------------------------------- |
+| `quest.lua.es`    | ✅ Traducido y **empaquetado en nhdat**            |
+| `dungeon.lua`     | ❌ NO traducible (causa crasheo, ver Problemas)    |
+| `Arc-*.lua` ...   | ❌ ~60 quest de rol sin traducir (inglés en nhdat) |
+| `tut-1.lua.es`    | ✅ Tutorial parte 1 (pero no en nhdat)             |
+| `tut-2.lua.es`    | ✅ Tutorial parte 2 (pero no en nhdat)             |
+| `themerms.lua.es` | ✅ Habitaciones temáticas (pero no en nhdat)       |
 
-> **Nota:** Los `.lua.es` existen en `dat/` pero NO están dentro del contenedor `dat/nhdat`. El juego carga los Lua desde `nhdat`. Para activarlos hay que reconstruir `nhdat` o extraer/contenedorizar los `.es`.
+### Sistema multi-idioma
 
-### ✅ Código C (.po) — 3.461 strings traducidas
+| Componente                    | Estado |
+| ----------------------------- | ------ |
+| Detección automática LANG     | ✅     |
+| Carga dinámica de .mo         | ✅     |
+| Carga dinámica de .{lang}     | ✅     |
+| Carga dinámica de .lua.{lang} | ✅     |
+| `dlb_fopen` locale            | ✅     |
+| `s_suffix()` locale-aware     | ✅     |
 
-| Métrica       | Valor        |
-| ------------- | ------------ |
-| Total en .po  | 3.461        |
-| Traducidas    | 3.461        |
-| Fuzzy         | 0            |
-| Sin traducir  | 0            |
-| **Cobertura** | 100%         |
-| `msgfmt -c`   | ✅ 0 errores |
+---
 
-### ✅ Sistema multi-idioma
+## 🔧 Cambios Recientes (junio 2026)
 
-| Componente                | Estado |
-| ------------------------- | ------ |
-| Detección automática LANG | ✅     |
-| Carga dinámica de .mo     | ✅     |
-| Carga dinámica de .es     | ✅     |
-| Carga dinámica de .lua.es | ✅     |
-| `dlb_fopen` locale        | ✅     |
+### s_suffix() locale-aware
+
+**Archivo:** `src/hacklib.c`
+
+`'s` posesivo inglés no existe en español. En lugar de reestructurar ~100 mensajes
+que usan `s_suffix()`, se modificó la función para que detecte `get_lang()` y sea
+no-op cuando el idioma es español. Ejemplo: `"Arturo's dog"` → `"Arturo dog"`.
+
+**Problema relacionado:** `hacklib.c` lo usan utilidades como `dlb` que no linkean
+contra `lang.o`. Se añadieron stubs débiles (`__attribute__((weak))`) para
+`get_lang()` y `nh_gettext()` en `hacklib.c`.
+
+### "the" traducible (2 lugares)
+
+- **`src/role.c:2830`**: descripción del personaje (`"ricard de Arqueólog@"`)
+- **`src/botl.c:1000`**: título de rango (`"Ricard de Evoker"`)
+
+Traducción en `.po`: `"the"` → `"de"`, `" the "` → `" de "`.
+
+### align_gtitle() traducible
+
+**Archivo:** `src/pray.c`
+
+`"god"` → `"dios"`, `"goddess"` → `"diosa"` ahora son traducibles vía `.po`.
+
+### Atributos envueltos en N\_()
+
+**Archivos:** `src/attrib.c`, `src/insight.c`
+
+`attrname[]` ahora usa `N_("strength")` etc. para que los nombres completos
+de atributos sean traducibles en enlightenment y mensajes de mejora.
+
+Traducción: Fuerza, Destreza, Constitución, Inteligencia, Sabiduría, Carisma.
+
+### "your " y "a " reactivados
+
+En la creación de personaje, "your class" y "a race" ahora se traducen como
+"de tu clase" y "de una raza".
+
+### quest.lua.es empaquetado en nhdat
+
+El archivo `dat/quest.lua.es` se añadió a `VARDATD` en el Makefile para que
+se incluya automáticamente al reconstruir `nhdat` con `make dlb`.
+
+### Script de test mejorado
+
+`/tmp/test_nethack_es.py` — 5 sesiones automáticas con:
+
+- Filtrado de falsos positivos (palabras españolas que coinciden con inglesas)
+- Clasificación de palabras (inglesas puras vs compartidas)
+- Filtrado de términos multi-palabra del juego ("the lady")
+- Verificación positiva de traducciones esperadas
+- Argumentos CLI (`--session`, `--verbose`, `--skip-positive`)
 
 ---
 
@@ -73,40 +133,82 @@
 
 ### Estrategia QWERT para placeholders (cambio crítico)
 
-**Problema:** Al traducir strings con `%s`, `%d`, `%1$s` con LibreTranslate, los marcadores tipo `PH0`, `PH1`, `<<0>>`, `¤0¤` **no sobrevivían** a la traducción — LibreTranslate los convertía a texto natural.
+**Problema:** Al traducir strings con `%s`, `%d`, `%1$s` con LibreTranslate, los
+marcadores tipo `PH0`, `PH1`, `<<0>>`, `¤0¤` **no sobrevivían** a la traducción.
 
-**Solución:** Reemplazar `%s`→`QWERT0`, `%d`→`QWERT1`, etc. ANTES de enviar a LibreTranslate. `QWERT` parece un acrónimo y sobrevive al 100% de las traducciones.
-
-**Resultado:** 748 strings traducidas correctamente con esta técnica. Las 598 strings que ya habían perdido sus placeholders en traducciones anteriores fueron marcadas como sin traducir para revisión manual.
+**Solución:** Reemplazar `%s`→`QWERT0`, `%d`→`QWERT1`, etc. ANTES de enviar a
+LibreTranslate. `QWERT` parece un acrónimo y sobrevive al 100% de las traducciones.
 
 ### Nombres de mazmorra SIN `_()`
 
-**Problema:** `at_dgn_entrance(_("The Quest"))` devuelve "La Misión", pero el lookup interno (`dname_to_dnum`) compara contra los nombres canónicos en inglés de los datos de mazmorra (`dungeon.lua`). Esto causaba panic y crasheo.
+**Problema:** `at_dgn_entrance(_("The Quest"))` devuelve "La Misión", pero el
+lookup interno (`dname_to_dnum`) compara contra los nombres canónicos en inglés
+de `dungeon.lua`. Causa panic y crasheo.
 
-**Solución:** Quitar `_()` de TODAS las llamadas a `at_dgn_entrance()` y `dungeon_branch()` en el código C. Las 6 ocurrencias en dungeon.c, do.c, mklev.c, quest.c y trap.c ahora usan el nombre inglés directamente.
+**Solución:** Quitar `_()` de todas las llamadas a `at_dgn_entrance()` y
+`dungeon_branch()` en el código C.
+
+### Stubs débiles en hacklib.c
+
+`hacklib.c` es usado por utilidades (`dlb`, `recover`) que NO linkean el juego
+completo. Cualquier función de `hacklib.c` que llame a funciones del juego
+(`get_lang()`, `nh_gettext()`) rompe esas utilidades.
+
+**Solución:** Añadir stubs débiles (`__attribute__((weak))`) para estas funciones
+en `hacklib.c`. Las utilidades usan el stub; el juego linkea la función real que
+sobrescribe al stub.
 
 ### Nombres de opciones en inglés
 
-Los nombres técnicos (`fruit`, `autodig`, `number_pad`, etc.) se mantienen SIN traducir porque son identificadores usados en archivos de configuración (`~/.nethackrc`) y comandos `O nombre`. Las descripciones y títulos de sección sí se traducen.
+Los nombres técnicos (`fruit`, `autodig`, `number_pad`, etc.) se mantienen SIN
+traducir porque son identificadores usados en archivos de configuración
+(`~/.nethackrc`) y comandos `O nombre`. Las descripciones y títulos de sección
+sí se traducen.
 
 ### `N_()` en macros de optlist.h
 
-Modificadas las macros `NHOPTB`/`NHOPTC`/`NHOPTO`/`NHOPTP` en `include/optlist.h` para envolver `#a` (nombre) y `desc` (descripción) en `N_()`, permitiendo a `xgettext` extraerlos.
+Modificadas las macros `NHOPTB`/`NHOPTC`/`NHOPTO`/`NHOPTP` en
+`include/optlist.h` para envolver `#a` (nombre) y `desc` (descripción) en
+`N_()`, permitiendo a `xgettext` extraerlos.
 
 ---
 
 ## 📦 Requisitos de Ejecución
 
-Para que el juego funcione correctamente:
-
 ```bash
-# El binario necesita el contenedor nhdat en el directorio actual
+# Compilar traducciones
+msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
+
+# nhdat debe incluir quest.lua.es (make dlb lo hace automáticamente)
+make dlb
 cp dat/nhdat playground/
+
+# Jugar
 cd playground
 LANG=es.UTF-8 ./nethack
 ```
 
-Sin `nhdat`, `dlb_init()` falla y el juego crashea en `init_dungeons` con «nhl_init failed».
+Sin `nhdat`, `dlb_init()` falla y el juego crashea en `init_dungeons`.
+
+---
+
+## 🧪 Probar
+
+```bash
+python3 /tmp/test_nethack_es.py
+# Opciones: --session basic|help|extended|options|explore|all
+#           --verbose, --skip-positive
+```
+
+---
+
+## 🚀 Próximos Pasos
+
+- [ ] Traducir manualmente las 134 entradas fuzzy del `.po`
+- [ ] Traducir quest Lua de roles (~60 archivos `Arc-*.lua`, `Bar-*.lua` etc.)
+- [ ] Empaquetar tutoriales Lua (tut-1.lua.es, tut-2.lua.es) en nhdat
+- [ ] Revisión humana de calidad de traducciones automáticas
+- [ ] Prueba de juego real: menús de inventario, hechizos, combate
 
 ---
 
@@ -124,41 +226,38 @@ Sin `nhdat`, `dlb_init()` falla y el juego crashea en `init_dungeons` con «nhl_
 
 ## 🐛 Problemas Conocidos
 
-1. **Contenido Lua en inglés dentro de `nhdat`**: `nhlib.lua`, `dungeon.lua`, `quest.lua` etc. están en inglés porque los `.lua.es` no están empaquetados en `nhdat`. Los mensajes de bienvenida ("Saludos ricard, welcome to NetHack!") y textos narrativos (libro de Lugh) se ven en inglés.
-2. **Traducciones literales**: Muchas strings traducidas automáticamente por LibreTranslate son literales o tienen mezcla inglés/español en frases largas. Queda trabajo de revisión manual.
-3. **Layout**: El español es ~15-20% más largo que el inglés. Puede haber recortes en menús o cuadros de diálogo.
+1. **134 fuzzy con placeholders rotos**: traducciones automáticas dañadas,
+   desactivadas con fuzzy. Muestran inglés.
+2. **Quest Lua de rol sin traducir**: ~60 archivos que contienen diálogos
+   específicos de cada quest.
+3. **dungeon.lua no traducible**: el lookup interno `dname_to_dnum()` crashea
+   si los nombres están traducidos.
+4. **Layout**: el español es ~15-20% más largo que el inglés. Posibles recortes.
+5. **Nombres de opciones en inglés por diseño**: `fruit`, `autodig`, etc.
+6. **Mensajes de plataformas obsoletas** (~200): Amiga, VMS, MSDOS sin traducir.
 
 ---
 
-## 🚀 Próximos Pasos Posibles
+## 📜 Historial de Cambios
 
-- [ ] Reconstruir `nhdat` incluyendo los `.lua.es` para que el contenido Lua se vea en español
-- [ ] Revisión manual de calidad de traducciones (especialmente frases largas)
-- [ ] Prueba de juego real: comprobar menús de inventario, hechizos, comandos `?`
-- [ ] Verificar que el layout no se rompe con cadenas en español
-- [ ] Script de lanzamiento que ponga `nhdat` y `LANG=es.UTF-8` automáticamente
-
----
-
-## Historial de Cambios
-
-| Fecha      | Cambio                                                                         |
-| ---------- | ------------------------------------------------------------------------------ |
-| 2026-06-14 | Fase 1: Setup, .pot generado, merge con .po                                    |
-| 2026-06-14 | Corrección de Spanglish en strings existentes                                  |
-| 2026-06-14 | Traducción de 45 strings de código C                                           |
-| 2026-06-15 | Traducción de dungeon.lua.es, tut-1.lua.es, tut-2.lua.es, themerms.lua.es      |
-| 2026-06-15 | Traducción de quest.lua.es (238 diálogos)                                      |
-| 2026-06-15 | Modificación --More-- → --Más-- en wintty.c                                    |
-| 2026-06-15 | Envuelto ~1.033 strings en `_()` en todo el código C                           |
-| 2026-06-15 | **Reparación masiva PH→QWERT**: 1.067 strings reparadas, 598 perdidas marcadas |
-| 2026-06-15 | **Limpieza de 846 fuzzy**: 281 aceptadas, 150 rechazadas                       |
-| 2026-06-15 | **Traducción 748 strings** restantes vía LibreTranslate con QWERT              |
-| 2026-06-15 | **36 Spanglish** revertidas a inglés                                           |
-| 2026-06-15 | Menú de opciones traducido (`src/options.c`, `include/optlist.h`)              |
-| 2026-06-15 | Ayuda de dirección traducida (`src/cmd.c`)                                     |
-| 2026-06-15 | **Crasheo corregido**: `_()` quitado de nombres de mazmorra en 6 archivos      |
-| 2026-06-15 | **.po final**: 3.461 traducciones, 0 errores msgfmt                            |
+| Fecha      | Cambio                                                                  |
+| ---------- | ----------------------------------------------------------------------- |
+| 2026-06-14 | Fase 1: Setup, .pot, merge con .po                                      |
+| 2026-06-14 | Traducción de 45 strings de código C                                    |
+| 2026-06-15 | Traducción de dungeon.lua.es, tut-\*.lua.es, themerms.lua.es            |
+| 2026-06-15 | Traducción de quest.lua.es (238 diálogos)                               |
+| 2026-06-15 | Envuelto ~1.033 strings en `_()` en todo el código C                    |
+| 2026-06-15 | Reparación masiva PH→QWERT (1.067 strings)                              |
+| 2026-06-15 | Menú de opciones traducido                                              |
+| 2026-06-15 | Crasheo corregido: `_()` quitado de nombres de mazmorra                 |
+| 2026-06-16 | **s_suffix() locale-aware**: no-op para español en hacklib.c            |
+| 2026-06-16 | **Stubs débiles** para get_lang/nh_gettext en hacklib.c                 |
+| 2026-06-16 | **"the" traducible**: role.c (descripción) y botl.c (título)            |
+| 2026-06-16 | **align_gtitle()** con `_()` para god/goddess                           |
+| 2026-06-16 | **Atributos** envueltos en N*()/ *() (attrib.c, insight.c)              |
+| 2026-06-16 | **quest.lua.es** empaquetado en nhdat (VARDATD)                         |
+| 2026-06-16 | **Test script mejorado**: 5 sesiones, filtrado español, verificación    |
+| 2026-06-16 | **Traducciones reactivadas**: "your ", "a ", "Is this ok", "Yes; start" |
 
 ---
 
@@ -167,11 +266,19 @@ Sin `nhdat`, `dlb_init()` falla y el juego crashea en `init_dungeons` con «nhl_
 ```bash
 # Jugar
 cd ~/proyectos/juego/nethack-es/playground
-cp ../dat/nhdat .
 LANG=es.UTF-8 ./nethack
 
+# Test
+python3 /tmp/test_nethack_es.py
+
+# Compilar .mo
+msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
+
+# Recompilar binario y nhdat
+make -C src -j4 && cp src/nethack playground/
+make dlb && cp dat/nhdat playground/
+
 # Regenerar .pot después de cambios en código C
-cd ~/proyectos/juego/nethack-es
 xgettext --default-domain=nethack --directory=. \
   --keyword=_ --keyword=N_ --add-comments=TRANSLATORS: \
   --sort-by-file -o po/nethack.pot src/*.c include/optlist.h
@@ -179,13 +286,6 @@ xgettext --default-domain=nethack --directory=. \
 # Fusionar .pot en .po
 msgmerge --previous --sort-by-file po/es.po po/nethack.pot -o po/es_new.po
 mv po/es_new.po po/es.po
-
-# Compilar .mo y verificar
-msgfmt -c po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
-
-# Recompilar binario
-touch src/*.c && make -C src -j4
-cp src/nethack playground/
 
 # Validar
 msgfmt --statistics po/es.po

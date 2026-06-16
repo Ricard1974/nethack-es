@@ -1324,29 +1324,29 @@ rolefilterstring(char *outbuf, int which)
     case RS_ROLE:
         for (i = 0; i < SIZE(roles) - 1; ++i) {
             if (gr.rfilter.roles[i])
-                Sprintf(eos(outbuf), " !%.3s", roles[i].name.m);
-        }
-        break;
+		Sprintf(eos(outbuf), " !%.3s", _(roles[i].name.m));
+	}
+	break;
     case RS_RACE:
-        for (i = 0; i < SIZE(races) - 1; ++i) {
-            if ((gr.rfilter.mask & races[i].selfmask) != 0)
-                Sprintf(eos(outbuf), " !%s", races[i].noun);
-        }
-        break;
+	for (i = 0; i < SIZE(races) - 1; ++i) {
+	    if ((gr.rfilter.mask & races[i].selfmask) != 0)
+		Sprintf(eos(outbuf), " !%s", _(races[i].noun));
+	}
+	break;
     case RS_GENDER:
-        for (i = 0; i < SIZE(genders) - 1; ++i) {
-            if ((gr.rfilter.mask & genders[i].allow) != 0)
-                Sprintf(eos(outbuf), " !%s", genders[i].adj);
-        }
-        break;
+	for (i = 0; i < SIZE(genders) - 1; ++i) {
+	    if ((gr.rfilter.mask & genders[i].allow) != 0)
+		Sprintf(eos(outbuf), " !%s", _(genders[i].adj));
+	}
+	break;
     case RS_ALGNMNT:
-        for (i = 0; i < SIZE(aligns) - 1; ++i) {
-            if ((gr.rfilter.mask & aligns[i].allow) != 0)
-                Sprintf(eos(outbuf), " !%s", aligns[i].adj);
-        }
+	for (i = 0; i < SIZE(aligns) - 1; ++i) {
+	    if ((gr.rfilter.mask & aligns[i].allow) != 0)
+		Sprintf(eos(outbuf), " !%s", _(aligns[i].adj));
+	}
         break;
     default:
-        impossible("rolefilterstring: bad role aspect (%d)", which);
+        impossible(_("rolefilterstring: bad role aspect (%d)"), which);
         Strcpy(outbuf, " ?");
         break;
     }
@@ -1383,7 +1383,7 @@ clearrolefilter(int which)
 staticfn char *
 promptsep(char *buf, int num_post_attribs)
 {
-    const char *conjuct = "and ";
+    const char *conjuct = _("and ");
 
     if (num_post_attribs > 1 && gr.role_post_attribs < num_post_attribs
         && gr.role_post_attribs > 1)
@@ -1462,10 +1462,10 @@ root_plselection_prompt(
         } else {
         }
 #endif  /* the four lines of code below were in both 'if' and 'else' above */
-        if (donefirst)
-            Strcat(buf, " ");
-        Strcat(buf, aligns[alignnum].adj);
-        donefirst = TRUE;
+	if (donefirst)
+	    Strcat(buf, " ");
+	Strcat(buf, _(aligns[alignnum].adj));
+	donefirst = TRUE;
     } else {
         /* in case we got here by failing the ok_align() test */
         if (alignnum != ROLE_RANDOM)
@@ -1493,17 +1493,17 @@ root_plselection_prompt(
                and name of role itself does not distinguish gender */
             if ((rolenum != ROLE_NONE) && (gendercount > 1)
                 && !roles[rolenum].name.f) {
-                if (donefirst)
-                    Strcat(buf, " ");
-                Strcat(buf, genders[gendnum].adj);
-                donefirst = TRUE;
-            }
-        } else {
-            if (donefirst)
-                Strcat(buf, " ");
-            Strcat(buf, genders[gendnum].adj);
-            donefirst = TRUE;
-        }
+		if (donefirst)
+		    Strcat(buf, " ");
+		Strcat(buf, _(genders[gendnum].adj));
+		donefirst = TRUE;
+	    }
+	} else {
+	    if (donefirst)
+		Strcat(buf, " ");
+	    Strcat(buf, _(genders[gendnum].adj));
+	    donefirst = TRUE;
+	}
     } else {
         /* if gender not specified, but role is specified
                 and only one choice of gender then
@@ -1521,13 +1521,13 @@ root_plselection_prompt(
             && ok_race(rolenum, racenum, gendnum, alignnum)) {
             if (donefirst)
                 Strcat(buf, " ");
-            Strcat(buf, (rolenum == ROLE_NONE) ? races[racenum].noun
-                                               : races[racenum].adj);
+            Strcat(buf, (rolenum == ROLE_NONE) ? _(races[racenum].noun)
+                                               : _(races[racenum].adj));
             donefirst = TRUE;
         } else if (!validrole(rolenum)) {
             if (donefirst)
                 Strcat(buf, " ");
-            Strcat(buf, races[racenum].noun);
+            Strcat(buf, _(races[racenum].noun));
             donefirst = TRUE;
         } else {
             gr.role_pa[BP_RACE] = 1;
@@ -1545,16 +1545,16 @@ root_plselection_prompt(
             Strcat(buf, " ");
         if (gendnum != ROLE_NONE) {
             if (gendnum == 1 && roles[rolenum].name.f)
-                Strcat(buf, roles[rolenum].name.f);
+                Strcat(buf, _(roles[rolenum].name.f));
             else
-                Strcat(buf, roles[rolenum].name.m);
+                Strcat(buf, _(roles[rolenum].name.m));
         } else {
             if (roles[rolenum].name.f) {
-                Strcat(buf, roles[rolenum].name.m);
+                Strcat(buf, _(roles[rolenum].name.m));
                 Strcat(buf, "/");
-                Strcat(buf, roles[rolenum].name.f);
+                Strcat(buf, _(roles[rolenum].name.f));
             } else
-                Strcat(buf, roles[rolenum].name.m);
+                Strcat(buf, _(roles[rolenum].name.m));
         }
         donefirst = TRUE;
     } else if (rolenum == ROLE_NONE) {
@@ -1566,7 +1566,7 @@ root_plselection_prompt(
         && !validrole(rolenum)) {
         if (donefirst)
             Strcat(buf, " ");
-        Strcat(buf, "character");
+        Strcat(buf, _("character"));
         /*donefirst = TRUE;*/
     }
     /* <your lawful female gnomish cavewoman> || <your lawful female gnome>
@@ -1593,9 +1593,9 @@ build_plselection_prompt(
 
     Strcpy(tmpbuf, _("Shall I pick "));
     if (racenum != ROLE_NONE || validrole(rolenum))
-        Strcat(tmpbuf, "your ");
+        Strcat(tmpbuf, _("your "));
     else
-        Strcat(tmpbuf, "a ");
+        Strcat(tmpbuf, _("a "));
     /* <your> */
 
     (void) root_plselection_prompt(eos(tmpbuf), buflen - Strlen(tmpbuf),
@@ -1604,6 +1604,8 @@ build_plselection_prompt(
        plus " [ynaq] (y)" is a little too long for a conventional 80 columns;
        also, "pick a character's <anything>" sounds a bit stilted */
     strsubst(tmpbuf, "pick a character", "pick character");
+    /* s_suffix() is locale-aware: for English it adds "'s" as usual;
+       for Spanish it is a no-op (no possessive suffix needed). */
     Sprintf(buf, "%s", s_suffix(tmpbuf));
     /* don't bother splitting caveman/cavewoman or priest/priestess
        in order to apply possessive suffix to both halves, but do
@@ -1636,22 +1638,22 @@ build_plselection_prompt(
     if (num_post_attribs) {
         if (gr.role_pa[BP_RACE]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "race");
+            Strcat(buf, _("race"));
         }
         if (gr.role_pa[BP_ROLE]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "role");
+            Strcat(buf, _("role"));
         }
         if (gr.role_pa[BP_GEND]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "gender");
+            Strcat(buf, _("gender"));
         }
         if (gr.role_pa[BP_ALIGN]) {
             (void) promptsep(eos(buf), num_post_attribs);
-            Strcat(buf, "alignment");
+            Strcat(buf, _("alignment"));
         }
     }
-    Strcat(buf, " for you? [ynaq] ");
+    Strcat(buf, _(" for you? [ynaq] "));
     return buf;
 }
 
@@ -1955,7 +1957,7 @@ role_menu_extra(int which, winid where, boolean preselect)
                  ATR_NONE, clr, _("Quit"),
                  preselect ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     } else {
-        impossible("role_menu_extra: bad arg (%d)", which);
+        impossible(_("role_menu_extra: bad arg (%d)"), which);
     }
 }
 
@@ -2670,7 +2672,7 @@ genl_player_setup(int screenheight)
         any.a_int = -1;
         add_menu(win, &nul_glyphinfo, &any, 'q', 0,
                  ATR_NONE, clr, _("Quit"), MENU_ITEMFLAGS_NONE);
-        Sprintf(pbuf, "Is this ok? [yn%sq]", iflags.renameallowed ? "a" : "");
+        Sprintf(pbuf, _("Is this ok? [yn%sq]"), iflags.renameallowed ? "a" : "");
         end_menu(win, pbuf);
         n = select_menu(win, PICK_ONE, &selected);
         /* [pick-one menus with a preselected entry behave oddly...] */
@@ -2825,8 +2827,8 @@ plsel_startmenu(int ttyrows, int aspect)
                 (ALGN < 0) ? "<alignment>" : aligns[ALGN].adj);
     } else {
         /* "<name> the <alignment> <gender> <race.adjective> <role>" */
-        Sprintf(qbuf, "%.20s the %.20s %.20s %.20s %.20s",
-                svp.plname,
+        Sprintf(qbuf, "%.20s %s %.20s %.20s %.20s %.20s",
+                svp.plname, _("the"),
                 aligns[ALGN].adj,
                 genders[GEND].adj,
                 races[RACE].adj,
@@ -2835,7 +2837,7 @@ plsel_startmenu(int ttyrows, int aspect)
 
     win = create_nhwindow(NHW_MENU);
     if (win == WIN_ERR)
-        panic("could not create role selection window");
+        panic(_("could not create role selection window"));
     start_menu(win, MENU_BEHAVE_STANDARD);
 
     add_menu_str(win, qbuf);

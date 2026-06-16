@@ -128,6 +128,108 @@ cd "$NETHACKDIR"
 
 ---
 
+## Problema 9: s_suffix() rompe utilidades (dlb, recover)
+
+**Síntoma:** `undefined reference to 'get_lang'` al compilar `dlb` o `recover`.
+
+**Causa:** `hacklib.c` (usado por utilidades) ahora llama a `get_lang()` y
+`nh_gettext()`, pero las utilidades no linkean `lang.o` ni `nh_gettext.o`.
+
+**Solución:** Stubs débiles en `hacklib.c`:
+
+```c
+const char *get_lang(void) __attribute__((weak));
+const char *get_lang(void) { return "en"; }
+
+const char *nh_gettext(const char *msgid) __attribute__((weak));
+const char *nh_gettext(const char *msgid) { return msgid; }
+```
+
+Las utilidades usan el stub. El juego linkea la función real que sobrescribe
+al stub. Ver `src/hacklib.c:345-360`.
+
+**Archivos afectados:**
+
+- `src/hacklib.c` — stubs débiles añadidos + `s_suffix()` locale-aware
+
+---
+
+## Problema 10: "the" hardcodeado en descripciones y títulos
+
+**Síntoma:** El test de traducción detecta "the" en inglés en la descripción
+del personaje ("ricard the Archeologist") y en el título ("Ricard the Stripling").
+
+**Causa:** `" the "` hardcodeado en `src/botl.c:1000` y `"the"` hardcodeado en
+`src/role.c:2830` sin `_()`.
+
+**Solución:** Envolver en `_()`:
+
+```c
+/* role.c */
+Sprintf(qbuf, "%.20s %s %.20s %.20s %.20s %.20s",
+        svp.plname, _("the"), ...);
+
+/* botl.c */
+Strcpy(nb = eos(nb), _(" the "));
+```
+
+Traducción al español: `"the"` → `"de"`, `" the "` → `" de "`.
+
+**Archivos corregidos:**
+
+- `src/role.c:2830` — descripción de personaje
+- `src/botl.c:1000` — título de rango
+
+---
+
+## Problema 11: quest.lua.es no se incluía en nhdat
+
+**Síntoma:** El texto del quest aparecía en inglés aunque `quest.lua.es`
+existiera en `dat/`.
+
+**Causa:** Makefile no incluía `quest.lua.es` en `VARDATD`, por lo que `make dlb`
+no lo empaquetaba en `nhdat`.
+
+**Solución:** Añadir `quest.lua.es` a `VARDATD` en el Makefile:
+
+```makefile
+VARDATD = bogusmon data engrave epitaph oracles options quest.lua quest.lua.es rumors
+```
+
+**Archivos corregidos:**
+
+- `Makefile:2227` — añadido quest.lua.es a VARDATD
+
+---
+
+## Problema 12: Nombres de atributos sin traducir
+
+**Síntoma:** "Strength", "Dexterity" aparecen en inglés en mensajes de
+mejora de atributos y pantalla de enlightenment.
+
+**Causa:** `attrname[]` en `src/attrib.c` no estaba envuelto en `N_()`.
+
+**Solución:** Envolver con `N_()` y usar `_()` en los usos:
+
+```c
+/* attrib.c */
+const char *const attrname[] = {
+    N_("strength"), N_("intelligence"), N_("wisdom"),
+    N_("dexterity"), N_("constitution"), N_("charisma")
+};
+
+/* insight.c */
+Sprintf(subjbuf, _("Your %s "), _(attrname[attrindx]));
+```
+
+**Archivos corregidos:**
+
+- `src/attrib.c:19-21` — `N_()` en definición
+- `src/attrib.c:182` — `_()` en uso de mensaje
+- `src/insight.c:897` — `_()` en enlightenment
+
+---
+
 ## Checklist de Verificación
 
 Después de cualquier cambio:

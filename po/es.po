@@ -1491,7 +1491,7 @@ msgstr "Eres %s como %s como puedes conseguir."
 #: src/attrib.c:182
 #, c-format
 msgid "innate %s has %s."
-msgstr "innato %s tiene %s ."
+msgstr "su %s innat@ ha %s."
 
 #: src/attrib.c:193 src/ball.c:899 src/ball.c:902 src/ball.c:908 src/ball.c:912
 #: src/mhitu.c:1000
@@ -16292,3 +16292,287 @@ msgstr "No existe nada que encaje con esa descripción en el juego."
 
 #~ msgid "Vlad's Tower"
 #~ msgstr "Torre de Vlad"
+
+#: src/role.c:2830
+msgid "the"
+msgstr "de"
+
+#: src/botl.c:1000
+msgid " the "
+msgstr " de "
+
+# Atributos
+#: src/attrib.c:20
+msgid "strength"
+msgstr "Fuerza"
+
+#: src/attrib.c:20
+msgid "intelligence"
+msgstr "Inteligencia"
+
+#: src/attrib.c:20
+msgid "wisdom"
+msgstr "Sabiduría"
+
+#: src/attrib.c:21
+msgid "dexterity"
+msgstr "Destreza"
+
+#: src/attrib.c:21
+msgid "constitution"
+msgstr "Constitución"
+
+#: src/attrib.c:21
+msgid "charisma"
+msgstr "Carisma"
+
+#: src/attrib.c:182
+msgid "improved"
+msgstr "mejorado"
+
+#: src/attrib.c:182
+msgid "declined"
+msgstr "disminuido"
+
+#: src/insight.c:897
+#, c-format
+msgid "Your %s "
+msgstr "Tu %s "
+
+# Traducciones del prompt de personaje y artículos
+#: src/role.c:1388
+msgid "your "
+msgstr "de tu "
+
+#: src/role.c:1388
+msgid "a "
+msgstr "de un "
+
+#: src/role.c:1477
+#, c-format
+msgid "Is this ok? [yn%sq]"
+msgstr "¿Está bien? [yn%sq]"
+
+#: src/pray.c:2605
+msgid "goddess"
+msgstr "diosa"
+
+# enl_msg present/past desde insight.c (iluminación)
+#: src/insight.c:219
+msgid "take"
+msgstr "tomar"
+
+#: src/insight.c:219
+msgid "took"
+msgstr "tomaste"
+
+#: src/insight.c:440
+msgid "haven't encountered"
+msgstr "no has encontrado"
+
+#: src/insight.c:440
+msgid "didn't encounter"
+msgstr "no encontraste"
+
+#: src/insight.c:448 src/insight.c:647 src/insight.c:649 src/insight.c:669
+#: src/insight.c:718 src/insight.c:776 src/insight.c:934
+msgid "is"
+msgstr "es"
+
+#: src/insight.c:448 src/insight.c:647 src/insight.c:649 src/insight.c:669
+#: src/insight.c:718 src/insight.c:776 src/insight.c:934
+msgid "was"
+msgstr "era"
+
+#: src/insight.c:647
+msgid "is "
+msgstr "es "
+
+#: src/insight.c:647
+msgid "was "
+msgstr "era "
+
+#: src/insight.c:799
+msgid "have "
+msgstr "tienes "
+
+#: src/insight.c:799
+msgid "had "
+msgstr "tenías "
+
+#: src/insight.c:1164
+msgid " has "
+msgstr " tiene "
+
+#: src/insight.c:1164
+msgid " had "
+msgstr " tenía "
+
+#: src/insight.c:1178
+msgid "fumble"
+msgstr "tropezar"
+
+#: src/insight.c:1178
+msgid "fumbled"
+msgstr "tropezaste"
+
+#: src/insight.c:1185
+msgid "fall"
+msgstr "caer"
+
+#: src/insight.c:1185
+msgid "fell"
+msgstr "caíste"
+
+#: src/insight.c:1191
+msgid "hunger"
+msgstr "hambre"
+
+#: src/insight.c:1191
+msgid "hungered"
+msgstr "hambriento"
+
+#: src/insight.c:1261
+msgid "do"
+msgstr "hacer"
+
+#: src/insight.c:1261
+msgid "did"
+msgstr "hiciste"
+
+#: src/insight.c:1381
+msgid "can enhance"
+msgstr "puedes mejorar"
+
+#: src/insight.c:1381
+msgid "could have enhanced"
+msgstr "habrías podido mejorar"
+
+#: src/insight.c:1461
+msgid "resist"
+msgstr "resistir"
+
+#: src/insight.c:1461
+msgid "resisted"
+msgstr "resististe"
+
+#: src/insight.c:1573
+msgid "see"
+msgstr "ver"
+
+#: src/insight.c:1573
+msgid "saw"
+msgstr "viste"
+
+#: src/insight.c:1575
+msgid "will see"
+msgstr "verás"
+
+#: src/insight.c:1575
+msgid "would have seen"
+msgstr "habrías visto"
+
+#: src/insight.c:1578
+msgid "would see"
+msgstr "verías"
+
+#: src/insight.c:1619
+msgid "could be"
+msgstr "podría ser"
+
+#: src/insight.c:1619
+msgid "could have been"
+msgstr "podría haber sido"
+
+#: src/insight.c:1641
+msgid "will confuse"
+msgstr "confundirás"
+
+#: src/insight.c:1641
+msgid "would have confused"
+msgstr "habrías confundido"
+
+#: src/insight.c:1705
+msgid "would levitate"
+msgstr "levitarías"
+
+#: src/insight.c:1705
+msgid "would have levitated"
+msgstr "habrías levitado"
+
+#: src/insight.c:1715
+msgid "would fly"
+msgstr "volarías"
+
+#: src/insight.c:1715
+msgid "would have flown"
+msgstr "habrías volado"
+
+#: src/insight.c:1751
+msgid "could cling"
+msgstr "podrías agarrarte"
+
+#: src/insight.c:1751
+msgid "could have clung"
+msgstr "habrías podido agarrarte"
+
+#: src/insight.c:1906
+msgid "will be"
+msgstr "será"
+
+#: src/insight.c:1906
+msgid "would have been"
+msgstr "habría sido"
+
+#: src/insight.c:2003
+msgid "have been killed "
+msgstr "has muerto "
+
+#: src/insight.c:2127
+msgid "have gone"
+msgstr "has ido"
+
+#: src/insight.c:2127
+msgid "went"
+msgstr "fuiste"
+
+#: src/insight.c:2211
+msgid "have not wished"
+msgstr "no has deseado"
+
+#: src/insight.c:2211
+msgid "did not wish"
+msgstr "no deseaste"
+
+#: src/insight.c:2290
+msgid "are exploring"
+msgstr "estás explorando"
+
+#: src/insight.c:2290
+msgid "explored"
+msgstr "exploraste"
+
+#: src/insight.c:2294
+msgid "started out"
+msgstr "empezaste"
+
+#: src/insight.c:2341
+msgid "does"
+msgstr "hace"
+
+#: src/insight.c:2268
+msgid "Achievement #%d is out of range."
+msgstr "Logro #%d está fuera de rango."
+
+# Errores internos (no deberían aparecer en juego normal)
+#: src/insight.c:2417
+msgid "Punished without uball?"
+msgstr "¿Castigado sin uball?"
+
+#: src/insight.c:3122
+msgid "unique creature '%d: %s' genocided?"
+msgstr "¿criatura única '%d: %s' genocidada?"
+
+#: src/insight.c:1906
+msgid "would be"
+msgstr "sería"

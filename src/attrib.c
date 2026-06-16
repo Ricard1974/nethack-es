@@ -17,8 +17,8 @@ static const char
 extern const char *const attrname[6];
 
 const char
-    *const attrname[] = { "strength", "intelligence", "wisdom",
-                          "dexterity", "constitution", "charisma" };
+    *const attrname[] = { N_("strength"), N_("intelligence"), N_("wisdom"),
+                          N_("dexterity"), N_("constitution"), N_("charisma") };
 
 static const struct innate {
     schar ulevel;
@@ -179,7 +179,8 @@ adjattrib(
             } else {
                 /* current stayed the same but base value changed, or
                    base is at minimum and reduction caused max to drop */
-                Your(_("innate %s has %s."), attrname[ndx], (incr > 0) ? "improved" : "declined");
+                Your(_("innate %s has %s."), _(attrname[ndx]),
+                     (incr > 0) ? _("improved") : _("declined"));
             }
         }
         return FALSE;
@@ -223,7 +224,7 @@ losestr(int num, const char *knam, schar k_format)
     boolean waspolyd = Upolyd;
 
     if (num <= 0 || ABASE(A_STR) < ATTRMIN(A_STR)) {
-        impossible("losestr: %d - %d", ABASE(A_STR), num);
+        impossible(_("losestr: %d - %d"), ABASE(A_STR), num);
         return;
     }
     dmg = 0;

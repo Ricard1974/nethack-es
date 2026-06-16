@@ -229,7 +229,7 @@ do_statusline2(void)
                  expr, tmmv, cond, vers);
     } else {
         if (dln + 1 + hln + 1 + xln + 1 + tln + 1 + cln + vrn > MAXCO) {
-            panic("bot2: second status line exceeds MAXCO (%u > %d)",
+            panic(_("bot2: second status line exceeds MAXCO (%u > %d)"),
                   (unsigned) (dln + 1 + hln + 1 + xln + 1 + tln + 1 + cln
                               + vrn),
                   MAXCO);
@@ -968,7 +968,7 @@ bot_via_windowport(void)
     long money;
 
     if (!gb.blinit)
-        panic("bot before init.");
+        panic(_("bot before init."));
 
     /* toggle from previous iteration */
     idx = 1 - gn.now_or_before_idx; /* 0 -> 1, 1 -> 0 */
@@ -997,7 +997,7 @@ bot_via_windowport(void)
         i = 30 - (int) (sizeof " the " + strlen(titl) - sizeof "");
         nb[max(i, BOTL_NSIZ)] = '\0';
     }
-    Strcpy(nb = eos(nb), " the ");
+    Strcpy(nb = eos(nb), _(" the "));
     Strcpy(nb = eos(nb), titl);
     if (Upolyd) { /* when poly'd, capitalize monster name */
         for (i = 0; nb[i]; i++)
@@ -1690,12 +1690,12 @@ status_initialize(
 
     if (!reassessment) {
         if (gb.blinit)
-            impossible("2nd status_initialize with full init.");
+            impossible(_("2nd status_initialize with full init."));
         init_blstats();
         (*windowprocs.win_status_init)();
         gb.blinit = TRUE;
     } else if (!gb.blinit) {
-        panic("status 'reassess' before init");
+        panic(_("status 'reassess' before init"));
     }
     for (i = 0; i < MAXBLSTATS; ++i) {
         fld = initblstats[i].fld;
@@ -1762,7 +1762,7 @@ init_blstats(void)
     int i, j;
 
     if (initalready) {
-        impossible("init_blstats called more than once.");
+        impossible(_("init_blstats called more than once."));
         return;
     }
     for (i = 0; i <= 1; ++i) {
@@ -1813,7 +1813,7 @@ compare_blstats(struct istat_s *bl1, struct istat_s *bl2)
     int anytype, fld, result = 0;
 
     if (!bl1 || !bl2) {
-        panic("compare_blstat: bad istat pointer %s, %s",
+        panic(_("compare_blstat: bad istat pointer %s, %s"),
               fmt_ptr((genericptr_t) bl1), fmt_ptr((genericptr_t) bl2));
     }
 
@@ -1821,7 +1821,7 @@ compare_blstats(struct istat_s *bl1, struct istat_s *bl2)
     if ((!bl1->a.a_void || !bl2->a.a_void)
         && (anytype == ANY_IPTR || anytype == ANY_UPTR
             || anytype == ANY_LPTR || anytype == ANY_ULPTR)) {
-        panic("compare_blstat: invalid pointer %s, %s",
+        panic(_("compare_blstat: invalid pointer %s, %s"),
               fmt_ptr((genericptr_t) bl1->a.a_void),
               fmt_ptr((genericptr_t) bl2->a.a_void));
     }
@@ -1986,7 +1986,7 @@ percentage(struct istat_s *bl, struct istat_s *maxbl)
     boolean use_rawval;
 
     if (!bl || !maxbl) {
-        impossible("percentage: bad istat pointer %s, %s",
+        impossible(_("percentage: bad istat pointer %s, %s"),
                    fmt_ptr((genericptr_t) bl), fmt_ptr((genericptr_t) maxbl));
         return 0;
     }
@@ -2856,7 +2856,7 @@ parse_status_hl2(char (*s)[QBUFSZ], boolean from_configfile)
         return TRUE;
     }
     if (fld == BL_FLUSH) {
-        config_error_add("Unknown status field '%s'", s[sidx]);
+        config_error_add(_("Unknown status field '%s'"), s[sidx]);
         return FALSE;
     }
     if (fld == BL_CONDITION)
@@ -2952,13 +2952,13 @@ parse_status_hl2(char (*s)[QBUFSZ], boolean from_configfile)
                 /* percentages have another more comprehensive check below */
                     || hilite.value.a_int > (percent ? (lt ? 101 : 100)
                                                      : LARGEST_INT))) {
-                config_error_add("%s'%s%d%s'%s", threshold_value,
+                config_error_add(_("%s'%s%d%s'%s"), threshold_value,
                                  op, hilite.value.a_int, percent ? "%" : "",
                                  is_out_of_range);
                 return FALSE;
             } else if (dt == ANY_LONG
                        && hilite.value.a_long < (grt ? -1L : lt ? 1L : 0L)) {
-                config_error_add("%s'%s%ld'%s", threshold_value,
+                config_error_add(_("%s'%s%ld'%s"), threshold_value,
                                  op, hilite.value.a_long, is_out_of_range);
                 return FALSE;
             }
@@ -2990,14 +2990,14 @@ parse_status_hl2(char (*s)[QBUFSZ], boolean from_configfile)
             hilite.rel = LT_VALUE;
 
         if (initblstats[fld].anytype == ANY_STR && (percent || numeric)) {
-            config_error_add("Field '%s' does not support numeric values",
+            config_error_add(_("Field '%s' does not support numeric values"),
                              initblstats[fld].fldname);
             return FALSE;
         }
 
         if (percent) {
             if (initblstats[fld].idxmax < 0) {
-                config_error_add("Cannot use percent with '%s'",
+                config_error_add(_("Cannot use percent with '%s'"),
                                  initblstats[fld].fldname);
                 return FALSE;
             } else if ((hilite.value.a_int < -1)
@@ -3011,7 +3011,7 @@ parse_status_hl2(char (*s)[QBUFSZ], boolean from_configfile)
                            && hilite.value.a_int != LT_VALUE)
                        || (hilite.value.a_int > 101)) {
                 config_error_add(
-                           "hilite_status: invalid percentage value '%s%d%%'",
+                           _("hilite_status: invalid percentage value '%s%d%%'"),
                                  (hilite.rel == LT_VALUE) ? "<"
                                    : (hilite.rel == LE_VALUE) ? "<="
                                      : (hilite.rel == GT_VALUE) ? ">"
@@ -3059,7 +3059,7 @@ parse_status_hl2(char (*s)[QBUFSZ], boolean from_configfile)
                 int c = match_str2clr(subfields[i], FALSE);
 
                 if (c >= CLR_MAX || coloridx != -1) {
-                    config_error_add("bad color '%d %d'", c, coloridx);
+                    config_error_add(_("bad color '%d %d'"), c, coloridx);
                     return FALSE;
                 }
                 coloridx = c;
@@ -3221,7 +3221,7 @@ str2conditionbitmask(char *str)
         unsigned long bm = match_str2conditionbitmask(subfields[i]);
 
         if (!bm) {
-            config_error_add("Unknown condition '%s'", subfields[i]);
+            config_error_add(_("Unknown condition '%s'"), subfields[i]);
             return 0UL;
         }
         conditions_bitmask |= bm;
@@ -3255,7 +3255,7 @@ parse_condition(char (*s)[QBUFSZ], int sidx)
 
     sidx++;
     if (!s[sidx][0]) {
-        config_error_add("Missing condition(s)");
+        config_error_add(_("Missing condition(s)"));
         return FALSE;
     }
     while (s[sidx][0]) {
@@ -3284,7 +3284,7 @@ parse_condition(char (*s)[QBUFSZ], int sidx)
         sidx++;
         how = s[sidx];
         if (!how || !*how) {
-            config_error_add("Missing color+attribute");
+            config_error_add(_("Missing color+attribute"));
             return FALSE;
         }
 
@@ -3331,7 +3331,7 @@ parse_condition(char (*s)[QBUFSZ], int sidx)
                 int k = match_str2clr(subfields[i], FALSE);
 
                 if (k >= CLR_MAX) {
-                    config_error_add("bad color %d", k);
+                    config_error_add(_("bad color %d"), k);
                     return FALSE;
                 }
                 coloridx = k;
@@ -3614,7 +3614,7 @@ status_hilite2str(struct hilite_s *hl)
         if (op)
             Sprintf(behavebuf, "%s%d%%", op, hl->value.a_int);
         else
-            impossible("hl->behavior=percentage, rel error");
+            impossible(_("hl->behavior=percentage, rel error"));
         break;
     case BL_TH_UPDOWN:
         if (hl->rel == LT_VALUE)
@@ -3624,25 +3624,25 @@ status_hilite2str(struct hilite_s *hl)
         else if (hl->rel == EQ_VALUE)
             Sprintf(behavebuf, "changed");
         else
-            impossible("hl->behavior=updown, rel error");
+            impossible(_("hl->behavior=updown, rel error"));
         break;
     case BL_TH_VAL_ABSOLUTE:
         if (op)
             Sprintf(behavebuf, "%s%d", op, hl->value.a_int);
         else
-            impossible("hl->behavior=absolute, rel error");
+            impossible(_("hl->behavior=absolute, rel error"));
         break;
     case BL_TH_TEXTMATCH:
         if (hl->rel == TXT_VALUE && hl->textmatch[0])
             Sprintf(behavebuf, "%s", hl->textmatch);
         else
-            impossible("hl->behavior=textmatch, rel or textmatch error");
+            impossible(_("hl->behavior=textmatch, rel or textmatch error"));
         break;
     case BL_TH_CONDITION:
         if (hl->rel == EQ_VALUE)
             Sprintf(behavebuf, "%s", conditionbitmask2str(hl->value.a_ulong));
         else
-            impossible("hl->behavior=condition, rel error");
+            impossible(_("hl->behavior=condition, rel error"));
         break;
     case BL_TH_ALWAYS_HILITE:
         Sprintf(behavebuf, "always");

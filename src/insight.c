@@ -216,7 +216,7 @@ enlght_halfdmg(int category, int final)
     }
     Sprintf(buf, " %s %s damage", (final || wizard) ? "half" : "reduced",
             category_name);
-    enl_msg(You_, "take", "took", buf, from_what(category));
+    enl_msg(You_, _("take"), _("took"), buf, from_what(category));
 }
 
 /* is hero actively using water walking capability on water (or lava)? */
@@ -437,8 +437,7 @@ enlightenment(
                     (final == ENL_GAMEOVERDEAD) ? " and storing" : "");
             you_have_X(buf);
         } else if (!u.uroleplay.numbones) {
-            enl_msg(You_, "haven't encountered", "didn't encounter",
-                    " any bones levels", "");
+            enl_msg(You_, _("haven't encountered"), _("didn't encounter"), " any bones levels", "");
         } else {
             Sprintf(buf, "encountered %ld bones level%s",
                     u.uroleplay.numbones, plur(u.uroleplay.numbones));
@@ -446,7 +445,7 @@ enlightenment(
         }
     }
     (void) fmt_elapsed_time(buf, final);
-    enl_msg("Total elapsed playing time ", "is", "was", buf, "");
+    enl_msg("Total elapsed playing time ", _("is"), _("was"), buf, "");
 
     if (!ge.en_via_menu) {
         display_nhwindow(ge.en_win, TRUE);
@@ -645,9 +644,9 @@ background_enlightenment(int unused_mode UNUSED, int final)
        won't vary if user leaves a disclosure prompt or --More-- unanswered
        long enough for the dynamic value to change between then and now */
     if (final ? iflags.at_midnight : midnight()) {
-        enl_msg("It ", "is ", "was ", "the midnight hour", "");
+        enl_msg("It ", _("is "), _("was "), "the midnight hour", "");
     } else if (final ? iflags.at_night : night()) {
-        enl_msg("It ", "is ", "was ", "nighttime", "");
+        enl_msg("It ", _("is "), _("was "), "nighttime", "");
     }
     /* other environmental factors */
     if (flags.moonphase == FULL_MOON || flags.moonphase == NEW_MOON) {
@@ -667,7 +666,7 @@ background_enlightenment(int unused_mode UNUSED, int final)
                 /* we don't have access to 'how' here--aside from survived
                    vs died--so settle for general platitude */
                 final ? " when your adventure ended" : "");
-        enl_msg("There ", "is ", "was ", buf, "");
+        enl_msg("There ", _("is "), _("was "), buf, "");
     }
     if (flags.friday13) {
         /* let player know that friday13 penalty is/was in effect;
@@ -716,7 +715,7 @@ background_enlightenment(int unused_mode UNUSED, int final)
            only show it here if player has the 'showscore' option enabled */
         Sprintf(buf, "%ld%s", botl_score(),
                 !final ? "" : " before end-of-game adjustments");
-        enl_msg("Your score ", "is ", "was ", buf, "");
+        enl_msg("Your score ", _("is "), _("was "), buf, "");
     }
 #endif
 }
@@ -774,7 +773,7 @@ basics_enlightenment(int mode UNUSED, int final)
     if (abs(u.uac) == AC_MAX)
         Sprintf(eos(buf), ", the %s possible",
                 (u.uac < 0) ? "best" : "worst");
-    enl_msg("Your armor class ", "is ", "was ", buf, "");
+    enl_msg("Your armor class ", _("is "), _("was "), buf, "");
 
     /* gold; similar to doprgold (#showgold) but without shop billing info;
        includes container contents, unlike status line but like doprgold */
@@ -797,7 +796,7 @@ basics_enlightenment(int mode UNUSED, int final)
         if (hmoney) {
             Sprintf(buf, "%ld %s stashed away in your pack",
                     hmoney, umoney ? "more" : currency(hmoney));
-            enl_msg("you ", "have ", "had ", buf, "");
+            enl_msg("you ", _("have "), _("had "), buf, "");
         }
     }
 
@@ -819,7 +818,7 @@ basics_enlightenment(int mode UNUSED, int final)
         }
     } else
         Strcpy(buf, "off");
-    enl_msg("Autopickup ", "is ", "was ", buf, "");
+    enl_msg("Autopickup ", _("is "), _("was "), buf, "");
 }
 
 /* characteristics: expanded version of bottom line strength, dexterity, &c */
@@ -894,7 +893,7 @@ one_characteristic(int mode, int final, int attrindx)
 
     acurrent = ACURR(attrindx);
     (void) attrval(attrindx, acurrent, valubuf); /* Sprintf(valubuf,"%d",) */
-    Sprintf(subjbuf, "Your %s ", attrname[attrindx]);
+    Sprintf(subjbuf, _("Your %s "), _(attrname[attrindx]));
 
     if (!hide_innate_value) {
         /* show abase, amax, and/or attrmax if acurr doesn't match abase
@@ -932,7 +931,7 @@ one_characteristic(int mode, int final, int attrindx)
         if (acurrent != abase || abase != apeak || interesting_alimit)
             Strcat(valubuf, ")");
     }
-    enl_msg(subjbuf, "is ", "was ", valubuf, "");
+    enl_msg(subjbuf, _("is "), _("was "), valubuf, "");
 }
 
 /* status: selected obvious capabilities, assorted troubles */
@@ -1078,7 +1077,7 @@ status_enlightenment(int mode, int final)
         if (uball) {
             Sprintf(buf, "chained to %s", ansimpleoname(uball));
         } else {
-            impossible("Punished without uball?");
+            impossible(_("Punished without uball?"));
             Strcpy(buf, "punished");
         }
         you_are(buf, "");
@@ -1162,7 +1161,7 @@ status_enlightenment(int mode, int final)
 
                 Strcpy(steednambuf, steedname);
                 *steednambuf = highc(*steednambuf);
-                enl_msg(steednambuf, " has ", " had ", buf, "");
+                enl_msg(steednambuf, _(" has "), _(" had "), buf, "");
             }
         } else {
             you_have(buf, "");
@@ -1176,21 +1175,20 @@ status_enlightenment(int mode, int final)
     }
     if (Fumbling) {
         if (magic || cause_known(FUMBLING))
-            enl_msg(You_, "fumble", "fumbled", "", from_what(FUMBLING));
+            enl_msg(You_, _("fumble"), _("fumbled"), "", from_what(FUMBLING));
     }
     if (Sleepy) {
         if (magic || cause_known(SLEEPY)) {
             Strcpy(buf, from_what(SLEEPY));
             if (wizard)
                 Sprintf(eos(buf), " (%ld)", (HSleepy & TIMEOUT));
-            enl_msg("You ", "fall", "fell", " asleep uncontrollably", buf);
+            enl_msg("You ", _("fall"), _("fell"), " asleep uncontrollably", buf);
         }
     }
     /* hunger/nutrition */
     if (Hunger) {
         if (magic || cause_known(HUNGER))
-            enl_msg(You_, "hunger", "hungered", " rapidly",
-                    from_what(HUNGER));
+            enl_msg(You_, _("hunger"), _("hungered"), " rapidly", from_what(HUNGER));
     }
     Strcpy(buf, hu_stat[u.uhs]); /* hunger status; omitted if "normal" */
     mungspaces(buf);             /* strip trailing spaces */
@@ -1259,7 +1257,7 @@ status_enlightenment(int mode, int final)
     /* report 'nudity' */
     if (!uarm && !uarmu && !uarmc && !uarms && !uarmg && !uarmf && !uarmh) {
         if (u.uroleplay.nudist)
-            enl_msg(You_, "do", "did", " not wear any armor", "");
+            enl_msg(You_, _("do"), _("did"), " not wear any armor", "");
         else
             you_are("not wearing any armor", "");
     }
@@ -1379,7 +1377,7 @@ weapon_insight(int final)
                 also3 = also_;
             }
             if (*pfx)
-                enl_msg(pfx, "is", "was", sfx, "");
+                enl_msg(pfx, _("is"), _("was"), sfx, "");
             else if (hav)
                 you_have(buf, "");
             else
@@ -1458,7 +1456,7 @@ weapon_insight(int final)
                         ((a1 && a2 && ab) ? ", and "
                          : (a2 && ab) ? also_wik_ : ""),
                         ab ? "two weapons" : "");
-                enl_msg(You_, "can enhance", "could have enhanced", sfx, "");
+                enl_msg(You_, _("can enhance"), _("could have enhanced"), sfx, "");
             }
         } /* two-weapon */
     } /* skill applies */
@@ -1514,7 +1512,7 @@ attributes_enlightenment(
 
     if (wizard) {
         Sprintf(buf, " %d", u.ualign.record);
-        enl_msg("Your alignment ", "is", "was", buf, "");
+        enl_msg("Your alignment ", _("is"), _("was"), buf, "");
     }
 
     /*** Resistances to troubles ***/
@@ -1557,8 +1555,7 @@ attributes_enlightenment(
         you_are(buf, from_what(STONE_RES));
     }
     if (Halluc_resistance)
-        enl_msg(You_, "resist", "resisted", " hallucinations",
-                from_what(HALLUC_RES));
+        enl_msg(You_, _("resist"), _("resisted"), " hallucinations", from_what(HALLUC_RES));
     if (u.uedibility)
         you_can("recognize detrimental food", "");
 
@@ -1570,13 +1567,11 @@ attributes_enlightenment(
                 from_what(BLND_RES));
     if (See_invisible) {
         if (!Blind)
-            enl_msg(You_, "see", "saw", " invisible", from_what(SEE_INVIS));
+            enl_msg(You_, _("see"), _("saw"), " invisible", from_what(SEE_INVIS));
         else if (!PermaBlind)
-            enl_msg(You_, "will see", "would have seen",
-                    " invisible when not blind", "");
+            enl_msg(You_, _("will see"), _("would have seen"), " invisible when not blind", "");
         else
-            enl_msg(You_, "would see", "would have seen",
-                    " invisible if not blind", "");
+            enl_msg(You_, _("would see"), _("would have seen"), " invisible if not blind", "");
     }
     if (Blind_telepat)
         you_are("telepathic", from_what(TELEPAT));
@@ -1616,7 +1611,7 @@ attributes_enlightenment(
     } else if ((HClairvoyant || EClairvoyant) && BClairvoyant) {
         Strcpy(buf, from_what(-CLAIRVOYANT));
         (void) strsubst(buf, " because of ", " if not for ");
-        enl_msg(You_, "could be", "could have been", " clairvoyant", buf);
+        enl_msg(You_, _("could be"), _("could have been"), " clairvoyant", buf);
     }
     if (Infravision)
         you_have("infravision", from_what(INFRAVISION));
@@ -1638,7 +1633,7 @@ attributes_enlightenment(
             else /* u.umconf > 1 */
                 Sprintf(eos(buf), " (next %u hits)", u.umconf);
         }
-        enl_msg(You_, "will confuse", "would have confused", buf, "");
+        enl_msg(You_, _("will confuse"), _("would have confused"), buf, "");
     }
 
     /*** Appearance and behavior ***/
@@ -1671,7 +1666,7 @@ attributes_enlightenment(
     } else if (BStealth && (HStealth || EStealth)) {
         Sprintf(buf, " stealthy%s",
                 (BStealth == FROMOUTSIDE) ? " if not mounted" : "");
-        enl_msg(You_, "would be", "would have been", buf, "");
+        enl_msg(You_, _("would be"), _("would have been"), buf, "");
     }
     if (Aggravate_monster)
         enl_msg("You aggravate", "", "d", " monsters",
@@ -1702,7 +1697,7 @@ attributes_enlightenment(
                     trapped ? " if not trapped" : "",
                     (trapped && terrain) ? " and" : "",
                     terrain ? if_surroundings_permitted : "");
-            enl_msg(You_, "would levitate", "would have levitated", buf, "");
+            enl_msg(You_, _("would levitate"), _("would have levitated"), buf, "");
         }
         BLevitation = save_BLev;
     }
@@ -1712,8 +1707,7 @@ attributes_enlightenment(
 
         BFlying = 0L;
         if (Flying) {
-            enl_msg(You_, "would fly", "would have flown",
-                    /* wording quibble: for past tense, "hadn't been"
+            enl_msg(You_, _("would fly"), _("would have flown"), /* wording quibble: for past tense, "hadn't been"
                        would sound better than "weren't" (and
                        "had permitted" better than "permitted"), but
                        "weren't" and "permitted" are adequate so the
@@ -1748,7 +1742,7 @@ attributes_enlightenment(
                     u.uinwater ? (Underwater ? "you weren't underwater"
                                   : "you weren't in the water") : "");
             /* past tense is applicable for death while Unchanging */
-            enl_msg(You_, "could cling", "could have clung", buf, "");
+            enl_msg(You_, _("could cling"), _("could have clung"), buf, "");
         }
     }
     /* actively walking on water handled earlier as a status condition */
@@ -1812,7 +1806,7 @@ attributes_enlightenment(
     if (Half_spell_damage)
         enlght_halfdmg(HALF_SPDAM, final);
     if (Half_gas_damage)
-        enl_msg(You_, "take", "took", " reduced poison gas damage", "");
+        enl_msg(You_, _("take"), _("took"), " reduced poison gas damage", "");
     if (spellid(0) > NO_SPELL) { /* skip if no spells are known yet */
         /* greatly simplified edition of percent_success(spell.c)--may need
            to be suppressed if oversimplification leads to player confusion */
@@ -1828,7 +1822,7 @@ attributes_enlightenment(
             Strcpy(cast_adj, " enhanced by wearing a robe");
 
         if (*cast_adj)
-            enl_msg("Your spell casting ", "is", "was", cast_adj, "");
+            enl_msg("Your spell casting ", _("is"), _("was"), cast_adj, "");
     }
     /* polymorph and other shape change */
     if (Protection_from_shape_changers)
@@ -1903,7 +1897,7 @@ attributes_enlightenment(
     if (Fixed_abil)
         you_have("fixed abilities", from_what(FIXED_ABIL));
     if (Lifesaved)
-        enl_msg("Your life ", "will be", "would have been", " saved", "");
+        enl_msg("Your life ", _("will be"), _("would have been"), " saved", "");
 
     /*** Miscellany ***/
     if (Luck) {
@@ -1915,7 +1909,7 @@ attributes_enlightenment(
             Sprintf(eos(buf), " (%d)", Luck);
         you_are(buf, "");
     } else if (wizard)
-        enl_msg("Your luck ", "is", "was", " zero", "");
+        enl_msg("Your luck ", _("is"), _("was"), " zero", "");
     if (u.moreluck > 0)
         you_have("extra luck", "");
     else if (u.moreluck < 0)
@@ -1923,9 +1917,9 @@ attributes_enlightenment(
     if (carrying(LUCKSTONE) || stone_luck(TRUE)) {
         ltmp = stone_luck(FALSE);
         if (ltmp <= 0)
-            enl_msg("Bad luck ", "does", "did", " not time out for you", "");
+            enl_msg("Bad luck ", _("does"), _("did"), " not time out for you", "");
         if (ltmp >= 0)
-            enl_msg("Good luck ", "does", "did", " not time out for you", "");
+            enl_msg("Good luck ", _("does"), _("did"), " not time out for you", "");
     }
 
     if (u.ugangr) {
@@ -1933,7 +1927,7 @@ attributes_enlightenment(
                 u.ugangr > 6 ? "extremely " : u.ugangr > 3 ? "very " : "");
         if (wizard)
             Sprintf(eos(buf), " (%d)", u.ugangr);
-        enl_msg(u_gname(), " is", " was", buf, "");
+        enl_msg(u_gname(), _(" is"), _(" was"), buf, "");
     } else {
         /*
          * We need to suppress this when the game is over, because death
@@ -1966,11 +1960,11 @@ attributes_enlightenment(
                               * but it does useful sanity checking */
         for (f = gf.ffruit; f; f = f->nextf) {
             Sprintf(buf, "Fruit #%d ", f->fid);
-            enl_msg(buf, "is ", "was ", f->fname, "");
+            enl_msg(buf, _("is "), _("was "), f->fname, "");
         }
-        enl_msg("The current fruit ", "is ", "was ", svp.pl_fruit, "");
+        enl_msg("The current fruit ", _("is "), _("was "), svp.pl_fruit, "");
         Sprintf(buf, "%d", flags.made_fruit);
-        enl_msg("The made fruit flag ", "is ", "was ", buf, "");
+        enl_msg("The made fruit flag ", _("is "), _("was "), buf, "");
     }
 #endif
 
@@ -1988,7 +1982,7 @@ attributes_enlightenment(
             p = "are dead";
             switch (u.umortality) {
             case 0:
-                impossible("dead without dying?");
+                impossible(_("dead without dying?"));
                 FALLTHROUGH;
                 /* FALLTHRU */
             case 1:
@@ -2000,7 +1994,7 @@ attributes_enlightenment(
             }
         }
         if (p)
-            enl_msg(You_, "have been killed ", p, buf, "");
+            enl_msg(You_, _("have been killed "), p, buf, "");
     }
 }
 
@@ -2115,8 +2109,7 @@ show_conduct(int final)
     /* note: we don't report "you are without possessions" unless the
        game started with the pauper option set */
     if (u.uroleplay.pauper)
-        enl_msg(You_, gi.invent ? "started" : "are", "started out",
-                " without possessions", "");
+        enl_msg(You_, gi.invent ? "started" : "are", _("started out"), " without possessions", "");
     /* nudist is far more than a subset of possessionless, and a much
        more impressive accomplishment, but showing "started out without
        possessions" before "faithfully nudist" looks more logical */
@@ -2124,7 +2117,7 @@ show_conduct(int final)
         you_have_been("faithfully nudist");
 
     if (!u.uconduct.food)
-        enl_msg(You_, "have gone", "went", " without food", "");
+        enl_msg(You_, _("have gone"), _("went"), " without food", "");
         /* but beverages are okay */
     else if (!u.uconduct.unvegan)
         you_have_X("followed a strict vegan diet");
@@ -2208,8 +2201,7 @@ show_conduct(int final)
         you_have_X(buf);
 
         if (!u.uconduct.wisharti)
-            enl_msg(You_, "have not wished", "did not wish",
-                    " for any artifacts", "");
+            enl_msg(You_, _("have not wished"), _("did not wish"), " for any artifacts", "");
     }
 
     /* only report Sokoban conduct if the Sokoban branch has been entered */
@@ -2287,11 +2279,10 @@ show_achievements(
 
         switch (absidx) {
         case ACH_BLND:
-            enl_msg(You_, "are exploring", "explored",
-                    " without being able to see", "");
+            enl_msg(You_, _("are exploring"), _("explored"), " without being able to see", "");
             break;
         case ACH_NUDE:
-            enl_msg(You_, "have gone", "went", " without any armor", "");
+            enl_msg(You_, _("have gone"), _("went"), " without any armor", "");
             break;
         case ACH_MINE:
             you_have_X("entered the Gnomish Mines");
@@ -2339,7 +2330,7 @@ show_achievements(
                     " the Bell of Opening", "");
             break;
         case ACH_HELL:
-            enl_msg(You_, "have ", "", "entered Gehennom", "");
+            enl_msg(You_, _("have "), "", "entered Gehennom", "");
             break;
         case ACH_CNDL:
             enl_msg(You_,
@@ -2414,7 +2405,7 @@ record_achievement(schar achidx)
        stored as the complement (ie, negative) to track gender */
     if ((achidx < 1 && (absidx < ACH_RNK1 || absidx > ACH_RNK8))
         || achidx >= N_ACH) {
-        impossible("Achievement #%d is out of range.", achidx);
+        impossible(_("Achievement #%d is out of range."), achidx);
         return;
     }
 
@@ -2958,7 +2949,7 @@ num_genocides(void)
         if (svm.mvitals[i].mvflags & G_GENOD) {
             ++n;
             if (UniqCritterIndx(i))
-                impossible("unique creature '%d: %s' genocided?",
+                impossible(_("unique creature '%d: %s' genocided?"),
                            i, mons[i].pmnames[NEUTRAL]);
         }
     }

@@ -349,7 +349,7 @@ staticfn void
 fix_curse_trouble(struct obj *otmp, const char *what)
 {
     if (!otmp) {
-        impossible("fix_curse_trouble: nothing to uncurse.");
+        impossible(_("fix_curse_trouble: nothing to uncurse."));
         return;
     }
     if (otmp == uarmg && Glib) {
@@ -502,7 +502,7 @@ fix_worst_trouble(int trouble)
             }
         }
         if (nohands(gy.youmonst.data) || !freehand())
-            impossible("fix_worst_trouble: couldn't cure hands.");
+            impossible(_("fix_worst_trouble: couldn't cure hands."));
         break;
     case TROUBLE_CURSED_BLINDFOLD:
         otmp = ublindf;
@@ -675,12 +675,12 @@ god_zaps_you(aligntyp resp_god)
         if (Is_astralevel(&u.uz) || Is_sanctum(&u.uz)) {
             /* one more try for high altars */
             SetVoice((struct monst *) 0, 0, 80, voice_deity);
-            verbalize("Thou cannot escape my wrath, mortal!");
+            verbalize(_("Thou cannot escape my wrath, mortal!"));
             summon_minion(resp_god, FALSE);
             summon_minion(resp_god, FALSE);
             summon_minion(resp_god, FALSE);
             SetVoice((struct monst *) 0, 0, 80, voice_deity);
-            verbalize("Destroy %s, my servants!", uhim());
+            verbalize(_("Destroy %s, my servants!"), uhim());
         }
     }
 }
@@ -729,7 +729,7 @@ angrygods(aligntyp resp_god)
                   ? "hast strayed from the path"
                   : "art arrogant", gy.youmonst.data->mlet == S_HUMAN ? "mortal" : "creature");
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
-        verbalize("Thou must relearn thy lessons!");
+        verbalize(_("Thou must relearn thy lessons!"));
         (void) adjattrib(A_WIS, -1, FALSE);
         losexp((char *) 0);
         break;
@@ -753,7 +753,7 @@ angrygods(aligntyp resp_god)
     case 8:
         godvoice(resp_god, (char *) 0);
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
-        verbalize("Thou durst %s me?",
+        verbalize(_("Thou durst %s me?"),
                   (on_altar() && (a_align(u.ux, u.uy) != resp_god))
                       ? "scorn"
                       : "call upon");
@@ -825,7 +825,7 @@ gcrownu(void)
     case A_LAWFUL:
         u.uevent.uhand_of_elbereth = 1;
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
-        verbalize("I crown thee...  The Hand of Elbereth!");
+        verbalize(_("I crown thee...  The Hand of Elbereth!"));
         livelog_printf(LL_DIVINEGIFT,
                        "was crowned \"The Hand of Elbereth\" by %s",
                        u_gname());
@@ -836,7 +836,7 @@ gcrownu(void)
         already_exists = exist_artifact(LONG_SWORD,
                                         artiname(ART_VORPAL_BLADE));
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
-        verbalize("Thou shalt be my Envoy of Balance!");
+        verbalize(_("Thou shalt be my Envoy of Balance!"));
         livelog_printf(LL_DIVINEGIFT, "became %s Envoy of Balance",
                        s_suffix(u_gname()));
         break;
@@ -849,7 +849,7 @@ gcrownu(void)
                 ? "take lives"
                 : "steal souls");
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
-        verbalize("Thou art chosen to %s for My Glory!", what);
+        verbalize(_("Thou art chosen to %s for My Glory!"), what);
         livelog_printf(LL_DIVINEGIFT, "was chosen to %s for the Glory of %s",
                        what, u_gname());
         break;
@@ -1201,12 +1201,12 @@ pleased(aligntyp g_align)
                 if (u.uevent.uheard_tune < 1) {
                     godvoice(g_align, (char *) 0);
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
-                    verbalize("Hark, %s!", is_human(gy.youmonst.data)
+                    verbalize(_("Hark, %s!"), is_human(gy.youmonst.data)
                                                ? "mortal"
                                                : "creature");
                     SetVoice((struct monst *) 0, 0, 80, voice_deity);
                     verbalize(
-                       "To enter the castle, thou must play the right tune!");
+                       _("To enter the castle, thou must play the right tune!"));
                     u.uevent.uheard_tune++;
                     break;
                 } else if (u.uevent.uheard_tune < 2) {
@@ -1310,7 +1310,7 @@ pleased(aligntyp g_align)
                 pline(msg, "my protection");
             }
             SetVoice((struct monst *) 0, 0, 80, voice_deity);
-            verbalize("Use it wisely in my name!");
+            verbalize(_("Use it wisely in my name!"));
             break;
         }
         case 7:
@@ -1325,7 +1325,7 @@ pleased(aligntyp g_align)
             give_spell();
             break;
         default:
-            impossible("Confused deity!");
+            impossible(_("Confused deity!"));
             break;
         }
 
@@ -1549,7 +1549,7 @@ offer_real_amulet(struct obj *otmp, aligntyp altaralign)
         display_nhwindow(WIN_MESSAGE, FALSE);
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
         verbalize(
-          "In return for thy service, I grant thee the gift of Immortality!");
+          _("In return for thy service, I grant thee the gift of Immortality!"));
         You(_("ascend to the status of Demigod%s..."),
             flags.female ? "dess" : "");
         done(ASCENDED);
@@ -2503,7 +2503,7 @@ align_gname(aligntyp alignment)
         gnam = gu.urole.cgod;
         break;
     default:
-        impossible("unknown alignment.");
+        impossible(_("unknown alignment."));
         gnam = "someone";
         break;
     }
@@ -2570,10 +2570,10 @@ halu_gname(aligntyp alignment)
         gnam = Moloch;
         break;
     default:
-        impossible("rn2 broken in halu_gname?!?");
+        impossible(_("rn2 broken in halu_gname?!?"));
     }
     if (!gnam) {
-        impossible("No random god name?");
+        impossible(_("No random god name?"));
         gnam = "your Friend the Computer"; /* Paranoia */
     }
     if (*gnam == '_')
@@ -2585,7 +2585,7 @@ halu_gname(aligntyp alignment)
 const char *
 align_gtitle(aligntyp alignment)
 {
-    const char *gnam, *result = "god";
+    const char *gnam, *result = _("god");
 
     switch (alignment) {
     case A_LAWFUL:
@@ -2602,7 +2602,7 @@ align_gtitle(aligntyp alignment)
         break;
     }
     if (gnam && *gnam == '_')
-        result = "goddess";
+        result = _("goddess");
     return result;
 }
 
@@ -2619,7 +2619,7 @@ altar_wrath(coordxy x, coordxy y)
         pline(_("%s %s%s:"), !Deaf ? "A voice (could it be"
                     : "Despite your deafness, you seem to hear", align_gname(altaralign), !Deaf ? "?) whispers" : " say");
         SetVoice((struct monst *) 0, 0, 80, voice_deity);
-        verbalize("Thou shalt pay, infidel!");
+        verbalize(_("Thou shalt pay, infidel!"));
         /* higher luck is more likely to be reduced; as it approaches -5
            the chance to lose another point drops down, eventually to 0 */
         if (Luck > -5 && rn2(Luck + 6))
