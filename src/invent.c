@@ -60,8 +60,8 @@ static const char venom_inv[] = { VENOM_CLASS, 0 }; /* (constant) */
    pointers aren't const because dispinv_with_action() might temporarily
    change "Accessories" to "Rings" or "Amulet", then back again */
 static const char *inuse_headers[] = { /* [4] shown first, [1] last */
-    "", "Miscellaneous", "Worn Armor",
-    "Wielded/Readied Weapons", "Accessories",
+    "", N_("Miscellaneous"), N_("Worn Armor"),
+    "Wielded/Readied Weapons", N_("Accessories"),
 };
 
 /* sortloot() classification for in-use sort;
@@ -1718,18 +1718,18 @@ staticfn char *
 getobj_hands_txt(const char *action, char *qbuf)
 {
     if (!strcmp(action, "grease")) {
-        Sprintf(qbuf, "your %s", fingers_or_gloves(FALSE));
+        Sprintf(qbuf, _("your %s"), fingers_or_gloves(FALSE));
     } else if (!strcmp(action, "write with")) {
-        Sprintf(qbuf, "your %s", body_part(FINGERTIP));
+        Sprintf(qbuf, _("your %s"), body_part(FINGERTIP));
     } else if (!strcmp(action, "wield")) {
-        Sprintf(qbuf, "your %s %s%s", uarmg ? "gloved" : "bare",
+        Sprintf(qbuf, _("your %s %s%s"), uarmg ? "gloved" : "bare",
                 makeplural(body_part(HAND)),
                 !uwep ? " (wielded)" : "");
     } else if (!strcmp(action, "ready")) {
-        Sprintf(qbuf, "empty quiver%s",
+        Sprintf(qbuf, _("empty quiver%s"),
                 !uquiver ? " (nothing readied)" : "");
     } else {
-        Sprintf(qbuf, "your %s", makeplural(body_part(HAND)));
+        Sprintf(qbuf, _("your %s"), makeplural(body_part(HAND)));
     }
     return qbuf;
 }
@@ -1930,7 +1930,7 @@ getobj(
             if (!buf[0])
                 Strcat(qbuf, " [*]");
             else
-                Sprintf(eos(qbuf), " [%s or ?*]", buf);
+                Sprintf(eos(qbuf), _(" [%s or ?*]"), buf);
             ilet = yn_function(qbuf, (char *) 0, '\0', FALSE);
         }
         if (digit(ilet)) {
@@ -2917,7 +2917,7 @@ xprname(
         /* if dot is true, we're doing Iu, otherwise Ix */
         if (dot && use_invlet)
             let = obj->invlet;
-        Sprintf(suffix, "%c%6ld %.50s", iflags.menu_tab_sep ? '\t' : ' ',
+        Sprintf(suffix, _("%c%6ld %.50s"), iflags.menu_tab_sep ? '\t' : ' ',
                 cost, currency(cost));
         if (!iflags.menu_tab_sep) {
             fmt = "%c - %-45.*s%s";
@@ -3301,7 +3301,7 @@ display_pickinv(
                  formattedobj = makeplural(body_part(HAND));
                  const char *gloved_or_bare = uarmg ? _("gloved") : _("bare");
                  const char *no_weapon = _("(no weapon)");
-                 Sprintf(barehands, "%s %s %s", gloved_or_bare, formattedobj, no_weapon);
+                 Sprintf(barehands, _("%s %s %s"), gloved_or_bare, formattedobj, no_weapon);
                  add_menu(win, &nul_glyphinfo, &any, ilet, 0,
                           ATR_NONE, clr, barehands, MENU_ITEMFLAGS_NONE);
             } else {
@@ -3727,7 +3727,7 @@ dounpaid(
                     char contbuf[BUFSZ];
 
                     /* Shopkeeper knows what to charge for contents */
-                    Sprintf(contbuf, "%s contents", s_suffix(xname(otmp)));
+                    Sprintf(contbuf, _("%s contents"), s_suffix(xname(otmp)));
                     putstr(win, 0,
                            xprname((struct obj *) 0, contbuf, CONTAINED_SYM,
                                    TRUE, contcost, 0L));
@@ -4060,7 +4060,7 @@ dfeature_at(coordxy x, coordxy y, char *buf)
     else if (IS_SINK(ltyp))
         cmap = S_sink; /* "sink" */
     else if (IS_ALTAR(ltyp)) {
-        Sprintf(altbuf, "%saltar to %s (%s)",
+        Sprintf(altbuf, _("%saltar to %s (%s)"),
                 (lev->altarmask & AM_SANCTUM) ? "high " : "",
                 a_gname(),
                 align_str(Amask2align(lev->altarmask & ~AM_SHRINE)));
@@ -4151,7 +4151,7 @@ look_here(
 
         regbuf[0] = '\0';
         if ((reg = visible_region_at(u.ux, u.uy)) != 0)
-            Sprintf(regbuf, "a %s cloud",
+            Sprintf(regbuf, _("a %s cloud"),
                     reg_damg(reg) ? "poison gas" : "vapor");
         if ((trap = t_at(u.ux, u.uy)) != 0 && !trap->tseen)
             trap = (struct trap *) NULL;
@@ -4269,14 +4269,14 @@ look_here(
             putstr(tmpwin, 0, fbuf);
             putstr(tmpwin, 0, "");
         }
-        Sprintf(buf, "%s that %s here:",
+        Sprintf(buf, _("%s that %s here:"),
                 picked_some ? "Other things" : "Things",
                 Blind ? "you feel" : "are");
         putstr(tmpwin, 0, buf);
         for (; otmp; otmp = otmp->nexthere) {
             if (otmp->otyp == CORPSE && will_feel_cockatrice(otmp, FALSE)) {
                 felt_cockatrice = TRUE;
-                Sprintf(buf, "%s...", doname(otmp));
+                Sprintf(buf, _("%s..."), doname(otmp));
                 putstr(tmpwin, 0, buf);
                 break;
             }
@@ -4330,7 +4330,7 @@ feel_cockatrice(struct obj *otmp, boolean force_touch)
         else
             pline(_("Touching %s is a fatal mistake..."), kbuf);
         /* normalize body shape here; hand, not body_part(HAND) */
-        Sprintf(kbuf, "touching %s bare-handed", killer_xname(otmp));
+        Sprintf(kbuf, _("touching %s bare-handed"), killer_xname(otmp));
         /* will call polymon() for the poly_when_stoned() case */
         instapetrify(kbuf);
     }
@@ -4497,7 +4497,7 @@ doprgold(void)
         }
         if (hmoney) {
             Sprintf(eos(buf),
-                    ", %s you have %ld %s stashed away in your pack",
+                    _(", %s you have %ld %s stashed away in your pack"),
                     umoney ? "and" : "but", hmoney,
                     umoney ? "more" : currency(hmoney));
         }
@@ -4762,9 +4762,9 @@ useupf(struct obj *obj, long numused)
  * This must match the object class order.
  */
 static NEARDATA const char *names[] = {
-    0, "Illegal objects", "Weapons", "Armor", "Rings", "Amulets", "Tools",
-    "Comestibles", "Potions", "Scrolls", "Spellbooks", "Wands", "Coins",
-    "Gems/Stones", "Boulders/Statues", "Iron balls", "Chains", "Venoms"
+    0, N_("Illegal objects"), "Weapons", "Armor", "Rings", "Amulets", "Tools",
+    N_("Comestibles"), "Potions", "Scrolls", N_("Spellbooks"), "Wands", "Coins",
+    "Gems/Stones", "Boulders/Statues", N_("Iron balls"), "Chains", "Venoms"
 };
 static NEARDATA const char oth_symbols[] = { CONTAINED_SYM, '\0' };
 static NEARDATA const char *oth_names[] = { "Bagged/Boxed items" };
@@ -5112,7 +5112,7 @@ doorganize_core(struct obj *obj)
         Strcpy(qbuf, "Adjust letter");
     else /* note: splitting->quan is the amount being left in original slot */
         Sprintf(qbuf, _("Split %ld"), obj->quan);
-    Sprintf(eos(qbuf), " to what [%s]%s?", lets,
+    Sprintf(eos(qbuf), _(" to what [%s]%s?"), lets,
             gi.invent ? " (? see used letters)" : "");
     for (trycnt = 1; ; ++trycnt) {
         let = !isgold ? yn_function(qbuf, (char *) 0, '\0', TRUE) : GOLD_SYM;
@@ -5326,7 +5326,7 @@ display_minventory(
         have_any = (have_inv || incl_hero),
         pickings = (dflags & MINV_PICKMASK);
 
-    Sprintf(tmp, "%s %s:", s_suffix(noit_Monnam(mon)),
+    Sprintf(tmp, _("%s %s:"), s_suffix(noit_Monnam(mon)),
             do_all ? "possessions" : "armament");
 
     if (do_all ? have_any : (mon->misc_worn_check || MON_WEP(mon))) {

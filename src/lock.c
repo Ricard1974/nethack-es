@@ -487,7 +487,7 @@ pick_lock(
                         return PICKLOCK_DID_NOTHING;
                 } else {
                     /* "There is <a box> here; <verb> <it|its lock>?" */
-                    Sprintf(qsfx, " here; %s %s?",
+                    Sprintf(qsfx, _(" here; %s %s?"),
                             verb, it ? "it" : "its lock");
                     (void) safe_qbuf(qbuf, "There is ", qsfx, otmp, doname,
                                      ansimpleoname, "a box");
@@ -613,7 +613,7 @@ pick_lock(
                 return PICKLOCK_LEARNED_SOMETHING;
             }
 
-            Sprintf(qbuf, "%s it%s%s?",
+            Sprintf(qbuf, _("%s it%s%s?"),
                     (door->doormask & D_LOCKED) ? "Unlock" : "Lock",
                     autounlock ? " with " : "",
                     autounlock ? yname(pick) : "");

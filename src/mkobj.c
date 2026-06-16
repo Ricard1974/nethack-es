@@ -3430,7 +3430,7 @@ check_glob(struct obj *obj, const char *mesg)
         ) {
         char mesgbuf[BUFSZ], globbuf[QBUFSZ];
 
-        Sprintf(globbuf, " glob %d,quan=%ld,owt=%u ",
+        Sprintf(globbuf, _(" glob %d,quan=%ld,owt=%u "),
                 obj->otyp, obj->quan, obj->owt);
         mesg = strsubst(strcpy(mesgbuf, mesg), " obj ", globbuf);
         insane_object(obj, ofmt0, mesg,

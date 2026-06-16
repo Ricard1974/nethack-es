@@ -723,7 +723,7 @@ drop(struct obj *obj)
             mnam_p = mon_nam(u.ustuck);
             /* doname can call s_suffix, reusing its buffer */
             if (digests(u.ustuck->data)) {
-                Sprintf(monbuf, "%s %s", s_suffix(mnam_p),
+                Sprintf(monbuf, _("%s %s"), s_suffix(mnam_p),
                         mbodypart(u.ustuck, STOMACH));
                 mnam_p = monbuf;
             }
@@ -2361,7 +2361,7 @@ dowipe(void)
     if (u.ucreamed) {
         static NEARDATA char buf[39];
 
-        Sprintf(buf, "wiping off your %s", body_part(FACE));
+        Sprintf(buf, _("wiping off your %s"), body_part(FACE));
         set_occupation(wipeoff, buf, 0);
         /* Not totally correct; what if they change back after now
          * but before they're finished wiping?

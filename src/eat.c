@@ -664,7 +664,7 @@ eat_brains(
             return M_ATTK_MISS;
         } else if (is_rider(pd)) {
             pline(_("%s"), _("Ingesting that is fatal."));
-            Sprintf(svk.killer.name, "unwisely ate the brain of %s",
+            Sprintf(svk.killer.name, _("unwisely ate the brain of %s"),
                     pmname(pd, Mgender(mdef)));
             svk.killer.format = NO_KILLER_PREFIX;
             done(DIED);
@@ -795,7 +795,7 @@ cprefx(int pm)
             if (svc.context.tin.tin)
                 use_up_tin(svc.context.tin.tin);
 
-            Sprintf(svk.killer.name, "tasting %s meat",
+            Sprintf(svk.killer.name, _("tasting %s meat"),
                     mons[pm].pmnames[NEUTRAL]);
             svk.killer.format = KILLED_BY;
             You(_("turn to stone."));
@@ -827,7 +827,7 @@ cprefx(int pm)
     case PM_PESTILENCE:
     case PM_FAMINE: {
         pline(_("%s"), _("Eating that is instantly fatal."));
-        Sprintf(svk.killer.name, "unwisely ate the body of %s",
+        Sprintf(svk.killer.name, _("unwisely ate the body of %s"),
                 mons[pm].pmnames[NEUTRAL]);
         svk.killer.format = NO_KILLER_PREFIX;
         done(DIED);
@@ -1437,10 +1437,10 @@ tin_details(struct obj *obj, int mnum, char *buf)
         if ((obj->cknown || iflags.override_ID) && obj->spe < 0) {
             if (r == ROTTEN_TIN || r == HOMEMADE_TIN) {
                 /* put these before the word tin */
-                Sprintf(buf2, "%s %s of ", tintxts[r].txt, buf);
+                Sprintf(buf2, _("%s %s of "), tintxts[r].txt, buf);
                 Strcpy(buf, buf2);
             } else {
-                Sprintf(eos(buf), " of %s ", tintxts[r].txt);
+                Sprintf(eos(buf), _(" of %s "), tintxts[r].txt);
             }
         } else {
             Strcpy(eos(buf), " of ");
@@ -1448,7 +1448,7 @@ tin_details(struct obj *obj, int mnum, char *buf)
         if (vegetarian(&mons[mnum]))
             Sprintf(eos(buf), "%s", mons[mnum].pmnames[NEUTRAL]);
         else
-            Sprintf(eos(buf), "%s meat", mons[mnum].pmnames[NEUTRAL]);
+            Sprintf(eos(buf), _("%s meat"), mons[mnum].pmnames[NEUTRAL]);
     }
 }
 
@@ -2050,7 +2050,7 @@ start_eating(struct obj *otmp, boolean already_partly_eaten)
         return;
     }
 
-    Sprintf(msgbuf, "eating %s", food_xname(otmp, TRUE));
+    Sprintf(msgbuf, _("eating %s"), food_xname(otmp, TRUE));
     set_occupation(eatfood, msgbuf, 0);
 }
 
@@ -2538,7 +2538,7 @@ fpostfx(struct obj *otmp)
                 && !(poly_when_stoned(gy.youmonst.data)
                      && polymon(PM_STONE_GOLEM))) {
                 if (!Stoned) {
-                    Sprintf(svk.killer.name, "%s egg",
+                    Sprintf(svk.killer.name, _("%s egg"),
                             mons[otmp->corpsenm].pmnames[NEUTRAL]);
                     make_stoned(5L, (char *) 0, KILLED_BY_AN,
                                 svk.killer.name);
@@ -3658,7 +3658,7 @@ floorfood(
             /* "There is <an object> here; <verb> it?" or
                "There are <N objects> here; <verb> one?" */
             Sprintf(qbuf, _("There %s "), otense(otmp, "are"));
-            Sprintf(qsfx, " here; %s %s?", verb, one ? "it" : "one");
+            Sprintf(qsfx, _(" here; %s %s?"), verb, one ? "it" : "one");
             (void) safe_qbuf(qbuf, qbuf, qsfx, otmp, doname, ansimpleoname,
                              one ? something : (const char *) "things");
             if ((c = yn_function(qbuf, ynqchars, 'n', TRUE)) == 'y')
@@ -3779,7 +3779,7 @@ consume_oeaten(struct obj *obj, int amt)
             Strcpy(itembuf, (otyp == CORPSE) ? "corpse"
                             : (otyp == EGG) ? "egg"
                               : (otyp == TIN) ? "tin" : "other?");
-            Sprintf(eos(itembuf), " [%d]", obj->corpsenm);
+            Sprintf(eos(itembuf), _(" [%d]"), obj->corpsenm);
         } else {
             Sprintf(itembuf, "%d", otyp);
         }

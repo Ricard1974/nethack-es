@@ -565,7 +565,7 @@ fix_worst_trouble(int trouble)
         if (cure_deaf) {
             make_deaf(0L, FALSE);
             if (!Deaf)
-                Sprintf(eos(msgbuf), "%s can hear again",
+                Sprintf(eos(msgbuf), _("%s can hear again"),
                         !*msgbuf ? "You" : " and you");
         }
         if (*msgbuf)
@@ -691,7 +691,7 @@ fry_by_god(aligntyp resp_god, boolean via_disintegration)
     You(_("%s!"), !via_disintegration ? "fry to a crisp"
                                    : "disintegrate into a pile of dust");
     svk.killer.format = KILLED_BY;
-    Sprintf(svk.killer.name, "the wrath of %s", align_gname(resp_god));
+    Sprintf(svk.killer.name, _("the wrath of %s"), align_gname(resp_god));
     done(DIED);
 }
 
@@ -931,7 +931,7 @@ gcrownu(void)
     case A_CHAOTIC: {
         char swordbuf[BUFSZ];
 
-        Sprintf(swordbuf, "%s sword", hcolor(NH_BLACK));
+        Sprintf(swordbuf, _("%s sword"), hcolor(NH_BLACK));
         if (class_gift != STRANGE_OBJECT) {
             ; /* already got bonus above */
         } else if (obj && in_hand) {
@@ -1157,7 +1157,7 @@ pleased(aligntyp g_align)
 
                 *repair_buf = '\0';
                 if (uwep->oeroded || uwep->oeroded2)
-                    Sprintf(repair_buf, " and %s now as good as new",
+                    Sprintf(repair_buf, _(" and %s now as good as new"),
                             otense(uwep, "are"));
 
                 if (uwep->cursed) {
@@ -1520,7 +1520,7 @@ offer_real_amulet(struct obj *otmp, aligntyp altaralign)
         /*[apparently shrug/snarl can be sensed without being seen]*/
         pline(_("%s shrugs and retains dominion over %s,"), Moloch, u_gname());
         pline(_("%s"), _("then mercilessly snuffs out your life."));
-        Sprintf(svk.killer.name, "%s indifference", s_suffix(Moloch));
+        Sprintf(svk.killer.name, _("%s indifference"), s_suffix(Moloch));
         svk.killer.format = KILLED_BY;
         done(DIED);
         /* life-saved (or declined to die in wizard/explore mode) */
@@ -1777,7 +1777,7 @@ bestow_artifact(uchar max_giftvalue)
                             : Blind ? "an object"
                             : ansimpleoname(otmp)));
             if (!Blind)
-                Sprintf(eos(buf), " named %s",
+                Sprintf(eos(buf), _(" named %s"),
                         bare_artifactname(otmp));
             at_your_feet(upstart(buf));
             dropy(otmp);

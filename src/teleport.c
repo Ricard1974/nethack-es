@@ -877,7 +877,7 @@ scrolltele(struct obj *scroll)
 
             Strcpy(whobuf, "you");
             if (u.usteed)
-                Sprintf(eos(whobuf), " and %s", mon_nam(u.usteed));
+                Sprintf(eos(whobuf), _(" and %s"), mon_nam(u.usteed));
             pline(_("Where do %s want to be teleported?"), whobuf);
             if (scroll)
                 learnscroll(scroll);
@@ -1350,7 +1350,7 @@ level_tele(void)
             pline(_("%s"), _("Unfortunately, you don't know how to fly."));
             You(_("plummet a few thousand feet to your death."));
             Sprintf(svk.killer.name,
-                    "teleported out of the dungeon and fell to %s death",
+                    _("teleported out of the dungeon and fell to %s death"),
                     uhis());
             svk.killer.format = NO_KILLER_PREFIX;
         }
@@ -1540,7 +1540,7 @@ level_tele_trap(struct trap *trap, unsigned int trflags)
         Strcpy(verbbuf, "trigger"); /* follows "You sit down." */
         intentional = TRUE;
     } else
-        Sprintf(verbbuf, "%s onto", u_locomotion("step"));
+        Sprintf(verbbuf, _("%s onto"), u_locomotion("step"));
     You(_("%s a level teleport trap!"), verbbuf);
 
     if (Antimagic && !intentional) {
@@ -1905,7 +1905,7 @@ control_mon_tele(
 
     pline(_("Teleport %s @ <%d,%d> where?"), noit_mon_nam(mon), mon->mx, mon->my);
     /* getpos '?' will show "Move the cursor to <where to teleport Foo>:" */
-    Sprintf(tcbuf, "where to teleport %s", noit_mon_nam(mon));
+    Sprintf(tcbuf, _("where to teleport %s"), noit_mon_nam(mon));
     if (getpos(cc_p, FALSE, tcbuf) >= 0 && !u_at(cc_p->x, cc_p->y)) {
         if (via_rloc
               ? rloc_pos_ok(cc_p->x, cc_p->y, mon)

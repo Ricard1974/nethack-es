@@ -115,7 +115,7 @@ burnarmor(struct monst *victim)
             item = hitting_u ? uarmh : which_armor(victim, W_ARMH);
             if (item) {
                 mat_idx = objects[item->otyp].oc_material;
-                Sprintf(buf, "%s %s", materialnm[mat_idx],
+                Sprintf(buf, _("%s %s"), materialnm[mat_idx],
                         helm_simple_name(item));
             }
             if (!burn_dmg(item, item ? buf : "helmet"))
@@ -298,9 +298,9 @@ erode_obj(
             char actbuf[BUFSZ];
 
             if (!crackers)
-                Sprintf(actbuf, "%s away", vtense(ostr, action[type]));
+                Sprintf(actbuf, _("%s away"), vtense(ostr, action[type]));
             else
-                Sprintf(actbuf, "shatters");
+                Sprintf(actbuf, _("shatters"));
             pline(_("%s %s %s!"),
                   uvictim ? "Your"
                   : !vismon ? "The" /* visobj */
@@ -1838,11 +1838,11 @@ trapeffect_pit(
             *verbbuf = '\0';
             if (u.usteed) {
                 if ((trflags & RECURSIVETRAP) != 0)
-                    Sprintf(verbbuf, "and %s fall",
+                    Sprintf(verbbuf, _("and %s fall"),
                             x_monnam(u.usteed, steed_article, (char *) 0,
                                      SUPPRESS_SADDLE, FALSE));
                 else
-                    Sprintf(verbbuf, "lead %s",
+                    Sprintf(verbbuf, _("lead %s"),
                             x_monnam(u.usteed, steed_article, "poor",
                                      SUPPRESS_SADDLE, FALSE));
             } else if (iflags.menu_requested && already_known) {
@@ -2102,11 +2102,11 @@ trapeffect_web(
             if (forcetrap || viasitting) {
                 Strcpy(verbbuf, "are caught by");
             } else if (u.usteed) {
-                Sprintf(verbbuf, "lead %s into",
+                Sprintf(verbbuf, _("lead %s into"),
                         x_monnam(u.usteed, steed_article, "poor",
                                  SUPPRESS_SADDLE, FALSE));
             } else {
-                Sprintf(verbbuf, "%s into", u_locomotion("stumble"));
+                Sprintf(verbbuf, _("%s into"), u_locomotion("stumble"));
             }
             You(_("%s %s spider web!"), verbbuf, a_your[trap->madeby_u]);
         }
@@ -2436,11 +2436,11 @@ trapeffect_poly_trap(
         if (viasitting)
             Strcpy(verbbuf, "trigger"); /* follows "You sit down." */
         else if (u.usteed)
-            Sprintf(verbbuf, "lead %s onto",
+            Sprintf(verbbuf, _("lead %s onto"),
                     x_monnam(u.usteed, steed_article, (char *) 0,
                              SUPPRESS_SADDLE, FALSE));
         else
-            Sprintf(verbbuf, "%s onto", u_locomotion("step"));
+            Sprintf(verbbuf, _("%s onto"), u_locomotion("step"));
         You(_("%s a polymorph trap!"), verbbuf);
         if (wearing_iron_shoes(mtmp)) {
             deltrap(trap);
@@ -3839,7 +3839,7 @@ selftouch(const char *arg)
         && !Stone_resistance) {
         corpse_pmname = obj_pmname(uwep);
         pline(_("%s touch the %s corpse."), arg, corpse_pmname);
-        Sprintf(kbuf, "%s corpse", an(corpse_pmname));
+        Sprintf(kbuf, _("%s corpse"), an(corpse_pmname));
         instapetrify(kbuf);
         /* life-saved; unwield the corpse if we can't handle it */
         if (!uarmg && !Stone_resistance)
@@ -3851,7 +3851,7 @@ selftouch(const char *arg)
         && touch_petrifies(&mons[uswapwep->corpsenm]) && !Stone_resistance) {
         corpse_pmname = obj_pmname(uswapwep);
         pline(_("%s touch the %s corpse."), arg, corpse_pmname);
-        Sprintf(kbuf, "%s corpse", an(corpse_pmname));
+        Sprintf(kbuf, _("%s corpse"), an(corpse_pmname));
         instapetrify(kbuf);
         /* life-saved; unwield the corpse */
         if (!uarmg && !Stone_resistance)
@@ -5653,7 +5653,7 @@ help_monster_out(
         } else {
             char kbuf[BUFSZ];
 
-            Sprintf(kbuf, "trying to help %s out of a pit", an(mtmp_pmname));
+            Sprintf(kbuf, _("trying to help %s out of a pit"), an(mtmp_pmname));
             instapetrify(kbuf);
             return 1;
         }
@@ -6080,7 +6080,7 @@ openholdingtrap(
         else if (u.utraptype == TT_BURIEDBALL)
             Sprintf(buf, _("You and %s are"), y_monnam(u.usteed));
         else
-            Sprintf(buf, "%s is", noit_Monnam(u.usteed));
+            Sprintf(buf, _("%s is"), noit_Monnam(u.usteed));
         /* give release message before untrap in case it triggers a message */
         pline(_("%s released from %s%s."), buf, which, trapdescr);
         /* might float up if Levitation is being unblocked */
@@ -6267,7 +6267,7 @@ chest_trap(
                        && *in_rooms(ox, oy, SHOPBASE) == *u.ushops);
 
             pline(_("%s!"), Tobjnam(obj, "explode"));
-            Sprintf(buf, "exploding %s", xname(obj));
+            Sprintf(buf, _("exploding %s"), xname(obj));
 
             if (costly)
                 loss += stolen_value(obj, ox, oy, (boolean) shkp->mpeaceful,

@@ -334,7 +334,7 @@ sickness_dialogue(void)
         if (Hallucination && strstri(buf, "Death's door")) {
             /* youmonst: for Hallucination, mhe()'s mon argument isn't used */
             Strcpy(pronounbuf, mhe(&gy.youmonst));
-            Sprintf(eos(buf), "  %s %s inviting you in.",
+            Sprintf(eos(buf), _("  %s %s inviting you in."),
                     /* upstart() modifies its argument but vtense() doesn't
                        care whether or not that has already happened */
                     upstart(pronounbuf), vtense(pronounbuf, "are"));
@@ -1130,7 +1130,7 @@ hatch_egg(anything *arg, long timeout)
                 mon2 = egg->ocarry;
                 if (canseemon(mon2)
                     && (!mon2->wormno || cansee(mon2->mx, mon2->my))) {
-                    Sprintf(carriedby, "%s pack",
+                    Sprintf(carriedby, _("%s pack"),
                             s_suffix(a_monnam(mon2)));
                     knows_egg = TRUE;
                 } else if (is_pool(mon->mx, mon->my)) {
@@ -1242,7 +1242,7 @@ slip_or_trip(void)
         }
         if (!uarmf && otmp->otyp == CORPSE
             && touch_petrifies(&mons[otmp->corpsenm]) && !Stone_resistance) {
-            Sprintf(svk.killer.name, "tripping over %s corpse",
+            Sprintf(svk.killer.name, _("tripping over %s corpse"),
                     an(mons[otmp->corpsenm].pmnames[NEUTRAL]));
             instapetrify(svk.killer.name);
         }
@@ -1991,12 +1991,12 @@ print_queue(winid win, timer_element *base)
         putstr(win, 0, "timeout  id   kind   call");
         for (curr = base; curr; curr = curr->next) {
 #ifdef VERBOSE_TIMER
-            Sprintf(buf, " %4ld   %4ld  %-6s %s(%s)", curr->timeout,
+            Sprintf(buf, _(" %4ld   %4ld  %-6s %s(%s)"), curr->timeout,
                     (long) curr->tid, kind_name(curr->kind),
                     timeout_funcs[curr->func_index].name,
                     fmt_ptr((genericptr_t) curr->arg.a_void));
 #else
-            Sprintf(buf, " %4ld   %4ld  %-6s #%d(%s)", curr->timeout,
+            Sprintf(buf, _(" %4ld   %4ld  %-6s #%d(%s)"), curr->timeout,
                     curr->tid, kind_name(curr->kind), curr->func_index,
                     fmt_ptr((genericptr_t) curr->arg.a_void));
 #endif
@@ -2060,7 +2060,7 @@ wiz_timeout_queue(void)
                    width of 4 digits should result in values lining up
                    almost all the time (if/when they don't, it won't
                    look nice but the information will still be accurate) */
-                Sprintf(buf, " %*s %4ld", -longestlen, propname,
+                Sprintf(buf, _(" %*s %4ld"), -longestlen, propname,
                         (intrinsic & TIMEOUT));
                 putstr(win, 0, buf);
             }
@@ -2235,9 +2235,9 @@ start_timer(
         char idbuf[QBUFSZ];
 
 #ifdef VERBOSE_TIMER
-        Sprintf(idbuf, "%s timer", timeout_funcs[func_index].name);
+        Sprintf(idbuf, _("%s timer"), timeout_funcs[func_index].name);
 #else
-        Sprintf(idbuf, "%s timer (%d)", kind_name(kind), (int) func_index);
+        Sprintf(idbuf, _("%s timer (%d)"), kind_name(kind), (int) func_index);
 #endif
         impossible(_("Attempted to start duplicate %s, aborted."), idbuf);
         return FALSE;

@@ -203,8 +203,8 @@ nhl_error(lua_State *L, const char *msg)
 
     lua_getstack(L, 1, &ar);
     lua_getinfo(L, "lS", &ar);
-    Sprintf(buf, "%s (line %d ", msg, ar.currentline);
-    Sprintf(eos(buf), "%.*s)",
+    Sprintf(buf, _("%s (line %d "), msg, ar.currentline);
+    Sprintf(eos(buf), _("%.*s)"),
             /* (max length of ar.short_src is actually LUA_IDSIZE
                so this is overkill for it, but crucial for ar.source) */
             (int) (sizeof buf - (strlen(buf) + sizeof ")")),

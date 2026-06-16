@@ -373,13 +373,13 @@ check_wornmask_slots(void)
                 if (otmp == o)
                     break;
             if (!otmp)
-                Sprintf(whybuf, "%s (%s) not found in invent",
+                Sprintf(whybuf, _("%s (%s) not found in invent"),
                         wp->w_what, fmt_ptr(o));
             else if ((o->owornmask & m) == 0L)
-                Sprintf(whybuf, "%s bit not set in owornmask [0x%08lx]",
+                Sprintf(whybuf, _("%s bit not set in owornmask [0x%08lx]"),
                         wp->w_what, o->owornmask);
             else if ((o->owornmask & ~(m | IGNORE_SLOTS)) != 0L)
-                Sprintf(whybuf, "%s wrong bit set in owornmask [0x%08lx]",
+                Sprintf(whybuf, _("%s wrong bit set in owornmask [0x%08lx]"),
                         wp->w_what, o->owornmask);
             if (whybuf[0])
                 impossible(_("Worn-slot insanity: %s."), whybuf);
@@ -396,7 +396,7 @@ check_wornmask_slots(void)
                    W_ARM bit set if we didn't screen it out here */
                 && (m != W_ARM || otmp != uskin
                     || (otmp->owornmask & I_SPECIAL) == 0L)) {
-                Sprintf(whybuf, "%s [0x%08lx] has %s mask 0x%08lx bit set",
+                Sprintf(whybuf, _("%s [0x%08lx] has %s mask 0x%08lx bit set"),
                         simpleonames(otmp), otmp->owornmask, wp->w_what, m);
                 impossible(_("Worn-slot insanity: %s."), whybuf);
             }
@@ -414,19 +414,19 @@ check_wornmask_slots(void)
             if (otmp == o)
                 break;
         if (!otmp)
-            Sprintf(whybuf, "%s (%s) not found in invent",
+            Sprintf(whybuf, _("%s (%s) not found in invent"),
                     what, fmt_ptr(o));
         else if ((o->owornmask & m) != m)
-            Sprintf(whybuf, "%s bits not set in owornmask [0x%08lx]",
+            Sprintf(whybuf, _("%s bits not set in owornmask [0x%08lx]"),
                     what, o->owornmask);
         else if ((o->owornmask & ~(m | IGNORE_SLOTS)) != 0L)
-            Sprintf(whybuf, "%s wrong bit set in owornmask [0x%08lx]",
+            Sprintf(whybuf, _("%s wrong bit set in owornmask [0x%08lx]"),
                     what, o->owornmask);
         else if (!Is_dragon_scales(o))
-            Sprintf(whybuf, "%s (%s) %s not dragon scales",
+            Sprintf(whybuf, _("%s (%s) %s not dragon scales"),
                     what, simpleonames(o), otense(o, "are"));
         else if (Dragon_scales_to_pm(o) != &mons[u.umonnum])
-            Sprintf(whybuf, "%s, hero is not %s",
+            Sprintf(whybuf, _("%s, hero is not %s"),
                     what, an(mons[u.umonnum].pmnames[NEUTRAL]));
         if (whybuf[0])
             impossible(_("Worn-slot insanity: %s."), whybuf);
@@ -439,7 +439,7 @@ check_wornmask_slots(void)
         const char *why = NULL;
 
         if (!uwep || !uswapwep) {
-            Sprintf(whybuf, "without %s%s%s",
+            Sprintf(whybuf, _("without %s%s%s"),
                     !uwep ? "uwep" : "",
                     (!uwep && !uswapwep) ? " and without " : "",
                     !uswapwep ? "uswapwep" : "");
@@ -1321,7 +1321,7 @@ mon_break_armor(struct monst *mon, boolean polyspot)
             char buf[BUFSZ];
 
             You(_("touch %s."), mon_nam(u.usteed));
-            Sprintf(buf, "falling off %s",
+            Sprintf(buf, _("falling off %s"),
                     an(pmname(u.usteed->data, Mgender(u.usteed))));
             instapetrify(buf);
         }

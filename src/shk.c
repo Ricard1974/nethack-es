@@ -2562,7 +2562,7 @@ inherits(
         if (cansee(shkp->mx, shkp->my) && croaked && !silently) {
             takes[0] = '\0';
             if (has_head(shkp->data) && !rn2(2))
-                Sprintf(takes, ", shakes %s %s,", noit_mhis(shkp),
+                Sprintf(takes, _(", shakes %s %s,"), noit_mhis(shkp),
                         mbodypart(shkp, HEAD));
             pline(_("%s %slooks at your corpse%s and %s."), Shknam(shkp), helpless(shkp) ? "wakes up, " : "", takes, !inhishop(shkp) ? "disappears" : "sighs");
         }
@@ -3389,7 +3389,7 @@ shk_names_obj(
     obj_name = paydoname(obj);
     /* Use an alternate message when extra information is being provided */
     if (was_unknown) {
-        Sprintf(fmtbuf, "%%s; you %s", fmt);
+        Sprintf(fmtbuf, _("%%s; you %s"), fmt);
         obj_name[0] = highc(obj_name[0]);
         pline(fmtbuf, obj_name, (obj->quan > 1L) ? "them" : "it", amt,
               plur(amt), arg);
@@ -3791,14 +3791,14 @@ stolen_value(
                 }
                 still = "still ";
             }
-            Sprintf(buf, "%sowe %s %ld %s", still, shkname(shkp),
+            Sprintf(buf, _("%sowe %s %ld %s"), still, shkname(shkp),
                     value, currency(value));
             if (u_count) /* u_count > 0 implies Has_contents(obj) */
-                Sprintf(eos(buf), " for %s%sits contents",
+                Sprintf(eos(buf), _(" for %s%sits contents"),
                         was_unpaid ? "it and " : "",
                         (c_count > u_count) ? "some of " : "");
             else if (obj->oclass != COIN_CLASS)
-                Sprintf(eos(buf), " for %s",
+                Sprintf(eos(buf), _(" for %s"),
                         (obj->quan > 1L) ? "them" : "it");
 
             You(_("%s!"), buf); /* "You owe <shk> N zorkmids for it!" */
@@ -4078,7 +4078,7 @@ sellobj(
                when container's contents are unknown, plural "items"
                should be used to not give away information.
              */
-            Sprintf(qbuf, "%s offers%s %ld gold piece%s for %s%s ",
+            Sprintf(qbuf, _("%s offers%s %ld gold piece%s for %s%s "),
                     Shknam(shkp), short_funds ? " only" : "", offer,
                     plur(offer),
                     (cltmp && !ltmp)
@@ -5367,7 +5367,7 @@ price_quote(struct obj *first_obj)
             Sprintf(price, "%ld %s%s", cost, currency(cost),
                     (otmp->quan) > 1L ? " each" : "");
         }
-        Sprintf(buf, "%s%s, %s", contentsonly ? the_contents_of : "",
+        Sprintf(buf, _("%s%s, %s"), contentsonly ? the_contents_of : "",
                 doname(otmp), price);
         putstr(tmpwin, 0, buf), cnt++;
     }
@@ -5434,15 +5434,15 @@ DISABLE_WARNING_FORMAT_NONLITERAL
 
 /* First 4 supplied by Ronen and Tamar, remainder by development team */
 static const char *Izchak_speaks[] = {
-    "%s says: 'These shopping malls give me a headache.'",
-    "%s says: 'Slow down.  Think clearly.'",
-    "%s says: 'You need to take things one at a time.'",
-    "%s says: 'I don't like poofy coffee... give me Colombian Supremo.'",
-    "%s says that getting the devteam's agreement on anything is difficult.",
-    "%s says that he has noticed those who serve their deity will prosper.",
-    "%s says: 'Don't try to steal from me - I have friends in high places!'",
-    "%s says: 'You may well need something from this shop in the future.'",
-    "%s comments about the Valley of the Dead as being a gateway."
+    N_("%s says: 'These shopping malls give me a headache.'"),
+    N_("%s says: 'Slow down.  Think clearly.'"),
+    N_("%s says: 'You need to take things one at a time.'"),
+    N_("%s says: 'I don't like poofy coffee... give me Colombian Supremo.'"),
+    N_("%s says that getting the devteam's agreement on anything is difficult."),
+    N_("%s says that he has noticed those who serve their deity will prosper."),
+    N_("%s says: 'Don't try to steal from me - I have friends in high places!'"),
+    N_("%s says: 'You may well need something from this shop in the future.'"),
+    N_("%s comments about the Valley of the Dead as being a gateway.")
 };
 
 void
@@ -5839,7 +5839,7 @@ cad(
 
         /* alternate usage adds a leading double quote and trailing
            exclamation point plus sentence separating spaces */
-        Sprintf(cadbuf, "\"%s!  ", res);
+        Sprintf(cadbuf, _("\"%s!  "), res);
         cadbuf[1] = highc(cadbuf[1]);
         res = cadbuf;
     }

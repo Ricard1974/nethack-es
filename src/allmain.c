@@ -935,7 +935,7 @@ welcome(boolean new_game) /* false => restoring an old game */
      *  message."
      */
     if (new_game || u.ualignbase[A_ORIGINAL] != u.ualignbase[A_CURRENT] || adrift)
-        Sprintf(eos(buf), " %s%s",
+        Sprintf(eos(buf), _(" %s%s"),
                 adrift ? "adrift " : "",
                 adrift ? align_str(u.ualign.type)
                        : align_str(u.ualignbase[A_CURRENT]));
@@ -945,7 +945,7 @@ welcome(boolean new_game) /* false => restoring an old game */
             ? (gu.urole.allow & ROLE_GENDMASK) == (ROLE_MALE | ROLE_FEMALE)
             : currentgend != flags.initgend))
         Sprintf(eos(buf), " %s", genders[currentgend].adj);
-    Sprintf(eos(buf), " %s %s", gu.urace.adj,
+    Sprintf(eos(buf), _(" %s %s"), gu.urace.adj,
             (currentgend && gu.urole.name.f) ? gu.urole.name.f
                                              : gu.urole.name.m);
 

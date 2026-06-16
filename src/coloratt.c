@@ -250,7 +250,7 @@ color_attr_to_str(color_attr *ca)
 {
     static char buf[BUFSZ];
 
-    Sprintf(buf, "%s&%s",
+    Sprintf(buf, _("%s&%s"),
             clr2colorname(ca->color),
             attr2attrname(ca->attr));
     return buf;

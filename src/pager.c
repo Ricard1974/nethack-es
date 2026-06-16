@@ -113,19 +113,19 @@ self_lookat(char *outbuf)
     race[0] = '\0';
     if (!Upolyd)
         Sprintf(race, "%s ", gu.urace.adj);
-    Sprintf(outbuf, "%s%s%s called %s",
+    Sprintf(outbuf, _("%s%s%s called %s"),
             /* being blinded may hide invisibility from self */
             (Invis && (senseself() || !Blind)) ? "invisible " : "", race,
             pmname(&mons[u.umonnum], Ugender), svp.plname);
     if (u.usteed)
-        Sprintf(eos(outbuf), ", mounted on %s", y_monnam(u.usteed));
+        Sprintf(eos(outbuf), _(", mounted on %s"), y_monnam(u.usteed));
     if (u.uundetected || (Upolyd && U_AP_TYPE)
         || visible_region_at(u.ux, u.uy))
         mhidden_description(&gy.youmonst,
                             MHID_PREFIX | MHID_ARTICLE | MHID_REGION,
                             eos(outbuf));
     if (Punished)
-        Sprintf(eos(outbuf), ", chained to %s",
+        Sprintf(eos(outbuf), _(", chained to %s"),
                 uball ? ansimpleoname(uball) : "nothing?");
     if (u.utrap) /* bear trap, pit, web, in-floor, in-lava, tethered */
         Sprintf(eos(outbuf), ", %s", trap_predicament(trapbuf, 0, FALSE));
@@ -147,7 +147,7 @@ monhealthdescr(struct monst *mon, boolean addspace, char *outbuf)
         Sprintf(outbuf, "%s%s", (mon->mhp > 0) ? "nearly " : "",
                 !nonliving(mon->data) ? "deceased" : "defunct");
     else
-        Sprintf(outbuf, "%swounded",
+        Sprintf(outbuf, _("%swounded"),
                 (pct >= 95) ? "barely "
                 : (pct >= 80) ? "slightly "
                   : (pct < 20) ? "heavily "
@@ -249,7 +249,7 @@ mhidden_description(
                 goto objfrommap;
             Strcat(outbuf, something);
         } else if (is_hider(mon->data)) {
-            Sprintf(eos(outbuf), " on the %s",
+            Sprintf(eos(outbuf), _(" on the %s"),
                     ceiling_hider(mon->data) ? "ceiling"
                        : surface(x, y)); /* trapper */
         } else {
@@ -430,7 +430,7 @@ look_at_monster(
     name = (mtmp->data == &mons[PM_COYOTE] && accurate)
               ? coyotename(mtmp, monnambuf)
               : distant_monnam(mtmp, ARTICLE_NONE, monnambuf);
-    Sprintf(buf, "%s%s%s%s",
+    Sprintf(buf, _("%s%s%s%s"),
             (mtmp->mx != x || mtmp->my != y)
                 ? ((mtmp->isshk && accurate) ? "tail of " : "tail of a ")
                 : "",
@@ -471,7 +471,7 @@ look_at_monster(
 
         /* newsym lets you know of the trap, so mention it here */
         if (tt == BEAR_TRAP || is_pit(tt) || tt == WEB) {
-            Sprintf(eos(buf), ", trapped in %s", an(trapname(tt, FALSE)));
+            Sprintf(eos(buf), _(", trapped in %s"), an(trapname(tt, FALSE)));
             t->tseen = 1;
         }
     }
@@ -539,7 +539,7 @@ look_at_monster(
                                               : pmname(mtmp->data,
                                                        Mgender(mtmp)));
 
-                    Sprintf(eos(monbuf), "warned of %s", makeplural(whom));
+                    Sprintf(eos(monbuf), _("warned of %s"), makeplural(whom));
                 }
                 how_seen &= ~MONSEEN_WARNMON;
                 if (how_seen)
@@ -643,7 +643,7 @@ ice_descr(coordxy x, coordxy y, char *outbuf)
                                 : (time_left > 50L) ? 3   /* unsteady */
                                   : (time_left > 14L) ? 4 /* thin */
                                     : 5;                  /* slushy */
-        Sprintf(outbuf, "%s %s", icetyp[(int) iflags.ice_rating],
+        Sprintf(outbuf, _("%s %s"), icetyp[(int) iflags.ice_rating],
                 waterbody_name(x, y));
     }
     return outbuf;
@@ -691,7 +691,7 @@ lookat(coordxy x, coordxy y, char *buf, char *monbuf)
                 how |= 4;
 
             if (how)
-                Sprintf(eos(buf), " [seen: %s%s%s%s%s]",
+                Sprintf(eos(buf), _(" [seen: %s%s%s%s%s]"),
                         (how & 1) ? "infravision" : "",
                         /* add comma if telep and infrav */
                         ((how & 3) > 2) ? ", " : "",
@@ -703,7 +703,7 @@ lookat(coordxy x, coordxy y, char *buf, char *monbuf)
     } else if (u.uswallow) {
         /* when swallowed, we're only called for spots adjacent to hero,
            and blindness doesn't prevent hero from feeling what holds him */
-        Sprintf(buf, "interior of %s", mon_nam(u.ustuck));
+        Sprintf(buf, _("interior of %s"), mon_nam(u.ustuck));
         pm = u.ustuck->data;
     } else if (glyph_is_monster(glyph)) {
         if ((mtmp = m_at(x, y)) != 0) {
@@ -744,7 +744,7 @@ lookat(coordxy x, coordxy y, char *buf, char *monbuf)
         case S_altar:
             amsk = altarmask_at(x, y);
             algn = Amask2align(amsk & AM_MASK);
-            Sprintf(buf, "%s %saltar",
+            Sprintf(buf, _("%s %saltar"),
                     /* like endgame high priests, endgame high altars
                        are only recognizable when immediately adjacent */
                     (Is_astralevel(&u.uz) && !next2u(x, y)
@@ -1217,7 +1217,7 @@ add_cmap_descr(
     if (!found) {
         /* this is the first match */
         if (is_cmap_trap(idx) && idx != S_vibrating_square) {
-            Sprintf(out_str, "%sa trap", prefix);
+            Sprintf(out_str, _("%sa trap"), prefix);
             *hit_trap = TRUE;
         } else {
             Sprintf(out_str, "%s%s", prefix, (article == 2) ? the(x_str)
@@ -1268,7 +1268,7 @@ do_screen_description(
         /* Convert glyph at selected position to a symbol for use below. */
         map_glyphinfo(cc.x, cc.y, glyph, 0, &glyphinfo);
         sym = glyphinfo.ttychar;
-        Sprintf(prefix, "%s        ", encglyph(glyphinfo.glyph));
+        Sprintf(prefix, _("%s        "), encglyph(glyphinfo.glyph));
     } else
         Sprintf(prefix, "%c        ", sym);
 
@@ -1586,7 +1586,7 @@ do_screen_description(
         /* 3.6.3: this used to be "That can be many things" (without prefix)
            which turned it into a sentence that lacked its terminating period;
            we could add one below but reinstating the prefix here is better */
-        Sprintf(out_str, "%scan be many things", prefix);
+        Sprintf(out_str, _("%scan be many things"), prefix);
 
  didlook:
     if (looked) {
@@ -2025,7 +2025,7 @@ look_all(
                 if (count == 1) {
                     Strcpy(which, do_mons ? "monsters" : "objects");
                     if (nearby)
-                        Sprintf(outbuf, "%s currently shown near %s:",
+                        Sprintf(outbuf, _("%s currently shown near %s:"),
                                 upstart(which),
                                 (cmode != GPCOORDS_COMPASS)
                                   ? coord_desc(u.ux, u.uy, coordbuf, cmode)
@@ -2096,7 +2096,7 @@ look_traps(boolean nearby)
                        && ((!Is_waterlevel(&u.uz) && !Is_airlevel(&u.uz))
                            || couldsee(x, y))) {
                 Strcpy(lookbuf, trapname(t->ttyp, FALSE));
-                Sprintf(eos(lookbuf), ", obscured by %s", encglyph(glyph));
+                Sprintf(eos(lookbuf), _(", obscured by %s"), encglyph(glyph));
                 glyph = trap_to_glyph(t);
                 ++count;
             }
@@ -2106,7 +2106,7 @@ look_traps(boolean nearby)
                 cmode = (iflags.getpos_coords != GPCOORDS_NONE)
                            ? iflags.getpos_coords : GPCOORDS_MAP;
                 if (count == 1) {
-                    Sprintf(outbuf, "%sseen or remembered traps%s:",
+                    Sprintf(outbuf, _("%sseen or remembered traps%s:"),
                             nearby ? "nearby " : "",
                             nearby ? "" : " on this level");
                     putstr(win, 0, upstart(outbuf));
@@ -2195,7 +2195,7 @@ look_engrs(boolean nearby)
                 cmode = (iflags.getpos_coords != GPCOORDS_NONE)
                            ? iflags.getpos_coords : GPCOORDS_MAP;
                 if (count == 1) {
-                    Sprintf(outbuf, "%sseen or remembered engravings%s:",
+                    Sprintf(outbuf, _("%sseen or remembered engravings%s:"),
                             nearby ? "nearby " : "",
                             nearby ? "" : " on this level");
                     putstr(win, 0, upstart(outbuf));
@@ -2230,7 +2230,7 @@ static const char *suptext1[] = {
     "the ordinarily sheltered town that is located ",
     "deep within The Gnomish Mines.",
     "",
-    "The members of that vicious horde proudly and ",
+    N_("The members of that vicious horde proudly and "),
     "defiantly acclaim their allegiance to their",
     "leader %s in their names.",
     (char *) 0,
@@ -2241,7 +2241,7 @@ static const char *suptext2[] = {
     "a nefarious orc who is known to acquire property",
     "from thieves and sell it off for profit.",
     "",
-    "The perpetrator was last seen hanging around the",
+    N_("The perpetrator was last seen hanging around the"),
     "stairs leading to the Gnomish Mines.",
     (char *) 0,
 };
@@ -2584,7 +2584,7 @@ dowhatdoes_core(char q, char *cbuf)
 
         /* note: if "%-8s" gets changed, the "%8.8s" in dowhatdoes() will
            need a comparable change */
-        Sprintf(buf, "%-8s%s.", key2txt(q, keybuf), ec_desc);
+        Sprintf(buf, _("%-8s%s."), key2txt(q, keybuf), ec_desc);
         Strcpy(cbuf, buf);
         return cbuf;
     }
@@ -2731,7 +2731,7 @@ docontact(void)
     putstr(cwin, 0, buf);
     putstr(cwin, 0, "");
     putstr(cwin, 0, "For more information on NetHack, or to report a bug,");
-    Sprintf(buf, "visit our website \"%s\".", DEVTEAM_URL);
+    Sprintf(buf, _("visit our website \"%s\"."), DEVTEAM_URL);
     putstr(cwin, 0, buf);
     display_nhwindow(cwin, FALSE);
     destroy_nhwindow(cwin);
@@ -2914,7 +2914,7 @@ setopt_cmd(char *outbuf)
         cmdnm = cmdname_from_func(doset, cmdbuf, TRUE);
         if (!cmdnm) /* paranoia */
             cmdnm = "optionsfull";
-        Sprintf(eos(outbuf), "%s%.31s", (*cmdnm != '#') ? "#" : "", cmdnm);
+        Sprintf(eos(outbuf), _("%s%.31s"), (*cmdnm != '#') ? "#" : "", cmdnm);
 
         /* since there's no key bound to #optionsfull, include 'm O' */
         Strcat(outbuf, "\' or \'");
@@ -2928,7 +2928,7 @@ setopt_cmd(char *outbuf)
             cmdnm = cmdname_from_func(do_reqmenu, cmdbuf, TRUE);
             if (!cmdnm)
                 cmdnm = "reqmenu";
-            Sprintf(eos(outbuf), "%s%.31s", (*cmdnm != '#') ? "#" : "", cmdnm);
+            Sprintf(eos(outbuf), _("%s%.31s"), (*cmdnm != '#') ? "#" : "", cmdnm);
         }
         /* this is slightly iffy because the user shouldn't type <space> to
            get the command we're describing, but it improves readability */
@@ -2942,7 +2942,7 @@ setopt_cmd(char *outbuf)
             cmdnm = cmdname_from_func(doset_simple, cmdbuf, TRUE);
             if (!cmdnm) /* paranoia */
                 cmdnm = "options";
-            Sprintf(eos(outbuf), "%s%.31s", (*cmdnm != '#') ? "#" : "", cmdnm);
+            Sprintf(eos(outbuf), _("%s%.31s"), (*cmdnm != '#') ? "#" : "", cmdnm);
         }
     }
     Strcat(outbuf, "\'");

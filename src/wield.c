@@ -145,7 +145,7 @@ cant_wield_corpse(struct obj *obj)
 
     /* Prevent wielding cockatrice when not wearing gloves --KAA */
     You(_("wield %s in your bare %s."), corpse_xname(obj, (const char *) 0, CXN_PFX_THE), makeplural(body_part(HAND)));
-    Sprintf(kbuf, "wielding %s bare-handed", killer_xname(obj));
+    Sprintf(kbuf, _("wielding %s bare-handed"), killer_xname(obj));
     instapetrify(kbuf);
     return TRUE;
 }
@@ -796,7 +796,7 @@ drop_uswapwep(void)
        dual-wielded, or to get this far attempting to achieve that,
        uswapwep must be one-handed; since it's secondary, the hand must
        be the left one */
-    Sprintf(left_hand, "left %s", body_part(HAND));
+    Sprintf(left_hand, _("left %s"), body_part(HAND));
     if (!obj->cursed)
         /* attempting to two-weapon while Glib */
         pline(_("%s from your %s!"), Yobjnam2(obj, "slip"), left_hand);
@@ -907,7 +907,7 @@ chwepon(struct obj *otmp, int amount)
 
         if (amount >= 0 && uwep && will_weld(uwep)) { /* cursed tin opener */
             if (!Blind) {
-                Sprintf(buf, "%s with %s aura.",
+                Sprintf(buf, _("%s with %s aura."),
                         Yobjnam2(uwep, "glow"), an(hcolor(NH_AMBER)));
                 uwep->bknown = !Hallucination; /* ok to bypass set_bknown() */
             } else {

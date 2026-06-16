@@ -954,7 +954,7 @@ touch_artifact(struct obj *obj, struct monst *mon)
         /* add half (maybe quarter) of the usual silver damage bonus */
         if (objects[obj->otyp].oc_material == SILVER && Hate_silver)
             tmp = rnd(10), dmg += Maybe_Half_Phys(tmp);
-        Sprintf(buf, "touching %s", oart->name);
+        Sprintf(buf, _("touching %s"), oart->name);
         losehp(dmg, buf, KILLED_BY); /* magic damage, not physical */
         exercise(A_WIS, FALSE);
     }
@@ -1165,7 +1165,7 @@ disp_artifact_discoveries(
         if (!strcmp(algnstr, "unaligned"))
             algnstr = "non-aligned";
 
-        Sprintf(buf, "  %s [%s %s]", artiname(m),
+        Sprintf(buf, _("  %s [%s %s]"), artiname(m),
                 algnstr, simple_typename(otyp));
         putstr(tmpwin, 0, buf);
     }
@@ -1197,7 +1197,7 @@ dump_artifact_info(winid tmpwin)
                 artiexist[m].rndm   ? " random" : "");
 #if 0   /* 'tmpwin' here is a text window, not a menu */
         if (iflags.menu_tab_sep)
-            Sprintf(buf, "  %s\t%s", artiname(m), buf2);
+            Sprintf(buf, _("  %s\t%s"), artiname(m), buf2);
         else
 #else
             /* "The Platinum Yendorian Express Card" is 35 characters */
@@ -2532,7 +2532,7 @@ retouch_object(
                 tmp = rnd(10), dmg += Maybe_Half_Phys(tmp);
             if (bane)
                 dmg += rnd(10);
-            Sprintf(buf, "handling %s", what);
+            Sprintf(buf, _("handling %s"), what);
             losehp(dmg, buf, KILLED_BY);
             exercise(A_CON, FALSE);
         }

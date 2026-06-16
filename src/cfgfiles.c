@@ -312,7 +312,7 @@ fopen_config_file(const char *filename, int src)
     if (!envp || !*envp)
         Strcpy(tmp_config, "NetHack.cnf");
     else
-        Sprintf(tmp_config, "%s%s%s", envp,
+        Sprintf(tmp_config, _("%s%s%s"), envp,
                 !strchr(":]>/", envp[strlen(envp) - 1]) ? "/" : "",
                 "NetHack.cnf");
     set_configfile_name(tmp_config);

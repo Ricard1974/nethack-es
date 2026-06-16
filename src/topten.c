@@ -153,7 +153,7 @@ formatkiller(
         /* X <= siz: 'sizeof "string"' includes 1 for '\0' terminator */
         if (gm.multi_reason
             && strlen(gm.multi_reason) + sizeof ", while " <= siz)
-            Sprintf(buf, ", while %s", gm.multi_reason);
+            Sprintf(buf, _(", while %s"), gm.multi_reason);
         /* either gm.multi_reason wasn't specified or wouldn't fit */
         else if (sizeof ", while helpless" <= siz)
             Strcpy(buf, ", while helpless");
@@ -344,17 +344,17 @@ writexlentry(FILE *rfile, struct toptenentry *tt, int how)
     char buf[BUFSZ], tmpbuf[DTHSZ + 1];
     char achbuf[N_ACH * 40];
 
-    Sprintf(buf, "version=%d.%d.%d", tt->ver_major, tt->ver_minor,
+    Sprintf(buf, _("version=%d.%d.%d"), tt->ver_major, tt->ver_minor,
             tt->patchlevel);
-    Sprintf(eos(buf), "%cpoints=%ld%cdeathdnum=%d%cdeathlev=%d", XLOG_SEP,
+    Sprintf(eos(buf), _("%cpoints=%ld%cdeathdnum=%d%cdeathlev=%d"), XLOG_SEP,
             tt->points, XLOG_SEP, tt->deathdnum, XLOG_SEP, tt->deathlev);
-    Sprintf(eos(buf), "%cmaxlvl=%d%chp=%d%cmaxhp=%d", XLOG_SEP, tt->maxlvl,
+    Sprintf(eos(buf), _("%cmaxlvl=%d%chp=%d%cmaxhp=%d"), XLOG_SEP, tt->maxlvl,
             XLOG_SEP, tt->hp, XLOG_SEP, tt->maxhp);
-    Sprintf(eos(buf), "%cdeaths=%d%cdeathdate=%ld%cbirthdate=%ld%cuid=%d",
+    Sprintf(eos(buf), _("%cdeaths=%d%cdeathdate=%ld%cbirthdate=%ld%cuid=%d"),
             XLOG_SEP, tt->deaths, XLOG_SEP, tt->deathdate, XLOG_SEP,
             tt->birthdate, XLOG_SEP, tt->uid);
     Fprintf(rfile, "%s", buf);
-    Sprintf(buf, "%crole=%s%crace=%s%cgender=%s%calign=%s", XLOG_SEP,
+    Sprintf(buf, _("%crole=%s%crace=%s%cgender=%s%calign=%s"), XLOG_SEP,
             tt->plrole, XLOG_SEP, tt->plrace, XLOG_SEP, tt->plgend, XLOG_SEP,
             tt->plalign);
     /* make a copy of death reason that doesn't include ", while helpless" */
@@ -565,7 +565,7 @@ encode_extended_achievements(char *buf)
         /* rank 0 is the starting condition, not an achievement; 8 is Xp 30 */
         case ACH_RNK1: case ACH_RNK2: case ACH_RNK3: case ACH_RNK4:
         case ACH_RNK5: case ACH_RNK6: case ACH_RNK7: case ACH_RNK8:
-            Sprintf(rnkbuf, "attained_the_rank_of_%s",
+            Sprintf(rnkbuf, _("attained_the_rank_of_%s"),
                     rank_of(rank_to_xlev(absidx - (ACH_RNK1 - 1)),
                             Role_switch, (achidx < 0) ? TRUE : FALSE));
             strNsubst(rnkbuf, " ", "_", 0); /* replace every ' ' with '_' */
@@ -956,7 +956,7 @@ outentry(int rank, struct toptenentry *t1, boolean so)
     else
         Strcat(linebuf, "   ");
 
-    Sprintf(eos(linebuf), " %10ld  %.10s", t1->points ? t1->points : u.urexp,
+    Sprintf(eos(linebuf), _(" %10ld  %.10s"), t1->points ? t1->points : u.urexp,
             t1->name);
     Sprintf(eos(linebuf), "-%s", t1->plrole);
     if (t1->plrace[0] != '?')
@@ -971,7 +971,7 @@ outentry(int rank, struct toptenentry *t1, boolean so)
     else
         Strcat(linebuf, " ");
     if (!strncmp("escaped", t1->death, 7)) {
-        Sprintf(eos(linebuf), "escaped the dungeon %s[max level %d]",
+        Sprintf(eos(linebuf), _("escaped the dungeon %s[max level %d]"),
                 !strncmp(" (", t1->death + 7, 2) ? t1->death + 7 + 2 : "",
                 t1->maxlvl);
         /* fixup for closing paren in "escaped... with...Amulet)[max..." */
@@ -979,7 +979,7 @@ outentry(int rank, struct toptenentry *t1, boolean so)
             *bp = (t1->deathdnum == astral_level.dnum) ? '\0' : ' ';
         second_line = FALSE;
     } else if (!strncmp("ascended", t1->death, 8)) {
-        Sprintf(eos(linebuf), "ascended to demigod%s-hood",
+        Sprintf(eos(linebuf), _("ascended to demigod%s-hood"),
                 (t1->plgend[0] == 'F') ? "dess" : "");
         second_line = FALSE;
     } else {
@@ -990,7 +990,7 @@ outentry(int rank, struct toptenentry *t1, boolean so)
             Strcat(linebuf, "starved to death");
             second_line = FALSE;
         } else if (!strncmp(t1->death, "choked", 6)) {
-            Sprintf(eos(linebuf), "choked on h%s food",
+            Sprintf(eos(linebuf), _("choked on h%s food"),
                     (t1->plgend[0] == 'F') ? "er" : "is");
         } else if (!strncmp(t1->death, "poisoned", 8)) {
             Strcat(linebuf, "was poisoned");
@@ -1027,11 +1027,11 @@ outentry(int rank, struct toptenentry *t1, boolean so)
             }
             Sprintf(eos(linebuf), fmt, arg);
         } else {
-            Sprintf(eos(linebuf), " in %s", svd.dungeons[t1->deathdnum].dname);
+            Sprintf(eos(linebuf), _(" in %s"), svd.dungeons[t1->deathdnum].dname);
             if (t1->deathdnum != knox_level.dnum)
-                Sprintf(eos(linebuf), " on level %d", t1->deathlev);
+                Sprintf(eos(linebuf), _(" on level %d"), t1->deathlev);
             if (t1->deathlev != t1->maxlvl)
-                Sprintf(eos(linebuf), " [max %d]", t1->maxlvl);
+                Sprintf(eos(linebuf), _(" [max %d]"), t1->maxlvl);
         }
 
         /* kludge for "quit while already on Charon's boat" */
@@ -1043,7 +1043,7 @@ outentry(int rank, struct toptenentry *t1, boolean so)
     /* Quit, starved, ascended, and escaped contain no second line */
     if (second_line) {
         bp = eos(linebuf);
-        Sprintf(bp, "  %c%s.", highc(*(t1->death)), t1->death + 1);
+        Sprintf(bp, _("  %c%s."), highc(*(t1->death)), t1->death + 1);
         /* fix up "Killed by Mr. Asidonhopo; the shopkeeper"; that starts
            with a comma but has it changed to semi-colon to keep the comma
            out of 'record'; change it back for display */
@@ -1091,7 +1091,7 @@ outentry(int rank, struct toptenentry *t1, boolean so)
         while (bp < linebuf + hppos)
             *bp++ = ' ';
         Strcpy(bp, hpbuf);
-        Sprintf(eos(bp), " %s[%d]",
+        Sprintf(eos(bp), _(" %s[%d]"),
                 (t1->maxhp < 10) ? "  " : (t1->maxhp < 100) ? " " : "",
                 t1->maxhp);
     }

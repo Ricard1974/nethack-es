@@ -1417,7 +1417,7 @@ spelleffects(int spell_otyp, boolean atme, boolean force)
                     if (!u.dx && !u.dy && !u.dz) {
                         if ((damage = zapyourself(pseudo, TRUE)) != 0) {
                             char buf[BUFSZ];
-                            Sprintf(buf, "zapped %sself with a spell",
+                            Sprintf(buf, _("zapped %sself with a spell"),
                                     uhim());
                             losehp(damage, buf, NO_KILLER_PREFIX);
                         }
@@ -1491,7 +1491,7 @@ spelleffects(int spell_otyp, boolean atme, boolean force)
                 if ((damage = zapyourself(pseudo, TRUE)) != 0) {
                     char buf[BUFSZ];
 
-                    Sprintf(buf, "zapped %sself with a spell", uhim());
+                    Sprintf(buf, _("zapped %sself with a spell"), uhim());
                     if (physical_damage)
                         damage = Maybe_Half_Phys(damage);
                     losehp(damage, buf, NO_KILLER_PREFIX);
@@ -2102,7 +2102,7 @@ dospellmenu(
         sep = '\t';
     }
     if (wizard)
-        Sprintf(eos(buf), "%c%6s", sep, "turns");
+        Sprintf(eos(buf), _("%c%6s"), sep, "turns");
 
     add_menu_heading(tmpwin, buf);
     for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
@@ -2112,7 +2112,7 @@ dospellmenu(
                 100 - percent_success(splnum),
                 spellretention(splnum, retentionbuf));
         if (wizard)
-            Sprintf(eos(buf), "%c%6d", sep, spellknow(i));
+            Sprintf(eos(buf), _("%c%6d"), sep, spellknow(i));
 
         any.a_int = splnum + 1; /* must be non-zero */
         add_menu(tmpwin, &nul_glyphinfo, &any, spellet(splnum), 0,
@@ -2320,7 +2320,7 @@ spellretention(int idx, char * outbuf)
                        : 25L;
         /* round up to the high end of this range */
         percent = accuracy * ((percent - 1L) / accuracy + 1L);
-        Sprintf(outbuf, "%ld%%-%ld%%", percent - accuracy + 1L, percent);
+        Sprintf(outbuf, _("%ld%%-%ld%%"), percent - accuracy + 1L, percent);
     }
     return outbuf;
 }

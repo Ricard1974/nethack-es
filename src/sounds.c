@@ -735,7 +735,7 @@ domonnoise(struct monst *mtmp)
         } else {
             /* approximation of GEICO's advertising slogan (it actually
                concludes with "save you 15% or more on car insurance.") */
-            Sprintf(verbuf, "15 minutes could save you 15 %s.",
+            Sprintf(verbuf, _("15 minutes could save you 15 %s."),
                     currency(15L)); /* "zorkmids" */
             verbl_msg = verbuf;
         }
@@ -1600,13 +1600,13 @@ add_sound_mapping(const char *mapping)
                 if (*msgtyp) {
                     char tmpbuf[BUFSZ];
 
-                    Sprintf(tmpbuf, "%.10s \"%.230s\"", msgtyp, text);
+                    Sprintf(tmpbuf, _("%.10s \"%.230s\""), msgtyp, text);
                     (void) msgtype_parse_add(tmpbuf);
                 }
                 soundmap = new_map;
             }
         } else {
-            Sprintf(text, "cannot read %.243s", filespec);
+            Sprintf(text, _("cannot read %.243s"), filespec);
             raw_print(text);
             return 0;
         }

@@ -579,7 +579,7 @@ savebones(int how, time_t when, struct obj *corpse)
     /* format name+role,&c, death reason, and date+time;
        gender and alignment reflect final values rather than what the
        character started out as, same as topten and logfile entries */
-    Sprintf(newbones->who, "%s-%.3s-%.3s-%.3s-%.3s",
+    Sprintf(newbones->who, _("%s-%.3s-%.3s-%.3s-%.3s"),
             svp.plname, gu.urole.filecode,
             gu.urace.filecode, genders[flags.female].filecode,
             aligns[1 - u.ualign.type].filecode);

@@ -116,7 +116,7 @@ dynamic_multi_reason(struct monst *mon, const char *verb, boolean by_gaze)
     /* prefix info for done_in_by() */
     Sprintf(p, "%u:", mon->m_id);
     p = eos(p);
-    Sprintf(p, "%s by %s%s", verb,
+    Sprintf(p, _("%s by %s%s"), verb,
             !by_gaze ? who : s_suffix(who),
             !by_gaze ? "" : " gaze");
     gm.multi_reason = p;
@@ -992,7 +992,7 @@ hmon_hitmon_weapon_melee(
                for Yobjnam2() if an unseen mon other than the shopkeeper
                is wielding a shop-owned weapon; telepathy or extended
                monster detection will name mon but not its weapon */
-            Sprintf(buf, "%s weapon%s %s", s_suffix(Monnam(mon)),
+            Sprintf(buf, _("%s weapon%s %s"), s_suffix(Monnam(mon)),
                     plur(monwep->quan), otense(monwep, "shatter"));
         buf[sizeof buf - sizeof from_your_blow] = '\0';
         pline(_("%s%s"), buf, from_your_blow);
@@ -1608,7 +1608,7 @@ hmon_hitmon_splitmon(
         if ((mclone = clone_mon(mon, 0, 0)) != 0) {
             withwhat[0] = '\0';
             if (u.twoweap && flags.verbose)
-                Sprintf(withwhat, " with %s", yname(obj));
+                Sprintf(withwhat, _(" with %s"), yname(obj));
             pline(_("%s divides as you hit it%s!"), Monnam(mon), withwhat);
             hmd->hittxt = TRUE;
             (void) mintrap(mclone, NO_TRAP_FLAGS);
@@ -1692,7 +1692,7 @@ hmon_hitmon_msg_lightobj(
     if (canspotmon(mon)) {
         if (hmd->saved_oname[0]) {
             Sprintf(emitlightobjbuf,
-                    "%s radiance penetrates deep into",
+                    _("%s radiance penetrates deep into"),
                     s_suffix(hmd->saved_oname));
             Strcat(emitlightobjbuf, " %s!");
             fmt = emitlightobjbuf;
@@ -1955,7 +1955,7 @@ first_weapon_hit(struct obj *weapon)
     } else {
         Strcat(buf, simpleonames(weapon));
         if (weapon->oartifact && weapon->dknown)
-            Sprintf(eos(buf), " named %s", bare_artifactname(weapon));
+            Sprintf(eos(buf), _(" named %s"), bare_artifactname(weapon));
     }
 
     /* when a hit breaks the never-hit-with-wielded-weapon conduct
@@ -3112,7 +3112,7 @@ mhitm_ad_drst(
         }
         hitmsg(magr, mattk);
         if (!negated && !rn2(8)) {
-            Sprintf(buf, "%s %s", s_suffix(Monnam(magr)),
+            Sprintf(buf, _("%s %s"), s_suffix(Monnam(magr)),
                     mpoisons_subj(magr, mattk));
             poisoned(buf, ptmp, pmname(pa, Mgender(magr)), 30, FALSE);
         }
@@ -3349,7 +3349,7 @@ mhitm_ad_wrap(
 
                     urgent_pline("%s drowns you...", Monnam(magr));
                     svk.killer.format = KILLED_BY_AN;
-                    Sprintf(svk.killer.name, "%s by %s",
+                    Sprintf(svk.killer.name, _("%s by %s"),
                             moat ? "moat" : "pool of water",
                             an(pmname(magr->data, Mgender(magr))));
                     done(DROWNING);
@@ -4062,7 +4062,7 @@ mhitm_ad_phys(
                     /* similar to mhitm_really_poison, but we don't use the
                      * exact same values, nor do we want same 1/8 chance of
                      * poison taking (use 1/4, same as in the mhitm case). */
-                    Sprintf(buf, "%s %s", s_suffix(Monnam(magr)),
+                    Sprintf(buf, _("%s %s"), s_suffix(Monnam(magr)),
                             mpoisons_subj(magr, mattk));
                     /* arbitrary, but most poison sources in the game are
                      * strength-based. With hpdamchance = 10, HP damage occurs
@@ -4962,7 +4962,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
             if (!type_is_pname(pd))
                 mnam = an(mnam);
             You(_("%s %s."), u_digest ? "englut" : "engulf", mon_nam(mdef));
-            Sprintf(kbuf, "%s %s%s",
+            Sprintf(kbuf, _("%s %s%s"),
                     u_digest ? "swallowing"
                     : u_enfold ? "enclosing"
                       : "engulfing",
@@ -4976,7 +4976,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
                 if (is_rider(pd)) {
                     pline(_("%s"), _("Unfortunately, digesting any of it is fatal."));
                     end_engulf();
-                    Sprintf(svk.killer.name, "unwisely tried to eat %s",
+                    Sprintf(svk.killer.name, _("unwisely tried to eat %s"),
                             pmname(pd, Mgender(mdef)));
                     svk.killer.format = NO_KILLER_PREFIX;
                     done(DIED);
@@ -5031,7 +5031,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
                     } else
                         pline1(msgbuf);
                     if (pd == &mons[PM_GREEN_SLIME]) {
-                        Sprintf(msgbuf, "%s isn't sitting well with you.",
+                        Sprintf(msgbuf, _("%s isn't sitting well with you."),
                                 The(pmname(pd, Mgender(mdef))));
                         if (!Unchanging) {
                             make_slimed(5L, (char *) 0);

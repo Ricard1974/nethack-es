@@ -416,7 +416,7 @@ bhitm(struct monst *mtmp, struct obj *otmp)
         } else if ((obj = which_armor(mtmp, W_SADDLE)) != 0) {
             char buf[BUFSZ];
 
-            Sprintf(buf, "%s %s", s_suffix(Monnam(mtmp)),
+            Sprintf(buf, _("%s %s"), s_suffix(Monnam(mtmp)),
                     distant_name(obj, xname));
             if (cansee(mtmp->mx, mtmp->my)) {
                 if (!canspotmon(mtmp))
@@ -598,9 +598,9 @@ release_hold(void)
 
         unstuck(u.ustuck);
         if (!nohands(mtmp->data))
-            Sprintf(relbuf, "from %s grasp", s_suffix(mon_nam(mtmp)));
+            Sprintf(relbuf, _("from %s grasp"), s_suffix(mon_nam(mtmp)));
         else
-            Sprintf(relbuf, "by %s", mon_nam(mtmp));
+            Sprintf(relbuf, _("by %s"), mon_nam(mtmp));
         You(_("are released %s."), relbuf);
     }
 }
@@ -2645,7 +2645,7 @@ dozap(void)
         if ((damage = zapyourself(obj, TRUE)) != 0) {
             char buf[BUFSZ];
 
-            Sprintf(buf, "zapped %sself with %s",
+            Sprintf(buf, _("zapped %sself with %s"),
                     uhim(), killer_xname(obj));
             losehp(Maybe_Half_Phys(damage), buf, NO_KILLER_PREFIX);
         }
@@ -2878,7 +2878,7 @@ zapyourself(struct obj *obj, boolean ordinary)
             break;
         }
         learn_it = TRUE;
-        Sprintf(svk.killer.name, "shot %sself with a death ray", uhim());
+        Sprintf(svk.killer.name, _("shot %sself with a death ray"), uhim());
         svk.killer.format = NO_KILLER_PREFIX;
         /* probably don't need these to be urgent; player just gave input
            without subsequent opportunity to dismiss --More-- with ESC */
@@ -3034,7 +3034,7 @@ lightdamage(
         how = (obj->oclass == SPBOOK_CLASS) ? "spell of light"
               : (!obj->oartifact) ? ansimpleoname(obj)
                 : bare_artifactname(obj);
-        Sprintf(buf, "%s %sself with %s", ordinary ? "zapped" : "blasted",
+        Sprintf(buf, _("%s %sself with %s"), ordinary ? "zapped" : "blasted",
                 uhim(), how);
         /* might rehumanize(); could be fatal, but only for Unchanging */
         losehp(Maybe_Half_Phys(dmg), buf, NO_KILLER_PREFIX);
@@ -4553,7 +4553,7 @@ zhitu(
             /* FIXME: "zapped by herself" is suitable for a rebound;
                "zapped at herself" would be better if player explicitly
                targeted hero */
-            Sprintf(kbuf, "%s %s by %sself", fltxt, verb, uhim());
+            Sprintf(kbuf, _("%s %s by %sself"), fltxt, verb, uhim());
         }
         /* Half_spell_damage protection yields half-damage for wands & spells,
            including hero's own ricochets; breath attacks do full damage */
@@ -5720,7 +5720,7 @@ item_what(int dmgtyp)
         /* format the output to be ready for enl_msg() to append it to
            "Your items {are,were} protected against <damage-type>" */
         if (what) /* strlen(what) will be less than 30 */
-            Sprintf(whatbuf, " by your %.40s", what);
+            Sprintf(whatbuf, _(" by your %.40s"), what);
     }
     return whatbuf;
 }
@@ -6125,21 +6125,21 @@ wishcmdassist(int triesleft)
 {
     static NEARDATA const char *
         wishinfo[] = {
-  "Wish details:",
+  N_(N_("Wish details:")),
   "",
   "Enter the name of an object, such as \"potion of monster detection\",",
   "\"scroll labeled README\", \"elven mithril-coat\", or \"Grimtooth\"",
-  "(without the quotes).",
+  N_("(without the quotes)."),
   "",
-  "For object types which come in stacks, you may specify a plural name",
+  N_(N_("For object types which come in stacks, you may specify a plural name")),
   "such as \"potions of healing\", or specify a count, such as \"1000 gold",
   "pieces\", although that aspect of your wish might not be granted.",
   "",
-  "You may also specify various prefix values which might be used to",
+  N_(N_("You may also specify various prefix values which might be used to")),
   "modify the item, such as \"uncursed\" or \"rustproof\" or \"+1\".",
-  "Most modifiers shown when viewing your inventory can be specified.",
+  N_(N_("Most modifiers shown when viewing your inventory can be specified.")),
   "",
-  "You may specify 'nothing' to explicitly decline this wish.",
+  N_(N_("You may specify 'nothing' to explicitly decline this wish.")),
   0,
     },
         preserve_wishless[] = "Doing so will preserve 'wishless' conduct.",
@@ -6396,7 +6396,7 @@ flash_str(
         /* always return "blast of foo" for simplicity;
            this could be extended with hallucinatory rays, but probably
            not worth it at this time */
-        Sprintf(fltxt, "blast of %s", rnd_hallublast());
+        Sprintf(fltxt, _("blast of %s"), rnd_hallublast());
     } else {
         Strcpy(fltxt, flash_types[typ]);
     }

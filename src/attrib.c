@@ -930,7 +930,7 @@ from_what(
              */
             if ((propidx == BLINDED && u.uroleplay.blind)
                 || (propidx == DEAF && u.uroleplay.deaf))
-                Sprintf(buf, " from birth");
+                Sprintf(buf, _(" from birth"));
             else if (innateness == FROM_ROLE || innateness == FROM_RACE)
                 Strcpy(buf, " innately");
             else if (innateness == FROM_INTR) /* [].intrinsic & FROMOUTSIDE */
@@ -959,7 +959,7 @@ from_what(
             else if (propidx == BLINDED && u.ucreamed
                      && BlindedTimeout == (long) u.ucreamed
                      && !EBlinded && !(HBlinded & ~TIMEOUT))
-                Sprintf(buf, "due to goop covering your %s",
+                Sprintf(buf, _("due to goop covering your %s"),
                         body_part(FACE));
 
             /* remove some verbosity and/or redundancy */

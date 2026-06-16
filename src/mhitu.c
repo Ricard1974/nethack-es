@@ -993,9 +993,9 @@ summonmu(struct monst *mtmp, boolean youseeit)
                         You_feel(_("hemmed in."));
                     } else {
                         if (numseen == 1)
-                            Sprintf(buf, "%s appears", an(genericwere));
+                            Sprintf(buf, _("%s appears"), an(genericwere));
                         else
-                            Sprintf(buf, "%s appear",
+                            Sprintf(buf, _("%s appear"),
                                     makeplural(genericwere));
                         pline(_("%s%s!"), upstart(buf), from_nowhere);
                     }
@@ -2291,7 +2291,7 @@ mayberem(struct monst *mon,
     } else {
         char hairbuf[BUFSZ];
 
-        Sprintf(hairbuf, "let me run my fingers through your %s",
+        Sprintf(hairbuf, _("let me run my fingers through your %s"),
                 body_part(HAIR));
         SetVoice(mon, 0, 80, 0);
         verbalize(_("Take off your %s; %s."), str,

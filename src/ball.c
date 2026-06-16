@@ -196,7 +196,7 @@ placebc(void)
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
         char panicbuf[BUFSZ];
 
-        Sprintf(panicbuf, "placebc denied, restriction in effect");
+        Sprintf(panicbuf, _("placebc denied, restriction in effect"));
         paniclog("placebc", panicbuf);
 #endif
         return;
@@ -239,7 +239,7 @@ lift_covet_and_placebc(int pin)
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
         char panicbuf[BUFSZ];
 
-        Sprintf(panicbuf, "lift_covet_and_placebc denied, %s",
+        Sprintf(panicbuf, _("lift_covet_and_placebc denied, %s"),
                 (pin != bcrestriction) ? "pin mismatch"
                                        : "restriction in effect");
         paniclog("placebc", panicbuf);

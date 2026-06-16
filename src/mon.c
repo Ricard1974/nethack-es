@@ -1603,9 +1603,9 @@ meatobj(struct monst *mtmp) /* for gelatinous cubes */
                the result won't be printed */
             otmpname = distant_name(otmp, doname);
             if (ecount == 1)
-                Sprintf(buf, "%s engulfs %s.", Monnam(mtmp), otmpname);
+                Sprintf(buf, _("%s engulfs %s."), Monnam(mtmp), otmpname);
             else if (ecount == 2)
-                Sprintf(buf, "%s engulfs several objects.", Monnam(mtmp));
+                Sprintf(buf, _("%s engulfs several objects."), Monnam(mtmp));
             obj_extract_self(otmp);
             (void) mpickobj(mtmp, otmp); /* slurp */
 
@@ -3051,7 +3051,7 @@ logdeadmon(struct monst *mtmp, int mndx)
                 llevent_type |= LL_ACHIEVE;
             xtra[0] = '\0';
             if (howmany > 1) /* "(2nd time)" or "(50th time)" */
-                Sprintf(xtra, " (%d%s time)", howmany, ordin(howmany));
+                Sprintf(xtra, _(" (%d%s time)"), howmany, ordin(howmany));
 
             mkilled = nonliving(mtmp->data) ? "destroyed" : "killed";
             /* hero is responsible: "killed <monst>" */
@@ -3211,7 +3211,7 @@ corpse_chance(
                    engulfer; suppress usual explosion since it's contained */
                 if (magr == &gy.youmonst) {
                     There(_("is an explosion in your %s!"), body_part(STOMACH));
-                    Sprintf(svk.killer.name, "%s explosion",
+                    Sprintf(svk.killer.name, _("%s explosion"),
                             s_suffix(pmname(mdat, Mgender(mon))));
                     losehp(Maybe_Half_Phys(tmp), svk.killer.name,
                            KILLED_BY_AN);
@@ -4185,10 +4185,10 @@ peacefuls_respond(struct monst *mtmp)
 
                         if (gasp) {
                             if (!strncmpi(gasp, "gasp", 4)) {
-                                Sprintf(buf, "%s gasps", Monnam(mon));
+                                Sprintf(buf, _("%s gasps"), Monnam(mon));
                                 needpunct = TRUE;
                             } else {
-                                Sprintf(buf, "%s exclaims \"%s\"",
+                                Sprintf(buf, _("%s exclaims \"%s\""),
                                         Monnam(mon), gasp);
                             }
                             exclaimed = TRUE;
@@ -5078,7 +5078,7 @@ wiz_force_cham_form(struct monst *mon)
 
     /* construct prompt in pieces */
     Sprintf(pprompt, _("Change %s"), noit_mon_nam(mon));
-    Sprintf(parttwo, " @ %s into what?",
+    Sprintf(parttwo, _(" @ %s into what?"),
             coord_desc((int) mon->mx, (int) mon->my, buf,
                        (iflags.getpos_coords != GPCOORDS_NONE)
                        ? iflags.getpos_coords : GPCOORDS_MAP));
@@ -5413,7 +5413,7 @@ newcham(
                     char msgtrail[BUFSZ];
 
                     if (is_vampshifter(mtmp)) {
-                        Sprintf(msgtrail, " which was a shapeshifted %s",
+                        Sprintf(msgtrail, _(" which was a shapeshifted %s"),
                                 noname_monnam(mtmp, ARTICLE_NONE));
                     } else if (digests(mdat)) {
                         Strcpy(msgtrail, "'s stomach");
@@ -5730,15 +5730,15 @@ angry_guards(boolean silent)
             char buf[BUFSZ];
 
             if (slct) { /* sleeping guard(s) */
-                Sprintf(buf, "guard%s", plur(slct));
+                Sprintf(buf, _("guard%s"), plur(slct));
                 pline_The("%s %s up.", buf, vtense(buf, "wake"));
             }
 
             if (nct) { /* seen/sensed adjacent guard(s) */
-                Sprintf(buf, "guard%s", plur(nct));
+                Sprintf(buf, _("guard%s"), plur(nct));
                 pline_The("%s %s angry!", buf, vtense(buf, "get"));
             } else if (sct) { /* seen/sensed non-adjacent guard(s) */
-                Sprintf(buf, "guard%s", plur(sct));
+                Sprintf(buf, _("guard%s"), plur(sct));
                 pline(_("%s %s %s approaching!"), (sct == 1) ? "An angry" : "Angry", buf, vtense(buf, "are"));
             } else {
                 Strcpy(buf, (ct == 1) ? "a guard's" : "guards'");

@@ -1460,13 +1460,13 @@ strange_feeling(struct obj *obj, const char *txt)
     useup(obj);
 }
 
-static const char *bottlenames[] = { "bottle", "phial", "flagon", "carafe",
+static const char *bottlenames[] = { N_("bottle"), "phial", N_("flagon"), N_("carafe"),
                               "flask",  "jar",   "vial" };
 static const char *hbottlenames[] = {
-    "jug", "pitcher", "barrel", "tin", "bag", "box", "glass", "beaker",
-    "tumbler", "vase", "flowerpot", "pan", "thingy", "mug", "teacup",
-    "teapot", "keg", "bucket", "thermos", "amphora", "wineskin", "parcel",
-    "bowl", "ampoule"
+    "jug", N_("pitcher"), N_("barrel"), "tin", "bag", "box", "glass", N_("beaker"),
+    N_("tumbler"), "vase", N_("flowerpot"), "pan", N_("thingy"), "mug", N_("teacup"),
+    N_("teapot"), "keg", N_("bucket"), N_("thermos"), N_("amphora"), N_("wineskin"), N_("parcel"),
+    "bowl", N_("ampoule")
 };
 
 const char *
@@ -1643,12 +1643,12 @@ potionhit(struct monst *mon, struct obj *obj, int how)
             char buf[BUFSZ];
 
             if (hit_saddle && saddle) {
-                Sprintf(buf, "%s saddle",
+                Sprintf(buf, _("%s saddle"),
                         s_suffix(x_monnam(mon, ARTICLE_THE, (char *) 0,
                                           (SUPPRESS_IT | SUPPRESS_SADDLE),
                                           FALSE)));
             } else if (has_head(mon->data)) {
-                Sprintf(buf, "%s %s", s_suffix(mnam),
+                Sprintf(buf, _("%s %s"), s_suffix(mnam),
                         (gn.notonhead ? "body" : "head"));
             } else {
                 Strcpy(buf, mnam);
@@ -2734,9 +2734,9 @@ potion_dip(struct obj *obj, struct obj *potion)
                 observe_object(singlepotion);
             *newbuf = '\0';
             if (mixture == POT_WATER && singlepotion->dknown)
-                Sprintf(newbuf, "clears");
+                Sprintf(newbuf, _("clears"));
             else if (!Blind)
-                Sprintf(newbuf, "turns %s",
+                Sprintf(newbuf, _("turns %s"),
                         hcolor(OBJ_DESCR(objects[mixture])));
             if (*newbuf)
                 pline_The("%spotion%s %s.", oldbuf,
@@ -2856,7 +2856,7 @@ split_mon(
 
     reason[0] = '\0';
     if (mtmp)
-        Sprintf(reason, " from %s heat",
+        Sprintf(reason, _(" from %s heat"),
                 (mtmp == &gy.youmonst) ? the_your[1]
                                     : (const char *) s_suffix(mon_nam(mtmp)));
 

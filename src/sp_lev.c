@@ -3421,9 +3421,9 @@ get_table_int_or_random(lua_State *L, const char *name, int rndval)
             lua_pop(L, 1);
             return rndval;
         }
-        Sprintf(buf, "Expected integer or \"random\" for \"%s\", got ", name);
+        Sprintf(buf, _("Expected integer or \"random\" for \"%s\", got "), name);
         if (tmp)
-            Sprintf(eos(buf), "\"%s\"", tmp);
+            Sprintf(eos(buf), _("\"%s\""), tmp);
         else
             Strcat(buf, "<Null>");
         nhl_error(L, buf);

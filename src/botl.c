@@ -58,7 +58,7 @@ do_statusline1(void)
     if ('a' <= newbot1[0] && newbot1[0] <= 'z')
         newbot1[0] += 'A' - 'a';
     newbot1[BOTL_NSIZ] = 0;
-    Sprintf(nb = eos(newbot1), " the ");
+    Sprintf(nb = eos(newbot1), _(" the "));
 
     if (Upolyd) {
         char mbot[BUFSZ];
@@ -127,7 +127,7 @@ do_statusline2(void)
     (void) describe_level(dloc, 1); /* includes at least one trailing space */
     if ((money = money_cnt(gi.invent)) < 0L)
         money = 0L; /* ought to issue impossible() and then discard gold */
-    Sprintf(eos(dloc), "%s:%-2ld", /* strongest hero can lift ~300000 gold */
+    Sprintf(eos(dloc), _("%s:%-2ld"), /* strongest hero can lift ~300000 gold */
             (iflags.in_dumplog || iflags.invis_goldsym) ? "$"
               : encglyph(objnum_to_glyph(GOLD_PIECE)),
             min(money, 999999L));
@@ -460,10 +460,10 @@ describe_level(
     } else {
         /* ports with more room may expand this one */
         if (!addbranch)
-            Sprintf(buf, "%s:%-2d", /* "Dlvl:n" (grep fodder) */
+            Sprintf(buf, _("%s:%-2d"), /* "Dlvl:n" (grep fodder) */
                     In_tutorial(&u.uz) ? "Tutorial" : "Dlvl", depth(&u.uz));
         else
-            Sprintf(buf, "level %d", depth(&u.uz));
+            Sprintf(buf, _("level %d"), depth(&u.uz));
         ret = 0;
     }
     if (addbranch) {
@@ -1004,7 +1004,7 @@ bot_via_windowport(void)
             if (i == 0 || nb[i - 1] == ' ')
                 nb[i] = highc(nb[i]);
     }
-    Sprintf(gb.blstats[idx][BL_TITLE].val, "%-30s", buf);
+    Sprintf(gb.blstats[idx][BL_TITLE].val, _("%-30s"), buf);
     gv.valset[BL_TITLE] = TRUE; /* indicate val already set */
 
     /* Strength */
@@ -1067,7 +1067,7 @@ bot_via_windowport(void)
      * The currency prefix is encoded as ten character \GXXXXNNNN
      * sequence.
      */
-    Sprintf(gb.blstats[idx][BL_GOLD].val, "%s:%ld",
+    Sprintf(gb.blstats[idx][BL_GOLD].val, _("%s:%ld"),
             (iflags.in_dumplog || iflags.invis_goldsym) ? "$"
               : encglyph(objnum_to_glyph(GOLD_PIECE)),
             gb.blstats[idx][BL_GOLD].a.a_long);
@@ -1401,17 +1401,17 @@ cond_menu(void)
 
         any = cg.zeroany;
         any.a_int = 1;
-        Sprintf(mbuf, "change sort order from \"%s\" to \"%s\"",
+        Sprintf(mbuf, _("change sort order from \"%s\" to \"%s\""),
                 menutitle[gc.condmenu_sortorder],
                 menutitle[1 - gc.condmenu_sortorder]);
         add_menu(tmpwin, &nul_glyphinfo, &any, 'S', 0, ATR_NONE,
                  clr, mbuf, MENU_ITEMFLAGS_SKIPINVERT);
         any = cg.zeroany;
-        Sprintf(mbuf, "sorted %s", menutitle[gc.condmenu_sortorder]);
+        Sprintf(mbuf, _("sorted %s"), menutitle[gc.condmenu_sortorder]);
         add_menu_heading(tmpwin, mbuf);
         for (i = 0; i < SIZE(condtests); i++) {
             idx = sequence[i];
-            Sprintf(mbuf, "cond_%-14s", condtests[idx].useroption);
+            Sprintf(mbuf, _("cond_%-14s"), condtests[idx].useroption);
             any = cg.zeroany;
             any.a_int = idx + 2; /* avoid zero and the sort change pick */
             condtests[idx].choice = FALSE;
@@ -1483,7 +1483,7 @@ opt_next_cond(int indx, char *outbuf)
 
     if ((condtests[indx].opt == opt_in && condtests[indx].enabled)
         || (condtests[indx].opt == opt_out && !condtests[indx].enabled)) {
-        Sprintf(outbuf, "%scond_%s", condtests[indx].enabled ? "" : "!",
+        Sprintf(outbuf, _("%scond_%s"), condtests[indx].enabled ? "" : "!",
                 condtests[indx].useroption);
     }
     return TRUE;
@@ -3612,7 +3612,7 @@ status_hilite2str(struct hilite_s *hl)
     switch (hl->behavior) {
     case BL_TH_VAL_PERCENTAGE:
         if (op)
-            Sprintf(behavebuf, "%s%d%%", op, hl->value.a_int);
+            Sprintf(behavebuf, _("%s%d%%"), op, hl->value.a_int);
         else
             impossible(_("hl->behavior=percentage, rel error"));
         break;
@@ -3622,7 +3622,7 @@ status_hilite2str(struct hilite_s *hl)
         else if (hl->rel == GT_VALUE)
             Sprintf(behavebuf, "up");
         else if (hl->rel == EQ_VALUE)
-            Sprintf(behavebuf, "changed");
+            Sprintf(behavebuf, _("changed"));
         else
             impossible(_("hl->behavior=updown, rel error"));
         break;
@@ -3645,10 +3645,10 @@ status_hilite2str(struct hilite_s *hl)
             impossible(_("hl->behavior=condition, rel error"));
         break;
     case BL_TH_ALWAYS_HILITE:
-        Sprintf(behavebuf, "always");
+        Sprintf(behavebuf, _("always"));
         break;
     case BL_TH_CRITICALHP:
-        Sprintf(behavebuf, "criticalhp");
+        Sprintf(behavebuf, _("criticalhp"));
         break;
     case BL_TH_NONE:
         break;
@@ -3743,7 +3743,7 @@ status_hilite_menu_choose_behavior(int fld)
     if (fld != BL_CONDITION && fld != BL_VERS) {
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_UPDOWN;
-        Sprintf(buf, "%s value changes", initblstats[fld].fldname);
+        Sprintf(buf, _("%s value changes"), initblstats[fld].fldname);
         add_menu(tmpwin, &nul_glyphinfo, &any, 'c', 0, ATR_NONE,
                  clr, buf, MENU_ITEMFLAGS_NONE);
         nopts++;
@@ -3780,7 +3780,7 @@ status_hilite_menu_choose_behavior(int fld)
         || fld == BL_CAP || fld == BL_HUNGER) {
         any = cg.zeroany;
         any.a_int = onlybeh = BL_TH_TEXTMATCH;
-        Sprintf(buf, "%s text match", initblstats[fld].fldname);
+        Sprintf(buf, _("%s text match"), initblstats[fld].fldname);
         add_menu(tmpwin, &nul_glyphinfo, &any, 't', 0, ATR_NONE,
                  clr, buf, MENU_ITEMFLAGS_NONE);
         nopts++;
@@ -3825,7 +3825,7 @@ status_hilite_menu_choose_updownboth(
 
     if (ltok) {
         if (str)
-            Sprintf(buf, "%s than %s",
+            Sprintf(buf, _("%s than %s"),
                     (fld == BL_AC) ? "Better (lower)" : "Less", str);
         else
             Sprintf(buf, _("Value goes down"));
@@ -3835,7 +3835,7 @@ status_hilite_menu_choose_updownboth(
                  clr, buf, MENU_ITEMFLAGS_NONE);
 
         if (str) {
-            Sprintf(buf, "%s or %s",
+            Sprintf(buf, _("%s or %s"),
                     str, (fld == BL_AC) ? "better (lower)" : "less");
             any = cg.zeroany;
             any.a_int = 10 + LE_VALUE;
@@ -3855,7 +3855,7 @@ status_hilite_menu_choose_updownboth(
 
     if (gtok) {
         if (str) {
-            Sprintf(buf, "%s or %s",
+            Sprintf(buf, _("%s or %s"),
                     str, (fld == BL_AC) ? "worse (higher)" : "more");
             any = cg.zeroany;
             any.a_int = 10 + GE_VALUE;
@@ -3864,7 +3864,7 @@ status_hilite_menu_choose_updownboth(
         }
 
         if (str)
-            Sprintf(buf, "%s than %s",
+            Sprintf(buf, _("%s than %s"),
                     (fld == BL_AC) ? "Worse (higher)" : "More", str);
         else
             Sprintf(buf, _("Value goes up"));
@@ -4122,7 +4122,7 @@ status_hilite_menu_add(int origfld)
     } else if (behavior == BL_TH_TEXTMATCH) {
         char qry_buf[BUFSZ];
 
-        Sprintf(qry_buf, "%s %s text value to match:",
+        Sprintf(qry_buf, _("%s %s text value to match:"),
                 (fld == BL_CAP
                  || fld == BL_ALIGN
                  || fld == BL_HUNGER
@@ -4168,9 +4168,9 @@ status_hilite_menu_add(int origfld)
             int i, j, rv;
 
             for (i = j = 0; i < 9; i++) {
-                Sprintf(mbuf, "\"%s\"", gu.urole.rank[i].m);
+                Sprintf(mbuf, _("\"%s\""), gu.urole.rank[i].m);
                 if (gu.urole.rank[i].f) {
-                    Sprintf(fbuf, "\"%s\"", gu.urole.rank[i].f);
+                    Sprintf(fbuf, _("\"%s\""), gu.urole.rank[i].f);
                     Snprintf(obuf, sizeof obuf, "%s or %s",
                             flags.female ? fbuf : mbuf,
                             flags.female ? mbuf : fbuf);
@@ -4535,9 +4535,9 @@ status_hilite_menu(void)
 #endif
         any = cg.zeroany;
         any.a_int = fld + 1;
-        Sprintf(buf, "%-18s", initblstats[i].fldname);
+        Sprintf(buf, _("%-18s"), initblstats[i].fldname);
         if (count)
-            Sprintf(eos(buf), " (%d defined)", count);
+            Sprintf(eos(buf), _(" (%d defined)"), count);
         add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0, ATR_NONE,
                  clr, buf, MENU_ITEMFLAGS_NONE);
     }

@@ -1660,7 +1660,7 @@ carry_count(struct obj *obj,            /* object to pick up... */
         /* some message will be given */
         Strcpy(obj_nambuf, doname(obj));
         if (container) {
-            Sprintf(where, "in %s", the(xname(container)));
+            Sprintf(where, _("in %s"), the(xname(container)));
             verb = "carry";
         } else {
             Strcpy(where, "lying here");
@@ -1758,7 +1758,7 @@ lift_object(
                 long savequan = obj->quan;
 
                 obj->quan = *cnt_p;
-                Sprintf(qbuf, "%s %s ",
+                Sprintf(qbuf, _("%s %s "),
                         (next_encumbr >= EXT_ENCUMBER) ? overloadpfx
                         : (next_encumbr >= HVY_ENCUMBER) ? nearloadpfx
                           : (next_encumbr >= MOD_ENCUMBER) ? moderateloadpfx
@@ -1959,7 +1959,7 @@ pickup_prinv(
         gp.pickup_encumbrance = nearload;
     }
     if (prefix)
-        Sprintf(pbuf, "%s %s", prefix, verb);
+        Sprintf(pbuf, _("%s %s"), prefix, verb);
 
     prinv(pbuf, obj, count);
 }
@@ -3021,7 +3021,7 @@ use_container(
     /* might take something out if container isn't empty */
     outokay = Has_contents(gc.current_container);
     if (!outokay) /* preformat the empty-container message */
-        Sprintf(emptymsg, "%s is %sempty.",
+        Sprintf(emptymsg, _("%s is %sempty."),
                 Ysimple_name2(gc.current_container),
                 (quantum_cat || cursed_mbag) ? "now " : "");
 
@@ -3260,7 +3260,7 @@ menu_loot(int retry, boolean put_in)
         all_categories = (retry == -2);
     } else if (flags.menu_style == MENU_FULL) {
         all_categories = FALSE;
-        Sprintf(buf, "%s what type of objects?", action);
+        Sprintf(buf, _("%s what type of objects?"), action);
         mflags = (ALL_TYPES | UNPAID_TYPES | BUCX_TYPES | CHOOSE_ALL
                   | JUSTPICKED );
         n = query_category(buf,
@@ -3338,7 +3338,7 @@ menu_loot(int retry, boolean put_in)
             mflags |= JUSTPICKED;
         if (!put_in)
             gc.current_container->cknown = 1;
-        Sprintf(buf, "%s what?", action);
+        Sprintf(buf, _("%s what?"), action);
         n = query_objlist(buf,
                           put_in ? &gi.invent : &(gc.current_container->cobj),
                           mflags, &pick_list, PICK_ANY,
@@ -3402,30 +3402,30 @@ in_or_out_menu(
              ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
     if (outokay) {
         any.a_int = 2; /* 'o' */
-        Sprintf(buf, "take %s out", something);
+        Sprintf(buf, _("take %s out"), something);
         add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
                  ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
     }
     if (inokay) {
         any.a_int = 3; /* 'i' */
-        Sprintf(buf, "put %s in", something);
+        Sprintf(buf, _("put %s in"), something);
         add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
                  ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
     }
     if (outokay) {
         any.a_int = 4; /* 'b' */
-        Sprintf(buf, "%stake out, then put in", inokay ? "both; " : "");
+        Sprintf(buf, _("%stake out, then put in"), inokay ? "both; " : "");
         add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
                  ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
     }
     if (inokay) {
         any.a_int = 5; /* 'r' */
-        Sprintf(buf, "%sput in, then take out",
+        Sprintf(buf, _("%sput in, then take out"),
                 outokay ? "both reversed; " : "");
         add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
                  ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
         any.a_int = 6; /* 's' */
-        Sprintf(buf, "stash one item into %s", thesimpleoname(obj));
+        Sprintf(buf, _("stash one item into %s"), thesimpleoname(obj));
         add_menu(win, &nul_glyphinfo, &any, menuselector[any.a_int], 0,
                  ATR_NONE, clr, buf, MENU_ITEMFLAGS_NONE);
     }
@@ -3598,7 +3598,7 @@ dotip(void)
                      * is carried out.
                      */
                     (void) tipcontainer_gettarget(cobj, &dum, &target_count);
-                    Sprintf(prompt_part2, " here, tip it%s%s?",
+                    Sprintf(prompt_part2, _(" here, tip it%s%s?"),
                             (target_count == 0) ? " onto the " : "",
                             (target_count == 0) ? surface(cobj->ox, cobj->oy)
                                                 : "");
@@ -3649,9 +3649,9 @@ dotip(void)
     if (spillage) {
         buf[0] = '\0';
         if (is_pool(u.ux, u.uy))
-            Sprintf(buf, " and gradually %s", vtense(spillage, "dissipate"));
+            Sprintf(buf, _(" and gradually %s"), vtense(spillage, "dissipate"));
         else if (is_lava(u.ux, u.uy))
-            Sprintf(buf, " and immediately %s away",
+            Sprintf(buf, _(" and immediately %s away"),
                     vtense(spillage, "burn"));
         pline(_("Some %s %s onto the %s%s."), spillage, vtense(spillage, "spill"), surface(u.ux, u.uy), buf);
         /* shop usage message comes after the spill message */
@@ -3912,7 +3912,7 @@ tipcontainer_gettarget(
             any = cg.zeroany;
             any.a_obj = &dummyobj;
             /* tip to floor does not require free hands */
-            Sprintf(on_the_surface, "on the %s", surface(u.ux, u.uy));
+            Sprintf(on_the_surface, _("on the %s"), surface(u.ux, u.uy));
             add_menu(win, &nul_glyphinfo, &any, '-', 0, ATR_NONE, clr,
                      on_the_surface, MENU_ITEMFLAGS_SELECTED);
             add_menu_str(win, "");

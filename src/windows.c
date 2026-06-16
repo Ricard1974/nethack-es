@@ -1175,14 +1175,14 @@ dump_fmtstr(
                 break;
             case 'd': /* game start, YYYYMMDDhhmmss */
                 if (fullsubs)
-                    Sprintf(tmpbuf, "%08ld%06ld",
+                    Sprintf(tmpbuf, _("%08ld%06ld"),
                             yyyymmdd(ubirthday), hhmmss(ubirthday));
                 else
                     Strcpy(tmpbuf, "{game start date+time}");
                 break;
             case 'D': /* current time, YYYYMMDDhhmmss */
                 if (fullsubs)
-                    Sprintf(tmpbuf, "%08ld%06ld", yyyymmdd(now), hhmmss(now));
+                    Sprintf(tmpbuf, _("%08ld%06ld"), yyyymmdd(now), hhmmss(now));
                 else
                     Strcpy(tmpbuf, "{current date+time}");
                 break;

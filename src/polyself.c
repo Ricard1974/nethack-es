@@ -320,7 +320,7 @@ livelog_newform(boolean viapoly, int oldgend, int newgend)
                                                   : gu.urole.name.m;
             oldrank = rank_of(u.ulevel, Role_switch, oldgend);
             newrank = rank_of(u.ulevel, Role_switch, newgend);
-            Sprintf(buf, "%.10s %.30s", genders[flags.female].adj, newrank);
+            Sprintf(buf, _("%.10s %.30s"), genders[flags.female].adj, newrank);
             livelog_printf(LL_MINORAC, "%s into %s",
                            viapoly ? "polymorphed" : "transformed",
                            an(strcmp(newrole, oldrole) ? newrole
@@ -952,7 +952,7 @@ polymon(int mntmp)
     if (u.usteed) {
         if (touch_petrifies(u.usteed->data) && !Stone_resistance && rnl(3)) {
             pline(_("%s touch %s."), no_longer_petrify_resistant, mon_nam(u.usteed));
-            Sprintf(buf, "riding %s",
+            Sprintf(buf, _("riding %s"),
                     an(pmname(u.usteed->data, Mgender(u.usteed))));
             instapetrify(buf);
         }
@@ -1227,7 +1227,7 @@ break_armor(void)
                 char hornbuf[BUFSZ];
 
                 /* Future possibilities: This could damage/destroy helmet */
-                Sprintf(hornbuf, "horn%s", plur(num_horns(uptr)));
+                Sprintf(hornbuf, _("horn%s"), plur(num_horns(uptr)));
                 Your(_("%s %s through %s."), hornbuf, vtense(hornbuf, "pierce"), yname(otmp));
             } else {
                 if (donning(otmp))
@@ -1388,7 +1388,7 @@ rehumanize(void)
         /* can only happen if some bit of code reduces u.uhp
            instead of u.mh while poly'd */
         Your(_("old form was not healthy enough to survive."));
-        Sprintf(svk.killer.name, "reverting to unhealthy %s form",
+        Sprintf(svk.killer.name, _("reverting to unhealthy %s form"),
                 gu.urace.adj);
         svk.killer.format = KILLED_BY;
         done(DIED);
@@ -1815,7 +1815,7 @@ dohide(void)
             /* no need to check poly_when_stoned(); no hide-underers can
                turn into stone golems instead of becoming petrified */
             pline(_("Hiding under %s%s is a fatal mistake..."), corpse_name, plur(ct));
-            Sprintf(kbuf, "hiding under %s%s", corpse_name, plur(ct));
+            Sprintf(kbuf, _("hiding under %s%s"), corpse_name, plur(ct));
             instapetrify(kbuf);
             /* only reach here if life-saved */
             u.uundetected = 0;
@@ -1951,11 +1951,11 @@ const char *
 mbodypart(struct monst *mon, int part)
 {
     static NEARDATA const char
-        *humanoid_parts[] = { "arm",       "eye",  "face",         "finger",
-                              "fingertip", "foot", "hand",         "handed",
-                              "head",      "leg",  "light headed", "neck",
+        *humanoid_parts[] = { "arm",       "eye",  "face",         N_("finger"),
+                              N_("fingertip"), "foot", "hand",         N_("handed"),
+                              "head",      "leg",  N_("light headed"), "neck",
                               "spine",     "toe",  "hair",         "blood",
-                              "lung",      "nose", "stomach" },
+                              "lung",      "nose", N_("stomach") },
         *jelly_parts[] = { "pseudopod", "dark spot", "front",
                            "pseudopod extension", "pseudopod extremity",
                            "pseudopod root", "grasp", "grasped",

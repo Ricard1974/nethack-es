@@ -2230,7 +2230,7 @@ tport_menu(
     if (cannotreach) {
         /* not selectable, but still consumes next menuletter;
            prepend padding in place of missing menu selector */
-        Sprintf(tmpbuf, "    %s", entry);
+        Sprintf(tmpbuf, _("    %s"), entry);
         entry = tmpbuf;
     } else {
         any.a_int = lchoices->idx + 1;
@@ -2335,7 +2335,7 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
             if (dptr->entry_lev == nlev)
                 Strcat(buf, ", entrance from below");
             else
-                Sprintf(eos(buf), ", entrance on %d",
+                Sprintf(eos(buf), _(", entrance on %d"),
                         dptr->depth_start + dptr->entry_lev - 1);
         }
         if (bymenu) {
@@ -2359,7 +2359,7 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
                     chr_u_on_lvl(&slev->dlevel),
                     slev->proto, depth(&slev->dlevel));
             if (Is_stronghold(&slev->dlevel))
-                Sprintf(eos(buf), " (tune %s)", svt.tune);
+                Sprintf(eos(buf), _(" (tune %s)"), svt.tune);
             if (bymenu)
                 tport_menu(win, buf, &lchoices, &slev->dlevel,
                            unreachable_level(&slev->dlevel, unplaced));
@@ -2400,7 +2400,7 @@ print_dungeon(boolean bymenu, schar *rlev, xint16 *rdgn)
                 putstr(win, 0, "Floating branches");
                 first = FALSE;
             }
-            Sprintf(buf, "   %s to %s", br_string(br->type),
+            Sprintf(buf, _("   %s to %s"), br_string(br->type),
                     svd.dungeons[br->end2.dnum].dname);
             putstr(win, 0, buf);
         }
@@ -2793,17 +2793,17 @@ overview_stats(
         }
     }
 
-    Sprintf(hdrbuf, "general, size %ld", (long) sizeof (mapseen));
+    Sprintf(hdrbuf, _("general, size %ld"), (long) sizeof (mapseen));
     Sprintf(buf, statsfmt, hdrbuf, ocount, osize);
     putstr(win, 0, buf);
     if (bcount) {
-        Sprintf(hdrbuf, "cemetery, size %ld",
+        Sprintf(hdrbuf, _("cemetery, size %ld"),
                 (long) sizeof (struct cemetery));
         Sprintf(buf, statsfmt, hdrbuf, bcount, bsize);
         putstr(win, 0, buf);
     }
     if (acount) {
-        Sprintf(hdrbuf, "annotations, text");
+        Sprintf(hdrbuf, _("annotations, text"));
         Sprintf(buf, statsfmt, hdrbuf, acount, asize);
         putstr(win, 0, buf);
     }
@@ -3478,7 +3478,7 @@ tunesuffix(
         char tmp[BUFSZ];
 
         if (u.uevent.uheard_tune == 2)
-            Sprintf(tmp, "notes \"%s\"", svt.tune);
+            Sprintf(tmp, _("notes \"%s\""), svt.tune);
         else
             Strcpy(tmp, "5-note tune");
         Snprintf(outbuf, bsz, " (play %s to open or close drawbridge)", tmp);
@@ -3505,7 +3505,7 @@ tunesuffix(
 #define ADDNTOBUF(nam, var) \
     do {                                                                     \
         if (var)                                                             \
-            Sprintf(eos(buf), "%s%s %s%s", COMMA, seen_string((var), (nam)), \
+            Sprintf(eos(buf), _("%s%s %s%s"), COMMA, seen_string((var), (nam)), \
                     (nam), plur(var));                                       \
     } while (0)
 /* ADD2NTOBUF: for "M temples and N altars"; seen_string() is safe to use
@@ -3513,7 +3513,7 @@ tunesuffix(
 #define ADD2NTOBUF(nam, var, nam2, var2) \
     do {                                                                \
         if (var && var2) {                                              \
-            Sprintf(eos(buf), "%s%s %s%s and %s %s%s", COMMA,           \
+            Sprintf(eos(buf), _("%s%s %s%s and %s %s%s"), COMMA,           \
                     seen_string((var), (nam)), (nam), plur(var),        \
                     seen_string((var2), (nam2)), (nam2), plur(var2));   \
         } else if (var) {                                               \
@@ -3552,12 +3552,12 @@ print_mapseen(
             || In_endgame(&mptr->lev))
             Sprintf(buf, "%s:", svd.dungeons[dnum].dname);
         else if (builds_up(&mptr->lev))
-            Sprintf(buf, "%s: levels %d up to %d",
+            Sprintf(buf, _("%s: levels %d up to %d"),
                     svd.dungeons[dnum].dname,
                     depthstart + svd.dungeons[dnum].entry_lev - 1,
                     depthstart + svd.dungeons[dnum].dunlev_ureached - 1);
         else
-            Sprintf(buf, "%s: levels %d to %d",
+            Sprintf(buf, _("%s: levels %d to %d"),
                     svd.dungeons[dnum].dname, depthstart,
                     depthstart + svd.dungeons[dnum].dunlev_ureached - 1);
 
@@ -3567,7 +3567,7 @@ print_mapseen(
     /* calculate level number */
     i = depthstart + mptr->lev.dlevel - 1;
     if (In_endgame(&mptr->lev))
-        Sprintf(buf, "%s%s:", (final != -1) ? TAB : "",
+        Sprintf(buf, _("%s%s:"), (final != -1) ? TAB : "",
                 endgamelevelname(tmpbuf, i));
     else
         Sprintf(buf, _("%sLevel %d:"), (final != -1) ? TAB : "", i);
@@ -3577,11 +3577,11 @@ print_mapseen(
         s_level *slev;
 
         if ((slev = Is_special(&mptr->lev)) != 0)
-            Sprintf(eos(buf), " [%s]", slev->proto);
+            Sprintf(eos(buf), _(" [%s]"), slev->proto);
     }
     /* [perhaps print custom annotation on its own line when it's long] */
     if (mptr->custom)
-        Sprintf(eos(buf), " \"%s\"", mptr->custom);
+        Sprintf(eos(buf), _(" \"%s\""), mptr->custom);
     if (on_level(&u.uz, &mptr->lev))
         Sprintf(eos(buf), _(" <- You %s here."),
                 (final <= 0 || (final == 1 && how == ASCENDED)) ? "are"
@@ -3626,7 +3626,7 @@ print_mapseen(
             atmp = mptr->feat.msalign;              /*    0,  1,  2,  3 */
             atmp = Msa2amask(atmp);                 /*    0,  1,  2,  4 */
             if (Amask2align(atmp) == u.ualign.type) /* -128, -1,  0, +1 */
-                Sprintf(eos(buf), " to %s", align_gname(u.ualign.type));
+                Sprintf(eos(buf), _(" to %s"), align_gname(u.ualign.type));
         }
         ADDNTOBUF("throne", mptr->feat.nthrone);
         ADDNTOBUF("fountain", mptr->feat.nfount);
@@ -3651,7 +3651,7 @@ print_mapseen(
     if (mptr->flags.oracle) {
         Sprintf(buf, _("%sOracle of Delphi."), PREFIX);
     } else if (In_sokoban(&mptr->lev)) {
-        Sprintf(buf, "%s%s.", PREFIX,
+        Sprintf(buf, _("%s%s."), PREFIX,
                 mptr->flags.sokosolved ? "Solved" : "Unsolved");
     } else if (mptr->flags.bigroom) {
         Sprintf(buf, _("%sA very big room."), PREFIX);
@@ -3690,7 +3690,7 @@ print_mapseen(
 
     /* print out branches */
     if (mptr->br) {
-        Sprintf(buf, "%s%s to %s", PREFIX, br_string2(mptr->br),
+        Sprintf(buf, _("%s%s to %s"), PREFIX, br_string2(mptr->br),
                 svd.dungeons[mptr->br->end2.dnum].dname);
 
         /* Since mapseen objects are printed out in increasing order
@@ -3698,7 +3698,7 @@ print_mapseen(
          * if the branch goes upwards.  Unless it's the end game.
          */
         if (mptr->br->end1_up && !In_endgame(&(mptr->br->end2)))
-            Sprintf(eos(buf), ", level %d", depth(&(mptr->br->end2)));
+            Sprintf(eos(buf), _(", level %d"), depth(&(mptr->br->end2)));
         Strcat(buf, ".");
         add_menu_str(win, buf);
     }
@@ -3729,7 +3729,7 @@ print_mapseen(
             }
             for (bp = mptr->final_resting_place; bp; bp = bp->next) {
                 if (bp->bonesknown || wizard || final > 0) {
-                    Sprintf(buf, "%s%s%s, %s%c", PREFIX, TAB, bp->who,
+                    Sprintf(buf, _("%s%s%s, %s%c"), PREFIX, TAB, bp->who,
                             bp->how, --kncnt ? ',' : '.');
                     add_menu_str(win, buf);
                 }

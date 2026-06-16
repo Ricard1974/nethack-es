@@ -1861,10 +1861,10 @@ findit(void)
 
     if (found.num_invis) {
         if (found.num_invis > 1)
-            Sprintf(buf, "%d%s unseen monsters", found.num_invis,
+            Sprintf(buf, _("%d%s unseen monsters"), found.num_invis,
                     found.num_kept_invis ? " other" : "");
         else
-            Sprintf(buf, "%s unseen monster",
+            Sprintf(buf, _("%s unseen monster"),
                     found.num_kept_invis ? "another" : "an");
         You(_("detect %s!"), buf);
         num += found.num_invis;
@@ -2384,14 +2384,14 @@ reveal_terrain(
         } else {
             Strcpy(buf, "known terrain");
             if (keep_traps)
-                Sprintf(eos(buf), "%s traps",
+                Sprintf(eos(buf), _("%s traps"),
                         (keep_objs || keep_mons) ? "," : " and");
             if (keep_objs)
-                Sprintf(eos(buf), "%s%s objects",
+                Sprintf(eos(buf), _("%s%s objects"),
                         (keep_traps || keep_mons) ? "," : "",
                         keep_mons ? "" : " and");
             if (keep_mons)
-                Sprintf(eos(buf), "%s and monsters",
+                Sprintf(eos(buf), _("%s and monsters"),
                         (keep_traps || keep_objs) ? "," : "");
         }
         pline(_("Showing %s only..."), buf);

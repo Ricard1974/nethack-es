@@ -277,7 +277,7 @@ wiz_kill(void)
                 Sprintf(qbuf, "%s?", Role_if(PM_SAMURAI) ? "Perform seppuku"
                                                          : "Commit suicide");
                 if (paranoid_query(TRUE, qbuf)) {
-                    Sprintf(svk.killer.name, "%s own player", uhis());
+                    Sprintf(svk.killer.name, _("%s own player"), uhis());
                     svk.killer.format = KILLED_BY;
                     done(DIED);
                 }
@@ -730,7 +730,7 @@ wiz_map_levltyp(void)
         /* [dungeon branch features currently omitted] */
         /* special level features */
         if (slev) {
-            Sprintf(eos(dsc), " \"%s\"", slev->proto);
+            Sprintf(eos(dsc), _(" \"%s\""), slev->proto);
             /* special level flags (note: dungeon.def doesn't set `maze'
                or `hell' for any specific levels so those never show up) */
             if (slev->flags.maze_like)
@@ -745,10 +745,10 @@ wiz_map_levltyp(void)
         }
         /* level features */
         if (svl.level.flags.nfountains)
-            Sprintf(eos(dsc), " %c:%d", defsyms[S_fountain].sym,
+            Sprintf(eos(dsc), _(" %c:%d"), defsyms[S_fountain].sym,
                     (int) svl.level.flags.nfountains);
         if (svl.level.flags.nsinks)
-            Sprintf(eos(dsc), " %c:%d", defsyms[S_sink].sym,
+            Sprintf(eos(dsc), _(" %c:%d"), defsyms[S_sink].sym,
                     (int) svl.level.flags.nsinks);
         if (svl.level.flags.has_vault)
             Strcat(dsc, " vault");
@@ -985,7 +985,7 @@ wiz_intrinsic(void)
             any.a_int = i + 1; /* +1: avoid 0 */
             oldtimeout = u.uprops[p].intrinsic & TIMEOUT;
             if (oldtimeout)
-                Sprintf(buf, "%-27s [%li]", propname, oldtimeout);
+                Sprintf(buf, _("%-27s [%li]"), propname, oldtimeout);
             else
                 Sprintf(buf, "%s", propname);
             add_menu(win, &nul_glyphinfo, &any, 0, 0, ATR_NONE, clr, buf,
@@ -1300,7 +1300,7 @@ misc_stats(
     }
     *total_count += count;
     *total_size += size;
-    Sprintf(hdrbuf, "traps, size %ld", (long) sizeof (struct trap));
+    Sprintf(hdrbuf, _("traps, size %ld"), (long) sizeof (struct trap));
     Sprintf(buf, template, hdrbuf, count, size);
     putstr(win, 0, buf);
 
@@ -1337,7 +1337,7 @@ misc_stats(
     if (count || size) {
         *total_count += count;
         *total_size += size;
-        Sprintf(hdrbuf, "shop damage, size %ld",
+        Sprintf(hdrbuf, _("shop damage, size %ld"),
                 (long) sizeof (struct damage));
         Sprintf(buf, template, hdrbuf, count, size);
         putstr(win, 0, buf);
@@ -1360,7 +1360,7 @@ misc_stats(
     if (count || size) {
         *total_count += count;
         *total_size += size;
-        Sprintf(hdrbuf, "delayed killer%s, size %ld",
+        Sprintf(hdrbuf, _("delayed killer%s, size %ld"),
                 plur(count), (long) sizeof (struct kinfo));
         Sprintf(buf, template, hdrbuf, count, size);
         putstr(win, 0, buf);
@@ -1374,7 +1374,7 @@ misc_stats(
     if (count || size) {
         *total_count += count;
         *total_size += size;
-        Sprintf(hdrbuf, "bones history, size %ld",
+        Sprintf(hdrbuf, _("bones history, size %ld"),
                 (long) sizeof (struct cemetery));
         Sprintf(buf, template, hdrbuf, count, size);
         putstr(win, 0, buf);
@@ -1583,14 +1583,14 @@ list_migrating_mons(
                 /* minimal_monnam() appends map coordinates; strip that */
                 (void) strsubst(buf, " <0,0>", "");
                 if (has_mgivenname(mtmp)) /* if mtmp is named, include that */
-                    Sprintf(eos(buf), " named %s", MGIVENNAME(mtmp));
+                    Sprintf(eos(buf), _(" named %s"), MGIVENNAME(mtmp));
                 if (c == 'o' || c == 'a')
-                    Sprintf(eos(buf), " to %d:%d", mtmp->mux, mtmp->muy);
+                    Sprintf(eos(buf), _(" to %d:%d"), mtmp->mux, mtmp->muy);
                 xyloc = mtmp->mtrack[0].x; /* (for legibility) */
                 if (xyloc == MIGR_EXACT_XY) {
                     x = mtmp->mtrack[1].x;
                     y = mtmp->mtrack[1].y;
-                    Sprintf(eos(buf), " at <%d,%d>", (int) x, (int) y);
+                    Sprintf(eos(buf), _(" at <%d,%d>"), (int) x, (int) y);
                 }
                 putstr(win, 0, buf);
             }
@@ -1948,14 +1948,14 @@ wiz_custom(void)
         add_menu_heading(win,
                          "    glyph  glyph identifier                        "
                          "     sym   clr customcolor unicode utf8");
-        Sprintf(bufa, "%s: colorcount=%ld %s", wizcustom,
+        Sprintf(bufa, _("%s: colorcount=%ld %s"), wizcustom,
                 (long) iflags.colorcount,
                 gs.symset[PRIMARYSET].name ? gs.symset[PRIMARYSET].name
                                           : "default");
         if (gc.currentgraphics == PRIMARYSET && gs.symset[PRIMARYSET].name)
             Strcat(bufa, ", active");
         if (gs.symset[PRIMARYSET].handling) {
-            Sprintf(eos(bufa), ", handler=%s",
+            Sprintf(eos(bufa), _(", handler=%s"),
                     known_handling[gs.symset[PRIMARYSET].handling]);
         }
         Sprintf(buf, "%s", bufa);
@@ -1997,16 +1997,16 @@ wizcustom_callback(winid win, int glyphnum, char *id)
 #endif
             cgm->customcolor != 0) {
             Sprintf(bufa, "[%04d] %-44s", glyphnum, id);
-            Sprintf(bufb, "'\\%03d' %02d",
+            Sprintf(bufb, _("'\\%03d' %02d"),
                     gs.showsyms[cgm->sym.symidx], cgm->sym.color);
-            Sprintf(bufc, "%011lx", (unsigned long) cgm->customcolor);
+            Sprintf(bufc, _("%011lx"), (unsigned long) cgm->customcolor);
             bufu[0] = '\0';
 #ifdef ENHANCED_SYMBOLS
             if (cgm->u && cgm->u->utf8str) {
                 Sprintf(bufu, "U+%04lx", (unsigned long) cgm->u->utf32ch);
                 cp = cgm->u->utf8str;
                 while (*cp) {
-                    Sprintf(bufd, " <%d>", (int) *cp);
+                    Sprintf(bufd, _(" <%d>"), (int) *cp);
                     Strcat(bufu, bufd);
                     cp++;
                 }

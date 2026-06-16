@@ -454,7 +454,7 @@ silver_sears(struct monst *magr UNUSED, struct monst *mdef,
            rtyp will always be STRANGE_OBJECT) even if both rings are known
            silver [see hmonas(uhitm.c) for explanation of 'multi_claw'] */
         both = ((ltyp == rtyp && l_dknown == r_dknown) || (l_ag && r_ag));
-        Sprintf(rings, "ring%s", both ? "s" : "");
+        Sprintf(rings, _("ring%s"), both ? "s" : "");
         Your(_("%s%s %s %s!"), (l_ag || r_ag) ? "silver "
              : both ? ""
                : ((silverhit & W_RINGL) != 0L) ? "left "
@@ -862,7 +862,7 @@ mon_wield_item(struct monst *mon)
 
                 if (bimanual(mw_tmp))
                     mon_hand = makeplural(mon_hand);
-                Sprintf(welded_buf, "%s welded to %s %s",
+                Sprintf(welded_buf, _("%s welded to %s %s"),
                         otense(mw_tmp, "are"), mhis(mon), mon_hand);
 
                 if (obj->otyp == PICK_AXE) {
@@ -1367,7 +1367,7 @@ enhance_weapon_skill(void)
         Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:"
                                      : "Current skills:");
         if (wizard && !speedy)
-            Sprintf(eos(buf), "  (%d slot%s available)", u.weapon_slots,
+            Sprintf(eos(buf), _("  (%d slot%s available)"), u.weapon_slots,
                     plur(u.weapon_slots));
         end_menu(win, buf);
         n = select_menu(win, to_advance ? PICK_ONE : PICK_NONE, &selected);

@@ -58,7 +58,7 @@ item_naming_classification(
 
     onamebuf[0] = ocallbuf[0] = '\0';
     if (name_ok(obj) == GETOBJ_SUGGEST) {
-        Sprintf(onamebuf, "%s %s %s",
+        Sprintf(onamebuf, _("%s %s %s"),
                 (!has_oname(obj) || !*ONAME(obj)) ? Name : Rename,
                 the_unique_obj(obj) ? "the"
                 : !is_plural(obj) ? "this specific"
@@ -73,7 +73,7 @@ item_naming_classification(
             callname = the(callname);
         else if (!is_plural(obj))
             callname = makeplural(callname);
-        Sprintf(ocallbuf, "%s the type for %s",
+        Sprintf(ocallbuf, _("%s the type for %s"),
                 (!objects[obj->otyp].oc_uname
                  || !*objects[obj->otyp].oc_uname) ? Call : Recall,
                 callname);
@@ -113,7 +113,7 @@ item_reading_classification(struct obj *obj, char *outbuf)
                 tome = (otyp == SPE_BOOK_OF_THE_DEAD
                         && objects[otyp].oc_name_known);
 
-        Sprintf(outbuf, "%s this %s",
+        Sprintf(outbuf, _("%s this %s"),
                 (novel || blank) ? "Read" : tome ? "Examine" : "Study",
                 novel ? simpleonames(obj) /* "novel" or "paperback book" */
                       : tome ? "tome" : "spellbook");
@@ -300,7 +300,7 @@ itemactions(struct obj *otmp)
          * TODO: if uwep is ammo, tell player that to shoot instead of toss,
          *       the corresponding launcher must be wielded;
          */
-        Sprintf(buf,  "%s '%c' to %s %s %s",
+        Sprintf(buf,  _("%s '%c' to %s %s %s"),
                 verb, HANDS_SYM, action, which,
                 is_plural(otmp) ? makeplural(what) : what);
         ia_addmenu(win, IA_UNWIELD, '-', buf);
@@ -347,7 +347,7 @@ itemactions(struct obj *otmp)
     else if (otmp->otyp == BELL || otmp->otyp == BELL_OF_OPENING)
         ia_addmenu(win, IA_APPLY_OBJ, 'a', "Ring the bell");
     else if (otmp->otyp == CANDELABRUM_OF_INVOCATION) {
-        Sprintf(buf, "%s the candelabrum", light);
+        Sprintf(buf, _("%s the candelabrum"), light);
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == WAX_CANDLE || otmp->otyp == TALLOW_CANDLE) {
         boolean multiple = (otmp->quan == 1L) ? FALSE : TRUE;
@@ -359,14 +359,14 @@ itemactions(struct obj *otmp)
                     !otmp->lamplit ? "light" : "extinguish", /* [lowercase] */
                     multiple ? "them" : "it");
         else
-            Sprintf(buf, "%s %s %s", light, s, simpleonames(otmp));
+            Sprintf(buf, _("%s %s %s"), light, s, simpleonames(otmp));
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == OIL_LAMP || otmp->otyp == MAGIC_LAMP
                || otmp->otyp == BRASS_LANTERN) {
-        Sprintf(buf, "%s this light source", light);
+        Sprintf(buf, _("%s this light source"), light);
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->otyp == POT_OIL && objects[otmp->otyp].oc_name_known) {
-        Sprintf(buf, "%s this oil", light);
+        Sprintf(buf, _("%s this oil"), light);
         ia_addmenu(win, IA_APPLY_OBJ, 'a', buf);
     } else if (otmp->oclass == POTION_CLASS) {
         /* FIXME? this should probably be moved to 'D' rather than be 'a' */
@@ -436,7 +436,7 @@ itemactions(struct obj *otmp)
                    "Scribble graffiti on the floor");
     } else if (otmp->oclass == WEAPON_CLASS || otmp->oclass == WAND_CLASS
              || otmp->oclass == GEM_CLASS || otmp->oclass == RING_CLASS) {
-        Sprintf(buf, "%s on the %s with %s",
+        Sprintf(buf, _("%s on the %s with %s"),
                 (is_blade(otmp) || otmp->oclass == WAND_CLASS
                  || ((otmp->oclass == GEM_CLASS || otmp->oclass == RING_CLASS)
                      && objects[otmp->otyp].oc_tough)) ? "Engrave" : "Write",
@@ -450,11 +450,11 @@ itemactions(struct obj *otmp)
         boolean shoot = ammo_and_launcher(otmp, uwep);
 
         /* FIXME: see the multi-shot FIXME about "one of" for 't: throw' */
-        Sprintf(buf, "%s %s", shoot ? "Shoot" : "Throw",
+        Sprintf(buf, _("%s %s"), shoot ? "Shoot" : "Throw",
                 (otmp->quan > 1L) ? "one of these" : "this");
         if (shoot) {
             assert(uwep != NULL);
-            Sprintf(eos(buf), " with your wielded %s", simpleonames(uwep));
+            Sprintf(eos(buf), _(" with your wielded %s"), simpleonames(uwep));
         }
         ia_addmenu(win, IA_FIRE_OBJ, 'f', buf);
     }
@@ -572,7 +572,7 @@ itemactions(struct obj *otmp)
          *  volley count and that could randomly yield 1 here and 2..N
          *  while throwing or vice versa.
          */
-        Sprintf(buf, "%s %s%s", shoot ? "Shoot" : "Throw",
+        Sprintf(buf, _("%s %s%s"), shoot ? "Shoot" : "Throw",
                 (otmp->quan == 1L) ? "this item"
                 : (otmp->otyp == GOLD_PIECE) ? "them"
                   : "one of these",

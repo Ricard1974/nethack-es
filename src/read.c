@@ -244,7 +244,7 @@ hawaiian_design(struct obj *shirt, char *buf)
        never appearing, if the sizes of the two lists have common factors. */
     unsigned bg = shirt->o_id ^ (unsigned) ~ubirthday;
 
-    Sprintf(buf, "%s on %s background",
+    Sprintf(buf, _("%s on %s background"),
             makeplural(hawaiian_motif(shirt, buf)),
             an(hawaiian_bgs[bg % SIZE(hawaiian_bgs)]));
     return buf;

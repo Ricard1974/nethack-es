@@ -1324,7 +1324,7 @@ rolefilterstring(char *outbuf, int which)
     case RS_ROLE:
         for (i = 0; i < SIZE(roles) - 1; ++i) {
             if (gr.rfilter.roles[i])
-		Sprintf(eos(outbuf), " !%.3s", _(roles[i].name.m));
+		Sprintf(eos(outbuf), _(" !%.3s"), _(roles[i].name.m));
 	}
 	break;
     case RS_RACE:
@@ -1770,11 +1770,11 @@ role_selection_prolog(int which, winid where)
     /* [g and a don't constrain anything sufficiently
        to narrow something done to a single choice] */
 
-    Sprintf(buf, "%12s ", "name:");
+    Sprintf(buf, _("%12s "), "name:");
     Strcat(buf, (which == RS_NAME) ? choosing
                 : !*svp.plname ? not_yet : svp.plname);
     putstr(where, 0, buf);
-    Sprintf(buf, "%12s ", "role:");
+    Sprintf(buf, _("%12s "), "role:");
     assert(which == RS_ROLE || r == ROLE_NONE || r == ROLE_RANDOM
            || IndexOkT(r, roles));
     Strcat(buf, (which == RS_ROLE) ? choosing
@@ -1791,7 +1791,7 @@ role_selection_prolog(int which, winid where)
             Sprintf(eos(buf), "/%s", roles[r].name.f);
     }
     putstr(where, 0, buf);
-    Sprintf(buf, "%12s ", "race:");
+    Sprintf(buf, _("%12s "), "race:");
     assert(which == RS_RACE || c == ROLE_NONE || c == ROLE_RANDOM
            || IndexOkT(c, races));
     Strcat(buf, (which == RS_RACE) ? choosing
@@ -1799,13 +1799,13 @@ role_selection_prolog(int which, winid where)
                   : (c == ROLE_RANDOM) ? rand_choice
                     : races[c].noun);
     putstr(where, 0, buf);
-    Sprintf(buf, "%12s ", "gender:");
+    Sprintf(buf, _("%12s "), "gender:");
     Strcat(buf, (which == RS_GENDER) ? choosing
                 : (gend == ROLE_NONE) ? not_yet
                   : (gend == ROLE_RANDOM) ? rand_choice
                     : genders[gend].adj);
     putstr(where, 0, buf);
-    Sprintf(buf, "%12s ", "alignment:");
+    Sprintf(buf, _("%12s "), "alignment:");
     Strcat(buf, (which == RS_ALGNMNT) ? choosing
                 : (a == ROLE_NONE) ? not_yet
                   : (a == ROLE_RANDOM) ? rand_choice
@@ -1942,7 +1942,7 @@ role_menu_extra(int which, winid where, boolean preselect)
         char setfiltering[40];
 
         any.a_int = RS_menu_arg(RS_filter);
-        Sprintf(setfiltering, "%s role/race/&c filtering",
+        Sprintf(setfiltering, _("%s role/race/&c filtering"),
                 gotrolefilter() ? "Reset" : "Set");
         add_menu(where, &nul_glyphinfo, &any, '~', 0, ATR_NONE,
                  clr, setfiltering, MENU_ITEMFLAGS_NONE);
@@ -2820,14 +2820,14 @@ plsel_startmenu(int ttyrows, int aspect)
                  : roles[ROLE].name.m;
     if (!svp.plname[0] || ROLE < 0 || RACE < 0 || GEND < 0 || ALGN < 0) {
         /* "<role> <race.noun> <gender> <alignment>" */
-        Sprintf(qbuf, "%.20s %.20s %.20s %.20s",
+        Sprintf(qbuf, _("%.20s %.20s %.20s %.20s"),
                 rolename,
                 (RACE < 0) ? "<race>" : races[RACE].noun,
                 (GEND < 0) ? "<gender>" : genders[GEND].adj,
                 (ALGN < 0) ? "<alignment>" : aligns[ALGN].adj);
     } else {
         /* "<name> the <alignment> <gender> <race.adjective> <role>" */
-        Sprintf(qbuf, "%.20s %s %.20s %.20s %.20s %.20s",
+        Sprintf(qbuf, _("%.20s %s %.20s %.20s %.20s %.20s"),
                 svp.plname, _("the"),
                 aligns[ALGN].adj,
                 genders[GEND].adj,

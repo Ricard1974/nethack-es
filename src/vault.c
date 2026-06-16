@@ -937,7 +937,7 @@ gd_move(struct monst *grd)
             if (egrd->warncnt == 3 && !Deaf) {
                 char buf[BUFSZ];
 
-                Sprintf(buf, "%sfollow me!",
+                Sprintf(buf, _("%sfollow me!"),
                         u_carry_gold ? (!umoney ? "drop that hidden gold and "
                                                 : "drop that gold and ")
                                      : "");

@@ -601,7 +601,7 @@ doextlist(void)
         } else {
             Strcpy(buf, "Switch back from search");
             if (strlen(buf) + strlen(searchbuf) + strlen(" (\"\")") < QBUFSZ)
-                Sprintf(eos(buf), " (\"%s\")", searchbuf);
+                Sprintf(eos(buf), _(" (\"%s\")"), searchbuf);
             any.a_int = 3;
             /* specifying ':' as a group accelerator here is mostly a
                statement of intent (we'd like to accept it as a synonym but
@@ -674,7 +674,7 @@ doextlist(void)
                 }
                 /* longest ef_txt at present is "wizrumorcheck" (13 chars);
                    2nd field will be "    " or " [A]" or " [m]" or "[mA]" */
-                Sprintf(buf, " %-14s %4s %s", efp->ef_txt,
+                Sprintf(buf, _(" %-14s %4s %s"), efp->ef_txt,
                         doc_extcmd_flagstr(menuwin, efp), cmd_desc);
                 add_menu_str(menuwin, buf);
                 ++n;
@@ -833,10 +833,10 @@ extcmd_via_menu(void)
             }
             prevaccelerator = accelerator;
             if (!acount || one_per_line) {
-                Sprintf(prompt, "%s%s [%s]", wastoolong ? "or " : "",
+                Sprintf(prompt, _("%s%s [%s]"), wastoolong ? "or " : "",
                         choices[i]->ef_txt, choices[i]->ef_desc);
             } else if (acount == 1) {
-                Sprintf(prompt, "%s%s or %s", wastoolong ? "or " : "",
+                Sprintf(prompt, _("%s%s or %s"), wastoolong ? "or " : "",
                         choices[i - 1]->ef_txt, choices[i]->ef_txt);
             } else {
                 Strcat(prompt, " or ");
@@ -2328,7 +2328,7 @@ handler_rebind_keys_add(boolean keyfirst)
             continue;
 
         any.a_int = (i + 1);
-        Sprintf(buf, "%s: %s", ec->ef_txt, ec->ef_desc);
+        Sprintf(buf, _("%s: %s"), ec->ef_txt, ec->ef_desc);
         add_menu(win, &nul_glyphinfo, &any, '\0', 0, ATR_NONE, clr, buf,
              MENU_ITEMFLAGS_NONE);
     }
@@ -2567,7 +2567,7 @@ key2extcmddesc(uchar key)
         if (!gc.Cmd.num_pad)
             Strcpy(key2cmdbuf, "start of, or continuation of, a count");
         else if (key == '5' || key == M_5)
-            Sprintf(key2cmdbuf, "%s prefix",
+            Sprintf(key2cmdbuf, _("%s prefix"),
                     (!!gc.Cmd.pcHack_compat ^ (key == M_5)) ? "run" : "rush");
         else if (key == '0' || (gc.Cmd.pcHack_compat && key == M_0))
             Strcpy(key2cmdbuf, "synonym for 'i'");
@@ -2586,7 +2586,7 @@ key2extcmddesc(uchar key)
     if ((cmdbind = cmdbind_get(key)) != 0
         && cmdbind->cmd
         && (txt = cmdbind->cmd->ef_txt) != 0) {
-        Sprintf(key2cmdbuf, "%s (#%s)", cmdbind->cmd->ef_desc, txt);
+        Sprintf(key2cmdbuf, _("%s (#%s)"), cmdbind->cmd->ef_desc, txt);
 
         /* special case: for reqmenu prefix (normally 'm'), replace
            "prefix: request menu or modify command (#reqmenu)"
@@ -2814,11 +2814,11 @@ keylist_putcmds(winid datawin, boolean docount,
                 continue;
             }
             if ((bind->cmd->flags & CMD_PARAM) != 0)
-                Sprintf(buf, "%-7s %-13s %s \"%s\"", key2txt(key, buf2),
+                Sprintf(buf, _("%-7s %-13s %s \"%s\""), key2txt(key, buf2),
                         bind->cmd->ef_txt, bind->cmd->ef_desc,
                         bind->param);
             else
-                Sprintf(buf, "%-7s %-13s %s", key2txt(key, buf2),
+                Sprintf(buf, _("%-7s %-13s %s"), key2txt(key, buf2),
                         bind->cmd->ef_txt, bind->cmd->ef_desc);
             putstr(datawin, 0, buf);
             keys_used[i] = TRUE;
@@ -2842,7 +2842,7 @@ keylist_putcmds(winid datawin, boolean docount,
             continue;
         }
         /* '#'+20 for one column here == 7+' '+13 for two columns above */
-        Sprintf(buf, "#%-20s %s", extcmd->ef_txt, extcmd->ef_desc);
+        Sprintf(buf, _("#%-20s %s"), extcmd->ef_txt, extcmd->ef_desc);
         putstr(datawin, 0, buf);
     }
     return count;
@@ -2889,11 +2889,11 @@ dokeylist(void)
 
     datawin = create_nhwindow(NHW_TEXT);
     putstr(datawin, 0, "");
-    Sprintf(buf, "%7s %s", "", "    Full Current Key Bindings List");
+    Sprintf(buf, _("%7s %s"), "", "    Full Current Key Bindings List");
     putstr(datawin, 0, buf);
     for (extcmd = extcmdlist; extcmd->ef_txt; ++extcmd)
         if (spkey_gap || !keylist_func_has_key(extcmd, keys_used)) {
-            Sprintf(buf, "%7s %s", "",
+            Sprintf(buf, _("%7s %s"), "",
                                "(also commands with no key assignment)");
             putstr(datawin, 0, buf);
             break;
@@ -2908,7 +2908,7 @@ dokeylist(void)
         putstr(datawin, 0, "");
         putstr(datawin, 0,
      "Ctrl+<direction> will run in specified direction until something very");
-        Sprintf(buf, "%7s %s", "", "interesting is seen.");
+        Sprintf(buf, _("%7s %s"), "", "interesting is seen.");
         putstr(datawin, 0, buf);
         Strcpy(buf, "Shift"); /* append the rest below */
     } else {
@@ -2919,7 +2919,7 @@ dokeylist(void)
     Strcat(buf,
           "+<direction> will run in specified direction until you encounter");
     putstr(datawin, 0, buf);
-    Sprintf(buf, "%7s %s", "", "an obstacle.");
+    Sprintf(buf, _("%7s %s"), "", "an obstacle.");
     putstr(datawin, 0, buf);
 
     putstr(datawin, 0, "");
@@ -2931,7 +2931,7 @@ dokeylist(void)
         key = (uchar) gc.Cmd.spkeys[j];
         if (key && !mov_seen[key]
             && (pfx_seen[key] == j)) {
-            Sprintf(buf, "%-7s %s", key2txt(key, buf2), misc_keys[i].desc);
+            Sprintf(buf, _("%-7s %s"), key2txt(key, buf2), misc_keys[i].desc);
             putstr(datawin, 0, buf);
         }
     }
@@ -2943,7 +2943,7 @@ dokeylist(void)
 #else
     /* first of the keyless commands */
     Sprintf(buf2, "[%s]", key2txt(key, buf));
-    Sprintf(buf, "%-21s", buf2);
+    Sprintf(buf, _("%-21s"), buf2);
 #endif
     Strcat(buf, " interrupt: break out of NetHack (SIGINT)");
     putstr(datawin, 0, buf);
@@ -3213,13 +3213,13 @@ key2txt(uchar c, char *txt) /* sufficiently long buffer */
     /* should probably switch to "SPC", "ESC", "RET"
        since nethack's documentation uses ESC for <escape> */
     if (c == ' ')
-        Sprintf(txt, "<space>");
+        Sprintf(txt, _("<space>"));
     else if (c == '\033')
-        Sprintf(txt, "<esc>"); /* "<escape>" won't fit */
+        Sprintf(txt, _("<esc>")); /* "<escape>" won't fit */
     else if (c == '\n')
-        Sprintf(txt, "<enter>"); /* "<return>" won't fit */
+        Sprintf(txt, _("<enter>")); /* "<return>" won't fit */
     else if (c == '\177')
-        Sprintf(txt, "<del>"); /* "<delete>" won't fit */
+        Sprintf(txt, _("<del>")); /* "<delete>" won't fit */
     else
         Strcpy(txt, visctrl((char) c));
     return txt;
@@ -4028,7 +4028,7 @@ getdir(const char *s)
          * "," being left of ".".)
          */
         Sprintf(qbuf,
-            "desired location, then type '%s' for left click, '%s' for right",
+            _("desired location, then type '%s' for left click, '%s' for right"),
                 /* visctrl() cycles through several static buffers for its
                    return value so using two in the same expression is ok */
                 visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK_Q]), /* ',' */
@@ -4113,33 +4113,33 @@ show_direction_keys(
         centerchar = ' ';
 
     if (nodiag) {
-        Sprintf(buf, "             %s   ",
+        Sprintf(buf, _("             %s   "),
                 visctrl(cmd_from_func(do_move_north)));
         putstr(win, 0, buf);
         putstr(win, 0, "             |   ");
-        Sprintf(buf, "          %s- %c -%s",
+        Sprintf(buf, _("          %s- %c -%s"),
                 visctrl(cmd_from_func(do_move_west)),
                 centerchar,
                 visctrl(cmd_from_func(do_move_east)));
         putstr(win, 0, buf);
         putstr(win, 0, "             |   ");
-        Sprintf(buf, "             %s   ",
+        Sprintf(buf, _("             %s   "),
                 visctrl(cmd_from_func(do_move_south)));
         putstr(win, 0, buf);
     } else {
-        Sprintf(buf, "          %s  %s  %s",
+        Sprintf(buf, _("          %s  %s  %s"),
                 visctrl(cmd_from_func(do_move_northwest)),
                 visctrl(cmd_from_func(do_move_north)),
                 visctrl(cmd_from_func(do_move_northeast)));
         putstr(win, 0, buf);
         putstr(win, 0, "           \\ | / ");
-        Sprintf(buf, "          %s- %c -%s",
+        Sprintf(buf, _("          %s- %c -%s"),
                 visctrl(cmd_from_func(do_move_west)),
                 centerchar,
                 visctrl(cmd_from_func(do_move_east)));
         putstr(win, 0, buf);
         putstr(win, 0, "           / | \\ ");
-        Sprintf(buf, "          %s  %s  %s",
+        Sprintf(buf, _("          %s  %s  %s"),
                 visctrl(cmd_from_func(do_move_southwest)),
                 visctrl(cmd_from_func(do_move_south)),
                 visctrl(cmd_from_func(do_move_southeast)));
@@ -4530,7 +4530,7 @@ there_cmd_menu_next2u(
             key_or_pick = (carrying(SKELETON_KEY) || carrying(LOCK_PICK));
             card = (carrying(CREDIT_CARD) != 0);
             if (key_or_pick || card) {
-                Sprintf(buf, "%sunlock the door",
+                Sprintf(buf, _("%sunlock the door"),
                         key_or_pick ? "lock or " : "");
                 mcmd_addmenu(win, MCMD_LOCK_DOOR, upstart(buf)), ++K;
             }
@@ -4585,7 +4585,7 @@ there_cmd_menu_next2u(
         Sprintf(buf, _("Swap places with %s"), mon_nam(mtmp));
         mcmd_addmenu(win, MCMD_MOVE_DIR, buf), ++K;
 
-        Sprintf(buf, "%s %s",
+        Sprintf(buf, _("%s %s"),
                 !has_mgivenname(mtmp) ? "Name" : "Rename",
                 mon_nam(mtmp));
         mcmd_addmenu(win, MCMD_NAME, buf), ++K;

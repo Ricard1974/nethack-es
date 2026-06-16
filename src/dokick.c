@@ -540,7 +540,7 @@ really_kick_object(coordxy x, coordxy y)
             ; /* hero has been transformed but kick continues */
         } else {
             /* normalize body shape here; foot, not body_part(FOOT) */
-            Sprintf(svk.killer.name, "kicking %s barefoot",
+            Sprintf(svk.killer.name, _("kicking %s barefoot"),
                     killer_xname(gk.kickedobj));
             instapetrify(svk.killer.name);
         }
@@ -1903,15 +1903,15 @@ otransit_msg(struct obj *otmp, boolean nodrop, boolean chainthere, long num)
         /* As of 3.6.2: use a separate buffer for the suffix to avoid risk of
            overrunning obuf[] (let pline() handle truncation if necessary) */
         if (num) { /* means: other objects are impacted */
-            Sprintf(xbuf, " %s %s object%s", otense(otmp, "hit"),
+            Sprintf(xbuf, _(" %s %s object%s"), otense(otmp, "hit"),
                     (num == 1L) ? "another" : "other", (num > 1L) ? "s" : "");
         } else { /* chain-only msg */
-            Sprintf(xbuf, " %s your chain", otense(otmp, "rattle"));
+            Sprintf(xbuf, _(" %s your chain"), otense(otmp, "rattle"));
         }
         if (nodrop)
             Sprintf(eos(xbuf), ".");
         else
-            Sprintf(eos(xbuf), " and %s %s.",
+            Sprintf(eos(xbuf), _(" and %s %s."),
                     otense(otmp, "fall"), gg.gate_str);
         pline(_("%s%s"), obuf, xbuf);
     } else if (!nodrop)

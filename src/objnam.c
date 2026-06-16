@@ -249,7 +249,7 @@ obj_typename(int otyp)
         if (un)
             xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
         if (dn)
-            Sprintf(eos(buf), " (%s)", dn);
+            Sprintf(eos(buf), _(" (%s)"), dn);
         return buf;
     case ARMOR_CLASS:
         if (objects[otyp].oc_armcat == ARM_GLOVES
@@ -267,7 +267,7 @@ obj_typename(int otyp)
             if (un) /* 3: length of " (" + ")" which will enclose 'dn' */
                 xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
             if (dn)
-                Sprintf(eos(buf), " (%s)", dn);
+                Sprintf(eos(buf), _(" (%s)"), dn);
         } else {
             Strcat(buf, dn ? dn : actualn);
             if (ocl->oc_class == GEM_CLASS)
@@ -283,12 +283,12 @@ obj_typename(int otyp)
         if (ocl->oc_unique)
             Strcpy(buf, actualn); /* avoid spellbook of Book of the Dead */
         else
-            Sprintf(eos(buf), " of %s", actualn);
+            Sprintf(eos(buf), _(" of %s"), actualn);
     }
     if (un) /* 3: length of " (" + ")" which will enclose 'dn' */
         xcalled(buf, BUFSZ - (dn ? (int) strlen(dn) + 3 : 0), "", un);
     if (dn)
-        Sprintf(eos(buf), " (%s)", dn);
+        Sprintf(eos(buf), _(" (%s)"), dn);
     return buf;
 }
 
@@ -568,7 +568,7 @@ xcalled(
         panic(_("xcalled: not enough room for prefix (%d > %d)"),
               pfxlen, bufsiz);
 
-    Sprintf(eos(buf), "%s called %.*s", pfx, bufsiz - pfxlen, sfx);
+    Sprintf(eos(buf), _("%s called %.*s"), pfx, bufsiz - pfxlen, sfx);
 }
 
 char *
@@ -680,7 +680,7 @@ xname_flags(
         else if (un)
             xcalled(buf, BUFSZ - PREFIX, "amulet", un);
         else
-            Sprintf(buf, "%s amulet", dn);
+            Sprintf(buf, _("%s amulet"), dn);
         break;
     case WEAPON_CLASS:
         if (is_poisonable(obj) && obj->opoisoned)
@@ -719,7 +719,7 @@ xname_flags(
     case ARMOR_CLASS:
         /* depends on order of the dragon scales objects */
         if (typ >= GRAY_DRAGON_SCALES && typ <= YELLOW_DRAGON_SCALES) {
-            Sprintf(buf, "set of %s", actualn);
+            Sprintf(buf, _("set of %s"), actualn);
             break;
         } else if (is_boots(obj) || is_gloves(obj)) {
             Strcpy(buf, "pair of ");
@@ -826,7 +826,7 @@ xname_flags(
         }
         break;
     case BALL_CLASS:
-        Sprintf(buf, "%sheavy iron ball",
+        Sprintf(buf, _("%sheavy iron ball"),
                 (obj->owt > ocl->oc_weight) ? "very " : "");
         break;
     case POTION_CLASS:
@@ -872,11 +872,11 @@ xname_flags(
         if (!dknown)
             Strcpy(buf, "wand");
         else if (nn)
-            Sprintf(buf, "wand of %s", actualn);
+            Sprintf(buf, _("wand of %s"), actualn);
         else if (un)
             xcalled(buf, BUFSZ - PREFIX, "wand", un);
         else
-            Sprintf(buf, "%s wand", dn);
+            Sprintf(buf, _("%s wand"), dn);
         break;
     case SPBOOK_CLASS:
         if (typ == SPE_NOVEL) { /* 3.6 tribute */
@@ -887,7 +887,7 @@ xname_flags(
             else if (un)
                 xcalled(buf, BUFSZ - PREFIX, "novel", un);
             else
-                Sprintf(buf, "%s book", dn);
+                Sprintf(buf, _("%s book"), dn);
             break;
             /* end of tribute */
         } else if (!dknown) {
@@ -899,17 +899,17 @@ xname_flags(
         } else if (un) {
             xcalled(buf, BUFSZ - PREFIX, "spellbook", un);
         } else
-            Sprintf(buf, "%s spellbook", dn);
+            Sprintf(buf, _("%s spellbook"), dn);
         break;
     case RING_CLASS:
         if (!dknown)
             Strcpy(buf, "ring");
         else if (nn)
-            Sprintf(buf, "ring of %s", actualn);
+            Sprintf(buf, _("ring of %s"), actualn);
         else if (un)
             xcalled(buf, BUFSZ - PREFIX, "ring", un);
         else
-            Sprintf(buf, "%s ring", dn);
+            Sprintf(buf, _("%s ring"), dn);
         break;
     case GEM_CLASS: {
         const char *rock = (ocl->oc_material == MINERAL) ? "stone" : "gem";
@@ -920,7 +920,7 @@ xname_flags(
             if (un)
                 xcalled(buf, BUFSZ - PREFIX, rock, un);
             else
-                Sprintf(buf, "%s %s", dn, rock);
+                Sprintf(buf, _("%s %s"), dn, rock);
         } else {
             Strcpy(buf, actualn);
             if (GemStone(typ))
@@ -1095,7 +1095,7 @@ mshot_xname(struct obj *obj)
     if (gm.m_shot.n > 1 && gm.m_shot.o == obj->otyp) {
         /* "the Nth arrow"; value will eventually be passed to an() or
            The(), both of which correctly handle this "the " prefix */
-        Sprintf(tmpbuf, "the %d%s ", gm.m_shot.i, ordin(gm.m_shot.i));
+        Sprintf(tmpbuf, _("the %d%s "), gm.m_shot.i, ordin(gm.m_shot.i));
         onm = strprepend(onm, tmpbuf);
     }
     return onm;
@@ -1582,7 +1582,7 @@ doname_base(
                 hand_s = strcpy(handsbuf, obufp = makeplural(hand_s));
                 releaseobuf(obufp);
             } else { /* "right hand" or "left hand" */
-                Sprintf(handsbuf, "%s %s",
+                Sprintf(handsbuf, _("%s %s"),
                         URIGHTY ? "right" : "left", hand_s);
                 hand_s = handsbuf;
             }
@@ -1739,7 +1739,7 @@ doname_base(
             /* for !offsetbp, we'll only get here if strlen(bp)==BUFSZ-1 */
             if (!doname_full++) {
                 paniclog("doname", bp);
-                Sprintf(tmpbuf, "long object description%s.",
+                Sprintf(tmpbuf, _("long object description%s."),
                         offsetbp ? " truncated for menu use" : "");
                 paniclog("doname", tmpbuf);
             }
@@ -1885,9 +1885,9 @@ corpse_xname(
     } else {
         /* adjective positioning depends upon format of monster name */
         if (possessive) /* Medusa's cursed partly eaten corpse */
-            Sprintf(eos(nambuf), "%s %s", mnam, adjective);
+            Sprintf(eos(nambuf), _("%s %s"), mnam, adjective);
         else /* cursed partly eaten troll corpse */
-            Sprintf(eos(nambuf), "%s %s", adjective, mnam);
+            Sprintf(eos(nambuf), _("%s %s"), adjective, mnam);
         /* in case adjective has a trailing space, squeeze it out */
         mungspaces(nambuf);
         /* doname() might include a count in the adjective argument;
@@ -1987,7 +1987,7 @@ killer_xname(struct obj *obj)
            devnull tournament, suppress player supplied fruit names because
            those can be used to fake other objects and dungeon features */
         buf = nextobuf();
-        Sprintf(buf, "deadly slime mold%s", plur(obj->quan));
+        Sprintf(buf, _("deadly slime mold%s"), plur(obj->quan));
     } else {
         buf = xname(obj);
     }
@@ -4357,7 +4357,7 @@ readobjnam_postparse1(struct _readobjnam_data *d)
            variant (grey ooze) or player used inverted syntax (<foo> glob);
            if player has given a valid monster type but not valid glob type,
            object name lookup won't find it and wish attempt will fail */
-        Sprintf(d->globbuf, "glob of %s", mons[d->mntmp].pmnames[NEUTRAL]);
+        Sprintf(d->globbuf, _("glob of %s"), mons[d->mntmp].pmnames[NEUTRAL]);
         d->bp = d->globbuf;
         d->mntmp = NON_PM; /* not useful for "glob of <foo>" object lookup */
         d->oclass = FOOD_CLASS;

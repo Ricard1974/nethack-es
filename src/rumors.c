@@ -251,7 +251,7 @@ rumor_check(void)
             continue;
         if ((endp = strchr(line, '\n')) != 0)
             *endp = 0;
-        Sprintf(rumor_buf, "  %6s %s", "", xcrypt(line, xbuf));
+        Sprintf(rumor_buf, _("  %6s %s"), "", xcrypt(line, xbuf));
         putstr(tmpwin, 0, rumor_buf);
 
         rumor_buf[0] = '\0';
@@ -269,7 +269,7 @@ rumor_check(void)
             continue;
         if ((endp = strchr(line, '\n')) != 0)
             *endp = 0;
-        Sprintf(rumor_buf, "  %6s %s", "", xcrypt(line, xbuf));
+        Sprintf(rumor_buf, _("  %6s %s"), "", xcrypt(line, xbuf));
         putstr(tmpwin, 0, rumor_buf);
 
         (void) dlb_fclose(rumors);
@@ -923,7 +923,7 @@ init_CapMons(void)
         putstr(tmpwin, 0,
               "Capitalized monster type names normally preceded by \"the\":");
         for (i = 0; i < CapMonSiz - 1; ++i) {
-            Sprintf(buf, "  %.77s", CapMons[i]);
+            Sprintf(buf, _("  %.77s"), CapMons[i]);
             putstr(tmpwin, 0, buf);
         }
         display_nhwindow(tmpwin, TRUE);

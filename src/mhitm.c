@@ -618,7 +618,7 @@ failed_grab(
             } else {
                 /* hero poly'd into long worm can't grow tail
                    so no 'youmonst' handling is needed here */
-                Sprintf(mdefnam, "%s tail", s_suffix(some_mon_nam(mdef)));
+                Sprintf(mdefnam, _("%s tail"), s_suffix(some_mon_nam(mdef)));
             }
             /* unsolid grab misses are actually somewhat iffy--how come
                ordinary attacks don't also pass right through? */
@@ -738,7 +738,7 @@ gazemm(struct monst *magr, struct monst *mdef, struct attack *mattk)
     mdef->mundetected = 0;
 
     if (gv.vis) {
-        Sprintf(buf, "%s gazes %s",
+        Sprintf(buf, _("%s gazes %s"),
                 altmesg ? Adjmonnam(magr, "blinded") : Monnam(magr),
                 altmesg ? "toward" : "at");
         pline(_("%s %s..."), buf,

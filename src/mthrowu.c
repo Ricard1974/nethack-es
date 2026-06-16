@@ -388,7 +388,7 @@ ohitmon(
                 if (!harmless)
                     Strcpy(how, exclam(damage)); /* "!" or "." */
                 else
-                    Sprintf(how, " but passes harmlessly through %.9s.",
+                    Sprintf(how, _(" but passes harmlessly through %.9s."),
                             mhim(mtmp));
                 hit(distant_name(otmp, mshot_xname), mtmp, how);
             }

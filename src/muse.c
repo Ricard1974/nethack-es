@@ -204,7 +204,7 @@ mplayhorn(
         objnamp = xname(otmp);
         if (strlen(objnamp) >= QBUFSZ)
             objnamp = simpleonames(otmp);
-        Sprintf(objbuf, "a %s directed at", objnamp);
+        Sprintf(objbuf, _("a %s directed at"), objnamp);
         /* "<mon> plays a <horn> directed at himself!" */
         pline(_("%s!"), monverbself(mtmp, Monnam(mtmp), "play", objbuf));
         makeknown(otmp->otyp); /* (wands handle this slightly differently) */

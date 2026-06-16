@@ -1035,7 +1035,7 @@ test_move(
                     else if (sym >= 0)
                         Strcpy(buf, an(defsyms[sym].explanation));
                     else
-                        Sprintf(buf, "impossible [background glyph=%d]",
+                        Sprintf(buf, _("impossible [background glyph=%d]"),
                                 glyph);
                     pline_dir(xytodir(dx, dy), "It's %s.", buf);
                 }
@@ -3019,11 +3019,11 @@ invocation_message(void)
 
         nomul(0); /* stop running or travelling */
         if (u.usteed)
-            Sprintf(buf, "beneath %s", y_monnam(u.usteed));
+            Sprintf(buf, _("beneath %s"), y_monnam(u.usteed));
         else if (Levitation || Flying)
             Strcpy(buf, "beneath you");
         else
-            Sprintf(buf, "under your %s", makeplural(body_part(FOOT)));
+            Sprintf(buf, _("under your %s"), makeplural(body_part(FOOT)));
 
         You_feel(_("a strange vibration %s."), buf);
         u.uevent.uvibrated = 1;

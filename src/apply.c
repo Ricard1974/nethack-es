@@ -236,7 +236,7 @@ its_dead(coordxy rx, coordxy ry, int *resp)
                 else if (is_male(mptr))
                     gndr = 0;
             }
-            Sprintf(buf, "%s's dead", genders[gndr].he); /* "he"/"she"/"it" */
+            Sprintf(buf, _("%s's dead"), genders[gndr].he); /* "he"/"she"/"it" */
             buf[0] = highc(buf[0]);
         } else { /* plural */
             Strcpy(buf, "They're dead");
@@ -274,7 +274,7 @@ its_dead(coordxy rx, coordxy ry, int *resp)
 
         mptr = &mons[statue->corpsenm];
         if (Blind) { /* ignore statue->dknown; it'll always be set */
-            Sprintf(buf, "%s %s",
+            Sprintf(buf, _("%s %s"),
                     u_at(rx, ry) ? "This" : "That",
                     humanoid(mptr) ? "person" : "creature");
             what = buf;
@@ -583,14 +583,14 @@ magic_whistled(struct obj *obj)
                 mnam = y_monnam(mtmp);
                 if (oseen) {
                     if (++shift == 1)
-                        Sprintf(shiftbuf, "%s shifts location", mnam);
+                        Sprintf(shiftbuf, _("%s shifts location"), mnam);
                 } else {
                     if (++appear == 1)
-                        Sprintf(appearbuf, "%s appears", mnam);
+                        Sprintf(appearbuf, _("%s appears"), mnam);
                 }
             } else if (oseen) {
                 if (++disappear == 1)
-                    Sprintf(disappearbuf, "%s disappears", mnam);
+                    Sprintf(disappearbuf, _("%s disappears"), mnam);
             }
         }
     }
@@ -633,7 +633,7 @@ magic_whistled(struct obj *obj)
            construct a message now and issue it below */
         if (shift > 0) {
             if (shift > 1)
-                Sprintf(shiftbuf, "%s creatures shift locations",
+                Sprintf(shiftbuf, _("%s creatures shift locations"),
                         HowMany(shift));
             copynchars(buf, upstart(shiftbuf), (int) sizeof buf - 1);
         }
@@ -642,7 +642,7 @@ magic_whistled(struct obj *obj)
                 /* shift==0: N creatures appear;
                    shift==1: Foo shifts location and N other creatures appear;
                    shift >1: M creatures shift locations and N others appear */
-                Sprintf(appearbuf, "%s %s appear", HowMany(appear),
+                Sprintf(appearbuf, _("%s %s appear"), HowMany(appear),
                         (shift == 0) ? "creatures"
                         : (shift == 1) ? "other creatures"
                           : "others");
@@ -658,7 +658,7 @@ magic_whistled(struct obj *obj)
         }
         if (disappear > 0) {
             if (disappear > 1)
-                Sprintf(disappearbuf, "%s %s disappear", HowMany(disappear),
+                Sprintf(disappearbuf, _("%s %s disappear"), HowMany(disappear),
                         (shift == 0 && appear == 0) ? "creatures"
                         : (shift < 2 && appear < 2) ? "other creatures"
                           : "others");
@@ -830,7 +830,7 @@ use_leash_core(struct obj *obj, struct monst *mtmp, coord *cc, int spotmon)
             char *lmonnam = l_monnam(mtmp);
 
             if (cc->x != mtmp->mx || cc->y != mtmp->my) {
-                Sprintf(lmonbuf, "%s tail", s_suffix(lmonnam));
+                Sprintf(lmonbuf, _("%s tail"), s_suffix(lmonnam));
                 lmonnam = lmonbuf;
             }
             pline(_("The leash won't fit onto %s%s."), spotmon ? "your " : "", lmonnam);
@@ -1375,7 +1375,7 @@ use_candle(struct obj **optr)
     }
 
     /* first, minimal candelabrum suffix for formatting candles */
-    Sprintf(qsfx, " to\033%s?", thesimpleoname(otmp));
+    Sprintf(qsfx, _(" to\033%s?"), thesimpleoname(otmp));
     /* next, format the candles as a prefix for the candelabrum */
     (void) safe_qbuf(qbuf, "Attach ", qsfx, obj, yname, thesimpleoname, s);
     /* strip temporary candelabrum suffix */
@@ -2157,7 +2157,7 @@ use_tinning_kit(struct obj *obj)
             kbuf[0] = '\0';
         } else {
             pline(_("Tinning %s without wearing gloves is a fatal mistake..."), corpse_name);
-            Sprintf(kbuf, "trying to tin %s without gloves", corpse_name);
+            Sprintf(kbuf, _("trying to tin %s without gloves"), corpse_name);
         }
         instapetrify(kbuf);
     }
@@ -2389,7 +2389,7 @@ fig_transform(anything *arg, long timeout)
 
         if (mtmp->mundetected) {
             if (hides_under(mtmp->data) && mshelter) {
-                Sprintf(and_vanish, " and %s under %s",
+                Sprintf(and_vanish, _(" and %s under %s"),
                         locomotion(mtmp->data, "crawl"), doname(mshelter));
             } else if (mtmp->data->mlet == S_MIMIC
                        || mtmp->data->mlet == S_EEL) {
@@ -2425,7 +2425,7 @@ fig_transform(anything *arg, long timeout)
                 /* figurine carrying monster might be invisible */
                 if (canseemon(figurine->ocarry)
                     && (!mon->wormno || cansee(mon->mx, mon->my)))
-                    Sprintf(carriedby, "%s pack", s_suffix(a_monnam(mon)));
+                    Sprintf(carriedby, _("%s pack"), s_suffix(a_monnam(mon)));
                 else if (is_pool(mon->mx, mon->my))
                     Strcpy(carriedby, "empty water");
                 else
@@ -2636,7 +2636,7 @@ use_stone(struct obj *tstone)
         observe_object(tstone);
     known = (tstone->otyp == TOUCHSTONE && tstone->dknown
               && objects[TOUCHSTONE].oc_name_known);
-    Sprintf(stonebuf, "rub on the stone%s", plur(tstone->quan));
+    Sprintf(stonebuf, _("rub on the stone%s"), plur(tstone->quan));
     /* when the touchstone is fully known, don't bother listing extra
        junk as likely candidates for rubbing */
     if ((obj = getobj(stonebuf, known ? touchstone_ok : any_obj_ok,
@@ -2740,7 +2740,7 @@ use_stone(struct obj *tstone)
         break; /* default oclass */
     }
 
-    Sprintf(stonebuf, "stone%s", plur(tstone->quan));
+    Sprintf(stonebuf, _("stone%s"), plur(tstone->quan));
     if (do_scratch)
         You(_("make %s%sscratch marks on the %s."), streak_color ? streak_color : (const char *) "", streak_color ? " " : "", stonebuf);
     else if (streak_color)
@@ -2997,7 +2997,7 @@ use_whip(struct obj *obj)
         if (dam <= 0)
             dam = 1;
         You(_("hit your %s with your bullwhip."), body_part(FOOT));
-        Sprintf(buf, "killed %sself with %s bullwhip", uhim(), uhis());
+        Sprintf(buf, _("killed %sself with %s bullwhip"), uhim(), uhis());
         losehp(Maybe_Half_Phys(dam), buf, NO_KILLER_PREFIX);
         return ECMD_TIME;
 
@@ -4049,7 +4049,7 @@ do_break_wand(struct obj *obj)
             }
             damage = zapyourself(obj, FALSE);
             if (damage) {
-                Sprintf(buf, "killed %sself by breaking a wand", uhim());
+                Sprintf(buf, _("killed %sself by breaking a wand"), uhim());
                 losehp(Maybe_Half_Phys(damage), buf, NO_KILLER_PREFIX);
             }
             if (disp.botl)

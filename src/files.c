@@ -421,7 +421,7 @@ validate_prefix_locations(char *reasonbuf)
             if (!(details = strerror(errno)))
 #endif
                 details = "";
-            Sprintf(panicbuf2, "\"%s\", (%d) %s",
+            Sprintf(panicbuf2, _("\"%s\", (%d) %s"),
                     gf.fqn_prefix[prefcnt], errno, details);
             paniclog(panicbuf1, panicbuf2);
             failcount++;
@@ -2756,13 +2756,13 @@ check_recordfile(const char *dir UNUSED_if_not_OS2_CODEVIEW)
                 (void) nhclose(fd);
             } else {
                 /* explanation for failure other than missing file */
-                Sprintf(buf, "error   \"%s\", (errno %d).",
+                Sprintf(buf, _("error   \"%s\", (errno %d)."),
                         fq_record, errno);
                 paniclog("scorefile", buf);
             }
             return;
         }
-        Sprintf(buf, "missing \"%s\", creating new scorefile.",
+        Sprintf(buf, _("missing \"%s\", creating new scorefile."),
                 fq_record);
         paniclog("scorefile", buf);
     }
@@ -3219,7 +3219,7 @@ reveal_paths(int code)
     cstrp = fqn_prefix_names[SYSCONFPREFIX];
     maxlen = BUFSZ - sizeof " (in )";
     if (cstrp && (int) strlen(cstrp) < maxlen)
-        Sprintf(buf, " (in %s)", cstrp);
+        Sprintf(buf, _(" (in %s)"), cstrp);
 #else
     buf[0] = '\0';
 #endif
@@ -3257,7 +3257,7 @@ reveal_paths(int code)
 #endif /* WIN32 */
     maxlen = BUFSZ - sizeof " (in )";
     if (cstrp && (int) strlen(cstrp) < maxlen)
-        Sprintf(buf, " (in %s)", cstrp);
+        Sprintf(buf, _(" (in %s)"), cstrp);
 #endif /* PREFIXES_IN_USE */
     raw_printf(_("The loadable symbols file%s:"), buf);
 #endif /* UNIX */
@@ -3289,7 +3289,7 @@ reveal_paths(int code)
     cstrp = fqn_prefix_names[DATAPREFIX];
     maxlen = BUFSZ - sizeof " (in )";
     if (cstrp && (int) strlen(cstrp) < maxlen)
-        Sprintf(buf, " (in %s)", cstrp);
+        Sprintf(buf, _(" (in %s)"), cstrp);
 #endif
 #ifdef DLB
     raw_printf(_("Basic data files%s are collected inside:"), buf);
@@ -3366,7 +3366,7 @@ reveal_paths(int code)
     cstrp = fqn_prefix_names[CONFIGPREFIX];
     maxlen = BUFSZ - sizeof " (in )";
     if (cstrp && (int) strlen(cstrp) < maxlen)
-        Sprintf(buf, " (in %s)", cstrp);
+        Sprintf(buf, _(" (in %s)"), cstrp);
 #endif /* PREFIXES_IN_USE */
     raw_printf(_("Your personal configuration file%s:"), buf);
 
@@ -3642,7 +3642,7 @@ read_tribute(const char *tribsection, const char *tribtitle,
                 else /* construct one if necessary */
                     Sprintf(lastline, "[%s, by Terry Pratchett]", tribtitle);
                 if ((p = strrchr(lastline, ']')) != 0)
-                    Sprintf(p, "; passage #%d]", targetpassage);
+                    Sprintf(p, _("; passage #%d]"), targetpassage);
                 putmsghistory(lastline, FALSE);
                 grasped = TRUE;
             }

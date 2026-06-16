@@ -2956,7 +2956,7 @@ optfn_paranoid_confirmation(
 #endif
             /* convert prayconfirm to paranoid_confirm:+pray and
                !prayconfirm to paranoid_confirm:-pray */
-            Sprintf(prayconfirm, "%cpray", opt_negated ? '-' : '+');
+            Sprintf(prayconfirm, _("%cpray"), opt_negated ? '-' : '+');
             op = prayconfirm;
             /* possibly changing !prayconfirm to paranoid_confirm:-pray
                which clears a paranoia bit but isn't a negated option */
@@ -3820,10 +3820,10 @@ optfn_scores(
         if (flags.end_top > 0)
             Sprintf(opts, "%d top", flags.end_top);
         if (flags.end_around > 0)
-            Sprintf(eos(opts), "%s%d around",
+            Sprintf(eos(opts), _("%s%d around"),
                     (flags.end_top > 0) ? "/" : "", flags.end_around);
         if (flags.end_own)
-            Sprintf(eos(opts), "%sown",
+            Sprintf(eos(opts), _("%sown"),
                     (flags.end_top > 0 || flags.end_around > 0) ? "/" : "");
         if (!*opts)
             Strcpy(opts, "none");
@@ -4223,7 +4223,7 @@ optfn_suppress_alert(
         else if (flags.suppress_alert == 0L)
             Strcpy(opts, none);
         else
-            Sprintf(opts, "%lu.%lu.%lu", FEATURE_NOTICE_VER_MAJ,
+            Sprintf(opts, _("%lu.%lu.%lu"), FEATURE_NOTICE_VER_MAJ,
                     FEATURE_NOTICE_VER_MIN, FEATURE_NOTICE_VER_PATCH);
         return optn_ok;
     }
@@ -4279,7 +4279,7 @@ optfn_symset(
         if (gc.currentgraphics == PRIMARYSET && gs.symset[PRIMARYSET].name)
             Strcat(opts, ", active");
         if (gs.symset[PRIMARYSET].handling) {
-            Sprintf(eos(opts), ", handler=%s",
+            Sprintf(eos(opts), _(", handler=%s"),
                     known_handling[gs.symset[PRIMARYSET].handling]);
         }
         return optn_ok;
@@ -4588,7 +4588,7 @@ optfn_versinfo(
                 b = (vi & VI_BRANCH) != 0,
                 n = (vi & VI_NUMBER) != 0;
 
-        Sprintf(opts, "%u: %s%s%s%s%s (%.99s)", flags.versinfo,
+        Sprintf(opts, _("%u: %s%s%s%s%s (%.99s)"), flags.versinfo,
                 g ? "name" : "", (b && g) ? "+" : "", b ? "branch" : "",
                 (n && (b || g)) ? "+" : "", n ? "number" : "",
                 status_version(vbuf, sizeof vbuf, FALSE));
@@ -4625,7 +4625,7 @@ optfn_videocolors(
         return optn_ok;
     }
     if (req == get_val || req == get_cnf_val) {
-        Sprintf(opts, "%d-%d-%d-%d-%d-%d-%d-%d-%d-%d-%d-%d",
+        Sprintf(opts, _("%d-%d-%d-%d-%d-%d-%d-%d-%d-%d-%d-%d"),
                 ttycolors[CLR_RED], ttycolors[CLR_GREEN],
                 ttycolors[CLR_BROWN], ttycolors[CLR_BLUE],
                 ttycolors[CLR_MAGENTA], ttycolors[CLR_CYAN],
@@ -4660,7 +4660,7 @@ optfn_videoshades(
         return optn_ok;
     }
     if (req == get_val || req == get_cnf_val) {
-        Sprintf(opts, "%s-%s-%s", shade[0], shade[1], shade[2]);
+        Sprintf(opts, _("%s-%s-%s"), shade[0], shade[1], shade[2]);
         return optn_ok;
     }
     return optn_ok;
@@ -4998,7 +4998,7 @@ optfn_windowcolors(
                 fg = 0;
             if (bg && (!*bg || !strcmp(bg, defbrief)))
                 bg = 0;
-            Sprintf(eos(opts), "%s%s %s/%s", !wccount ? "" : " ",
+            Sprintf(eos(opts), _("%s%s %s/%s"), !wccount ? "" : " ",
                     (fg || bg) ? wcnames[wccount] : wcshortnames[wccount],
                     fg ? fg : defbrief, bg ? bg : defbrief);
         }
@@ -5621,13 +5621,13 @@ handler_menustyle(void)
     start_menu(tmpwin, MENU_BEHAVE_STANDARD);
     any = cg.zeroany;
     for (i = 0; i < SIZE(menutype); i++) {
-        Sprintf(buf, "%-12.12s%c%.60s", menutype[i][0], sep, menutype[i][1]);
+        Sprintf(buf, _("%-12.12s%c%.60s"), menutype[i][0], sep, menutype[i][1]);
         any.a_int = i + 1;
         add_menu(tmpwin, &nul_glyphinfo, &any, *buf, 0, ATR_NONE, clr, buf,
                  (i == flags.menu_style) ? MENU_ITEMFLAGS_SELECTED
                                          : MENU_ITEMFLAGS_NONE);
         /* second line is prefixed by spaces that "c - " would use */
-        Sprintf(buf, "%4s%-12.12s%c%.60s", "", "", sep, menutype[i][2]);
+        Sprintf(buf, _("%4s%-12.12s%c%.60s"), "", "", sep, menutype[i][2]);
         add_menu_str(tmpwin, buf);
     }
     end_menu(tmpwin, "Select menustyle:");
@@ -5702,7 +5702,7 @@ handler_autounlock(int optidx)
     start_menu(tmpwin, MENU_BEHAVE_STANDARD);
     any = cg.zeroany;
     for (i = 0; i < SIZE(unlocktypes); ++i) {
-        Sprintf(buf, "%-10.10s%c%.40s",
+        Sprintf(buf, _("%-10.10s%c%.40s"),
                 unlocktypes[i][0], sep, unlocktypes[i][1]);
         presel = (flags.autounlock & (1 << i));
         any.a_int = i + 1;
@@ -5758,7 +5758,7 @@ handler_disclose(void)
     start_menu(tmpwin, MENU_BEHAVE_STANDARD);
     any = cg.zeroany;
     for (i = 0; i < NUM_DISCLOSURE_OPTIONS; i++) {
-        Sprintf(buf, "%-12s[%c%c]", disclosure_names[i],
+        Sprintf(buf, _("%-12s[%c%c]"), disclosure_names[i],
                 flags.end_disclose[i], disclosure_options[i]);
         any.a_int = i + 1;
         add_menu(tmpwin, &nul_glyphinfo, &any, disclosure_options[i],
@@ -5917,7 +5917,7 @@ handler_msg_window(void)
         for (i = 0; i < SIZE(menutype); i++) {
             if (i < 2 && is_curses)
                 continue;
-            Sprintf(buf, "%-12.12s%c%.60s", msgwind[i][0], sep,
+            Sprintf(buf, _("%-12.12s%c%.60s"), msgwind[i][0], sep,
                     msgwind[i][1]);
             any.a_char = c = *msgwind[i][0];
             add_menu(tmpwin, &nul_glyphinfo, &any, *buf, 0,
@@ -5925,7 +5925,7 @@ handler_msg_window(void)
                      (c == iflags.prevmsg_window) ? MENU_ITEMFLAGS_SELECTED
                                                   : MENU_ITEMFLAGS_NONE);
             /* second line is prefixed by spaces that "c - " would use */
-            Sprintf(buf, "%4s%-12.12s%c%.60s", "", "", sep, msgwind[i][2]);
+            Sprintf(buf, _("%4s%-12.12s%c%.60s"), "", "", sep, msgwind[i][2]);
             add_menu_str(tmpwin, buf);
         }
         end_menu(tmpwin, "Select message history display type:");
@@ -6035,12 +6035,12 @@ handler_paranoid_confirmation(void)
         if (strstri(explain, "'m'")
             && (mkey = cmd_from_func(do_reqmenu)) != 'm') {
             if (mkey) { /* key for 'm' prefix */
-                Sprintf(mbuf, "'%.9s'", visctrl(mkey)); /* .5 is enough */
+                Sprintf(mbuf, _("'%.9s'"), visctrl(mkey)); /* .5 is enough */
             } else { /* extended command name for 'm' prefix */
                 cmdnm = cmdname_from_func(do_reqmenu, cbuf, TRUE);
                 if (!cmdnm)
                     cmdnm = "reqmenu";
-                Sprintf(mbuf, "'%s%.31s'", (*cmdnm != '#') ? "#" : "", cmdnm);
+                Sprintf(mbuf, _("'%s%.31s'"), (*cmdnm != '#') ? "#" : "", cmdnm);
             }
             explain = strsubst(strcpy(ebuf, explain), "'m'", mbuf);
         }
@@ -6099,7 +6099,7 @@ handler_perminv_mode(void)
         } else {
             Strcpy(sepbuf, "\t");
         }
-        Sprintf(buf, "%s%s%s", pi0, sepbuf, perminv_modes[i][2]);
+        Sprintf(buf, _("%s%s%s"), pi0, sepbuf, perminv_modes[i][2]);
         let = ((i & (int) InvSparse) != 0) ? highc(pi1[0]) : pi0[0];
         any.a_int = i + 1;
         add_menu(tmpwin, &nul_glyphinfo, &any, let, '0' + i,
@@ -6304,7 +6304,7 @@ handler_whatis_coord(void)
              (gpc == GPCOORDS_NONE)
                 ? MENU_ITEMFLAGS_SELECTED : MENU_ITEMFLAGS_NONE);
     add_menu_str(tmpwin, "");
-    Sprintf(buf, "map: upper-left: <%d,%d>, lower-right: <%d,%d>%s",
+    Sprintf(buf, _("map: upper-left: <%d,%d>, lower-right: <%d,%d>%s"),
             1, 0, COLNO - 1, ROWNO - 1,
             flags.verbose ? "; column 0 unused, off left edge" : "");
     add_menu_str(tmpwin, buf);
@@ -6316,7 +6316,7 @@ handler_whatis_coord(void)
 #else
 #define COL80ARG ""
 #endif
-    Sprintf(buf, "screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s",
+    Sprintf(buf, _("screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s"),
             0 + 2, 1, ROWNO - 1 + 2, COLNO - 1, COL80ARG);
 #undef COL80ARG
     add_menu_str(tmpwin, buf);
@@ -6436,14 +6436,14 @@ handler_autopickup_exception(void)
                 any.a_void = (opt_idx == 1) ? 0 : ape;
                 /* length of pattern plus quotes (plus '<'/'>') is
                    less than BUFSZ */
-                Sprintf(apebuf, "\"%c%s\"", ape->grab ? '<' : '>',
+                Sprintf(apebuf, _("\"%c%s\""), ape->grab ? '<' : '>',
                         ape->pattern);
                 add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0,
                          ATR_NONE, clr, apebuf, MENU_ITEMFLAGS_NONE);
                 ape = ape->next;
             }
         }
-        Sprintf(apebuf, "%s autopickup exceptions",
+        Sprintf(apebuf, _("%s autopickup exceptions"),
                 (opt_idx == 1) ? "List of" : "Remove which");
         end_menu(tmpwin, apebuf);
         pick_cnt = select_menu(tmpwin,
@@ -6523,7 +6523,7 @@ handler_menu_colors(void)
             (void) strNsubst(clrbuf, " ", "-", 0);
             any.a_int = ++mc_idx;
             /* construct suffix */
-            Sprintf(buf, "\"\"=%s%s%s", sclr,
+            Sprintf(buf, _("\"\"=%s%s%s"), sclr,
                     (tmp->attr != ATR_NONE) ? "&" : "",
                     (tmp->attr != ATR_NONE) ? sattr : "");
             /* now main string */
@@ -6539,7 +6539,7 @@ handler_menu_colors(void)
                      ATR_NONE, clr, mcbuf, MENU_ITEMFLAGS_NONE);
             tmp = tmp->next;
         }
-        Sprintf(mcbuf, "%s menu colors",
+        Sprintf(mcbuf, _("%s menu colors"),
                 (opt_idx == 1) ? "List of" : "Remove which");
         end_menu(tmpwin, mcbuf);
         pick_cnt = select_menu(tmpwin,
@@ -6600,7 +6600,7 @@ handler_msgtype(void)
         while (tmp) {
             mtype = msgtype2name(tmp->msgtype);
             any.a_int = ++mt_idx;
-            Sprintf(mtbuf, "%-5s \"", mtype);
+            Sprintf(mtbuf, _("%-5s \""), mtype);
             ln = sizeof mtbuf - Strlen(mtbuf) - sizeof "\"";
             if (strlen(tmp->pattern) > ln)
                 Strcat(strncat(mtbuf, tmp->pattern, ln - 3), "...\"");
@@ -6610,7 +6610,7 @@ handler_msgtype(void)
                      ATR_NONE, clr, mtbuf, MENU_ITEMFLAGS_NONE);
             tmp = tmp->next;
         }
-        Sprintf(mtbuf, "%s message types",
+        Sprintf(mtbuf, _("%s message types"),
                 (opt_idx == 1) ? "List of" : "Remove which");
         end_menu(tmpwin, mtbuf);
         pick_cnt = select_menu(tmpwin,
@@ -6859,7 +6859,7 @@ complain_about_duplicate(int optidx)
 #else /* !MAC68K */
     buf[0] = '\0';
     if (using_alias)
-        Sprintf(buf, " (via alias: %s)", allopt[optidx].alias);
+        Sprintf(buf, _(" (via alias: %s)"), allopt[optidx].alias);
     config_error_add(_("%s option specified multiple times: %s%s"),
                      (allopt[optidx].opttyp == CompOpt) ? "compound"
                                                         : "boolean",
@@ -7652,7 +7652,7 @@ feature_alert_opts(char *op, const char *optn)
 
     flags.suppress_alert = fnv;
     if (!go.opt_initial) {
-        Sprintf(buf, "%lu.%lu.%lu", FEATURE_NOTICE_VER_MAJ,
+        Sprintf(buf, _("%lu.%lu.%lu"), FEATURE_NOTICE_VER_MAJ,
                 FEATURE_NOTICE_VER_MIN, FEATURE_NOTICE_VER_PATCH);
         pline(_("Feature change alerts disabled for NetHack %s features and prior."), buf);
     }
@@ -8627,7 +8627,7 @@ doset_simple_menu(void)
        in case 'menu_tab_sep' ever gets included in the simple menu so
        becomes subject to being changed while doset_simple() is running */
     if (!iflags.menu_tab_sep)
-        Sprintf(fmtstr_doset_simple, "%%-%us [%%s]",
+        Sprintf(fmtstr_doset_simple, _("%%-%us [%%s]"),
                 longest_option_name(set_gameview, set_in_game));
     else
         Strcpy(fmtstr_doset_simple, fmtstr_tab_doset_simple);
@@ -8656,7 +8656,7 @@ doset_simple_menu(void)
     for (section = OptS_General; section < OptS_Advanced; section++) {
         any = cg.zeroany;
         add_menu_str(tmpwin, "");
-        Sprintf(buf, " %-30s ", _(OptS_type[section]));
+        Sprintf(buf, _(" %-30s "), _(OptS_type[section]));
         add_menu_heading(tmpwin, buf);
         for (i = 0; (name = allopt[i].name) != 0; i++) {
             if (allopt[i].section != section)
@@ -8708,7 +8708,7 @@ doset_simple_menu(void)
             add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0,
                      ATR_NONE, NO_COLOR, buf, MENU_ITEMFLAGS_NONE);
             if (gs.simple_options_help && allopt[i].descr) {
-                Sprintf(buf, "    %s", _(allopt[i].descr));
+                Sprintf(buf, _("    %s"), _(allopt[i].descr));
                 add_menu_str(tmpwin, buf);
                 add_menu_str(tmpwin, "");
             }
@@ -8873,7 +8873,7 @@ doset(void) /* changing options via menu by Per Liboriussen */
         any = cg.zeroany;
         for (i = 0; i < SIZE(helptext); ++i) {
             if (helptext[i]) {
-                Sprintf(buf, "%4s%.75s", "", helptext[i]);
+                Sprintf(buf, _("%4s%.75s"), "", helptext[i]);
                 add_menu_str(tmpwin, buf);
             } else {
                 any.a_int = HELP_IDX + 1; /* handling pick_list subtracts 1 */
@@ -8896,7 +8896,7 @@ doset(void) /* changing options via menu by Per Liboriussen */
 
     if (!iflags.menu_tab_sep)
         /* initial "%s" is for indentation of non-selectable items */
-        Sprintf(fmtstr_doset, "%%s%%-%us [%%s]",
+        Sprintf(fmtstr_doset, _("%%s%%-%us [%%s]"),
                 longest_option_name(startpass, endpass));
     else
         Strcpy(fmtstr_doset, fmtstr_tab_doset);
@@ -9515,7 +9515,7 @@ static const char *opt_intro[] = {
 #endif
     "or press \"O\" while playing and use the menu.",
     "",
-    ("Boolean options (which can be negated by prefixing them"
+    (N_("Boolean options (which can be negated by prefixing them")
      " with '!' or \"no\"):"),
     (char *) 0
 };
@@ -9721,7 +9721,7 @@ all_options_apes(strbuf_t *sbuf)
     char buf[BUFSZ];
 
     while (tmp) {
-        Sprintf(buf, "autopickup_exception=\"%c%s\"\n",
+        Sprintf(buf, _("autopickup_exception=\"%c%s\"\n"),
                 tmp->grab ? '<' : '>', tmp->pattern);
         strbuf_append(sbuf, buf);
         tmp = tmp->next;

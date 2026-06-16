@@ -323,7 +323,7 @@ dowrite(struct obj *pen)
                 Strcpy(namebuf, OBJ_DESCR(objects[new_obj->otyp]));
                 wipeout_text(namebuf, (6 + MAXULEV - u.ulevel) / 6, 0);
             } else
-                Sprintf(namebuf, "%s was here!", svp.plname);
+                Sprintf(namebuf, _("%s was here!"), svp.plname);
             You(_("write \"%s\" and the scroll disappears."), namebuf);
             useup(paper);
         }

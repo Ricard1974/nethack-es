@@ -187,7 +187,7 @@ getpos_help(boolean force, const char *goal)
             visctrl(cmd_from_func(do_run_east)),
             fastmovemode[iflags.getloc_moveskip]);
     putstr(tmpwin, 0, sbuf);
-    Sprintf(sbuf, "(or prefix normal move with '%s' or '%s' to fast-move)",
+    Sprintf(sbuf, _("(or prefix normal move with '%s' or '%s' to fast-move)"),
             visctrl(cmd_from_func(do_run)),
             visctrl(cmd_from_func(do_rush)));
     putstr(tmpwin, 0, sbuf);
@@ -268,7 +268,7 @@ getpos_help(boolean force, const char *goal)
            also for dotherecmdmenu's simulated mouse) */
         doing_what_is = (goal == what_is_a_location);
         if (doing_what_is) {
-            Sprintf(kbuf, "'%s' or '%s' or '%s' or '%s'",
+            Sprintf(kbuf, _("'%s' or '%s' or '%s' or '%s'"),
                     visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK]),
                     visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK_Q]),
                     visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK_O]),
@@ -281,20 +281,20 @@ getpos_help(boolean force, const char *goal)
         putstr(tmpwin, 0, sbuf);
         if (doing_what_is) {
             Sprintf(sbuf,
-      "  '%s' describe current spot, show 'more info', move to another spot.",
+      _("  '%s' describe current spot, show 'more info', move to another spot."),
                     visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK_V]));
             putstr(tmpwin, 0, sbuf);
             Sprintf(sbuf,
-                    "  '%s' describe current spot,%s move to another spot;",
+                    _("  '%s' describe current spot,%s move to another spot;"),
                     visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK]),
                     flags.help && !force ? " prompt if 'more info'," : "");
             putstr(tmpwin, 0, sbuf);
             Sprintf(sbuf,
-                    "  '%s' describe current spot, move to another spot;",
+                    _("  '%s' describe current spot, move to another spot;"),
                     visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK_Q]));
             putstr(tmpwin, 0, sbuf);
             Sprintf(sbuf,
-                    "  '%s' describe current spot, stop looking at things;",
+                    _("  '%s' describe current spot, stop looking at things;"),
                     visctrl(gc.Cmd.spkeys[NHKF_GETPOS_PICK_O]));
             putstr(tmpwin, 0, sbuf);
         }
@@ -575,7 +575,7 @@ dxdy_to_dist_descr(coordxy dx, coordxy dy, boolean fulldir)
         if (dy) {
             if (abs(dy) > 9999)
                 dy = sgn(dy) * 9999;
-            Sprintf(eos(buf), "%d%s%s", abs(dy), dirnames[(dy > 0)][fulldir],
+            Sprintf(eos(buf), _("%d%s%s"), abs(dy), dirnames[(dy > 0)][fulldir],
                     dx ? "," : "");
         }
         if (dx) {
@@ -1112,7 +1112,7 @@ getpos(coord *ccp, boolean force, const char *goal)
                     if (!force)
                         Strcpy(note, "aborted");
                     else /* hjkl */
-                        Sprintf(note, "use '%s', '%s', '%s', '%s' or '%s'",
+                        Sprintf(note, _("use '%s', '%s', '%s', '%s' or '%s'"),
                                 visctrl(cmd_from_func(do_move_west)),
                                 visctrl(cmd_from_func(do_move_south)),
                                 visctrl(cmd_from_func(do_move_north)),

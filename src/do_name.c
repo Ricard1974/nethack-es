@@ -683,7 +683,7 @@ namefloorobj(void)
     /* "dot for under/over you" only makes sense when the cursor hasn't
        been moved off the hero's '@' yet, but there's no way to adjust
        the help text once getpos() has started */
-    Sprintf(buf, "object on map (or '.' for one %s you)",
+    Sprintf(buf, _("object on map (or '.' for one %s you)"),
             (u.uundetected && hides_under(gy.youmonst.data))
               ? "over" : "under");
     if (getpos(&cc, FALSE, buf) < 0 || cc.x <= 0)
@@ -953,10 +953,10 @@ x_monnam(
       if (has_ebones(mtmp)) {
 #endif
         if (mdat == &mons[PM_GHOST]) {
-            Sprintf(eos(buf), "%s ghost", s_suffix(name));
+            Sprintf(eos(buf), _("%s ghost"), s_suffix(name));
             name_at_start = TRUE;
         } else if (called) {
-            Sprintf(eos(buf), "%s called %s", pm_name, name);
+            Sprintf(eos(buf), _("%s called %s"), pm_name, name);
             name_at_start = (boolean) type_is_pname(mdat);
         } else if (is_mplayer(mdat) && (bp = strstri(name, " the ")) != 0) {
             /* <name> the <adjective> <invisible> <saddled> <rank> */
@@ -1262,11 +1262,11 @@ minimal_monnam(struct monst *mon, boolean ckloc)
                 fmt_ptr((genericptr_t) &mons[NUMMONS]));
     } else if (ckloc && ptr == &mons[PM_LONG_WORM] && mon->mx
                && svl.level.monsters[mon->mx][mon->my] != mon) {
-        Sprintf(outbuf, "%s <%d,%d>",
+        Sprintf(outbuf, _("%s <%d,%d>"),
                 pmname(&mons[PM_LONG_WORM_TAIL], Mgender(mon)),
                 mon->mx, mon->my);
     } else {
-        Sprintf(outbuf, "%s%s <%d,%d>",
+        Sprintf(outbuf, _("%s%s <%d,%d>"),
                 mon->mtame ? "tame " : mon->mpeaceful ? "peaceful " : "",
                 mon_pmname(mon), mon->mx, mon->my);
         if (mon->cham != NON_PM)
@@ -1518,7 +1518,7 @@ char *
 coyotename(struct monst *mtmp, char *buf)
 {
     if (mtmp && buf) {
-        Sprintf(buf, "%s - %s",
+        Sprintf(buf, _("%s - %s"),
                 x_monnam(mtmp, ARTICLE_NONE, (char *) 0, 0, TRUE),
                 mtmp->mcan ? coynames[SIZE(coynames) - 1]
                            : coynames[mtmp->m_id % (SIZE(coynames) - 1)]);
@@ -1564,7 +1564,7 @@ christen_orc(struct monst *mtmp, const char *gang, const char *other)
         boolean nameit = FALSE;
 
         if (gang) {
-            Sprintf(buf, "%s of %s", upstart(orcname),
+            Sprintf(buf, _("%s of %s"), upstart(orcname),
                     upstart(strcpy(gbuf, gang)));
             nameit = TRUE;
         } else if (other) {

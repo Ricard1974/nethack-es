@@ -141,7 +141,7 @@ throw_obj(struct obj *obj, int shotlimit)
         You(_("throw %s with your bare %s."), corpse_xname(obj, (const char *) 0, CXN_PFX_THE), /* throwing with one hand, but pluralize since the
                expression "with your bare hands" sounds better */
             makeplural(body_part(HAND)));
-        Sprintf(svk.killer.name, "throwing %s bare-handed",
+        Sprintf(svk.killer.name, _("throwing %s bare-handed"),
                 killer_xname(obj));
         instapetrify(svk.killer.name);
     }
@@ -865,7 +865,7 @@ hurtle_step(genericptr_t arg, coordxy x, coordxy y)
         if (touch_petrifies(mon->data)
             /* this is a bodily collision, so check for body armor */
             && !uarmu && !uarm && !uarmc) {
-            Sprintf(svk.killer.name, "bumping into %s",
+            Sprintf(svk.killer.name, _("bumping into %s"),
                     an(pmname(mon->data, NEUTRAL)));
             instapetrify(svk.killer.name);
         }

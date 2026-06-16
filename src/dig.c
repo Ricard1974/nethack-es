@@ -394,7 +394,7 @@ dig(void)
                 else if (uarmf)
                     dmg = (dmg + 1) / 2;
                 You(_("hit yourself in the %s."), body_part(FOOT));
-                Sprintf(kbuf, "chopping off %s own %s", uhis(),
+                Sprintf(kbuf, _("chopping off %s own %s"), uhis(),
                         body_part(FOOT));
                 losehp(Maybe_Half_Phys(dmg), kbuf, KILLED_BY);
             } else {
@@ -1173,7 +1173,7 @@ use_pick_axe2(struct obj *obj)
         if (dam <= 0)
             dam = 1;
         You(_("hit yourself with %s."), yname(uwep));
-        Sprintf(buf, "%s own %s", uhis(), OBJ_NAME(objects[obj->otyp]));
+        Sprintf(buf, _("%s own %s"), uhis(), OBJ_NAME(objects[obj->otyp]));
         losehp(Maybe_Half_Phys(dam), buf, KILLED_BY);
         disp.botl = TRUE;
         return ECMD_TIME;

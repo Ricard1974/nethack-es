@@ -585,7 +585,7 @@ sortloot_descr(int otyp, char *outbuf)
     sl_cookie.str = (char *) 0;
 
     loot_classify(&sl_cookie, &o);
-    Sprintf(outbuf, "%02d%02d%1d ",
+    Sprintf(outbuf, _("%02d%02d%1d "),
             sl_cookie.orderclass, sl_cookie.subclass, sl_cookie.disco);
     return outbuf;
 }
@@ -676,13 +676,13 @@ disco_typename(int otyp)
         if (!actualn) { /* won't happen; used to pacify static analyzer */
             ;
         } else if (strstri(result, " called")) {
-            Sprintf(buf, " [%s] called", actualn);
+            Sprintf(buf, _(" [%s] called"), actualn);
             (void) strsubst(result, " called", buf);
         } else if (strstri(result, " (")) {
-            Sprintf(buf, " [%s] (", actualn);
+            Sprintf(buf, _(" [%s] ("), actualn);
             (void) strsubst(result, " (", buf);
         } else {
-            Sprintf(eos(result), " [%s]", actualn);
+            Sprintf(eos(result), _(" [%s]"), actualn);
         }
     }
     return result;
@@ -1004,7 +1004,7 @@ doclassdisco(void)
         /* we'll prompt even if there's only one viable class; we add all
            nonviable classes as unseen acceptable choices so player can ask
            for discoveries of any class whether it has discoveries or not */
-        Sprintf(allclasses_plustwo, "%s%c%c%c", allclasses, 'a', 'u', 'r');
+        Sprintf(allclasses_plustwo, _("%s%c%c%c"), allclasses, 'a', 'u', 'r');
         for (s = allclasses_plustwo, xtras = 0; *s; ++s) {
             c = strchr("aur", *s) ? *s : def_oc_syms[(int) *s].sym;
             if (!strchr(discosyms, c)) {

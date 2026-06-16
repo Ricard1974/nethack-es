@@ -260,7 +260,7 @@ lib_dlb_cleanup(void)
 char *
 build_dlb_filename(const char *lf)
 {
-    Sprintf(dlbfilename, "%s%d%d%d",
+    Sprintf(dlbfilename, _("%s%d%d%d"),
             lf ? lf : DLBBASENAME, VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
     return dlbfilename;
 }

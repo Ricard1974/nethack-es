@@ -246,7 +246,7 @@ done_in_by(struct monst *mtmp, int how)
         if (alt || type_is_pname(mptr)) /* no article */
             Strcpy(shape, fakenm);
         else if (the_unique_pm(mptr)) /* "the"; don't use the() here */
-            Sprintf(shape, "the %s", fakenm);
+            Sprintf(shape, _("the %s"), fakenm);
         else /* "a"/"an" */
             Strcpy(shape, an(fakenm));
         /* omit "called" to avoid excessive verbosity */
@@ -263,13 +263,13 @@ done_in_by(struct monst *mtmp, int how)
     } else if (mptr == &mons[PM_GHOST]) {
         Strcat(buf, "ghost");
         if (has_mgivenname(mtmp))
-            Sprintf(eos(buf), " of %s", MGIVENNAME(mtmp));
+            Sprintf(eos(buf), _(" of %s"), MGIVENNAME(mtmp));
     } else if (mtmp->isshk) {
         const char *shknm = shkname(mtmp),
                    *honorific = shkname_is_pname(mtmp) ? ""
                                    : mtmp->female ? "Ms. " : "Mr. ";
 
-        Sprintf(eos(buf), "%s%s, the shopkeeper", honorific, shknm);
+        Sprintf(eos(buf), _("%s%s, the shopkeeper"), honorific, shknm);
         svk.killer.format = KILLED_BY;
     } else if (mtmp->ispriest || mtmp->isminion) {
         /* m_monnam() suppresses "the" prefix plus "invisible", and
@@ -278,7 +278,7 @@ done_in_by(struct monst *mtmp, int how)
     } else {
         Strcat(buf, pmname(mptr, Mgender(mtmp)));
         if (has_mgivenname(mtmp)) {
-            Sprintf(eos(buf), " %s %s",
+            Sprintf(eos(buf), _(" %s %s"),
                     has_ebones(mtmp) ? "of" : "called",
                     MGIVENNAME(mtmp));
         }
@@ -568,14 +568,14 @@ dump_everything(
             &datetimebuf[0], &datetimebuf[4], &datetimebuf[6],
             &datetimebuf[8], &datetimebuf[10], &datetimebuf[12]);
     Strcpy(datetimebuf, yyyymmddhhmmss(when));
-    Sprintf(eos(pbuf), ", ended %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s.",
+    Sprintf(eos(pbuf), _(", ended %4.4s-%2.2s-%2.2s %2.2s:%2.2s:%2.2s."),
             &datetimebuf[0], &datetimebuf[4], &datetimebuf[6],
             &datetimebuf[8], &datetimebuf[10], &datetimebuf[12]);
     putstr(0, 0, pbuf);
     putstr(0, 0, "");
 
     /* character name and basic role info */
-    Sprintf(pbuf, "%s, %s %s %s %s",
+    Sprintf(pbuf, _("%s, %s %s %s %s"),
             svp.plname, aligns[1 - u.ualign.type].adj,
             genders[flags.female].adj, gu.urace.adj,
             (flags.female && gu.urole.name.f) ? gu.urole.name.f
@@ -929,7 +929,7 @@ artifact_score(
                 /* not observe_object; dead characters don't observe */
                 otmp->known = otmp->dknown = otmp->bknown = otmp->rknown = 1;
                 /* assumes artifacts don't have quan > 1 */
-                Sprintf(pbuf, "%s%s (worth %ld %s and %ld points)",
+                Sprintf(pbuf, _("%s%s (worth %ld %s and %ld points)"),
                         the_unique_obj(otmp) ? "The " : "",
                         otmp->oartifact ? artiname(otmp->oartifact)
                                         : OBJ_NAME(objects[otmp->otyp]),
@@ -1416,7 +1416,7 @@ really_done(int how)
         /* don't bother counting to see whether it should be plural */
     }
 
-    Sprintf(pbuf, "%s %s the %s...", Goodbye(), svp.plname,
+    Sprintf(pbuf, _("%s %s the %s..."), Goodbye(), svp.plname,
             (how != ASCENDED)
                 ? (const char *) ((flags.female && gu.urole.name.f)
                     ? gu.urole.name.f
@@ -1454,7 +1454,7 @@ really_done(int how)
         Strcpy(pbuf, "You");
         if (mtmp || Schroedingers_cat) {
             while (mtmp) {
-                Sprintf(eos(pbuf), " and %s", mon_nam(mtmp));
+                Sprintf(eos(pbuf), _(" and %s"), mon_nam(mtmp));
                 if (mtmp->mtame)
                     u.urexp = nowrap_add(u.urexp, mtmp->mhp);
                 mtmp = mtmp->nmon;
@@ -1473,7 +1473,7 @@ really_done(int how)
         } else {
             Strcat(pbuf, " ");
         }
-        Sprintf(eos(pbuf), "%s with %ld point%s,",
+        Sprintf(eos(pbuf), _("%s with %ld point%s,"),
                 (how == ASCENDED) ? "went to your reward"
                                   : "escaped from the dungeon",
                 u.urexp, plur(u.urexp));
@@ -1507,12 +1507,12 @@ really_done(int how)
                     if (has_oname(otmp))
                         free_oname(otmp);
                     otmp->quan = count;
-                    Sprintf(pbuf, "%8ld %s (worth %ld %s),", count,
+                    Sprintf(pbuf, _("%8ld %s (worth %ld %s),"), count,
                             xname(otmp), count * (long) objects[typ].oc_cost,
                             currency(2L));
                     obfree(otmp, (struct obj *) 0);
                 } else {
-                    Sprintf(pbuf, "%8ld worthless piece%s of colored glass,",
+                    Sprintf(pbuf, _("%8ld worthless piece%s of colored glass,"),
                             count, plur(count));
                 }
                 dump_forward_putstr(endwin, 0, pbuf, 0);
@@ -1534,15 +1534,15 @@ really_done(int how)
                 where = "The Astral Plane";
             Sprintf(pbuf, _("You %s in %s"), ends[how], where);
             if (!In_endgame(&u.uz) && !single_level_branch(&u.uz))
-                Sprintf(eos(pbuf), " on dungeon level %d",
+                Sprintf(eos(pbuf), _(" on dungeon level %d"),
                         In_quest(&u.uz) ? dunlev(&u.uz) : depth(&u.uz));
         }
 
-        Sprintf(eos(pbuf), " with %ld point%s,", u.urexp, plur(u.urexp));
+        Sprintf(eos(pbuf), _(" with %ld point%s,"), u.urexp, plur(u.urexp));
         dump_forward_putstr(endwin, 0, pbuf, done_stopprint);
     }
 
-    Sprintf(pbuf, "and %ld piece%s of gold, after %ld move%s.", umoney,
+    Sprintf(pbuf, _("and %ld piece%s of gold, after %ld move%s."), umoney,
             plur(umoney), svm.moves, plur(svm.moves));
     dump_forward_putstr(endwin, 0, pbuf, done_stopprint);
     Sprintf(pbuf,

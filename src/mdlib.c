@@ -300,7 +300,7 @@ make_version(void)
 char *
 mdlib_version_string(char *outbuf, const char *delim)
 {
-    Sprintf(outbuf, "%d%s%d%s%d", VERSION_MAJOR, delim, VERSION_MINOR, delim,
+    Sprintf(outbuf, _("%d%s%d%s%d"), VERSION_MAJOR, delim, VERSION_MINOR, delim,
             PATCHLEVEL);
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
     Sprintf(eos(outbuf), "-%d", EDITLEVEL);
@@ -406,14 +406,14 @@ build_savebones_compat_string(void)
            "save and bones files accepted from version");
 #ifdef VERSION_COMPATIBILITY
     if (uver != cver)
-        Sprintf(eos(save_bones_compat_buf), "s %lu.%lu.%lu through %d.%d.%d",
+        Sprintf(eos(save_bones_compat_buf), _("s %lu.%lu.%lu through %d.%d.%d"),
                 ((uver >> 24) & 0x0ffUL),
                 ((uver >> 16) & 0x0ffUL),
                 ((uver >>  8) & 0x0ffUL),
                 VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
     else
 #endif
-        Sprintf(eos(save_bones_compat_buf), " %d.%d.%d only",
+        Sprintf(eos(save_bones_compat_buf), _(" %d.%d.%d only"),
                 VERSION_MAJOR, VERSION_MINOR, PATCHLEVEL);
 }
 
@@ -727,9 +727,9 @@ build_options(void)
     for (i = 0; i < SIZE(window_opts) - 1; i++) {
         if (!window_opts[i].valid)
             continue;
-        Sprintf(buf, "\"%s\"", window_opts[i].id);
+        Sprintf(buf, _("\"%s\""), window_opts[i].id);
         if (strcmp(window_opts[i].name, window_opts[i].id))
-            Sprintf(eos(buf), " (%s)", window_opts[i].name);
+            Sprintf(eos(buf), _(" (%s)"), window_opts[i].name);
         /*
          * 1 : foo.
          * 2 : foo and bar,
@@ -746,7 +746,7 @@ build_options(void)
     }
     if (cnt > 1) {
         /* loop ended with a comma; opt_out_words() will insert a space */
-        Sprintf(buf, "with a default of \"%s\".", defwinsys);
+        Sprintf(buf, _("with a default of \"%s\"."), defwinsys);
         opt_out_words(buf, &length);
     }
 
@@ -772,7 +772,7 @@ build_options(void)
         soundlib = soundlib_opts[i].text_id;
         if (!strncmp(soundlib, "soundlib_", 9))
             soundlib += 9;
-        Sprintf(buf, "\"%s\"", soundlib);
+        Sprintf(buf, _("\"%s\""), soundlib);
         /*
          * 1 : foo.
          * 2 : foo and bar.
@@ -789,7 +789,7 @@ build_options(void)
 #ifdef USER_SOUNDS
     if (cnt > 1) {
         /* loop ended with a comma; opt_out_words() will insert a space */
-        Sprintf(buf, "user sounds.");
+        Sprintf(buf, _("user sounds."));
         opt_out_words(buf, &length);
     }
 #endif

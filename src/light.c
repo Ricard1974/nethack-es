@@ -950,7 +950,7 @@ wiz_light_sources(void)
         putstr(win, 0, "location range flags  type    id");
         putstr(win, 0, "-------- ----- ------ ----  -------");
         for (ls = gl.light_base; ls; ls = ls->next) {
-            Sprintf(buf, "  %2d,%2d   %2d   0x%04x  %s  %s", ls->x, ls->y,
+            Sprintf(buf, _("  %2d,%2d   %2d   0x%04x  %s  %s"), ls->x, ls->y,
                     ls->range, ls->flags,
                     (ls->type == LS_OBJECT
                        ? "obj"

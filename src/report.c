@@ -305,7 +305,7 @@ submit_web_report(int cos, const char *msg, const char *why)
      *       since they were formatting int or unsigned into a large buffer.
      */
         /* cos - operation, v - version */
-    Sprintf(temp, "?cos=%d&v=1", cos);
+    Sprintf(temp, _("?cos=%d&v=1"), cos);
     SWR_ADD(temp);
 
         /* msg==NULL for #bugreport */

@@ -495,7 +495,7 @@ explode(
                        like "Barney" here in order to suppress "the" below,
                        so avoid any which begins with a capital letter) */
                     do {
-                        Sprintf(hallu_buf, "%s explosion",
+                        Sprintf(hallu_buf, _("%s explosion"),
                                 s_suffix(rndmonnam((char *) 0)));
                     } while (*hallu_buf != lowc(*hallu_buf) && ++tryct < 20);
                     str = hallu_buf;
@@ -593,7 +593,7 @@ explode(
         if (flags.verbose && (type < 0 || olet != SCROLL_CLASS)) {
             if (do_hallu) { /* (see explanation above) */
                 do {
-                    Sprintf(hallu_buf, "%s explosion",
+                    Sprintf(hallu_buf, _("%s explosion"),
                             s_suffix(rndmonnam((char *) 0)));
                 } while (*hallu_buf != lowc(*hallu_buf));
                 str = hallu_buf;
@@ -1054,7 +1054,7 @@ mon_explodes(
 
     /* This might end up killing you, too; you never know...
      * also, it is used in explode() messages */
-    Sprintf(svk.killer.name, "%s explosion",
+    Sprintf(svk.killer.name, _("%s explosion"),
             s_suffix(pmname(mon->data, Mgender(mon))));
     svk.killer.format = KILLED_BY_AN;
 
