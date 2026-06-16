@@ -166,8 +166,7 @@ msgid "%s %s, welcome to NetHack!  You are a%s."
 msgstr "%s %s, ¡bienvenido a NetHack!  Eres un%s."
 
 #: src/allmain.c:953
-#, fuzzy, c-format
-#| msgid "%s %s, and %s your backpack!"
+#, c-format
 msgid "%s %s, the%s, welcome back to NetHack!"
 msgstr "%s %s, %s, bienvenido de vuelta a NetHack!"
 
