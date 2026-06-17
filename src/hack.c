@@ -2490,9 +2490,9 @@ avoid_trap_andor_region(coordxy x, coordxy y)
         /* we don't override confirmation for poison resistance since the
            region also hinders hero's vision even if/when no damage is done */
     ) {
-        Snprintf(qbuf, sizeof qbuf, "%s into that %s cloud?",
+        Snprintf(qbuf, sizeof qbuf, _("%s into that %s cloud?"),
                  u_locomotion("step"),
-                 (reg_damg(newreg) > 0) ? "poison gas" : "vapor");
+                 (reg_damg(newreg) > 0) ? _("poison gas") : _("vapor"));
         if (!paranoid_query(ParanoidConfirm, upstart(qbuf))) {
             nomul(0);
             svc.context.move = 0;
@@ -2516,8 +2516,8 @@ avoid_trap_andor_region(coordxy x, coordxy y)
         int traptype = (Hallucination ? rnd(TRAPNUM - 1) : (int) trap->ttyp);
         boolean into = into_vs_onto(traptype);
 
-        Snprintf(qbuf, sizeof qbuf, "Really %s %s that %s?",
-                 u_locomotion("step"), into ? "into" : "onto",
+        Snprintf(qbuf, sizeof qbuf, _("Really %s %s that %s?"),
+                 u_locomotion("step"), into ? _("into") : _("onto"),
                  defsyms[trap_to_defsym(traptype)].explanation);
         /* handled like paranoid_confirm:pray; when paranoid_confirm:trap
            isn't set, don't ask at all but if it is set (checked above),

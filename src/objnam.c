@@ -1382,18 +1382,18 @@ doname_base(
     switch (is_weptool(obj) ? WEAPON_CLASS : obj->oclass) {
     case AMULET_CLASS:
         if (obj->owornmask & W_AMUL)
-            Concat(bp, 0, " (being worn)");
+            Concat(bp, 0, _(" (being worn)"));
         break;
     case ARMOR_CLASS:
         if (obj->owornmask & W_ARMOR) {
             Concat(bp, 0,
-                   (obj == uskin) ? " (embedded in your skin)"
+                   (obj == uskin) ? _(" (embedded in your skin)")
                    /* in case of perm_invent update while Wear/Takeoff
                       is in progress; check doffing() before donning()
                       because donning() returns True for both cases */
-                   : doffing(obj) ? " (being doffed)"
-                     : donning(obj) ? " (being donned)"
-                       : " (being worn)");
+                   : doffing(obj) ? _(" (being doffed)")
+                     : donning(obj) ? _(" (being donned)")
+                       : _(" (being worn)"));
             /* we just added a parenthesized phrase, but the right paren
                might be absent if the appended string got truncated */
             if (bp_eos[-1] == ')') {
@@ -1425,7 +1425,7 @@ doname_base(
         break;
     case TOOL_CLASS:
         if (obj->owornmask & (W_TOOL | W_SADDLE)) { /* blindfold */
-            Concat(bp, 0, " (being worn)");
+            Concat(bp, 0, _(" (being worn)"));
             break;
         }
         if (obj->otyp == LEASH && obj->leashmon != 0) {
@@ -1573,7 +1573,7 @@ doname_base(
                  ? (is_ammo(obj) || is_missile(obj))
                  : !is_weptool(obj)))
             && !twoweap_primary) {
-            Concat(bp, 0, " (wielded)");
+            Concat(bp, 0, _(" (wielded)"));
         } else {
             const char *hand_s = body_part(HAND);
             char *obufp, handsbuf[40];
@@ -1583,15 +1583,15 @@ doname_base(
                 releaseobuf(obufp);
             } else { /* "right hand" or "left hand" */
                 Sprintf(handsbuf, _("%s %s"),
-                        URIGHTY ? "right" : "left", hand_s);
+                        URIGHTY ? _("right") : _("left"), hand_s);
                 hand_s = handsbuf;
             }
             /* note: Sting's glow message, if added, will insert text
                in front of "(weapon in hand)"'s closing paren */
-            ConcatF2(bp, 0, " (%s %s)",
-                     tethered ? "tethered to"
-                     : twoweap_primary ? "wielded in"
-                       : "weapon in",
+            ConcatF2(bp, 0, _(" (%s %s)"),
+                     tethered ? _("tethered to")
+                     : twoweap_primary ? _("wielded in")
+                       : _("weapon in"),
                      hand_s);
 
             /* we just added a parenthesized phrase, but the right paren
@@ -1612,11 +1612,11 @@ doname_base(
     }
     if (obj->owornmask & W_SWAPWEP) {
         if (u.twoweap)
-            ConcatF2(bp, 0, " (wielded in %s %s)",
-                     URIGHTY ? "left" : "right", body_part(HAND));
+            ConcatF2(bp, 0, _(" (wielded in %s %s)"),
+                     URIGHTY ? _("left") : _("right"), body_part(HAND));
         else
             /* TODO: rephrase this when obj isn't a weapon or weptool */
-            ConcatF1(bp, 0, " (alternate weapon%s; not wielded)",
+            ConcatF1(bp, 0, _(" (alternate weapon%s; not wielded)"),
                      plur(obj->quan));
     }
     if (obj->owornmask & W_QUIVER) {

@@ -20,7 +20,7 @@ variable de entorno `LANG`. El sistema de traducción es propio de NetHack-es
 | Código | Idioma  | Traducciones C (.mo)          | Datos (.{lang})      |
 | ------ | ------- | ----------------------------- | -------------------- |
 | `en`   | Inglés  | No necesita (nativo)          | No necesita (nativo) |
-| `es`   | Español | ✅ `po/es.po` (2.580 activas) | ✅ 29 archivos `.es` |
+| `es`   | Español | ✅ `po/es.po` (4.117 activas) | ✅ 29 archivos `.es` |
 
 ## Cómo añadir un nuevo idioma (ej: francés)
 

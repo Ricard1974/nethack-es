@@ -3053,7 +3053,7 @@ logdeadmon(struct monst *mtmp, int mndx)
             if (howmany > 1) /* "(2nd time)" or "(50th time)" */
                 Sprintf(xtra, _(" (%d%s time)"), howmany, ordin(howmany));
 
-            mkilled = nonliving(mtmp->data) ? "destroyed" : "killed";
+            mkilled = nonliving(mtmp->data) ? _("destroyed") : _("killed");
             /* hero is responsible: "killed <monst>" */
             if (herodidit)
                 livelog_printf(llevent_type, "%s %s%s%s",
@@ -3383,7 +3383,7 @@ monkilled(
     if (fltxt && (mdef->wormno ? worm_known(mdef)
                                : cansee(mdef->mx, mdef->my)))
         pline_mon(mdef, "%s is %s%s%s!", Monnam(mdef),
-              nonliving(mptr) ? "destroyed" : "killed",
+              nonliving(mptr) ? _("destroyed") : _("killed"),
               *fltxt ? " by the " : "", fltxt);
     else
         /* sad feeling is deferred until after potential life-saving */

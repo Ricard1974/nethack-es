@@ -449,7 +449,7 @@ ohitmon(
             if (DEADMONSTER(mtmp)) {
                 if (vis || (verbose && !gm.mtarget))
                     pline(_("%s is %s!"), Monnam(mtmp), (nonliving(mtmp->data) || is_vampshifter(mtmp)
-                           || !canspotmon(mtmp)) ? "destroyed" : "killed");
+                           || !canspotmon(mtmp)) ? _("destroyed") : _("killed"));
                 /* don't blame hero for unknown rolling boulder trap */
                 if (!svc.context.mon_moving
                    && (otmp->otyp != BOULDER || range >= 0 || otmp->otrapped))

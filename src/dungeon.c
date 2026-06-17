@@ -2535,7 +2535,7 @@ query_annotation(d_level *lev)
         char qbuf[QBUFSZ], lbuf[QBUFSZ]; /* level description */
 
         if (!lev || on_level(&u.uz, lev)) {
-            Strcpy(lbuf, "this dungeon level");
+            Strcpy(lbuf, _("this dungeon level"));
         } else {
             int dflgs = (lev->dnum == u.uz.dnum) ? 0 : 2;
             d_level save_uz = u.uz;

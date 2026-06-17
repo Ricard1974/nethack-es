@@ -230,6 +230,198 @@ Sprintf(subjbuf, _("Your %s "), _(attrname[attrindx]));
 
 ---
 
+## Problema 13: "killed" y "destroyed" sin `_()` en ternarias de combate
+
+**Síntoma:** Los mensajes de muerte de monstruos muestran "killed" o "destroyed"
+en inglés aunque el formato `"%s is %s!"` está traducido.
+
+**Causa:** En 7 lugares del código C se usa el patrón ternario:
+```c
+nonliving(mtmp->data) ? "destroyed" : "killed"
+```
+sin envolver los strings literales en `_()`.
+
+**Solución:** Envolver cada string en `_()`:
+```c
+nonliving(mtmp->data) ? _("destroyed") : _("killed")
+```
+
+**Archivos corregidos (7 ocurrencias):**
+- `src/do.c:209-211` — boulder aplasta monstruo
+- `src/mon.c:3056` — log de muertes
+- `src/mon.c:3386` — mensaje de muerte por ataque
+- `src/muse.c:3190-3191` — muerte por fuego
+- `src/mthrowu.c:451-452` — objeto arrojado mata
+- `src/wizcmds.c:323` — #wizkill
+- `src/explode.c:572-574` — explosión mata (incluye "burned completely")
+
+---
+
+## Problema 14: Sufijos de inventario sin `_()` en objnam.c
+
+**Síntoma:** En el inventario, sufijos como "(being worn)", "(wielded)",
+"(weapon in hand)" aparecen en inglés.
+
+**Causa:** `doname()` en `src/objnam.c` concatena estos sufijos sin `_()`:
+- `"(being worn)"` (3 veces: amulet, armor, tool)
+- `"(embedded in your skin)"`, `"(being doffed)"`, `"(being donned)"`
+- `"(wielded)"`
+- `"(weapon in hand)"`, `"(wielded in)"`, `"(tethered to)"`
+- `"(alternate weapon%s; not wielded)"`
+- `"(wielded in %s %s)"`
+
+**Solución:** Envolver cada string literal en `_()`.
+
+**Archivo corregido:**
+- `src/objnam.c` — 9 strings envueltos
+
+---
+
+## Problema 15: "this dungeon level" sin `_()` en dungeon.c
+
+**Síntoma:** El prompt para nombrar un nivel muestra "¿Cómo quieres llamar a
+this dungeon level?" (mixto español/inglés).
+
+**Causa:** En `src/dungeon.c:2538`:
+```c
+Strcpy(lbuf, "this dungeon level");  // ❌ sin _()
+```
+El formato `_("What do you want to call %s?")` ya está traducido, pero el
+`%s` se reemplaza con "this dungeon level" sin traducir.
+
+**Solución:** Envolver con `_()`:
+```c
+Strcpy(lbuf, _("this dungeon level"));  // ✅
+```
+
+**Archivo corregido:**
+- `src/dungeon.c:2538`
+
+---
+
+## Problema 16: Entradas fuzzy corruptas por msgmerge
+
+**Síntoma:** Traducciones incorrectas que aparecen al usar `--no-fuzzy` (p.ej.
+"god" traducido como "con guantes" porque el msgid antiguo era "gloved").
+
+**Causa:** `msgmerge --previous` empareja msgids antiguos con nuevos basándose
+en similitud de cadenas. Cuando un msgid cambia drásticamente (p.ej. refactor
+de "gloved" a "god"), msgmerge a veces los empareja incorrectamente si hay
+pocos candidatos mejores. El `#| msgid` antiguo queda como pista, pero el msgstr
+hereda una traducción que no corresponde al msgid nuevo.
+
+**Ejemplo real:**
+```
+#, fuzzy
+#| msgid "gloved"
+msgid "god"
+msgstr "con guantes"
+```
+
+**Solución:** Script `tools/fix_fuzzy.py` que:
+
+1. Extrae el `#| msgid` antiguo y el `msgid` nuevo de cada entrada fuzzy
+2. Filtra solo palabras significativas (excluye placeholders, artículos, etc.)
+3. Calcula solapamiento (intersección / media de tamaños)
+4. Si solapamiento < 30% → **entrada corrupta**, limpia el msgstr
+
+```bash
+# Detectar corruptas (dry-run)
+python3 tools/fix_fuzzy.py --dry-run po/es.po
+
+# Aplicar limpieza
+python3 tools/fix_fuzzy.py po/es.po
+```
+
+**Resultado:** 376 entradas corruptas detectadas y limpiadas (msgstr vacío).
+Al usar `--no-fuzzy` aparecerán en inglés en lugar de con texto incorrecto.
+
+**Archivo:** `tools/fix_fuzzy.py`
+
+---
+
+## Problema 17: Menú de ayuda con `N_()` pero sin `_()` en acceso
+
+**Síntoma:** Las entradas del menú de ayuda ("Introduction", "Basic commands",
+etc.) aparecen en inglés aunque el array está envuelto en `N_()`.
+
+**Causa:** En `src/pager.c`, el array `static const char *help_menu_entries[]`
+está definido con `N_()`:
+```c
+static const char *help_menu_entries[] = {
+    N_("Introduction"),
+    N_("Basic commands"),
+    ...
+};
+```
+pero los 3 puntos de acceso en `dohelp()` usaban el array directamente:
+```c
+any.a_void = help_menu_entries[selected];   // ❌ sin _()
+```
+`N_()` solo marca para extracción por xgettext; no traduce en runtime.
+Para traducir en runtime hace falta `_()`.
+
+**Solución:** Añadir `_()` en los 3 puntos de acceso en `dohelp()`:
+```c
+any.a_void = _(help_menu_entries[selected]);  // ✅
+```
+
+**Archivos corregidos:**
+- `src/pager.c:2873-2877` — 3 usos de `_(help_menu_entries[...])`
+
+---
+
+## Problema 18: Strings de "name an object" sin `_()`
+
+**Síntoma:** 4 strings del menú de nombrar objetos aparecen en inglés:
+- "a particular object in inventory"
+- "the type of an object in inventory"
+- "the type of an object upon the floor"
+- "the type of an object on discoveries list"
+
+**Causa:** En `src/do_name.c:526-539`, estos strings se usan directamente
+en `Sprintf()` sin `_()`:
+```c
+Sprintf(buf, "a particular object in inventory");  // ❌
+```
+
+**Solución:** Envolver con `_()`:
+```c
+Sprintf(buf, _("a particular object in inventory"));  // ✅
+```
+
+**Archivos corregidos:**
+- `src/do_name.c:526-539` — 4 strings envueltos con `_()`
+
+---
+
+## Problema 19: "That is a silly thing to %s." sin `N_()` / `_()`
+
+**Síntoma:** El mensaje aparece en inglés al intentar poner/quitar objetos
+en situación incorrecta.
+
+**Causa:** El string está en `c_common_strings[]` en `src/decl.c` sin `N_()`,
+y los puntos de uso en `src/invent.c` y `src/read.c` no llaman `_()`.
+
+**Solución:**
+1. Envolver con `N_()` en la definición del array en `decl.c`
+2. Añadir `_()` en los puntos de uso en `invent.c` y `read.c`
+
+```c
+/* decl.c */
+N_("That is a silly thing to %s.")  // ✅ N_()
+
+/* invent.c / read.c */
+_(silly_thing_to)  // ✅ _()
+```
+
+**Archivos corregidos:**
+- `src/decl.c:43` — añadido `N_()`
+- `src/invent.c:2126` — añadido `_()`
+- `src/read.c:546` — añadido `_()`
+
+---
+
 ## Checklist de Verificación
 
 Después de cualquier cambio:
@@ -240,6 +432,8 @@ Después de cualquier cambio:
 - [ ] `nhdat` presente: `cp dat/nhdat playground/`
 - [ ] `LANG=es.UTF-8` al ejecutar
 - [ ] Nombres de mazmorra sin `_()` en C (grep `at_dgn_entrance\(_\|dungeon_branch\(_`)
+- [ ] Sin fuzzy corruptas: `python3 tools/fix_fuzzy.py --dry-run po/es.po`
+- [ ] Test tmux: `cd playground && LANG=es.UTF-8 ../tools/explore_tmux.sh`
 
 ---
 
@@ -255,4 +449,13 @@ make -C src -j4 && cp src/nethack playground/
 # Poner nhdat y jugar
 cp dat/nhdat playground/
 cd playground && LANG=es.UTF-8 ./nethack
+
+# Pipeline completo (todo + test tmux)
+make -C src -j4 && cp src/nethack playground/ && \
+  msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo && \
+  make dlb && cp dat/nhdat playground/ && \
+  cd playground && LANG=es.UTF-8 ../tools/explore_tmux.sh
+
+# Detectar fuzzy corruptas
+python3 tools/fix_fuzzy.py --dry-run po/es.po
 ```

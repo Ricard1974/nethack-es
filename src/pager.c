@@ -1732,18 +1732,18 @@ do_look(int mode, coord *click_cc)
             add_menu(win, &nul_glyphinfo, &any,
                      flags.lootabc ? 0 : any.a_char,
                      flags.lootabc ? '/' : 'y', ATR_NONE,
-                     clr, "something on the map", MENU_ITEMFLAGS_NONE);
+                     clr, _("something on the map"), MENU_ITEMFLAGS_NONE);
             any.a_char = 'i';
             add_menu(win, &nul_glyphinfo, &any,
                      /* [don't use 'i' as lootabc group accelerator because
                         it will make the regular 'i' choice inaccessible] */
                      flags.lootabc ? 0 : any.a_char, 0, ATR_NONE,
-                     clr, "something you're carrying", MENU_ITEMFLAGS_NONE);
+                     clr, _("something you're carrying"), MENU_ITEMFLAGS_NONE);
             any.a_char = '?';
             add_menu(win, &nul_glyphinfo, &any,
                      flags.lootabc ? 0 : any.a_char,
                      flags.lootabc ? '?' : 'n', ATR_NONE,
-                     clr, "something else (by symbol or name)",
+                     clr, _("something else (by symbol or name)"),
                      MENU_ITEMFLAGS_NONE);
             if (!u.uswallow && !Hallucination) {
                 any = cg.zeroany;
@@ -1758,46 +1758,46 @@ do_look(int mode, coord *click_cc)
                 add_menu(win, &nul_glyphinfo, &any,
                          flags.lootabc ? 0 : any.a_char,
                          flags.lootabc ? any.a_char : 0, ATR_NONE,
-                         clr, "nearby monsters", MENU_ITEMFLAGS_NONE);
+                         clr, _("nearby monsters"), MENU_ITEMFLAGS_NONE);
                 any.a_char = 'M';
                 add_menu(win, &nul_glyphinfo, &any,
                          flags.lootabc ? 0 : any.a_char,
                          flags.lootabc ? any.a_char : 0, ATR_NONE,
-                         clr, "all monsters shown on map",
+                         clr, _("all monsters shown on map"),
                          MENU_ITEMFLAGS_NONE);
                 any.a_char = 'o';
                 add_menu(win, &nul_glyphinfo, &any,
                          flags.lootabc ? 0 : any.a_char,
                          flags.lootabc ? any.a_char : 0, ATR_NONE,
-                         clr, "nearby objects", MENU_ITEMFLAGS_NONE);
+                         clr, _("nearby objects"), MENU_ITEMFLAGS_NONE);
                 any.a_char = 'O';
                 add_menu(win, &nul_glyphinfo, &any,
                          flags.lootabc ? 0 : any.a_char,
                          flags.lootabc ? any.a_char : 0, ATR_NONE,
-                         clr, "all objects shown on map",
+                         clr, _("all objects shown on map"),
                          MENU_ITEMFLAGS_NONE);
                 any.a_char = 't';
                 add_menu(win, &nul_glyphinfo, &any,
                          flags.lootabc ? 0 : any.a_char,
                          flags.lootabc ? any.a_char : '^', ATR_NONE,
-                         clr, "nearby traps", MENU_ITEMFLAGS_NONE);
+                         clr, _("nearby traps"), MENU_ITEMFLAGS_NONE);
                 any.a_char = 'T';
                 add_menu(win, &nul_glyphinfo, &any,
                          flags.lootabc ? 0 : any.a_char,
                          flags.lootabc ? any.a_char : '\"', ATR_NONE,
-                         clr, "all seen or remembered traps",
+                         clr, _("all seen or remembered traps"),
                          MENU_ITEMFLAGS_NONE);
                 any.a_char = 'e';
                 add_menu(win, &nul_glyphinfo, &any,
                          flags.lootabc ? 0 : any.a_char,
                          /* [don't use 'e' as lootabc group accelerator] */
                          flags.lootabc ? 0 : '`', ATR_NONE,
-                         clr, "nearby engravings", MENU_ITEMFLAGS_NONE);
+                         clr, _("nearby engravings"), MENU_ITEMFLAGS_NONE);
                 any.a_char = 'E';
                 add_menu(win, &nul_glyphinfo, &any,
                          flags.lootabc ? 0 : any.a_char,
                          flags.lootabc ? any.a_char : '|', ATR_NONE,
-                         clr, "all seen or remembered engravings",
+                         clr, _("all seen or remembered engravings"),
                          MENU_ITEMFLAGS_NONE);
             }
             end_menu(win, _("What do you want to look at:"));
@@ -2870,11 +2870,11 @@ dohelp(void)
             continue;
 
         if (help_menu_items[i].text[0] == '%') {
-            Sprintf(helpbuf, help_menu_items[i].text, PORT_ID);
+            Sprintf(helpbuf, _(help_menu_items[i].text), PORT_ID);
         } else if (help_menu_items[i].f == dispfile_optmenu) {
-            Sprintf(helpbuf, help_menu_items[i].text, setopt_cmd(tmpbuf));
+            Sprintf(helpbuf, _(help_menu_items[i].text), setopt_cmd(tmpbuf));
         } else {
-            Strcpy(helpbuf, help_menu_items[i].text);
+            Strcpy(helpbuf, _(help_menu_items[i].text));
         }
         any.a_int = i + 1;
         add_menu(tmpwin, &nul_glyphinfo, &any, 0, 0, ATR_NONE, clr,

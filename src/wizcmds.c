@@ -320,7 +320,7 @@ wiz_kill(void)
                    need to have the mon_moving flag be True in order to
                    avoid blaming or crediting hero for their deaths */
                 svc.context.mon_moving = TRUE;
-                pline(_("%s is %s."), upstart(Mn), nonliving(mtmp->data) ? "destroyed" : "killed");
+                pline(_("%s is %s."), upstart(Mn), nonliving(mtmp->data) ? _("destroyed") : _("killed"));
                 /* Null second arg suppresses the usual message */
                 monkilled(mtmp, (char *) 0, AD_PHYS);
                 svc.context.mon_moving = FALSE;

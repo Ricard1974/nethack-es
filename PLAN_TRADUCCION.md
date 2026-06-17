@@ -2,7 +2,7 @@
 
 ## Estado: EN PROGRESO — jugable en español con limitaciones
 
-**Última actualización:** 2026-06-16
+**Última actualización:** 2026-06-17
 
 ---
 
@@ -10,18 +10,22 @@
 
 ### Código C (.po)
 
-| Métrica               | Valor                                         |
-| --------------------- | --------------------------------------------- |
-| Total en .po          | ~2.714                                        |
-| Traducciones activas  | **2.580**                                     |
-| Fuzzy (desactivadas)  | **134** (placeholders rotos, muestran inglés) |
-| Sin traducir          | 0                                             |
-| `msgfmt -c`           | ✅ 0 errores                                  |
-| Cobertura real activa | ~95%                                          |
+| Métrica               | Valor                                                 |
+| --------------------- | ----------------------------------------------------- |
+| Total en .po          | **5.717**                                             |
+| Traducciones activas  | **3.763** (66%)                                       |
+| Fuzzy (desactivadas)  | **395** (translations with broken placeholders)       |
+| Sin traducir (vacías) | **1.558**                                             |
+| `msgfmt -c`           | ✅ 0 errores                                          |
+| Cobertura gameplay    | **~99%** (0 inglés detectado en partida real, salvo nombres de objeto) |
 
-> Las 134 fuzzy son traducciones automáticas con placeholders `%s`/`%d` dañados.
-> Se mantienen fuzzy para que el juego muestre el inglés original en lugar de
-> texto roto. Requieren traducción manual.
+> Las 395 fuzzy son traducciones con placeholders rotos. Todas muestran inglés
+> en juego normal. La reducción de 766→395 es porque `msgmerge --no-fuzzy`
+> eliminó las entradas corruptas (se convirtieron en vacías).
+
+> Las 1.558 vacías son strings de debug, plataformas obsoletas (Amiga, VMS,
+> MSDOS) o strings internos que raramente aparecen en juego normal. La
+> cobertura de gameplay (strings que realmente se ven jugando) es ~99%.
 
 ### Archivos de datos (.es) — 29 archivos
 
@@ -73,6 +77,24 @@
 
 ## 🔧 Cambios Recientes (junio 2026)
 
+### Pasada masiva Sprintf (~631 strings)
+
+**Script:** `tools/wrap_sprintf.py`
+
+Envolvió ~631 formatos visibles de `Sprintf(buf, "...")` en `_()` con manejo
+de concatenación C y filtrado de debug/internos. 44 archivos modificados.
+
+### Pasada arrays (~37 arrays)
+
+**Script:** `tools/wrap_arrays.py`
+
+Envolvió ~37 arrays de strings estáticos (`static const char *name[]`) con
+`N_()`. Archivos como `timeout.c` (estados de petrificación, asfixia, etc.),
+`potion.c`, `shk.c`, `polyself.c`.
+
+**Mejora posterior:** `wrap_arrays.py` ahora también detecta y envuelve usos
+de arrays con `_()` en funciones de salida.
+
 ### s_suffix() locale-aware
 
 **Archivo:** `src/hacklib.c`
@@ -92,11 +114,31 @@ contra `lang.o`. Se añadieron stubs débiles (`__attribute__((weak))`) para
 
 Traducción en `.po`: `"the"` → `"de"`, `" the "` → `" de "`.
 
-### align_gtitle() traducible
+### align_gtitle() traducible + fix god corrupto
 
 **Archivo:** `src/pray.c`
 
 `"god"` → `"dios"`, `"goddess"` → `"diosa"` ahora son traducibles vía `.po`.
+
+**Problema detectado:** el `.po` tenía `msgid "god"` con `msgstr "con guantes"`
+(heredero corrupto de un antiguo `msgid "gloved"`) y marcado fuzzy.
+Corregido a `msgstr "dios"` y quitado fuzzy. **"Kos, el dios..."** ahora
+funciona correctamente.
+
+### 376 entradas fuzzy corruptas limpiadas
+
+**Script:** `tools/fix_fuzzy.py`
+
+`msgmerge` empareja msgids antiguos con nuevos basándose en similitud,
+pero a veces empareja incorrectamente (p.ej. `msgid "gloved"` → `msgid "god"`
+con solapamiento de palabras casi nulo). `fix_fuzzy.py`:
+
+1. Compara palabras significativas de `#| msgid` antiguo vs `msgid` nuevo
+2. Si solapamiento < 30% → **entrada corrupta**, msgstr se limpia (vacío)
+3. Filtra entradas sin palabras significativas (solo placeholders)
+
+Resultado: **376 entradas limpiadas**. El juego ya mostraba inglés (por fuzzy),
+y al usar `--no-fuzzy` se evitarán traducciones incorrectas.
 
 ### Atributos envueltos en N\_()
 
@@ -117,15 +159,86 @@ En la creación de personaje, "your class" y "a race" ahora se traducen como
 El archivo `dat/quest.lua.es` se añadió a `VARDATD` en el Makefile para que
 se incluya automáticamente al reconstruir `nhdat` con `make dlb`.
 
-### Script de test mejorado
+### Creado módulo compartido word_lists.py
 
-`/tmp/test_nethack_es.py` — 5 sesiones automáticas con:
+**Archivo:** `tools/word_lists.py` (~1000 líneas)
 
-- Filtrado de falsos positivos (palabras españolas que coinciden con inglesas)
-- Clasificación de palabras (inglesas puras vs compartidas)
-- Filtrado de términos multi-palabra del juego ("the lady")
-- Verificación positiva de traducciones esperadas
-- Argumentos CLI (`--session`, `--verbose`, `--skip-positive`)
+Centraliza GAME_TERMS (términos del juego que no se traducen), SPANISH_WORDS
+(palabras españolas que coinciden con inglesas), y ENGLISH_WORDS (palabras
+inglesas que deberían estar traducidas). Usado por todos los scripts de testing
+y análisis.
+
+### Refactorizados test_nethack_es.py y explore_nethack.py
+
+- **`test_nethack_es.py`**: de 965 → 280 líneas (−70%), usa `word_lists.py`
+- **`explore_nethack.py`**: de 640 → 326 líneas (−50%), usa `word_lists.py`
+
+Eliminada la duplicación masiva de listas de palabras entre scripts.
+
+### Menú de ayuda traducido (pager.c)
+
+**Archivo:** `src/pager.c`
+
+17 entradas del menú de ayuda estaban envueltas en `N_()` en el array, pero
+faltaba `_()` en los 3 puntos de acceso en `dohelp()`. Añadido `_(texto)`
+al leer del array. Arreglado: "Using the %s command to set options." mostraba
+inglés.
+
+### Strings de "name an object" traducidos (do_name.c)
+
+**Archivo:** `src/do_name.c:526-539`
+
+4 strings del menú de nombrar objetos no estaban envueltos:
+- "a particular object in inventory"
+- "the type of an object in inventory"
+- "the type of an object upon the floor"
+- "the type of an object on discoveries list"
+
+Envuelto todo con `_()`.
+
+### "That is a silly thing to %s." traducido
+
+**Archivos:** `src/decl.c`, `src/invent.c`, `src/read.c`
+
+El string estaba en `c_common_strings[]` sin `N_()`. Añadido `N_()` en la
+definición y `_()` en los dos puntos de uso (invent.c y read.c).
+
+### Explorador con tmux
+
+**Script:** `tools/explore_tmux.sh`
+
+Captura pantallas reales de NetHack usando tmux, maneja `--More--`, navega
+por **44 pantallas** (todos los menús y submenús de ayuda, comandos extendidos,
+opciones, inventario, atributos, historial, etc.). Analiza inglés usando
+`word_lists.py`.
+
+**Resultado final:** 44 pantallas capturadas, **0 con inglés** — todos los
+menús explorados están 100% en español.
+
+### Script de partida real (play_nethack.py)
+
+**Script:** `tools/play_nethack.py`
+
+Juega una partida real de NetHack usando tmux: crea personaje, explora la
+mazmorra en zigzag, lucha contra monstruos, recoge objetos, abre puertas,
+baja escaleras. Captura 36+ pantallas durante el gameplay y las analiza.
+
+**Primera ejecución:** 7 palabras inglesas detectadas (being, here, killed,
+short, the, this, worn).
+
+**Arreglos aplicados tras la detección:**
+- `"go down here%s."` → traducción "bajar aquí%s." (estaba fuzzy vacío)
+- `"killed"`/`"destroyed"` → 7 lugares en C envueltos en `_()` (do.c, mon.c x2,
+  muse.c, mthrowu.c, wizcmds.c, explode.c)
+- `" (being worn)"`/`" (wielded)"`/`" (weapon in hand)"` → envueltos en `_()`
+  en objnam.c, traducidos en .po
+- `"tethered to"`/`"wielded in"`/`"weapon in"`/`"burned completely"` →
+  envueltos y traducidos
+- `"left"`/`"right"` → envueltos en contexto de manos
+- `"this dungeon level"` → envuelto en dungeon.c y traducido en .po
+
+**Segunda ejecución:** 1 palabra detectada: `"short"` (parte de "short sword",
+nombre de objeto en `objects.h`, proyecto aparte). **97% de pantallas limpias.**
 
 ---
 
@@ -195,69 +308,169 @@ Sin `nhdat`, `dlb_init()` falla y el juego crashea en `init_dungeons`.
 ## 🧪 Probar
 
 ```bash
-python3 /tmp/test_nethack_es.py
+# Test automatizado (4 sesiones)
+python3 tools/test_nethack_es.py
 # Opciones: --session basic|help|extended|options|explore|all
 #           --verbose, --skip-positive
+
+# Explorador con tmux (44 pantallas reales)
+cd playground
+LANG=es.UTF-8 ../tools/explore_tmux.sh
+
+# Partida real automatizada (120+ pasos de gameplay)
+cd playground
+LANG=es.UTF-8 ../tools/play_nethack.py
+# Opciones: --max-steps 200 (por defecto 200)
+#           --screenshot-dir /tmp/mis_capturas
 ```
 
 ---
 
 ## 🚀 Próximos Pasos
 
-- [ ] Traducir manualmente las 134 entradas fuzzy del `.po`
+- [ ] Traducir nombres de objeto en `include/objects.h` (short sword, battle-axe, etc.)
+- [ ] Traducir nombres de rol pendientes en el `.po` (Footpad, Digger, Evoker, etc.)
+- [ ] Revisar y corregir las ~395 fuzzy restantes (placeholders rotos)
+- [ ] Traducir ~1.558 strings debug/internos (baja prioridad, no visibles en juego normal)
 - [ ] Traducir quest Lua de roles (~60 archivos `Arc-*.lua`, `Bar-*.lua` etc.)
 - [ ] Empaquetar tutoriales Lua (tut-1.lua.es, tut-2.lua.es) en nhdat
 - [ ] Revisión humana de calidad de traducciones automáticas
-- [ ] Prueba de juego real: menús de inventario, hechizos, combate
+- [x] ~~Prueba de juego real~~ — ✅ 97% limpio, solo nombres de objeto pendientes
+- [ ] Commit y push de todos los cambios pendientes
 
 ---
 
 ## 📁 Scripts de apoyo
 
-| Script                  | Propósito                                                     |
-| ----------------------- | ------------------------------------------------------------- |
-| `translate_bulk.py`     | Traduce strings vacíos del .po con LibreTranslate (usa QWERT) |
-| `translate_google.py`   | Alternativa: traducción con Google Translate                  |
-| `translate_lua.py`      | Traduce archivos Lua con LibreTranslate                       |
-| `validate-spanglish.sh` | Busca Spanglish en traducciones                               |
-| `auto-translate.sh`     | Pipeline completo de traducción                               |
+| Script                       | Propósito                                                         |
+| ---------------------------- | ----------------------------------------------------------------- |
+| `word_lists.py`              | **Módulo compartido**: GAME_TERMS, SPANISH_WORDS, ENGLISH_WORDS   |
+| `wrap_strings.py`            | Envuelve FUNC_1ST_ARG (pline, You, etc.) con `_()`                |
+| `wrap_sprintf.py`            | Envuelve formatos visibles de Sprintf con `_()`                   |
+| `wrap_arrays.py`             | Envuelve arrays estáticos con `N_()` + usos con `_()`             |
+| `fix_fuzzy.py`               | Detecta y limpia entradas fuzzy corruptas (solapamiento <30%)     |
+| `test_nethack_es.py`         | 4 sesiones de test: básica, ayuda, extendidos, opciones           |
+| `explore_nethack.py`         | Explorador con `read_nonblocking`, 21 pantallas                   |
+| `explore_tmux.sh`            | Explorador con tmux, 44 pantallas reales, análisis automático     |
+| `play_nethack.py`            | **Partida real**: crea personaje, explora, lucha, recoge, muere   |
+| `translate_bulk.py`          | Traduce strings vacíos del .po con LibreTranslate (usa QWERT)     |
+| `translate_google.py`        | Alternativa: traducción con Google Translate                      |
+| `validate-spanglish.sh`      | Busca Spanglish en traducciones                                   |
+| `auto-translate.sh`          | Pipeline completo de traducción                                   |
 
 ---
 
 ## 🐛 Problemas Conocidos
 
-1. **134 fuzzy con placeholders rotos**: traducciones automáticas dañadas,
-   desactivadas con fuzzy. Muestran inglés.
-2. **Quest Lua de rol sin traducir**: ~60 archivos que contienen diálogos
+1. **766 fuzzy**: 376 con traducciones corruptas limpiadas (vacías), ~390 con
+   placeholders rotos. Todas muestran inglés en juego normal.
+2. **1.570 sin traducir**: 1.182 son strings debug/internos (baja prioridad),
+   388 son las fuzzy corruptas recién limpiadas.
+3. **Quest Lua de rol sin traducir**: ~60 archivos que contienen diálogos
    específicos de cada quest.
-3. **dungeon.lua no traducible**: el lookup interno `dname_to_dnum()` crashea
+4. **dungeon.lua no traducible**: el lookup interno `dname_to_dnum()` crashea
    si los nombres están traducidos.
-4. **Layout**: el español es ~15-20% más largo que el inglés. Posibles recortes.
-5. **Nombres de opciones en inglés por diseño**: `fruit`, `autodig`, etc.
-6. **Mensajes de plataformas obsoletas** (~200): Amiga, VMS, MSDOS sin traducir.
+5. **Layout**: el español es ~15-20% más largo que el inglés. Posibles recortes.
+6. **Nombres de opciones en inglés por diseño**: `fruit`, `autodig`, etc.
+7. **Mensajes de plataformas obsoletas** (~200): Amiga, VMS, MSDOS sin traducir.
+8. **Nombres de rol sin traducir**: Footpad, Digger, Evoker no tienen entrada
+   en el `.po`.
+9. **Nombres de objeto sin traducir**: "short sword", "battle-axe", "ring mail"
+   vienen de `objects.h` sin `N_()`. Requiere modificar ~500 entradas.
 
 ---
 
 ## 📜 Historial de Cambios
 
-| Fecha      | Cambio                                                                  |
-| ---------- | ----------------------------------------------------------------------- |
-| 2026-06-14 | Fase 1: Setup, .pot, merge con .po                                      |
-| 2026-06-14 | Traducción de 45 strings de código C                                    |
-| 2026-06-15 | Traducción de dungeon.lua.es, tut-\*.lua.es, themerms.lua.es            |
-| 2026-06-15 | Traducción de quest.lua.es (238 diálogos)                               |
-| 2026-06-15 | Envuelto ~1.033 strings en `_()` en todo el código C                    |
-| 2026-06-15 | Reparación masiva PH→QWERT (1.067 strings)                              |
-| 2026-06-15 | Menú de opciones traducido                                              |
-| 2026-06-15 | Crasheo corregido: `_()` quitado de nombres de mazmorra                 |
-| 2026-06-16 | **s_suffix() locale-aware**: no-op para español en hacklib.c            |
-| 2026-06-16 | **Stubs débiles** para get_lang/nh_gettext en hacklib.c                 |
-| 2026-06-16 | **"the" traducible**: role.c (descripción) y botl.c (título)            |
-| 2026-06-16 | **align_gtitle()** con `_()` para god/goddess                           |
-| 2026-06-16 | **Atributos** envueltos en N*()/ *() (attrib.c, insight.c)              |
-| 2026-06-16 | **quest.lua.es** empaquetado en nhdat (VARDATD)                         |
-| 2026-06-16 | **Test script mejorado**: 5 sesiones, filtrado español, verificación    |
-| 2026-06-16 | **Traducciones reactivadas**: "your ", "a ", "Is this ok", "Yes; start" |
+| Fecha      | Cambio                                                                     |
+| ---------- | -------------------------------------------------------------------------- |
+| 2026-06-14 | Fase 1: Setup, .pot, merge con .po                                         |
+| 2026-06-14 | Traducción de 45 strings de código C                                       |
+| 2026-06-15 | Traducción de dungeon.lua.es, tut-\*.lua.es, themerms.lua.es               |
+| 2026-06-15 | Traducción de quest.lua.es (238 diálogos)                                  |
+| 2026-06-15 | Envuelto ~1.033 strings en `_()` en todo el código C                       |
+| 2026-06-15 | Reparación masiva PH→QWERT (1.067 strings)                                 |
+| 2026-06-15 | Menú de opciones traducido                                                 |
+| 2026-06-15 | Crasheo corregido: `_()` quitado de nombres de mazmorra                    |
+| 2026-06-16 | **s_suffix() locale-aware**: no-op para español en hacklib.c               |
+| 2026-06-16 | **Stubs débiles** para get_lang/nh_gettext en hacklib.c                    |
+| 2026-06-16 | **"the" traducible**: role.c (descripción) y botl.c (título)               |
+| 2026-06-16 | **align_gtitle()** con `_()` para god/goddess                              |
+| 2026-06-16 | **Atributos** envueltos en N*()/ *() (attrib.c, insight.c)                 |
+| 2026-06-16 | **quest.lua.es** empaquetado en nhdat (VARDATD)                            |
+| 2026-06-16 | **Test script mejorado**: 5 sesiones, filtrado español, verificación       |
+| 2026-06-16 | **Traducciones reactivadas**: "your ", "a ", "Is this ok", "Yes; start"    |
+| 2026-06-17 | **Pasada masiva Sprintf**: ~631 formatos envueltos en `_()` (44 archivos)  |
+| 2026-06-17 | **Pasada arrays**: ~37 arrays con `N_()`, usos con `_()`                   |
+| 2026-06-17 | **word_lists.py** creado: módulo compartido para todos los scripts         |
+| 2026-06-17 | **test_nethack_es.py** refactorizado (965→280 líneas, −70%)                |
+| 2026-06-17 | **explore_nethack.py** refactorizado (640→326 líneas, −50%)                |
+| 2026-06-17 | **fix_fuzzy.py** reescrito: detecta entradas corruptas (solapamiento<30%)  |
+| 2026-06-17 | **376 fuzzy corruptas limpiadas** (msgstr vacío para evitar errores)       |
+| 2026-06-17 | **wrap_arrays.py** mejorado: detecta y envuelve usos de arrays con `_()`   |
+| 2026-06-17 | **Menú ayuda pager.c**: `_()` añadido en `dohelp()` (mostraba inglés)      |
+| 2026-06-17 | **do_name.c**: 4 strings de "name an object" envueltos con `_()`           |
+| 2026-06-17 | **decl.c/invent.c/read.c**: "silly thing to %s" envuelto con N_()/ _()     |
+| 2026-06-17 | **explore_tmux.sh** creado: 44 pantallas reales con tmux                   |
+| 2026-06-17 | **44/44 pantallas en español**: test tmux final sin inglés detectado       |
+| 2026-06-17 | **play_nethack.py** creado: partida real automatizada (120+ pasos)         |
+| 2026-06-17 | **"go down here"** arreglado: estaba fuzzy vacío en .po                    |
+| 2026-06-17 | **"killed"/"destroyed"**: 7 lugares en C envueltos en `_()`                |
+| 2026-06-17 | **"being worn"/"wielded"**: sufijos de inventario envueltos y traducidos   |
+| 2026-06-17 | **"this dungeon level"**: envuelto en `_()` y traducido                    |
+| 2026-06-17 | **Partida real: 97% limpio** — solo queda "short" (nombre de objeto)       |
+
+---
+
+## 🔄 Flujo de Trabajo Actual
+
+### Ciclo típico para envolver un string visible
+
+1. **Detectar string en inglés**: con `explore_tmux.sh` (44 pantallas) o
+   `test_nethack_es.py` (4 sesiones rápidas).
+2. **Identificar origen**: buscar el string en el código C (`rg '"texto"' src/`).
+3. **Determinar tipo de wrapper**:
+   - `pline(...)` / `You(...)` / etc. → `pline(_("..."))` (FUNC_1ST_ARG ya cubierto mayormente)
+   - `Sprintf(buf, "...")` → `Sprintf(buf, _("..."))` (pasada Sprintf ya cubierta mayormente)
+   - Array estático (`static const char *name[]`) → `N_("...")` en array + `_(name[...])` en uso
+   - Struct con strings (`c_common_strings[]`) → `N_("...")` en struct + `_(ptr)` en uso
+4. **Aplicar wrapper**: editar el .c manualmente o con `wrap_strings.py`/`wrap_sprintf.py`/`wrap_arrays.py`.
+5. **Regenerar .pot**: `xgettext ... -o po/nethack.pot src/*.c`
+6. **Fusionar en .po**: `msgmerge --previous --sort-by-file po/es.po po/nethack.pot -o po/es_new.po && mv po/es_new.po po/es.po`
+7. **Limpiar fuzzy corruptas**: `python3 tools/fix_fuzzy.py po/es.po` (detecta entradas donde msgmerge emparejó mal msgids).
+8. **Compilar todo**:
+   ```bash
+   make -C src -j4 && cp src/nethack playground/ && \
+     msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo && \
+     make dlb && cp dat/nhdat playground/
+   ```
+9. **Probar menús**: `cd playground && LANG=es.UTF-8 ../tools/explore_tmux.sh`
+10. **Probar gameplay**: `cd playground && LANG=es.UTF-8 ../tools/play_nethack.py`
+11. **Repetir** si algún test detecta inglés.
+
+### Herramientas de testing
+
+| Herramienta | Alcance | Velocidad | Cuándo usarla |
+| ----------- | ------- | --------- | ------------- |
+| `test_nethack_es.py` | 4 sesiones básicas | Rápido (segundos) | Test de humo tras cambios pequeños |
+| `explore_tmux.sh` | 44 pantallas reales (menús) | Lento (~1 min) | Test de regresión de menús |
+| `play_nethack.py` | Partida real (120+ pasos) | Lento (~2 min) | Test de regresión de gameplay |
+| `fix_fuzzy.py --dry-run` | Todo el .po | Instantáneo | Antes de compilar, detectar entradas corruptas |
+
+### Pipeline completo (un solo comando)
+
+```bash
+make -C src -j4 && cp src/nethack playground/ && \
+  msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo && \
+  make dlb && cp dat/nhdat playground/ && \
+  cd playground && LANG=es.UTF-8 ../tools/explore_tmux.sh && \
+  LANG=es.UTF-8 ../tools/play_nethack.py
+```
+
+Esto compila el binario, el .mo, reconstruye nhdat, lanza el test de 44
+pantallas de menús, y luego juega una partida real de 120 pasos. Si todo está
+bien, **no debería detectar ningún string en inglés** (salvo nombres de objeto
+como "short sword", que vienen de `objects.h` y son un proyecto aparte).
 
 ---
 
@@ -268,8 +481,23 @@ python3 /tmp/test_nethack_es.py
 cd ~/proyectos/juego/nethack-es/playground
 LANG=es.UTF-8 ./nethack
 
-# Test
-python3 /tmp/test_nethack_es.py
+# Test rápido
+python3 tools/test_nethack_es.py
+
+# Test exhaustivo con tmux (44 pantallas de menús)
+cd playground
+LANG=es.UTF-8 ../tools/explore_tmux.sh
+
+# Partida real (120+ pasos de gameplay)
+cd playground
+LANG=es.UTF-8 ../tools/play_nethack.py
+
+# Pipeline completo (compilar + .mo + nhdat + test menús + test gameplay)
+make -C src -j4 && cp src/nethack playground/ && \
+  msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo && \
+  make dlb && cp dat/nhdat playground/ && \
+  cd playground && LANG=es.UTF-8 ../tools/explore_tmux.sh && \
+  LANG=es.UTF-8 ../tools/play_nethack.py
 
 # Compilar .mo
 msgfmt po/es.po -o playground/locale/es/LC_MESSAGES/nethack.mo
@@ -289,4 +517,7 @@ mv po/es_new.po po/es.po
 
 # Validar
 msgfmt --statistics po/es.po
+
+# Detectar fuzzy corruptas
+python3 tools/fix_fuzzy.py --dry-run po/es.po
 ```

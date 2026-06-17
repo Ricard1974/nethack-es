@@ -569,9 +569,9 @@ explode(
                          * would be "you killed <mdef>" so give our own.
                          */
                         if (cansee(mtmp->mx, mtmp->my) || canspotmon(mtmp))
-                            pline(_("%s is %s!"), Monnam(mtmp), xkflg ? "burned completely"
-                                        : nonliving(mtmp->data) ? "destroyed"
-                                                                : "killed");
+                            pline(_("%s is %s!"), Monnam(mtmp), xkflg ? _("burned completely")
+                                        : nonliving(mtmp->data) ? _("destroyed")
+                                                                : _("killed"));
                         xkilled(mtmp, XKILL_NOMSG | XKILL_NOCONDUCT | xkflg);
                     } else {
                         if (xkflg)

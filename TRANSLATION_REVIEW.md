@@ -2,22 +2,22 @@
 
 ## Estado Actual
 
-| Métrica              | Valor                         |
-| -------------------- | ----------------------------- |
-| Strings en .po       | **~2.714**                    |
-| Traducciones activas | **2.580**                     |
-| Fuzzy (desactivadas) | **134**                       |
-| Sin traducir         | 0                             |
-| `msgfmt -c`          | ✅ 0 errores                  |
-| Archivos .es         | 29                            |
-| Archivos .lua.es     | 1 (**quest.lua.es** en nhdat) |
-| Binario              | Compila sin errores           |
+| Métrica              | Valor                                 |
+| -------------------- | ------------------------------------- |
+| Strings en .po       | **5.687**                             |
+| Traducciones activas | **4.117** (72%)                       |
+| Fuzzy (desactivadas) | **766** (378 con trad. + 388 vacías)  |
+| Sin traducir (vacías)| **1.570** (1.182 debug + 388 limpiadas) |
+| `msgfmt -c`          | ✅ 0 errores                          |
+| Archivos .es         | 29                                    |
+| Archivos .lua.es     | 1 (**quest.lua.es** en nhdat)         |
+| Binario              | Compila sin errores                   |
 
 ---
 
 ## Componentes Traducidos
 
-### Código C (.po) — ~95% activo
+### Código C (.po) — ~72% activo
 
 - Pantalla de bienvenida, menús, prompts
 - Combate, objetos, estado del personaje
@@ -56,12 +56,16 @@
 
 ## Problemas Conocidos
 
-1. **134 fuzzy**: traducciones automáticas con placeholders dañados. Desactivadas
-   — muestran inglés.
-2. **~60 quest Lua de rol sin traducir**: diálogos específicos por clase.
-3. **Layout**: el español es ~15-20% más largo. Posibles recortes.
-4. **s_suffix()**: la solución es correcta pero hacklib.c necesita stubs débiles
+1. **766 fuzzy**: 376 con traducciones corruptas limpiadas (vacías), ~390 con
+   placeholders rotos. Todas muestran inglés en juego normal.
+2. **1.570 sin traducir**: 1.182 debug/internos (baja prioridad), 388 de fuzzy
+   corruptas recién limpiadas.
+3. **~60 quest Lua de rol sin traducir**: diálogos específicos por clase.
+4. **Layout**: el español es ~15-20% más largo. Posibles recortes.
+5. **s_suffix()**: la solución es correcta pero hacklib.c necesita stubs débiles
    para que las utilidades (dlb, recover) linken.
+6. **Nombres de rol sin traducir**: Footpad, Digger, Evoker no tienen entrada
+   en el `.po`.
 
 ---
 
@@ -79,6 +83,6 @@
 
 ---
 
-## Fecha de revisión: 16 de junio de 2026
+## Fecha de revisión: 17 de junio de 2026
 
 ## Rama: `NetHack-5.0-es`

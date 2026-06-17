@@ -3188,7 +3188,7 @@ muse_unslime(
                    "You killed/destroyed <mon>" so give our own message */
                 if (vis)
                     pline_mon(mon, "%s is %s by the fire!", Monnam(mon),
-                          nonliving(mon->data) ? "destroyed" : "killed");
+                          nonliving(mon->data) ? _("destroyed") : _("killed"));
                 xkilled(mon, XKILL_NOMSG | XKILL_NOCONDUCT);
             } else
                 monkilled(mon, "fire", AD_FIRE);

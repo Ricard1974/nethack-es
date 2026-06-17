@@ -208,7 +208,7 @@ flooreffects(
                             if (canspotmon(mtmp))
                                 pline(_("%s is %s!"), Monnam(mtmp), (nonliving(mtmp->data)
                                        || is_vampshifter(mtmp))
-                                      ? "destroyed" : "killed");
+                                      ? _("destroyed") : _("killed"));
                             mondied(mtmp);
                         }
                     } else {
