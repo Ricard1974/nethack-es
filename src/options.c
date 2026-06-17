@@ -1318,6 +1318,34 @@ optfn_boulder(
     return optn_ok;
 }
 
+/* NetHack-es: language option handler */
+staticfn int
+optfn_language(
+    int optidx UNUSED, int req,
+    boolean negated UNUSED,
+    char *opts, char *op UNUSED)
+{
+    if (req == do_init) {
+        /* Language was already set by init_lang() from LANG env */
+        return optn_ok;
+    }
+    if (req == do_set) {
+        if ((op = string_for_opt(opts, FALSE)) == empty_optstr)
+            return optn_err;
+        set_lang(op);
+        /* Also store in iflags for display/save */
+        Strcpy(iflags.language, op);
+        return optn_ok;
+    }
+    if (req == get_val || req == get_cnf_val) {
+        if (!opts)
+            return optn_err;
+        Strcpy(opts, get_lang());
+        return optn_ok;
+    }
+    return optn_ok;
+}
+
 staticfn int
 optfn_catname(
     int optidx, int req,

@@ -209,7 +209,8 @@ def create_character():
         capture_output=True,
         timeout=5,
     )
-    send(f"cd {PLAYGROUND} && LANG={LANG_VAR} ./nethack")
+    # Language set via .nethackrc OPTIONS=language:es, no LANG env needed
+    send(f"cd {PLAYGROUND} && ./nethack")
     send("Enter")
     time.sleep(3)
     clear_more()
@@ -218,20 +219,26 @@ def create_character():
     time.sleep(1.5)
     clear_more()
     send("y")  # Shall I pick a character?
-    time.sleep(2)
+    time.sleep(1)
     clear_more()
+    # Confirm character selection ("Is this ok?" / "¿Está bien? [ynq]")
+    screen = capture()
+    if "ynq" in screen or "yn" in screen:
+        send("y")  # Confirm
+        time.sleep(1)
+        clear_more()
     screen = capture()
     if "tutorial" in screen.lower():
         send("n")
         time.sleep(1)
-    for _ in range(30):
+    for _ in range(40):
         screen = capture()
         if is_playing(screen):
             break
         send("Space")
         time.sleep(0.2)
     # Wait stable
-    for _ in range(15):
+    for _ in range(20):
         time.sleep(0.3)
         if is_playing(capture()):
             break

@@ -157,7 +157,6 @@ struct flag {
     boolean travelcmd; /* allow travel command */
     int runmode;       /* update screen display during run moves */
 
-    int reserved1;
     int reserved2;
     int reserved3;
     int reserved4;
@@ -496,6 +495,7 @@ struct instance_flags {
     boolean wiz_error_flag;     /* flag for tracking failed wizmode auth */
     boolean explore_error_flag; /* ditto for explore mode */
     boolean obsolete;  /* obsolete options can point at this, it isn't used */
+    char language[8];  /* NetHack-es: language code (e.g. "es", "en") */
 };
 
 /*

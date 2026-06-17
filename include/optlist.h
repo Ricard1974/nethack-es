@@ -419,10 +419,12 @@ static int optfn_##a(int, int, boolean, char *, char *);
     NHOPTB(lit_corridor, Advanced, 0, opt_in, set_in_game,
            Off, Yes, No, No, NoAlias, &flags.lit_corridor, Term_False,
            "show dark corridors as lit if in sight")
-    NHOPTB(lootabc, Advanced, 0, opt_in, set_in_game,
-           Off, Yes, No, No, NoAlias, &flags.lootabc, Term_False,
-           "use a/b/c rather than o/i/c when looting")
-    NHOPTB(mail, Advanced, 0, opt_out, set_in_game,
+     NHOPTB(lootabc, Advanced, 0, opt_in, set_in_game,
+            Off, Yes, No, No, NoAlias, &flags.lootabc, Term_False,
+            "use a/b/c rather than o/i/c when looting")
+     NHOPTC(language, Advanced, 8, opt_in, set_gameview,
+                 Yes, Yes, No, No, NoAlias, "language for i18n (es, en)")
+     NHOPTB(mail, Advanced, 0, opt_out, set_in_game,
            On, Yes, No, No, NoAlias, &flags.biff, Term_False,
            "enable the mail daemon")
     NHOPTC(map_mode, Advanced, 20, opt_in, set_gameview,
