@@ -1070,71 +1070,71 @@ msgstr "¡Qué poción tan divertida! (%u)"
 
 #: src/potion.c:1463
 msgid "bottle"
-msgstr ""
+msgstr "botella"
 
 #: src/potion.c:1463
 msgid "flagon"
-msgstr ""
+msgstr "jarra"
 
 #: src/potion.c:1463
 msgid "carafe"
-msgstr ""
+msgstr "garrafa"
 
 #: src/potion.c:1466
 msgid "pitcher"
-msgstr ""
+msgstr "jarra"
 
 #: src/potion.c:1466
 msgid "barrel"
-msgstr ""
+msgstr "barril"
 
 #: src/potion.c:1466
 msgid "beaker"
-msgstr ""
+msgstr "vaso de laboratorio"
 
 #: src/potion.c:1467
 msgid "tumbler"
-msgstr ""
+msgstr "vaso"
 
 #: src/potion.c:1467
 msgid "flowerpot"
-msgstr ""
+msgstr "maceta"
 
 #: src/potion.c:1467
 msgid "thingy"
-msgstr ""
+msgstr "cosa"
 
 #: src/potion.c:1467
 msgid "teacup"
-msgstr ""
+msgstr "taza de té"
 
 #: src/potion.c:1468
 msgid "teapot"
-msgstr ""
+msgstr "tetera"
 
 #: src/potion.c:1468
 msgid "bucket"
-msgstr ""
+msgstr "cubo"
 
 #: src/potion.c:1468
 msgid "thermos"
-msgstr ""
+msgstr "termo"
 
 #: src/potion.c:1468
 msgid "amphora"
-msgstr ""
+msgstr "ánfora"
 
 #: src/potion.c:1468
 msgid "wineskin"
-msgstr ""
+msgstr "odre"
 
 #: src/potion.c:1468
 msgid "parcel"
-msgstr ""
+msgstr "paquete"
 
 #: src/potion.c:1469
 msgid "ampoule"
-msgstr ""
+msgstr "ampolla"
 
 #: src/potion.c:1540 src/wield.c:910
 #, c-format
@@ -1153,7 +1153,7 @@ msgstr "¡Crash!"
 #: src/potion.c:1646
 #, c-format
 msgid "%s saddle"
-msgstr ""
+msgstr "montura %s"
 
 #: src/potion.c:1651 src/do.c:726 src/uhitm.c:3115 src/uhitm.c:4065
 #: src/apply.c:277 src/windows.c:1893 src/do_wear.c:620 src/insight.c:748
@@ -1683,7 +1683,7 @@ msgstr "%s grita:"
 
 #: src/fountain.c:183
 msgid "Hey, stop using that fountain!"
-msgstr ""
+msgstr "¡Oye, deja de usar esa fuente!"
 
 #: src/fountain.c:185
 #, c-format
@@ -1717,7 +1717,7 @@ msgstr "reconocible..."
 
 #: src/fountain.c:286 src/zap.c:2517
 msgid "feeling subsides."
-msgstr ""
+msgstr "la sensación se desvanece."
 
 #: src/fountain.c:289
 msgid "water is foul!  You gag and vomit."
@@ -1784,7 +1784,7 @@ msgstr "la cadena desaparece."
 #: src/fountain.c:417
 #, fuzzy
 msgid "From the murky depths, a hand reaches up to bless the sword."
-msgstr ""
+msgstr "Desde las profundidades turbias, una mano se alza para bendecir la espada."
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
 "Desde las profundidades sombrías, una mano alcanza para bendecir la espada.\n"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
@@ -1968,7 +1968,7 @@ msgstr "Un hilo de vapor se eleva..."
 #: src/fountain.c:795
 #, c-format
 msgid "Something splashes you in the %s"
-msgstr ""
+msgstr "Algo te salpica en %s"
 
 #: src/fountain.c:796 src/dungeon.c:3654 src/mhitm.c:34 src/objnam.c:3576
 #: src/music.c:592
@@ -3344,7 +3344,7 @@ msgstr "sueltas la bola de hierro."
 
 #: src/ball.c:1004 src/ball.c:1019
 msgid "iron ball drags you downstairs!"
-msgstr ""
+msgstr "¡la bola de hierro te arrastra escaleras abajo!"
 
 #: src/ball.c:1012
 #, fuzzy
@@ -7855,7 +7855,7 @@ msgstr "%s y %s ya están limpios."
 #: src/apply.c:239
 #, c-format
 msgid "%s's dead"
-msgstr ""
+msgstr "%s está muerto"
 
 #: src/apply.c:245
 #, c-format
@@ -13516,7 +13516,7 @@ msgstr "are hit by a shower of missiles!"
 
 #: src/mcastu.c:286 src/zap.c:4387
 msgid "missiles bounce off!"
-msgstr ""
+msgstr "¡los proyectiles rebotan!"
 
 #: src/mcastu.c:331 src/artifact.c:2108
 msgid "drained..."
@@ -16143,7 +16143,7 @@ msgstr "¡Ese puente levadizo está subido!"
 
 #: src/hack.c:1026
 msgid "Sokoban walls resist your ability."
-msgstr ""
+msgstr "Los muros de Sokoban resisten tu habilidad."
 
 #: src/hack.c:1038
 #, c-format
@@ -17814,7 +17814,7 @@ msgstr "¡imita un polo!"
 
 #: src/zap.c:2782
 msgid "missiles bounce!"
-msgstr ""
+msgstr "¡los proyectiles rebotan!"
 
 #: src/zap.c:2786
 msgid "Idiot!  You've shot yourself!"
@@ -22987,7 +22987,7 @@ msgstr "%s %s el %s."
 #: src/end.c:436
 #, c-format
 msgid "To report this error, %s%s"
-msgstr ""
+msgstr "Para reportar este error, %s%s"
 
 #: src/end.c:439
 #, c-format
