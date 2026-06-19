@@ -1837,7 +1837,7 @@ msgstr "%s ya no es resbaladizo."
 
 #: src/fountain.c:570
 msgid "pipes break!  Water spurts out!"
-msgstr ""
+msgstr "¡los tubos se rompen! ¡El agua sale a chorros!"
 
 #: src/fountain.c:592
 #, c-format
@@ -18337,7 +18337,7 @@ msgstr "¡el paquete se sacude violentamente!"
 
 #: src/mklev.c:2458
 msgid "walls around you begin to bend and crumble!"
-msgstr ""
+msgstr "¡las paredes a tu alrededor comienzan a doblarse y derrumbarse!"
 
 #: src/mklev.c:2497
 msgid "are standing at the top of a stairwell leading down!"
@@ -23796,7 +23796,7 @@ msgstr "fuente"
 #: src/music.c:408
 #, c-format
 msgid "kitchen sink falls%s."
-msgstr ""
+msgstr "el fregadero cae%s."
 
 #: src/music.c:418
 #, fuzzy, c-format
@@ -27073,7 +27073,7 @@ msgstr "%s soldada a tu %s !"
 #: src/role.c:31
 #, fuzzy
 msgid "Archeologist"
-msgstr ""
+msgstr "Arqueólogo"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
 "Arqueólogo\n"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
@@ -27082,7 +27082,7 @@ msgstr ""
 #: src/role.c:72
 #, fuzzy
 msgid "Barbarian"
-msgstr ""
+msgstr "Bárbaro"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
 "Bárbaro\n"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
@@ -27091,7 +27091,7 @@ msgstr ""
 #: src/role.c:113
 #, fuzzy
 msgid "Caveman"
-msgstr ""
+msgstr "Hombre de las cavernas"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
 "Cavernícola\n"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
@@ -27104,7 +27104,7 @@ msgstr "Cavernícola"
 #: src/role.c:154
 #, fuzzy
 msgid "Healer"
-msgstr ""
+msgstr "Curandero"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
 "Sanador\n"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
@@ -27113,7 +27113,7 @@ msgstr ""
 #: src/role.c:194 src/role.c:199
 #, fuzzy
 msgid "Knight"
-msgstr ""
+msgstr "Caballero"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
 "Caballero\n"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
@@ -27130,7 +27130,7 @@ msgstr "Sacerdote"
 #: src/role.c:275 src/role.c:279
 #, fuzzy
 msgid "Priestess"
-msgstr ""
+msgstr "Sacerdotisa"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
 "Sacerdote\n"
 "#-#-#-#-#  es.po (NetHack-es)  #-#-#-#-#\n"
