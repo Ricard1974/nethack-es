@@ -4094,7 +4094,7 @@ look_here(
 {
     struct obj *otmp;
     struct trap *trap;
-    const char *verb = Blind ? "feel" : "see";
+    const char *verb = Blind ? _("feel") : _("see");
     const char *dfeature = (char *) 0;
     char fbuf[BUFSZ], fbuf2[BUFSZ];
     winid tmpwin;
@@ -4127,7 +4127,7 @@ look_here(
         Sprintf(fbuf, _("Contents of %s %s"), s_suffix(mon_nam(mtmp)),
                 mbodypart(mtmp, STOMACH));
         /* Skip "Contents of " by using fbuf index 12 */
-        You(_("%s to %s what is lying in %s."), Blind ? "try" : "look around", verb, &fbuf[12]);
+        You(_("%s to %s what is lying in %s."), Blind ? _("try") : _("look around"), verb, &fbuf[12]);
         otmp = mtmp->minvent;
         if (otmp) {
             for (; otmp; otmp = otmp->nobj) {
