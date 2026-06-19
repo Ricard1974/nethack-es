@@ -28723,6 +28723,10 @@ msgstr "arma en mano"
 #: bulk
 msgid "wielded"
 msgstr "empuñado"
+
+#: questpgr.c
+msgid "sense"
+msgstr "sentir"
 msgid "%s%.31s"
 msgstr ""
 

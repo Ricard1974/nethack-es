@@ -309,7 +309,7 @@ convert_arg(char c)
         str = "lawful";
         break;
     case 'x':
-        str = Blind ? "sense" : "see";
+        str = Blind ? _("sense") : _("see");
         break;
     case 'Z':
         str = svd.dungeons[0].dname;
