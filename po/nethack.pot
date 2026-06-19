@@ -6788,7 +6788,7 @@ msgstr ""
 msgid "Unable to open SYSCF_FILE.\n"
 msgstr ""
 
-#: src/botl.c:61 src/botl.c:1000
+#: src/botl.c:61 src/botl.c:1000 src/do_name.c:921
 msgid " the "
 msgstr ""
 
@@ -17692,7 +17692,7 @@ msgstr ""
 msgid "select %s to permanently identify"
 msgstr ""
 
-#: src/invent.c:3228
+#: src/invent.c:3228 src/do_name.c:872
 msgid "it"
 msgstr ""
 
@@ -20244,6 +20244,18 @@ msgstr ""
 msgid "don't know %s %s well enough to name %s."
 msgstr ""
 
+#: src/do_name.c:873
+msgid "someone"
+msgstr ""
+
+#: src/do_name.c:874
+msgid "something"
+msgstr ""
+
+#: src/do_name.c:915 src/do_name.c:1008
+msgid "the "
+msgstr ""
+
 #: src/do_name.c:956
 #, c-format
 msgid "%s ghost"
@@ -20252,6 +20264,10 @@ msgstr ""
 #: src/do_name.c:959
 #, c-format
 msgid "%s called %s"
+msgstr ""
+
+#: src/do_name.c:1005 src/role.c:1596
+msgid "your "
 msgstr ""
 
 #: src/do_name.c:1265
@@ -25373,10 +25389,6 @@ msgstr ""
 
 #: src/role.c:1594
 msgid "Shall I pick "
-msgstr ""
-
-#: src/role.c:1596
-msgid "your "
 msgstr ""
 
 #: src/role.c:1598

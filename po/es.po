@@ -6836,9 +6836,9 @@ msgstr ""
 msgid "Unable to open SYSCF_FILE.\n"
 msgstr ""
 
-#: src/botl.c:61 src/botl.c:1000
+#: src/botl.c:61 src/botl.c:1000 src/do_name.c:921
 msgid " the "
-msgstr " de "
+msgstr " el "
 
 #: src/botl.c:130
 #, c-format
@@ -17799,9 +17799,9 @@ msgstr "(todos los objetos ya están identificados permanentemente)"
 msgid "select %s to permanently identify"
 msgstr "selecciona %s para identificar permanentemente"
 
-#: src/invent.c:3228
+#: src/invent.c:3228 src/do_name.c:872
 msgid "it"
-msgstr "ello"
+msgstr "lo"
 
 #: src/invent.c:3228
 msgid "any or all of them"
@@ -20380,6 +20380,18 @@ msgstr "%s %s no se puede asignar un nombre de tipo."
 msgid "don't know %s %s well enough to name %s."
 msgstr "no conoce %s %s lo suficientemente bien como para nombrar %s."
 
+#: src/do_name.c:873
+msgid "someone"
+msgstr "alguien"
+
+#: src/do_name.c:874
+msgid "something"
+msgstr "algo"
+
+#: src/do_name.c:915 src/do_name.c:1008
+msgid "the "
+msgstr "el "
+
 #: src/do_name.c:956
 #, fuzzy, c-format
 msgid "%s ghost"
@@ -20389,6 +20401,11 @@ msgstr "%s salir."
 #, c-format
 msgid "%s called %s"
 msgstr ""
+
+# Traducciones del prompt de personaje y artículos
+#: src/do_name.c:1005 src/role.c:1596
+msgid "your "
+msgstr "tu "
 
 #: src/do_name.c:1265
 #, c-format
@@ -25568,11 +25585,6 @@ msgstr "¿Quieres que elija un personaje por ti? [ynaq] "
 #: src/role.c:1594
 msgid "Shall I pick "
 msgstr "¿Quieres que elija "
-
-# Traducciones del prompt de personaje y artículos
-#: src/role.c:1596
-msgid "your "
-msgstr "de tu "
 
 #: src/role.c:1598
 msgid "a "

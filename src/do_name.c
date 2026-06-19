@@ -869,9 +869,9 @@ x_monnam(
         /* !is_animal excludes all Y; !mindless excludes Z, M, \' */
         boolean s_one = humanoid(mdat) && !is_animal(mdat) && !mindless(mdat);
 
-        Strcpy(buf, !augment_it ? "it"
-                    : (!do_hallu ? s_one : !rn2(2)) ? "someone"
-                      : "something");
+        Strcpy(buf, !augment_it ? _("it")
+                    : (!do_hallu ? s_one : !rn2(2)) ? _("someone")
+                      : _("something"));
         return buf;
     }
 
@@ -912,13 +912,13 @@ x_monnam(
         if (adjective && article == ARTICLE_THE) {
             /* pathological case: "the angry Asidonhopo the blue dragon"
                sounds silly */
-            Strcpy(buf, "the ");
+            Strcpy(buf, _("the "));
             Strcat(strcat(buf, adjective), " ");
             Strcat(buf, shkname(mtmp));
         } else {
             Strcat(buf, shkname(mtmp));
             if (mdat != &mons[PM_SHOPKEEPER] || do_invis){
-                Strcat(buf, " the ");
+                Strcat(buf, _(" the "));
                 if (do_invis)
                     Strcat(buf, "invisible ");
                 Strcat(buf, pm_name);
@@ -1002,10 +1002,10 @@ x_monnam(
     buf2[0] = '\0'; /* lint suppression */
     switch (article) {
     case ARTICLE_YOUR:
-        Strcpy(buf2, "your ");
+        Strcpy(buf2, _("your "));
         break;
     case ARTICLE_THE:
-        Strcpy(buf2, "the ");
+        Strcpy(buf2, _("the "));
         break;
     case ARTICLE_A:
         /* avoid an() here */
