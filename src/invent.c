@@ -4270,8 +4270,8 @@ look_here(
             putstr(tmpwin, 0, "");
         }
         Sprintf(buf, _("%s that %s here:"),
-                picked_some ? "Other things" : "Things",
-                Blind ? "you feel" : "are");
+                picked_some ? _("Other things") : _("Things"),
+                Blind ? _("you feel") : _("are"));
         putstr(tmpwin, 0, buf);
         for (; otmp; otmp = otmp->nexthere) {
             if (otmp->otyp == CORPSE && will_feel_cockatrice(otmp, FALSE)) {

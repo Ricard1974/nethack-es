@@ -1787,7 +1787,7 @@ u_locomotion(const char *def)
        or boots/ring/spell of levitation */
     return Levitation ? (capitalize ? _("Float") : _("float"))
            : Flying ? (capitalize ? _("Fly") : _("fly"))
-              : locomotion(gy.youmonst.data, def);
+              : _(locomotion(gy.youmonst.data, def));
 }
 
 /* Return a simplified floor solid/liquid state based on hero's state */

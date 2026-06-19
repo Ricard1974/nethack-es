@@ -27891,6 +27891,86 @@ msgstr "empuñar"
 #: auto (getobj)
 msgid "zap"
 msgstr "lanzar"
+
+#: auto
+msgid "Never mind."
+msgstr "Olvídalo."
+#: auto
+msgid "Nothing happens."
+msgstr "No pasa nada."
+#: auto
+msgid "Nothing seems to happen."
+msgstr "No parece pasar nada."
+#: auto
+msgid "Other things"
+msgstr "Otras cosas"
+#: auto
+msgid "Something"
+msgstr "Algo"
+#: auto
+msgid "That's enough tries!"
+msgstr "¡Bastantes intentos!"
+#: auto
+msgid "Things"
+msgstr "Cosas"
+#: auto
+msgid "You can move again."
+msgstr "Puedes moverte de nuevo."
+#: auto
+msgid "are"
+msgstr "hay"
+#: auto
+msgid "mon"
+msgstr "monstruo"
+#: auto
+msgid "shudder for a moment."
+msgstr "te estremeces un momento."
+#: auto
+msgid "vision quickly clears."
+msgstr "la visión se aclara rápidamente."
+#: auto
+msgid "you feel"
+msgstr "sientes"
+
+#: auto
+msgid "Run"
+msgstr "Correr"
+#: auto
+msgid "crawl"
+msgstr "gatear"
+#: auto
+msgid "falter"
+msgstr "titubear"
+#: auto
+msgid "flutter"
+msgstr "aletear"
+#: auto
+msgid "ooze"
+msgstr "rezumar"
+#: auto
+msgid "pulsate"
+msgstr "pulsar"
+#: auto
+msgid "run"
+msgstr "correr"
+#: auto
+msgid "slither"
+msgstr "deslizarse"
+#: auto
+msgid "stagger"
+msgstr "tambalearse"
+#: auto
+msgid "step"
+msgstr "paso"
+#: auto
+msgid "tremble"
+msgstr "temblar"
+#: auto
+msgid "wiggle"
+msgstr "menearse"
+#: auto
+msgid "wobble"
+msgstr "tambalearse"
 msgid "%s%.31s"
 msgstr ""
 

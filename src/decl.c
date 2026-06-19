@@ -37,19 +37,19 @@ const char *c_obj_colors[] = {
 };
 
 const struct c_common_strings c_common_strings =
-    { "Nothing happens.",
-      "Nothing seems to happen.",
-      "That's enough tries!",
+    { N_("Nothing happens."),
+      N_("Nothing seems to happen."),
+      N_("That's enough tries!"),
       N_("That is a silly thing to %s."),
-      "shudder for a moment.",
-      "something",
-      "Something",
-      "You can move again.",
-      "Never mind.",
-      "vision quickly clears.",
-      { "the", "your" },
-      { "mon", "you" }
-};
+      N_("shudder for a moment."),
+      N_("something"),
+      N_("Something"),
+      N_("You can move again."),
+      N_("Never mind."),
+      N_("vision quickly clears."),
+      { N_("the"), N_("your") },
+      { N_("mon"), N_("you") }
+    };
 
 const char disclosure_options[] = "iavgco";
 char emptystr[] = {0};       /* non-const */
