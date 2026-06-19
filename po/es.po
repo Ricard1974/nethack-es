@@ -641,12 +641,12 @@ msgstr "%s %s%s."
 #: src/mhitu.c:2105
 #, c-format
 msgid "You're such a %s; I wish..."
-msgstr ""
+msgstr "Eres un %s; desearía..."
 
 #: src/mhitu.c:2114
 #, c-format
 msgid "Well, then you owe me %s%s!"
-msgstr ""
+msgstr "¡Bueno, entonces me debes %s%s!"
 
 #: src/mhitu.c:2142
 #, c-format
@@ -710,7 +710,7 @@ msgstr "%s pide que pagues %s , pero te niegas..."
 
 #: src/mhitu.c:2249
 msgid "It's on the house!"
-msgstr ""
+msgstr "¡Es cortesía de la casa!"
 
 #: src/mhitu.c:2251
 msgid "No charge."
@@ -1066,7 +1066,7 @@ msgstr "un poco %s ."
 #: src/potion.c:1407
 #, c-format
 msgid "What a funny potion! (%u)"
-msgstr ""
+msgstr "¡Qué poción tan divertida! (%u)"
 
 #: src/potion.c:1463
 msgid "bottle"
@@ -1337,7 +1337,7 @@ msgstr "Un recubrimiento se apaga %s ."
 #: src/potion.c:2631
 #, c-format
 msgid "potion spills and covers your %s with oil."
-msgstr ""
+msgstr "la poción se derrama y cubre tu %s con aceite."
 
 #: src/potion.c:2645
 #, c-format
@@ -1406,7 +1406,7 @@ msgstr "huele a humo acrid."
 
 #: src/potion.c:2820
 msgid "I am in your debt.  I will grant one wish!"
-msgstr ""
+msgstr "Estoy en deuda contigo. ¡Te concederé un deseo!"
 
 #: src/potion.c:2825
 #, fuzzy
@@ -2140,7 +2140,7 @@ msgstr "recibes released!"
 
 #: src/monmove.c:511
 msgid "Bright light!"
-msgstr ""
+msgstr "¡Luz brillante!"
 
 #: src/monmove.c:587
 msgid "sense a faint wave of psychic energy."
@@ -2713,7 +2713,7 @@ msgstr "llegas al Valle de los Muertos..."
 
 #: src/do.c:1842
 msgid "odor of burnt flesh and decay pervades the air."
-msgstr ""
+msgstr "el olor a carne quemada y descomposición impregna el aire."
 
 #: src/do.c:1847
 msgid "groans and moans everywhere."
@@ -2943,7 +2943,7 @@ msgstr "Una voz hace eco:"
 #: src/sit.c:118
 #, c-format
 msgid "Thine audience hath been summoned, %s!"
-msgstr ""
+msgstr "¡Tu audiencia ha sido convocada, %s!"
 
 #: src/sit.c:128
 #, c-format
@@ -2952,7 +2952,7 @@ msgstr ""
 
 #: src/sit.c:137
 msgid "A curse upon thee for sitting upon this most holy throne!"
-msgstr ""
+msgstr "¡Una maldición sobre ti por sentarte en este santísimo trono!"
 
 #: src/sit.c:147
 msgid "A terrible drone fills your head!"
@@ -3007,11 +3007,11 @@ msgstr "de alguna manera fuera de lugar..."
 #: src/sit.c:229
 #, c-format
 msgid "throne %s in a puff of logic."
-msgstr ""
+msgstr "el trono %s en una bocanada de lógica."
 
 #: src/sit.c:253
 msgid "throne disintegrates, having spent its power."
-msgstr ""
+msgstr "el trono se desintegra, habiendo gastado su poder."
 
 #: src/sit.c:257
 msgid "Sitting on the throne was a terrible experience."
@@ -4083,12 +4083,12 @@ msgstr ""
 #: src/mkobj.c:806
 #, c-format
 msgid "You %s %s %s, you pay for %s!"
-msgstr ""
+msgstr "¡%s %s %s, pagas por %s!"
 
 #: src/mkobj.c:818
 #, c-format
 msgid "You %s %s, you pay for %s!"
-msgstr ""
+msgstr "¡%s %s, pagas por %s!"
 
 #: src/mkobj.c:1167
 #, c-format
@@ -4409,7 +4409,7 @@ msgstr "¡Oh, qué fuego tan bonito!"
 
 #: src/muse.c:1952 src/read.c:1859
 msgid "scroll erupts in a tower of flame!"
-msgstr ""
+msgstr "¡el pergamino estalla en una torre de llamas!"
 
 #: src/muse.c:1961
 msgid "are not harmed."
@@ -5998,7 +5998,7 @@ msgstr ""
 
 #: src/priest.c:670
 msgid "I bestow upon thee a blessing."
-msgstr ""
+msgstr "Te concedo una bendición."
 
 #: src/priest.c:694
 msgid "Thou hast been rewarded for thy devotion."
@@ -6468,7 +6468,7 @@ msgstr ""
 
 #: src/timeout.c:129
 msgid "You are slowing down."
-msgstr ""
+msgstr "Te estás ralentizando."
 
 #: src/timeout.c:130
 msgid "Your limbs are stiffening."
@@ -6559,7 +6559,7 @@ msgstr ""
 
 #: src/timeout.c:319
 msgid "You are at Death's door."
-msgstr ""
+msgstr "Estás en las puertas de la muerte."
 
 #: src/timeout.c:337
 #, c-format
@@ -6568,7 +6568,7 @@ msgstr ""
 
 #: src/timeout.c:348
 msgid "You float slightly lower."
-msgstr ""
+msgstr "Flotas un poco más abajo."
 
 #: src/timeout.c:349
 #, c-format
@@ -9833,7 +9833,7 @@ msgstr ""
 #: src/topten.c:974
 #, c-format
 msgid "escaped the dungeon %s[max level %d]"
-msgstr ""
+msgstr "escapaste de la mazmorra %s[nivel máximo %d]"
 
 #: src/topten.c:982
 #, c-format
@@ -12569,7 +12569,7 @@ msgstr ""
 #: src/objnam.c:291
 #, c-format
 msgid " (%s)"
-msgstr ""
+msgstr " (%s)"
 
 #: src/insight.c:2897
 #, fuzzy, c-format
@@ -13066,7 +13066,7 @@ msgstr "¡Te arrepentirás de esta infame ofensa!"
 #: src/pray.c:1688
 #, c-format
 msgid "altar is stained with %s blood."
-msgstr ""
+msgstr "el altar está manchado con sangre %s."
 
 #: src/pray.c:1699
 #, c-format
@@ -13075,7 +13075,7 @@ msgstr "La sangre inunda el altar, que desaparece en la nube %s !"
 
 #: src/pray.c:1707
 msgid "blood covers the altar!"
-msgstr ""
+msgstr "¡la sangre cubre el altar!"
 
 #: src/pray.c:1721
 #, c-format
@@ -13120,7 +13120,7 @@ msgstr "%s parece %s."
 
 #: src/pray.c:2017
 msgid "gods seem tall."
-msgstr ""
+msgstr "los dioses parecen altos."
 
 #: src/pray.c:2019
 msgid "have a feeling of inadequacy."
@@ -14321,7 +14321,7 @@ msgstr ""
 #: src/shk.c:162
 #, c-format
 msgid "%s payment in money2mon!"
-msgstr ""
+msgstr "¡pago de %s en money2mon!"
 
 #: src/shk.c:166
 #, fuzzy, c-format
@@ -14348,11 +14348,11 @@ msgstr "Pero nadie parece responder."
 
 #: src/shk.c:545
 msgid "Keystone Kops appear!"
-msgstr ""
+msgstr "¡Aparecen los policías Keystone!"
 
 #: src/shk.c:552
 msgid "Keystone Kops are after you!"
-msgstr ""
+msgstr "¡Los policías Keystone te persiguen!"
 
 #: src/shk.c:614
 #, c-format
@@ -14415,7 +14415,7 @@ msgstr ""
 #: src/shk.c:821
 #, c-format
 msgid "atmosphere at %s %s seems unwelcoming."
-msgstr ""
+msgstr "el ambiente en %s %s parece poco acogedor."
 
 #: src/shk.c:827
 #, c-format
@@ -14846,7 +14846,7 @@ msgstr "%s %ld %s %s %s%s.\""
 #: src/shk.c:3540
 #, c-format
 msgid "list price of %s%s%s is %ld %s%s."
-msgstr ""
+msgstr "el precio de lista de %s%s%s es %ld %s%s."
 
 #: src/shk.c:3546
 #, c-format
@@ -15270,7 +15270,7 @@ msgstr "%s habla sobre el problema de los montacargas."
 #: src/shk.c:5530
 #, c-format
 msgid "Kop%s (disappointed) vanish%s into thin air."
-msgstr ""
+msgstr "Kop%s (decepcionado) se desvanece%s en el aire."
 
 #: src/shk.c:5615
 #, c-format
@@ -15698,7 +15698,7 @@ msgstr "Desafortunadamente, %s sigue siendo genocidio..."
 #: src/mon.c:2963
 #, c-format
 msgid "door is smashed%s"
-msgstr ""
+msgstr "la puerta está hecha añicos%s"
 
 #: src/mon.c:3054
 #, c-format
@@ -18354,7 +18354,7 @@ msgstr "Estas runas eran demasiado para comprender."
 
 #: src/spell.c:156
 msgid "book was coated with contact poison!"
-msgstr ""
+msgstr "¡el libro estaba cubierto con veneno de contacto!"
 
 #: src/spell.c:172
 #, fuzzy, c-format
@@ -18421,7 +18421,7 @@ msgstr "¡los antepasados están molestos contigo!"
 
 #: src/spell.c:329
 msgid "headstones in the cemetery begin to move!"
-msgstr ""
+msgstr "¡las lápidas del cementerio comienzan a moverse!"
 
 #: src/spell.c:332
 msgid "Oh my!  Your name appears in the book!"
@@ -18496,7 +18496,7 @@ msgstr ""
 
 #: src/spell.c:606
 msgid "spellbook crumbles to dust!"
-msgstr ""
+msgstr "¡el libro de hechizos se deshace en polvo!"
 
 #: src/spell.c:624
 #, c-format
@@ -18646,7 +18646,7 @@ msgstr "asciende lentamente sobre la superficie."
 
 #: src/spell.c:1672
 msgid "spell is cut short!"
-msgstr ""
+msgstr "¡el hechizo se interrumpe!"
 
 #: src/spell.c:1680
 msgid "mind fails to lock onto that location!"
@@ -18863,7 +18863,7 @@ msgstr "Varios"
 
 #: src/invent.c:63
 msgid "Worn Armor"
-msgstr ""
+msgstr "Armadura Vestida"
 
 #: src/invent.c:64
 msgid "Accessories"
@@ -20120,7 +20120,7 @@ msgstr ""
 
 #: src/polyself.c:1785
 msgid "fountain is not deep enough to hide in."
-msgstr ""
+msgstr "la fuente no es lo suficientemente profunda para esconderse."
 
 #: src/polyself.c:1787
 #, c-format
@@ -21917,7 +21917,7 @@ msgstr "¡Ebenezer Scrooge!"
 
 #: src/sounds.c:531
 msgid "I'm hungry."
-msgstr ""
+msgstr "Tengo hambre."
 
 #: src/sounds.c:538
 #, c-format
@@ -22044,7 +22044,7 @@ msgstr "No hay nadie. %s"
 
 #: src/sounds.c:1456
 msgid "lout here doesn't acknowledge you..."
-msgstr ""
+msgstr "el patán de aquí no te reconoce..."
 
 #: src/sounds.c:1492
 #, c-format
@@ -22542,7 +22542,7 @@ msgstr "¡Explota! %s %s"
 
 #: src/read.c:2477
 msgid "ambient light seems dimmer."
-msgstr ""
+msgstr "la luz ambiental parece más tenue."
 
 #: src/read.c:2479
 msgid "It seems even darker in here than before."
@@ -25278,7 +25278,7 @@ msgstr "hundirse en el %s%s!"
 
 #: src/trap.c:6909
 msgid "You sink below the surface and die."
-msgstr ""
+msgstr "Te hundes bajo la superficie y mueres."
 
 #: src/trap.c:7099
 #, c-format
@@ -26505,7 +26505,7 @@ msgstr "Una fuerza misteriosa mueve el oro a la bóveda."
 
 #: src/vault.c:721
 msgid "damaged vault's walls are magically restored!"
-msgstr ""
+msgstr "¡las paredes dañadas de la bóveda son restauradas mágicamente!"
 
 #: src/vault.c:758
 msgid "vault guard: no gold at hero's feet?"
