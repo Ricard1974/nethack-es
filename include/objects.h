@@ -29,7 +29,7 @@
  */
 
 #if defined(OBJECTS_DESCR_INIT)
-#define OBJ(name,desc)  name, desc
+#define OBJ(name,desc)  N_(name), desc
 #define OBJECT(obj,bits,prp,sym,prob,dly,wt, \
                cost,sdam,ldam,oc1,oc2,nut,color,sn)  { obj }
 #define MARKER(tag,sn) /*empty*/

@@ -2454,7 +2454,7 @@ ansimpleoname(struct obj *obj)
     if (otyp == FAKE_AMULET_OF_YENDOR)
         otyp = AMULET_OF_YENDOR;
     if (objects[otyp].oc_unique && OBJ_NAME(objects[otyp])
-        && !strcmp(simpleoname, OBJ_NAME(objects[otyp]))) {
+        && !strcmp(simpleoname, OBJ_NAME_RAW(objects[otyp]))) {
         /* the() will allocate another obuf[]; we want to avoid using two */
         obufp = the(simpleoname);
         Strcpy(simpleoname, obufp);
@@ -4730,7 +4730,7 @@ readobjnam_postparse3(struct _readobjnam_data *d)
         for (i = svb.bases[GEM_CLASS]; i <= LAST_REAL_GEM; i++) {
             const char *zn;
 
-            if ((zn = OBJ_NAME(objects[i])) != 0 && !strcmpi(d->actualn, zn)) {
+            if ((zn = OBJ_NAME(objects[i])) != 0 && !strcmpi(d->actualn, OBJ_NAME_RAW(objects[i]))) {
                 d->typ = i;
                 return 2; /*goto typfnd;*/
             }

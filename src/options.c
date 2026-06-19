@@ -8305,8 +8305,8 @@ fruitadd(char *str, struct fruit *replace_fruit)
                       : 0;
         for (i = svb.bases[FOOD_CLASS]; objects[i].oc_class == FOOD_CLASS;
              i++) {
-            if (!strcmp(OBJ_NAME(objects[i]), svp.pl_fruit)
-                || (globpfx > 0 && !strcmp(OBJ_NAME(objects[i]),
+            if (!strcmp(OBJ_NAME_RAW(objects[i]), svp.pl_fruit)
+                || (globpfx > 0 && !strcmp(OBJ_NAME_RAW(objects[i]),
                                            &svp.pl_fruit[globpfx]))) {
                 found = TRUE;
                 break;

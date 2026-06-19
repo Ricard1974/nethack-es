@@ -2029,7 +2029,7 @@ create_monster(monster *m, struct mkroom *croom)
             case M_AP_OBJECT:
                 for (i = 0; i < NUM_OBJECTS; i++)
                     if (OBJ_NAME(objects[i])
-                        && !strcmp(OBJ_NAME(objects[i]), m->appear_as.str))
+                        && !strcmp(OBJ_NAME_RAW(objects[i]), m->appear_as.str))
                         break;
                 if (i == NUM_OBJECTS) {
                     impossible("create_monster: can't find object \"%s\"",

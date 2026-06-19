@@ -27032,6 +27032,755 @@ msgstr "Lista de comandos de modo mago."
 
 #: src/pager.c:2917 src/pager.c:2931 src/pager.c:2945
 #, c-format
+
+#: objects.h (auto)
+msgid "C-ration"
+msgstr "ración C"
+#: objects.h (auto)
+msgid "K-ration"
+msgstr "ración K"
+#: objects.h (auto)
+msgid "agate"
+msgstr "ágata"
+#: objects.h (auto)
+msgid "amethyst"
+msgstr "amatista"
+#: objects.h (auto)
+msgid "apple"
+msgstr "manzana"
+#: objects.h (auto)
+msgid "arrow"
+msgstr "flecha"
+#: objects.h (auto)
+msgid "athame"
+msgstr "athame"
+#: objects.h (auto)
+msgid "atlatl"
+msgstr "átlatl"
+#: objects.h (auto)
+msgid "axe"
+msgstr "hacha"
+#: objects.h (auto)
+msgid "bag of holding"
+msgstr "bolsa de guardar"
+#: objects.h (auto)
+msgid "banana"
+msgstr "plátano"
+#: objects.h (auto)
+msgid "banded mail"
+msgstr "armadura de bandas"
+#: objects.h (auto)
+msgid "battle-axe"
+msgstr "hacha de batalla"
+#: objects.h (auto)
+msgid "bear trap"
+msgstr "trampa para osos"
+#: objects.h (auto)
+msgid "bec de corbin"
+msgstr "bec de corbin"
+#: objects.h (auto)
+msgid "bill-guisarme"
+msgstr "guisarme de hoja"
+#: objects.h (auto)
+msgid "blindfold"
+msgstr "venda"
+#: objects.h (auto)
+msgid "boomerang"
+msgstr "bumerán"
+#: objects.h (auto)
+msgid "broadsword"
+msgstr "espada ancha"
+#: objects.h (auto)
+msgid "bronze plate mail"
+msgstr "coraza de bronce"
+#: objects.h (auto)
+msgid "bullwhip"
+msgstr "látigo"
+#: objects.h (auto)
+msgid "candle"
+msgstr "vela"
+#: objects.h (auto)
+msgid "carrot"
+msgstr "zanahoria"
+#: objects.h (auto)
+msgid "chain mail"
+msgstr "cota de malla"
+#: objects.h (auto)
+msgid "chest"
+msgstr "cofre"
+#: objects.h (auto)
+msgid "club"
+msgstr "garrote"
+#: objects.h (auto)
+msgid "coral"
+msgstr "coral"
+#: objects.h (auto)
+msgid "corpse"
+msgstr "cadáver"
+#: objects.h (auto)
+msgid "cream pie"
+msgstr "pastel de crema"
+#: objects.h (auto)
+msgid "crossbow bolt"
+msgstr "virote de ballesta"
+#: objects.h (auto)
+msgid "crystal ball"
+msgstr "bola de cristal"
+#: objects.h (auto)
+msgid "crystal plate mail"
+msgstr "coraza de cristal"
+#: objects.h (auto)
+msgid "dagger"
+msgstr "daga"
+#: objects.h (auto)
+msgid "dart"
+msgstr "dardo"
+#: objects.h (auto)
+msgid "dented pot"
+msgstr "olla abollada"
+#: objects.h (auto)
+msgid "diamond"
+msgstr "diamante"
+#: objects.h (auto)
+msgid "dwarvish arrow"
+msgstr "flecha enana"
+#: objects.h (auto)
+msgid "dwarvish bolt"
+msgstr "virote enano"
+#: objects.h (auto)
+msgid "dwarvish chain mail"
+msgstr "cota de malla enana"
+#: objects.h (auto)
+msgid "dwarvish helmet"
+msgstr "casco enano"
+#: objects.h (auto)
+msgid "dwarvish leather armor"
+msgstr "armadura de cuero enana"
+#: objects.h (auto)
+msgid "dwarvish scale mail"
+msgstr "armadura de escamas enana"
+#: objects.h (auto)
+msgid "dwarvish shield"
+msgstr "escudo enano"
+#: objects.h (auto)
+msgid "dwarvish short sword"
+msgstr "espada corta enana"
+#: objects.h (auto)
+msgid "dwarvish spear"
+msgstr "lanza enana"
+#: objects.h (auto)
+msgid "egg"
+msgstr "huevo"
+#: objects.h (auto)
+msgid "elven arrow"
+msgstr "flecha élfica"
+#: objects.h (auto)
+msgid "elven bolt"
+msgstr "virote élfico"
+#: objects.h (auto)
+msgid "elven boots"
+msgstr "botas élficas"
+#: objects.h (auto)
+msgid "elven broadsword"
+msgstr "espada ancha élfica"
+#: objects.h (auto)
+msgid "elven chain mail"
+msgstr "cota de malla élfica"
+#: objects.h (auto)
+msgid "elven dagger"
+msgstr "daga élfica"
+#: objects.h (auto)
+msgid "elven gloves"
+msgstr "guantes élficos"
+#: objects.h (auto)
+msgid "elven helmet"
+msgstr "casco élfico"
+#: objects.h (auto)
+msgid "elven leather armor"
+msgstr "armadura de cuero élfica"
+#: objects.h (auto)
+msgid "elven scale mail"
+msgstr "armadura de escamas élfica"
+#: objects.h (auto)
+msgid "elven scimitar"
+msgstr "cimitarra élfica"
+#: objects.h (auto)
+msgid "elven shield"
+msgstr "escudo élfico"
+#: objects.h (auto)
+msgid "elven short sword"
+msgstr "espada corta élfica"
+#: objects.h (auto)
+msgid "elven spear"
+msgstr "lanza élfica"
+#: objects.h (auto)
+msgid "emerald"
+msgstr "esmeralda"
+#: objects.h (auto)
+msgid "fauchard"
+msgstr "fauchard"
+#: objects.h (auto)
+msgid "flail"
+msgstr "mayal"
+#: objects.h (auto)
+msgid "flint"
+msgstr "pedernal"
+#: objects.h (auto)
+msgid "food ration"
+msgstr "ración de comida"
+#: objects.h (auto)
+msgid "gauntlets"
+msgstr "guanteletes"
+#: objects.h (auto)
+msgid "glaive"
+msgstr "guja"
+#: objects.h (auto)
+msgid "gloves"
+msgstr "guantes"
+#: objects.h (auto)
+msgid "grappling hook"
+msgstr "gancho de agarre"
+#: objects.h (auto)
+msgid "guisarme"
+msgstr "guisarme"
+#: objects.h (auto)
+msgid "halberd"
+msgstr "alabarda"
+#: objects.h (auto)
+msgid "hard leather armor"
+msgstr "armadura de cuero endurecido"
+#: objects.h (auto)
+msgid "helmet"
+msgstr "casco"
+#: objects.h (auto)
+msgid "high boots"
+msgstr "botas altas"
+#: objects.h (auto)
+msgid "javelin"
+msgstr "jabalina"
+#: objects.h (auto)
+msgid "key"
+msgstr "llave"
+#: objects.h (auto)
+msgid "knife"
+msgstr "cuchillo"
+#: objects.h (auto)
+msgid "lamp"
+msgstr "lámpara"
+#: objects.h (auto)
+msgid "lance"
+msgstr "lanza de caballería"
+#: objects.h (auto)
+msgid "land mine"
+msgstr "mina terrestre"
+#: objects.h (auto)
+msgid "large shield"
+msgstr "escudo grande"
+#: objects.h (auto)
+msgid "leash"
+msgstr "correa"
+#: objects.h (auto)
+msgid "leather armor"
+msgstr "armadura de cuero"
+#: objects.h (auto)
+msgid "lock pick"
+msgstr "ganzúa"
+#: objects.h (auto)
+msgid "long sword"
+msgstr "espada larga"
+#: objects.h (auto)
+msgid "low boots"
+msgstr "botas bajas"
+#: objects.h (auto)
+msgid "lucern hammer"
+msgstr "martillo de lucerna"
+#: objects.h (auto)
+msgid "luckstone"
+msgstr "piedra de la suerte"
+#: objects.h (auto)
+msgid "lump of royal jelly"
+msgstr "trozo de jalea real"
+#: objects.h (auto)
+msgid "mace"
+msgstr "maza"
+#: objects.h (auto)
+msgid "magic lamp"
+msgstr "lámpara mágica"
+#: objects.h (auto)
+msgid "magic marker"
+msgstr "rotulador mágico"
+#: objects.h (auto)
+msgid "melon"
+msgstr "melón"
+#: objects.h (auto)
+msgid "mirror"
+msgstr "espejo"
+#: objects.h (auto)
+msgid "morning star"
+msgstr "estrella del alba"
+#: objects.h (auto)
+msgid "obsidian"
+msgstr "obsidiana"
+#: objects.h (auto)
+msgid "opal"
+msgstr "ópalo"
+#: objects.h (auto)
+msgid "orange"
+msgstr "naranja"
+#: objects.h (auto)
+msgid "orcish arrow"
+msgstr "flecha orca"
+#: objects.h (auto)
+msgid "orcish bolt"
+msgstr "virote orco"
+#: objects.h (auto)
+msgid "orcish chain mail"
+msgstr "cota de malla orca"
+#: objects.h (auto)
+msgid "orcish dagger"
+msgstr "daga orca"
+#: objects.h (auto)
+msgid "orcish helmet"
+msgstr "casco orco"
+#: objects.h (auto)
+msgid "orcish ring mail"
+msgstr "armadura de anillas orca"
+#: objects.h (auto)
+msgid "orcish scale mail"
+msgstr "armadura de escamas orca"
+#: objects.h (auto)
+msgid "orcish shield"
+msgstr "escudo orco"
+#: objects.h (auto)
+msgid "orcish short sword"
+msgstr "espada corta orca"
+#: objects.h (auto)
+msgid "orcish spear"
+msgstr "lanza orca"
+#: objects.h (auto)
+msgid "partisan"
+msgstr "partesana"
+#: objects.h (auto)
+msgid "pear"
+msgstr "pera"
+#: objects.h (auto)
+msgid "pearl"
+msgstr "perla"
+#: objects.h (auto)
+msgid "pick-axe"
+msgstr "pico"
+#: objects.h (auto)
+msgid "plate mail"
+msgstr "coraza"
+#: objects.h (auto)
+msgid "polearm"
+msgstr "alabarda"
+#: objects.h (auto)
+msgid "pry bar"
+msgstr "palanca"
+#: objects.h (auto)
+msgid "quarterstaff"
+msgstr "bastón"
+#: objects.h (auto)
+msgid "ranseur"
+msgstr "ranseur"
+#: objects.h (auto)
+msgid "ring mail"
+msgstr "armadura de anillas"
+#: objects.h (auto)
+msgid "rope"
+msgstr "cuerda"
+#: objects.h (auto)
+msgid "ruby"
+msgstr "rubí"
+#: objects.h (auto)
+msgid "runed broadsword"
+msgstr "espada ancha rúnica"
+#: objects.h (auto)
+msgid "sack"
+msgstr "saco"
+#: objects.h (auto)
+msgid "saddle"
+msgstr "montura"
+#: objects.h (auto)
+msgid "sapphire"
+msgstr "zafiro"
+#: objects.h (auto)
+msgid "scale mail"
+msgstr "armadura de escamas"
+#: objects.h (auto)
+msgid "scalpel"
+msgstr "bisturí"
+#: objects.h (auto)
+msgid "scimitar"
+msgstr "cimitarra"
+#: objects.h (auto)
+msgid "shield"
+msgstr "escudo"
+#: objects.h (auto)
+msgid "short sword"
+msgstr "espada corta"
+#: objects.h (auto)
+msgid "shuriken"
+msgstr "shuriken"
+#: objects.h (auto)
+msgid "silver arrow"
+msgstr "flecha de plata"
+#: objects.h (auto)
+msgid "silver bolt"
+msgstr "virote de plata"
+#: objects.h (auto)
+msgid "silver dagger"
+msgstr "daga de plata"
+#: objects.h (auto)
+msgid "silver saber"
+msgstr "sable de plata"
+#: objects.h (auto)
+msgid "silver spear"
+msgstr "lanza de plata"
+#: objects.h (auto)
+msgid "skeleton key"
+msgstr "llave maestra"
+#: objects.h (auto)
+msgid "sling"
+msgstr "honda"
+#: objects.h (auto)
+msgid "slippery corpse"
+msgstr "cadáver resbaladizo"
+#: objects.h (auto)
+msgid "small shield"
+msgstr "escudo pequeño"
+#: objects.h (auto)
+msgid "spear"
+msgstr "lanza"
+#: objects.h (auto)
+msgid "speed boots"
+msgstr "botas de velocidad"
+#: objects.h (auto)
+msgid "spetum"
+msgstr "spetum"
+#: objects.h (auto)
+msgid "splint mail"
+msgstr "armadura de tablillas"
+#: objects.h (auto)
+msgid "stethoscope"
+msgstr "estetoscopio"
+#: objects.h (auto)
+msgid "stiletto"
+msgstr "estilete"
+#: objects.h (auto)
+msgid "studded leather armor"
+msgstr "armadura de cuero tachonada"
+#: objects.h (auto)
+msgid "tin"
+msgstr "lata"
+#: objects.h (auto)
+msgid "tin opener"
+msgstr "abrelatas"
+#: objects.h (auto)
+msgid "tinning kit"
+msgstr "kit de enlatado"
+#: objects.h (auto)
+msgid "topaz"
+msgstr "topacio"
+#: objects.h (auto)
+msgid "towel"
+msgstr "toalla"
+#: objects.h (auto)
+msgid "trident"
+msgstr "tridente"
+#: objects.h (auto)
+msgid "tripe ration"
+msgstr "ración de callos"
+#: objects.h (auto)
+msgid "two-handed sword"
+msgstr "espada a dos manos"
+#: objects.h (auto)
+msgid "unicorn horn"
+msgstr "cuerno de unicornio"
+#: objects.h (auto)
+msgid "voulge"
+msgstr "vouge"
+#: objects.h (auto)
+msgid "war hammer"
+msgstr "martillo de guerra"
+#: objects.h (auto)
+msgid "worthless piece of glass"
+msgstr "trozo de vidrio sin valor"
+
+#: objects.h (auto)
+msgid "potion of Levitation"
+msgstr "poción de levitación"
+#: objects.h (auto)
+msgid "potion of acid"
+msgstr "poción de ácido"
+#: objects.h (auto)
+msgid "potion of blindness"
+msgstr "poción de ceguera"
+#: objects.h (auto)
+msgid "potion of booze"
+msgstr "poción de alcohol"
+#: objects.h (auto)
+msgid "potion of confusion"
+msgstr "poción de confusión"
+#: objects.h (auto)
+msgid "potion of enlightenment"
+msgstr "poción de iluminación"
+#: objects.h (auto)
+msgid "potion of extra healing"
+msgstr "poción de curación extra"
+#: objects.h (auto)
+msgid "potion of fruit juice"
+msgstr "poción de zumo de fruta"
+#: objects.h (auto)
+msgid "potion of full healing"
+msgstr "poción de curación total"
+#: objects.h (auto)
+msgid "potion of gain ability"
+msgstr "poción de mejora de habilidad"
+#: objects.h (auto)
+msgid "potion of gain energy"
+msgstr "poción de recuperación de energía"
+#: objects.h (auto)
+msgid "potion of gain level"
+msgstr "poción de subida de nivel"
+#: objects.h (auto)
+msgid "potion of hallucination"
+msgstr "poción de alucinación"
+#: objects.h (auto)
+msgid "potion of healing"
+msgstr "poción de curación"
+#: objects.h (auto)
+msgid "potion of invisibility"
+msgstr "poción de invisibilidad"
+#: objects.h (auto)
+msgid "potion of monster detection"
+msgstr "poción de detección de monstruos"
+#: objects.h (auto)
+msgid "potion of object detection"
+msgstr "poción de detección de objetos"
+#: objects.h (auto)
+msgid "potion of oil"
+msgstr "poción de aceite"
+#: objects.h (auto)
+msgid "potion of paralysis"
+msgstr "poción de parálisis"
+#: objects.h (auto)
+msgid "potion of polymorph"
+msgstr "poción de polimorfia"
+#: objects.h (auto)
+msgid "potion of restore ability"
+msgstr "poción de restauración de habilidad"
+#: objects.h (auto)
+msgid "potion of see invisible"
+msgstr "poción de ver invisible"
+#: objects.h (auto)
+msgid "potion of sleeping"
+msgstr "poción de sueño"
+#: objects.h (auto)
+msgid "potion of speed"
+msgstr "poción de velocidad"
+#: objects.h (auto)
+msgid "ring of adornment"
+msgstr "anillo de adorno"
+#: objects.h (auto)
+msgid "ring of cold resistance"
+msgstr "anillo de resistencia al frío"
+#: objects.h (auto)
+msgid "ring of conflict"
+msgstr "anillo de conflicto"
+#: objects.h (auto)
+msgid "ring of fire resistance"
+msgstr "anillo de resistencia al fuego"
+#: objects.h (auto)
+msgid "ring of free action"
+msgstr "anillo de acción libre"
+#: objects.h (auto)
+msgid "ring of gain constitution"
+msgstr "anillo de ganar constitución"
+#: objects.h (auto)
+msgid "ring of gain strength"
+msgstr "anillo de ganar fuerza"
+#: objects.h (auto)
+msgid "ring of hunger"
+msgstr "anillo de hambre"
+#: objects.h (auto)
+msgid "ring of increase accuracy"
+msgstr "anillo de aumentar precisión"
+#: objects.h (auto)
+msgid "ring of increase damage"
+msgstr "anillo de aumentar daño"
+#: objects.h (auto)
+msgid "ring of invisibility"
+msgstr "anillo de invisibilidad"
+#: objects.h (auto)
+msgid "ring of levitation"
+msgstr "anillo de levitación"
+#: objects.h (auto)
+msgid "ring of poison resistance"
+msgstr "anillo de resistencia al veneno"
+#: objects.h (auto)
+msgid "ring of polymorph"
+msgstr "anillo de polimorfia"
+#: objects.h (auto)
+msgid "ring of protection"
+msgstr "anillo de protección"
+#: objects.h (auto)
+msgid "ring of regeneration"
+msgstr "anillo de regeneración"
+#: objects.h (auto)
+msgid "ring of searching"
+msgstr "anillo de búsqueda"
+#: objects.h (auto)
+msgid "ring of shock resistance"
+msgstr "anillo de resistencia a electrocución"
+#: objects.h (auto)
+msgid "ring of slow digestion"
+msgstr "anillo de digestión lenta"
+#: objects.h (auto)
+msgid "ring of stealth"
+msgstr "anillo de sigilo"
+#: objects.h (auto)
+msgid "ring of sustain ability"
+msgstr "anillo de sustentar habilidad"
+#: objects.h (auto)
+msgid "ring of teleport control"
+msgstr "anillo de control de teletransporte"
+#: objects.h (auto)
+msgid "ring of teleportation"
+msgstr "anillo de teletransporte"
+#: objects.h (auto)
+msgid "ring of warning"
+msgstr "anillo de advertencia"
+#: objects.h (auto)
+msgid "scroll of amnesia"
+msgstr "pergamino de amnesia"
+#: objects.h (auto)
+msgid "scroll of blank paper"
+msgstr "pergamino de papel en blanco"
+#: objects.h (auto)
+msgid "scroll of blinking"
+msgstr "pergamino de parpadeo"
+#: objects.h (auto)
+msgid "scroll of charging"
+msgstr "pergamino de cargar"
+#: objects.h (auto)
+msgid "scroll of confuse monster"
+msgstr "pergamino de confundir monstruo"
+#: objects.h (auto)
+msgid "scroll of create monster"
+msgstr "pergamino de crear monstruo"
+#: objects.h (auto)
+msgid "scroll of destroy armor"
+msgstr "pergamino de destruir armadura"
+#: objects.h (auto)
+msgid "scroll of enchant armor"
+msgstr "pergamino de encantar armadura"
+#: objects.h (auto)
+msgid "scroll of enchant weapon"
+msgstr "pergamino de encantar arma"
+#: objects.h (auto)
+msgid "scroll of fire"
+msgstr "pergamino de fuego"
+#: objects.h (auto)
+msgid "scroll of food detection"
+msgstr "pergamino de detección de comida"
+#: objects.h (auto)
+msgid "scroll of genocide"
+msgstr "pergamino de genocidio"
+#: objects.h (auto)
+msgid "scroll of gold detection"
+msgstr "pergamino de detección de oro"
+#: objects.h (auto)
+msgid "scroll of identify"
+msgstr "pergamino de identificar"
+#: objects.h (auto)
+msgid "scroll of light"
+msgstr "pergamino de luz"
+#: objects.h (auto)
+msgid "scroll of magic mapping"
+msgstr "pergamino de mapeo mágico"
+#: objects.h (auto)
+msgid "scroll of punishment"
+msgstr "pergamino de castigo"
+#: objects.h (auto)
+msgid "scroll of remove curse"
+msgstr "pergamino de eliminar maldición"
+#: objects.h (auto)
+msgid "scroll of scare monster"
+msgstr "pergamino de espantar monstruos"
+#: objects.h (auto)
+msgid "scroll of stinking cloud"
+msgstr "pergamino de nube apestosa"
+#: objects.h (auto)
+msgid "scroll of taming"
+msgstr "pergamino de domesticar"
+#: objects.h (auto)
+msgid "scroll of teleport"
+msgstr "pergamino de teletransporte"
+#: objects.h (auto)
+msgid "wand of cancellation"
+msgstr "varita de cancelación"
+#: objects.h (auto)
+msgid "wand of cold"
+msgstr "varita de frío"
+#: objects.h (auto)
+msgid "wand of create monster"
+msgstr "varita de crear monstruo"
+#: objects.h (auto)
+msgid "wand of death"
+msgstr "varita de muerte"
+#: objects.h (auto)
+msgid "wand of digging"
+msgstr "varita de excavación"
+#: objects.h (auto)
+msgid "wand of fire"
+msgstr "varita de fuego"
+#: objects.h (auto)
+msgid "wand of light"
+msgstr "varita de luz"
+#: objects.h (auto)
+msgid "wand of lightning"
+msgstr "varita de rayo"
+#: objects.h (auto)
+msgid "wand of locking"
+msgstr "varita de cerrar"
+#: objects.h (auto)
+msgid "wand of magic missile"
+msgstr "varita de proyectil mágico"
+#: objects.h (auto)
+msgid "wand of make invisible"
+msgstr "varita de hacer invisible"
+#: objects.h (auto)
+msgid "wand of opening"
+msgstr "varita de abrir"
+#: objects.h (auto)
+msgid "wand of polymorph"
+msgstr "varita de polimorfia"
+#: objects.h (auto)
+msgid "wand of probing"
+msgstr "varita de sondear"
+#: objects.h (auto)
+msgid "wand of sleep"
+msgstr "varita de sueño"
+#: objects.h (auto)
+msgid "wand of slow monster"
+msgstr "varita de ralentizar monstruo"
+#: objects.h (auto)
+msgid "wand of speed monster"
+msgstr "varita de acelerar monstruo"
+#: objects.h (auto)
+msgid "wand of striking"
+msgstr "varita de golpe"
+#: objects.h (auto)
+msgid "wand of teleportation"
+msgstr "varita de teletransporte"
+#: objects.h (auto)
+msgid "wand of wishing"
+msgstr "varita de desear"
+#: objects.h (auto)
+msgid "water"
+msgstr "agua"
 msgid "%s%.31s"
 msgstr ""
 

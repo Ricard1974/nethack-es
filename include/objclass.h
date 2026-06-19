@@ -187,7 +187,8 @@ enum misc_object_nums {
 extern NEARDATA struct objclass objects[NUM_OBJECTS + 1];
 extern NEARDATA struct objdescr obj_descr[NUM_OBJECTS + 1];
 
-#define OBJ_NAME(obj) (obj_descr[(obj).oc_name_idx].oc_name)
+#define OBJ_NAME(obj) _(obj_descr[(obj).oc_name_idx].oc_name)
+#define OBJ_NAME_RAW(obj) (obj_descr[(obj).oc_name_idx].oc_name)
 #define OBJ_DESCR(obj) (obj_descr[(obj).oc_descr_idx].oc_descr)
 
 #define is_organic(otmp) (objects[otmp->otyp].oc_material <= WOOD)

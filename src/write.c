@@ -149,7 +149,7 @@ dowrite(struct obj *pen)
         if (!OBJ_NAME(objects[i]))
             continue;
 
-        if (!strcmpi(OBJ_NAME(objects[i]), nm)) {
+        if (!strcmpi(OBJ_NAME_RAW(objects[i]), nm)) {
             if (objects[i].oc_name_known
                 /* spellbooks can only be written by_name, so no need to
                    hold out for a 'better' by_descr match */

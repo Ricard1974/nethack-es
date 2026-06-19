@@ -1907,7 +1907,7 @@ spell_cmp(const genericptr vptr1, const genericptr vptr2)
                                : (vptr1 > vptr2); /* keep current order */
     }
     /* tie-breaker for most sorts--alphabetical by spell name */
-    return strcmpi(OBJ_NAME(objects[otyp1]), OBJ_NAME(objects[otyp2]));
+    return strcmpi(OBJ_NAME_RAW(objects[otyp1]), OBJ_NAME_RAW(objects[otyp2]));
 }
 
 /* sort the index used for display order of the "view known spells"
