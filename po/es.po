@@ -20521,7 +20521,7 @@ msgstr ""
 
 #: src/cmd.c:483
 msgid "do that while you are buried!"
-msgstr ""
+msgstr "hacer eso mientras estás enterrado!"
 
 #: src/cmd.c:508
 #, c-format
@@ -20672,7 +20672,7 @@ msgstr "No hay comando disponible para repetir."
 
 #: src/cmd.c:1656
 msgid "enter and perform an extended command"
-msgstr ""
+msgstr "introducir y ejecutar un comando extendido"
 
 #: src/cmd.c:1658
 #, fuzzy
@@ -20723,7 +20723,7 @@ msgstr "mostrar diario de eventos importantes"
 
 #: src/cmd.c:1683
 msgid "close a door"
-msgstr ""
+msgstr "cerrar una puerta"
 
 #: src/cmd.c:1685
 msgid "list voluntary challenges you have maintained"
@@ -20773,7 +20773,7 @@ msgstr "prefijo: forzar combate aunque no veas monstruo"
 
 #: src/cmd.c:1712
 msgid "fire ammunition from quiver"
-msgstr ""
+msgstr "disparar munición del carcaj"
 
 #: src/cmd.c:1714
 msgid "force a lock"
@@ -20785,7 +20785,7 @@ msgstr "mostrar a que corresponde un simbolo del mapa"
 
 #: src/cmd.c:1722
 msgid "give a help message"
-msgstr ""
+msgstr "mostrar un mensaje de ayuda"
 
 #: src/cmd.c:1724
 msgid "show menu of commands you can do here"
@@ -20813,7 +20813,7 @@ msgstr "saltar a otra ubicacion"
 
 #: src/cmd.c:1736
 msgid "kick something"
-msgstr ""
+msgstr "patear algo"
 
 #: src/cmd.c:1738
 msgid "show what object types have been discovered"
@@ -20821,7 +20821,7 @@ msgstr "mostrar tipos de objeto descubiertos"
 
 #: src/cmd.c:1740
 msgid "show discovered types for one class of objects"
-msgstr ""
+msgstr "mostrar tipos descubiertos para una clase de objetos"
 
 #: src/cmd.c:1742
 #, fuzzy
@@ -20853,7 +20853,7 @@ msgstr "Usar habilidad especial de %s"
 
 #: src/cmd.c:1761
 msgid "same as call; name a monster or object or object type"
-msgstr ""
+msgstr "igual que llamar; nombrar un monstruo, objeto o tipo de objeto"
 
 #: src/cmd.c:1763
 msgid "offer a sacrifice to the gods"
@@ -20861,7 +20861,7 @@ msgstr "ofrecer un sacrificio a los dioses"
 
 #: src/cmd.c:1765
 msgid "open a door"
-msgstr ""
+msgstr "abrir una puerta"
 
 #: src/cmd.c:1768
 msgid "show option settings"
@@ -20881,7 +20881,7 @@ msgstr ""
 
 #: src/cmd.c:1783
 msgid "pay your shopping bill"
-msgstr ""
+msgstr "pagar tu cuenta de la tienda"
 
 #: src/cmd.c:1785
 #, fuzzy
@@ -20890,11 +20890,11 @@ msgstr "La visualización persistente del inventario está vacía."
 
 #: src/cmd.c:1789
 msgid "polymorph self"
-msgstr ""
+msgstr "polimorfizarse"
 
 #: src/cmd.c:1791
 msgid "pray to the gods for help"
-msgstr ""
+msgstr "rezar a los dioses por ayuda"
 
 #: src/cmd.c:1793
 msgid "view recent game messages"
@@ -20911,15 +20911,15 @@ msgstr "Beber %s"
 
 #: src/cmd.c:1799
 msgid "exit without saving current game"
-msgstr ""
+msgstr "salir sin guardar la partida actual"
 
 #: src/cmd.c:1802
 msgid "select ammunition for quiver"
-msgstr ""
+msgstr "seleccionar munición para el carcaj"
 
 #: src/cmd.c:1804
 msgid "read a scroll or spellbook"
-msgstr ""
+msgstr "leer un pergamino o libro de hechizos"
 
 #: src/cmd.c:1806
 msgid "redraw screen"
@@ -20967,7 +20967,7 @@ msgstr "guardar la configuracion del juego"
 
 #: src/cmd.c:1834
 msgid "search for traps and secret doors"
-msgstr ""
+msgstr "buscar trampas y puertas secretas"
 
 #: src/cmd.c:1836
 msgid "show all equipment in use"
@@ -20975,19 +20975,19 @@ msgstr "mostrar todo el equipo en uso"
 
 #: src/cmd.c:1838
 msgid "show the amulet currently worn"
-msgstr ""
+msgstr "mostrar el amuleto actualmente vestido"
 
 #: src/cmd.c:1840
 msgid "show the armor currently worn"
-msgstr ""
+msgstr "mostrar la armadura actualmente vestida"
 
 #: src/cmd.c:1842
 msgid "show the ring(s) currently worn"
-msgstr ""
+msgstr "mostrar el/los anillo(s) actualmente vestido(s)"
 
 #: src/cmd.c:1844
 msgid "show the tools currently in use"
-msgstr ""
+msgstr "mostrar las herramientas actualmente en uso"
 
 #: src/cmd.c:1846
 msgid "show the weapon currently wielded"
@@ -21020,15 +21020,15 @@ msgstr ""
 
 #: src/cmd.c:1872
 msgid "swap wielded and secondary weapons"
-msgstr ""
+msgstr "intercambiar armas empuñada y secundaria"
 
 #: src/cmd.c:1874
 msgid "take off one piece of armor"
-msgstr ""
+msgstr "quitarse una pieza de armadura"
 
 #: src/cmd.c:1876
 msgid "remove all armor"
-msgstr ""
+msgstr "quitarse toda la armadura"
 
 #: src/cmd.c:1878
 msgid "teleport around the level"
@@ -21036,7 +21036,7 @@ msgstr ""
 
 #: src/cmd.c:1889
 msgid "throw something"
-msgstr ""
+msgstr "lanzar algo"
 
 #: src/cmd.c:1891
 msgid "look at timeout queue and hero's timed intrinsics"
@@ -21044,19 +21044,19 @@ msgstr ""
 
 #: src/cmd.c:1893
 msgid "empty a container"
-msgstr ""
+msgstr "vaciar un contenedor"
 
 #: src/cmd.c:1895
 msgid "toggle boolean option"
-msgstr ""
+msgstr "alternar opción booleana"
 
 #: src/cmd.c:1897
 msgid "travel to a specific location on the map"
-msgstr ""
+msgstr "viajar a una ubicación específica en el mapa"
 
 #: src/cmd.c:1899
 msgid "turn undead away"
-msgstr ""
+msgstr "espantar no-muertos"
 
 #: src/cmd.c:1901
 #, fuzzy
@@ -21065,7 +21065,7 @@ msgstr "empiezas two-weapon combat."
 
 #: src/cmd.c:1903
 msgid "untrap something"
-msgstr ""
+msgstr "desactivar una trampa"
 
 #: src/cmd.c:1905
 msgid "go up a staircase"
@@ -21073,11 +21073,11 @@ msgstr "subir escaleras"
 
 #: src/cmd.c:1908
 msgid "list vanquished monsters"
-msgstr ""
+msgstr "listar monstruos vencidos"
 
 #: src/cmd.c:1914
 msgid "show version and date+time program was built"
-msgstr ""
+msgstr "mostrar versión y fecha+hora de compilación"
 
 #: src/cmd.c:1916
 msgid "show vision array"
@@ -21085,11 +21085,11 @@ msgstr ""
 
 #: src/cmd.c:1918
 msgid "rest one move while doing nothing"
-msgstr ""
+msgstr "descansar un turno sin hacer nada"
 
 #: src/cmd.c:1920
 msgid "wear a piece of armor"
-msgstr ""
+msgstr "vestir una pieza de armadura"
 
 #: src/cmd.c:1922
 #, fuzzy
@@ -21098,11 +21098,11 @@ msgstr "¿Vincular qué comando?"
 
 #: src/cmd.c:1924
 msgid "show what type of thing a symbol corresponds to"
-msgstr ""
+msgstr "mostrar a qué tipo de cosa corresponde un símbolo"
 
 #: src/cmd.c:1926
 msgid "wield (put in use) a weapon"
-msgstr ""
+msgstr "empuñar (poner en uso) un arma"
 
 #: src/cmd.c:1928
 #, fuzzy
@@ -21115,11 +21115,11 @@ msgstr ""
 
 #: src/cmd.c:1933
 msgid "bury objs under and around you"
-msgstr ""
+msgstr "enterrar objetos bajo y alrededor de ti"
 
 #: src/cmd.c:1937
 msgid "cast any spell"
-msgstr ""
+msgstr "lanzar cualquier hechizo"
 
 #: src/cmd.c:1939
 msgid "show customized glyphs"
@@ -21217,43 +21217,43 @@ msgstr ""
 
 #: src/cmd.c:1992
 msgid "zap a wand"
-msgstr ""
+msgstr "lanzar una varita"
 
 #: src/cmd.c:1996
 msgid "move west (screen left)"
-msgstr ""
+msgstr "moverse al oeste (izquierda)"
 
 #: src/cmd.c:1998
 msgid "move northwest (screen upper left)"
-msgstr ""
+msgstr "moverse al noroeste (arriba izquierda)"
 
 #: src/cmd.c:2000
 msgid "move north (screen up)"
-msgstr ""
+msgstr "moverse al norte (arriba)"
 
 #: src/cmd.c:2002
 msgid "move northeast (screen upper right)"
-msgstr ""
+msgstr "moverse al noreste (arriba derecha)"
 
 #: src/cmd.c:2004
 msgid "move east (screen right)"
-msgstr ""
+msgstr "moverse al este (derecha)"
 
 #: src/cmd.c:2006
 msgid "move southeast (screen lower right)"
-msgstr ""
+msgstr "moverse al sureste (abajo derecha)"
 
 #: src/cmd.c:2008
 msgid "move south (screen down)"
-msgstr ""
+msgstr "moverse al sur (abajo)"
 
 #: src/cmd.c:2010
 msgid "move southwest (screen lower left)"
-msgstr ""
+msgstr "moverse al suroeste (abajo izquierda)"
 
 #: src/cmd.c:2013
 msgid "rush west (screen left)"
-msgstr ""
+msgstr "avanzar al oeste (izquierda)"
 
 #: src/cmd.c:2015
 msgid "rush northwest (screen upper left)"
@@ -21261,7 +21261,7 @@ msgstr ""
 
 #: src/cmd.c:2017
 msgid "rush north (screen up)"
-msgstr ""
+msgstr "avanzar al norte (arriba)"
 
 #: src/cmd.c:2019
 msgid "rush northeast (screen upper right)"
@@ -21269,7 +21269,7 @@ msgstr ""
 
 #: src/cmd.c:2021
 msgid "rush east (screen right)"
-msgstr ""
+msgstr "avanzar al este (derecha)"
 
 #: src/cmd.c:2023
 msgid "rush southeast (screen lower right)"
@@ -21277,7 +21277,7 @@ msgstr ""
 
 #: src/cmd.c:2025
 msgid "rush south (screen down)"
-msgstr ""
+msgstr "avanzar al sur (abajo)"
 
 #: src/cmd.c:2027
 msgid "rush southwest (screen lower left)"
@@ -21285,7 +21285,7 @@ msgstr ""
 
 #: src/cmd.c:2030
 msgid "run west (screen left)"
-msgstr ""
+msgstr "correr al oeste (izquierda)"
 
 #: src/cmd.c:2032
 msgid "run northwest (screen upper left)"
@@ -21293,7 +21293,7 @@ msgstr ""
 
 #: src/cmd.c:2034
 msgid "run north (screen up)"
-msgstr ""
+msgstr "correr al norte (arriba)"
 
 #: src/cmd.c:2036
 msgid "run northeast (screen upper right)"
@@ -21301,7 +21301,7 @@ msgstr ""
 
 #: src/cmd.c:2038
 msgid "run east (screen right)"
-msgstr ""
+msgstr "correr al este (derecha)"
 
 #: src/cmd.c:2040
 msgid "run southeast (screen lower right)"
@@ -21309,7 +21309,7 @@ msgstr ""
 
 #: src/cmd.c:2042
 msgid "run south (screen down)"
-msgstr ""
+msgstr "correr al sur (abajo)"
 
 #: src/cmd.c:2044
 msgid "run southwest (screen lower left)"
@@ -21422,15 +21422,15 @@ msgstr "Comandos generales:"
 
 #: src/cmd.c:3216
 msgid "<space>"
-msgstr ""
+msgstr "<espacio>"
 
 #: src/cmd.c:3218
 msgid "<esc>"
-msgstr ""
+msgstr "<esc>"
 
 #: src/cmd.c:3220
 msgid "<enter>"
-msgstr ""
+msgstr "<intro>"
 
 #: src/cmd.c:3222
 msgid "<del>"
