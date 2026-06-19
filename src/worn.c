@@ -1265,9 +1265,9 @@ mon_break_armor(struct monst *mon, boolean polyspot)
         /* [caller needs to handle weapon checks] */
         if ((otmp = which_armor(mon, W_ARMG)) != 0) {
             if (vis)
-                pline_mon(mon, "%s drops %s gloves%s!",
+                pline_mon(mon, _("%s drops %s gloves%s!"),
                           Monnam(mon), ppronoun,
-                          MON_WEP(mon) ? " and weapon" : "");
+                          MON_WEP(mon) ? _(" and weapon") : "");
             m_lose_armor(mon, otmp, polyspot);
         }
         if ((otmp = which_armor(mon, W_ARMS)) != 0) {

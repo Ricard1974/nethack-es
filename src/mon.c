@@ -3775,9 +3775,9 @@ vamp_stone(struct monst *mtmp)
                     x_monnam(mtmp, ARTICLE_NONE, (char *) 0,
                              (SUPPRESS_SADDLE | SUPPRESS_HALLUCINATION
                               | SUPPRESS_INVISIBLE | SUPPRESS_IT), FALSE),
-                    amorphous(mtmp->data) ? "coalesces on the"
-                       : is_flyer(mtmp->data) ? "drops to the"
-                          : "writhes on the",
+                    amorphous(mtmp->data) ? _("coalesces on the")
+                       : is_flyer(mtmp->data) ? _("drops to the")
+                          : _("writhes on the"),
                     surface(x, y));
             mtmp->mcanmove = 1;
             mtmp->mfrozen = 0;

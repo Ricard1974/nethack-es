@@ -20,6 +20,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: src/mhitu.c:39
+#, fuzzy, c-format
+msgid "%s %s you %s."
+msgstr "%s %s tu %s !"
+
+#: src/mhitu.c:40
+msgid "smiles at"
+msgstr "sonríe a"
+
+#: src/mhitu.c:40
+msgid "talks to"
+msgstr "habla con"
+
+#: src/mhitu.c:40
+msgid "touches"
+msgstr "toca"
+
+#: src/mhitu.c:41
+msgid "engagingly"
+msgstr "seductoramente"
+
+#: src/mhitu.c:41
+msgid "seductively"
+msgstr "de forma seductora"
+
+#: src/mhitu.c:45
+msgid "bites"
+msgstr "muerde"
+
+#: src/mhitu.c:50
+msgid "kicks"
+msgstr "patea"
+
+#: src/mhitu.c:53
+msgid "stings"
+msgstr "pica"
+
+#: src/mhitu.c:56
+msgid "butts"
+msgstr "golpea"
+
+#: src/mhitu.c:59
+msgid "touches you"
+msgstr "te toca"
+
+#: src/mhitu.c:62
+msgid "tentacles suck your brain"
+msgstr "chupan tu cerebro"
+
+#: src/mhitu.c:67
+msgid "explodes"
+msgstr "explota"
+
+#: src/mhitu.c:70
+msgid "hits"
+msgstr "golpea"
+
+#: src/mhitu.c:76
+msgid " again"
+msgstr " de nuevo"
+
+#: src/mhitu.c:77 src/cfgfiles.c:1602
+#, c-format
+msgid "%s %s%s%s"
+msgstr "%s %s%s%s"
+
 #: src/mhitu.c:167 src/do_wear.c:816
 msgid "slow down."
 msgstr "frena."
@@ -185,7 +251,7 @@ msgstr "ser expulsado de %s%s!"
 #: src/eat.c:2882 src/eat.c:3280 src/music.c:273 src/music.c:299
 #: src/music.c:437 src/music.c:447 src/music.c:570 src/rumors.c:281
 #: src/rumors.c:546 src/rumors.c:569 src/trap.c:5201 src/nhlua.c:639
-#: src/options.c:6502 src/options.c:6583 src/options.c:8158 src/vault.c:448
+#: src/options.c:6530 src/options.c:6611 src/options.c:8186 src/vault.c:448
 #: src/vault.c:719 src/pline.c:635 src/pline.c:702 src/dog.c:121
 #: src/wield.c:357 src/wield.c:461 src/wield.c:555 src/engrave.c:1245
 #: src/region.c:990 src/dokick.c:156 src/dokick.c:609 src/dokick.c:615
@@ -3966,8 +4032,8 @@ msgstr "Dirección desconocida: ' %s ' ( %s )."
 msgid "Unknown text attribute '%.50s'"
 msgstr ""
 
-#: src/coloratt.c:603 src/cmd.c:2331 src/options.c:7822 src/options.c:7973
-#: src/options.c:9413
+#: src/coloratt.c:603 src/cmd.c:2331 src/options.c:7850 src/options.c:8001
+#: src/options.c:9441
 #, fuzzy, c-format
 msgid "%s: %s"
 msgstr "%s: \"%s\"%s"
@@ -5065,9 +5131,9 @@ msgstr "%s %s %s %s con %s %s!"
 msgid "%s be knocked %s!"
 msgstr "%s será llamado %s!"
 
-#: src/uhitm.c:5515 src/steal.c:328 src/mhitm.c:82 src/mhitm.c:660
-#: src/mhitm.c:850 src/zap.c:3554 src/cmd.c:1287 src/trap.c:4933
-#: src/trap.c:4961 src/dokick.c:1918
+#: src/uhitm.c:5515 src/dogmove.c:289 src/steal.c:328 src/mhitm.c:82
+#: src/mhitm.c:660 src/mhitm.c:850 src/zap.c:3554 src/cmd.c:1287
+#: src/trap.c:4933 src/trap.c:4961 src/dokick.c:1918
 #, c-format
 msgid "%s %s %s."
 msgstr "%s %s %s."
@@ -5360,6 +5426,11 @@ msgstr "anillo %s ."
 #, c-format
 msgid "%s%s %s %s!"
 msgstr "%s%s %s %s!"
+
+#: src/weapon.c:763 src/steal.c:828
+#, fuzzy, c-format
+msgid "%s drops %s."
+msgstr "%s para %s ."
 
 #: src/weapon.c:841
 #, c-format
@@ -5674,7 +5745,7 @@ msgstr "No se puede llegar allí desde aquí."
 msgid "%s: colorcount=%ld %s"
 msgstr ""
 
-#: src/wizcmds.c:1958 src/options.c:4282
+#: src/wizcmds.c:1958 src/options.c:4310
 #, c-format
 msgid ", handler=%s"
 msgstr ""
@@ -6416,6 +6487,15 @@ msgstr "un sonido de desgarro."
 msgid "a thud."
 msgstr "un golpe seco."
 
+#: src/worn.c:1268
+#, fuzzy, c-format
+msgid "%s drops %s gloves%s!"
+msgstr "¡Deja tus guantes! %s"
+
+#: src/worn.c:1270
+msgid " and weapon"
+msgstr " y arma"
+
 #: src/worn.c:1279 src/worn.c:1291
 msgid "a clank."
 msgstr "un clang."
@@ -6638,7 +6718,7 @@ msgstr ""
 msgid "Couldn't open requested config file %s (%d)."
 msgstr ""
 
-#: src/cfgfiles.c:315 src/cfgfiles.c:1576 src/insight.c:1696 src/options.c:6102
+#: src/cfgfiles.c:315 src/cfgfiles.c:1576 src/insight.c:1696 src/options.c:6130
 #, c-format
 msgid "%s%s%s"
 msgstr "%s%s%s"
@@ -6731,11 +6811,6 @@ msgid ""
 msgstr ""
 "\n"
 "%s"
-
-#: src/cfgfiles.c:1602
-#, c-format
-msgid "%s %s%s%s"
-msgstr "%s %s%s%s"
 
 #: src/cfgfiles.c:1626
 #, fuzzy, c-format
@@ -9528,7 +9603,7 @@ msgstr ""
 msgid "No boundary for Wizard's Tower?"
 msgstr ""
 
-#: src/dungeon.c:2233 src/options.c:8711
+#: src/dungeon.c:2233 src/options.c:8739
 #, c-format
 msgid "    %s"
 msgstr ""
@@ -9946,6 +10021,23 @@ msgstr "%s parece desorientado."
 #, c-format
 msgid "mlevel_tele_trap: unexpected trap type (%d)"
 msgstr ""
+
+#: src/teleport.c:2073
+#, fuzzy, c-format
+msgid "Suddenly, %s %s."
+msgstr "De repente, %s %s."
+
+#: src/teleport.c:2074
+msgid "falls into a hole"
+msgstr "cae en un agujero"
+
+#: src/teleport.c:2075
+msgid "falls through a trap door"
+msgstr "cae por una trampilla"
+
+#: src/teleport.c:2076
+msgid "disappears out of sight"
+msgstr "desaparece de la vista"
 
 #: src/teleport.c:2259
 #, c-format
@@ -14600,6 +14692,18 @@ msgstr ""
 msgid "The lapidifying %s %s %s"
 msgstr ""
 
+#: src/mon.c:3778
+msgid "coalesces on the"
+msgstr "se coalesce en"
+
+#: src/mon.c:3779
+msgid "drops to the"
+msgstr "cae al"
+
+#: src/mon.c:3780
+msgid "writhes on the"
+msgstr "se retuerce en"
+
 #: src/mon.c:3884
 msgid "besieged."
 msgstr "sitiada."
@@ -15058,6 +15162,22 @@ msgstr ""
 msgid "are rooted %s."
 msgstr "están arraigados %s ."
 
+#: src/hack.c:1788
+msgid "Float"
+msgstr "Flotar"
+
+#: src/hack.c:1788
+msgid "float"
+msgstr "flotar"
+
+#: src/hack.c:1789
+msgid "Fly"
+msgstr "Volar"
+
+#: src/hack.c:1789
+msgid "fly"
+msgstr "volar"
+
 #: src/hack.c:1824
 msgid "(Tip: use the #enhance command to advance them.)"
 msgstr "(Consejo: usa el comando #enhance para mejorarlas.)"
@@ -15135,6 +15255,14 @@ msgstr "para. %s no puede salir de %s%s."
 #, c-format
 msgid "stop.  %s doesn't want to swap places."
 msgstr "para. %s no quiere cambiar de lugar."
+
+#: src/hack.c:2125
+msgid "swap places with"
+msgstr "intercambia lugares con"
+
+#: src/hack.c:2125
+msgid "frighten"
+msgstr "asusta a"
 
 #: src/hack.c:2169
 msgid "guilty about losing your pet like this."
@@ -15956,6 +16084,14 @@ msgstr "%sbox está ahora vacío."
 msgid "%s is empty."
 msgstr "%s está vacío."
 
+#: src/dogmove.c:290 src/dogmove.c:293
+msgid "devours"
+msgstr "devora"
+
+#: src/dogmove.c:290 src/dogmove.c:293
+msgid "eats"
+msgstr "come"
+
 #: src/dogmove.c:293
 #, c-format
 msgid "It %s %s."
@@ -16099,6 +16235,14 @@ msgstr "%s absorbe %s !"
 #, c-format
 msgid "%s gold %s."
 msgstr "%s oro %s ."
+
+#: src/mhitm.c:82
+msgid "misses"
+msgstr "falla"
+
+#: src/mhitm.c:83
+msgid "pretends to be friendly to"
+msgstr "finge ser amable con"
 
 #: src/mhitm.c:131
 #, c-format
@@ -22598,6 +22742,11 @@ msgstr "Qué lástima. ¿No son los fosos?"
 msgid "%s protects you from the sharp iron spikes."
 msgstr "%s te protege de los picos de hierro afilados."
 
+#: src/trap.c:1960
+#, fuzzy, c-format
+msgid "%s %s into %s pit!"
+msgstr "%s en la fosa %s!"
+
 #: src/trap.c:1988
 #, c-format
 msgid "dotrap: %ss cannot exist on this level."
@@ -23920,16 +24069,16 @@ msgstr "Dirección desconocida: ' %s ' ( %s )."
 msgid "bad index roleoptvals[%d][%d]"
 msgstr ""
 
-#: src/options.c:975 src/options.c:1867 src/options.c:3597 src/options.c:3679
+#: src/options.c:975 src/options.c:1895 src/options.c:3625 src/options.c:3707
 #, fuzzy, c-format
 msgid "Unknown %s '%s'"
 msgstr "Dirección desconocida: ' %s ' ( %s )."
 
-#: src/options.c:1017 src/options.c:1066 src/options.c:2086 src/options.c:2434
-#: src/options.c:2567 src/options.c:3082 src/options.c:3169 src/options.c:3232
-#: src/options.c:3362 src/options.c:3458 src/options.c:3528 src/options.c:3720
-#: src/options.c:3803 src/options.c:3967 src/options.c:4008 src/options.c:4056
-#: src/options.c:4792 src/options.c:4842 src/options.c:5143 src/options.c:5171
+#: src/options.c:1017 src/options.c:1066 src/options.c:2114 src/options.c:2462
+#: src/options.c:2595 src/options.c:3110 src/options.c:3197 src/options.c:3260
+#: src/options.c:3390 src/options.c:3486 src/options.c:3556 src/options.c:3748
+#: src/options.c:3831 src/options.c:3995 src/options.c:4036 src/options.c:4084
+#: src/options.c:4820 src/options.c:4870 src/options.c:5171 src/options.c:5199
 #, c-format
 msgid "Unknown %s parameter '%s'"
 msgstr ""
@@ -23943,563 +24092,563 @@ msgstr ""
 msgid "'%s' no longer supported; use S_boulder:c instead"
 msgstr ""
 
-#: src/options.c:1446 src/options.c:1495 src/options.c:2013
+#: src/options.c:1474 src/options.c:1523 src/options.c:2041
 #, c-format
 msgid "Failure to load symbol set %s."
 msgstr ""
 
-#: src/options.c:1453 src/options.c:1502 src/options.c:2023
+#: src/options.c:1481 src/options.c:1530 src/options.c:2051
 #, c-format
 msgid "'%s' no longer supported; use 'symset:%s' instead"
 msgstr ""
 
-#: src/options.c:1592
+#: src/options.c:1620
 #, c-format
 msgid "bad disclosure index %d %c"
 msgstr ""
 
-#: src/options.c:1611
+#: src/options.c:1639
 #, c-format
 msgid "Unknown %s parameter '%c'"
 msgstr ""
 
-#: src/options.c:1815
+#: src/options.c:1843
 msgid "Doing that so many times isn't very fruitful."
 msgstr ""
 
-#: src/options.c:1833
+#: src/options.c:1861
 #, c-format
 msgid "Fruit is now \"%s\"."
 msgstr "La fruta es ahora \" %s \"."
 
-#: src/options.c:1943
+#: src/options.c:1971
 msgid "Value is mandatory for hilite_status"
 msgstr ""
 
-#: src/options.c:1952 src/options.c:4110
+#: src/options.c:1980 src/options.c:4138
 #, fuzzy, c-format
 msgid "'%s' is not supported"
 msgstr "La opción ' %s ' no es compatible con ' %s ."
 
-#: src/options.c:2326 src/options.c:2377 src/options.c:2491 src/options.c:2673
+#: src/options.c:2354 src/options.c:2405 src/options.c:2519 src/options.c:2701
 #, c-format
 msgid "Illegal %s parameter '%s'"
 msgstr ""
 
-#: src/options.c:2788
+#: src/options.c:2816
 #, c-format
 msgid "Error in palette parameter '%s'"
 msgstr ""
 
-#: src/options.c:2941
+#: src/options.c:2969
 #, c-format
 msgid "deprecated %sprayconfirm option takes no parameters (found '%s')"
 msgstr ""
 
-#: src/options.c:2951
+#: src/options.c:2979
 #, c-format
 msgid "%sprayconfirm option is deprecated; switching to %s:%cpray"
 msgstr ""
 
-#: src/options.c:2959
+#: src/options.c:2987
 #, c-format
 msgid "%cpray"
 msgstr ""
 
-#: src/options.c:2975
+#: src/options.c:3003
 #, fuzzy, c-format
 msgid "!%s does not accept a value"
 msgstr "No te protege. %s"
 
-#: src/options.c:2981
+#: src/options.c:3009
 #, c-format
 msgid "%s requires a value; use 'none' to cancel all"
 msgstr ""
 
-#: src/options.c:3158
+#: src/options.c:3186
 #, c-format
 msgid "%s: unavailable perm_invent mode '%s', using '%s'"
 msgstr ""
 
-#: src/options.c:3302
+#: src/options.c:3330
 #, c-format
 msgid "Unrecognized pet type '%s'."
 msgstr ""
 
-#: src/options.c:3415
+#: src/options.c:3443
 #, c-format
 msgid "New %s: [%s am] (%s)"
 msgstr "Nuevo %s: [%s am] (%s)"
 
-#: src/options.c:3725
+#: src/options.c:3753
 #, c-format
 msgid "Value is mandatory for %s"
 msgstr ""
 
-#: src/options.c:3795
+#: src/options.c:3823
 #, c-format
 msgid "Values for %s:top and %s:around must not be negative"
 msgstr ""
 
-#: src/options.c:3823
+#: src/options.c:3851
 #, c-format
 msgid "%s%d around"
 msgstr ""
 
-#: src/options.c:3826
+#: src/options.c:3854
 #, c-format
 msgid "%sown"
 msgstr ""
 
-#: src/options.c:4075
+#: src/options.c:4103
 #, c-format
 msgid "'%s' %s \"%s: %s\"."
 msgstr "%s %s %s: %s."
 
-#: src/options.c:4159
+#: src/options.c:4187
 #, c-format
 msgid "'%s:%s' is invalid; must be 2 or 3"
 msgstr ""
 
-#: src/options.c:4226 src/options.c:7655
+#: src/options.c:4254 src/options.c:7683
 #, c-format
 msgid "%lu.%lu.%lu"
 msgstr ""
 
-#: src/options.c:4328 src/options.c:4369
+#: src/options.c:4356 src/options.c:4397
 #, c-format
 msgid "Invalid %s: %ld"
 msgstr ""
 
-#: src/options.c:4569
+#: src/options.c:4597
 #, c-format
 msgid "'%s' requires a value; defaulting to %d"
 msgstr ""
 
-#: src/options.c:4584
+#: src/options.c:4612
 #, c-format
 msgid "'%s' %s %u."
 msgstr "%s %s %u."
 
-#: src/options.c:4591
+#: src/options.c:4619
 #, fuzzy, c-format
 msgid "%u: %s%s%s%s%s (%.99s)"
 msgstr "%s %s %s%s%s!"
 
-#: src/options.c:4621 src/options.c:4656 src/options.c:4729
+#: src/options.c:4649 src/options.c:4684 src/options.c:4757
 #, fuzzy, c-format
 msgid "Unknown error handling '%s'"
 msgstr "Dirección desconocida: ' %s ' ( %s )."
 
-#: src/options.c:4628
+#: src/options.c:4656
 #, c-format
 msgid "%d-%d-%d-%d-%d-%d-%d-%d-%d-%d-%d-%d"
 msgstr ""
 
-#: src/options.c:4663
+#: src/options.c:4691
 #, c-format
 msgid "%s-%s-%s"
 msgstr ""
 
-#: src/options.c:4892
+#: src/options.c:4920
 #, c-format
 msgid "Invalid %s (should be within 0 to 4): %s"
 msgstr ""
 
-#: src/options.c:4982
+#: src/options.c:5010
 #, c-format
 msgid "Could not set %s '%s'"
 msgstr ""
 
-#: src/options.c:5001
+#: src/options.c:5029
 #, fuzzy, c-format
 msgid "%s%s %s/%s"
 msgstr "%s %s %s%s"
 
-#: src/options.c:5081
+#: src/options.c:5109
 #, c-format
 msgid "Ambiguous condition option %s"
 msgstr ""
 
-#: src/options.c:5086
+#: src/options.c:5114
 #, c-format
 msgid "Unknown condition option %s (%d)"
 msgstr ""
 
-#: src/options.c:5286
+#: src/options.c:5314
 #, c-format
 msgid "Negated boolean '%s' should not have a parameter"
 msgstr ""
 
-#: src/options.c:5303
+#: src/options.c:5331
 #, fuzzy, c-format
 msgid "'%s' is not valid for a boolean"
 msgstr "'%s%d%%' no es un valor válido por ciento."
 
-#: src/options.c:5350
+#: src/options.c:5378
 #, c-format
 msgid "'%s' is not anatomically possible."
 msgstr ""
 
-#: src/options.c:5383
+#: src/options.c:5411
 msgid "There is no underlying support for 'idlecheckpoint'"
 msgstr "No hay soporte subyacente para 'idlecheckpoint'"
 
-#: src/options.c:5406
+#: src/options.c:5434
 #, fuzzy, c-format
 msgid "'%s' is not supported."
 msgstr "La opción ' %s ' no es compatible con ' %s ."
 
-#: src/options.c:5506
+#: src/options.c:5534
 #, c-format
 msgid "'%s' option toggled %s."
 msgstr "\"%s\" opción para cambiar %s."
 
-#: src/options.c:5624 src/options.c:5920
+#: src/options.c:5652 src/options.c:5948
 #, c-format
 msgid "%-12.12s%c%.60s"
 msgstr ""
 
-#: src/options.c:5630 src/options.c:5928
+#: src/options.c:5658 src/options.c:5956
 #, c-format
 msgid "%4s%-12.12s%c%.60s"
 msgstr ""
 
-#: src/options.c:5646
+#: src/options.c:5674
 #, c-format
 msgid "'menustyle' %s \"%s\"."
 msgstr "'menustyle' %s \"%s\"."
 
-#: src/options.c:5674
+#: src/options.c:5702
 #, c-format
 msgid "Select %s window placement relative to the map:"
 msgstr "Seleccionar colocacion de ventana %s relativa al mapa:"
 
-#: src/options.c:5705
+#: src/options.c:5733
 #, c-format
 msgid "%-10.10s%c%.40s"
 msgstr ""
 
-#: src/options.c:5713
+#: src/options.c:5741
 #, c-format
 msgid "Select '%.20s' actions:"
 msgstr "Seleccionar acciones de '%.20s':"
 
-#: src/options.c:5733
+#: src/options.c:5761
 #, c-format
 msgid "'%s' %s '%s'."
 msgstr "%s %s %s."
 
-#: src/options.c:5761
+#: src/options.c:5789
 #, c-format
 msgid "%-12s[%c%c]"
 msgstr ""
 
-#: src/options.c:5783
+#: src/options.c:5811
 #, c-format
 msgid "Disclosure options for %s:"
 msgstr "Opciones de revelacion para %s:"
 
-#: src/options.c:5946
+#: src/options.c:5974
 #, c-format
 msgid "'msg_window' %.20s \"%.20s\"."
 msgstr "'msg window' %.20s \"%.20s\"."
 
-#: src/options.c:5950
+#: src/options.c:5978
 #, c-format
 msgid "'%s' option is not supported for '%s'."
 msgstr "La opción ' %s ' no es compatible con ' %s ."
 
-#: src/options.c:6038
+#: src/options.c:6066
 #, c-format
 msgid "'%.9s'"
 msgstr ""
 
-#: src/options.c:6043
+#: src/options.c:6071
 #, c-format
 msgid "'%s%.31s'"
 msgstr ""
 
-#: src/options.c:6123
+#: src/options.c:6151
 #, c-format
 msgid "'perminv_mode' %s '%s' (%s)."
 msgstr "'perminv mode' %s '%s' (%s)."
 
-#: src/options.c:6307
+#: src/options.c:6335
 #, c-format
 msgid "map: upper-left: <%d,%d>, lower-right: <%d,%d>%s"
 msgstr ""
 
-#: src/options.c:6319
+#: src/options.c:6347
 #, c-format
 msgid "screen: upper-left: [%02d,%02d], lower-right: [%d,%d]%s"
 msgstr ""
 
-#: src/options.c:6439
+#: src/options.c:6467
 #, c-format
 msgid "\"%c%s\""
 msgstr ""
 
-#: src/options.c:6446
+#: src/options.c:6474
 #, c-format
 msgid "%s autopickup exceptions"
 msgstr ""
 
-#: src/options.c:6502
+#: src/options.c:6530
 msgid "Error adding the menu color."
 msgstr "Error añadiendo el color del menu."
 
-#: src/options.c:6526
+#: src/options.c:6554
 #, fuzzy, c-format
 msgid "\"\"=%s%s%s"
 msgstr "%s%s%s"
 
-#: src/options.c:6542
+#: src/options.c:6570
 #, c-format
 msgid "%s menu colors"
 msgstr ""
 
-#: src/options.c:6583
+#: src/options.c:6611
 msgid "Error adding the message type."
 msgstr "Error añadiendo el tipo de mensaje."
 
-#: src/options.c:6603
+#: src/options.c:6631
 #, c-format
 msgid "%-5s \""
 msgstr ""
 
-#: src/options.c:6613
+#: src/options.c:6641
 #, c-format
 msgid "%s message types"
 msgstr ""
 
-#: src/options.c:6736
+#: src/options.c:6764
 #, c-format
 msgid "Missing parameter for '%s'"
 msgstr ""
 
-#: src/options.c:6755
+#: src/options.c:6783
 #, c-format
 msgid "The %s option may not %sbe negated."
 msgstr ""
 
-#: src/options.c:6862
+#: src/options.c:6890
 #, c-format
 msgid " (via alias: %s)"
 msgstr ""
 
-#: src/options.c:6863
+#: src/options.c:6891
 #, c-format
 msgid "%s option specified multiple times: %s%s"
 msgstr ""
 
-#: src/options.c:6875
+#: src/options.c:6903
 #, c-format
 msgid "\"%s\" settable only from %s."
 msgstr "\" %s \" sólo establecido desde %s ."
 
-#: src/options.c:6877
+#: src/options.c:6905
 #, c-format
 msgid "%s can be set only from NETHACKOPTIONS or %s."
 msgstr "%s se puede configurar sólo desde NETHACKOPTIONS o %s ."
 
-#: src/options.c:7420
+#: src/options.c:7448
 #, fuzzy, c-format
 msgid "Status highlighting not supported for %s interface."
 msgstr "La opción ' %s ' no es compatible con ' %s ."
 
-#: src/options.c:7481
+#: src/options.c:7509
 #, c-format
 msgid "conflicting option init for %s: %s is %s, %s is %s"
 msgstr ""
 
-#: src/options.c:7558
+#: src/options.c:7586
 #, c-format
 msgid "Not an object class '%c'"
 msgstr ""
 
-#: src/options.c:7565
+#: src/options.c:7593
 #, c-format
 msgid "Object class '%c' not allowed"
 msgstr ""
 
-#: src/options.c:7569
+#: src/options.c:7597
 #, c-format
 msgid "Duplicate object class '%c'"
 msgstr ""
 
-#: src/options.c:7644
+#: src/options.c:7672
 msgid "disable new feature alerts for future versions."
 msgstr "deshabilitar nuevas alertas de características para futuras versiones."
 
-#: src/options.c:7647
+#: src/options.c:7675
 #, c-format
 msgid "%s=%s Invalid reference to a future version ignored"
 msgstr ""
 
-#: src/options.c:7657
+#: src/options.c:7685
 #, c-format
 msgid "Feature change alerts disabled for NetHack %s features and prior."
 msgstr ""
 "Alertas de cambio de características desactivadas para NetHack %s funciones "
 "y antes."
 
-#: src/options.c:7713
+#: src/options.c:7741
 #, c-format
 msgid "Error binding mouse button %i"
 msgstr ""
 
-#: src/options.c:7722
+#: src/options.c:7750
 #, c-format
 msgid "Unknown key binding key '%s'"
 msgstr ""
 
-#: src/options.c:7734
+#: src/options.c:7762
 #, c-format
 msgid "Bad menu key %s:%s"
 msgstr ""
 
-#: src/options.c:7745
+#: src/options.c:7773
 #, c-format
 msgid "Unknown key binding command '%s'"
 msgstr ""
 
-#: src/options.c:7936
+#: src/options.c:7964
 #, c-format
 msgid "Unknown message type '%s'"
 msgstr ""
 
-#: src/options.c:7938
+#: src/options.c:7966
 msgid "Malformed MSGTYPE"
 msgstr ""
 
-#: src/options.c:8023
+#: src/options.c:8051
 #, c-format
 msgid "Negated nothing for '%s'"
 msgstr ""
 
-#: src/options.c:8029
+#: src/options.c:8057
 #, fuzzy, c-format
 msgid "Invalid mixed negation for '%s%s'"
 msgstr "Dirección no válida para el prefijo '%s'."
 
-#: src/options.c:8034
+#: src/options.c:8062
 msgid "Multiple role values only allowed when list is negated"
 msgstr "Multiples valores de rol solo permitidos cuando la lista esta negada"
 
-#: src/options.c:8056
+#: src/options.c:8084
 #, c-format
 msgid "Invalid %s '%s'"
 msgstr ""
 
-#: src/options.c:8116
+#: src/options.c:8144
 #, c-format
 msgid "Reserved menu command key '%s'"
 msgstr ""
 
-#: src/options.c:8123
+#: src/options.c:8151
 #, c-format
 msgid "Menu command key '%s' is an object class"
 msgstr ""
 
-#: src/options.c:8143
+#: src/options.c:8171
 #, c-format
 msgid "oc_to_str:  illegal object class %d"
 msgstr ""
 
-#: src/options.c:8158
+#: src/options.c:8186
 msgid "out of menu map space."
 msgstr "sin espacio en el mapa del menú."
 
-#: src/options.c:8630
+#: src/options.c:8658
 #, c-format
 msgid "%%-%us [%%s]"
 msgstr ""
 
-#: src/options.c:8646
+#: src/options.c:8674
 msgid "Use command '#optionsfull' to get the complete options list."
 msgstr "Usa #optionsfull para establecer cualquier opción en su lugar."
 
-#: src/options.c:8653
+#: src/options.c:8681
 msgid "hide help"
 msgstr "ocultar ayuda"
 
-#: src/options.c:8653
+#: src/options.c:8681
 msgid "show help"
 msgstr "mostrar ayuda"
 
-#: src/options.c:8659
+#: src/options.c:8687
 #, c-format
 msgid " %-30s "
 msgstr ""
 
-#: src/options.c:8698
+#: src/options.c:8726
 msgid "ERROR"
 msgstr "ERROR"
 
-#: src/options.c:8707
+#: src/options.c:8735
 msgid "  (for autopickup)"
 msgstr "  (para recogida automática)"
 
-#: src/options.c:8717
+#: src/options.c:8745
 msgid "Options"
 msgstr "Opciones"
 
-#: src/options.c:8747 src/options.c:9019
+#: src/options.c:8775 src/options.c:9047
 #, c-format
 msgid "Set %s to what?"
 msgstr ""
 
-#: src/options.c:8876
+#: src/options.c:8904
 #, c-format
 msgid "%4s%.75s"
 msgstr ""
 
-#: src/options.c:8899
+#: src/options.c:8927
 #, c-format
 msgid "%%s%%-%us [%%s]"
 msgstr ""
 
-#: src/options.c:9338
+#: src/options.c:9366
 #, c-format
 msgid "ON, for %s objects%s"
 msgstr ""
 
-#: src/options.c:9347
+#: src/options.c:9375
 #, c-format
 msgid "Autopickup: %s."
 msgstr "Autopickup: %s ."
 
-#: src/options.c:9518
+#: src/options.c:9546
 msgid "Boolean options (which can be negated by prefixing them"
 msgstr ""
 
-#: src/options.c:9724
+#: src/options.c:9752
 #, c-format
 msgid "autopickup_exception=\"%c%s\"\n"
 msgstr ""
 
-#: src/options.c:9935
+#: src/options.c:9963
 #, c-format
 msgid "set_option_mod_status: status out of range %d."
 msgstr ""
 
-#: src/options.c:9961
+#: src/options.c:9989
 #, c-format
 msgid "set_wc_option_mod_status: status out of range %d."
 msgstr ""
 
-#: src/options.c:10015
+#: src/options.c:10043
 #, c-format
 msgid "set_wc2_option_mod_status: status out of range %d."
 msgstr ""
 
-#: src/options.c:10174
+#: src/options.c:10202
 #, c-format
 msgid "windowcolors for %s windows specified multiple times"
 msgstr ""
 
-#: src/options.c:10182
+#: src/options.c:10210
 #, c-format
 msgid "windowcolors for unrecognized window type: %s"
 msgstr ""

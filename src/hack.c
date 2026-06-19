@@ -1785,9 +1785,9 @@ u_locomotion(const char *def)
        its is_flyer() and is_floater() tests wouldn't work on hero except
        when hero is polymorphed and not wearing an amulet of flying
        or boots/ring/spell of levitation */
-    return Levitation ? (capitalize ? "Float" : "float")
-           : Flying ? (capitalize ? "Fly" : "fly")
-             : locomotion(gy.youmonst.data, def);
+    return Levitation ? (capitalize ? _("Float") : _("float"))
+           : Flying ? (capitalize ? _("Fly") : _("fly"))
+              : locomotion(gy.youmonst.data, def);
 }
 
 /* Return a simplified floor solid/liquid state based on hero's state */
@@ -2122,7 +2122,7 @@ domove_swap_with_pet(
         newsym(x, y);
         newsym(u.ux0, u.uy0);
 
-        You(_("%s %s."), mtmp->mpeaceful ? "swap places with" : "frighten", x_monnam(mtmp,
+        You(_("%s %s."), mtmp->mpeaceful ? _("swap places with") : _("frighten"), x_monnam(mtmp,
                      mtmp->mtame ? ARTICLE_YOUR
                      : (!has_mgivenname(mtmp)
                         && !type_is_pname(mtmp->data)) ? ARTICLE_THE

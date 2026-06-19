@@ -286,11 +286,11 @@ dog_eat(struct monst *mtmp,
             if (tunnels(mtmp->data))
                 pline_mon(mtmp, "%s digs in.", noit_Monnam(mtmp));
             else
-                pline_mon(mtmp, "%s %s %s.", noit_Monnam(mtmp),
-                      devour ? "devours" : "eats", obj_name);
+                pline_mon(mtmp, _("%s %s %s."), noit_Monnam(mtmp),
+                      devour ? _("devours") : _("eats"), obj_name);
         } else if (seeobj) {
             obj_name = distant_name(obj, doname);
-            pline(_("It %s %s."), devour ? "devours" : "eats", obj_name);
+            pline(_("It %s %s."), devour ? _("devours") : _("eats"), obj_name);
         }
     }
     if (obj->unpaid) {

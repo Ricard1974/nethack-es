@@ -330,9 +330,12 @@ class Bot:
         self.recent_dirs = deque(maxlen=6)
         # Tracking de habitación
         self.steps_in_room = 0
-        self.room_visited_count = 0  # tiles visitados en esta habitación
-        self.force_exit_mode = False  # buscar salida activamente
-        self.escape_steps = 0  # contador para modo escape
+        self.room_visited_count = 0
+        self.force_exit_mode = False
+        self.escape_steps = 0
+        # Modo navegación (seguir dirección fija)
+        self.wander_dir = "l"  # dirección de vagabundeo
+        self.wander_steps = 0  # pasos en esta dirección
 
     def log(self, msg):
         if self.watch:
@@ -651,6 +654,7 @@ class Bot:
                     ex, ey = pos
                     dist = abs(ex - px) + abs(ey - py)
                     if dist <= 5 and dist > 0:
+                        self.wander_dir = "l"  # reset wander
                         for dk, (ddx, ddy) in DIR_VEC.items():
                             if (ex - px, ey - py) == (ddx, ddy):
                                 if surr and surr.get(dk, " ") in (
@@ -723,6 +727,7 @@ class Bot:
                 if frontier_path:
                     first = frontier_path[0]
             if frontier_path:
+                self.wander_dir = "l"  # reset wander
                 self.log(f"🗺️  Explorando frontera ({len(frontier_path)} pasos)")
                 self.path = frontier_path[1:]
                 self.force_exit_mode = False
@@ -737,26 +742,41 @@ class Bot:
         # 3.5. Si todo explorado, buscar puerta
         door_pos, door_path = self.find_nearest_door(max_dist=30)
         if door_pos and door_path:
+            self.wander_dir = "l"
             self.log(f"🚪 Yendo a puerta en {door_pos} ({len(door_path)} pasos)")
             self.path = door_path[1:]
             return self.get_direction(door_path)
 
-        # 4. Cualquier dirección transitable no visitada
-        for dk in ["l", "j", "h", "k", "u", "n", "b", "y"]:
-            ch = surr.get(dk, " ")
-            tt = self.get_terrain_type(ch)
-            if self.is_walkable(tt, ch) or tt == "closed_door":
-                dx, dy = DIR_VEC[dk]
-                dest = (px + dx, py + dy)
-                if dest not in [p for p in self.last_positions]:
-                    return dk
-
-        # 5. Cualquier transitable
-        for dk in ["l", "j", "h", "k", "u", "n", "b", "y"]:
-            ch = surr.get(dk, " ")
-            tt = self.get_terrain_type(ch)
-            if self.is_walkable(tt, ch) or tt == "closed_door":
-                return dk
+        # 4. Navegación direccional (seguir dirección fija)
+        if self.wander_steps % 10 == 0:
+            self.log(f"🧭 Vagando {DIR_NAMES[self.wander_dir]} ({self.wander_steps})")
+        # Primero ver si la dirección actual es válida
+        ch = surr.get(self.wander_dir, " ")
+        tt = self.get_terrain_type(ch)
+        if self.is_walkable(tt, ch) or tt == "closed_door":
+            self.wander_steps += 1
+            return self.wander_dir
+        # Si está bloqueada, buscar la mejor alternativa mirando paredes
+        # Estrategia: seguir la pared (wall following)
+        best_dir = None
+        # Preferir dirección cardinal sobre diagonal
+        for dk in ["l", "j", "h", "k"]:
+            chk = surr.get(dk, " ")
+            ttk = self.get_terrain_type(chk)
+            if self.is_walkable(ttk, chk) or ttk == "closed_door":
+                best_dir = dk
+                break
+        if not best_dir:
+            for dk in ["u", "n", "b", "y"]:
+                chk = surr.get(dk, " ")
+                ttk = self.get_terrain_type(chk)
+                if self.is_walkable(ttk, chk) or ttk == "closed_door":
+                    best_dir = dk
+                    break
+        if best_dir:
+            self.wander_dir = best_dir
+            self.wander_steps += 1
+            return best_dir
 
         return None
 

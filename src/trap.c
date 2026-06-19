@@ -1957,7 +1957,7 @@ trapeffect_pit(
             mtmp->mtrapped = 1;
         if (in_sight) {
             pline_mon(mtmp,
-                     "%s %s into %s pit!", Monnam(mtmp), fallverb,
+                     _("%s %s into %s pit!"), Monnam(mtmp), fallverb,
                      a_your[trap->madeby_u]);
             if (mptr == &mons[PM_PIT_VIPER]
                 || mptr == &mons[PM_PIT_FIEND])
