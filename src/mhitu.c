@@ -115,10 +115,10 @@ mswings_verb(
         thrust = ((objects[otyp].oc_dir & PIERCE) != 0
                   && ((objects[otyp].oc_dir & ~PIERCE) == 0 || !rn2(2)));
 
-    verb = bash ? "bashes with" /*sigh*/
-           : lash ? "lashes"
-             : thrust ? "thrusts"
-               : "swings";
+    verb = bash ? _("bashes with") /*sigh*/
+           : lash ? _("lashes")
+             : thrust ? _("thrusts")
+               : _("swings");
     /* (might have caller also pass attacker's formatted name so that
        if hallucination makes that be plural, we could use vtense() to
        adjust the result to match) */
@@ -133,9 +133,9 @@ mswings(
     boolean bash)       /* True: polearm used at too close range */
 {
     if (flags.verbose && !Blind && mon_visible(mtmp)) {
-        pline_mon(mtmp, "%s %s %s%s %s.", Monnam(mtmp),
+        pline_mon(mtmp, _("%s %s %s%s %s."), Monnam(mtmp),
                   mswings_verb(otemp, bash),
-                  (otemp->quan > 1L) ? "one of " : "",
+                  (otemp->quan > 1L) ? _("one of ") : "",
                   mhis(mtmp), xname(otemp));
     }
 }

@@ -602,18 +602,18 @@ failed_grab(
             || magr == &gy.youmonst || mdef == &gy.youmonst) {
             char magrnam[BUFSZ], mdefnam[BUFSZ];
             boolean tailmiss = gn.notonhead;
-            const char *verb = (mattk->adtyp == AD_DGST) ? "gulp"
-                               : (mattk->adtyp == AD_STCK) ? "adhere"
-                                 : "grab";
+            const char *verb = (mattk->adtyp == AD_DGST) ? _("gulp")
+                               : (mattk->adtyp == AD_STCK) ? _("adhere")
+                                 : _("grab");
 
             /* beware of "Foo's grab passes through Bar's ghost";
                mon_nam(x_monnam) calls s_suffix() for named ghosts and
                s_suffix() uses a single static buffer; make copies of both
                names to overcome that [note: comment predates 'tailmiss'] */
-            Strcpy(magrnam, (magr == &gy.youmonst) ? "Your"
+            Strcpy(magrnam, (magr == &gy.youmonst) ? _("Your")
                                                    : s_suffix(Monnam(magr)));
             if (!tailmiss) {
-                Strcpy(mdefnam, (mdef == &gy.youmonst) ? "you"
+                Strcpy(mdefnam, (mdef == &gy.youmonst) ? _("you")
                                                        : mon_nam(mdef));
             } else {
                 /* hero poly'd into long worm can't grow tail
@@ -622,7 +622,7 @@ failed_grab(
             }
             /* unsolid grab misses are actually somewhat iffy--how come
                ordinary attacks don't also pass right through? */
-            pline(_("%.99s %s attempt %s %.99s!"), magrnam, verb, !tailmiss ? "passes right through" : "fails to hold", mdefnam);
+            pline(_("%.99s %s attempt %s %.99s!"), magrnam, verb, !tailmiss ? _("passes right through") : _("fails to hold"), mdefnam);
         }
         return TRUE;
     }
@@ -663,24 +663,24 @@ hitmm(
             buf[0] = '\0';
             switch (mattk->aatyp) {
             case AT_BITE:
-                Snprintf(buf, sizeof buf, "%s bites", magr_name);
+                Snprintf(buf, sizeof buf, _("%s bites"), magr_name);
                 break;
             case AT_STNG:
-                Snprintf(buf, sizeof buf, "%s stings", magr_name);
+                Snprintf(buf, sizeof buf, _("%s stings"), magr_name);
                 break;
             case AT_BUTT:
-                Snprintf(buf, sizeof buf, "%s butts", magr_name);
+                Snprintf(buf, sizeof buf, _("%s butts"), magr_name);
                 break;
             case AT_TUCH:
-                Snprintf(buf, sizeof buf, "%s touches", magr_name);
+                Snprintf(buf, sizeof buf, _("%s touches"), magr_name);
                 break;
             case AT_TENT:
-                Snprintf(buf, sizeof buf, "%s tentacles suck",
+                Snprintf(buf, sizeof buf, _("%s tentacles suck"),
                          s_suffix(magr_name));
                 break;
             case AT_HUGS:
                 if (magr != u.ustuck) {
-                    Snprintf(buf, sizeof buf, "%s squeezes", magr_name);
+                    Snprintf(buf, sizeof buf, _("%s squeezes"), magr_name);
                     break;
                 }
                 FALLTHROUGH;

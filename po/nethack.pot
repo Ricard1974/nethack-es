@@ -64,6 +64,31 @@ msgstr ""
 msgid "%s %s%s%s"
 msgstr ""
 
+#: src/mhitu.c:118
+msgid "bashes with"
+msgstr ""
+
+#: src/mhitu.c:119
+msgid "lashes"
+msgstr ""
+
+#: src/mhitu.c:120
+msgid "thrusts"
+msgstr ""
+
+#: src/mhitu.c:121
+msgid "swings"
+msgstr ""
+
+#: src/mhitu.c:136
+#, c-format
+msgid "%s %s %s%s %s."
+msgstr ""
+
+#: src/mhitu.c:138
+msgid "one of "
+msgstr ""
+
 #: src/mhitu.c:167 src/do_wear.c:816
 msgid "slow down."
 msgstr ""
@@ -2423,6 +2448,14 @@ msgstr ""
 msgid "Startled, %s drops %s as it %s!"
 msgstr ""
 
+#: src/do.c:2160
+msgid "revives"
+msgstr ""
+
+#: src/do.c:2160
+msgid "disappears"
+msgstr ""
+
 #: src/do.c:2162 src/muse.c:2454 src/zap.c:1203
 #, c-format
 msgid "%s suddenly appears!"
@@ -4573,6 +4606,16 @@ msgstr ""
 
 #: src/uhitm.c:2677
 msgid "get zapped!"
+msgstr ""
+
+#: src/uhitm.c:2696
+#, c-format
+msgid "%s gets zapped!"
+msgstr ""
+
+#: src/uhitm.c:2699
+#, c-format
+msgid "zap doesn't shock %s!"
 msgstr ""
 
 #: src/uhitm.c:2722
@@ -16200,9 +16243,67 @@ msgstr ""
 msgid "%s attempt to engulf %s is futile."
 msgstr ""
 
+#: src/mhitm.c:605
+msgid "gulp"
+msgstr ""
+
+#: src/mhitm.c:606
+msgid "adhere"
+msgstr ""
+
+#: src/mhitm.c:607
+msgid "grab"
+msgstr ""
+
+#: src/mhitm.c:613
+msgid "Your"
+msgstr ""
+
+#: src/mhitm.c:616
+msgid "you"
+msgstr ""
+
 #: src/mhitm.c:625
 #, c-format
 msgid "%.99s %s attempt %s %.99s!"
+msgstr ""
+
+#: src/mhitm.c:625
+msgid "passes right through"
+msgstr ""
+
+#: src/mhitm.c:625
+msgid "fails to hold"
+msgstr ""
+
+#: src/mhitm.c:666
+#, c-format
+msgid "%s bites"
+msgstr ""
+
+#: src/mhitm.c:669
+#, c-format
+msgid "%s stings"
+msgstr ""
+
+#: src/mhitm.c:672
+#, c-format
+msgid "%s butts"
+msgstr ""
+
+#: src/mhitm.c:675
+#, c-format
+msgid "%s touches"
+msgstr ""
+
+#: src/mhitm.c:678
+#, c-format
+msgid "%s tentacles suck"
+msgstr ""
+
+#: src/mhitm.c:683
+#, c-format
+msgid "%s squeezes"
 msgstr ""
 
 #: src/mhitm.c:714

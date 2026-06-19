@@ -2157,7 +2157,7 @@ revive_corpse(struct obj *corpse)
         case OBJ_MINVENT: /* probably a nymph's */
             if (cansee(mtmp->mx, mtmp->my)) {
                 if (mcarry && canseemon(mcarry))
-                    pline(_("Startled, %s drops %s as it %s!"), mon_nam(mcarry), an(cname), canspotmon(mtmp) ? "revives" : "disappears");
+                    pline(_("Startled, %s drops %s as it %s!"), mon_nam(mcarry), an(cname), canspotmon(mtmp) ? _("revives") : _("disappears"));
                 else if (canspotmon(mtmp))
                     pline(_("%s suddenly appears!"), chewed ? Adjmonnam(mtmp, "bite-covered")
                                  : Monnam(mtmp));

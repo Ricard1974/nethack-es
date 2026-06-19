@@ -86,6 +86,31 @@ msgstr " de nuevo"
 msgid "%s %s%s%s"
 msgstr "%s %s%s%s"
 
+#: src/mhitu.c:118
+msgid "bashes with"
+msgstr "golpea con"
+
+#: src/mhitu.c:119
+msgid "lashes"
+msgstr "azota"
+
+#: src/mhitu.c:120
+msgid "thrusts"
+msgstr "empuja"
+
+#: src/mhitu.c:121
+msgid "swings"
+msgstr "blande"
+
+#: src/mhitu.c:136
+#, fuzzy, c-format
+msgid "%s %s %s%s %s."
+msgstr "%s %s %s%s%s."
+
+#: src/mhitu.c:138
+msgid "one of "
+msgstr "uno de "
+
 #: src/mhitu.c:167 src/do_wear.c:816
 msgid "slow down."
 msgstr "frena."
@@ -2455,6 +2480,15 @@ msgstr "%s desaparece %s!"
 msgid "Startled, %s drops %s as it %s!"
 msgstr "Inicio, %s gotas %s como %s !"
 
+#: src/do.c:2160
+msgid "revives"
+msgstr ""
+
+#: src/do.c:2160
+#, fuzzy
+msgid "disappears"
+msgstr "desaparece. %s"
+
 #: src/do.c:2162 src/muse.c:2454 src/zap.c:1203
 #, c-format
 msgid "%s suddenly appears!"
@@ -4613,6 +4647,16 @@ msgstr "%s es zapped!"
 msgid "get zapped!"
 msgstr "recibes zapped!"
 
+#: src/uhitm.c:2696
+#, fuzzy, c-format
+msgid "%s gets zapped!"
+msgstr "%s es zapped!"
+
+#: src/uhitm.c:2699
+#, c-format
+msgid "zap doesn't shock %s!"
+msgstr "el rayo no electrocutó a %s!"
+
 #: src/uhitm.c:2722
 #, c-format
 msgid "You're covered in %s, but it seems harmless."
@@ -5430,7 +5474,7 @@ msgstr "%s%s %s %s!"
 #: src/weapon.c:763 src/steal.c:828
 #, fuzzy, c-format
 msgid "%s drops %s."
-msgstr "%s para %s ."
+msgstr "%s suelta %s."
 
 #: src/weapon.c:841
 #, c-format
@@ -6490,7 +6534,7 @@ msgstr "un golpe seco."
 #: src/worn.c:1268
 #, fuzzy, c-format
 msgid "%s drops %s gloves%s!"
-msgstr "¡Deja tus guantes! %s"
+msgstr "%s suelta %s guantes%s!"
 
 #: src/worn.c:1270
 msgid " and weapon"
@@ -16284,10 +16328,69 @@ msgstr "%s divide como %s ¡Lo golpea!"
 msgid "%s attempt to engulf %s is futile."
 msgstr "%s tratar de engulf %s es inútil."
 
+#: src/mhitm.c:605
+msgid "gulp"
+msgstr "engulle"
+
+#: src/mhitm.c:606
+msgid "adhere"
+msgstr "adhiere"
+
+#: src/mhitm.c:607
+msgid "grab"
+msgstr "agarra"
+
+#: src/mhitm.c:613
+msgid "Your"
+msgstr "Tu "
+
+# Traducciones del prompt de personaje y artículos
+#: src/mhitm.c:616
+msgid "you"
+msgstr "tú"
+
 #: src/mhitm.c:625
 #, c-format
 msgid "%.99s %s attempt %s %.99s!"
 msgstr "%.99s %s Intente %s %.99s !"
+
+#: src/mhitm.c:625
+msgid "passes right through"
+msgstr "pasa directo"
+
+#: src/mhitm.c:625
+msgid "fails to hold"
+msgstr "falla al agarrar"
+
+#: src/mhitm.c:666
+#, fuzzy, c-format
+msgid "%s bites"
+msgstr "%s muerde"
+
+#: src/mhitm.c:669
+#, fuzzy, c-format
+msgid "%s stings"
+msgstr "%s pica"
+
+#: src/mhitm.c:672
+#, fuzzy, c-format
+msgid "%s butts"
+msgstr "%s golpea"
+
+#: src/mhitm.c:675
+#, fuzzy, c-format
+msgid "%s touches"
+msgstr "%s toca"
+
+#: src/mhitm.c:678
+#, fuzzy, c-format
+msgid "%s tentacles suck"
+msgstr "los tentáculos de %s chupan"
+
+#: src/mhitm.c:683
+#, fuzzy, c-format
+msgid "%s squeezes"
+msgstr "%s aprieta"
 
 #: src/mhitm.c:714
 #, c-format

@@ -383,6 +383,7 @@ SPANISH_WORDS = {
     "por",
     "para",
     "como",
+    "come",  # verbo español "comer" 3ª persona
     "que",
     "donde",
     "entre",
