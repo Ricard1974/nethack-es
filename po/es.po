@@ -28629,6 +28629,100 @@ msgstr "Lista de comandos de modo mago."
 
 #: src/pager.c:2917 src/pager.c:2931 src/pager.c:2945
 #, c-format
+
+#: bulk
+msgid "(alternate weapon%s; not wielded)"
+msgstr "(arma alternativa%s; no empuñada)"
+#: bulk
+msgid "(being worn)"
+msgstr "(siendo vestido)"
+#: bulk
+msgid "(weapon in hand)"
+msgstr "(arma en mano)"
+#: bulk
+msgid "(wielded)"
+msgstr "(empuñado)"
+#: bulk
+msgid "Sorry!"
+msgstr "¡Lo siento!"
+#: bulk
+msgid "Try again."
+msgstr "Inténtalo de nuevo."
+#: bulk
+msgid "Whoa!"
+msgstr "¡Vaya!"
+#: bulk
+msgid "alternate weapon"
+msgstr "arma alternativa"
+#: bulk
+msgid "being worn"
+msgstr "siendo vestido"
+#: bulk
+msgid "figurine %s animates!"
+msgstr "¡la figurilla %s cobra vida!"
+#: bulk
+msgid "generic amulet"
+msgstr "amuleto genérico"
+#: bulk
+msgid "generic armor"
+msgstr "armadura genérica"
+#: bulk
+msgid "generic ball"
+msgstr "bola genérica"
+#: bulk
+msgid "generic chain"
+msgstr "cadena genérica"
+#: bulk
+msgid "generic coin"
+msgstr "moneda genérica"
+#: bulk
+msgid "generic food"
+msgstr "comida genérica"
+#: bulk
+msgid "generic gem"
+msgstr "gema genérica"
+#: bulk
+msgid "generic potion"
+msgstr "poción genérica"
+#: bulk
+msgid "generic ring"
+msgstr "anillo genérico"
+#: bulk
+msgid "generic rock"
+msgstr "roca genérica"
+#: bulk
+msgid "generic scroll"
+msgstr "pergamino genérico"
+#: bulk
+msgid "generic spellbook"
+msgstr "libro de hechizos genérico"
+#: bulk
+msgid "generic tool"
+msgstr "herramienta genérica"
+#: bulk
+msgid "generic venom"
+msgstr "veneno genérico"
+#: bulk
+msgid "generic wand"
+msgstr "varita genérica"
+#: bulk
+msgid "generic weapon"
+msgstr "arma genérica"
+#: bulk
+msgid "not wielded"
+msgstr "no empuñado"
+#: bulk
+msgid "rope is tied firmly around the iron bars."
+msgstr "la cuerda está atada firmemente alrededor de los barrotes."
+#: bulk
+msgid "strange object"
+msgstr "objeto extraño"
+#: bulk
+msgid "weapon in hand"
+msgstr "arma en mano"
+#: bulk
+msgid "wielded"
+msgstr "empuñado"
 msgid "%s%.31s"
 msgstr ""
 
