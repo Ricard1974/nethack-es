@@ -28727,6 +28727,18 @@ msgstr "empuñado"
 #: questpgr.c
 msgid "sense"
 msgstr "sentir"
+
+#: menu
+msgid "You finish taking off your suit."
+msgstr "Terminas de quitarte el traje."
+
+#: menu
+msgid "You finish taking off your mail."
+msgstr "Terminas de quitarte la cota de malla."
+
+#: menu
+msgid "You finish taking off your gloves."
+msgstr "Terminas de quitarte los guantes."
 msgid "%s%.31s"
 msgstr ""
 
