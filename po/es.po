@@ -5472,7 +5472,6 @@ msgid "%s%s %s %s!"
 msgstr "%s%s %s %s!"
 
 #: src/weapon.c:763 src/steal.c:828
-#, fuzzy, c-format
 msgid "%s drops %s."
 msgstr "%s suelta %s."
 
@@ -6532,7 +6531,6 @@ msgid "a thud."
 msgstr "un golpe seco."
 
 #: src/worn.c:1268
-#, fuzzy, c-format
 msgid "%s drops %s gloves%s!"
 msgstr "%s suelta %s guantes%s!"
 
@@ -27781,6 +27779,48 @@ msgstr "varita de desear"
 #: objects.h (auto)
 msgid "water"
 msgstr "agua"
+
+#: auto
+msgid "There"
+msgstr ""
+#: auto
+msgid "gold piece"
+msgstr "moneda de oro"
+#: auto
+msgid "gold pieces"
+msgstr "monedas de oro"
+#: auto
+msgid "here"
+msgstr "aquí"
+#: auto
+msgid "is a doorway here."
+msgstr "hay una puerta aquí."
+#: auto
+msgid "is a fountain here."
+msgstr "hay una fuente aquí."
+#: auto
+msgid "is a staircase down here."
+msgstr "hay una escalera abajo aquí."
+#: auto
+msgid "is a staircase here."
+msgstr "hay una escalera aquí."
+#: auto
+msgid "is a staircase up here."
+msgstr "hay una escalera arriba aquí."
+#: auto
+msgid "staircase down"
+msgstr "escalera abajo"
+#: auto
+msgid "staircase up"
+msgstr "escalera arriba"
+
+#: auto
+msgid "destroy"
+msgstr "destruir"
+
+#: auto
+msgid "kill"
+msgstr "matar"
 msgid "%s%.31s"
 msgstr ""
 
@@ -27817,3 +27857,5 @@ msgstr ""
 
 #~ msgid "orcish"
 #~ msgstr "orco"
+
+

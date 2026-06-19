@@ -3502,7 +3502,7 @@ xkilled(
     if (!nomsg) {
         boolean namedpet = has_mgivenname(mtmp) && !Hallucination;
 
-        You(_("%s %s!"), nonliving(mtmp->data) ? "destroy" : "kill", !(wasinside || canspotmon(mtmp)) ? "it"
+        You(_("%s %s!"), nonliving(mtmp->data) ? _("destroy") : _("kill"), !(wasinside || canspotmon(mtmp)) ? "it"
               : !mtmp->mtame ? mon_nam(mtmp)
                 : x_monnam(mtmp, namedpet ? ARTICLE_NONE : ARTICLE_THE,
                            "poor", namedpet ? SUPPRESS_SADDLE : 0, FALSE));

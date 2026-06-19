@@ -311,7 +311,7 @@ wiz_kill(void)
 
             if (!iflags.menu_requested) {
                 /* normal case: hero is credited/blamed */
-                You(_("%s %s!"), nonliving(mtmp->data) ? "destroy" : "kill", Mn);
+                You(_("%s %s!"), nonliving(mtmp->data) ? _("destroy") : _("kill"), Mn);
                 xkilled(mtmp, XKILL_NOMSG);
             } else { /* 'm'-prefix */
                 /* we know that monsters aren't moving because player has
