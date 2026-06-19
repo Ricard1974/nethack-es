@@ -458,7 +458,7 @@ run_regions(void)
     }
 
     if (gg.gas_cloud_diss_within) {
-        pline_The("gas cloud around you dissipates.");
+        pline_The(_("gas cloud around you dissipates."));
         /* normally won't see additional dissipation when within */
         /* FIXME? this assumes that additional dissipation is close by */
         if (u.xray_range <= 1)
@@ -1389,10 +1389,10 @@ region_safety(void)
         }
     } else if (r) {
         remove_region(r);
-        pline_The("gas cloud enveloping you dissipates.");
+        pline_The(_("gas cloud enveloping you dissipates."));
     } else {
         /* cloud dissipated on its own, so nothing needs to be done */
-        pline_The("gas cloud has dissipated.");
+        pline_The(_("gas cloud has dissipated."));
     }
     /* maybe cure blindness too */
     if (BlindedTimeout == 1L)

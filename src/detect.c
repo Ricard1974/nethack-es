@@ -1273,7 +1273,7 @@ use_crystal_ball(struct obj **optr)
                 pline(_("Whoa!  Psychedelic colors, %s!"), poly_gender() == 1 ? "babe" : "dude");
                 break;
             case 3:
-                pline_The("crystal pulses with sinister %s light!",
+                pline_The(_("crystal pulses with sinister %s light!"),
                           hcolor((char *) 0));
                 break;
             case 4:
@@ -1312,7 +1312,7 @@ use_crystal_ball(struct obj **optr)
     gn.nomovemsg = "";
 
     if (!charged) {
-        pline_The("vision is unclear.");
+        pline_The(_("vision is unclear."));
 
         if (obj->spe < 0) { /* destroy ball if used after being cancelled */
  implode:   /* no damage to hero but 'multi' has a small negative value */
@@ -1357,7 +1357,7 @@ use_crystal_ball(struct obj **optr)
             if (!rn2(100)) /* make them nervous */
                 You_see(_("the Wizard of Yendor gazing out at you."));
             else
-                pline_The("vision is unclear.");
+                pline_The(_("vision is unclear."));
         }
     }
     return;

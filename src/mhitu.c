@@ -1052,7 +1052,7 @@ u_slip_free(
                   : cloak_simple_name(obj));
 
         if (obj->greased && !rn2(2)) {
-            pline_The("grease wears off.");
+            pline_The(_("grease wears off."));
             obj->greased = 0;
             update_inventory();
         }
@@ -1326,7 +1326,7 @@ gulpmu(struct monst *mtmp, struct attack *mattk)
         if (i > 0) {
             const char *s = (i > 1) ? "leashes" : "leash";
 
-            pline_The("%s %s loose.", s, vtense(s, "snap"));
+            pline_The(_("%s %s loose."), s, vtense(s, "snap"));
             unleash_all();
         }
 
@@ -1460,7 +1460,7 @@ gulpmu(struct monst *mtmp, struct attack *mattk)
         break;
     case AD_ELEC:
         if (!mtmp->mcan && rn2(2)) {
-            pline_The("air around you crackles with electricity.");
+            pline_The(_("air around you crackles with electricity."));
             if (Shock_resistance) {
                 shieldeff(u.ux, u.uy);
                 You(_("seem unhurt."));
@@ -1802,7 +1802,7 @@ gazemu(struct monst *mtmp, struct attack *mattk)
                 stop_occupation();
                 if (Fire_resistance) {
                     shieldeff(u.ux, u.uy);
-                    pline_The("fire doesn't feel hot!");
+                    pline_The(_("fire doesn't feel hot!"));
                     monstseesu(M_SEEN_FIRE);
                     ugolemeffects(AD_FIRE, d(12, 6));
                     dmg = 0;
@@ -2073,7 +2073,7 @@ doseduce(struct monst *mon)
     }
 
     naked = (!uarmc && !uarmf && !uarmg && !uarms && !uarmh && !uarmu);
-    urgent_pline("%s %s%s.", Who,
+    urgent_pline(_("%s %s%s."), Who,
                  Deaf ? "seems to murmur into your ear"
                  : naked ? "murmurs sweet nothings into your ear"
                    : "murmurs in your ear",

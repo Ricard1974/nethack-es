@@ -298,7 +298,7 @@ ghitm(struct monst *mtmp, struct obj *gold)
     } else if (!mtmp->mcanmove) {
         /* too light to do real damage */
         if (canseemon(mtmp)) {
-            pline_The("%s harmlessly %s %s.", xname(gold),
+            pline_The(_("%s harmlessly %s %s."), xname(gold),
                       otense(gold, "hit"), mon_nam(mtmp));
             msg_given = TRUE;
         }
@@ -324,7 +324,7 @@ ghitm(struct monst *mtmp, struct obj *gold)
                 robbed -= value;
                 if (robbed < 0L)
                     robbed = 0L;
-                pline_The("amount %scovers %s recent losses.",
+                pline_The(_("amount %scovers %s recent losses."),
                           !robbed ? "" : "partially ", mhis(mtmp));
                 ESHK(mtmp)->robbed = robbed;
                 if (!robbed)
@@ -650,7 +650,7 @@ really_kick_object(coordxy x, coordxy y)
             }
         } else {
             if (!rn2(3) || (martial() && !rn2(2))) {
-                pline_The("lid slams open, then falls shut.");
+                pline_The(_("lid slams open, then falls shut."));
                 gk.kickedobj->lknown = 1;
                 if (otrp)
                     (void) chest_trap(gk.kickedobj, LEG, FALSE);
@@ -877,7 +877,7 @@ kick_ouch(coordxy x, coordxy y, const char *kickobjnam)
         if (Blind)
             feel_location(x, y); /* we know we hit it */
         if (is_drawbridge_wall(x, y) >= 0) {
-            pline_The("drawbridge is unaffected.");
+            pline_The(_("drawbridge is unaffected."));
             /* update maploc to refer to the drawbridge */
             (void) find_drawbridge(&x, &y);
             gm.maploc = &levl[x][y];
@@ -1108,7 +1108,7 @@ kick_nondoor(coordxy x, coordxy y, int avrg_attrib)
                 /* [feel this happen if Deaf?] */
                 pline(_("Crack!  %s broke!"), Something);
             } else {
-                pline_The("headstone topples over and breaks!");
+                pline_The(_("headstone topples over and breaks!"));
                 newsym(x, y);
             }
         }

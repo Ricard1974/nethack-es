@@ -542,14 +542,14 @@ call_kops(struct monst *shkp, boolean nearshop)
         if (nearshop) {
             /* Create swarm around you, if you merely "stepped out" */
             if (flags.verbose)
-                pline_The("Keystone Kops appear!");
+                pline_The(_("Keystone Kops appear!"));
             mm.x = u.ux;
             mm.y = u.uy;
             makekops(&mm);
             return;
         }
         if (flags.verbose)
-            pline_The("Keystone Kops are after you!");
+            pline_The(_("Keystone Kops are after you!"));
         /* Create swarm near down staircase (hinders return to level) */
         if (isok(sx, sy)) {
             mm.x = sx;
@@ -818,7 +818,7 @@ u_entered_shop(char *enterstring)
             verbalize(_("Back again, %s?  I've got my %s on you."),
                       svp.plname, mbodypart(shkp, EYE));
         } else {
-            pline_The("atmosphere at %s %s seems unwelcoming.",
+            pline_The(_("atmosphere at %s %s seems unwelcoming."),
                       s_suffix(shkname(shkp)), shtypes[rt - SHOPBASE].name);
         }
     } else if (eshkp->robbed) {
@@ -1271,11 +1271,11 @@ check_credit(long  tmp, struct monst *shkp)
     if (credit == 0L) {
         ; /* nothing to do; just 'return tmp;' */
     } else if (credit >= tmp) {
-        pline_The("price is deducted from your credit.");
+        pline_The(_("price is deducted from your credit."));
         ESHK(shkp)->credit -= tmp;
         tmp = 0L;
     } else {
-        pline_The("price is partially covered by your credit.");
+        pline_The(_("price is partially covered by your credit."));
         ESHK(shkp)->credit = 0L;
         tmp -= credit;
     }
@@ -3537,7 +3537,7 @@ addtobill(
     } else if (!silent) {
         if (ltmp) {
             set_voice(shkp, 0, 80, 0);
-            pline_The("list price of %s%s%s is %ld %s%s.",
+            pline_The(_("list price of %s%s%s is %ld %s%s."),
                       (contentscount && !obj->unpaid) ? the_contents_of : "",
                       the(xname(obj)),
                       (contentscount && obj->unpaid) ? and_its_contents : "",
@@ -5527,7 +5527,7 @@ kops_gone(boolean silent)
         }
     }
     if (cnt && !silent)
-        pline_The("Kop%s (disappointed) vanish%s into thin air.",
+        pline_The(_("Kop%s (disappointed) vanish%s into thin air."),
                   plur(cnt), (cnt == 1) ? "es" : "");
 }
 
@@ -5951,7 +5951,7 @@ globby_bill_fixup(struct obj *obj_absorber, struct obj *obj_absorbed)
                         eshkp->loan = 0L;
                 }
                 eshkp->debit -= amount;
-                pline_The("donated %s %spays off your debt.",
+                pline_The(_("donated %s %spays off your debt."),
                           obj_typename(obj_absorbed->otyp),
                           eshkp->debit ? "partially " : "");
             } else {
@@ -5964,11 +5964,11 @@ globby_bill_fixup(struct obj *obj_absorber, struct obj *obj_absorbed)
                     Your(_("debt is paid off."));
                 }
                 if (eshkp->credit == delta)
-                    pline_The("%s established %ld %s credit.",
+                    pline_The(_("%s established %ld %s credit."),
                               obj_typename(obj_absorbed->otyp),
                               delta, currency(delta));
                 else
-                    pline_The("%s added %ld %s %s %ld %s.",
+                    pline_The(_("%s added %ld %s %s %ld %s."),
                               obj_typename(obj_absorbed->otyp),
                               delta, currency(delta),
                               "to your credit; total is now",

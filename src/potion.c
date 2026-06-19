@@ -1618,7 +1618,7 @@ potionhit(struct monst *mon, struct obj *obj, int how)
     if (isyou) {
         tx = u.ux, ty = u.uy;
         distance = 0;
-        pline_The("%s crashes on your %s and breaks into shards.", botlnam,
+        pline_The(_("%s crashes on your %s and breaks into shards."), botlnam,
                   body_part(HEAD));
         losehp(Maybe_Half_Phys(rnd(2)),
                (how == POTHIT_OTHER_THROW) ? "propelled potion" /* scatter */
@@ -1654,7 +1654,7 @@ potionhit(struct monst *mon, struct obj *obj, int how)
                 Strcpy(buf, mnam);
             }
             Soundeffect(se_potion_crash_and_break, 60);
-            pline_The("%s crashes on %s and breaks into shards.", botlnam,
+            pline_The(_("%s crashes on %s and breaks into shards."), botlnam,
                       buf);
         }
         if (rn2(5) && mon->mhp > 1 && !hit_saddle)
@@ -2549,7 +2549,7 @@ potion_dip(struct obj *obj, struct obj *potion)
                 break;
             default:
                 useupall(obj);
-                pline_The("mixture %sevaporates.",
+                pline_The(_("mixture %sevaporates."),
                           !Blind ? "glows brightly and " : "");
                 return ECMD_TIME;
             }
@@ -2557,9 +2557,9 @@ potion_dip(struct obj *obj, struct obj *potion)
         obj->odiluted = (obj->otyp != POT_WATER);
 
         if (obj->otyp == POT_WATER && !Hallucination) {
-            pline_The("mixture bubbles%s.", Blind ? "" : ", then clears");
+            pline_The(_("mixture bubbles%s."), Blind ? "" : ", then clears");
         } else if (!Blind) {
-            pline_The("mixture looks %s.",
+            pline_The(_("mixture looks %s."),
                       hcolor(OBJ_DESCR(objects[obj->otyp])));
         }
 
@@ -2586,7 +2586,7 @@ potion_dip(struct obj *obj, struct obj *potion)
     }
 
     if (potion->otyp == POT_WATER && obj->otyp == TOWEL) {
-        pline_The("towel soaks it up!");
+        pline_The(_("towel soaks it up!"));
         /* wetting towel already done via water_damage() in H2Opotion_dip */
         poof(potion);
         return ECMD_TIME;
@@ -2628,7 +2628,7 @@ potion_dip(struct obj *obj, struct obj *potion)
         if (potion->lamplit) { /* burning */
             fire_damage(obj, TRUE, u.ux, u.uy);
         } else if (potion->cursed) {
-            pline_The("potion spills and covers your %s with oil.",
+            pline_The(_("potion spills and covers your %s with oil."),
                       fingers_or_gloves(TRUE));
             make_glib((int) (Glib & TIMEOUT) + d(2, 10));
         } else if (obj->oclass != WEAPON_CLASS && !is_weptool(obj)) {
@@ -2739,7 +2739,7 @@ potion_dip(struct obj *obj, struct obj *potion)
                 Sprintf(newbuf, _("turns %s"),
                         hcolor(OBJ_DESCR(objects[mixture])));
             if (*newbuf)
-                pline_The("%spotion%s %s.", oldbuf,
+                pline_The(_("%spotion%s %s."), oldbuf,
                           more_than_one ? " that you dipped into" : "",
                           newbuf);
             else

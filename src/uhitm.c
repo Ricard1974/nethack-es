@@ -1214,7 +1214,7 @@ hmon_hitmon_misc_obj(
 
             You(_("hit %s with %s egg%s."), mon_nam(mon), eggp, plur(cnt));
             if (touch_petrifies(hmd->mdat) && !stale_egg(obj)) {
-                pline_The("egg%s %s alive any more...", plur(cnt),
+                pline_The(_("egg%s %s alive any more..."), plur(cnt),
                           (cnt == 1L) ? "isn't" : "aren't");
                 if (obj->timed)
                     obj_stop_timers(obj);
@@ -1259,7 +1259,7 @@ hmon_hitmon_misc_obj(
                 pline(obj->otyp == CREAM_PIE ? "Splat!"
                       : "Splash!");
             } else if (obj->otyp == BLINDING_VENOM) {
-                pline_The("venom blinds %s%s!", mon_nam(mon),
+                pline_The(_("venom blinds %s%s!"), mon_nam(mon),
                           mon->mcansee ? "" : " further");
             } else {
                 char *whom = mon_nam(mon);
@@ -1876,9 +1876,9 @@ hmon_hitmon(
     /* already_killed and poiskilled won't apply for Trollsbane */
 
     if (hmd.needpoismsg)
-        pline_The("poison doesn't seem to affect %s.", mon_nam(mon));
+        pline_The(_("poison doesn't seem to affect %s."), mon_nam(mon));
     if (hmd.poiskilled) {
-        pline_The("poison was deadly...");
+        pline_The(_("poison was deadly..."));
         if (!hmd.already_killed)
             xkilled(mon, XKILL_NOMSG);
         hmd.destroyed = TRUE; /* return FALSE; */
@@ -2060,7 +2060,7 @@ m_slips_free(struct monst *mdef, struct attack *mattk)
                 : cloak_simple_name(obj));
 
         if (obj->greased && !rn2(2)) {
-            pline_The("grease wears off.");
+            pline_The(_("grease wears off."));
             obj->greased = 0;
         }
         return TRUE;
@@ -2518,7 +2518,7 @@ mhitm_ad_fire(
         }
         if (resists_fire(mdef) || defended(mdef, AD_FIRE)) {
             if (!Blind)
-                pline_The("fire doesn't heat %s!", mon_nam(mdef));
+                pline_The(_("fire doesn't heat %s!"), mon_nam(mdef));
             golemeffects(mdef, AD_FIRE, mhm->damage);
             shieldeff(mdef->mx, mdef->my);
             mhm->damage = 0;
@@ -2537,7 +2537,7 @@ mhitm_ad_fire(
                 rehumanize();
                 return;
             } else if (Fire_resistance) {
-                pline_The("fire doesn't feel hot!");
+                pline_The(_("fire doesn't feel hot!"));
                 monstseesu(M_SEEN_FIRE);
                 mhm->damage = 0;
             } else {
@@ -2579,7 +2579,7 @@ mhitm_ad_fire(
         }
         if (resists_fire(mdef) || defended(mdef, AD_FIRE)) {
             if (gv.vis && canseemon(mdef))
-                pline_The("fire doesn't seem to burn %s!", mon_nam(mdef));
+                pline_The(_("fire doesn't seem to burn %s!"), mon_nam(mdef));
             shieldeff(mdef->mx, mdef->my);
             golemeffects(mdef, AD_FIRE, mhm->damage);
             mhm->damage = 0;
@@ -2607,7 +2607,7 @@ mhitm_ad_cold(
         if (resists_cold(mdef) || defended(mdef, AD_COLD)) {
             shieldeff(mdef->mx, mdef->my);
             if (!Blind)
-                pline_The("frost doesn't chill %s!", mon_nam(mdef));
+                pline_The(_("frost doesn't chill %s!"), mon_nam(mdef));
             golemeffects(mdef, AD_COLD, mhm->damage);
             mhm->damage = 0;
         }
@@ -2618,7 +2618,7 @@ mhitm_ad_cold(
         if (!mhitm_mgc_atk_negated(magr, mdef, TRUE)) {
             pline(_("%s"), _("You're covered in frost!"));
             if (Cold_resistance) {
-                pline_The("frost doesn't seem cold!");
+                pline_The(_("frost doesn't seem cold!"));
                 monstseesu(M_SEEN_COLD);
                 mhm->damage = 0;
             } else {
@@ -2638,7 +2638,7 @@ mhitm_ad_cold(
             pline_mon(mdef, "%s is covered in frost!", Monnam(mdef));
         if (resists_cold(mdef) || defended(mdef, AD_COLD)) {
             if (gv.vis && canseemon(mdef))
-                pline_The("frost doesn't seem to chill %s!", mon_nam(mdef));
+                pline_The(_("frost doesn't seem to chill %s!"), mon_nam(mdef));
             shieldeff(mdef->mx, mdef->my);
             golemeffects(mdef, AD_COLD, mhm->damage);
             mhm->damage = 0;
@@ -2664,7 +2664,7 @@ mhitm_ad_elec(
             pline(_("%s is zapped!"), Monnam(mdef));
         if (resists_elec(mdef) || defended(mdef, AD_ELEC)) {
             if (!Blind)
-                pline_The("zap doesn't shock %s!", mon_nam(mdef));
+                pline_The(_("zap doesn't shock %s!"), mon_nam(mdef));
             golemeffects(mdef, AD_ELEC, mhm->damage);
             shieldeff(mdef->mx, mdef->my);
             mhm->damage = 0;
@@ -2676,7 +2676,7 @@ mhitm_ad_elec(
         if (!mhitm_mgc_atk_negated(magr, mdef, TRUE)) {
             You(_("get zapped!"));
             if (Shock_resistance) {
-                pline_The("zap doesn't shock you!");
+                pline_The(_("zap doesn't shock you!"));
                 monstseesu(M_SEEN_ELEC);
                 mhm->damage = 0;
             } else {
@@ -3069,12 +3069,12 @@ mhitm_really_poison(struct monst *magr, struct attack *mattk,
         pline(_("%s %s was poisoned!"), s_suffix(Monnam(magr)), mpoisons_subj(magr, mattk));
     if (resists_poison(mdef)) {
         if (gv.vis && canspotmon(mdef) && canspotmon(magr))
-            pline_The("poison doesn't seem to affect %s.",
+            pline_The(_("poison doesn't seem to affect %s."),
                         mon_nam(mdef));
     } else {
         mhm->damage += rn1(10, 6);
         if (mhm->damage >= mdef->mhp && gv.vis && canspotmon(mdef))
-            pline_The("poison was deadly...");
+            pline_The(_("poison was deadly..."));
     }
 }
 
@@ -3091,7 +3091,7 @@ mhitm_ad_drst(
         if (!negated && !rn2(8)) {
             Your(_("%s was poisoned!"), mpoisons_subj(magr, mattk));
             if (resists_poison(mdef)) {
-                pline_The("poison doesn't seem to affect %s.", mon_nam(mdef));
+                pline_The(_("poison doesn't seem to affect %s."), mon_nam(mdef));
             } else {
                 if (!rn2(10)) {
                     Your(_("poison was deadly..."));
@@ -3335,7 +3335,7 @@ mhitm_ad_wrap(
                     mhm->damage = 0;
                 } else {
                     set_ustuck(magr); /* before message, for botl update */
-                    urgent_pline("%s %s itself around you!",
+                    urgent_pline(_("%s %s itself around you!"),
                                  Some_Monnam(magr),
                                  coil ? "coils" : "swings");
                 }
@@ -3347,7 +3347,7 @@ mhitm_ad_wrap(
                                    && !Is_medusa_level(&u.uz)
                                    && !Is_waterlevel(&u.uz);
 
-                    urgent_pline("%s drowns you...", Monnam(magr));
+                    urgent_pline(_("%s drowns you..."), Monnam(magr));
                     svk.killer.format = KILLED_BY_AN;
                     Sprintf(svk.killer.name, _("%s by %s"),
                             moat ? "moat" : "pool of water",
@@ -3512,7 +3512,7 @@ mhitm_ad_slim(
             return;
         }
         if (flaming(pd)) {
-            pline_The("slime burns away!");
+            pline_The(_("slime burns away!"));
             mhm->damage = 0;
         } else if (Unchanging || noncorporeal(pd)
                    || pd == &mons[PM_GREEN_SLIME]) {
@@ -4026,7 +4026,7 @@ mhitm_ad_phys(
                     return;
                 if (objects[otmp->otyp].oc_material == SILVER
                     && Hate_silver) {
-                    pline_The("silver sears your flesh!");
+                    pline_The(_("silver sears your flesh!"));
                     exercise(A_CON, FALSE);
                 }
                 /* this redundancy necessary because you have
@@ -5076,7 +5076,7 @@ gulpum(struct monst *mdef, struct attack *mattk)
                 break;
             case AD_ELEC:
                 if (rn2(2)) {
-                    pline_The("air around %s crackles with electricity.",
+                    pline_The(_("air around %s crackles with electricity."),
                               mon_nam(mdef));
                     if (resists_elec(mdef)) {
                         pline(_("%s seems unhurt."), Monnam(mdef));
@@ -6251,7 +6251,7 @@ nohandglow(struct monst *mon)
             Your(_("%s stop glowing %s."), hands, hcolor(NH_RED));
     } else {
         if (altfeedback)
-            pline_The("tingling in your %s lessens.", hands);
+            pline_The(_("tingling in your %s lessens."), hands);
         else
             Your(_("%s no longer glow so brightly %s."), hands, hcolor(NH_RED));
     }
@@ -6297,7 +6297,7 @@ flash_hits_mon(
     if (mtmp->msleeping && haseyes(mtmp->data)) {
         mtmp->msleeping = 0;
         if (useeit) {
-            pline_The("flash awakens %s.", mon_nam(mtmp));
+            pline_The(_("flash awakens %s."), mon_nam(mtmp));
             res = 1;
         }
     } else if (mtmp->data->mlet != S_LIGHT) {

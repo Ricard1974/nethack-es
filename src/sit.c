@@ -226,7 +226,7 @@ throne_sit_effect(void)
         newsym_force(tx, ty);
         /* "[God] promptly vanishes in a puff of logic" is from
            Douglas Adams' _The_Hitchhiker's_Guide_to_the_Galaxy_. */
-        pline_The("throne %s in a puff of logic.",
+        pline_The(_("throne %s in a puff of logic."),
                   cansee(tx, ty) ? "vanishes" : "has vanished");
     }
 }
@@ -250,7 +250,7 @@ special_throne_effect(int effect) {
         levl[tx][ty].typ = ROOM, levl[tx][ty].flags = 0;
         map_background(tx, ty, FALSE);
         newsym_force(tx, ty);
-        pline_The("throne disintegrates, having spent its power.");
+        pline_The(_("throne disintegrates, having spent its power."));
         break;
     case 5:
         /* permanent level drain */
@@ -279,7 +279,7 @@ special_throne_effect(int effect) {
     case 7:
         /* lose an intrinsic */
         attrcurse();
-        pline_The("throne somehow seems to be amused.");
+        pline_The(_("throne somehow seems to be amused."));
         break;
     case 8:
     {
@@ -299,7 +299,7 @@ special_throne_effect(int effect) {
     {
         /* summon demons; a NULL argument to msummon summons demons as
            though they were summoned by the Wizard of Yendor */
-        pline_The("throne seeems to be calling for help!");
+        pline_The(_("throne seeems to be calling for help!"));
         msummon(NULL);
         msummon(NULL);
         msummon(NULL);
@@ -536,16 +536,16 @@ dosit(void)
         You(sit_message, hliquid("lava"));
         burn_away_slime();
         if (likes_lava(gy.youmonst.data)) {
-            pline_The("%s feels warm.", hliquid("lava"));
+            pline_The(_("%s feels warm."), hliquid("lava"));
             return ECMD_TIME;
         }
-        pline_The("%s burns you!", hliquid("lava"));
+        pline_The(_("%s burns you!"), hliquid("lava"));
         losehp(d((Fire_resistance ? 2 : 10), 10), /* lava damage */
                "sitting on lava", KILLED_BY);
     } else if (is_ice(u.ux, u.uy)) {
         You(sit_message, defsyms[S_ice].explanation);
         if (!Cold_resistance)
-            pline_The("ice feels cold.");
+            pline_The(_("ice feels cold."));
     } else if (typ == DRAWBRIDGE_DOWN) {
         You(sit_message, "drawbridge");
     } else if (IS_THRONE(typ)) {

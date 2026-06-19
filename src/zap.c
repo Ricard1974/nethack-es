@@ -2035,7 +2035,7 @@ stone_to_flesh_obj(struct obj *obj) /* nonnull */
                     else
                         delobj(obj);
                     if (cansee(mon->mx, mon->my))
-                        pline_The("figurine %sanimates!",
+                        pline_The(_("figurine %sanimates!"),
                                   golem_xform ? "turns to flesh and " : "");
                 }
             }
@@ -2268,7 +2268,7 @@ bhito(struct obj *obj, struct obj *otmp)
             if (obj->otyp == BOULDER) {
                 Soundeffect(se_crumbling_sound, 75);
                 if (cansee(obj->ox, obj->oy))
-                    pline_The("boulder falls apart.");
+                    pline_The(_("boulder falls apart."));
                 else
                     You_hear(_("a crumbling sound."));
                 fracture_rock(obj);
@@ -2276,9 +2276,9 @@ bhito(struct obj *obj, struct obj *otmp)
                 if (break_statue(obj)) {
                     if (cansee(obj->ox, obj->oy)) {
                         if (Hallucination)
-                            pline_The("%s shatters.", rndmonnam(NULL));
+                            pline_The(_("%s shatters."), rndmonnam(NULL));
                         else
-                            pline_The("statue shatters.");
+                            pline_The(_("statue shatters."));
                     } else
                         You_hear(_("a crumbling sound."));
                 }
@@ -2514,7 +2514,7 @@ do_enlightenment_effect(void)
     You_feel(_("self-knowledgeable..."));
     display_nhwindow(WIN_MESSAGE, FALSE);
     enlightenment(MAGICENLIGHTENMENT, ENL_GAMEINPROGRESS);
-    pline_The("feeling subsides.");
+    pline_The(_("feeling subsides."));
     exercise(A_WIS, TRUE);
 }
 
@@ -2779,7 +2779,7 @@ zapyourself(struct obj *obj, boolean ordinary)
         learn_it = TRUE;
         if (Antimagic) {
             shieldeff(u.ux, u.uy);
-            pline_The("missiles bounce!");
+            pline_The(_("missiles bounce!"));
             monstseesu(M_SEEN_MAGR);
         } else {
             damage = d(4, 6);
@@ -2844,7 +2844,7 @@ zapyourself(struct obj *obj, boolean ordinary)
             monstseesu(M_SEEN_SLEEP);
         } else {
             if (ordinary)
-                pline_The("sleep ray hits you!");
+                pline_The(_("sleep ray hits you!"));
             else
                 You(_("fall asleep!"));
             monstunseesu(M_SEEN_SLEEP);
@@ -3263,7 +3263,7 @@ zap_updown(struct obj *obj) /* wand or spell, nonnull */
                    /* can't use the stairs down to quest level 2 until
                       leader "unlocks" them; give feedback if you try */
                    && on_level(&u.uz, &qstart_level) && !ok_to_quest()) {
-            pline_The("stairs seem to ripple momentarily.");
+            pline_The(_("stairs seem to ripple momentarily."));
             disclose = TRUE;
         }
         /* down will release you from bear trap or web */
@@ -4384,7 +4384,7 @@ zhitu(
     case ZT_MAGIC_MISSILE:
         if (Antimagic) {
             shieldeff(sx, sy);
-            pline_The("missiles bounce off!");
+            pline_The(_("missiles bounce off!"));
             monstseesu(M_SEEN_MAGR);
         } else {
             dam = d(nd, 6);
@@ -4501,11 +4501,11 @@ zhitu(
         break;
     case ZT_ACID:
         if (Acid_resistance) {
-            pline_The("%s doesn't hurt.", hliquid("acid"));
+            pline_The(_("%s doesn't hurt."), hliquid("acid"));
             monstseesu(M_SEEN_ACID);
             dam = 0;
         } else {
-            pline_The("%s burns!", hliquid("acid"));
+            pline_The(_("%s burns!"), hliquid("acid"));
             dam = d(nd, 6);
             exercise(A_STR, FALSE);
             monstunseesu(M_SEEN_ACID);
@@ -4974,7 +4974,7 @@ dobuzz(
             if ((--range > 0 && isok(lsx, lsy) && cansee(lsx, lsy))
                 || fireball) {
                 if (Is_airlevel(&u.uz)) { /* nothing to bounce off of */
-                    pline_The("%s vanishes into the aether!",
+                    pline_The(_("%s vanishes into the aether!"),
                               flash_str(fltyp, FALSE));
                     if (fireball)
                         type = ZT_WAND(ZT_FIRE); /* skip pending fireball */
@@ -4984,7 +4984,7 @@ dobuzz(
                     sy = lsy;
                     break; /* fireballs explode before the obstacle */
                 } else
-                    pline_The("%s bounces!", flash_str(fltyp, FALSE));
+                    pline_The(_("%s bounces!"), flash_str(fltyp, FALSE));
             }
             bounce_dir(sx, sy, &dx, &dy, bchance);
             tmp_at(DISP_CHANGE, zapdir_to_glyph(dx, dy, hdmgtype));
@@ -5213,7 +5213,7 @@ zap_over_floor(
                 /* For now, don't let WATER freeze. */
                 Soundeffect(se_soft_crackling, 100);
                 if (see_it)
-                    pline_The("%s freezes for a moment.",
+                    pline_The(_("%s freezes for a moment."),
                               hliquid(lavawall ? "lava" : "water"));
                 else
                     You_hear(_("a soft crackling."));
@@ -5417,9 +5417,9 @@ zap_over_floor(
                    inaccurate for an exploding wand since
                    other adjacent locations still get hit */
                 if (exploding_wand_typ)
-                    pline_The("door remains intact.");
+                    pline_The(_("door remains intact."));
                 else
-                    pline_The("door absorbs %s %s!", yourzap ? "your" : "the",
+                    pline_The(_("door absorbs %s %s!"), yourzap ? "your" : "the",
                               zapverb);
             } else
                 You_feel(_("vibrations."));

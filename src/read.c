@@ -464,7 +464,7 @@ doread(void)
         } else {
             if (flags.verbose)
                 pline(_("%s"), _("It reads:"));
-            pline("\"%s\"",
+            pline(_("\"%s\""),
                   scroll->oartifact
                       ? card_msgs[SIZE(card_msgs) - 1]
                       : card_msgs[scroll->o_id % (SIZE(card_msgs) - 1)]);
@@ -518,7 +518,7 @@ doread(void)
             You(_("feel the engraved signature:"));
         else
             pline(_("%s"), _("It is signed:"));
-        pline("\"Odin.\"");
+        pline(_("\"Odin.\""));
         if (!u.uconduct.literate++)
             livelog_printf(LL_CONDUCT,
                    "became literate by reading the divine signature of Odin");
@@ -1394,7 +1394,7 @@ seffect_confuse_monster(struct obj **sobjp)
             else if (!u.umconf)
                 Your(_("%s begin to glow %s."), hands, hcolor(NH_RED));
             else
-                pline_The("%s glow of your %s intensifies.", hcolor(NH_RED),
+                pline_The(_("%s glow of your %s intensifies."), hcolor(NH_RED),
                           hands);
             incr += rnd(2);
         } else {
@@ -1463,7 +1463,7 @@ seffect_remove_curse(struct obj **sobjp)
                 : "the power of the Force against you!"));
 
     if (scursed) {
-        pline_The("scroll disintegrates.");
+        pline_The(_("scroll disintegrates."));
     } else {
         /* 5.0: this used to use a straight
                for (obj = invent; obj; obj = obj->nobj) {}
@@ -1558,7 +1558,7 @@ seffect_remove_curse(struct obj **sobjp)
         unpunish();
     if (u.utrap && u.utraptype == TT_BURIEDBALL) {
         buried_ball_to_freedom();
-        pline_The("clasp on your %s vanishes.", body_part(LEG));
+        pline_The(_("clasp on your %s vanishes."), body_part(LEG));
     }
     update_inventory();
 }
@@ -1664,7 +1664,7 @@ seffect_taming(struct obj **sobjp)
     if (!results) {
         pline(_("Nothing interesting %s."), !candidates ? "happens" : "seems to happen");
     } else {
-        pline_The("neighborhood %s %sfriendlier.",
+        pline_The(_("neighborhood %s %sfriendlier."),
                   vis_results ? "is" : "seems",
                   (results < 0) ? "un" : "");
         if (vis_results > 0)
@@ -1832,14 +1832,14 @@ seffect_fire(struct obj **sobjp)
                 You_feel(_("a pleasant warmth in your %s."), makeplural(body_part(HAND)));
         } else {
             monstunseesu(M_SEEN_FIRE);
-            pline_The("scroll catches fire and you burn your %s.",
+            pline_The(_("scroll catches fire and you burn your %s."),
                       makeplural(body_part(HAND)));
             losehp(1, "scroll of fire", KILLED_BY_AN);
         }
         return;
     }
     if (Underwater) {
-        pline_The("%s around you vaporizes violently!", hliquid("water"));
+        pline_The(_("%s around you vaporizes violently!"), hliquid("water"));
     } else {
         if (sblessed) {
             if (!already_known)
@@ -1856,7 +1856,7 @@ seffect_fire(struct obj **sobjp)
             }
         }
         if (u_at(cc.x, cc.y)) {
-            pline_The("scroll erupts in a tower of flame!");
+            pline_The(_("scroll erupts in a tower of flame!"));
             iflags.last_msg = PLNMSG_TOWER_OF_FLAME; /* for explode() */
             burn_away_slime();
         }
@@ -1885,7 +1885,7 @@ seffect_earth(struct obj **sobjp)
             You_hear(_("rumbling."));
         } else {
             if (!avoid_ceiling(&u.uz)) {
-                pline_The("%s rumbles %s you!", ceiling(u.ux, u.uy),
+                pline_The(_("%s rumbles %s you!"), ceiling(u.ux, u.uy),
                           sblessed ? "around" : "above");
             } else {
                 char matbuf[BUFSZ];
@@ -2474,7 +2474,7 @@ litroom(
                lit squares before and after to know; we do know that being
                swallowed won't be affected--the interior is still lit */
             if (still_lit)
-                pline_The("ambient light seems dimmer.");
+                pline_The(_("ambient light seems dimmer."));
             else if (u.uswallow)
                 pline(_("%s"), _("It seems even darker in here than before."));
             else

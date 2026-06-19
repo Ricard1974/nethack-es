@@ -233,7 +233,7 @@ flooreffects(
                 Soundeffect(se_crashing_boulder, 100);
                 You_hear(_("a CRASH! beneath you."));
             } else if (!Blind && cansee(x, y)) {
-                pline_The("boulder %s%s.",
+                pline_The(_("boulder %s%s."),
                           (ttyp == TRAPDOOR && !tseen) ? "triggers and " : "",
                           (ttyp == TRAPDOOR) ? "plugs a trap door"
                           : (ttyp == HOLE) ? "plugs a hole"
@@ -435,9 +435,9 @@ polymorph_sink(void)
     /* give message even if blind; we know we're not levitating,
        so can feel the outcome even if we can't directly see it */
     if (levl[u.ux][u.uy].typ != ROOM)
-        pline_The("sink transforms into %s!", an(defsyms[sym].explanation));
+        pline_The(_("sink transforms into %s!"), an(defsyms[sym].explanation));
     else
-        pline_The("sink vanishes.");
+        pline_The(_("sink vanishes."));
     newsym(u.ux, u.uy);
 }
 
@@ -495,14 +495,14 @@ dosinkring(struct obj *obj)
         You(_("thought %s got lost in the sink, but there it is!"), yname(obj));
         goto giveback;
     case RIN_SLOW_DIGESTION:
-        pline_The("ring is regurgitated!");
+        pline_The(_("ring is regurgitated!"));
  giveback:
         obj->in_use = FALSE;
         dropx(obj);
         trycall(obj);
         return;
     case RIN_LEVITATION:
-        pline_The("sink quivers upward for a moment.");
+        pline_The(_("sink quivers upward for a moment."));
         break;
     case RIN_POISON_RESISTANCE:
         You(_("smell rotten %s."), makeplural(fruitname(FALSE)));
@@ -518,25 +518,25 @@ dosinkring(struct obj *obj)
         You_hear(_("loud noises coming from the drain."));
         break;
     case RIN_SUSTAIN_ABILITY: /* KMH */
-        pline_The("%s flow seems fixed.", hliquid("water"));
+        pline_The(_("%s flow seems fixed."), hliquid("water"));
         break;
     case RIN_GAIN_STRENGTH:
-        pline_The("%s flow seems %ser now.",
+        pline_The(_("%s flow seems %ser now."),
                   hliquid("water"),
                   (obj->spe < 0) ? "weak" : "strong");
         break;
     case RIN_GAIN_CONSTITUTION:
-        pline_The("%s flow seems %ser now.",
+        pline_The(_("%s flow seems %ser now."),
                   hliquid("water"),
                   (obj->spe < 0) ? "less" : "great");
         break;
     case RIN_INCREASE_ACCURACY: /* KMH */
-        pline_The("%s flow %s the drain.",
+        pline_The(_("%s flow %s the drain."),
                   hliquid("water"),
                   (obj->spe < 0) ? "misses" : "hits");
         break;
     case RIN_INCREASE_DAMAGE:
-        pline_The("water's force seems %ser now.",
+        pline_The(_("water's force seems %ser now."),
                   (obj->spe < 0) ? "small" : "great");
         break;
     case RIN_HUNGER:
@@ -561,7 +561,7 @@ dosinkring(struct obj *obj)
         nosink = teleport_sink();
         /* give message even if blind; we know we're not levitating,
            so can feel the outcome even if we can't directly see it */
-        pline_The("sink %svanishes.", nosink ? "" : "momentarily ");
+        pline_The(_("sink %svanishes."), nosink ? "" : "momentarily ");
         ideed = FALSE;
         break;
     case RIN_POLYMORPH:
@@ -578,10 +578,10 @@ dosinkring(struct obj *obj)
         ideed = TRUE;
         switch (obj->otyp) { /* effects that need eyes */
         case RIN_ADORNMENT:
-            pline_The("faucets flash brightly for a moment.");
+            pline_The(_("faucets flash brightly for a moment."));
             break;
         case RIN_REGENERATION:
-            pline_The("sink looks as good as new.");
+            pline_The(_("sink looks as good as new."));
             break;
         case RIN_INVISIBILITY:
             You(_("don't see anything happen to the sink."));
@@ -593,28 +593,28 @@ dosinkring(struct obj *obj)
             You_see(_("some %s in the sink."), Hallucination ? "oxygen molecules" : "air");
             break;
         case RIN_STEALTH:
-            pline_The("sink seems to blend into the floor for a moment.");
+            pline_The(_("sink seems to blend into the floor for a moment."));
             break;
         case RIN_FIRE_RESISTANCE:
-            pline_The("hot %s faucet flashes brightly for a moment.",
+            pline_The(_("hot %s faucet flashes brightly for a moment."),
                       hliquid("water"));
             break;
         case RIN_COLD_RESISTANCE:
-            pline_The("cold %s faucet flashes brightly for a moment.",
+            pline_The(_("cold %s faucet flashes brightly for a moment."),
                       hliquid("water"));
             break;
         case RIN_PROTECTION_FROM_SHAPE_CHAN:
-            pline_The("sink looks nothing like a fountain.");
+            pline_The(_("sink looks nothing like a fountain."));
             break;
         case RIN_PROTECTION:
-            pline_The("sink glows %s for a moment.",
+            pline_The(_("sink glows %s for a moment."),
                       hcolor((obj->spe < 0) ? NH_BLACK : NH_SILVER));
             break;
         case RIN_WARNING:
-            pline_The("sink glows %s for a moment.", hcolor(NH_WHITE));
+            pline_The(_("sink glows %s for a moment."), hcolor(NH_WHITE));
             break;
         case RIN_TELEPORT_CONTROL:
-            pline_The("sink looks like it is being beamed aboard somewhere.");
+            pline_The(_("sink looks like it is being beamed aboard somewhere."));
             break;
         case RIN_POLYMORPH_CONTROL:
             pline_The(
@@ -631,7 +631,7 @@ dosinkring(struct obj *obj)
         You_hear(_("the ring bouncing down the drainpipe."));
     }
     if (!rn2(20) && !nosink) {
-        pline_The("sink backs up, leaving %s.", doname(obj));
+        pline_The(_("sink backs up, leaving %s."), doname(obj));
         obj->in_use = FALSE;
         dropx(obj);
     } else if (!rn2(5)) {
@@ -681,7 +681,7 @@ canletgo(struct obj *obj, const char *word)
     }
     if (obj->otyp == LEASH && obj->leashmon != 0) {
         if (*word)
-            pline_The("leash is tied around your %s.", body_part(HAND));
+            pline_The(_("leash is tied around your %s."), body_part(HAND));
         return FALSE;
     }
     if (obj->owornmask & W_SADDLE) {
@@ -1839,7 +1839,7 @@ goto_level(
     if (!In_hell(&u.uz0) && Inhell) {
         if (Is_valley(&u.uz)) {
             You(_("arrive at the Valley of the Dead..."));
-            pline_The("odor of burnt flesh and decay pervades the air.");
+            pline_The(_("odor of burnt flesh and decay pervades the air."));
 #ifdef MICRO
             display_nhwindow(WIN_MESSAGE, FALSE);
 #endif
@@ -1995,7 +1995,7 @@ temperature_change_msg(schar prev_temperature)
         if (svl.level.flags.temperature)
             hellish_smoke_mesg();
         else if (prev_temperature > 0)
-            pline_The("heat %s gone.",
+            pline_The(_("heat %s gone."),
                       In_hell(&u.uz0)
                       ? "and smoke are" : "is");
         else if (prev_temperature < 0)
@@ -2129,7 +2129,7 @@ revive_corpse(struct obj *corpse)
         switch (where) {
         case OBJ_INVENT:
             if (is_uwep)
-                pline_The("%s writhes out of your grasp!", cname);
+                pline_The(_("%s writhes out of your grasp!"), cname);
             else
                 You_feel(_("squirming in your backpack!"));
             break;

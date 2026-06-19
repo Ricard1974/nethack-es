@@ -335,7 +335,7 @@ poisoned(
     if (Poison_resistance) {
         if (blast)
             shieldeff(u.ux, u.uy);
-        pline_The("poison doesn't seem to affect you.");
+        pline_The(_("poison doesn't seem to affect you."));
         return;
     }
 
@@ -363,7 +363,7 @@ poisoned(
         if (u.uhp <= loss) {
             u.uhp = -1;
             disp.botl = TRUE;
-            pline_The("poison was deadly...");
+            pline_The(_("poison was deadly..."));
         } else {
             /* survived, but with severe reaction */
             int olduhp = u.uhp,

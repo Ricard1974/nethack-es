@@ -53,7 +53,7 @@ ballfall(void)
     if (gets_hit) {
         int dmg = rn1(7, 25);
 
-        pline_The("iron ball falls on your %s.", body_part(HEAD));
+        pline_The(_("iron ball falls on your %s."), body_part(HEAD));
         if (uarmh) {
             if (hard_helmet(uarmh)) {
                 pline(_("%s"), _("Fortunately, you are wearing a hard helmet."));
@@ -901,7 +901,7 @@ drop_ball(coordxy x, coordxy y)
             case TT_WEB:
                 pline(_("%s%s!"), pullmsg, "web");
                 Soundeffect(se_destroy_web, 30);
-                pline_The("web is destroyed!");
+                pline_The(_("web is destroyed!"));
                 deltrap(t_at(u.ux, u.uy));
                 break;
             case TT_LAVA:
@@ -1001,7 +1001,7 @@ drag_down(void)
 
     if (forward) {
         if (rn2(6)) {
-            pline_The("iron ball drags you downstairs!");
+            pline_The(_("iron ball drags you downstairs!"));
             losehp(Maybe_Half_Phys(rnd(6)),
                    "dragged downstairs by an iron ball", NO_KILLER_PREFIX);
             litter();
@@ -1009,14 +1009,14 @@ drag_down(void)
     } else {
         if (rn2(2)) {
             Soundeffect(se_iron_ball_hits_you, 25);
-            pline_The("iron ball smacks into you!");
+            pline_The(_("iron ball smacks into you!"));
             losehp(Maybe_Half_Phys(rnd(20)), "iron ball collision",
                    KILLED_BY_AN);
             exercise(A_STR, FALSE);
             dragchance -= 2;
         }
         if ((int) dragchance >= rnd(6)) {
-            pline_The("iron ball drags you downstairs!");
+            pline_The(_("iron ball drags you downstairs!"));
             losehp(Maybe_Half_Phys(rnd(3)),
                    "dragged downstairs by an iron ball", NO_KILLER_PREFIX);
             exercise(A_STR, FALSE);

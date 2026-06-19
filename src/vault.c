@@ -105,7 +105,7 @@ clear_fcorr(struct monst *grd, boolean forceshow)
         egrd->fcbeg++;
     }
     if (sawcorridor && !silently)
-        pline_The("corridor disappears.");
+        pline_The(_("corridor disappears."));
     /* only give encased message if hero is still alive (might get here
        via paygd() -> mongone() -> grddead() when game is over;
        died: no message, quit: message) */
@@ -459,7 +459,7 @@ invault(void)
                 verbalize(_("What's going on here?"));
             }
             if (!spotted)
-                pline_The("other presence vanishes.");
+                pline_The(_("other presence vanishes."));
             mongone(guard);
             return;
         }
@@ -718,7 +718,7 @@ wallify_vault(struct monst *grd)
         if (movedgold)
             pline(_("%s"), _("A mysterious force moves the gold into the vault."));
         if (fixed)
-            pline_The("damaged vault's walls are magically restored!");
+            pline_The(_("damaged vault's walls are magically restored!"));
     }
 }
 

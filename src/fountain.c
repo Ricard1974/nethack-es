@@ -54,7 +54,7 @@ dowatersnakes(void)
                 (void) mintrap(mtmp, NO_TRAP_FLAGS);
     } else {
         Soundeffect(se_furious_bubbling, 20);
-        pline_The("fountain bubbles furiously for a moment, then calms.");
+        pline_The(_("fountain bubbles furiously for a moment, then calms."));
     }
 }
 
@@ -83,7 +83,7 @@ dowaterdemon(void)
         }
     } else {
         Soundeffect(se_furious_bubbling, 20);
-        pline_The("fountain bubbles furiously for a moment, then calms.");
+        pline_The(_("fountain bubbles furiously for a moment, then calms."));
     }
 }
 
@@ -204,7 +204,7 @@ dryup(coordxy x, coordxy y, boolean isyou)
             mtmp = get_iter_mons(watchman_warn_fountain);
             /* You can see or hear this effect */
             if (!mtmp)
-                pline_The("flow reduces to a trickle.");
+                pline_The(_("flow reduces to a trickle."));
             return;
         }
         if (isyou && wizard) {
@@ -218,7 +218,7 @@ dryup(coordxy x, coordxy y, boolean isyou)
             int glyph = glyph_at(x, y);
 
             if (!glyph_is_cmap(glyph) || glyph_to_cmap(glyph) != S_cloud)
-                pline_The("fountain dries up!");
+                pline_The(_("fountain dries up!"));
         }
         /* replace the fountain with ordinary floor */
         set_levltyp(x, y, ROOM); /* updates level.flags.nfountains */
@@ -271,7 +271,7 @@ drinkfountain(void)
     }
 
     if (fate < 10) {
-        pline_The("cool draught refreshes you.");
+        pline_The(_("cool draught refreshes you."));
         u.uhunger += rnd(10); /* don't choke on water */
         newuhs(FALSE);
         if (mgkftn)
@@ -283,15 +283,15 @@ drinkfountain(void)
             display_nhwindow(WIN_MESSAGE, FALSE);
             enlightenment(MAGICENLIGHTENMENT, ENL_GAMEINPROGRESS);
             exercise(A_WIS, TRUE);
-            pline_The("feeling subsides.");
+            pline_The(_("feeling subsides."));
             break;
         case 20: /* Foul water */
-            pline_The("water is foul!  You gag and vomit.");
+            pline_The(_("water is foul!  You gag and vomit."));
             morehungry(rn1(20, 11));
             vomit();
             break;
         case 21: /* Poisonous */
-            pline_The("water is contaminated!");
+            pline_The(_("water is contaminated!"));
             if (Poison_resistance) {
                 pline(_("Perhaps it is runoff from the nearby %s farm."), fruitname(FALSE));
                 losehp(rnd(4), "unrefrigerated sip of juice", KILLED_BY_AN);
@@ -344,7 +344,7 @@ drinkfountain(void)
             break;
         case 26: /* See Monsters */
             if (monster_detect((struct obj *) 0, 0))
-                pline_The("%s tastes like nothing.", hliquid("water"));
+                pline_The(_("%s tastes like nothing."), hliquid("water"));
             exercise(A_WIS, TRUE);
             break;
         case 27: /* Find a gem in the sparkling waters. */
@@ -402,7 +402,7 @@ dipfountain(struct obj *obj)
         if (u.ualign.type != A_LAWFUL) {
             /* Ha!  Trying to cheat her. */
             pline(_("A freezing mist rises from the %s"), hliquid("water"));
-            pline_The("fountain disappears!");
+            pline_The(_("fountain disappears!"));
             curse(obj);
             if (obj->spe > -6 && !rn2(3))
                 obj->spe--;
@@ -455,7 +455,7 @@ dipfountain(struct obj *obj)
     case 20: /* Uncurse the item */
         if (!is_hands && obj->cursed) {
             if (!Blind)
-                pline_The("%s glows for a moment.", hliquid("water"));
+                pline_The(_("%s glows for a moment."), hliquid("water"));
             uncurse(obj);
         } else {
             pline(_("%s"), _("A feeling of loss comes over you."));
@@ -567,7 +567,7 @@ void
 breaksink(coordxy x, coordxy y)
 {
     if (cansee(x, y) || u_at(x, y))
-        pline_The("pipes break!  Water spurts out!");
+        pline_The(_("pipes break!  Water spurts out!"));
     /* updates level.flags.nsinks and level.flags.nfountains */
     set_levltyp(x, y, FOUNTAIN);
     levl[x][y].looted = 0;
@@ -607,7 +607,7 @@ drinksink(void)
         break;
     case 3:
         if (svm.mvitals[PM_SEWER_RAT].mvflags & G_GONE)
-            pline_The("sink seems quite dirty.");
+            pline_The(_("sink seems quite dirty."));
         else {
             mtmp = makemon(&mons[PM_SEWER_RAT], u.ux, u.uy, MM_NOMSG);
             if (mtmp)
@@ -646,7 +646,7 @@ drinksink(void)
         breaksink(u.ux, u.uy);
         break;
     case 7:
-        pline_The("%s moves as though of its own will!", hliquid("water"));
+        pline_The(_("%s moves as though of its own will!"), hliquid("water"));
         if ((svm.mvitals[PM_WATER_ELEMENTAL].mvflags & G_GONE)
             || !makemon(&mons[PM_WATER_ELEMENTAL], u.ux, u.uy, MM_NOMSG))
             pline(_("%s"), _("But it quiets down."));
@@ -737,7 +737,7 @@ dipsink(struct obj *obj)
         /* acts like a drain cleaner product */
         try_call = TRUE;
         if (!Blind) {
-            pline_The("drain seems less clogged.");
+            pline_The(_("drain seems less clogged."));
         } else if (!Deaf) {
             You_hear(_("a sucking sound."));
         } else {

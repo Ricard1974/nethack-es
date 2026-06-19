@@ -2859,7 +2859,7 @@ lifesaved_monster(struct monst *mtmp)
                 else
                     pline(_("%s looks much better!"), Monnam(mtmp));
             }
-            pline_The("medallion crumbles to dust!");
+            pline_The(_("medallion crumbles to dust!"));
         }
         m_useup(mtmp, lifesave);
         /* equip replacement amulet, if any, on next move */
@@ -2960,7 +2960,7 @@ vamprises(struct monst *mtmp)
             else if (!canspotmon(mtmp))
                 You_see(_("%s."), trapped ? door_go_boom : door_smashed);
             else if (!Unaware)
-                pline_The("door is smashed%s",
+                pline_The(_("door is smashed%s"),
                           trapped ? " and it explodes!" : ".");
             set_msg_xy(0, 0); /* in case none of the messages was delivered */
 
@@ -4149,7 +4149,7 @@ qst_guardians_respond(void)
 
         if (got_mad > 1)
             who = makeplural(who);
-        pline_The("%s %s to be angry too...",
+        pline_The(_("%s %s to be angry too..."),
                   who, vtense(who, "appear"));
     }
 }
@@ -5731,12 +5731,12 @@ angry_guards(boolean silent)
 
             if (slct) { /* sleeping guard(s) */
                 Sprintf(buf, _("guard%s"), plur(slct));
-                pline_The("%s %s up.", buf, vtense(buf, "wake"));
+                pline_The(_("%s %s up."), buf, vtense(buf, "wake"));
             }
 
             if (nct) { /* seen/sensed adjacent guard(s) */
                 Sprintf(buf, _("guard%s"), plur(nct));
-                pline_The("%s %s angry!", buf, vtense(buf, "get"));
+                pline_The(_("%s %s angry!"), buf, vtense(buf, "get"));
             } else if (sct) { /* seen/sensed non-adjacent guard(s) */
                 Sprintf(buf, _("guard%s"), plur(sct));
                 pline(_("%s %s %s approaching!"), (sct == 1) ? "An angry" : "Angry", buf, vtense(buf, "are"));

@@ -240,7 +240,7 @@ summon_minion(aligntyp alignment, boolean talk)
     if (mon) {
         if (talk) {
             if (!Deaf)
-                pline_The("voice of %s booms:", align_gname(alignment));
+                pline_The(_("voice of %s booms:"), align_gname(alignment));
             else
                 You_feel(_("%s booming voice:"), s_suffix(align_gname(alignment)));
             SetVoice(mon, 0, 80, 0);

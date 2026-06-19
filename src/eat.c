@@ -1732,7 +1732,7 @@ start_tin(struct obj *otmp)
         if (!tmp)
             mesg = "The tin opens like magic!";
         else
-            pline_The("tin seems easy to open.");
+            pline_The(_("tin seems easy to open."));
     } else if (uwep) {
         switch (uwep->otyp) {
         case TIN_OPENER:
@@ -1761,7 +1761,7 @@ start_tin(struct obj *otmp)
  no_opener:
         pline(_("%s"), _("It is not so easy to open this tin."));
         if (Glib) {
-            pline_The("tin slips from your %s.", fingers_or_gloves(FALSE));
+            pline_The(_("tin slips from your %s."), fingers_or_gloves(FALSE));
             if (otmp->quan > 1L) {
                 otmp = splitobj(otmp, 1L);
             }
@@ -1827,7 +1827,7 @@ rottenfood(struct obj *obj)
         else
             what = "you slap against the",
             where = (u.usteed) ? "saddle" : surface(u.ux, u.uy);
-        pline_The("world spins and %s %s.", what, where);
+        pline_The(_("world spins and %s %s."), what, where);
         incr_itimeout(&HDeaf, duration);
         disp.botl = TRUE;
         nomul(-duration);
@@ -1945,7 +1945,7 @@ eatcorpse(struct obj *otmp)
         if (!mons[otmp->corpsenm].cnutrit) {
             /* no nutrition: rots away, no message if you passed out */
             if (!retcode)
-                pline_The("corpse rots away completely.");
+                pline_The(_("corpse rots away completely."));
             if (carried(otmp))
                 useup(otmp);
             else

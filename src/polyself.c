@@ -972,15 +972,15 @@ polymon(int mntmp)
     if (Passes_walls && u.utrap
         && (u.utraptype == TT_INFLOOR || u.utraptype == TT_BURIEDBALL)) {
         if (u.utraptype == TT_INFLOOR) {
-            pline_The("rock seems to no longer trap you.");
+            pline_The(_("rock seems to no longer trap you."));
         } else {
-            pline_The("buried ball is no longer bound to you.");
+            pline_The(_("buried ball is no longer bound to you."));
             buried_ball_to_freedom();
         }
         reset_utrap(TRUE);
     } else if (likes_lava(gy.youmonst.data) && u.utrap
                && u.utraptype == TT_LAVA) {
-        pline_The("%s now feels soothing.", hliquid("lava"));
+        pline_The(_("%s now feels soothing."), hliquid("lava"));
         reset_utrap(TRUE);
     }
     if (amorphous(gy.youmonst.data) || is_whirly(gy.youmonst.data)
@@ -1177,11 +1177,11 @@ break_armor(void)
                 (void) Cloak_off();
                 useup(otmp);
             } else if (otmp->otyp == ALCHEMY_SMOCK) {
-                pline_The("knot on your %s is pulled apart!", cloak_simple_name(otmp));
+                pline_The(_("knot on your %s is pulled apart!"), cloak_simple_name(otmp));
                 (void) Cloak_off();
                 dropp(otmp);
             } else {
-                pline_The("clasp on your %s breaks open!", cloak_simple_name(otmp));
+                pline_The(_("clasp on your %s breaks open!"), cloak_simple_name(otmp));
                 (void) Cloak_off();
                 dropp(otmp);
             }
@@ -1471,7 +1471,7 @@ doremove(void)
 {
     if (!Punished) {
         if (u.utrap && u.utraptype == TT_BURIEDBALL) {
-            pline_The("ball and chain are buried firmly in the %s.",
+            pline_The(_("ball and chain are buried firmly in the %s."),
                       surface(u.ux, u.uy));
             return ECMD_OK;
         }
@@ -1526,11 +1526,11 @@ dospinweb(void)
                     Strcpy(sweep, "freezes, shatters and ");
                     break;
                 }
-                pline_The("web %sis swept away!", sweep);
+                pline_The(_("web %sis swept away!"), sweep);
             }
             return ECMD_OK;
         } /* default: a nasty jelly-like creature */
-        pline_The("web dissolves into %s.", mon_nam(u.ustuck));
+        pline_The(_("web dissolves into %s."), mon_nam(u.ustuck));
         return ECMD_OK;
     }
     if (u.utrap) {
@@ -1548,7 +1548,7 @@ dospinweb(void)
             newsym(x, y);
             return ECMD_TIME;
         case SQKY_BOARD:
-            pline_The("squeaky board is muffled.");
+            pline_The(_("squeaky board is muffled."));
             deltrap(ttmp);
             newsym(x, y);
             return ECMD_TIME;
@@ -1701,7 +1701,7 @@ dogaze(void)
 
                     You(_("attack %s with a fiery gaze!"), mon_nam(mtmp));
                     if (resists_fire(mtmp)) {
-                        pline_The("fire doesn't burn %s!", mon_nam(mtmp));
+                        pline_The(_("fire doesn't burn %s!"), mon_nam(mtmp));
                         dmg = 0;
                     }
                     if (lev > rn2(20)) {
@@ -1782,7 +1782,7 @@ dohide(void)
        such critters aren't offered the option of hiding via #monster */
     if (gy.youmonst.data->mlet == S_EEL && !is_pool(u.ux, u.uy)) {
         if (IS_FOUNTAIN(levl[u.ux][u.uy].typ))
-            pline_The("fountain is not deep enough to hide in.");
+            pline_The(_("fountain is not deep enough to hide in."));
         else
             There(_("is no %s to hide in here."), hliquid("water"));
         u.uundetected = 0;

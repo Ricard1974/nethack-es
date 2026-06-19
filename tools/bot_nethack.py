@@ -223,10 +223,11 @@ ALL_PROMPTS = [
     ("[yn]", lambda: send("n")),
     ("[ynq]", lambda: send("n")),
     ("direction", lambda: send("Escape")),
-    ("dirección", lambda: send("Escape")),
+    ("dirección", lambda: send("h")),  # send direction h (west) instead of Escape
+    ("in what direction", lambda: send("Escape")),
+    ("¿en qué dirección", lambda: send("Escape")),
     ("pick up", lambda: send("Escape")),
     ("recoger", lambda: send("Escape")),
-    ("in what direction", lambda: send("Escape")),
     ("what do you want to", lambda: send("Escape")),
     ("qué quieres", lambda: send("Escape")),
     ("identify what", lambda: send("Escape")),
@@ -810,7 +811,10 @@ class Bot:
             answer_prompts()
             self.log(f"📋 Abriendo menú: {desc} ({cmd})")
             send(cmd)
-            time.sleep(1)
+            # Esperar con verificacion de prompts
+            for _ in range(5):
+                time.sleep(0.2)
+                answer_prompts()
             screen = capture()
             self.save_screenshot(f"menu_{label}_{self.step:04d}", screen)
             self.process_messages(screen)
@@ -819,7 +823,9 @@ class Bot:
                 for sub in submenus:
                     answer_prompts()
                     send(sub)
-                    time.sleep(0.8)
+                    for _ in range(4):
+                        time.sleep(0.2)
+                        answer_prompts()
                     sub_screen = capture()
                     self.save_screenshot(
                         f"menu_{label}_{sub}_{self.step:04d}", sub_screen

@@ -664,7 +664,7 @@ doengrave_sfx_item_WAN(struct _doengrave_ctx *de)
     case WAN_MAKE_INVISIBLE:
         if (de->oep && de->oep->engr_type != HEADSTONE) {
             if (!Blind) {
-                pline_The("engraving on the %s vanishes!",
+                pline_The(_("engraving on the %s vanishes!"),
                           surface(u.ux, u.uy));
                 de->hero_told_it_vanished = TRUE;
             }
@@ -674,7 +674,7 @@ doengrave_sfx_item_WAN(struct _doengrave_ctx *de)
     case WAN_TELEPORTATION:
         if (de->oep && de->oep->engr_type != HEADSTONE) {
             if (!Blind) {
-                pline_The("engraving on the %s vanishes!",
+                pline_The(_("engraving on the %s vanishes!"),
                           surface(u.ux, u.uy));
                 de->hero_told_it_vanished = TRUE;
             }
@@ -811,7 +811,7 @@ doengrave_sfx_item(struct _doengrave_ctx *de)
                     de->zapwand = TRUE;
                 /* empty wand just doesn't write */
                 else
-                    pline_The("wand is too worn out to engrave.");
+                    pline_The(_("wand is too worn out to engrave."));
             }
         }
         break;
@@ -1084,7 +1084,7 @@ doengrave(void)
         tmp_ep = engr_at(u.ux, u.uy);
         if (!Blind) {
             if (tmp_ep != 0) {
-                pline_The("engraving now reads: \"%s\".", de->buf);
+                pline_The(_("engraving now reads: \"%s\"."), de->buf);
                 tmp_ep->eread = 1;
                 tmp_ep->erevealed = 1;
                 de->disprefresh = TRUE;

@@ -3768,7 +3768,7 @@ pickup_checks(void)
         if (IS_THRONE(lev->typ))
             pline(_("It must weigh%s a ton!"), lev->looted ? " almost" : "");
         else if (IS_SINK(lev->typ))
-            pline_The("plumbing connects it to the floor.");
+            pline_The(_("plumbing connects it to the floor."));
         else if (IS_GRAVE(lev->typ))
             You(_("don't need a gravestone.  Yet."));
         else if (IS_FOUNTAIN(lev->typ))
@@ -3778,7 +3778,7 @@ pickup_checks(void)
         else if (IS_ALTAR(lev->typ))
             pline(_("%s"), _("Moving the altar would be a very bad idea."));
         else if (lev->typ == STAIRS)
-            pline_The("stairs are solidly affixed.");
+            pline_The(_("stairs are solidly affixed."));
         else
             There(_("is nothing here to pick up."));
         return 0;
@@ -3962,7 +3962,7 @@ lookaround(void)
 
     if (corrct > 1 && svc.context.run == 2) {
         if (flags.mention_walls)
-            pline_The("corridor widens here.");
+            pline_The(_("corridor widens here."));
         goto stop;
     }
     if ((svc.context.run == 1 || svc.context.run == 3 || svc.context.run == 8)

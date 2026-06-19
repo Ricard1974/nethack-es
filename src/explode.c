@@ -668,7 +668,7 @@ explode(
                     || iflags.last_msg == PLNMSG_TOWER_OF_FLAME) /*seffects()*/
                     pline(_("%s"), _("It is fatal."));
                 else
-                    pline_The("%s is fatal.", str);
+                    pline_The(_("%s is fatal."), str);
                 /* Known BUG: BURNING suppresses corpse in bones data,
                    but done does not handle killer reason correctly */
                 done((adtyp == AD_FIRE) ? BURNING : DIED);
@@ -751,7 +751,7 @@ scatter(
             boolean waschain = (otmp == uchain);
 
             Soundeffect(se_chain_shatters, 25);
-            pline_The("chain shatters!");
+            pline_The(_("chain shatters!"));
             unpunish();
             if (waschain)
                 continue;

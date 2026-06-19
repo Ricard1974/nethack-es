@@ -139,7 +139,7 @@ thitu(
             if (obj && objects[obj->otyp].oc_material == SILVER
                 && Hate_silver) {
                 /* extra damage already applied by dmgval() */
-                pline_The("silver sears your flesh!");
+                pline_The(_("silver sears your flesh!"));
                 exercise(A_CON, FALSE);
             }
             if (is_acid) {
@@ -398,14 +398,14 @@ ohitmon(
         if (otmp->opoisoned && is_poisonable(otmp)) {
             if (resists_poison(mtmp)) {
                 if (vis)
-                    pline_The("poison doesn't seem to affect %s.",
+                    pline_The(_("poison doesn't seem to affect %s."),
                               mon_nam(mtmp));
             } else {
                 if (rn2(30)) {
                     damage += rnd(6);
                 } else {
                     if (vis)
-                        pline_The("poison was deadly...");
+                        pline_The(_("poison was deadly..."));
                     damage = mtmp->mhp;
                 }
             }
@@ -420,7 +420,7 @@ ohitmon(
 
                 if (flesh) /* s_suffix returns a modifiable buffer */
                     m_name = strcat(s_suffix(m_name), " flesh");
-                pline_The("silver sears %s!", m_name);
+                pline_The(_("silver sears %s!"), m_name);
             } else if (verbose && !gm.mtarget) {
                 pline(_("%s is seared!"), flesh ? "Its flesh" : "It");
             }
@@ -431,7 +431,7 @@ ohitmon(
                     pline(_("%s is unaffected."), Monnam(mtmp));
             } else {
                 if (vis)
-                    pline_The("%s burns %s!", hliquid("acid"), mon_nam(mtmp));
+                    pline_The(_("%s burns %s!"), hliquid("acid"), mon_nam(mtmp));
                 else if (verbose && !gm.mtarget)
                     pline(_("%s"), _("It is burned!"));
             }
@@ -761,7 +761,7 @@ m_throw(
                         eyes = makeplural(eyes);
                     /* venom in the eyes */
                     if (!Blind)
-                        pline_The("venom blinds you.");
+                        pline_The(_("venom blinds you."));
                     else
                         Your(_("%s %s."), eyes, vtense(eyes, "sting"));
                 }
@@ -1414,7 +1414,7 @@ hit_bars(
         /* breakage makes its own noises */
         if (obj_type == POT_ACID) {
             if (cansee(barsx, barsy) && !nodissolve) {
-                pline_The("iron bars are dissolved!");
+                pline_The(_("iron bars are dissolved!"));
             } else {
                 Soundeffect(se_angry_snakes, 100);
                 You_hear(Hallucination ? "angry snakes!"

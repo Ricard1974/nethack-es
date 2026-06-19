@@ -400,12 +400,12 @@ do_earthquake(int force)
             switch (levl[x][y].typ) {
             case FOUNTAIN: /* make the fountain disappear */
                 if (cansee(x, y))
-                    pline_The("fountain falls%s.", into_a_chasm);
+                    pline_The(_("fountain falls%s."), into_a_chasm);
                 do_pit(x, y, tu_pit);
                 break;
             case SINK:
                 if (cansee(x, y))
-                    pline_The("kitchen sink falls%s.", into_a_chasm);
+                    pline_The(_("kitchen sink falls%s."), into_a_chasm);
                 do_pit(x, y, tu_pit);
                 break;
             case ALTAR:
@@ -415,19 +415,19 @@ do_earthquake(int force)
                     break;
                 algn = Amask2align(amsk & AM_MASK);
                 if (cansee(x, y))
-                    pline_The("%s altar falls%s.",
+                    pline_The(_("%s altar falls%s."),
                               align_str(algn), into_a_chasm);
                 desecrate_altar(FALSE, algn);
                 do_pit(x, y, tu_pit);
                 break;
             case GRAVE:
                 if (cansee(x, y))
-                    pline_The("headstone topples%s.", into_a_chasm);
+                    pline_The(_("headstone topples%s."), into_a_chasm);
                 do_pit(x, y, tu_pit);
                 break;
             case THRONE:
                 if (cansee(x, y))
-                    pline_The("throne falls%s.", into_a_chasm);
+                    pline_The(_("throne falls%s."), into_a_chasm);
                 do_pit(x, y, tu_pit);
                 break;
             case SCORR:
@@ -458,7 +458,7 @@ do_earthquake(int force)
                 recalc_block_point(x, y);
                 newsym(x, y); /* before pline */
                 if (cansee(x, y))
-                    pline_The("door collapses.");
+                    pline_The(_("door collapses."));
                 if (*in_rooms(x, y, SHOPBASE))
                     add_damage(x, y, 0L);
                 break;
@@ -678,7 +678,7 @@ do_improvisation(struct obj *instr)
 
         You(_("produce a heavy, thunderous rolling!"));
         Hero_playnotes(obj_to_instr(&itmp), "C", 100);
-        pline_The("entire %s is shaking around you!", generic_lvl_desc());
+        pline_The(_("entire %s is shaking around you!"), generic_lvl_desc());
         do_earthquake((u.ulevel - 1) / 3 + 1);
         /* shake up monsters in a much larger radius... */
         awaken_monsters(ROWNO * COLNO);

@@ -1405,7 +1405,7 @@ toss_up(struct obj *obj, boolean hitsroof)
             return obj ? TRUE : FALSE;
         }
         if (is_silver && Hate_silver)
-            pline_The("silver sears you!");
+            pline_The(_("silver sears you!"));
         if (harmless)
             hit(thesimpleoname(obj), &gy.youmonst, " but doesn't hurt.");
 
@@ -1781,7 +1781,7 @@ throwit(
                             dropy(obj);
                     } else {
                         if (!tether_released_msg) {
-                            pline_The("%s tether comes off your %s.",
+                            pline_The(_("%s tether comes off your %s."),
                                   s_suffix(simpleonames(obj)), body_part(ARM));
                             tether_released_msg = TRUE;
                         }
@@ -2710,7 +2710,7 @@ throw_gold(struct obj *obj)
         if (digests(u.ustuck->data))
             /* note: s_suffix() returns a modifiable buffer */
             swallower = strcat(s_suffix(swallower), " entrails");
-        pline_The("gold disappears into %s.", swallower);
+        pline_The(_("gold disappears into %s."), swallower);
         add_to_minv(u.ustuck, obj);
         return ECMD_TIME;
     }
@@ -2718,7 +2718,7 @@ throw_gold(struct obj *obj)
     if (u.dz) {
         if (u.dz < 0 && !Is_airlevel(&u.uz) && !Underwater
             && !Is_waterlevel(&u.uz)) {
-            pline_The("gold hits the %s, then falls back on top of your %s.",
+            pline_The(_("gold hits the %s, then falls back on top of your %s."),
                       ceiling(u.ux, u.uy), body_part(HEAD));
             /* some self damage? */
             if (uarmh)
@@ -2756,7 +2756,7 @@ throw_gold(struct obj *obj)
     if (flooreffects(obj, gb.bhitpos.x, gb.bhitpos.y, "fall"))
         return ECMD_TIME;
     if (u.dz > 0)
-        pline_The("gold hits the %s.", surface(gb.bhitpos.x, gb.bhitpos.y));
+        pline_The(_("gold hits the %s."), surface(gb.bhitpos.x, gb.bhitpos.y));
     place_object(obj, gb.bhitpos.x, gb.bhitpos.y);
     if (*u.ushops)
         sellobj(obj, gb.bhitpos.x, gb.bhitpos.y);

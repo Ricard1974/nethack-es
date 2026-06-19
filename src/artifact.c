@@ -1302,7 +1302,7 @@ Mb_hit(struct monst *magr, /* attacker */
     verb = mb_verb[!!Hallucination][attack_indx];
     if (youattack || youdefend || vis) {
         result = TRUE;
-        pline_The("magic-absorbing blade %s %s!",
+        pline_The(_("magic-absorbing blade %s %s!"),
                   vtense((const char *) 0, verb), hittee);
         /* assume probing has some sort of noticeable feedback
            even if it is being done by one monster to another */
@@ -1380,7 +1380,7 @@ Mb_hit(struct monst *magr, /* attacker */
 
     case MB_INDEX_PROBE:
         if (youattack && (mb->spe == 0 || !rn2(3 * abs(mb->spe)))) {
-            pline_The("%s is insightful.", verb);
+            pline_The(_("%s is insightful."), verb);
             /* pre-damage status */
             probe_monster(mdef);
         }
@@ -1481,7 +1481,7 @@ artifact_hit(
     /* the four basic attacks: fire, cold, shock and missiles */
     if (attacks(AD_FIRE, otmp)) {
         if (realizes_damage)
-            pline_The("fiery blade %s %s%c",
+            pline_The(_("fiery blade %s %s%c"),
                       !gs.spec_dbon_applies
                           ? "hits"
                           : (mdef->data == &mons[PM_WATER_ELEMENTAL])
@@ -1500,7 +1500,7 @@ artifact_hit(
     }
     if (attacks(AD_COLD, otmp)) {
         if (realizes_damage)
-            pline_The("ice-cold blade %s %s%c",
+            pline_The(_("ice-cold blade %s %s%c"),
                       !gs.spec_dbon_applies ? "hits" : "freezes", hittee,
                       !gs.spec_dbon_applies ? '.' : '!');
         if (!rn2(4)) {
@@ -1512,7 +1512,7 @@ artifact_hit(
     }
     if (attacks(AD_ELEC, otmp)) {
         if (realizes_damage)
-            pline_The("massive hammer hits%s %s%c",
+            pline_The(_("massive hammer hits%s %s%c"),
                       !gs.spec_dbon_applies ? "" : "!  Lightning strikes",
                       hittee, !gs.spec_dbon_applies ? '.' : '!');
         if (gs.spec_dbon_applies)
@@ -1526,7 +1526,7 @@ artifact_hit(
     }
     if (attacks(AD_MAGM, otmp)) {
         if (realizes_damage)
-            pline_The("imaginary widget hits%s %s%c",
+            pline_The(_("imaginary widget hits%s %s%c"),
                       !gs.spec_dbon_applies
                           ? ""
                           : "!  A hail of magic missiles strikes",
@@ -1659,7 +1659,7 @@ artifact_hit(
                 char *otmpname = distant_name(otmp, xname);
 
                 if (is_art(otmp, ART_STORMBRINGER))
-                    pline_The("%s blade draws the %s from %s!",
+                    pline_The(_("%s blade draws the %s from %s!"),
                               hcolor(NH_BLACK), life, mon_nam(mdef));
                 else
                     pline(_("%s draws the %s from %s!"), The(otmpname), life, mon_nam(mdef));
@@ -1697,7 +1697,7 @@ artifact_hit(
                 char *otmpname = distant_name(otmp, xname);
 
                 if (is_art(otmp, ART_STORMBRINGER))
-                    pline_The("%s blade drains your %s!",
+                    pline_The(_("%s blade drains your %s!"),
                               hcolor(NH_BLACK), life);
                 else
                     pline(_("%s drains your %s!"), The(otmpname), life);
@@ -2741,7 +2741,7 @@ mkot_trap_warn(void)
 
         if (ntraps != gm.mkot_trap_warn_count) {
             idx = min(ntraps, SIZE(heat) - 1);
-            pline_The("Key feels %s%c", heat[idx], (ntraps > 3) ? '!' : '.');
+            pline_The(_("Key feels %s%c"), heat[idx], (ntraps > 3) ? '!' : '.');
         }
         gm.mkot_trap_warn_count = ntraps;
     } else

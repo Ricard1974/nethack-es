@@ -367,7 +367,7 @@ grease_protect(
     if (!rn2(2)) {
         otmp->greased = 0;
         if (carried(otmp)) {
-            pline_The("grease dissolves.");
+            pline_The(_("grease dissolves."));
             update_inventory();
         }
         return TRUE;
@@ -618,7 +618,7 @@ fall_through(
                 pline("%s", _("There's a gaping hole under you!"));
         }
     } else
-        pline_The("%s opens up under you!", surface(u.ux, u.uy));
+        pline_The(_("%s opens up under you!"), surface(u.ux, u.uy));
 
     if (Sokoban && Can_fall_thru(&u.uz)) {
         ; /* KMH -- You can't escape the Sokoban level traps */
@@ -639,7 +639,7 @@ fall_through(
         impact_drop((struct obj *) 0, u.ux, u.uy, 0);
         if (!td) {
             display_nhwindow(WIN_MESSAGE, FALSE);
-            pline_The("opening under you closes up.");
+            pline_The(_("opening under you closes up."));
         }
         return;
     }
@@ -818,7 +818,7 @@ animate_statue(
                    : "statue");
         pline(_("%s %s!"), upstart(statuename), comes_to_life);
     } else if (Hallucination) { /* They don't know it's a statue */
-        pline_The("%s suddenly seems more animated.", rndmonnam((char *) 0));
+        pline_The(_("%s suddenly seems more animated."), rndmonnam((char *) 0));
     } else if (cause == ANIMATE_SHATTER) {
         if (cansee(x, y))
             Sprintf(statuename, "%s%s", shk_your(tmpbuf, statue),
@@ -2579,7 +2579,7 @@ trapeffect_landmine(
                 return Trap_Effect_Finished;
             if (in_sight) {
                 newsym(mtmp->mx, mtmp->my);
-                pline_The("air currents set %s off!",
+                pline_The(_("air currents set %s off!"),
                           already_seen ? "a land mine" : "it");
             }
         } else if (in_sight) {
@@ -3485,7 +3485,7 @@ launch_obj(
         if (otyp == BOULDER && closed_door(x, y)) {
             if (cansee(x, y)) {
                 set_msg_xy(x, y);
-                pline_The("boulder crashes through a door.");
+                pline_The(_("boulder crashes through a door."));
             }
             levl[x][y].doormask = D_BROKEN;
             if (dist)
@@ -4603,7 +4603,7 @@ pot_acid_damage(
             or "...your <color> potion." (or just "...your potion.");
             don't re-describe potion here; if we used "It explodes!"
             then "it" might be misconstrued as applying to "grease" */
-        pline_The("potion%s %s!",
+        pline_The(_("potion%s %s!"),
                     plur(obj->quan), otense(obj, "explode"));
     } else {
         /* First message is
@@ -4664,7 +4664,7 @@ water_damage(
         if (!rn2(2)) {
             obj->greased = 0;
             if (in_invent) {
-                pline_The("grease on %s washes off.", yname(obj));
+                pline_The(_("grease on %s washes off."), yname(obj));
                 described = TRUE; /* used to modify potion feedback */
                 update_inventory();
             }
@@ -4685,7 +4685,7 @@ water_damage(
         return ER_DAMAGED; /* contents were damaged */
     } else if (Waterproof_container(obj)) {
         if (in_invent && !Blind && !Underwater) {
-            pline_The("%s cannot get into your %s.", hliquid("water"), ostr);
+            pline_The(_("%s cannot get into your %s."), hliquid("water"), ostr);
             gm.mentioned_water = !Hallucination;
             makeknown(obj->otyp); /* if an oilskin sack, discover it; doesn't
                                    * matter for chest, large box, ice box */
@@ -5019,7 +5019,7 @@ drown(void)
         return FALSE;
 
     if ((i = number_leashed()) > 0) {
-        pline_The("leash%s slip%s loose.", (i > 1) ? "es" : "",
+        pline_The(_("leash%s slip%s loose."), (i > 1) ? "es" : "",
                   (i > 1) ? "" : "s");
         unleash_all();
     }
@@ -5053,7 +5053,7 @@ drown(void)
             if (!is_pool(u.ux, u.uy))
                 return TRUE;
         } else
-            pline_The("attempted teleport spell fails.");
+            pline_The(_("attempted teleport spell fails."));
     }
     if (u.usteed) {
         dismount_steed(DISMOUNT_GENERIC);
@@ -5419,7 +5419,7 @@ try_disarm(
                             ? (ttmp2->ttyp == WEB)
                             /* make a new web to trap hero in */
                             : (ttmp2 = maketrap(u.ux, u.uy, WEB)) != 0)) {
-                        pline_The("web sticks to you.  You're caught too!");
+                        pline_The(_("web sticks to you.  You're caught too!"));
                         dotrap(ttmp2, NOWEBMSG);
                         if (u.usteed && u.utrap) {
                             /* you, not steed, are trapped */
@@ -5795,7 +5795,7 @@ untrap(
         autounlock_door = TRUE;
     }
     if (!isok(x, y)) {
-        pline_The("perils lurking there are beyond your grasp.");
+        pline_The(_("perils lurking there are beyond your grasp."));
         return 0;
     }
 
@@ -6770,7 +6770,7 @@ lava_effects(void)
 
     if (!Fire_resistance) {
         if (Wwalking) {
-            pline_The("%s here burns you!", hliquid("lava"));
+            pline_The(_("%s here burns you!"), hliquid("lava"));
             if (usurvive) {
                 losehp(dmg, lava_killer, KILLED_BY); /* lava damage */
                 goto burn_stuff;
@@ -6826,7 +6826,7 @@ lava_effects(void)
                because lifesaving resets them */
             svk.killer.format = KILLED_BY;
             Strcpy(svk.killer.name, lava_killer);
-            urgent_pline("You %s...", boil_away ? "boil away"
+            urgent_pline(_("You %s..."), boil_away ? "boil away"
                                                 : "burn to a crisp");
             done(BURNING);
             if (safe_teleds(TELEDS_ALLOW_DRAG | TELEDS_TELEPORT))

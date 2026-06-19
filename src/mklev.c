@@ -2418,7 +2418,7 @@ mkinvokearea(void)
     coordxy i;
 
     /* slightly odd if levitating, but not wrong */
-    pline_The("floor shakes violently under you!");
+    pline_The(_("floor shakes violently under you!"));
     /* decide whether to issue the crumbling walls message */
     {
         xmin = xmax = svi.inv_pos.x;
@@ -2455,7 +2455,7 @@ mkinvokearea(void)
            or if all the walls within range have been dug away; when it does
            appear, it will describe iron bars as "walls" (which is ok) */
         if (wallct)
-            pline_The("walls around you begin to bend and crumble!");
+            pline_The(_("walls around you begin to bend and crumble!"));
     }
     display_nhwindow(WIN_MESSAGE, TRUE);
 

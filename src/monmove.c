@@ -154,7 +154,7 @@ m_break_boulder(struct monst *mtmp, coordxy x, coordxy y)
         }
         if (cansee(x, y)) {
             set_msg_xy(x, y);
-            pline_The("boulder falls apart.");
+            pline_The(_("boulder falls apart."));
         }
 
         /* boulders pushed onto shop's boundary or free spot are cases where

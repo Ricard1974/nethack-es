@@ -437,7 +437,7 @@ pick_lock(
             pline(_("Doing that would probably melt %s."), yname(pick));
             return PICKLOCK_LEARNED_SOMETHING;
         } else if (is_pool(u.ux, u.uy) && !Underwater) {
-            pline_The("%s has no lock.", hliquid("water"));
+            pline_The(_("%s has no lock."), hliquid("water"));
             return PICKLOCK_LEARNED_SOMETHING;
         }
 
@@ -838,7 +838,7 @@ doopen_indir(coordxy x, coordxy y)
         if (is_db_wall(cc.x, cc.y) || door->typ == DRAWBRIDGE_UP)
             There(_("is no obvious way to open the drawbridge."));
         else if (portcullis || door->typ == DRAWBRIDGE_DOWN)
-            pline_The("drawbridge is already open.");
+            pline_The(_("drawbridge is already open."));
         else if (container_at(cc.x, cc.y, TRUE))
             pline(_("%s like something lootable over there."), Blind ? "Feels" : "Seems");
         else
@@ -910,7 +910,7 @@ doopen_indir(coordxy x, coordxy y)
     } else {
         exercise(A_STR, TRUE);
         set_msg_xy(cc.x, cc.y);
-        pline_The("door resists!");
+        pline_The(_("door resists!"));
     }
 
     return ECMD_TIME;
@@ -1001,7 +1001,7 @@ doclose(void)
     if (portcullis || !IS_DOOR(door->typ)) {
         /* is_db_wall: closed portcullis */
         if (is_db_wall(x, y) || door->typ == DRAWBRIDGE_UP)
-            pline_The("drawbridge is already closed.");
+            pline_The(_("drawbridge is already closed."));
         else if (portcullis || door->typ == DRAWBRIDGE_DOWN)
             There(_("is no obvious way to close the drawbridge."));
         else {
@@ -1031,13 +1031,13 @@ doclose(void)
         }
         if (u.usteed
             || rn2(25) < (ACURRSTR + ACURR(A_DEX) + ACURR(A_CON)) / 3) {
-            pline_The("door closes.");
+            pline_The(_("door closes."));
             door->doormask = D_CLOSED;
             feel_newsym(x, y); /* the hero knows she closed it */
             block_point(x, y); /* vision:  no longer see there */
         } else {
             exercise(A_STR, TRUE);
-            pline_The("door resists!");
+            pline_The(_("door resists!"));
         }
     }
 
@@ -1140,13 +1140,13 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
             }
             if (obstructed(x, y, mysterywand)) {
                 if (vis)
-                    pline_The("cloud %s.", quickly_dissipates);
+                    pline_The(_("cloud %s."), quickly_dissipates);
                 return FALSE;
             }
             block_point(x, y);
             door->typ = SDOOR, door->doormask = D_NODOOR;
             if (vis)
-                pline_The("doorway vanishes!");
+                pline_The(_("doorway vanishes!"));
             newsym(x, y);
             return TRUE;
         }
@@ -1229,7 +1229,7 @@ doorlock(struct obj *otmp, coordxy x, coordxy y)
             newsym(x, y);
             if (flags.verbose) {
                 if ((sawit || seeit) && !Unaware) {
-                    pline_The("door crashes open!");
+                    pline_The(_("door crashes open!"));
                 } else if (!Deaf) {
                     Soundeffect(se_crashing_sound, 100);
                     You_hear(_("a crashing sound."));

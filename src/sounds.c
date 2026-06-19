@@ -97,11 +97,11 @@ morgue_mon_sound(struct monst *mtmp)
             You(_("suddenly realize it is unnaturally quiet."));
             break;
         case 1:
-            pline_The("%s on the back of your %s %s up.", hair,
+            pline_The(_("%s on the back of your %s %s up."), hair,
                       body_part(NECK), vtense(hair, "stand"));
             break;
         case 2:
-            pline_The("%s on your %s %s to stand up.", hair,
+            pline_The(_("%s on your %s %s to stand up."), hair,
                       body_part(HEAD), vtense(hair, "seem"));
             break;
         }
@@ -1330,7 +1330,7 @@ dochat(void)
         if ((otmp = vobj_at(tx, ty)) != 0 && otmp->otyp == STATUE) {
             /* Talking to a statue */
             if (!Blind)
-                pline_The("%s seems not to notice you.",
+                pline_The(_("%s seems not to notice you."),
                           /* if hallucinating, you can't tell it's a statue */
                           Hallucination ? rndmonnam((char *) 0) : "statue");
             return ECMD_OK;
@@ -1361,7 +1361,7 @@ dochat(void)
 
                 if (idx >= SIZE(walltalk))
                     idx = SIZE(walltalk) - 1;
-                pline_The("wall %s", walltalk[idx]);
+                pline_The(_("wall %s"), walltalk[idx]);
             }
             return ECMD_OK;
         }
@@ -1453,7 +1453,7 @@ tiphat(void)
         } else if (u.dz) {
             pline(_("There's no one %s there."), (u.dz < 0) ? "up" : "down");
         } else {
-            pline_The("lout here doesn't acknowledge you...");
+            pline_The(_("lout here doesn't acknowledge you..."));
         }
         return res;
     }

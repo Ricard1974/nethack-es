@@ -1089,7 +1089,7 @@ done(int how)
         if (how == CHOKING)
             You(_("vomit ..."));
         You_feel(_("much better!"));
-        pline_The("medallion crumbles to dust!");
+        pline_The(_("medallion crumbles to dust!"));
         if (uamul)
             useup(uamul);
 

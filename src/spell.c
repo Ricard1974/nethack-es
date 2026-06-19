@@ -153,7 +153,7 @@ cursed_book(struct obj *bp)
         make_confused(HConfusion + rn1(7, 16), FALSE);
         break;
     case 5:
-        pline_The("book was coated with contact poison!");
+        pline_The(_("book was coated with contact poison!"));
         if (uarmg) {
             erode_obj(uarmg, "gloves", ERODE_CORRODE, EF_GREASE | EF_VERBOSE);
             break;
@@ -169,7 +169,7 @@ cursed_book(struct obj *bp)
     case 6:
         if (Antimagic) {
             shieldeff(u.ux, u.uy);
-            pline_The("book %s, but you are unharmed!", explodes);
+            pline_The(_("book %s, but you are unharmed!"), explodes);
         } else {
             pline(_("As you read the book, it %s in your %s!"), explodes, body_part(FACE));
             dmg = 2 * rnd(10) + 5;
@@ -276,7 +276,7 @@ deadbook(struct obj *book2)
         }
 
         if (arti_cursed) {
-            pline_The("invocation fails!");
+            pline_The(_("invocation fails!"));
             /* this used to say "your artifacts" but the invocation tools
                are not artifacts */
             pline(_("%s"), _("At least one of your relics is cursed..."));
@@ -326,7 +326,7 @@ deadbook(struct obj *book2)
             Your(_("ancestors are annoyed with you!"));
             break;
         case 1:
-            pline_The("headstones in the cemetery begin to move!");
+            pline_The(_("headstones in the cemetery begin to move!"));
             break;
         default:
             pline(_("%s"), _("Oh my!  Your name appears in the book!"));
@@ -603,7 +603,7 @@ study_book(struct obj *spellbook)
             svc.context.spbook.delay = 0;
             if (gone || !rn2(3)) {
                 if (!gone)
-                    pline_The("spellbook crumbles to dust!");
+                    pline_The(_("spellbook crumbles to dust!"));
                 trycall(spellbook);
                 useup(spellbook);
             } else
@@ -1136,7 +1136,7 @@ cast_protection(void)
             const char *hgolden = hcolor(NH_GOLDEN), *atmosphere;
 
             if (u.uspellprot) {
-                pline_The("%s haze around you becomes more dense.", hgolden);
+                pline_The(_("%s haze around you becomes more dense."), hgolden);
             } else {
                 struct permonst *pm = u.ustuck ? u.ustuck->data : 0;
 
@@ -1152,7 +1152,7 @@ cast_protection(void)
                                      : IS_TREE(rmtyp) ? "vegetation"
                                        : IS_STWALL(rmtyp) ? "stone"
                                          : "air");
-                pline_The("%s around you begins to shimmer with %s haze.",
+                pline_The(_("%s around you begins to shimmer with %s haze."),
                           atmosphere, an(hgolden));
             }
         }
@@ -1485,7 +1485,7 @@ spelleffects(int spell_otyp, boolean atme, boolean force)
                  * spelleffects() is organized means that aborting with
                  * "nevermind" is not an option.
                  */
-                pline_The("magical energy is released!");
+                pline_The(_("magical energy is released!"));
             }
             if (!u.dx && !u.dy && !u.dz) {
                 if ((damage = zapyourself(pseudo, TRUE)) != 0) {
@@ -1666,10 +1666,10 @@ throwspell(void)
 
     /* The number of moves from hero to where the spell drops.*/
     if (distmin(u.ux, u.uy, cc.x, cc.y) > 10) {
-        pline_The("spell dissipates over the distance!");
+        pline_The(_("spell dissipates over the distance!"));
         return 0;
     } else if (u.uswallow) {
-        pline_The("spell is cut short!");
+        pline_The(_("spell is cut short!"));
         exercise(A_WIS, FALSE); /* What were you THINKING! */
         u.dx = 0;
         u.dy = 0;
