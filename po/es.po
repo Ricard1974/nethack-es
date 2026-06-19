@@ -122,7 +122,7 @@ msgstr "la rapidez se siente menos natural."
 #: src/mhitu.c:188
 #, c-format
 msgid "%s attacks you without knowing your location?"
-msgstr ""
+msgstr "¿%s te ataca sin saber tu ubicación?"
 
 #: src/mhitu.c:216
 #, c-format
@@ -1468,7 +1468,7 @@ msgstr "%s aparece en un %s de %s !"
 
 #: src/minion.c:214
 msgid "unaligned player?"
-msgstr ""
+msgstr "¿jugador desalineado?"
 
 #: src/minion.c:243
 #, fuzzy, c-format
@@ -5374,7 +5374,7 @@ msgstr "escapa del dano."
 
 #: src/uhitm.c:3515
 msgid "slime burns away!"
-msgstr ""
+msgstr "¡la baba se quema!"
 
 #: src/uhitm.c:3519
 msgid "are unaffected."
@@ -6046,7 +6046,7 @@ msgstr "%s suelta %s."
 #: src/weapon.c:841
 #, c-format
 msgid "weapon_check %d for %s?"
-msgstr ""
+msgstr "weapon_check %d para %s?"
 
 #: src/weapon.c:865
 #, fuzzy, c-format
@@ -9195,7 +9195,7 @@ msgstr "no es suficiente espacio para aquí. %s"
 
 #: src/dig.c:274
 msgid "ladder resists your effort."
-msgstr ""
+msgstr "la escalera resiste tu esfuerzo."
 
 #: src/dig.c:277
 #, fuzzy, c-format
@@ -9277,7 +9277,7 @@ msgstr "Has pasado por el calabozo en %s sin nombre."
 
 #: src/dig.c:524
 msgid "debris from your digging comes to life!"
-msgstr ""
+msgstr "¡los escombros de tu excavación cobran vida!"
 
 #: src/dig.c:545
 #, c-format
@@ -9951,7 +9951,7 @@ msgstr "%s empieza a tingle."
 #: src/detect.c:525
 #, c-format
 msgid "Your %s twitches%s."
-msgstr ""
+msgstr "Tu %s se tensa%s."
 
 #: src/detect.c:542
 #, c-format
@@ -10668,7 +10668,7 @@ msgstr "materialize in %s location!"
 #: src/teleport.c:795
 #, c-format
 msgid "%s is leashed, without a leash."
-msgstr ""
+msgstr "%s está atado, sin correa."
 
 #: src/teleport.c:802 src/dogmove.c:349 src/dogmove.c:1525
 msgid "leash goes slack."
@@ -10771,7 +10771,7 @@ msgstr "caes varios miles de pies hasta tu muerte."
 #: src/teleport.c:1353
 #, c-format
 msgid "teleported out of the dungeon and fell to %s death"
-msgstr ""
+msgstr "teletransportado fuera de la mazmorra y cayó a la muerte %s"
 
 #: src/teleport.c:1459
 msgid "activated a magic portal!"
@@ -10903,7 +10903,7 @@ msgstr "lanzar %s con tu desnudo %s ."
 #: src/dothrow.c:144
 #, c-format
 msgid "throwing %s bare-handed"
-msgstr ""
+msgstr "lanzando %s a manos desnudas"
 
 #: src/dothrow.c:243
 #, fuzzy, c-format
@@ -13757,7 +13757,7 @@ msgstr ""
 #: src/artifact.c:1305
 #, c-format
 msgid "magic-absorbing blade %s %s!"
-msgstr ""
+msgstr "¡la hoja absorbe-magia %s %s!"
 
 #: src/artifact.c:1333
 msgid "lose magical energy!"
@@ -13795,12 +13795,12 @@ msgstr "%s soldado a %s %s%c"
 #: src/artifact.c:1503
 #, c-format
 msgid "ice-cold blade %s %s%c"
-msgstr ""
+msgstr "hoja gélida %s %s%c"
 
 #: src/artifact.c:1515
 #, c-format
 msgid "massive hammer hits%s %s%c"
-msgstr ""
+msgstr "martillo masivo golpea%s %s%c"
 
 #: src/artifact.c:1529
 #, c-format
@@ -17302,7 +17302,7 @@ msgstr "acaba de quitarte el %s ."
 
 #: src/steal.c:178
 msgid "stealarm(): dead monster stealing"
-msgstr ""
+msgstr "stealarm(): monstruo muerto robando"
 
 #: src/steal.c:191 src/steal.c:756
 #, c-format
@@ -19843,12 +19843,12 @@ msgstr "¡Desgarra las lágrimas! %s"
 #: src/polyself.c:1180
 #, c-format
 msgid "knot on your %s is pulled apart!"
-msgstr ""
+msgstr "¡el nudo en tu %s se deshace!"
 
 #: src/polyself.c:1184
 #, c-format
 msgid "clasp on your %s breaks open!"
-msgstr ""
+msgstr "¡el cierre en tu %s se rompe!"
 
 #: src/polyself.c:1190
 msgid "shirt rips to shreds!"
@@ -19956,7 +19956,7 @@ msgstr ""
 #: src/polyself.c:1474
 #, c-format
 msgid "ball and chain are buried firmly in the %s."
-msgstr ""
+msgstr "la bola y cadena están firmemente enterradas en %s."
 
 #: src/polyself.c:1478
 msgid "are not chained to anything!"
@@ -19975,7 +19975,7 @@ msgstr "soltar fluido web dentro %s ."
 #: src/polyself.c:1529
 #, c-format
 msgid "web %sis swept away!"
-msgstr ""
+msgstr "%sla telaraña es barrida!"
 
 #: src/polyself.c:1533
 #, fuzzy, c-format
@@ -21718,7 +21718,7 @@ msgstr "%s no le gusta ser llamado nombres!"
 #: src/do_name.c:269
 #, c-format
 msgid "I'm %s, not %s."
-msgstr ""
+msgstr "Soy %s, no %s."
 
 #: src/do_name.c:274
 #, c-format
@@ -26799,7 +26799,7 @@ msgstr "wield %s en tu bare %s ."
 #: src/wield.c:148
 #, c-format
 msgid "wielding %s bare-handed"
-msgstr ""
+msgstr "empuñando %s a manos desnudas"
 
 #: src/wield.c:185
 #, c-format
@@ -27471,7 +27471,7 @@ msgstr "un mensaje crujido aquí."
 #: src/engrave.c:364
 #, c-format
 msgid "%s is written in a very strange way."
-msgstr ""
+msgstr "%s está escrito de una manera muy extraña."
 
 #: src/engrave.c:393
 #, c-format
@@ -27897,7 +27897,7 @@ msgstr "%ld %s en crédito."
 
 #: src/dokick.c:338 src/dokick.c:345
 msgid "Thanks, scum!"
-msgstr ""
+msgstr "¡Gracias, escoria!"
 
 #: src/dokick.c:343
 msgid "Thank you for your contribution."
@@ -27979,7 +27979,7 @@ msgstr "¡rompe la cerradura!"
 
 #: src/dokick.c:653
 msgid "lid slams open, then falls shut."
-msgstr ""
+msgstr "la tapa se abre de golpe, luego se cierra."
 
 #: src/dokick.c:705
 #, c-format
@@ -28123,7 +28123,7 @@ msgstr "¡Crack! ¡%s se rompió!"
 
 #: src/dokick.c:1111
 msgid "headstone topples over and breaks!"
-msgstr ""
+msgstr "¡la lápida se cae y se rompe!"
 
 #: src/dokick.c:1141
 #, c-format
