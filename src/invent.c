@@ -2723,7 +2723,7 @@ identify_pack(
         n = 0;
         if (flags.menu_style == MENU_TRADITIONAL)
             do {
-                n = ggetobj("identify", identify, id_limit, FALSE,
+                n = ggetobj(_("identify"), identify, id_limit, FALSE,
                             (unsigned *) 0);
                 if (n < 0)
                     break; /* quit or no eligible items */
@@ -4972,7 +4972,7 @@ doorganize(void) /* inventory organizer by Del Lamb */
     adjust_filter = check_invent_gold("adjust") ? adjust_gold_ok : adjust_ok;
 
     /* get object the user wants to organize (the 'from' slot) */
-    obj = getobj("adjust", adjust_filter, GETOBJ_PROMPT | GETOBJ_ALLOWCNT);
+    obj = getobj(_("adjust"), adjust_filter, GETOBJ_PROMPT | GETOBJ_ALLOWCNT);
 
     return doorganize_core(obj);
 }
@@ -4986,7 +4986,7 @@ adjust_split(void)
     char let, dig = '\0';
 
     /* invlet should be queued so no getobj prompting is expected */
-    obj = getobj("split", adjust_ok, GETOBJ_NOFLAGS);
+    obj = getobj(_("split"), adjust_ok, GETOBJ_NOFLAGS);
     if (!obj || obj->quan < 2L || obj->otyp == GOLD_PIECE)
         return ECMD_FAIL; /* caller has set things up to avoid this */
 

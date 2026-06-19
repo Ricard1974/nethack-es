@@ -1747,7 +1747,7 @@ dorub(void)
         You(_("aren't able to rub anything without hands."));
         return ECMD_OK;
     }
-    obj = getobj("rub", rub_ok, GETOBJ_NOFLAGS);
+    obj = getobj(_("rub"), rub_ok, GETOBJ_NOFLAGS);
     if (!obj)
         return ECMD_CANCEL;
     if (obj->oclass == GEM_CLASS || obj->oclass == FOOD_CLASS) {
@@ -2568,7 +2568,7 @@ use_grease(struct obj *obj)
             dropx(obj);
             return ECMD_TIME;
         }
-        otmp = getobj("grease", grease_ok, GETOBJ_PROMPT);
+        otmp = getobj(_("grease"), grease_ok, GETOBJ_PROMPT);
         if (!otmp)
             return ECMD_CANCEL;
         if (inaccessible_equipment(otmp, "grease", FALSE))

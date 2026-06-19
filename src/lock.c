@@ -897,7 +897,7 @@ doopen_indir(coordxy x, coordxy y)
     /* door is known to be CLOSED */
     if (rnl(20) < (ACURRSTR + ACURR(A_DEX) + ACURR(A_CON)) / 3) {
         set_msg_xy(cc.x, cc.y);
-        pline_The("door opens.");
+        pline_The(_("door opens."));
         if (door->doormask & D_TRAPPED) {
             b_trapped("door", FINGER);
             door->doormask = D_NODOOR;

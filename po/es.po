@@ -27821,6 +27821,76 @@ msgstr "destruir"
 #: auto
 msgid "kill"
 msgstr "matar"
+
+#: auto (getobj)
+msgid "adjust"
+msgstr "ajustar"
+#: auto (getobj)
+msgid "call"
+msgstr "nombrar"
+#: auto (getobj)
+msgid "charge"
+msgstr "cargar"
+#: auto (getobj)
+msgid "dip"
+msgstr "sumergir"
+#: auto (getobj)
+msgid "drink"
+msgstr "beber"
+#: auto (getobj)
+msgid "drop"
+msgstr "soltar"
+#: auto (getobj)
+msgid "eat"
+msgstr "comer"
+#: auto (getobj)
+msgid "grease"
+msgstr "engrasar"
+#: auto (getobj)
+msgid "identify"
+msgstr "identificar"
+#: auto (getobj)
+msgid "invoke"
+msgstr "invocar"
+#: auto (getobj)
+msgid "name"
+msgstr "nombrar"
+#: auto (getobj)
+msgid "open"
+msgstr "abrir"
+#: auto (getobj)
+msgid "read"
+msgstr "leer"
+#: auto (getobj)
+msgid "remove"
+msgstr "quitar"
+#: auto (getobj)
+msgid "rub"
+msgstr "frotar"
+#: auto (getobj)
+msgid "sacrifice"
+msgstr "sacrificar"
+#: auto (getobj)
+msgid "split"
+msgstr "dividir"
+#: auto (getobj)
+msgid "stash"
+msgstr "guardar"
+#: auto (getobj)
+msgid "throw"
+msgstr "lanzar"
+#: auto (getobj)
+msgid "tip"
+msgstr "vaciar"
+#: auto (getobj)
+msgid "wear"
+msgstr "vestir"
+#: auto (getobj)
+msgid "wield"
+msgstr "empuñar"
+#: auto (getobj)
+msgid "zap"
+msgstr "lanzar"
 msgid "%s%.31s"
 msgstr ""
 

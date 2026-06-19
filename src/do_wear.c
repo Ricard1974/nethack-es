@@ -1866,7 +1866,7 @@ doremring(void)
         return ECMD_OK;
     }
     if (Naccessories != 1 || ParanoidRemove || cmdq_peek(CQ_CANNED))
-        otmp = getobj("remove", remove_ok, GETOBJ_NOFLAGS);
+        otmp = getobj(_("remove"), remove_ok, GETOBJ_NOFLAGS);
     if (!otmp)
         return ECMD_CANCEL;
 
@@ -2417,7 +2417,7 @@ dowear(void)
         You(_("are already wearing a full complement of armor."));
         return ECMD_OK;
     }
-    otmp = getobj("wear", wear_ok, GETOBJ_NOFLAGS);
+    otmp = getobj(_("wear"), wear_ok, GETOBJ_NOFLAGS);
     return otmp ? accessory_or_armor_on(otmp) : ECMD_CANCEL;
 }
 

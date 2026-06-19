@@ -780,6 +780,84 @@ class Bot:
 
         return None
 
+    # ─── Menús y submenús ──────────────────────────────────────────
+
+    def explore_menus(self):
+        """Abre todos los menús del juego y submenús para detectar inglés.
+        Cada menú se abre, se captura la pantalla, y se cierra.
+        """
+        # (comando, nombre, descripción, submenús a navegar)
+        menus = [
+            (
+                "?",
+                "help_main",
+                "Ayuda principal",
+                ["a", "c", "d", "f", "i", "m", "o", "s", "t"],
+            ),
+            (
+                "\\",
+                "whatis_main",
+                "Qué es (menú principal)",
+                ["m", "M", "o", "O", "t", "T", "e", "E", "?"],
+            ),
+            ("*", "discoveries", "Descubrimientos", []),
+            ("#time", "time", "Tiempo de juego", []),
+            ("#version", "version", "Versión", []),
+            ("#enhance", "enhance", "Habilidades", []),
+        ]
+
+        for cmd, label, desc, submenus in menus:
+            answer_prompts()
+            self.log(f"📋 Abriendo menú: {desc} ({cmd})")
+            send(cmd)
+            time.sleep(1)
+            screen = capture()
+            self.save_screenshot(f"menu_{label}_{self.step:04d}", screen)
+            self.process_messages(screen)
+
+            if submenus:
+                for sub in submenus:
+                    answer_prompts()
+                    send(sub)
+                    time.sleep(0.8)
+                    sub_screen = capture()
+                    self.save_screenshot(
+                        f"menu_{label}_{sub}_{self.step:04d}", sub_screen
+                    )
+                    self.process_messages(sub_screen)
+                    clear_more()
+                    send("Escape")
+                    time.sleep(0.3)
+                    clear_more()
+
+            # Cerrar el menú principal
+            clear_more()
+            send("Escape")
+            time.sleep(0.3)
+            clear_more()
+
+    # ─── Búsqueda global de escaleras en dmap ──────────────────────
+
+    def scan_for_stairs(self):
+        """Busca escaleras en todo el mapa conocido y pathfind hacia ellas."""
+        px, py = self.dun_x, self.dun_y
+        best = None
+        best_dist = 999
+        for pos, data in self.dmap.items():
+            if data["type"] in ("stairs_down", "stairs_up"):
+                dist = abs(pos[0] - px) + abs(pos[1] - py)
+                if dist < best_dist and dist > 3:
+                    best_dist = dist
+                    best = pos
+        if best:
+            path = self.astar((px, py), best, max_dist=50, force_diag=True)
+            if path:
+                self.log(f"🪜 Escaleras encontradas en {best} a {best_dist} pasos")
+                self.path = path[1:]
+                self.path_target = best
+                return self.get_direction(path)
+        return None
+
     # ─── Bucle principal ─────────────────────────────────────────────
 
     def play(self, max_steps=500):
@@ -890,8 +968,11 @@ class Bot:
                             self.log("  ✅ Bajada!")
                         break
 
-            # 9. Curación
-            if hp and max_hp and hp < max_hp * 0.35:
+            # 9. Exploración de menús (cada 70 pasos)
+            if self.step % 70 == 0 and self.step > 10:
+                self.explore_menus()
+
+                # 10. Curación
                 self.log(f"❤️‍🩹 Curando (HP {hp}/{max_hp})...")
                 send("q")
                 time.sleep(0.4)
@@ -974,15 +1055,34 @@ class Bot:
                         send(d)
                         time.sleep(0.3)
 
-                    send(d)
-                    time.sleep(0.25)
+                    # Mover en RÁFAGA de 3-6 pasos (verificar cada paso)
+                    import random as _random
 
-                    # Actualizar coordenadas (ASUMIMOS que el movimiento fue exitoso)
-                    dx, dy = DIR_VEC.get(d, (0, 0))
-                    self.dun_x += dx
-                    self.dun_y += dy
+                    burst = _random.randint(3, 6)
+                    moved = 0
+                    for b in range(burst):
+                        send(d)
+                        time.sleep(0.1)
+                        # Verificar si el movimiento fue exitoso
+                        b_screen = capture()
+                        b_lines = b_screen.strip().split("\n")
+                        b_msg = b_lines[-1].lower() if b_lines else ""
+                        if (
+                            "can't" in b_msg
+                            or "cant" in b_msg
+                            or "wall" in b_msg
+                            or "block" in b_msg
+                        ):
+                            self.log(f"  🚫 Paso {b + 1} bloqueado, parando")
+                            break
+                        dx, dy = DIR_VEC.get(d, (0, 0))
+                        self.dun_x += dx
+                        self.dun_y += dy
+                        moved += 1
                     self.last_positions.append((old_x, old_y))
                     self.recent_dirs.append(d)
+                    if moved > 0:
+                        self.log(f"  → {moved} pasos al {dname}")
 
                 else:
                     self.stuck += 3

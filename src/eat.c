@@ -3084,7 +3084,7 @@ use_tin_opener(struct obj *obj)
         res = ECMD_TIME;
     }
 
-    otmp = getobj("open", tinopen_ok, GETOBJ_NOFLAGS);
+    otmp = getobj(_("open"), tinopen_ok, GETOBJ_NOFLAGS);
     if (!otmp)
         return (res|ECMD_CANCEL);
 
@@ -3673,9 +3673,9 @@ floorfood(
     /* We cannot use GETOBJ_PROMPT since we don't want a prompt in the case
        where nothing edible is being carried. */
     if (feeding) {
-        otmp = getobj("eat", eat_ok, GETOBJ_NOFLAGS);
+        otmp = getobj(_("eat"), eat_ok, GETOBJ_NOFLAGS);
     } else if (offering) {
-        otmp = getobj("sacrifice", offer_ok, GETOBJ_NOFLAGS);
+        otmp = getobj(_("sacrifice"), offer_ok, GETOBJ_NOFLAGS);
     } else if (corpsecheck == 2) {
         otmp = getobj(verb, tin_ok, GETOBJ_NOFLAGS);
     } else {

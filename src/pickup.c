@@ -3153,7 +3153,7 @@ use_container(
         add_valid_menu_class(0);
     } else if (stash_one) {
         /* put one item into container */
-        if ((otmp = getobj("stash", stash_ok,
+        if ((otmp = getobj(_("stash"), stash_ok,
                            GETOBJ_PROMPT | GETOBJ_ALLOWCNT)) != 0) {
             if (in_container(otmp)) {
                 used = 1;
@@ -3619,7 +3619,7 @@ dotip(void)
 
     /* either no floor container(s) or 'm' prefix was used to ignore such
        or couldn't tip one or didn't tip any */
-    cobj = getobj("tip", tip_ok, GETOBJ_PROMPT);
+    cobj = getobj(_("tip"), tip_ok, GETOBJ_PROMPT);
     if (!cobj)
         return ECMD_CANCEL;
 
