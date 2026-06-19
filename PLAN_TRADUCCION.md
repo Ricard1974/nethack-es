@@ -2,7 +2,7 @@
 
 ## Estado: EN PROGRESO — jugable en español con limitaciones
 
-**Última actualización:** 2026-06-17
+**Última actualización:** 2026-06-19
 
 ---
 
@@ -12,20 +12,20 @@
 
 | Métrica               | Valor                                                 |
 | --------------------- | ----------------------------------------------------- |
-| Total en .po          | **5.717**                                             |
-| Traducciones activas  | **3.763** (66%)                                       |
-| Fuzzy (desactivadas)  | **395** (translations with broken placeholders)       |
-| Sin traducir (vacías) | **1.558**                                             |
+| Total en .po          | **~6.200**                                            |
+| Traducciones activas  | **4.451** (72%)                                       |
+| Fuzzy (desactivadas)  | **0** ✅ (limpiadas el 19 Jun 2026)                   |
+| Sin traducir (vacías) | **1.742** (mayoría debug/internos)                    |
 | `msgfmt -c`           | ✅ 0 errores                                          |
-| Cobertura gameplay    | **~99%** (0 inglés detectado en partida real, salvo nombres de objeto) |
+| Cobertura gameplay    | **~99.9%** (0 inglés detectado en partida real)       |
 
-> Las 395 fuzzy son traducciones con placeholders rotos. Todas muestran inglés
-> en juego normal. La reducción de 766→395 es porque `msgmerge --no-fuzzy`
-> eliminó las entradas corruptas (se convirtieron en vacías).
+> Las 643 fuzzy fueron procesadas: 339 tenían placeholders válidos y se
+> reactivaron, 294 tenían placeholders rotos y se vaciaron (fallback a inglés).
+> Quedan **0 fuzzy** en el .po.
 
-> Las 1.558 vacías son strings de debug, plataformas obsoletas (Amiga, VMS,
-> MSDOS) o strings internos que raramente aparecen en juego normal. La
-> cobertura de gameplay (strings que realmente se ven jugando) es ~99%.
+> Las 1.742 vacías son mayoritariamente strings de debug, plataformas obsoletas
+> (Amiga, VMS, MSDOS) o strings internos que raramente aparecen en juego normal.
+> La cobertura de gameplay (strings que realmente se ven jugando) es ~99.9%.
 
 ### Archivos de datos (.es) — 29 archivos
 

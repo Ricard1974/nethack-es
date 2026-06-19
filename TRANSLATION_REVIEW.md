@@ -4,14 +4,15 @@
 
 | Métrica              | Valor                                 |
 | -------------------- | ------------------------------------- |
-| Strings en .po       | **5.687**                             |
-| Traducciones activas | **4.117** (72%)                       |
-| Fuzzy (desactivadas) | **766** (378 con trad. + 388 vacías)  |
-| Sin traducir (vacías)| **1.570** (1.182 debug + 388 limpiadas) |
+| Strings en .po       | **~6.200**                            |
+| Traducciones activas | **4.451** (72%)                       |
+| Fuzzy (desactivadas) | **0** ✅ (Jun 2026)                   |
+| Sin traducir (vacías)| **1.742** (debug/internos)            |
 | `msgfmt -c`          | ✅ 0 errores                          |
 | Archivos .es         | 29                                    |
 | Archivos .lua.es     | 1 (**quest.lua.es** en nhdat)         |
 | Binario              | Compila sin errores                   |
+| OPTIONS=language:es  | ✅ funciona sin LANG env              |
 
 ---
 
@@ -20,14 +21,20 @@
 ### Código C (.po) — ~72% activo
 
 - Pantalla de bienvenida, menús, prompts
-- Combate, objetos, estado del personaje
+- Combate, objetos, estado del personaje, daño elemental
 - Menú de opciones (títulos, descripciones, secciones)
 - Ayuda de dirección (teclas, cmdassist)
-- Creación de personaje, inventario
+- Creación de personaje, inventario, nombres de objeto
 - **Atributos** (Fuerza, Destreza, etc.) en enlightenment y mensajes
 - **"the" traducible** en descripciones de personaje y títulos
 - **"god"/"goddess"** traducibles en mensajes de rezo
 - **s_suffix() locale-aware**: el posesivo `'s` no se añade en español
+- **Verbos**: eats, drops, bites, kicks, misses, falls, floats, etc.
+- **Artículos**: the→el, your→tu, it→lo
+- **Comandos**: descripciones completas en español (?, c)
+- **Tiendas, fuentes, trampas, hechizos, pociones, puertas**
+- **Recipientes**: bottle, flagon, barrel, etc.
+- **OPTIONS=language:es** en nethackrc (sin LANG env)
 
 ### Archivos de datos (.es) — 29 archivos
 
@@ -83,6 +90,6 @@
 
 ---
 
-## Fecha de revisión: 17 de junio de 2026
+## Fecha de revisión: 19 de junio de 2026
 
 ## Rama: `NetHack-5.0-es`

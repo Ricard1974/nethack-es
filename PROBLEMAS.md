@@ -2,6 +2,8 @@
 
 Este documento recopila los problemas recurrentes encontrados durante el desarrollo de la traducción al español de NetHack 5.0.
 
+**Última actualización:** 2026-06-19
+
 ---
 
 ## Problema 1: Nombres de mazmorra con `_()` causan crasheo
@@ -458,4 +460,41 @@ make -C src -j4 && cp src/nethack playground/ && \
 
 # Detectar fuzzy corruptas
 python3 tools/fix_fuzzy.py --dry-run po/es.po
+```
+
+---
+
+## Problema 16: Verbos hardcodeados en `otense()` y `getobj()`
+
+**Síntoma:** Mensajes como "¿Qué quieres drop?" en español con el verbo en inglés.
+
+**Causa:** Las funciones `otense(obj, "verb")` y `getobj("verb", ...)` reciben verbs ingleses hardcodeados. El formato `_("¿Qué quieres %s?")` está traducido, pero el `%s` (verb) no.
+
+**Solución:** Envolver los 24 verbs de `getobj()` con `_()` en 13 archivos fuente.
+
+## Problema 17: Strings con comillas escapadas no se envuelven bien
+
+**Síntoma:** Error de compilación al usar `_()"texto\"mas\""`
+
+**Causa:** La macro `_()` interpreta las comillas escapadas `\"` como final de string.
+
+**Solución:** Revisar manualmente estos casos y escribir la macro alrededor de todo el string, no parcial.
+
+## Problema 18: 643 entradas fuzzy corrompidas por msgmerge
+
+**Síntoma:** ~15% de las traducciones no se aplicaban aunque tuvieran msgstr.
+
+**Causa:** `msgmerge` marca como `#, fuzzy` cualquier entrada cuyo msgid original haya cambiado, aunque la traducción sea válida.
+
+**Solución:** Script automatizado que verifica placeholders, quita fuzzy si coinciden, o vacía el msgstr si no.
+
+**Resultado:** 643→0 fuzzy (339 recuperadas, 294 vaciadas por placeholders rotos).
+
+## Problema 19: Captura de pantalla tmux corrupta
+
+**Síntoma:** El minimapa del bot muestra múltiples caracteres `@` en lugar de uno solo.
+
+**Causa:** El buffer de tmux mezcla frames de capturas anteriores. No afecta a la detección de texto inglés.
+
+**Solución:** Usar `capture-pane -S` con límite adecuado y limpiar el buffer antes de cada captura. No crítico para la funcionalidad del bot.
 ```
